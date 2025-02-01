@@ -4,6 +4,9 @@ import { SocialLinks } from "@/components/ui/SocialLinks";
 export function Hero() {
   return (
     <section className="container mx-auto py-20">
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-green-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
         <div className="space-y-8">
           <div className="space-y-4">
