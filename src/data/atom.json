@@ -1,0 +1,7 @@
+[{
+	"name": "terminalcolor",
+	"description": "A auto-complet with colors for terminal(Bash)."
+}, {
+	"name": "telegraf-atom",
+	"description": "Auto-complete plugin for Telegraf methods"
+}]

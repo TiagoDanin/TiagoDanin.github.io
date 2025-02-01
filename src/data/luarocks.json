@@ -1,0 +1,10 @@
+[{
+    "name": "genesi-password",
+    "description": "Module and tool for create password."
+}, {
+    "name": "html-entities",
+    "description": "Module for lua, decoding html entities :)"
+}, {
+    "name": "roman-numerls",
+    "description": "Module for convert numbers in Roman numbers :)"
+}]

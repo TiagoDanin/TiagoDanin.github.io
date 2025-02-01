@@ -1,0 +1,134 @@
+[
+  {
+    "date": "2023",
+    "title": "SOON™",
+    "description": "More to come...",
+    "tags": [
+      "soon"
+    ]
+  },
+  {
+    "date": "2022",
+    "title": "💻 Hacktoberfest",
+    "description": "Participated in Hacktoberfest 2022.",
+    "tags": [
+      "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2021",
+    "title": "💻 Open Source",
+    "description": "Participated in Hacktoberfest 2021.",
+    "tags": [
+      "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2020",
+    "title": "🏆 Achievements",
+    "description": "Won 1º Hackathon TecBan 2020. Gave lecture about neural networks at BrazilJS.",
+    "tags": [
+      "hackathon",
+      "braziljs"
+    ]
+  },
+  {
+    "date": "2019",
+    "title": "🗣 Events & Security",
+    "description": "Participated in VueJs Norte, Flisol & DataTechDay. Started studying security with Hackerone.",
+    "tags": [
+      "events",
+      "security"
+    ]
+  },
+  {
+    "date": "2018",
+    "title": "🎓 IFPA",
+    "description": "Started IFPA - Technologist degree in system analysis and development. Studied Probot, Telegraf & Arduino.",
+    "tags": [
+      "ifpa",
+      "arduino"
+    ]
+  },
+  {
+    "date": "2017",
+    "title": "🎓 Graduation & Achievements",
+    "description": "Finished High School. Won multiple sports competitions. Participated in Hacktoberfest 2017.",
+    "tags": [
+      "highschool",
+      "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2016",
+    "title": "🏐 Sports & Development",
+    "description": "Created a volleyball team. Published first Windows Store apps (SamRobot and GX Password). Participated in Hacktoberfest 2016.",
+    "tags": [
+      "volleyball",
+      "windowsstore",
+      "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2015",
+    "title": "Lua & First Programs ❤️",
+    "description": "Learn programming in lua. Created my first program: a plugin to search music on Spotify via Telegram Bot.",
+    "tags": [
+      "lua",
+      "firstprogram",
+      "telegrambot"
+    ]
+  },
+  {
+    "date": "2014",
+    "title": "🏆 Awards & Education",
+    "description": "3º Position - Race - 100M\n2º Position - Long jump - Best jump 2.56\n3º Position - Valentine´s Day for forumeiros.com\n🎓 Finished Middle School",
+    "tags": [
+      "awards",
+      "education"
+    ]
+  },
+  {
+    "date": "2013",
+    "title": "🗣 Lecture of Creation of Blogging",
+    "description": "Contribute to lecture talking about my experience.",
+    "tags": [
+      "lecture",
+      "blogging"
+    ]
+  },
+  {
+    "date": "2012",
+    "title": "🖥 My first WebSite",
+    "description": "The name was WapSiteMobile. Later... My forum (WapSiteBr) and 2013 my blog (WSBrasil).",
+    "tags": [
+      "website",
+      "forum",
+      "blog"
+    ]
+  },
+  {
+    "date": "2008",
+    "title": "Electronic Circuit 🔬",
+    "description": "Fascinated by electronic circuit.",
+    "tags": [
+      "electroniccircuit"
+    ]
+  },
+  {
+    "date": "2006",
+    "title": "Mathematics 🔬",
+    "description": "Fascinated by mathematics.",
+    "tags": [
+      "mathematics"
+    ]
+  },
+  {
+    "date": "1998",
+    "title": "😍 Birth",
+    "description": "printf(\"Hello World!\");",
+    "tags": [
+      "birth"
+    ]
+  }
+]
