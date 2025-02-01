@@ -1,3 +1,5 @@
+'use client'
+
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import projectsGithub from "@/data/github.json";
 import projectsPrivate from "@/data/private.json";
@@ -5,6 +7,7 @@ import projectsNpm from "@/data/npm.json";
 import projectsLuarocks from "@/data/luarocks.json";
 import projectsPypi from "@/data/pypi.json";
 import projectsAtom from "@/data/atom.json";
+
 import projectsGooglePlay from "@/data/googleplay.json";
 import projectsMicrosoftStore from "@/data/windows.json";
 import projectsAUR from "@/data/aur.json";
@@ -124,7 +127,7 @@ export function FullProjects() {
               >
                 <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {section.projects.map((project, projectIndex) => (
+                    {section.projects.map((project: any, projectIndex) => (
                       <ProjectCard
                         key={projectIndex}
                         {...project}
