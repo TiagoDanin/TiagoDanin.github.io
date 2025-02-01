@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import Image from 'next/image'
 
 interface ExperienceItemProps {
   company: string;
@@ -21,13 +22,16 @@ export function ExperienceItem({ company, role, startDate, endDate, logo, descri
     >
       <div className="flex gap-4">
         <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-background/50 shadow-sm ring-1 ring-zinc-900/5 transition group-hover:bg-background">
-          <img
+          <Image
             src={logo}
             alt=""
             className="h-7 w-7"
+            width={28}
+            height={28}
           />
         </div>
         <dl className="flex flex-auto flex-wrap gap-x-2">
+
           <dt className="sr-only">Company</dt>
           <dd className="w-full flex-none text-sm font-medium flex items-center justify-between">
             {company}

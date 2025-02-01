@@ -4,7 +4,7 @@
     "role": "Mobile Developer",
     "startDate": "2022",
     "endDate": "Present",
-    "logo": "https://media.licdn.com/dms/image/v2/C4E0BAQEI6TYKEj-xyw/company-logo_100_100/company-logo_100_100/0/1630616082588/idopterlabs_logo",
+    "logo": "/business/idopterlabs.webp",
     "description": "Development of hybrid solutions with React Native and Flutter, system architectures, project documentation, and test creation. Sometimes I work on Backend with Elixir (Phoenix) or Frontend.\n\nKey responsibilities and achievements:\n- App submission to stores (Google Play and App Store)\n- Integration/creation of native libraries (iOS and Android) in Swift, Objc, Java, and Kotlin for React Native apps\n- Platform management: AppCenter, Firebase, Onesignal\n- REST API Integration\n- React Native project architecture and structure\n- Implementation and improvement of automated tests using Jest"
   },
   {
@@ -12,7 +12,7 @@
     "role": "Mobile Developer",
     "startDate": "2019",
     "endDate": "2022",
-    "logo": "https://media.licdn.com/dms/image/v2/D4D0BAQHZIoD2-jz-iA/company-logo_100_100/company-logo_100_100/0/1732045582282/voxdata_telecom_logo",
+    "logo": "/business/voxdata.png",
     "description": "Development of native (Java, Swift, and Objc) and hybrid (Quasar, React Native) mobile solutions, system architectures, project documentation, and test creation.\n\nKey mobile development skills:\n- App submission to stores (Google Play and App Store)\n- Firebase Test Lab and Firebase Cloud Messaging\n- Integration/creation of native libraries with hybrid applications\n- REST API Integration\n- Android architecture and structure"
   },
   {
@@ -20,7 +20,7 @@
     "role": "Independent Security Researcher - Freelance",
     "startDate": "2018",
     "endDate": "2022",
-    "logo": "https://media.licdn.com/dms/image/v2/D560BAQGUm9r-X2V_QQ/company-logo_100_100/company-logo_100_100/0/1730993559796/hackerone_logo",
+    "logo": "/business/h1.jpg",
     "description": "Conducted vulnerability assessments for HackerOne partners, reporting security flaws to developers for remediation.\n\nKey analysis skills:\n- Cross-site scripting (XSS)\n- Cross Site Request Forgery (CSRF)\n- Open Redirect\n- Inadequate authentication procedures\n- Android app reverse engineering"
   },
   {
@@ -28,7 +28,7 @@
     "role": "Backend Developer - Freelance",
     "startDate": "2018",
     "endDate": "2019",
-    "logo": "",
+    "logo": "/business/issue_hunt.png",
     "description": "Developed and maintained Node.js applications and contributed to open source projects."
   }
 ]

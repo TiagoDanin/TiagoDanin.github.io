@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import projectsData from "@/data/projects.json";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export function Projects() {
   const pathname = usePathname();
@@ -56,13 +57,9 @@ export function Projects() {
 
             {!isFullProjects && (
               <Button size="lg" asChild className="mt-4">
-                <a
-                  href="https://github.com/TiagoDanin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  More projects on Github
-                </a>
+                <Link href="/projects">
+                  More projects
+                </Link>
               </Button>
             )}
           </div>

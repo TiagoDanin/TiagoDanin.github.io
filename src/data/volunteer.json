@@ -4,7 +4,7 @@
         "role": "Organizador",
         "startDate": "2019",
         "endDate": "Present",
-        "logo": "https://media.licdn.com/dms/image/C4E0BAQFvFhz9JA4e0w/company-logo_100_100/0/1630541179580?e=1686787200&v=beta&t=...",
+        "logo": "/business/devs_norte.png",
         "description": "The goal is to bring the developer community closer together, discussing all kinds of topics related to development, career, tools, and more."
     },
     {
@@ -12,7 +12,7 @@
         "role": "Documentation Translator",
         "startDate": "2023",
         "endDate": "Present",
-        "logo": "https://media.licdn.com/dms/image/v2/C510BAQG_1VWEGBmO9A/company-logo_100_100/company-logo_100_100/0/1631353289340",
+        "logo": "/business/nodejs.png",
         "description": "Contributing to Node.js documentation translation efforts, making the technology more accessible to non-English speaking developers."
     },
     {
@@ -20,7 +20,7 @@
         "role": "Documentation Translator",
         "startDate": "2017",
         "endDate": "Present",
-        "logo": "https://media.licdn.com/dms/image/v2/C560BAQF0OHm1YS_w4w/company-logo_100_100/company-logo_100_100/0/1631411333421/electronjs_logo",
+        "logo": "/business/electron_js.png",
         "description": "Contributing to the translation of ElectronJS documentation, helping to make the framework more accessible to developers worldwide."
     },
     {
@@ -28,24 +28,27 @@
         "role": "Event Organizer - On The Road Belém",
         "startDate": "2019",
         "endDate": "2019",
-        "logo": "https://media.licdn.com/dms/image/v2/D4D0BAQF9jp7QfKMvqg/company-logo_100_100/company-logo_100_100/0/1715786702414/braziljs_logo",
+        "logo": "/business/braziljs.png",
         "description": "Organized the BrazilJS On The Road event in Belém, bringing together the JavaScript community for knowledge sharing and networking.",
         "category": "Science and Technology"
+
     },
     {
         "organization": "Node.js",
         "role": "i18n Team Member",
         "startDate": "2018",
         "endDate": "2023",
-        "logo": "https://media.licdn.com/dms/image/v2/C510BAQG_1VWEGBmO9A/company-logo_100_100/company-logo_100_100/0/1631353289340",
+        "logo": "/business/nodejs.png",
         "description": "Part of the internationalization team, working to make Node.js documentation and resources available in multiple languages."
+
     },
     {
         "organization": "Synko",
         "role": "Software Developer",
         "startDate": "2014",
         "endDate": "2019",
-        "logo": "",
+        "logo": "/business/synko.png",
         "description": "Responsible for developing and maintaining various Telegram bots with different purposes, such as content searches (Spotify, Youtube, Google, etc.), group management, and Chatbot functionality.\n\nGitHub: https://github.com/SynkoDevelopers"
-      }
+
+    }
 ]
