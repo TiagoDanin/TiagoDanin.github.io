@@ -13,12 +13,8 @@ export function Projects() {
   const pathname = usePathname();
   const isFullProjects = pathname === "/projects";
 
-  const [showAll, setShowAll] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const isMobile = useIsMobile();
-
-  const visibleProjects = isMobile
-    ? (showAll ? projectsData : projectsData.slice(0, 2))
-    : projectsData;
 
   return (
     <section id="projects" className="relative py-20 overflow-hidden">
@@ -34,38 +30,43 @@ export function Projects() {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {visibleProjects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
-            ))}
-          </div>
+          <div className="bg-card/50 backdrop-blur-xl p-6 rounded-2xl relative">
+            <div className={`${(isExpanded || !isMobile) ? '' : 'h-[780px] overflow-hidden'} relative`}>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {projectsData.map((project, index) => (
+                  <ProjectCard key={index} {...project} />
+                ))}
+              </div>
 
-          <div className="text-center">
-            {isMobile && (
-              <Button
-                variant="ghost"
-                onClick={() => setShowAll(!showAll)}
-                className="mx-auto flex items-center gap-2"
-              >
-                {showAll ? (
-                  <>Show Less <ChevronUp className="h-4 w-4" /></>
-                ) : (
-                  <>Show More <ChevronDown className="h-4 w-4" /></>
+              <div className="text-center">
+                {!isFullProjects && (
+                  <Button size="lg" asChild className="mt-4">
+                    <Link href="/projects">
+                      More projects
+                    </Link>
+                  </Button>
                 )}
-              </Button>
-            )}
+              </div>
 
-            {!isFullProjects && (
-              <Button size="lg" asChild className="mt-4">
-                <Link href="/projects">
-                  More projects
-                </Link>
-              </Button>
-            )}
+              {!(isExpanded || !isMobile) && (
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-card/90 to-transparent pointer-events-none" />
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
+        {!isExpanded && isMobile && (<div className="flex flex-col gap-3 px-6">
+          <Button
+            onClick={() => setIsExpanded(!isExpanded)}
+            variant="outline"
+            className="w-full"
+          >
+            <span className="flex items-center gap-2">
+              Show More <ChevronDown className="h-4 w-4" />
+            </span>
+          </Button>
+        </div>)}
+      </div>
     </section>
   );
 }
