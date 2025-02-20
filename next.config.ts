@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   output: "export",
 
   /**
+   * The directory where the build output is stored.
+   *
+   * @see https://nextjs.org/docs/app/building-your-application/deploying/static-exports#the-dist-directory
+   */
+    distDir: 'dist',
+
+  /**
    * Set base path. This is usually the slug of your repository.
    *
    * @see https://nextjs.org/docs/app/api-reference/next-config-js/basePath

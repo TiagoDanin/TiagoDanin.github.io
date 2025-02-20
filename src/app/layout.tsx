@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Tiago Danin",
-  description: "I'm a Mobile Developer with expertise in Java, Kotlin, Obj-C, Swift, React Native, and Flutter, also experienced in front-end, back-end, and desktop development for macOS & Linux. Passionate about open source, automation, and solving real-world problems, always looking for new challenges. Currently diving into Digital Marketing to expand my knowledge beyond coding.",
+  title: {
+    default: "Tiago Danin",
+    template: "%s | Tiago Danin"
+  },
+  description: "I'm a Mobile Developer with expertise in Java, Kotlin, Obj-C, Swift, React Native, and Flutter, also experienced in front-end, back-end, and desktop development for macOS & Linux.",
 };
 
 export default function RootLayout({
@@ -14,7 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <div className="min-h-screen flex flex-col bg-background">
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

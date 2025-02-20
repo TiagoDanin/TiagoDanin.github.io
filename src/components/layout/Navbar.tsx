@@ -3,14 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { Linkedin, Menu } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useEffect, useState } from "react";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
-  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,12 +32,7 @@ export function Navbar() {
             <SheetContent side="left" className="w-[240px] p-4">
               <div className="flex flex-col gap-4 pt-8">
                 <Link href="/" className="font-medium hover:text-primary">Home</Link>
-                {!isHome && (
-                  <>
-                    <Link href="/about" className="font-medium hover:text-primary">About</Link>
-                    <Link href="/projects" className="font-medium hover:text-primary">Projects</Link>
-                  </>
-                )}
+                <Link href="/projects" className="font-medium hover:text-primary">Projects</Link>
                 <Link href="/blog" className="font-medium hover:text-primary">Blog</Link>
                 <Link href="/timeline" className="font-medium hover:text-primary">Timeline</Link>
               </div>
@@ -53,12 +45,7 @@ export function Navbar() {
         <div className="flex items-center gap-8">
           <div className="hidden md:flex gap-6">
             <Link href="/" className="font-medium hover:text-primary hover:scale-105 transition-all">Home</Link>
-            {!isHome && (
-              <>
-                <Link href="/about" className="font-medium hover:text-primary hover:scale-105 transition-all">About</Link>
-                <Link href="/projects" className="font-medium hover:text-primary hover:scale-105 transition-all">Projects</Link>
-              </>
-            )}
+            <Link href="/projects" className="font-medium hover:text-primary hover:scale-105 transition-all">Projects</Link>
             <Link href="/blog" className="font-medium hover:text-primary hover:scale-105 transition-all">Blog</Link>
             <Link href="/timeline" className="font-medium hover:text-primary hover:scale-105 transition-all">Timeline</Link>
           </div>

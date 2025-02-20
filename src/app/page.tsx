@@ -1,20 +1,19 @@
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 import { Work } from "@/components/sections/Work";
 
+export const metadata = {
+  title: "Home",
+  description: "Welcome to Tiago Danin's portfolio - Mobile Developer and Full Stack Engineer",
+};
+
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-1">
-        <Hero />
-        <Work />
-        <Projects />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Hero />
+      <Work />
+      <Projects />
+    </>
   );
 };
 
