@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import NextTopLoader from 'nextjs-toploader';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,6 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <GoogleTagManager gtmId="GTM-WT3T53NB" />
+        <NextTopLoader
+          color="#1e56f0"
+          speed={340}
+        />
         <div className="min-h-screen flex flex-col bg-background">
           <Navbar />
           <main className="flex-1">
@@ -27,6 +34,7 @@ export default function RootLayout({
           <Footer />
         </div>
       </body>
+      <GoogleAnalytics gaId="G-4M6BE19CKV" />
     </html>
   );
 }
