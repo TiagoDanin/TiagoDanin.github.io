@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import NextTopLoader from 'nextjs-toploader';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import { ToasterProvider } from "@/components/ui/toaster-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -33,6 +34,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <ToasterProvider />
       </body>
       <GoogleAnalytics gaId="G-4M6BE19CKV" />
     </html>

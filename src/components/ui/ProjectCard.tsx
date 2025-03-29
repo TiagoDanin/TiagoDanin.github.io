@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
@@ -18,7 +18,9 @@ export function ProjectCard({ title, description, imageUrl, href, archived }: Pr
       window.open(href, '_blank');
     } else {
       toast({
+        title: "No link available",
         description: "No link available for this project.",
+        variant: "default",
       });
     }
   };

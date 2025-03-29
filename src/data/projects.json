@@ -7,7 +7,8 @@
   {
     "title": "BICOS",
     "description": "An Open Banking application developed during a hackathon hosted by TecBan (company responsible for Banco24Horas ATMs). The project won the competition by showing that users don't need to understand Open Banking to benefit from it.",
-    "imageUrl": "/projects/bicos-app.png"
+    "imageUrl": "/projects/bicos-app.png",
+    "href": "https://www.tecmundo.com.br/mercado/155846-ninguem-precisa-entender-open-banking-lucrar.htm"
   },
   {
     "title": "Stone World",
@@ -17,16 +18,19 @@
   {
     "title": "CAM Covers",
     "description": "An application that transforms ordinary photos into professional-looking album covers, inspired by real music players.",
-    "imageUrl": "/projects/cam-covers-app.png"
+    "imageUrl": "/projects/cam-covers-app.png",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers"
   },
   {
     "title": "Virtual Pocket Air Conditioning",
     "description": "Have a virtual air conditioner in your pocket! This relaxing sound app provides better sleep. Created as a fun project to study animations in Flutter.",
-    "imageUrl": "/projects/air-conditionin.png"
+    "imageUrl": "/projects/air-conditionin.png",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning"
   },
   {
     "title": "React Native - Zendesk",
     "description": "A wrapper for Zendesk SDK in React Native, making it easy to integrate customer support functionality into your mobile apps.",
-    "imageUrl": "/projects/zendesk-sdk.png"
+    "imageUrl": "/projects/zendesk-sdk.png",
+    "href": "https://idopterlabs.github.io/rn-zendesk/"
   }
 ]
