@@ -53,19 +53,6 @@ async function generateGithubSitemap() {
     fs.writeFileSync(sitemapPath, sitemap);
     
     console.log(`Successfully generated GitHub projects sitemap with ${tiagoDaninProjects.length} entries at ${sitemapPath}`);
-
-    const htmlViewData = tiagoDaninProjects.map(project => ({
-      name: project.name,
-      url: `${siteUrl}/${project.name}`,
-      description: project.description,
-      homepage: project.homepage,
-      stars: project.stargazers_count,
-      forks: project.forks_count
-    }));
-    
-    const htmlViewDataPath = path.join(__dirname, '..', 'src', 'data', 'github-sitemap.json');
-    fs.writeFileSync(htmlViewDataPath, JSON.stringify(htmlViewData, null, 2));
-    console.log(`Successfully generated GitHub projects data for HTML view at ${htmlViewDataPath}`);
   } catch (error) {
     console.error('Error generating GitHub projects sitemap:', error);
   }

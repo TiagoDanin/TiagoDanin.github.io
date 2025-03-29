@@ -7,9 +7,10 @@ interface ProjectCardProps {
   description: string;
   imageUrl?: string;
   href?: string;
+  archived?: boolean;
 }
 
-export function ProjectCard({ title, description, imageUrl, href }: ProjectCardProps) {
+export function ProjectCard({ title, description, imageUrl, href, archived }: ProjectCardProps) {
   const { toast } = useToast();
 
   const handleClick = () => {
@@ -41,6 +42,11 @@ export function ProjectCard({ title, description, imageUrl, href }: ProjectCardP
         <div className="flex items-center gap-2">
           <h3 className="text-xl font-semibold">{title}</h3>
           {href && <ExternalLink className="h-4 w-4 text-muted-foreground" />}
+          {archived && (
+            <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+              Archived
+            </span>
+          )}
         </div>
       </CardHeader>
       <CardContent className="p-4 pt-0">
