@@ -48,7 +48,7 @@ export function RecentPosts() {
             <CarouselContent>
               {recentPosts.map((post, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
-                  <Card className="h-full group hover:shadow-md transition-all duration-300">
+                  <Card className="h-full group hover:shadow-lg transition-all duration-300">
                     <CardHeader>
                       <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
                         <Link
