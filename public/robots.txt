@@ -7,3 +7,5 @@ Host: https://tiagodanin.com
 
 # Sitemaps
 Sitemap: https://tiagodanin.com/sitemap.xml
+
+Sitemap: https://tiagodanin.com/github-sitemap.xml
