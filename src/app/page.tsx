@@ -1,5 +1,8 @@
+import { CallToAction } from "@/components/sections/CallToAction";
 import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
+import { RecentPosts } from "@/components/sections/RecentPosts";
+import { Services } from "@/components/sections/Services";
 import { Work } from "@/components/sections/Work";
 
 export const metadata = {
@@ -11,8 +14,11 @@ const Index = () => {
   return (
     <>
       <Hero />
-      <Work />
+      <Services />
       <Projects />
+      <RecentPosts />
+      <Work />
+      <CallToAction />
     </>
   );
 };
