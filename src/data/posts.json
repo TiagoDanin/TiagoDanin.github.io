@@ -1,23 +1,121 @@
 [
   {
-    "date": "September 5, 2022",
-    "title": "Crafting a design system for a multiplanetary future",
-    "description": "Most companies try to stay ahead of the curve when it comes to visual design, but for Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.",
-    "slug": "design-system",
-    "originalUrl": "https://www.figma.com/design/1234567890/Design-System"
+    "date": "May 28, 2024",
+    "title": "Monitoramento de Apps Flutter com Firebase: Guia Completo para Desenvolvedores",
+    "description": "O monitoramento de aplicativos não é apenas sobre números e gráficos, é sobre alcançar a excelência.",
+    "slug": "monitoramento-de-apps-flutter-com-firebase-guia-completo-para-desenvolvedores",
+    "originalUrl": "https://medium.com/idopterlabs/monitoramento-de-apps-flutter-com-firebase-guia-completo-para-desenvolvedores-ecb65683c11f"
   },
   {
-    "date": "September 2, 2022",
-    "title": "Introducing Animaginary: High performance web animations",
-    "description": "When you're building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.",
-    "slug": "animaginary",
-    "originalUrl": "https://www.figma.com/design/1234567890/Design-System"
+    "date": "Mar 13, 2024",
+    "title": "Aprimorando a Experiência do Usuário com Teclados no iOS usando Keyboard Actions",
+    "description": "Você nunca mais vai lutar contra o Teclado do iOS no Flutter! Veja como resolver um problema comum em aplicativos mobile para iOS que é…",
+    "slug": "aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions",
+    "originalUrl": "https://medium.com/idopterlabs/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions-5f077dd5a1d2"
   },
   {
-    "date": "July 14, 2022",
-    "title": "Rewriting the cosmOS kernel in Rust",
-    "description": "When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language, but it's been a while since I've seen an article on the front page of Hacker News about rewriting some important tool in Go and I see articles on there about rewriting things in Rust every single week.",
-    "slug": "cosmos-kernel",
-    "originalUrl": "https://www.figma.com/design/1234567890/Design-System"
+    "date": "Feb 1, 2023",
+    "title": "Como criar pipelines poderosos para React Native no Gitlab",
+    "description": "Neste post vamos falar sobre como implementar um pipeline de testes para React Native utilizando o Gitlab.",
+    "slug": "como-criar-pipelines-poderosos-para-react-native-no-gitlab",
+    "originalUrl": "https://medium.com/idopterlabs/como-criar-pipelines-poderosos-para-react-native-no-gitlab-5da018126289"
+  },
+  {
+    "date": "Sep 29, 2022",
+    "title": "Finalmente! O segredo dos testes no React Native foi revelado",
+    "description": "Tudo o que você precisa saber sobre os testes no React Native",
+    "slug": "finalmente-o-segredo-dos-testes-no-react-native-foi-revelado",
+    "originalUrl": "https://medium.com/idopterlabs/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado-d997ffa82768"
+  },
+  {
+    "date": "Aug 3, 2022",
+    "title": "React 18 - Uma nova maneira de usar o useState (Processamento em lote)",
+    "description": "Uma análise sobre as mudanças no React 18 e como o processamento em lote do useState foi modificado para melhor performance.",
+    "slug": "react-18-uma-nova-maneira-de-usar-o-usestate",
+    "originalUrl": "https://dev.to/tiagodanin/react-18-uma-nova-maneira-de-usar-o-usestate-processamento-em-lote-1ee9"
+  },
+  {
+    "date": "Jun 25, 2022",
+    "title": "Criando aplicativos para Android Wear OS com Jetpack Compose",
+    "description": "Um guia prático sobre como desenvolver aplicativos para Android Wear OS utilizando o moderno toolkit Jetpack Compose.",
+    "slug": "criando-aplicativos-para-android-wear-os-com-jetpack-compose",
+    "originalUrl": "https://dev.to/tiagodanin/criando-aplicativos-no-android-wear-os-com-jetpack-compose-436g"
+  },
+  {
+    "date": "Mar 2, 2018",
+    "title": "Crie seu primeiro aplicativo com Electron",
+    "description": "Um guia passo a passo para criar sua primeira aplicação desktop usando Electron e JavaScript.",
+    "slug": "crie-seu-primeiro-aplicativo-com-electron",
+    "originalUrl": "https://dev.to/tiagodanin/crie-seu-primeiro-aplicativo-com-electron-14o6"
+  },
+  {
+    "date": "Mar 3, 2018",
+    "title": "Três comandos que você precisar ter em seu terminal",
+    "description": "Conheça três comandos essenciais que todo desenvolvedor deveria ter em seu terminal para aumentar a produtividade.",
+    "slug": "tres-comandos-que-voce-precisar-ter-em-seu-terminal",
+    "originalUrl": "https://dev.to/tiagodanin/tres-comandos-que-voce-precisar-ter-em-seu-terminal-39em"
+  },
+  {
+    "date": "Mar 17, 2018",
+    "title": "Resolvendo erro do wine não fazer conexões SSL",
+    "description": "Como resolver problemas de conexão SSL no Wine para melhor compatibilidade com aplicações Windows.",
+    "slug": "resolvendo-erro-do-wine-nao-fazer-conexoes-ssl",
+    "originalUrl": "https://dev.to/tiagodanin/resolvendo-erro-do-wine-nao-fazer-conexoes-ssl-bhj"
+  },
+  {
+    "date": "Jun 6, 2018",
+    "title": "GitHub vs Outros",
+    "description": "Uma análise comparativa entre o GitHub e outras plataformas de hospedagem de código.",
+    "slug": "github-vs-outros",
+    "originalUrl": "https://dev.to/tiagodanin/github-vs-outros-5705"
+  },
+  {
+    "date": "Sep 16, 2018",
+    "title": "Construindo meu novo site com UIKit, Jus e CuboHub",
+    "description": "Como construí meu site pessoal utilizando UIKit para o frontend, Jus como gerador estático e CuboHub para hospedagem.",
+    "slug": "construindo-meu-novo-site-com-uikit-jus-e-cubohub",
+    "originalUrl": "https://dev.to/tiagodanin/construindo-meu-novo-site-com-uikit-jus-e-cubohub-3apf"
+  },
+  {
+    "date": "Dec 29, 2018",
+    "title": "O melhor plugin de Auto Complete para ZSH",
+    "description": "Descubra como melhorar sua experiência no terminal com o melhor plugin de autocompletar para ZSH.",
+    "slug": "o-melhor-plugin-de-auto-complete-para-zsh",
+    "originalUrl": "https://dev.to/tiagodanin/o-melhor-plugin-de-auto-complete-para-zsh-2g8m"
+  },
+  {
+    "date": "Feb 23, 2019",
+    "title": "Usando PulseAudio no HDMI",
+    "description": "Um guia prático sobre como configurar corretamente o PulseAudio para saída de áudio via HDMI no Linux.",
+    "slug": "usando-pulseaudio-no-hdmi",
+    "originalUrl": "https://dev.to/tiagodanin/usando-pulseaudio-no-hdmi-c3f"
+  },
+  {
+    "date": "Nov 6, 2018",
+    "title": "O perfil perfeito no GitHub",
+    "description": "Vou dar algumas dicas de como criar um perfil apresentável no GitHub.",
+    "slug": "o-perfil-perfeito-no-github",
+    "originalUrl": "https://dev.to/tiagodanin/o-perfil-perfeito-no-github-5cco"
+  },
+  {
+    "date": "Apr 7, 2019",
+    "title": "Arrow Function Vs Normal Function",
+    "description": "Uma comparação detalhada entre Arrow Functions e funções normais em JavaScript, explicando suas diferenças e casos de uso.",
+    "slug": "arrow-function-vs-normal-function",
+    "originalUrl": "https://dev.to/tiagodanin/arrow-function-vs-normal-function-55gl"
+  },
+  {
+    "date": "Apr 7, 2019",
+    "title": "Lista - Analisadores de Perfil no GitHub",
+    "description": "Uma lista de analisadores de perfil no GitHub que podem ajudar você a melhorar seu perfil.",
+    "slug": "lista-analisadores-de-perfil-no-github",
+    "originalUrl": "https://dev.to/tiagodanin/lista-analisadores-de-perfil-no-github-55gl"
+  },
+  {
+    "date": "Feb 23, 2019",
+    "title": "Lista de apps — Automatizando fluxo de trabalho no GitHub",
+    "description": "Uma lista de apps que podem ajudar você a automatizar seu fluxo de trabalho no GitHub.",
+    "slug": "lista-de-apps-automatizando-fluxo-de-trabalho-no-github",
+    "originalUrl": "https://dev.to/tiagodanin/lista-de-apps-automatizando-fluxo-de-trabalho-no-github-gdm"
   }
 ]

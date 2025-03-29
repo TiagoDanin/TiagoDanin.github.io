@@ -14,15 +14,15 @@ export function RecentPosts() {
   if (isMobile) {
     return null;
   }
-  
+
   const recentPosts = posts.slice(0, 4);
-  
+
   return (
     <section id="blog" className="relative py-20 bg-secondary/30 overflow-hidden">
       {/* Blur effect circles */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
-  
+
       <div className="container mx-auto px-4 relative">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
@@ -51,18 +51,28 @@ export function RecentPosts() {
                   <Card className="h-full group hover:shadow-md transition-all duration-300">
                     <CardHeader>
                       <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
-                        {post.title}
+                        <Link
+                          href={`/post/${post.slug}`}
+                        >
+                          {post.title}
+                        </Link>
                       </CardTitle>
-                      <CardDescription>{post.date}</CardDescription>
+                      <CardDescription>
+                        <Link href={`/post/${post.slug}`}>{post.date}</Link>
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-muted-foreground line-clamp-3">
-                        {post.description}
+                        <Link
+                          href={`/post/${post.slug}`}
+                        >
+                          {post.description}
+                        </Link>
                       </p>
                     </CardContent>
                     <CardFooter>
-                      <Link 
-                        href={`/blog/${post.slug}`}
+                      <Link
+                        href={`/post/${post.slug}`}
                         className="inline-flex items-center text-sm font-medium text-primary hover:underline"
                       >
                         Read more <ArrowRight className="ml-1 h-4 w-4" />
@@ -78,9 +88,9 @@ export function RecentPosts() {
             </div>
           </Carousel>
         </div>
-        
+
         <div className="flex justify-center mt-10">
-          <Link 
+          <Link
             href="/blog"
             className="inline-flex items-center px-4 py-2 border border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-all"
           >
