@@ -1,0 +1,120 @@
+.my-barOne {
+  background: rgba(34,34,34,0.10980392156862745);
+}
+
+.my-breadcrumb {
+  padding-left: 20px;
+  margin: 2px;
+}
+
+.my-photo {
+  max-width: 70%;
+  max-height: 70%;
+  border-radius: 100px;
+}
+
+.my-topbar {
+  background: #ffffff;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.05);
+}
+
+.my-barcmd {
+  text-transform: none;
+  color: #666;
+}
+
+.my-barcmd-li>*>:first-child {
+  display: list-item;
+  font-size: 15px;
+}
+
+.uk-align-center {
+  -ms-flex-line-pack: center;
+  align-content: center;
+  text-align: center;
+}
+
+.uk-card-primary.uk-card-body .uk-slidenav,
+.uk-card-primary>:not([class*=uk-card-media]) .uk-slidenav,
+.uk-card-secondary.uk-card-body .uk-slidenav,
+.uk-card-secondary>:not([class*=uk-card-media]) .uk-slidenav,
+.uk-light .uk-slidenav,
+.uk-offcanvas-bar .uk-slidenav,
+.uk-overlay-primary .uk-slidenav,
+.uk-section-primary:not(.uk-preserve-color) .uk-slidenav,
+.uk-section-secondary:not(.uk-preserve-color) .uk-slidenav,
+.uk-tile-primary:not(.uk-preserve-color) .uk-slidenav,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-slidenav {
+  color: #f0506e;
+}
+
+.uk-card-primary.uk-card-body .uk-link,
+.uk-card-primary.uk-card-body a,
+.uk-card-primary>:not([class*=uk-card-media]) .uk-link,
+.uk-card-primary>:not([class*=uk-card-media]) a,
+.uk-card-secondary.uk-card-body .uk-link,
+.uk-card-secondary.uk-card-body a,
+.uk-card-secondary>:not([class*=uk-card-media]) .uk-link,
+.uk-card-secondary>:not([class*=uk-card-media]) a,
+.uk-light .uk-link,
+.uk-light a,
+.uk-offcanvas-bar .uk-link,
+.uk-offcanvas-bar a,
+.uk-overlay-primary .uk-link,
+.uk-overlay-primary a,
+.uk-section-primary:not(.uk-preserve-color) .uk-link,
+.uk-section-primary:not(.uk-preserve-color) a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-link,
+.uk-section-secondary:not(.uk-preserve-color) a,
+.uk-tile-primary:not(.uk-preserve-color) .uk-link,
+.uk-tile-primary:not(.uk-preserve-color) a,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-link,
+.uk-tile-secondary:not(.uk-preserve-color) a {
+  color: #f0506e;
+}
+
+.uk-card-primary.uk-card-body .uk-slidenav:focus,
+.uk-card-primary.uk-card-body .uk-slidenav:hover,
+.uk-card-primary>:not([class*=uk-card-media]) .uk-slidenav:focus,
+.uk-card-primary>:not([class*=uk-card-media]) .uk-slidenav:hover,
+.uk-card-secondary.uk-card-body .uk-slidenav:focus,
+.uk-card-secondary.uk-card-body .uk-slidenav:hover,
+.uk-card-secondary>:not([class*=uk-card-media]) .uk-slidenav:focus,
+.uk-card-secondary>:not([class*=uk-card-media]) .uk-slidenav:hover,
+.uk-light .uk-slidenav:focus,
+.uk-light .uk-slidenav:hover,
+.uk-offcanvas-bar .uk-slidenav:focus,
+.uk-offcanvas-bar .uk-slidenav:hover,
+.uk-overlay-primary .uk-slidenav:focus,
+.uk-overlay-primary .uk-slidenav:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-slidenav:focus,
+.uk-section-primary:not(.uk-preserve-color) .uk-slidenav:hover,
+.uk-section-secondary:not(.uk-preserve-color) .uk-slidenav:focus,
+.uk-section-secondary:not(.uk-preserve-color) .uk-slidenav:hover,
+.uk-tile-primary:not(.uk-preserve-color) .uk-slidenav:focus,
+.uk-tile-primary:not(.uk-preserve-color) .uk-slidenav:hover,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-slidenav:focus,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-slidenav:hover {
+  color: #0e6dcd;
+}
+
+.uk-comment-primary {
+  background-color: rgba(255,255,255,0);
+}
+
+.uk-card-primary.uk-card-body .uk-link:hover,
+.uk-card-primary.uk-card-body a:hover,
+.uk-card-primary>:not([class*=uk-card-media]) .uk-link:hover,
+.uk-card-primary>:not([class*=uk-card-media]) a:hover,
+.uk-light .uk-link:hover,
+.uk-light a:hover,
+.uk-offcanvas-bar .uk-link:hover,
+.uk-offcanvas-bar a:hover,
+.uk-overlay-primary .uk-link:hover,
+.uk-overlay-primary a:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-link:hover,
+.uk-section-primary:not(.uk-preserve-color) a:hover,
+.uk-tile-primary:not(.uk-preserve-color) .uk-link:hover,
+.uk-tile-primary:not(.uk-preserve-color) a:hover {
+  color: #1e87f0;
+}
