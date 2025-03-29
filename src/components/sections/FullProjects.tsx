@@ -80,7 +80,7 @@ export function FullProjects() {
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
 
-      <div className="container mx-auto relative">
+      <div className="container mx-auto relative mb-2 pb-2">
         {/* Add title and counter */}
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">All Projects</h1>
@@ -89,7 +89,12 @@ export function FullProjects() {
           </span>
         </div>
 
-        <div id="accordion-color" data-accordion="collapse" data-active-classes="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white">
+        <div
+          id="accordion-color"
+          data-accordion="collapse"
+          data-active-classes="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white"
+          className="shadow-md rounded-b-xl"
+        >
           {projectSections.map((section, index) => (
             <div key={index}>
               <h2 id={`accordion-color-heading-${index}`}>

@@ -40,11 +40,16 @@ export function Projects() {
 
               <div className="text-center">
                 {!isFullProjects && (
-                  <Button size="lg" asChild className="mt-4">
-                    <Link href="/projects">
-                      More projects
-                    </Link>
-                  </Button>
+                  <>
+                    <Button size="lg" asChild className="mt-4">
+                      <Link href="/projects">
+                        More projects
+                      </Link>
+                    </Button>
+                    <p className="text-muted-foreground mt-2 text-sm">
+                      <p className="font-bold">+300 projects</p> So far and more to come
+                    </p>
+                  </>
                 )}
               </div>
 

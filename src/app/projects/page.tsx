@@ -8,10 +8,10 @@ export const metadata = {
 
 const Index = () => {
   return (
-    <>
+    <div>
       <Projects />
       <FullProjects />
-    </>
+    </div>
   );
 };
 
