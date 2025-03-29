@@ -10,7 +10,9 @@
     "start": "next start",
     "lint": "next lint",
     "sitemap": "next-sitemap --config next-sitemap.config.cjs",
-    "github:sitemap": "node scripts/generateGithubSitemap.js",
+    "sitemap:github": "node scripts/generateGithubSitemap.js",
+    "data:github": "node scripts/getProjectsGithub.js",
+    "data:npm": "node scripts/getProjectsNPM.js",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs && node scripts/generateGithubSitemap.js"
   },
   "dependencies": {

@@ -29,7 +29,7 @@ export function ProjectCard({ title, description, imageUrl, href, archived }: Pr
       onClick={handleClick}
     >
       {imageUrl && (
-        <div className="aspect-[3/1] overflow-hidden">
+        <div className="aspect-[16/9] overflow-hidden">
           <img
             src={imageUrl}
             alt={title}

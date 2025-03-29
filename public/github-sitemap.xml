@@ -16,6 +16,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tiagodanin.com/CAMCovers</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://tiagodanin.com/Cerebro-XKCD</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -122,6 +127,11 @@
   </url>
   <url>
     <loc>https://tiagodanin.com/Nuxt-Vuikit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tiagodanin.com/OLD-TiagoDanin.github.io</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -196,11 +206,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tiagodanin.com/SubtitlesX</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://tiagodanin.com/Add-License-Bot</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -212,6 +217,11 @@
   </url>
   <url>
     <loc>https://tiagodanin.com/Awesome-Polybar</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tiagodanin.com/CAMCovers</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -322,6 +332,11 @@
   </url>
   <url>
     <loc>https://tiagodanin.com/Nuxt-Vuikit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tiagodanin.com/OLD-TiagoDanin.github.io</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -422,11 +437,6 @@
   </url>
   <url>
     <loc>https://tiagodanin.com/TiagoDanin-Packages</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://tiagodanin.com/TiagoDanin.github.io</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
