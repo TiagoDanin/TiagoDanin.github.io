@@ -1,32 +1,32 @@
 [
   {
-    "title": "Project 1",
-    "description": "Lorem ipsum dolor sit amet consectetur. In donec cursus quis pulvinar. Egestas tellus ut commodo nisl a semper.",
-    "imageUrl": "https://placehold.co/320x106/e4e4e4/e4e4e4"
+    "title": "The Slime Dungeon",
+    "description": "Survive in a dungeon of slimes! You are stuck with adorable creatures. How long can you survive? Built with Flutter and Bonfire engine.",
+    "imageUrl": "/projects/slime-game.png"
   },
   {
-    "title": "Project 2",
-    "description": "Lorem ipsum dolor sit amet consectetur. In donec cursus quis pulvinar. Egestas tellus ut commodo nisl a semper.",
-    "imageUrl": "https://placehold.co/320x106/e4e4e4/e4e4e4"
+    "title": "BICOS",
+    "description": "An Open Banking application developed during a hackathon hosted by TecBan (company responsible for Banco24Horas ATMs). The project won the competition by showing that users don't need to understand Open Banking to benefit from it.",
+    "imageUrl": "/projects/bicos-app.png"
   },
   {
-    "title": "Project 3",
-    "description": "Lorem ipsum dolor sit amet consectetur. In donec cursus quis pulvinar. Egestas tellus ut commodo nisl a semper.",
-    "imageUrl": "https://placehold.co/320x106/e4e4e4/e4e4e4"
+    "title": "Stone World",
+    "description": "A puzzle game set in a stone world, developed with Unity 3D. Coming soon!",
+    "imageUrl": "/projects/stone-game.png"
   },
   {
-    "title": "Project 4",
-    "description": "Lorem ipsum dolor sit amet consectetur. In donec cursus quis pulvinar. Egestas tellus ut commodo nisl a semper.",
-    "imageUrl": "https://placehold.co/320x106/e4e4e4/e4e4e4"
+    "title": "CAM Covers",
+    "description": "An application that transforms ordinary photos into professional-looking album covers, inspired by real music players.",
+    "imageUrl": "/projects/cam-covers-app.png"
   },
   {
-    "title": "Project 5",
-    "description": "Lorem ipsum dolor sit amet consectetur. In donec cursus quis pulvinar. Egestas tellus ut commodo nisl a semper.",
-    "imageUrl": "https://placehold.co/320x106/e4e4e4/e4e4e4"
+    "title": "Virtual Pocket Air Conditioning",
+    "description": "Have a virtual air conditioner in your pocket! This relaxing sound app provides better sleep. Created as a fun project to study animations in Flutter.",
+    "imageUrl": "/projects/air-conditionin.png"
   },
   {
-    "title": "Project 6",
-    "description": "Lorem ipsum dolor sit amet consectetur. In donec cursus quis pulvinar. Egestas tellus ut commodo nisl a semper.",
-    "imageUrl": "https://placehold.co/320x106/e4e4e4/e4e4e4"
+    "title": "React Native - Zendesk",
+    "description": "A wrapper for Zendesk SDK in React Native, making it easy to integrate customer support functionality into your mobile apps.",
+    "imageUrl": "/projects/zendesk-sdk.png"
   }
 ]

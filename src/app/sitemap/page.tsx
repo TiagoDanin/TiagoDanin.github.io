@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import Link from 'next/link';
 import { XMLParser } from 'fast-xml-parser';
 
-// Interface para os dados do sitemap
 interface SitemapURL {
   loc: string;
   lastmod?: string;
@@ -22,7 +20,6 @@ interface SitemapData {
   };
 }
 
-// Função para analisar um arquivo XML de sitemap
 function parseSitemapXML(filePath: string): any {
   try {
     if (!fs.existsSync(filePath)) {
@@ -100,9 +97,7 @@ function getAllSitemaps() {
   return sitemaps;
 }
 
-// Função para renderizar a tabela de URLs do sitemap
 function SitemapTable({ urls }: { urls: any[] }) {
-  // Garantir que todas as URLs tenham os campos necessários
   const safeUrls = urls.map(url => ({
     loc: url.loc || '',
     changefreq: url.changefreq || '',
@@ -151,7 +146,6 @@ function SitemapTable({ urls }: { urls: any[] }) {
 }
 
 export default function SitemapPage() {
-  // Obter todos os sitemaps
   const sitemaps = getAllSitemaps();
   
   return (
