@@ -7,18 +7,60 @@
     "originalUrl": "https://www.linkedin.com/pulse/criando-um-editor-de-imagem-com-flutter-cam-covers-da-tiago-danin-xxarf"
   },
   {
-    "date": "May 28, 2024",
-    "title": "Monitoramento de Apps Flutter com Firebase: Guia Completo para Desenvolvedores",
-    "description": "O monitoramento de aplicativos não é apenas sobre números e gráficos, é sobre alcançar a excelência.",
-    "slug": "monitoramento-de-apps-flutter-com-firebase-guia-completo-para-desenvolvedores",
-    "originalUrl": "https://medium.com/idopterlabs/monitoramento-de-apps-flutter-com-firebase-guia-completo-para-desenvolvedores-ecb65683c11f"
-  },
-  {
-    "date": "Mar 13, 2024",
+    "date": "Mar 13, 2025",
     "title": "Aprimorando a Experiência do Usuário com Teclados no iOS usando Keyboard Actions",
     "description": "Você nunca mais vai lutar contra o Teclado do iOS no Flutter! Veja como resolver um problema comum em aplicativos mobile para iOS que é…",
     "slug": "aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions",
     "originalUrl": "https://medium.com/idopterlabs/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions-5f077dd5a1d2"
+  },
+  {
+    "date": "Mar 26, 2024",
+    "title": "Gerenciando Certificados e Perfis Na App Store com Fastlane Match",
+    "description": "Aprenda como gerenciar certificados e perfis na App Store com Fastlane Match.",
+    "slug": "gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match",
+    "originalUrl": "https://www.youtube.com/watch?v=uKe63jYwE1w"
+  },
+  {
+    "date": "Feb 24, 2024",
+    "title": "Flutter: Configurando Seu App à Distância com Firebase Remote Config",
+    "description": "Vamos explorar como implementar e aproveitar ao máximo o Firebase Remote Config em seus aplicativos Flutter",
+    "slug": "flutter-configurando-seu-app-a-distancia-com-firebase-remote-config",
+    "originalUrl": "https://www.youtube.com/watch?v=ocZE-5QuhIQ"
+  },
+  {
+    "date": "Feb 17, 2024",
+    "title": "Flutter: Implementando Animações Incríveis com Lottie",
+    "description": "Quer tornar seus aplicativos Flutter mais dinâmicos e atraentes?",
+    "slug": "flutter-implementando-animações-incriveis-com-lottie",
+    "originalUrl": "https://www.youtube.com/watch?v=9wvNjtbQIpk"
+  },
+  {
+    "date": "Feb 17, 2024",
+    "title": "Crie Ícones Adptativos para Aplicativos Android",
+    "description": "Aprenda como criar ícones adaptáveis para aplicativos Android.",
+    "slug": "crie-icones-adaptativos-para-aplicativos-android",
+    "originalUrl": "https://www.youtube.com/watch?v=YRJnugSqrl4"
+  },
+  {
+    "date": "Feb 11, 2024",
+    "title": "Android Splash Screen em Jetpack Compose: Construindo uma Introdução Impactante para seu App",
+    "description": "No mundo dos aplicativos móveis, a primeira impressão é crucial. E a Splash Screen é a primeira tela que o usuário vê quando abre o seu aplicativo. Neste vídeo, vamos criar uma Splash Screen incrível para o nosso aplicativo usando Jetpack Compose.",
+    "slug": "android-splash-screen-em-jetpack-compose-construindo-uma-introducao-impactante-para-seu-app",
+    "originalUrl": "https://www.youtube.com/watch?v=GLBY4YHoVFk"
+  },
+  {
+    "date": "Mar 4, 2023",
+    "title": "Construindo listas performáticas no ReactNative",
+    "description": "Aprenda como construir listas performáticas no ReactNative.",
+    "slug": "construindo-listas-performaticas-no-reactnative",
+    "originalUrl": "https://www.youtube.com/watch?v=Z3-v01J9n0I"
+  },
+  {
+    "date": "Feb 18, 2023",
+    "title": "Deixe seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis",
+    "description": "Se você está começando agora no mercado de trabalho e busca dicas para criar um perfil no LinkedIn que chame a atenção dos recrutadores, este vídeo é para você",
+    "slug": "deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infaliveis",
+    "originalUrl": "https://www.youtube.com/watch?v=qVdrUKHjldM"
   },
   {
     "date": "Feb 1, 2023",
@@ -26,6 +68,13 @@
     "description": "Neste post vamos falar sobre como implementar um pipeline de testes para React Native utilizando o Gitlab.",
     "slug": "como-criar-pipelines-poderosos-para-react-native-no-gitlab",
     "originalUrl": "https://medium.com/idopterlabs/como-criar-pipelines-poderosos-para-react-native-no-gitlab-5da018126289"
+  },
+  {
+    "date": "Jan 2, 2023",
+    "title": "Convertendo Figma para o Jetpack Compose com RELAY",
+    "description": "Convertendo componentes do Figma para o Android Jetpack Compose com Material Design Relay",
+    "slug": "convertendo-figma-para-o-jetpack-compose-com-relay",
+    "originalUrl": "https://www.youtube.com/watch?v=-VSB_Cxw5H0"
   },
   {
     "date": "Sep 29, 2022",
@@ -49,60 +98,18 @@
     "originalUrl": "https://dev.to/tiagodanin/criando-aplicativos-no-android-wear-os-com-jetpack-compose-436g"
   },
   {
-    "date": "Mar 2, 2018",
-    "title": "Crie seu primeiro aplicativo com Electron",
-    "description": "Um guia passo a passo para criar sua primeira aplicação desktop usando Electron e JavaScript.",
-    "slug": "crie-seu-primeiro-aplicativo-com-electron",
-    "originalUrl": "https://dev.to/tiagodanin/crie-seu-primeiro-aplicativo-com-electron-14o6"
+    "date": "Dec 13, 2021",
+    "title": "Clean Code: Dicas para tornar o seu código mais legível",
+    "description": "Aprenda como escrever código limpo e fácil de entender com essas dicas incríveis.",
+    "slug": "clean-code-dicas-para-tornar-o-seu-codigo-mais-legivel",
+    "originalUrl": "https://www.youtube.com/watch?v=Vol2r1Lb8fo"
   },
   {
-    "date": "Mar 3, 2018",
-    "title": "Três comandos que você precisar ter em seu terminal",
-    "description": "Conheça três comandos essenciais que todo desenvolvedor deveria ter em seu terminal para aumentar a produtividade.",
-    "slug": "tres-comandos-que-voce-precisar-ter-em-seu-terminal",
-    "originalUrl": "https://dev.to/tiagodanin/tres-comandos-que-voce-precisar-ter-em-seu-terminal-39em"
-  },
-  {
-    "date": "Mar 17, 2018",
-    "title": "Resolvendo erro do wine não fazer conexões SSL",
-    "description": "Como resolver problemas de conexão SSL no Wine para melhor compatibilidade com aplicações Windows.",
-    "slug": "resolvendo-erro-do-wine-nao-fazer-conexoes-ssl",
-    "originalUrl": "https://dev.to/tiagodanin/resolvendo-erro-do-wine-nao-fazer-conexoes-ssl-bhj"
-  },
-  {
-    "date": "Jun 6, 2018",
-    "title": "GitHub vs Outros",
-    "description": "Uma análise comparativa entre o GitHub e outras plataformas de hospedagem de código.",
-    "slug": "github-vs-outros",
-    "originalUrl": "https://dev.to/tiagodanin/github-vs-outros-5705"
-  },
-  {
-    "date": "Sep 16, 2018",
-    "title": "Construindo meu novo site com UIKit, Jus e CuboHub",
-    "description": "Como construí meu site pessoal utilizando UIKit para o frontend, Jus como gerador estático e CuboHub para hospedagem.",
-    "slug": "construindo-meu-novo-site-com-uikit-jus-e-cubohub",
-    "originalUrl": "https://dev.to/tiagodanin/construindo-meu-novo-site-com-uikit-jus-e-cubohub-3apf"
-  },
-  {
-    "date": "Dec 29, 2018",
-    "title": "O melhor plugin de Auto Complete para ZSH",
-    "description": "Descubra como melhorar sua experiência no terminal com o melhor plugin de autocompletar para ZSH.",
-    "slug": "o-melhor-plugin-de-auto-complete-para-zsh",
-    "originalUrl": "https://dev.to/tiagodanin/o-melhor-plugin-de-auto-complete-para-zsh-2g8m"
-  },
-  {
-    "date": "Feb 23, 2019",
-    "title": "Usando PulseAudio no HDMI",
-    "description": "Um guia prático sobre como configurar corretamente o PulseAudio para saída de áudio via HDMI no Linux.",
-    "slug": "usando-pulseaudio-no-hdmi",
-    "originalUrl": "https://dev.to/tiagodanin/usando-pulseaudio-no-hdmi-c3f"
-  },
-  {
-    "date": "Nov 6, 2018",
-    "title": "O perfil perfeito no GitHub",
-    "description": "Vou dar algumas dicas de como criar um perfil apresentável no GitHub.",
-    "slug": "o-perfil-perfeito-no-github",
-    "originalUrl": "https://dev.to/tiagodanin/o-perfil-perfeito-no-github-5cco"
+    "date": "Dec 1, 2021",
+    "title": "Jogo da Velha utilizado Jetpack Compose - Criando Projetos Juntos #1",
+    "description": "Neste vídeo, vamos criar um jogo da velha utilizando Jetpack Compose.",
+    "slug": "jogo-da-velha-utilizado-jetpack-compose-criando-projetos-juntos-1",
+    "originalUrl": "https://www.youtube.com/watch?v=d85QDuFEKr4"
   },
   {
     "date": "Apr 7, 2019",
@@ -126,72 +133,59 @@
     "originalUrl": "https://dev.to/tiagodanin/lista-de-apps-automatizando-fluxo-de-trabalho-no-github-gdm"
   },
   {
-    "date": "Fev 24, 2024",
-    "title": "Flutter: Configurando Seu App à Distância com Firebase Remote Config",
-    "description": "Vamos explorar como implementar e aproveitar ao máximo o Firebase Remote Config em seus aplicativos Flutter",
-    "slug": "flutter-configurando-seu-app-a-distancia-com-firebase-remote-config",
-    "originalUrl": "https://www.youtube.com/watch?v=ocZE-5QuhIQ"
+    "date": "Feb 23, 2019",
+    "title": "Usando PulseAudio no HDMI",
+    "description": "Um guia prático sobre como configurar corretamente o PulseAudio para saída de áudio via HDMI no Linux.",
+    "slug": "usando-pulseaudio-no-hdmi",
+    "originalUrl": "https://dev.to/tiagodanin/usando-pulseaudio-no-hdmi-c3f"
   },
   {
-    "date": "Fev 18, 2023",
-    "title": "Deixe seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis",
-    "description": "Se você está começando agora no mercado de trabalho e busca dicas para criar um perfil no LinkedIn que chame a atenção dos recrutadores, este vídeo é para você",
-    "slug": "deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infaliveis",
-    "originalUrl": "https://www.youtube.com/watch?v=qVdrUKHjldM"
+    "date": "Dec 29, 2018",
+    "title": "O melhor plugin de Auto Complete para ZSH",
+    "description": "Descubra como melhorar sua experiência no terminal com o melhor plugin de autocompletar para ZSH.",
+    "slug": "o-melhor-plugin-de-auto-complete-para-zsh",
+    "originalUrl": "https://dev.to/tiagodanin/o-melhor-plugin-de-auto-complete-para-zsh-2g8m"
   },
   {
-    "date": "Fev 17, 2024",
-    "title": "Flutter: Implementando Animações Incríveis com Lottie",
-    "description": "Quer tornar seus aplicativos Flutter mais dinâmicos e atraentes?",
-    "slug": "flutter-implementando-animações-incriveis-com-lottie",
-    "originalUrl": "https://www.youtube.com/watch?v=9wvNjtbQIpk"
+    "date": "Nov 6, 2018",
+    "title": "O perfil perfeito no GitHub",
+    "description": "Vou dar algumas dicas de como criar um perfil apresentável no GitHub.",
+    "slug": "o-perfil-perfeito-no-github",
+    "originalUrl": "https://dev.to/tiagodanin/o-perfil-perfeito-no-github-5cco"
   },
   {
-    "date": "Fev 11, 2024",
-    "title": "Android Splash Screen em Jetpack Compose: Construindo uma Introdução Impactante para seu App",
-    "description": "No mundo dos aplicativos móveis, a primeira impressão é crucial. E a Splash Screen é a primeira tela que o usuário vê quando abre o seu aplicativo. Neste vídeo, vamos criar uma Splash Screen incrível para o nosso aplicativo usando Jetpack Compose.",
-    "slug": "android-splash-screen-em-jetpack-compose-construindo-uma-introducao-impactante-para-seu-app",
-    "originalUrl": "https://www.youtube.com/watch?v=GLBY4YHoVFk"
+    "date": "Sep 16, 2018",
+    "title": "Construindo meu novo site com UIKit, Jus e CuboHub",
+    "description": "Como construí meu site pessoal utilizando UIKit para o frontend, Jus como gerador estático e CuboHub para hospedagem.",
+    "slug": "construindo-meu-novo-site-com-uikit-jus-e-cubohub",
+    "originalUrl": "https://dev.to/tiagodanin/construindo-meu-novo-site-com-uikit-jus-e-cubohub-3apf"
   },
   {
-    "date": "Jan 2, 2023",
-    "title": "Convertendo Figma para o Jetpack Compose com RELAY",
-    "description": "Convertendo componentes do Figma para o Android Jetpack Compose com Material Design Relay",
-    "slug": "convertendo-figma-para-o-jetpack-compose-com-relay",
-    "originalUrl": "https://www.youtube.com/watch?v=-VSB_Cxw5H0"
+    "date": "Jun 6, 2018",
+    "title": "GitHub vs Outros",
+    "description": "Uma análise comparativa entre o GitHub e outras plataformas de hospedagem de código.",
+    "slug": "github-vs-outros",
+    "originalUrl": "https://dev.to/tiagodanin/github-vs-outros-5705"
   },
   {
-    "date": "Dec 13, 2021",
-    "title": "Clean Code: Dicas para tornar o seu código mais legível",
-    "description": "Aprenda como escrever código limpo e fácil de entender com essas dicas incríveis.",
-    "slug": "clean-code-dicas-para-tornar-o-seu-codigo-mais-legivel",
-    "originalUrl": "https://www.youtube.com/watch?v=Vol2r1Lb8fo"
+    "date": "Mar 17, 2018",
+    "title": "Resolvendo erro do wine não fazer conexões SSL",
+    "description": "Como resolver problemas de conexão SSL no Wine para melhor compatibilidade com aplicações Windows.",
+    "slug": "resolvendo-erro-do-wine-nao-fazer-conexoes-ssl",
+    "originalUrl": "https://dev.to/tiagodanin/resolvendo-erro-do-wine-nao-fazer-conexoes-ssl-bhj"
   },
   {
-    "date": "Dec 1, 2021",
-    "title": "Jogo da Velha utilizado Jetpack Compose - Criando Projetos Juntos #1",
-    "description": "Neste vídeo, vamos criar um jogo da velha utilizando Jetpack Compose.",
-    "slug": "jogo-da-velha-utilizado-jetpack-compose-criando-projetos-juntos-1",
-    "originalUrl": "https://www.youtube.com/watch?v=d85QDuFEKr4"
+    "date": "Mar 3, 2018",
+    "title": "Três comandos que você precisar ter em seu terminal",
+    "description": "Conheça três comandos essenciais que todo desenvolvedor deveria ter em seu terminal para aumentar a produtividade.",
+    "slug": "tres-comandos-que-voce-precisar-ter-em-seu-terminal",
+    "originalUrl": "https://dev.to/tiagodanin/tres-comandos-que-voce-precisar-ter-em-seu-terminal-39em"
   },
   {
-    "date": "Fev 17, 2024",
-    "title": "Crie Ícones Adptativos para Aplicativos Android",
-    "description": "Aprenda como criar ícones adaptáveis para aplicativos Android.",
-    "slug": "crie-icones-adaptativos-para-aplicativos-android",
-    "originalUrl": "https://www.youtube.com/watch?v=YRJnugSqrl4"
-  },{
-    "date": "Mar 4, 2023",
-    "title": "Construindo listas performáticas no ReactNative",
-    "description": "Aprenda como construir listas performáticas no ReactNative.",
-    "slug": "construindo-listas-performaticas-no-reactnative",
-    "originalUrl": "https://www.youtube.com/watch?v=Z3-v01J9n0I"
-  },
-  {
-    "date": "Mar 26, 2024",
-    "title": "Gerenciando Certificados e Perfis Na App Store com Fastlane Match",
-    "description": "Aprenda como gerenciar certificados e perfis na App Store com Fastlane Match.",
-    "slug": "gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match",
-    "originalUrl": "https://www.youtube.com/watch?v=uKe63jYwE1w"
+    "date": "Mar 2, 2018",
+    "title": "Crie seu primeiro aplicativo com Electron",
+    "description": "Um guia passo a passo para criar sua primeira aplicação desktop usando Electron e JavaScript.",
+    "slug": "crie-seu-primeiro-aplicativo-com-electron",
+    "originalUrl": "https://dev.to/tiagodanin/crie-seu-primeiro-aplicativo-com-electron-14o6"
   }
 ]
