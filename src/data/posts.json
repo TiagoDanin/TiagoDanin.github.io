@@ -1,5 +1,12 @@
 [
   {
+    "date": "Mar 12, 2025",
+    "title": "Criando um editor de imagem com Flutter - CAM Covers (Da Ideia à Realidade)",
+    "description": "Como criei um app de edição de imagens com Flutter. Veja os desafios, soluções e a monetização do CAM Covers, um editor de capas de álbuns.",
+    "slug": "criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade",
+    "originalUrl": "https://www.linkedin.com/pulse/criando-um-editor-de-imagem-com-flutter-cam-covers-da-tiago-danin-xxarf"
+  },
+  {
     "date": "May 28, 2024",
     "title": "Monitoramento de Apps Flutter com Firebase: Guia Completo para Desenvolvedores",
     "description": "O monitoramento de aplicativos não é apenas sobre números e gráficos, é sobre alcançar a excelência.",
@@ -117,5 +124,74 @@
     "description": "Uma lista de apps que podem ajudar você a automatizar seu fluxo de trabalho no GitHub.",
     "slug": "lista-de-apps-automatizando-fluxo-de-trabalho-no-github",
     "originalUrl": "https://dev.to/tiagodanin/lista-de-apps-automatizando-fluxo-de-trabalho-no-github-gdm"
+  },
+  {
+    "date": "Fev 24, 2024",
+    "title": "Flutter: Configurando Seu App à Distância com Firebase Remote Config",
+    "description": "Vamos explorar como implementar e aproveitar ao máximo o Firebase Remote Config em seus aplicativos Flutter",
+    "slug": "flutter-configurando-seu-app-a-distancia-com-firebase-remote-config",
+    "originalUrl": "https://www.youtube.com/watch?v=ocZE-5QuhIQ"
+  },
+  {
+    "date": "Fev 18, 2023",
+    "title": "Deixe seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis",
+    "description": "Se você está começando agora no mercado de trabalho e busca dicas para criar um perfil no LinkedIn que chame a atenção dos recrutadores, este vídeo é para você",
+    "slug": "deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infaliveis",
+    "originalUrl": "https://www.youtube.com/watch?v=qVdrUKHjldM"
+  },
+  {
+    "date": "Fev 17, 2024",
+    "title": "Flutter: Implementando Animações Incríveis com Lottie",
+    "description": "Quer tornar seus aplicativos Flutter mais dinâmicos e atraentes?",
+    "slug": "flutter-implementando-animações-incriveis-com-lottie",
+    "originalUrl": "https://www.youtube.com/watch?v=9wvNjtbQIpk"
+  },
+  {
+    "date": "Fev 11, 2024",
+    "title": "Android Splash Screen em Jetpack Compose: Construindo uma Introdução Impactante para seu App",
+    "description": "No mundo dos aplicativos móveis, a primeira impressão é crucial. E a Splash Screen é a primeira tela que o usuário vê quando abre o seu aplicativo. Neste vídeo, vamos criar uma Splash Screen incrível para o nosso aplicativo usando Jetpack Compose.",
+    "slug": "android-splash-screen-em-jetpack-compose-construindo-uma-introducao-impactante-para-seu-app",
+    "originalUrl": "https://www.youtube.com/watch?v=GLBY4YHoVFk"
+  },
+  {
+    "date": "Jan 2, 2023",
+    "title": "Convertendo Figma para o Jetpack Compose com RELAY",
+    "description": "Convertendo componentes do Figma para o Android Jetpack Compose com Material Design Relay",
+    "slug": "convertendo-figma-para-o-jetpack-compose-com-relay",
+    "originalUrl": "https://www.youtube.com/watch?v=-VSB_Cxw5H0"
+  },
+  {
+    "date": "Dec 13, 2021",
+    "title": "Clean Code: Dicas para tornar o seu código mais legível",
+    "description": "Aprenda como escrever código limpo e fácil de entender com essas dicas incríveis.",
+    "slug": "clean-code-dicas-para-tornar-o-seu-codigo-mais-legivel",
+    "originalUrl": "https://www.youtube.com/watch?v=Vol2r1Lb8fo"
+  },
+  {
+    "date": "Dec 1, 2021",
+    "title": "Jogo da Velha utilizado Jetpack Compose - Criando Projetos Juntos #1",
+    "description": "Neste vídeo, vamos criar um jogo da velha utilizando Jetpack Compose.",
+    "slug": "jogo-da-velha-utilizado-jetpack-compose-criando-projetos-juntos-1",
+    "originalUrl": "https://www.youtube.com/watch?v=d85QDuFEKr4"
+  },
+  {
+    "date": "Fev 17, 2024",
+    "title": "Crie Ícones Adptativos para Aplicativos Android",
+    "description": "Aprenda como criar ícones adaptáveis para aplicativos Android.",
+    "slug": "crie-icones-adaptativos-para-aplicativos-android",
+    "originalUrl": "https://www.youtube.com/watch?v=YRJnugSqrl4"
+  },{
+    "date": "Mar 4, 2023",
+    "title": "Construindo listas performáticas no ReactNative",
+    "description": "Aprenda como construir listas performáticas no ReactNative.",
+    "slug": "construindo-listas-performaticas-no-reactnative",
+    "originalUrl": "https://www.youtube.com/watch?v=Z3-v01J9n0I"
+  },
+  {
+    "date": "Mar 26, 2024",
+    "title": "Gerenciando Certificados e Perfis Na App Store com Fastlane Match",
+    "description": "Aprenda como gerenciar certificados e perfis na App Store com Fastlane Match.",
+    "slug": "gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match",
+    "originalUrl": "https://www.youtube.com/watch?v=uKe63jYwE1w"
   }
 ]
