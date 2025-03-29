@@ -1,19 +1,9 @@
 [
   {
-    "title": "The Slime Dungeon",
-    "description": "Survive in a dungeon of slimes! You are stuck with adorable creatures. How long can you survive? Built with Flutter and Bonfire engine.",
-    "imageUrl": "/projects/slime-game.png"
-  },
-  {
     "title": "BICOS",
     "description": "An Open Banking application developed during a hackathon hosted by TecBan (company responsible for Banco24Horas ATMs). The project won the competition by showing that users don't need to understand Open Banking to benefit from it.",
     "imageUrl": "/projects/bicos-app.png",
     "href": "https://www.tecmundo.com.br/mercado/155846-ninguem-precisa-entender-open-banking-lucrar.htm"
-  },
-  {
-    "title": "Stone World",
-    "description": "A puzzle game set in a stone world, developed with Unity 3D. Coming soon!",
-    "imageUrl": "/projects/stone-game.png"
   },
   {
     "title": "CAM Covers",
@@ -22,15 +12,25 @@
     "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers"
   },
   {
+    "title": "React Native - Zendesk SDK",
+    "description": "A wrapper for Zendesk SDK in React Native, making it easy to integrate customer support functionality into your mobile apps.",
+    "imageUrl": "/projects/zendesk-sdk.png",
+    "href": "https://idopterlabs.github.io/rn-zendesk/"
+  },
+  {
+    "title": "Stone World",
+    "description": "A puzzle game set in a stone world, developed with Unity 3D. Coming soon!",
+    "imageUrl": "/projects/stone-game.png"
+  },
+  {
+    "title": "The Slime Dungeon",
+    "description": "Survive in a dungeon of slimes! You are stuck with adorable creatures. How long can you survive? Built with Flutter and Bonfire engine.",
+    "imageUrl": "/projects/slime-game.png"
+  },
+  {
     "title": "Virtual Pocket Air Conditioning",
     "description": "Have a virtual air conditioner in your pocket! This relaxing sound app provides better sleep. Created as a fun project to study animations in Flutter.",
     "imageUrl": "/projects/air-conditionin.png",
     "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning"
-  },
-  {
-    "title": "React Native - Zendesk",
-    "description": "A wrapper for Zendesk SDK in React Native, making it easy to integrate customer support functionality into your mobile apps.",
-    "imageUrl": "/projects/zendesk-sdk.png",
-    "href": "https://idopterlabs.github.io/rn-zendesk/"
   }
 ]
