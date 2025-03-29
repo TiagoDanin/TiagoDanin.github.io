@@ -22,7 +22,7 @@ const NotFound = () => {
             Return Home
           </Link>
           <a
-            href="https://github.com/TiagoDanin/TiagoDanin-WebSite/issues/new"
+            href="https://github.com/TiagoDanin/TiagoDanin.github.io/issues/new"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"

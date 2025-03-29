@@ -23,8 +23,8 @@ export function ExperienceItem({ company, role, startDate, endDate, logo, descri
       <div className="flex gap-4">
         <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-background/50 shadow-sm ring-1 ring-zinc-900/5 transition group-hover:bg-background">
           <Image
-            src={`/TiagoDanin-WebSite${logo}`}
-            alt=""
+            src={logo}
+            alt={company}
             className="h-7 w-7"
             width={28}
             height={28}

@@ -4,17 +4,33 @@ import { Badge } from "@/components/ui/badge";
 import { Flag, Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const metadata = {
-  title: "Blog",
-  description: "Articles and thoughts about development, technology and more",
-};
+export async function generateMetadata({ params }: { params: { page: string } }) {
+  const pageNumber = Number(params.page) || 1;
+  return {
+    title: `Blog - Page ${pageNumber}`,
+    description: "Articles and thoughts about development, technology and more",
+  };
+}
 
 const POSTS_PER_PAGE = 10;
 const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
-const Blog = () => {
-  const startIndex = 0;
-  const endIndex = POSTS_PER_PAGE;
+export async function generateStaticParams() {
+  const pages = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push({ page: i.toString() });
+  }
+  return pages;
+}
+
+const BlogPage = async ({
+  params
+}: {
+  params: { page: string }
+}) => {
+  const currentPage = Number(params.page) || 1;
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
   const currentPosts = posts.slice(startIndex, endIndex);
 
   const isYouTubePost = (url: string) => url.includes("youtube.com");
@@ -94,25 +110,33 @@ const Blog = () => {
         <div className="mt-16 flex justify-center gap-2">
           <Button
             variant="outline"
-            disabled={true}
+            disabled={currentPage <= 1}
+            asChild={currentPage > 1}
           >
-            <span className="flex items-center">
-              <ChevronLeft className="h-4 w-4" />
-              Previous
-            </span>
+            {currentPage > 1 ? (
+              <Link href={currentPage === 2 ? "/blog" : `/blog/${currentPage - 1}`}>
+                <ChevronLeft className="h-4 w-4" />
+                Previous
+              </Link>
+            ) : (
+              <span className="flex items-center">
+                <ChevronLeft className="h-4 w-4" />
+                Previous
+              </span>
+            )}
           </Button>
           <div className="flex items-center gap-2">
             <span className="text-sm text-muted-foreground">
-              Page 1 of {totalPages}
+              Page {currentPage} of {totalPages}
             </span>
           </div>
           <Button
             variant="outline"
-            disabled={totalPages <= 1}
-            asChild={totalPages > 1}
+            disabled={currentPage >= totalPages}
+            asChild={currentPage < totalPages}
           >
-            {totalPages > 1 ? (
-              <Link href={`/blog/2`}>
+            {currentPage < totalPages ? (
+              <Link href={`/blog/${currentPage + 1}`}>
                 Next
                 <ChevronRight className="h-4 w-4" />
               </Link>
@@ -129,4 +153,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default BlogPage; 

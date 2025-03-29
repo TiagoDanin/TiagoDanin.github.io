@@ -40,11 +40,9 @@ function parseSitemapXML(filePath: string): any {
   }
 }
 
-// Função para obter todas as URLs de todos os sitemaps
 function getAllSitemaps() {
   const basePath = path.join(process.cwd(), 'public');
   
-  // Lista de arquivos sitemap para analisar
   const sitemapFiles = [
     'sitemap.xml',
     'sitemap-0.xml',
@@ -56,7 +54,6 @@ function getAllSitemaps() {
     urls: any[];
   }[] = [];
   
-  // Processar cada arquivo de sitemap
   for (const file of sitemapFiles) {
     try {
       const filePath = path.join(basePath, file);
@@ -67,7 +64,6 @@ function getAllSitemaps() {
       
       const data = parseSitemapXML(filePath);
       
-      // Verificar se é um sitemap index
       if (data.sitemapindex && data.sitemapindex.sitemap) {
         const sitemap = Array.isArray(data.sitemapindex.sitemap) 
           ? data.sitemapindex.sitemap 
@@ -78,7 +74,6 @@ function getAllSitemaps() {
           urls: sitemap.map((s: any) => ({ loc: s.loc }))
         });
       } 
-      // Se for um sitemap normal
       else if (data.urlset && data.urlset.url) {
         const urls = Array.isArray(data.urlset.url) 
           ? data.urlset.url 
@@ -111,9 +106,9 @@ function SitemapTable({ urls }: { urls: any[] }) {
         <thead>
           <tr className="bg-gray-100">
             <th className="p-2 text-left border">URL</th>
-            <th className="p-2 text-left border w-1/6">Frequência</th>
-            <th className="p-2 text-left border w-1/6">Prioridade</th>
-            <th className="p-2 text-left border w-1/5">Última Modificação</th>
+            <th className="p-2 text-left border w-1/6">Frequency</th>
+            <th className="p-2 text-left border w-1/6">Priority</th>
+            <th className="p-2 text-left border w-1/5">Last Modified</th>
           </tr>
         </thead>
         <tbody>
@@ -133,7 +128,7 @@ function SitemapTable({ urls }: { urls: any[] }) {
               <td className="p-2 border">{url.priority || '-'}</td>
               <td className="p-2 border">
                 {url.lastmod 
-                  ? new Date(url.lastmod).toLocaleDateString('pt-BR')
+                  ? new Date(url.lastmod).toLocaleDateString('en-US')
                   : '-'
                 }
               </td>
@@ -150,17 +145,17 @@ export default function SitemapPage() {
   
   return (
     <div className="container mx-auto py-20">
-      <h1 className="text-3xl font-bold mb-6">Mapa do Site</h1>
+      <h1 className="text-3xl font-bold mb-6">Site Map</h1>
       
       <div className="mb-6">
         <p className="text-lg">
-          Este é o mapa do site, listando todas as páginas disponíveis.
+          This is the site map, listing all available pages.
         </p>
       </div>
       
       {sitemaps.length === 0 ? (
         <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6">
-          Nenhum sitemap encontrado.
+          No sitemaps found.
         </div>
       ) : (
         <div className="space-y-8">
@@ -174,7 +169,7 @@ export default function SitemapPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Ver XML
+                  View XML
                 </a>
               </h2>
               
