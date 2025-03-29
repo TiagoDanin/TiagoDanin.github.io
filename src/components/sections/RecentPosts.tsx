@@ -6,8 +6,15 @@ import posts from "@/data/posts.json";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Link from "next/link";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function RecentPosts() {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return null;
+  }
+  
   const recentPosts = posts.slice(0, 4);
   
   return (

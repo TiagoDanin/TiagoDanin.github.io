@@ -1,6 +1,15 @@
+"use client";
+
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Code, Smartphone, Database, Zap } from "lucide-react";
 
 export function Services() {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return null;
+  }
+
   return (
     <section id="skills" className="relative py-20 bg-secondary/30 overflow-hidden">
       {/* Blur effect circles */}
