@@ -40,7 +40,7 @@ async function generateGithubSitemap() {
     tiagoDaninProjects.forEach(project => {
       sitemap += `
   <url>
-    <loc>${siteUrl}/${project.name}</loc>
+    <loc>${siteUrl}/${project.name}/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>`;
