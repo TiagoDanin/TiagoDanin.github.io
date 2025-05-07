@@ -42,7 +42,7 @@ async function generateGithubSitemap() {
   <url>
     <loc>${siteUrl}/${project.name}</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>`;
     });
     
