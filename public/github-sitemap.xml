@@ -441,6 +441,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tiagodanin.com/TiagoDanin.github.io/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tiagodanin.com/UpdateMIT/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

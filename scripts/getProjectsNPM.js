@@ -3,7 +3,7 @@ import fs from 'fs';
 
 console.log('Get npm packages')
 npmUserPackages('tiagodanin', '2010-01-01:2100-01-01').then(data => {
-	fs.writeFile('src/data/npm.json', JSON.stringify(data), (err) => {
+	fs.writeFile('src/data/npm.json', JSON.stringify(data, null, 4), (err) => {
 		if(err) {
 			return console.log(err);
 		}

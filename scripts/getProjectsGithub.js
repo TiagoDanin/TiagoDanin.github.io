@@ -14,7 +14,7 @@ const main = async () => {
 		allProjects = [...allProjects, ...data]
 	}
 
-	fs.writeFile('src/data/github.json', JSON.stringify(allProjects), (err) => {
+	fs.writeFile('src/data/github.json', JSON.stringify(allProjects, null, 4), (err) => {
 		if(err) {
 			return console.log(err);
 		}
