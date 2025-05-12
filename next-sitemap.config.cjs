@@ -16,11 +16,14 @@ module.exports = {
       priority = 0.9;
     } else if (path.startsWith('/blog')) {
       priority = 0.6; 
+    } else if (path.startsWith('/project/')) {
+      priority = 0.3;
+      changefreq = 'monthly';
     }
 
     return {
       loc: path,
-      changefreq: config.changefreq,
+      changefreq: changefreq,
       priority: priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
     };
