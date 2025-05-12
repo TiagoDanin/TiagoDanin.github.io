@@ -138,7 +138,7 @@ export function FullProjects() {
                         {...project}
                         title={project.title || project.name}
                         description={project.description || ''}
-                        href={section.urlPrefix ? `${section.urlPrefix}${project.name}` : project.url || project.html_url || null}
+                        href={section.urlPrefix ? `${section.urlPrefix}${project.name}` : project.homepage || project.html_url || project.url || null}
                       />
                     ))}
                   </div>
