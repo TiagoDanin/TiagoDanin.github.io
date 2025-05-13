@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 
 import timelineData from "@/data/timeline.json";
+import { titleToSlug, getRandomColorWithDarkMode } from '@/utils/parse';
 
 type TimelineEvent = {
   date: string;
@@ -11,15 +12,6 @@ type TimelineEvent = {
   description: string;
   tags: string[];
 };
-
-function titleToSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/🏆|🎓|🗣️|💻|📱|🎮|🖥|🔬|😍|📚|🏐/g, '')
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .trim();
-}
 
 export async function generateMetadata({ params }: { params: { year: string, slug: string } }): Promise<Metadata> {
   const { year, slug } = params;
@@ -82,21 +74,6 @@ export default function TimelineEventPage({ params }: { params: { year: string, 
     notFound();
   }
 
-  const getRandomColor = (tag: string) => {
-    const colors = [
-      'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-100',
-      'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100',
-      'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100',
-      'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100',
-      'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100',
-      'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-100',
-      'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100',
-    ];
-
-    const hash = tag.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    return colors[hash % colors.length];
-  };
-
   return (
     <div className="container mx-auto py-32 px-4">
       <div className="max-w-3xl mx-auto">
@@ -114,7 +91,7 @@ export default function TimelineEventPage({ params }: { params: { year: string, 
             {event.tags.map((tag, index) => (
               <span 
                 key={index} 
-                className={`px-3 py-1 rounded-full text-sm ${getRandomColor(tag)}`}
+                className={`px-3 py-1 rounded-full text-sm ${getRandomColorWithDarkMode(tag)}`}
               >
                 {tag}
               </span>
@@ -130,7 +107,7 @@ export default function TimelineEventPage({ params }: { params: { year: string, 
         <div className="mt-10">
           <Link 
             href="/timeline" 
-            className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors"
           >
             Back to Timeline
           </Link>
