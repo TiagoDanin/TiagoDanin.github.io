@@ -12,7 +12,7 @@ module.exports = {
 
     if (path === '/') {
       priority = 1;
-    } else if (path === '/timeline' ||  path === '/projects' || path === '/blog') {
+    } else if (path === '/timeline' ||  path === '/projects' || path === '/blog' || path === '/talks') {
       priority = 0.9;
     } else if (path.startsWith('/blog')) {
       priority = 0.6; 
@@ -21,6 +21,9 @@ module.exports = {
       changefreq = 'monthly';
     } else if (path.startsWith('/timeline/')) {
       priority = 0.2;
+      changefreq = 'monthly';
+    } else if (path.startsWith('/talk/')) {
+      priority = 0.4;
       changefreq = 'monthly';
     }
 

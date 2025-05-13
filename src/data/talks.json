@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "date": "Nov 2023",
+    "title": "DevOps para Desenvolvimento Mobile",
+    "description": "Descubra o caminho para a automação no desenvolvimento mobile! Desafios únicos, diferenças essenciais do DevOps mobile e segredos para superar barreiras na distribuição de apps nas lojas. Não perca esta oportunidade de dominar o DevOps no mundo mobile! Esta talk mostrará os caminhos do DevOps no desenvolvimento mobile. Abordaremos desafios exclusivos, diferenças essenciais e ferramentas vitais no Mobile. Além de compartilhar insights, experiências e erros, para ajudar você a criar uma esteira de DevOps sólida e eficaz.",
+    "event": "DevOpsDays Belém 2023",
+    "tags": ["devops", "mobile"]
+  },
+  {
+    "id": 2,
+    "date": "Dec 2024",
+    "title": "O Ingrediente Secreto dos apps de sucesso: Teste A/B com Firebase",
+    "description": "Descubra como os Testes A/B e Firebase são usados pelos maiores apps do mercado para criar experiências dinâmicas e adaptadas ao usuário. Abordemos desde a configuração até casos práticos que mostram o impacto dessas ferramentas na retenção e engajamento.",
+    "event": "DevFest Belém 2024",
+    "tags": ["firebase", "mobile", "flutter"]
+  },
+  {
+    "id": 3,
+    "date": "Out 2022",
+    "title": "Dicas de Clean Code",
+    "description": "Aprenda a escrever código que é fácil de entender e manter. 11 boas práticas para escrever código legível e fácil de entender.",
+    "event": "DevsNorte 5º Meetup",
+    "tags": ["code", "documentation"]
+  },
+  {
+    "id": 4,
+    "date": "May 2020",
+    "title": "Como criar documentações com VuePress",
+    "description": "Aprenda a criar documentações com VuePress. Um guia para criar documentações com VuePress. Da configuração até casos práticos que mostram o impacto dessas ferramentas na retenção e engajamento.",
+    "event": "Vuejs Norte 11º Meetup",
+    "tags": ["code", "documentation"]
+  },
+  {
+    "id": 5,
+    "date": "Mar 2020",
+    "title": "Implementado Firebase em aplicações Flutter",
+    "description": "Aprenda a implementar Firebase em aplicações Flutter. Um guia para implementar Firebase em aplicações Flutter.",
+    "event": "Google I/O Extended Belém 2024",
+    "tags": ["firebase", "mobile", "flutter"]
+  },
+  {
+    "id": 6,
+    "date": "May 2023",
+    "title": "Construindo lista perfomaticas no React Native",
+    "description": "Aprenda como usar o FlashList pode tornar suas listas mais performáticas e assim evitar os problemas comuns associados ao FlatList",
+    "event": "Idopter Labs Talks 2023",
+    "tags": ["react-native", "performance", "mobile"]
+  }
+] 

@@ -34,6 +34,7 @@ export function Navbar() {
                 <Link href="/" className="font-medium hover:text-primary">Home</Link>
                 <Link href="/projects" className="font-medium hover:text-primary">Projects</Link>
                 <Link href="/blog" className="font-medium hover:text-primary">Blog</Link>
+                <Link href="/talks" className="font-medium hover:text-primary">Talks</Link>
                 <Link href="/timeline" className="font-medium hover:text-primary">Timeline</Link>
               </div>
             </SheetContent>
@@ -47,6 +48,7 @@ export function Navbar() {
             <Link href="/" className="font-medium hover:text-primary hover:scale-105 transition-all">Home</Link>
             <Link href="/projects" className="font-medium hover:text-primary hover:scale-105 transition-all">Projects</Link>
             <Link href="/blog" className="font-medium hover:text-primary hover:scale-105 transition-all">Blog</Link>
+            <Link href="/talks" className="font-medium hover:text-primary hover:scale-105 transition-all">Talks</Link>
             <Link href="/timeline" className="font-medium hover:text-primary hover:scale-105 transition-all">Timeline</Link>
           </div>
           
