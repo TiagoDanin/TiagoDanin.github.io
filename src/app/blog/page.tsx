@@ -79,12 +79,37 @@ const Blog = () => {
             </p>
 
             <div className="relative z-10 mt-4 flex items-center text-sm font-medium text-primary">
-              Read article
-              <Link href={`/post/${post.slug}`} className="relative z-10">
-                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
-                  <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
+              {isYouTubePost(post.originalUrl) ? (
+                <div className="flex gap-4">
+                  <Link 
+                    href={`/post/${post.slug}`} 
+                    className="flex items-center hover:underline"
+                  >
+                    Read article
+                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
+                      <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                  <Link 
+                    href={post.originalUrl} 
+                    className="flex items-center text-red-600 dark:text-red-400 hover:underline z-20"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Video className="h-4 w-4 mr-1" />
+                    Watch on YouTube
+                  </Link>
+                </div>
+              ) : (
+                <>
+                  Read article
+                  <Link href={`/post/${post.slug}`} className="relative z-10">
+                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
+                      <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                </>
+              )}
             </div>
           </article>
         ))}
