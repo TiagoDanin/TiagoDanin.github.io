@@ -29,7 +29,8 @@
     "title": "Como criar documentações com VuePress",
     "description": "Aprenda a criar documentações com VuePress. Um guia para criar documentações com VuePress. Da configuração até casos práticos que mostram o impacto dessas ferramentas na retenção e engajamento.",
     "event": "Vuejs Norte 11º Meetup",
-    "tags": ["code", "documentation"]
+    "tags": ["code", "documentation"],
+    "youtubeUrl": "https://www.youtube.com/watch?v=NZ_lBbi1gCw"
   },
   {
     "id": 5,
@@ -45,6 +46,80 @@
     "title": "Construindo lista perfomaticas no React Native",
     "description": "Aprenda como usar o FlashList pode tornar suas listas mais performáticas e assim evitar os problemas comuns associados ao FlatList",
     "event": "Idopter Labs Talks 2023",
-    "tags": ["react-native", "performance", "mobile"]
+    "tags": ["react-native", "performance", "mobile"],
+    "youtubeUrl": "https://www.youtube.com/watch?v=Z3-v01J9n0I"
+  },
+  {
+    "id": 7,
+    "date": "Set 2022",
+    "title": "Finalmente! O segredo dos testes no React Native foi revelado",
+    "description": "Aprenda como testar seu código no React Native de forma eficiente e eficaz.",
+    "event": "DevsNorte 4º Meetup",
+    "tags": ["react-native", "mobile", "testing"]
+  },
+  {
+    "id": 8,
+    "date": "Mar 2024",
+    "title": "Gerenciando Certificados e Perfis Na App Store com Fastlane Match",
+    "description": "Gerenciar certificados e perfis na App Store é uma etapa crucial do desenvolvimento de aplicativos móveis. Neste vídeo, extraído de uma Lightning Talk ⚡️ interna da Idopter Labs",
+    "event": "Idopter Labs Talks 2024",
+    "tags": ["fastlane", "mobile", "ios"],
+    "youtubeUrl": "https://www.youtube.com/watch?v=uKe63jYwE1w"
+  },
+  {
+    "id": 9,
+    "date": "Out 2022",
+    "title": "Testes no React Native",
+    "description": "Aprenda como testar seu código no React Native de forma eficiente e eficaz.",
+    "event": "Idopter Labs Talks 2022",
+    "tags": ["react-native", "mobile", "testing"]
+  },
+  {
+    "id": 10,
+    "date": "Out 2022",
+    "title": "Testes no React Native",
+    "description": "Aprenda como testar seu código no React Native de forma eficiente e eficaz.",
+    "event": "Idopter Labs Talks 2022",
+    "tags": ["react-native", "mobile", "testing"]
+  },
+  {
+    "id": 11,
+    "date": "Set 2020",
+    "title": "Redes Neurais com JavaScript utilizado Brain.js",
+    "description": "Aprenda como utilizar Redes Neurais com JavaScript utilizando a biblioteca Brain.js.",
+    "event": "BrazilJS on the road Natal/Belém 2020",
+    "tags": ["web", "IA", "javascript"]
+  },
+  {
+    "id": 12,
+    "date": "Set 2019",
+    "title": "Instrodução ao vercionamento com Git",
+    "description": "Aprenda como usar o Git para gerenciar seu código.",
+    "event": "VoxDataDay #1",
+    "tags": ["GIT", "code"]
+  },
+  {
+    "id": 13,
+    "date": "Jul 2013",
+    "title": "Criando blogs com WordPress",
+    "description": "Aprenda como criar blogs com WordPress.",
+    "event": "Feira do Livro Belém 2013",
+    "tags": ["wordpress", "web"]
+  },
+  {
+    "id": 14,
+    "date": "Fev 2023",
+    "title": "Deixe seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis",
+    "description": "Aprenda como deixar seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis.",
+    "event": "DevsNorte 7º Meetup",
+    "tags": ["linkedin", "web", "career"]
+  },
+  {
+    "id": 15,
+    "date": "May 2023",
+    "title": "Roda de conversa sobre carreira",
+    "description": "Roda de conversa sobre carreira com a galera da Devs Norte",
+    "event": "DevsNorte 8º Meetup",
+    "tags": ["career"]
   }
 ] 
