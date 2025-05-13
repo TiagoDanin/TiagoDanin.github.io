@@ -1,35 +1,13 @@
 import Link from "next/link";
 import timelineData from "@/data/timeline.json";
+import { titleToSlug, getRandomColor } from '@/utils/parse';
 
 export const metadata = {
   title: "Timeline",
   description: "My professional journey and career milestones",
 };
 
-function titleToSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/🏆|🎓|🗣️|💻|📱|🎮|🖥|🔬|😍|📚|🏐/g, '')
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .trim();
-}
-
 const Timeline = () => {
-  const getRandomColor = () => {
-    const colors = [
-      'bg-red-100 text-red-800',
-      'bg-blue-100 text-blue-800',
-      'bg-green-100 text-green-800',
-      'bg-yellow-100 text-yellow-800',
-      'bg-purple-100 text-purple-800',
-      'bg-pink-100 text-pink-800',
-      'bg-indigo-100 text-indigo-800',
-    ];
-
-    return colors[Math.floor(Math.random() * colors.length)];
-  };
-
   return (
     <div className="container mx-auto py-20">
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>

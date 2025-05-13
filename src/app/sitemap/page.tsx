@@ -112,28 +112,34 @@ function SitemapTable({ urls }: { urls: any[] }) {
           </tr>
         </thead>
         <tbody>
-          {safeUrls.map((url, index) => (
-            <tr key={index} className="hover:bg-gray-50">
-              <td className="p-2 border">
-                <a 
-                  href={url.loc} 
-                  className="text-blue-600 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {url.loc.replace('https://tiagodanin.com/', '/')}
-                </a>
-              </td>
-              <td className="p-2 border">{url.changefreq || '-'}</td>
-              <td className="p-2 border">{url.priority || '-'}</td>
-              <td className="p-2 border">
-                {url.lastmod 
-                  ? new Date(url.lastmod).toLocaleDateString('en-US')
-                  : '-'
-                }
-              </td>
-            </tr>
-          ))}
+          {safeUrls
+            .sort((a, b) => {
+              const priorityA = parseFloat(a.priority) || 0;
+              const priorityB = parseFloat(b.priority) || 0;
+              return priorityB - priorityA;
+            })
+            .map((url, index) => (
+              <tr key={index} className="hover:bg-gray-50">
+                <td className="p-2 border">
+                  <a 
+                    href={url.loc} 
+                    className="text-blue-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {url.loc.replace('https://tiagodanin.com/', '/')}
+                  </a>
+                </td>
+                <td className="p-2 border">{url.changefreq || '-'}</td>
+                <td className="p-2 border">{url.priority || '-'}</td>
+                <td className="p-2 border">
+                  {url.lastmod 
+                    ? new Date(url.lastmod).toLocaleDateString('en-US')
+                    : '-'
+                  }
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
