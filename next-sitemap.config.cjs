@@ -19,6 +19,9 @@ module.exports = {
     } else if (path.startsWith('/project/')) {
       priority = 0.3;
       changefreq = 'monthly';
+    } else if (path.startsWith('/timeline/')) {
+      priority = 0.2;
+      changefreq = 'monthly';
     }
 
     return {
