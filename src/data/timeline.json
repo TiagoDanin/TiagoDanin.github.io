@@ -1,5 +1,46 @@
 [
   {
+    "date": "2025",
+    "title": "Soon™",
+    "description": "More to come...",
+    "tags": [
+      "soon"
+    ]
+  },
+  {
+    "date": "2023",
+    "title": "🗣️ Talk on Clean Code at Meetup Devs Norte",
+    "description": "Presented a compilation of '11 best practices for code readability' (Clean Code) at an edition of Meetup Devs Norte.",
+    "tags": [
+      "cleancode",
+      "talks",
+      "devsnorte",
+      "events"
+    ]
+  },
+  {
+    "date": "2023",
+    "title": "🗣️ Talk at DevOpsDays Belém",
+    "description": "Talk on 'DevOps for Mobile Development' at the DevOpsDays Belém event (November 2023).",
+    "tags": [
+      "devops",
+      "mobile",
+      "talks",
+      "devopsdays",
+      "events"
+    ]
+  },
+  {
+    "date": "2023",
+    "title": "📚 Studies in Digital Marketing",
+    "description": "Began studies in Digital Marketing to expand knowledge beyond programming.",
+    "tags": [
+      "estudo",
+      "marketingdigital",
+      "desenvolvimentopessoal"
+    ]
+  },
+  {
     "date": "2023",
     "title": "SOON™",
     "description": "More to come...",
@@ -9,10 +50,43 @@
   },
   {
     "date": "2022",
+    "title": "💻 Project: React Native - Zendesk SDK",
+    "description": "Developed a wrapper for the Zendesk SDK in React Native, facilitating customer support integration in mobile apps.",
+    "tags": [
+      "reactnative",
+      "sdk",
+      "mobile",
+      "opensource",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2022",
     "title": "💻 Hacktoberfest",
     "description": "Participated in Hacktoberfest 2022.",
     "tags": [
       "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2022",
+    "title": "🎮 Project: Slime Dungeon Survival Game",
+    "description": "Created the game 'Slime Dungeon Survival Game' using Flutter and the Bonfire engine.",
+    "tags": [
+      "flutter",
+      "gamedev",
+      "bonfireengine",
+      "mobile",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2021",
+    "title": "📱 Project: Virtual Pocket Air Conditioning",
+    "description": "Developed the 'Virtual Pocket Air Conditioning' app as a Flutter animation study project, focused on relaxing sounds.",
+    "tags": [
+      "flutter",
+      "mobile"
     ]
   },
   {
@@ -26,7 +100,7 @@
   {
     "date": "2020",
     "title": "🏆 Achievements",
-    "description": "Won 1º Hackathon TecBan 2020. Gave lecture about neural networks at BrazilJS.",
+    "description": "Won 1st TecBan Hackathon 2020. Gave lecture about neural networks at BrazilJS.",
     "tags": [
       "hackathon",
       "braziljs"
@@ -72,7 +146,7 @@
   {
     "date": "2015",
     "title": "Lua & First Programs ❤️",
-    "description": "Learn programming in lua. Created my first program: a plugin to search music on Spotify via Telegram Bot.",
+    "description": "Learned programming in Lua. Created my first program: a plugin to search music on Spotify via Telegram Bot.",
     "tags": [
       "lua",
       "firstprogram",
@@ -82,7 +156,7 @@
   {
     "date": "2014",
     "title": "🏆 Awards & Education",
-    "description": "3º Position - Race - 100M\n2º Position - Long jump - Best jump 2.56\n3º Position - Valentine´s Day for forumeiros.com\n🎓 Finished Middle School",
+    "description": "3rd Position - Race - 100M\n2nd Position - Long jump - Best jump 2.56\n3rd Position - Valentine's Day for forumeiros.com\n🎓 Finished Middle School",
     "tags": [
       "awards",
       "education"
@@ -90,8 +164,8 @@
   },
   {
     "date": "2013",
-    "title": "🗣 Lecture of Creation of Blogging",
-    "description": "Contribute to lecture talking about my experience.",
+    "title": "🗣 Lecture on Creation of Blogging",
+    "description": "Contributed to a lecture talking about my experience.",
     "tags": [
       "lecture",
       "blogging"
@@ -100,7 +174,7 @@
   {
     "date": "2012",
     "title": "🖥 My first WebSite",
-    "description": "The name was WapSiteMobile. Later... My forum (WapSiteBr) and 2013 my blog (WSBrasil).",
+    "description": "The name was WapSiteMobile. Later... My forum (WapSiteBr) and in 2013 my blog (WSBrasil).",
     "tags": [
       "website",
       "forum",
@@ -110,7 +184,7 @@
   {
     "date": "2008",
     "title": "Electronic Circuit 🔬",
-    "description": "Fascinated by electronic circuit.",
+    "description": "Fascinated by electronic circuits.",
     "tags": [
       "electroniccircuit"
     ]
