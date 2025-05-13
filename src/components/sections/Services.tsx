@@ -1,7 +1,7 @@
 "use client";
 
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Code, Smartphone, Database, Zap } from "lucide-react";
+import { Code, Smartphone, Database, Zap, Shield } from "lucide-react";
 
 export function Services() {
   const isMobile = useIsMobile();
@@ -36,25 +36,25 @@ export function Services() {
             </p>
           </div>
           
-          {/* Frontend Development */}
+          {/* Full Stack Development */}
           <div className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
             <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
               <Code className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Frontend Development</h3>
+            <h3 className="text-xl font-semibold mb-3">Full Stack Development</h3>
             <p className="text-muted-foreground">
-              Responsive, intuitive web interfaces built with modern technologies like React, TypeScript, and Tailwind CSS.
+              End-to-end web solutions with modern frontend technologies and robust backend systems using React, Node.js, and various databases.
             </p>
           </div>
           
-          {/* Backend Development */}
+          {/* Security */}
           <div className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
             <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
-              <Database className="h-6 w-6" />
+              <Shield className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Backend Development</h3>
+            <h3 className="text-xl font-semibold mb-3">Cybersecurity</h3>
             <p className="text-muted-foreground">
-              Robust APIs and server-side solutions using Node.js, Express, and SQL/NoSQL databases.
+              Implementation of security best practices, penetration testing, and secure coding principles to protect applications and data.
             </p>
           </div>
           
