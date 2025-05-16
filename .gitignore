@@ -20,6 +20,16 @@
 
 # production
 /build
+/public/github-sitemap.xml
+/public/rss/blog.xml
+/public/rss/projects.xml
+/public/rss/talks.xml
+/public/rss/timeline.xml
+/public/sitemap-0.xml
+/public/sitemap-1.xml
+/public/sitemap-2.xml
+/public/sitemap-3.xml
+/public/sitemap.xml
 note.md
 
 # misc
