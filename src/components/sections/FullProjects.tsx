@@ -71,7 +71,6 @@ export function FullProjects() {
     }));
   };
 
-  // Calculate total projects
   const totalProjects = projectSections.reduce((sum, section) => sum + section.projects.length, 0);
 
   return (

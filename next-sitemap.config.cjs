@@ -14,6 +14,9 @@ module.exports = {
       priority = 1;
     } else if (path === '/timeline' ||  path === '/projects' || path === '/blog' || path === '/talks') {
       priority = 0.9;
+    } else if (path === '/rss/blog.xml' || path === '/rss/talks.xml' || path === '/rss/timeline.xml' || path === '/rss/projects.xml') {
+      priority = 0.1;
+      changefreq = 'monthly';
     } else if (path.startsWith('/blog')) {
       priority = 0.6; 
     } else if (path.startsWith('/project/')) {
