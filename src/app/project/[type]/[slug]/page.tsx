@@ -151,124 +151,139 @@ export default function ProjectPage({ params }: { params: { type: ProjectType, s
 
   const installCommand = getInstallCommand();
 
+  const isSoftware = ["npm", "pypi", "luarocks", "atom", "github", "aur"].includes(type);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": isSoftware ? "SoftwareApplication" : "CreativeWork",
+    "name": title,
+    "description": description,
+    "applicationCategory": isSoftware ? type : undefined,
+    "url": url,
+    "inLanguage": "en-US",
+    "isAccessibleForFree": true
+  };
+
   return (
-    <div className="container mx-auto py-32 px-4">
-      <div className="max-w-3xl mx-auto">
-        {/* Project header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            {type === 'github' && <Github className="h-6 w-6" />}
-            {type === 'npm' && <Package className="h-6 w-6" />}
-            {project.archived && <Archive className="h-6 w-6 text-red-500" />}
-            <h1 className="text-3xl font-bold">{title}</h1>
-          </div>
-          
-          <div className="flex flex-wrap gap-2 mb-4">
-            <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm">
-              {type}
-            </span>
-            {project.language && (
-              <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm">
-                {project.language}
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <div className="container mx-auto py-32 px-4">
+        <div className="max-w-3xl mx-auto">
+          {/* Project header */}
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-2">
+              {type === 'github' && <Github className="h-6 w-6" />}
+              {type === 'npm' && <Package className="h-6 w-6" />}
+              {project.archived && <Archive className="h-6 w-6 text-red-500" />}
+              <h1 className="text-3xl font-bold">{title}</h1>
+            </div>
+            
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm">
+                {type}
               </span>
-            )}
-            {project.archived && (
-              <span className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 px-3 py-1 rounded-full text-sm">
-                Archived
-              </span>
+              {project.language && (
+                <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-3 py-1 rounded-full text-sm">
+                  {project.language}
+                </span>
+              )}
+              {project.archived && (
+                <span className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 px-3 py-1 rounded-full text-sm">
+                  Archived
+                </span>
+              )}
+            </div>
+            
+            {description && (
+              <p className="text-lg text-gray-700 dark:text-gray-300">{description}</p>
             )}
           </div>
-          
-          {description && (
-            <p className="text-lg text-gray-700 dark:text-gray-300">{description}</p>
-          )}
-        </div>
 
-        {/* Project details - single column layout */}
-        <div className="space-y-6 mb-10">
-          {/* Project links */}
-          {url && (
-            <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-3">Project Link</h2>
-              <a 
-                href={url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
-              >
-                <ExternalLink className="h-4 w-4" />
-                {url}
-              </a>
-            </div>
-          )}
-
-          {/* Installation command */}
-          {installCommand && (
-            <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-3">Installation</h2>
-              <div className="bg-gray-100 dark:bg-gray-900 p-3 rounded-md">
-                <code className="text-sm font-mono">{installCommand}</code>
+          {/* Project details - single column layout */}
+          <div className="space-y-6 mb-10">
+            {/* Project links */}
+            {url && (
+              <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-3">Project Link</h2>
+                <a 
+                  href={url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  {url}
+                </a>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Project stats */}
-          {project.stargazers_count !== undefined && (
-            <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-3">Statistics</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Stars</p>
-                  <p className="text-lg font-medium">{project.stargazers_count}</p>
+            {/* Installation command */}
+            {installCommand && (
+              <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-3">Installation</h2>
+                <div className="bg-gray-100 dark:bg-gray-900 p-3 rounded-md">
+                  <code className="text-sm font-mono">{installCommand}</code>
                 </div>
-                {project.forks_count !== undefined && (
+              </div>
+            )}
+
+            {/* Project stats */}
+            {project.stargazers_count !== undefined && (
+              <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-3">Statistics</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Forks</p>
-                    <p className="text-lg font-medium">{project.forks_count}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Stars</p>
+                    <p className="text-lg font-medium">{project.stargazers_count}</p>
+                  </div>
+                  {project.forks_count !== undefined && (
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Forks</p>
+                      <p className="text-lg font-medium">{project.forks_count}</p>
+                    </div>
+                  )}
+                  {project.watchers_count !== undefined && (
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Watchers</p>
+                      <p className="text-lg font-medium">{project.watchers_count}</p>
+                    </div>
+                  )}
+                  {project.open_issues_count !== undefined && (
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Open Issues</p>
+                      <p className="text-lg font-medium">{project.open_issues_count}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Created/Updated dates */}
+            {(project.created_at || project.updated_at || project.pushed_at) && (
+              <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-3">Timeline</h2>
+                {project.created_at && (
+                  <div className="mb-2">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Created</p>
+                    <p>{new Date(project.created_at).toLocaleDateString()}</p>
                   </div>
                 )}
-                {project.watchers_count !== undefined && (
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Watchers</p>
-                    <p className="text-lg font-medium">{project.watchers_count}</p>
+                {project.updated_at && (
+                  <div className="mb-2">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Updated</p>
+                    <p>{new Date(project.updated_at).toLocaleDateString()}</p>
                   </div>
                 )}
-                {project.open_issues_count !== undefined && (
+                {project.pushed_at && (
                   <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Open Issues</p>
-                    <p className="text-lg font-medium">{project.open_issues_count}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Last Push</p>
+                    <p>{new Date(project.pushed_at).toLocaleDateString()}</p>
                   </div>
                 )}
               </div>
-            </div>
-          )}
-
-          {/* Created/Updated dates */}
-          {(project.created_at || project.updated_at || project.pushed_at) && (
-            <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold mb-3">Timeline</h2>
-              {project.created_at && (
-                <div className="mb-2">
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Created</p>
-                  <p>{new Date(project.created_at).toLocaleDateString()}</p>
-                </div>
-              )}
-              {project.updated_at && (
-                <div className="mb-2">
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Updated</p>
-                  <p>{new Date(project.updated_at).toLocaleDateString()}</p>
-                </div>
-              )}
-              {project.pushed_at && (
-                <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Last Push</p>
-                  <p>{new Date(project.pushed_at).toLocaleDateString()}</p>
-                </div>
-              )}
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 } 

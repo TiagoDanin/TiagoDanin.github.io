@@ -74,45 +74,58 @@ export default function TimelineEventPage({ params }: { params: { year: string, 
     notFound();
   }
 
-  return (
-    <div className="container mx-auto py-32 px-4">
-      <div className="max-w-3xl mx-auto">
-        {/* Event header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Calendar className="h-6 w-6" />
-            <h1 className="text-3xl font-bold">{event.title}</h1>
-          </div>
-          
-          <div className="flex flex-wrap gap-2 mb-4">
-            <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm">
-              {event.date}
-            </span>
-            {event.tags.map((tag, index) => (
-              <span 
-                key={index} 
-                className={`px-3 py-1 rounded-full text-sm ${getRandomColorWithDarkMode(tag)}`}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          
-          <p className="text-lg text-gray-700 dark:text-gray-300 whitespace-pre-line">
-            {event.description}
-          </p>
-        </div>
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": event.title,
+    "description": event.description,
+    "startDate": event.date,
+    "url": `https://tiagodanin.com/timeline/${year}/${slug}`,
+    "inLanguage": "en-US"
+  };
 
-        {/* Back to timeline link */}
-        <div className="mt-10">
-          <Link 
-            href="/timeline" 
-            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors"
-          >
-            Back to Timeline
-          </Link>
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <div className="container mx-auto py-32 px-4">
+        <div className="max-w-3xl mx-auto">
+          {/* Event header */}
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-2">
+              <Calendar className="h-6 w-6" />
+              <h1 className="text-3xl font-bold">{event.title}</h1>
+            </div>
+            
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-3 py-1 rounded-full text-sm">
+                {event.date}
+              </span>
+              {event.tags.map((tag, index) => (
+                <span 
+                  key={index} 
+                  className={`px-3 py-1 rounded-full text-sm ${getRandomColorWithDarkMode(tag)}`}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <p className="text-lg text-gray-700 dark:text-gray-300 whitespace-pre-line">
+              {event.description}
+            </p>
+          </div>
+
+          {/* Back to timeline link */}
+          <div className="mt-10">
+            <Link 
+              href="/timeline" 
+              className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors"
+            >
+              Back to Timeline
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 } 

@@ -37,22 +37,36 @@ export default function Post({ params }: { params: { slug: string } }) {
     return <div className="container mx-auto py-32 text-center">Post not found</div>;
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.description,
+    "datePublished": post.date,
+    "url": `https://tiagodanin.com/post/${post.slug}`,
+    "inLanguage": "pt-BR",
+    "isAccessibleForFree": true
+  };
+
   redirect(post.originalUrl);
 
   return (
-    <div className="container mx-auto py-32 blur-lg">
-      <div className="max-w-2xl mx-auto">
-        <time className="text-sm text-zinc-400">{post!.date}</time>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl">
-          {post!.title}
-        </h1>
-        <p className="mt-6 text-base text-zinc-600">
-          {post!.description}
-        </p>
-        <div className="mt-8 text-sm">
-          Redirecting to original article...
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <div className="container mx-auto py-32 blur-lg">
+        <div className="max-w-2xl mx-auto">
+          <time className="text-sm text-zinc-400">{post!.date}</time>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl">
+            {post!.title}
+          </h1>
+          <p className="mt-6 text-base text-zinc-600">
+            {post!.description}
+          </p>
+          <div className="mt-8 text-sm">
+            Redirecting to original article...
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 } 
