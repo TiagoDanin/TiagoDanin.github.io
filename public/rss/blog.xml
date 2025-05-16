@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Tiago Danin Blog]]></title>
+        <description><![CDATA[Articles and thoughts about development, technology and more]]></description>
+        <link>https://tiagodanin.com</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Fri, 16 May 2025 21:07:24 GMT</lastBuildDate>
+        <atom:link href="https://tiagodanin.com/rss/blog.xml" rel="self" type="application/rss+xml"/>
+        <copyright><![CDATA[Tiago Danin]]></copyright>
+        <language><![CDATA[en]]></language>
+        <item>
+            <title><![CDATA[Criando um editor de imagem com Flutter - CAM Covers (Da Ideia à Realidade)]]></title>
+            <description><![CDATA[Como criei um app de edição de imagens com Flutter. Veja os desafios, soluções e a monetização do CAM Covers, um editor de capas de álbuns.]]></description>
+            <link>https://tiagodanin.com/post/criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade</guid>
+            <pubDate>Wed, 12 Mar 2025 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Aprimorando a Experiência do Usuário com Teclados no iOS usando Keyboard Actions]]></title>
+            <description><![CDATA[Você nunca mais vai lutar contra o Teclado do iOS no Flutter! Veja como resolver um problema comum em aplicativos mobile para iOS que é…]]></description>
+            <link>https://tiagodanin.com/post/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions</guid>
+            <pubDate>Thu, 13 Mar 2025 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Gerenciando Certificados e Perfis Na App Store com Fastlane Match]]></title>
+            <description><![CDATA[Aprenda como gerenciar certificados e perfis na App Store com Fastlane Match.]]></description>
+            <link>https://tiagodanin.com/post/gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match</guid>
+            <pubDate>Tue, 26 Mar 2024 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Flutter: Configurando Seu App à Distância com Firebase Remote Config]]></title>
+            <description><![CDATA[Vamos explorar como implementar e aproveitar ao máximo o Firebase Remote Config em seus aplicativos Flutter]]></description>
+            <link>https://tiagodanin.com/post/flutter-configurando-seu-app-a-distancia-com-firebase-remote-config</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/flutter-configurando-seu-app-a-distancia-com-firebase-remote-config</guid>
+            <pubDate>Sat, 24 Feb 2024 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Flutter: Implementando Animações Incríveis com Lottie]]></title>
+            <description><![CDATA[Quer tornar seus aplicativos Flutter mais dinâmicos e atraentes?]]></description>
+            <link>https://tiagodanin.com/post/flutter-implementando-animações-incriveis-com-lottie</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/flutter-implementando-animações-incriveis-com-lottie</guid>
+            <pubDate>Sat, 17 Feb 2024 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Crie Ícones Adptativos para Aplicativos Android]]></title>
+            <description><![CDATA[Aprenda como criar ícones adaptáveis para aplicativos Android.]]></description>
+            <link>https://tiagodanin.com/post/crie-icones-adaptativos-para-aplicativos-android</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/crie-icones-adaptativos-para-aplicativos-android</guid>
+            <pubDate>Sat, 17 Feb 2024 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Android Splash Screen em Jetpack Compose: Construindo uma Introdução Impactante para seu App]]></title>
+            <description><![CDATA[No mundo dos aplicativos móveis, a primeira impressão é crucial. E a Splash Screen é a primeira tela que o usuário vê quando abre o seu aplicativo. Neste vídeo, vamos criar uma Splash Screen incrível para o nosso aplicativo usando Jetpack Compose.]]></description>
+            <link>https://tiagodanin.com/post/android-splash-screen-em-jetpack-compose-construindo-uma-introducao-impactante-para-seu-app</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/android-splash-screen-em-jetpack-compose-construindo-uma-introducao-impactante-para-seu-app</guid>
+            <pubDate>Sun, 11 Feb 2024 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Construindo listas performáticas no ReactNative]]></title>
+            <description><![CDATA[Aprenda como construir listas performáticas no ReactNative.]]></description>
+            <link>https://tiagodanin.com/post/construindo-listas-performaticas-no-reactnative</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/construindo-listas-performaticas-no-reactnative</guid>
+            <pubDate>Sat, 04 Mar 2023 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Deixe seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis]]></title>
+            <description><![CDATA[Se você está começando agora no mercado de trabalho e busca dicas para criar um perfil no LinkedIn que chame a atenção dos recrutadores, este vídeo é para você]]></description>
+            <link>https://tiagodanin.com/post/deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infaliveis</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infaliveis</guid>
+            <pubDate>Sat, 18 Feb 2023 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Como criar pipelines poderosos para React Native no Gitlab]]></title>
+            <description><![CDATA[Neste post vamos falar sobre como implementar um pipeline de testes para React Native utilizando o Gitlab.]]></description>
+            <link>https://tiagodanin.com/post/como-criar-pipelines-poderosos-para-react-native-no-gitlab</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/como-criar-pipelines-poderosos-para-react-native-no-gitlab</guid>
+            <pubDate>Wed, 01 Feb 2023 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Convertendo Figma para o Jetpack Compose com RELAY]]></title>
+            <description><![CDATA[Convertendo componentes do Figma para o Android Jetpack Compose com Material Design Relay]]></description>
+            <link>https://tiagodanin.com/post/convertendo-figma-para-o-jetpack-compose-com-relay</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/convertendo-figma-para-o-jetpack-compose-com-relay</guid>
+            <pubDate>Mon, 02 Jan 2023 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Finalmente! O segredo dos testes no React Native foi revelado]]></title>
+            <description><![CDATA[Tudo o que você precisa saber sobre os testes no React Native]]></description>
+            <link>https://tiagodanin.com/post/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado</guid>
+            <pubDate>Thu, 29 Sep 2022 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[React 18 - Uma nova maneira de usar o useState (Processamento em lote)]]></title>
+            <description><![CDATA[Uma análise sobre as mudanças no React 18 e como o processamento em lote do useState foi modificado para melhor performance.]]></description>
+            <link>https://tiagodanin.com/post/react-18-uma-nova-maneira-de-usar-o-usestate</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/react-18-uma-nova-maneira-de-usar-o-usestate</guid>
+            <pubDate>Wed, 03 Aug 2022 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Criando aplicativos para Android Wear OS com Jetpack Compose]]></title>
+            <description><![CDATA[Um guia prático sobre como desenvolver aplicativos para Android Wear OS utilizando o moderno toolkit Jetpack Compose.]]></description>
+            <link>https://tiagodanin.com/post/criando-aplicativos-para-android-wear-os-com-jetpack-compose</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/criando-aplicativos-para-android-wear-os-com-jetpack-compose</guid>
+            <pubDate>Sat, 25 Jun 2022 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Clean Code: Dicas para tornar o seu código mais legível]]></title>
+            <description><![CDATA[Aprenda como escrever código limpo e fácil de entender com essas dicas incríveis.]]></description>
+            <link>https://tiagodanin.com/post/clean-code-dicas-para-tornar-o-seu-codigo-mais-legivel</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/clean-code-dicas-para-tornar-o-seu-codigo-mais-legivel</guid>
+            <pubDate>Mon, 13 Dec 2021 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Jogo da Velha utilizado Jetpack Compose - Criando Projetos Juntos #1]]></title>
+            <description><![CDATA[Neste vídeo, vamos criar um jogo da velha utilizando Jetpack Compose.]]></description>
+            <link>https://tiagodanin.com/post/jogo-da-velha-utilizado-jetpack-compose-criando-projetos-juntos-1</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/jogo-da-velha-utilizado-jetpack-compose-criando-projetos-juntos-1</guid>
+            <pubDate>Wed, 01 Dec 2021 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Arrow Function Vs Normal Function]]></title>
+            <description><![CDATA[Uma comparação detalhada entre Arrow Functions e funções normais em JavaScript, explicando suas diferenças e casos de uso.]]></description>
+            <link>https://tiagodanin.com/post/arrow-function-vs-normal-function</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/arrow-function-vs-normal-function</guid>
+            <pubDate>Sun, 07 Apr 2019 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Lista - Analisadores de Perfil no GitHub]]></title>
+            <description><![CDATA[Uma lista de analisadores de perfil no GitHub que podem ajudar você a melhorar seu perfil.]]></description>
+            <link>https://tiagodanin.com/post/lista-analisadores-de-perfil-no-github</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/lista-analisadores-de-perfil-no-github</guid>
+            <pubDate>Sun, 07 Apr 2019 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Lista de apps — Automatizando fluxo de trabalho no GitHub]]></title>
+            <description><![CDATA[Uma lista de apps que podem ajudar você a automatizar seu fluxo de trabalho no GitHub.]]></description>
+            <link>https://tiagodanin.com/post/lista-de-apps-automatizando-fluxo-de-trabalho-no-github</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/lista-de-apps-automatizando-fluxo-de-trabalho-no-github</guid>
+            <pubDate>Sat, 23 Feb 2019 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Usando PulseAudio no HDMI]]></title>
+            <description><![CDATA[Um guia prático sobre como configurar corretamente o PulseAudio para saída de áudio via HDMI no Linux.]]></description>
+            <link>https://tiagodanin.com/post/usando-pulseaudio-no-hdmi</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/usando-pulseaudio-no-hdmi</guid>
+            <pubDate>Sat, 23 Feb 2019 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[O melhor plugin de Auto Complete para ZSH]]></title>
+            <description><![CDATA[Descubra como melhorar sua experiência no terminal com o melhor plugin de autocompletar para ZSH.]]></description>
+            <link>https://tiagodanin.com/post/o-melhor-plugin-de-auto-complete-para-zsh</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/o-melhor-plugin-de-auto-complete-para-zsh</guid>
+            <pubDate>Sat, 29 Dec 2018 02:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[O perfil perfeito no GitHub]]></title>
+            <description><![CDATA[Vou dar algumas dicas de como criar um perfil apresentável no GitHub.]]></description>
+            <link>https://tiagodanin.com/post/o-perfil-perfeito-no-github</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/o-perfil-perfeito-no-github</guid>
+            <pubDate>Tue, 06 Nov 2018 02:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Construindo meu novo site com UIKit, Jus e CuboHub]]></title>
+            <description><![CDATA[Como construí meu site pessoal utilizando UIKit para o frontend, Jus como gerador estático e CuboHub para hospedagem.]]></description>
+            <link>https://tiagodanin.com/post/construindo-meu-novo-site-com-uikit-jus-e-cubohub</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/construindo-meu-novo-site-com-uikit-jus-e-cubohub</guid>
+            <pubDate>Sun, 16 Sep 2018 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[GitHub vs Outros]]></title>
+            <description><![CDATA[Uma análise comparativa entre o GitHub e outras plataformas de hospedagem de código.]]></description>
+            <link>https://tiagodanin.com/post/github-vs-outros</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/github-vs-outros</guid>
+            <pubDate>Wed, 06 Jun 2018 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Resolvendo erro do wine não fazer conexões SSL]]></title>
+            <description><![CDATA[Como resolver problemas de conexão SSL no Wine para melhor compatibilidade com aplicações Windows.]]></description>
+            <link>https://tiagodanin.com/post/resolvendo-erro-do-wine-nao-fazer-conexoes-ssl</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/resolvendo-erro-do-wine-nao-fazer-conexoes-ssl</guid>
+            <pubDate>Sat, 17 Mar 2018 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Três comandos que você precisar ter em seu terminal]]></title>
+            <description><![CDATA[Conheça três comandos essenciais que todo desenvolvedor deveria ter em seu terminal para aumentar a produtividade.]]></description>
+            <link>https://tiagodanin.com/post/tres-comandos-que-voce-precisar-ter-em-seu-terminal</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/tres-comandos-que-voce-precisar-ter-em-seu-terminal</guid>
+            <pubDate>Sat, 03 Mar 2018 03:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Crie seu primeiro aplicativo com Electron]]></title>
+            <description><![CDATA[Um guia passo a passo para criar sua primeira aplicação desktop usando Electron e JavaScript.]]></description>
+            <link>https://tiagodanin.com/post/crie-seu-primeiro-aplicativo-com-electron</link>
+            <guid isPermaLink="false">https://tiagodanin.com/post/crie-seu-primeiro-aplicativo-com-electron</guid>
+            <pubDate>Fri, 02 Mar 2018 03:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

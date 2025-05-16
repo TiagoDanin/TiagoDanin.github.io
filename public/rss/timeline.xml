@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Tiago Danin Timeline]]></title>
+        <description><![CDATA[Professional journey and career milestones]]></description>
+        <link>https://tiagodanin.com</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Fri, 16 May 2025 21:07:24 GMT</lastBuildDate>
+        <atom:link href="https://tiagodanin.com/rss/timeline.xml" rel="self" type="application/rss+xml"/>
+        <copyright><![CDATA[Tiago Danin]]></copyright>
+        <language><![CDATA[en]]></language>
+        <item>
+            <title><![CDATA[Soon™]]></title>
+            <description><![CDATA[More to come...]]></description>
+            <link>https://tiagodanin.com/timeline/2025/soon</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2025/soon</guid>
+            <pubDate>Wed, 01 Jan 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🗣️ Talk on Clean Code at Meetup Devs Norte]]></title>
+            <description><![CDATA[Presented a compilation of '11 best practices for code readability' (Clean Code) at an edition of Meetup Devs Norte.]]></description>
+            <link>https://tiagodanin.com/timeline/2023/-talk-on-clean-code-at-meetup-devs-norte</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2023/-talk-on-clean-code-at-meetup-devs-norte</guid>
+            <pubDate>Sun, 01 Jan 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🗣️ Talk at DevOpsDays Belém]]></title>
+            <description><![CDATA[Talk on 'DevOps for Mobile Development' at the DevOpsDays Belém event (November 2023).]]></description>
+            <link>https://tiagodanin.com/timeline/2023/-talk-at-devopsdays-belm</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2023/-talk-at-devopsdays-belm</guid>
+            <pubDate>Sun, 01 Jan 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[📚 Studies in Digital Marketing]]></title>
+            <description><![CDATA[Began studies in Digital Marketing to expand knowledge beyond programming.]]></description>
+            <link>https://tiagodanin.com/timeline/2023/-studies-in-digital-marketing</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2023/-studies-in-digital-marketing</guid>
+            <pubDate>Sun, 01 Jan 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[SOON™]]></title>
+            <description><![CDATA[More to come...]]></description>
+            <link>https://tiagodanin.com/timeline/2023/soon</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2023/soon</guid>
+            <pubDate>Sun, 01 Jan 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[💻 Project: React Native - Zendesk SDK]]></title>
+            <description><![CDATA[Developed a wrapper for the Zendesk SDK in React Native, facilitating customer support integration in mobile apps.]]></description>
+            <link>https://tiagodanin.com/timeline/2022/-project-react-native---zendesk-sdk</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2022/-project-react-native---zendesk-sdk</guid>
+            <pubDate>Sat, 01 Jan 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[💻 Hacktoberfest]]></title>
+            <description><![CDATA[Participated in Hacktoberfest 2022.]]></description>
+            <link>https://tiagodanin.com/timeline/2022/-hacktoberfest</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2022/-hacktoberfest</guid>
+            <pubDate>Sat, 01 Jan 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🎮 Project: Slime Dungeon Survival Game]]></title>
+            <description><![CDATA[Created the game 'Slime Dungeon Survival Game' using Flutter and the Bonfire engine.]]></description>
+            <link>https://tiagodanin.com/timeline/2022/-project-slime-dungeon-survival-game</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2022/-project-slime-dungeon-survival-game</guid>
+            <pubDate>Sat, 01 Jan 2022 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[📱 Project: Virtual Pocket Air Conditioning]]></title>
+            <description><![CDATA[Developed the 'Virtual Pocket Air Conditioning' app as a Flutter animation study project, focused on relaxing sounds.]]></description>
+            <link>https://tiagodanin.com/timeline/2021/-project-virtual-pocket-air-conditioning</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2021/-project-virtual-pocket-air-conditioning</guid>
+            <pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[💻 Open Source]]></title>
+            <description><![CDATA[Participated in Hacktoberfest 2021.]]></description>
+            <link>https://tiagodanin.com/timeline/2021/-open-source</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2021/-open-source</guid>
+            <pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🏆 Achievements]]></title>
+            <description><![CDATA[Won 1st TecBan Hackathon 2020. Gave lecture about neural networks at BrazilJS.]]></description>
+            <link>https://tiagodanin.com/timeline/2020/-achievements</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2020/-achievements</guid>
+            <pubDate>Wed, 01 Jan 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🗣 Events & Security]]></title>
+            <description><![CDATA[Participated in VueJs Norte, Flisol & DataTechDay. Started studying security with Hackerone.]]></description>
+            <link>https://tiagodanin.com/timeline/2019/-events-security</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2019/-events-security</guid>
+            <pubDate>Tue, 01 Jan 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🎓 IFPA]]></title>
+            <description><![CDATA[Started IFPA - Technologist degree in system analysis and development. Studied Probot, Telegraf & Arduino.]]></description>
+            <link>https://tiagodanin.com/timeline/2018/-ifpa</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2018/-ifpa</guid>
+            <pubDate>Mon, 01 Jan 2018 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🎓 Graduation & Achievements]]></title>
+            <description><![CDATA[Finished High School. Won multiple sports competitions. Participated in Hacktoberfest 2017.]]></description>
+            <link>https://tiagodanin.com/timeline/2017/-graduation-achievements</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2017/-graduation-achievements</guid>
+            <pubDate>Sun, 01 Jan 2017 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🏐 Sports & Development]]></title>
+            <description><![CDATA[Created a volleyball team. Published first Windows Store apps (SamRobot and GX Password). Participated in Hacktoberfest 2016.]]></description>
+            <link>https://tiagodanin.com/timeline/2016/-sports-development</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2016/-sports-development</guid>
+            <pubDate>Fri, 01 Jan 2016 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Lua & First Programs ❤️]]></title>
+            <description><![CDATA[Learned programming in Lua. Created my first program: a plugin to search music on Spotify via Telegram Bot.]]></description>
+            <link>https://tiagodanin.com/timeline/2015/lua-first-programs-</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2015/lua-first-programs-</guid>
+            <pubDate>Thu, 01 Jan 2015 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🏆 Awards & Education]]></title>
+            <description><![CDATA[3rd Position - Race - 100M
+2nd Position - Long jump - Best jump 2.56
+3rd Position - Valentine's Day for forumeiros.com
+🎓 Finished Middle School]]></description>
+            <link>https://tiagodanin.com/timeline/2014/-awards-education</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2014/-awards-education</guid>
+            <pubDate>Wed, 01 Jan 2014 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🗣 Lecture on Creation of Blogging]]></title>
+            <description><![CDATA[Contributed to a lecture talking about my experience.]]></description>
+            <link>https://tiagodanin.com/timeline/2013/-lecture-on-creation-of-blogging</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2013/-lecture-on-creation-of-blogging</guid>
+            <pubDate>Tue, 01 Jan 2013 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[🖥 My first WebSite]]></title>
+            <description><![CDATA[The name was WapSiteMobile. Later... My forum (WapSiteBr) and in 2013 my blog (WSBrasil).]]></description>
+            <link>https://tiagodanin.com/timeline/2012/-my-first-website</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2012/-my-first-website</guid>
+            <pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Electronic Circuit 🔬]]></title>
+            <description><![CDATA[Fascinated by electronic circuits.]]></description>
+            <link>https://tiagodanin.com/timeline/2008/electronic-circuit-</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2008/electronic-circuit-</guid>
+            <pubDate>Tue, 01 Jan 2008 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Mathematics 🔬]]></title>
+            <description><![CDATA[Fascinated by mathematics.]]></description>
+            <link>https://tiagodanin.com/timeline/2006/mathematics-</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/2006/mathematics-</guid>
+            <pubDate>Sun, 01 Jan 2006 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[😍 Birth]]></title>
+            <description><![CDATA[printf("Hello World!");]]></description>
+            <link>https://tiagodanin.com/timeline/1998/-birth</link>
+            <guid isPermaLink="false">https://tiagodanin.com/timeline/1998/-birth</guid>
+            <pubDate>Thu, 01 Jan 1998 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
