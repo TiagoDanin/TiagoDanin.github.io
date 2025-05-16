@@ -1,5 +1,12 @@
 [
   {
+    "date": "May 13, 2025",
+    "title": "Criando um AI Agent no Cursor para interagir com o Gitlab e Shortcut",
+    "description": "No mundo do desenvolvimento ágil, falamos muito em produtividade, automação e menos trabalho repetitivo. Mas, na prática, quantas vezes você já perdeu tempo só para abrir um merge request? Buscar o contexto da issue, escrever a descrição, colocar link, título.",
+    "slug": "criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut",
+    "originalUrl": "https://blog.idopterlabs.com.br/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut-4243a7a29bf8"
+  },
+  {
     "date": "Mar 12, 2025",
     "title": "Criando um editor de imagem com Flutter - CAM Covers (Da Ideia à Realidade)",
     "description": "Como criei um app de edição de imagens com Flutter. Veja os desafios, soluções e a monetização do CAM Covers, um editor de capas de álbuns.",
