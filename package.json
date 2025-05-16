@@ -13,6 +13,7 @@
     "data:github": "tsx scripts/getProjectsGithub.ts",
     "data:npm": "tsx scripts/getProjectsNPM.ts",
     "data:rss": "tsx scripts/generateRss.ts",
+    "deploy": "yarn data:github && yarn data:rss && yarn build && yarn sitemap && yarn build",
     "postbuild": "yarn sitemap",
     "prebuild": "yarn data:rss"
   },
