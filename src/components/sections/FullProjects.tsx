@@ -74,7 +74,7 @@ export function FullProjects() {
   const totalProjects = projectSections.reduce((sum, section) => sum + section.projects.length, 0);
 
   return (
-    <section className="relative py-20">
+    <section className="relative py-20 overflow-hidden">
       {/* Blur effect circles */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>

@@ -72,7 +72,7 @@ export default function SocialContactPage({ params }: { params: { network: strin
   if (!contact) return notFound();
   const LucideIcon = iconMap[contact.icon] || Globe;
   return (
-    <div className="relative py-32 px-4 container mx-auto min-h-[60vh] flex items-center justify-center">
+    <div className="relative py-20 px-4 container mx-auto min-h-[60vh] flex items-center justify-center overflow-hidden">
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2 z-0"></div>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2 z-0"></div>
       <div className="flex flex-col items-center justify-center bg-white/60 dark:bg-gray-800/60 backdrop-blur-md p-10 rounded-2xl shadow-md relative z-10 max-w-md w-full text-center gap-4">

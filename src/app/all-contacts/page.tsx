@@ -48,7 +48,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function AllContactsPage() {
   return (
-    <div className="relative py-32 px-4 container mx-auto">
+    <div className="relative py-32 px-4 container mx-auto overflow-hidden">
       {/* Blur background */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2 z-0"></div>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2 z-0"></div>

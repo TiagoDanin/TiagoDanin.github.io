@@ -22,11 +22,11 @@ const Timeline = () => {
           "inLanguage": "pt-BR"
         }))
       }) }} />
-      <div className="container mx-auto py-20">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+      <div className="container mx-auto py-20 px-4 sm:px-6 relative">
+        <div className="absolute top-0 left-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2 hidden sm:block"></div>
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2 hidden sm:block"></div>
 
-        <ol className="relative border-s border-gray-200 dark:border-gray-700 max-w-3xl">
+        <ol className="relative border-s border-gray-200 dark:border-gray-700 max-w-3xl w-full mx-auto">
           {timelineData.map((item, index) => {
             const year = item.date.toString();
             const slug = titleToSlug(item.title);

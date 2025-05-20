@@ -18,10 +18,10 @@ export function Projects() {
 
   return (
     <section id="projects" className="relative py-20 overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
 
-      <div className="container mx-auto relative">
+      <div className="container mx-auto relative px-4">
         <div className="space-y-16">
           <div className="max-w-2xl mx-auto mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
@@ -57,21 +57,23 @@ export function Projects() {
               {!(isExpanded || !isMobile) && (
                 <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-card/90 to-transparent pointer-events-none" />
               )}
+
+              {isMobile && (
+                <div className="flex flex-col gap-3 mt-4">
+                  <Button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    variant="outline"
+                    className="w-full"
+                  >
+                    <span className="flex items-center gap-2">
+                      {isExpanded ? 'Show Less' : 'Show More'} {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                    </span>
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
-
-        {!isExpanded && isMobile && (<div className="flex flex-col gap-3 px-6">
-          <Button
-            onClick={() => setIsExpanded(!isExpanded)}
-            variant="outline"
-            className="w-full"
-          >
-            <span className="flex items-center gap-2">
-              Show More <ChevronDown className="h-4 w-4" />
-            </span>
-          </Button>
-        </div>)}
       </div>
     </section>
   );
