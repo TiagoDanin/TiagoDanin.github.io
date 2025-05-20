@@ -28,6 +28,9 @@ module.exports = {
     } else if (path.startsWith('/talk/')) {
       priority = 0.4;
       changefreq = 'monthly';
+    } else if (path.startsWith('/social/')) {
+      priority = 0.1;
+      changefreq = 'monthly';
     }
 
     return {
