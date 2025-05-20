@@ -30,6 +30,7 @@ type GenericProject = {
   updated_at?: string;
   pushed_at?: string;
   readme_html?: string;
+  homepage?: string;
   [key: string]: any;
 };
 
@@ -161,7 +162,12 @@ export default function ProjectPage({ params }: { params: { type: ProjectType, s
     "applicationCategory": isSoftware ? type : undefined,
     "url": url,
     "inLanguage": "en-US",
-    "isAccessibleForFree": true
+    "isAccessibleForFree": true,
+    ...(project.homepage && { "image": project.homepage }),
+    "author": {
+      "@type": "Person",
+      "name": "Tiago Danin"
+    }
   };
 
   return (

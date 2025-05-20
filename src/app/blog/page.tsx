@@ -3,6 +3,7 @@ import posts from "@/data/posts.json";
 import { Badge } from "@/components/ui/badge";
 import { Flag, Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toISODate } from '@/utils/parse';
 
 export const metadata = {
   title: "Blog",
@@ -29,10 +30,14 @@ const Blog = () => {
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.description,
-      "datePublished": post.date,
+      "datePublished": toISODate(post.date),
       "url": `https://tiagodanin.com/post/${post.slug}`,
       "inLanguage": "pt-BR",
-      "isAccessibleForFree": true
+      "isAccessibleForFree": true,
+      "author": {
+        "@type": "Person",
+        "name": "Tiago Danin"
+      }
     }))
   };
 

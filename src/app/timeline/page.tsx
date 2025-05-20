@@ -1,6 +1,6 @@
 import Link from "next/link";
 import timelineData from "@/data/timeline.json";
-import { titleToSlug, getRandomColor } from '@/utils/parse';
+import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
 
 export const metadata = {
   title: "Timeline",
@@ -17,7 +17,21 @@ const Timeline = () => {
           "@type": "Event",
           "name": item.title,
           "description": item.description,
-          "startDate": item.date,
+          "startDate": toISODate(item.date),
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": item.title
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": item.title
+          },
+          "performer": {
+            "@type": "Person",
+            "name": "Tiago Danin"
+          },
           "url": `/timeline/${item.date.toString()}/${titleToSlug(item.title)}`,
           "inLanguage": "pt-BR"
         }))

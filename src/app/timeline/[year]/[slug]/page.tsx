@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 
 import timelineData from "@/data/timeline.json";
-import { titleToSlug, getRandomColorWithDarkMode } from '@/utils/parse';
+import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 
 type TimelineEvent = {
   date: string;
@@ -79,7 +79,21 @@ export default function TimelineEventPage({ params }: { params: { year: string, 
     "@type": "Event",
     "name": event.title,
     "description": event.description,
-    "startDate": event.date,
+    "startDate": toISODate(event.date),
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": event.title
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": event.title
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Tiago Danin"
+    },
     "url": `https://tiagodanin.com/timeline/${year}/${slug}`,
     "inLanguage": "en-US"
   };

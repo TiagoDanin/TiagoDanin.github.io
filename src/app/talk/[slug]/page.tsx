@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Calendar, Mic, Video, Tag } from 'lucide-react';
 
 import talks from "@/data/talks.json";
-import { titleToSlug, getRandomColorWithDarkMode } from '@/utils/parse';
+import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 import { Button } from '@/components/ui/button';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -70,12 +70,28 @@ export default function TalkPage({ params }: { params: { slug: string } }) {
     "@type": "Event",
     "name": talk.title,
     "description": talk.description,
-    "startDate": talk.date,
-    "eventAttendanceMode": talk.youtubeUrl ? "https://schema.org/OnlineEventAttendanceMode" : undefined,
+    "startDate": toISODate(talk.date),
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": talk.youtubeUrl ? "https://schema.org/OnlineEventAttendanceMode" : "https://schema.org/OfflineEventAttendanceMode",
     "location": {
       "@type": "Place",
       "name": talk.event
     },
+    "organizer": {
+      "@type": "Organization",
+      "name": talk.event
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Tiago Danin"
+    },
+    "offers": talk.youtubeUrl ? {
+      "@type": "Offer",
+      "url": talk.youtubeUrl,
+      "availability": "https://schema.org/InStock",
+      "price": 0,
+      "priceCurrency": "BRL"
+    } : undefined,
     "url": `https://tiagodanin.com/talk/${slug}`,
     "inLanguage": "pt-BR"
   };

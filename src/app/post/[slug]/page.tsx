@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import posts from '@/data/posts.json';
 import { RedirectClient } from "@/components/layout/RedirectClient";
+import { toISODate } from '@/utils/parse';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = posts.find((post) => post.slug === params.slug);
@@ -42,10 +43,14 @@ export default function Post({ params }: { params: { slug: string } }) {
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
-    "datePublished": post.date,
+    "datePublished": toISODate(post.date),
     "url": `https://tiagodanin.com/post/${post.slug}`,
     "inLanguage": "pt-BR",
-    "isAccessibleForFree": true
+    "isAccessibleForFree": true,
+    "author": {
+      "@type": "Person",
+      "name": "Tiago Danin"
+    }
   };
 
   return (
