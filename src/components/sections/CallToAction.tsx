@@ -16,17 +16,17 @@ export function CallToAction() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90">
-              <a href="mailto:TiagoDanin@outlook.com">Send me an email</a>
-            </Button>
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white" asChild>
               <a
                 href="https://linkedin.com/in/tiagodanin"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Connect on LinkedIn
+                Connect on LinkedIn 
               </a>
+            </Button>
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90">
+              <a href="mailto:TiagoDanin@outlook.com">Send me an email</a>
             </Button>
           </div>
         </div>

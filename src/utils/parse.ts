@@ -7,14 +7,13 @@
  * Uses a direct regex extraction approach to get only alphanumeric characters and spaces
  */
 export function titleToSlug(title: string): string {
-  // Extract only letters, numbers, spaces, and hyphens
   const validChars = title.match(/[a-z0-9\s-]+/gi)?.join('') || '';
   
-  // Replace multiple spaces with a single hyphen and trim
   return validChars
     .toLowerCase()
     .replace(/\s+/g, '-')
-    .trim();
+    .trim()
+    .replace(/^-+|-+$/g, '');
 }
 
 /**

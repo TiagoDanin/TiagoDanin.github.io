@@ -12,6 +12,7 @@ import projectsGooglePlay from "@/data/googleplay.json";
 import projectsMicrosoftStore from "@/data/windows.json";
 import projectsAUR from "@/data/aur.json";
 import projectsOffline from "@/data/offline.json";
+import { titleToSlug } from "@/utils/parse";
 
 type GenericProject = {
   name?: string;
@@ -65,8 +66,8 @@ export async function generateMetadata({ params }: { params: { type: ProjectType
   
   const projects = projectsMap[type] || [];
   const project = projects.find((p) => 
-    (p.name && p.name.toLowerCase() === slug.toLowerCase()) || 
-    (p.title && p.title.toLowerCase() === slug.toLowerCase())
+    (p.name && titleToSlug(p.name) === slug) || 
+    (p.title && titleToSlug(p.title) === slug)
   );
 
   if (!project) {
@@ -101,7 +102,7 @@ export async function generateStaticParams() {
 
   Object.entries(projectsMap).forEach(([type, projects]) => {
     projects.forEach((project) => {
-      const slug = (project.name || project.title || '').toLowerCase();
+      const slug = titleToSlug(project.name || project.title || '');
       if (slug) {
         params.push({ type, slug });
       }
@@ -116,8 +117,8 @@ export default function ProjectPage({ params }: { params: { type: ProjectType, s
   
   const projects = projectsMap[type] || [];
   const project = projects.find((p) => 
-    (p.name && p.name.toLowerCase() === slug.toLowerCase()) || 
-    (p.title && p.title.toLowerCase() === slug.toLowerCase())
+    (p.name && titleToSlug(p.name) === slug) || 
+    (p.title && titleToSlug(p.title) === slug)
   );
 
   if (!project) {

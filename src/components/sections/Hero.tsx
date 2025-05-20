@@ -35,7 +35,7 @@ export function Hero() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="#projects">View my projects</Link>
+                <Link href="/projects">View my projects</Link>
               </Button>
             </div>
           </div>
