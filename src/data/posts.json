@@ -1,5 +1,12 @@
 [
   {
+    "date": "May 26, 2025",
+    "title": "O grande problema de segurança nos SaaS criados com Vibe Coding",
+    "description": "SaaS criados no embalo da IA estão falhando no básico: segurança. Nesse vídeo, eu te mostro um dos maiores problemas que venho encontrando em vários produtos feitos com ferramentas no estilo Vibe Coding: bancos de dados completamente expostos, sem nenhuma política mínima de segurança. 😱 Na prática, você vai ver como isso acontece. O problema é grave, fácil de explorar e afeta muitos projetos de indie hackers que nem sabem que estão vulneráveis. 🔐 Se você está criando um produto digital, principalmente com ferramentas low-code/no-code, esse conteúdo é pra você.",
+    "slug": "saas-criados-com-vibe-coding-problema-de-seguranca",
+    "originalUrl": "https://www.youtube.com/watch?v=4hD4UGtLWqU"
+  },
+  {
     "date": "May 13, 2025",
     "title": "Criando um AI Agent no Cursor para interagir com o Gitlab e Shortcut",
     "description": "No mundo do desenvolvimento ágil, falamos muito em produtividade, automação e menos trabalho repetitivo. Mas, na prática, quantas vezes você já perdeu tempo só para abrir um merge request? Buscar o contexto da issue, escrever a descrição, colocar link, título.",
