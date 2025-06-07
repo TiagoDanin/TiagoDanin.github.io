@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Instagram",
+        "url": "https://www.instagram.com/tiagodanin/",
+        "icon": "instagram",
+        "enabled": true
+    },
+    {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/tiagodanin/",
+        "icon": "linkedin",
+        "enabled": true
+    },
+    {
+        "title": "YouTube",
+        "url": "https://www.youtube.com/channel/UCC2wpNWwPLPq0vjpOtGcajw",
+        "icon": "youtube",
+        "enabled": true
+    },
+    {
+        "title": "Apresentação do DevOpsDay",
+        "url": "https://www.canva.com/design/DAGolrGLoXU/MSOTDBX02fW4FhN6dqVAbg/edit?utm_content=DAGolrGLoXU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+        "icon": "presentation",
+        "enabled": true
+    }
+]
