@@ -140,6 +140,18 @@ export function Work() {
                 </div>
               </div>
 
+              {/* Soft Skills */}
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Soft Skills</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="skill-tag bg-purple-600 text-white">Leadership</span>
+                  <span className="skill-tag bg-blue-600 text-white">Team Management</span>
+                  <span className="skill-tag bg-green-600 text-white">Problem Solving</span>
+                  <span className="skill-tag bg-indigo-600 text-white">Communication</span>
+                  <span className="skill-tag bg-rose-600 text-white">Organization</span>
+                </div>
+              </div>
+
               {/* Frontend */}
               <div className="space-y-2">
                 <h4 className="text-sm font-medium">Frontend</h4>
@@ -175,15 +187,15 @@ export function Work() {
                 </div>
               </div>
 
-              {/* Soft Skills */}
+              {/* Game Development */}
               <div className="space-y-2">
-                <h4 className="text-sm font-medium">Soft Skills</h4>
+                <h4 className="text-sm font-medium">Game Development</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="skill-tag bg-purple-600 text-white">Leadership</span>
-                  <span className="skill-tag bg-blue-600 text-white">Team Management</span>
-                  <span className="skill-tag bg-green-600 text-white">Problem Solving</span>
-                  <span className="skill-tag bg-indigo-600 text-white">Communication</span>
-                  <span className="skill-tag bg-rose-600 text-white">Organization</span>
+                  <span className="skill-tag bg-[#000000] text-white">Unity</span>
+                  <span className="skill-tag bg-[#ff8835] text-white">Flame</span>
+                  <span className="skill-tag bg-[#EA316E] text-white">LÖVE</span>
+                  <span className="skill-tag bg-[#59fd9d] text-black">Pixel Art</span>
+                  <span className="skill-tag bg-[#f5792a] text-white">Blender</span>
                 </div>
               </div>
             </div>
