@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Linkedin, Menu } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useEffect, useState } from "react";
 
@@ -41,7 +42,10 @@ export function Navbar() {
           </Sheet>
         </div>
 
-        <Link href="/" className="text-xl font-semibold">Tiago Danin</Link>
+        <Link href="/" className="flex items-center gap-2 text-xl font-semibold">
+          <Image src="/images/logo.svg" alt="Tiago Danin Logo" width={24} height={24} />
+          <span>Tiago Danin</span>
+        </Link>
         
         <div className="flex items-center gap-8">
           <div className="hidden md:flex gap-6">
