@@ -1,5 +1,12 @@
 [
   {
+    "date": "Jun 14, 2025",
+    "title": "Liquid Glass no Flutter: será que realmente precisamos disso?",
+    "description": "Sabe aquele momento em que a Apple lança uma novidade e, de repente, todo mundo só fala disso? Assim foi com o Liquid Glass. Se você acompanhou a WWDC 2025 ou já deu uma olhada no iOS 26, viu aquele efeito novo por todo o sistema operacional de vidro molhado, com blur. Mas será que a gente realmente precisa disso no Flutter?.",
+    "slug": "liquid-glass-no-flutter-sera-que-realmente-precisamos-disso",
+    "originalUrl": "https://www.linkedin.com/pulse/liquid-glass-flutter-ser%C3%A1-que-realmente-precisamos-disso-tiago-danin-zjptf/"
+  },
+  {
     "date": "May 26, 2025",
     "title": "O grande problema de segurança nos SaaS criados com Vibe Coding",
     "description": "SaaS criados no embalo da IA estão falhando no básico: segurança. Nesse vídeo, eu te mostro um dos maiores problemas que venho encontrando em vários produtos feitos com ferramentas no estilo Vibe Coding: bancos de dados completamente expostos, sem nenhuma política mínima de segurança. 😱 Na prática, você vai ver como isso acontece. O problema é grave, fácil de explorar e afeta muitos projetos de indie hackers que nem sabem que estão vulneráveis. 🔐 Se você está criando um produto digital, principalmente com ferramentas low-code/no-code, esse conteúdo é pra você.",
