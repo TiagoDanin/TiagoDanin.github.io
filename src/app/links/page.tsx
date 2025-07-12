@@ -1,7 +1,7 @@
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Instagram, Linkedin, Youtube, Presentation } from "lucide-react";
+import { Instagram, Linkedin, Youtube, Presentation, MessageCircle, AlignJustify } from "lucide-react";
 import linksData from "@/data/links.json";
 
 const iconMap = {
@@ -9,6 +9,8 @@ const iconMap = {
   linkedin: Linkedin,
   youtube: Youtube,
   presentation: Presentation,
+  whatsapp: MessageCircle,
+  list: AlignJustify,
 };
 
 export default function Links() {

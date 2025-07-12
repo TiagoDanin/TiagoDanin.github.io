@@ -21,6 +21,24 @@
         "title": "Apresentação do DevOpsDay",
         "url": "https://www.canva.com/design/DAGolrGLoXU/MSOTDBX02fW4FhN6dqVAbg/edit?utm_content=DAGolrGLoXU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
         "icon": "presentation",
+        "enabled": false
+    },
+    {
+        "title": "Apresentação Studio Code",
+        "url": "https://www.canva.com/design/DAGsf0UHIEk/r-5bEmsp_qNiLOH6V8rRnw/edit?utm_content=DAGsf0UHIEk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+        "icon": "presentation",
+        "enabled": true
+    },
+    {
+        "title": "Link para Buscar de Vagas",
+        "url": "https://www.notion.so/Buscar-de-vagas-22e3bc9b9579804294c5dd49d32609ea?source=copy_link",
+        "icon": "list",
+        "enabled": true
+    },
+    {
+        "title": "Grupo Studio Code",
+        "url": "https://chat.whatsapp.com/BfYiNPxyXTH2QS2jnc6MYB",
+        "icon": "whatsapp",
         "enabled": true
     }
 ]
