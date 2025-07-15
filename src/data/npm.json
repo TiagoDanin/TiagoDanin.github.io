@@ -38,7 +38,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 1516735
+        "downloads": 1659491
     },
     {
         "name": "iso639-codes",
@@ -81,7 +81,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 1480721
+        "downloads": 1624782
     },
     {
         "name": "locale-codes",
@@ -133,7 +133,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 1186258
+        "downloads": 1314403
     },
     {
         "name": "require-from-web",
@@ -171,7 +171,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 21115
+        "downloads": 20794
     },
     {
         "name": "numberlabel",
@@ -208,7 +208,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 10505
+        "downloads": 12027
     },
     {
         "name": "handlebars-lorem-ipsum",
@@ -244,7 +244,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 6196
+        "downloads": 6351
     },
     {
         "name": "nodejs-i18n",
@@ -284,7 +284,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 3137
+        "downloads": 3434
     },
     {
         "name": "unsplash-source-node",
@@ -318,7 +318,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 2306
+        "downloads": 2551
     },
     {
         "name": "telegraf-test",
@@ -364,7 +364,73 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 1387
+        "downloads": 1852
+    },
+    {
+        "name": "gen-readme",
+        "scope": "unscoped",
+        "version": "1.6.0",
+        "description": "Generate a README.md from package.json contents.",
+        "keywords": [
+            "generator",
+            "github",
+            "npm",
+            "package-json",
+            "package-manager",
+            "readme"
+        ],
+        "date": "2020-05-24T22:33:25.345Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/gen-readme",
+            "homepage": "https://tiagodanin.github.io/Gen-README",
+            "repository": "https://github.com/TiagoDanin/Gen-README",
+            "bugs": "https://github.com/TiagoDanin/Gen-README/issues"
+        },
+        "author": {
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 718
+    },
+    {
+        "name": "tiagodanin.github.io",
+        "scope": "unscoped",
+        "version": "3.1.2",
+        "description": "Build my website",
+        "keywords": [
+            "website",
+            "jus"
+        ],
+        "date": "2018-09-19T16:25:23.967Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/tiagodanin.github.io"
+        },
+        "author": {
+            "name": "TiagoDanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 713
     },
     {
         "name": "nuxt-vuikit",
@@ -408,7 +474,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 767
+        "downloads": 705
     },
     {
         "name": "ifmatriz",
@@ -446,111 +512,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 706
-    },
-    {
-        "name": "gen-readme",
-        "scope": "unscoped",
-        "version": "1.6.0",
-        "description": "Generate a README.md from package.json contents.",
-        "keywords": [
-            "generator",
-            "github",
-            "npm",
-            "package-json",
-            "package-manager",
-            "readme"
-        ],
-        "date": "2020-05-24T22:33:25.345Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/gen-readme",
-            "homepage": "https://tiagodanin.github.io/Gen-README",
-            "repository": "https://github.com/TiagoDanin/Gen-README",
-            "bugs": "https://github.com/TiagoDanin/Gen-README/issues"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 705
-    },
-    {
-        "name": "tiagodanin.github.io",
-        "scope": "unscoped",
-        "version": "3.1.2",
-        "description": "Build my website",
-        "keywords": [
-            "website",
-            "jus"
-        ],
-        "date": "2018-09-19T16:25:23.967Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/tiagodanin.github.io"
-        },
-        "author": {
-            "name": "TiagoDanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 692
-    },
-    {
-        "name": "ttgram",
-        "scope": "unscoped",
-        "version": "2.0.1",
-        "description": "Integration with Twitter <-> Telegram",
-        "keywords": [
-            "telegram",
-            "telegram-bot",
-            "bot",
-            "telegrambot",
-            "twitter",
-            "intregration"
-        ],
-        "date": "2018-11-01T15:15:40.341Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/ttgram",
-            "homepage": "https://github.com/TiagoDanin/TTgram#readme",
-            "repository": "https://github.com/TiagoDanin/TTgram",
-            "bugs": "https://github.com/TiagoDanin/TTgram/issues"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 506
+        "downloads": 686
     },
     {
         "name": "psqlstatsshow",
@@ -596,7 +558,45 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 493
+        "downloads": 542
+    },
+    {
+        "name": "ttgram",
+        "scope": "unscoped",
+        "version": "2.0.1",
+        "description": "Integration with Twitter <-> Telegram",
+        "keywords": [
+            "telegram",
+            "telegram-bot",
+            "bot",
+            "telegrambot",
+            "twitter",
+            "intregration"
+        ],
+        "date": "2018-11-01T15:15:40.341Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/ttgram",
+            "homepage": "https://github.com/TiagoDanin/TTgram#readme",
+            "repository": "https://github.com/TiagoDanin/TTgram",
+            "bugs": "https://github.com/TiagoDanin/TTgram/issues"
+        },
+        "author": {
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 515
     },
     {
         "name": "tiagodanin",
@@ -630,44 +630,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 452
-    },
-    {
-        "name": "add-license-bot",
-        "scope": "unscoped",
-        "version": "1.3.5",
-        "description": "Generate LICENSE file from package.json",
-        "keywords": [
-            "github-app",
-            "github-bot",
-            "license",
-            "probot",
-            "probot-app"
-        ],
-        "date": "2020-01-04T16:53:23.226Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/add-license-bot",
-            "homepage": "http://tiagodanin.github.io/Add-License-Bot",
-            "repository": "https://github.com/TiagoDanin/Add-License-Bot",
-            "bugs": "https://github.com/TiagoDanin/Add-License-Bot/issues"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 449
+        "downloads": 503
     },
     {
         "name": "telegraf-getchatmembers",
@@ -705,30 +668,29 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 376
+        "downloads": 498
     },
     {
-        "name": "jformat",
+        "name": "add-license-bot",
         "scope": "unscoped",
-        "version": "1.1.0",
-        "description": "Python function str.format for JavaScript",
+        "version": "1.3.5",
+        "description": "Generate LICENSE file from package.json",
         "keywords": [
-            "format",
-            "javascript",
-            "jformat",
-            "python",
-            "string",
-            "string-manipulation"
+            "github-app",
+            "github-bot",
+            "license",
+            "probot",
+            "probot-app"
         ],
-        "date": "2019-04-24T18:28:21.461Z",
+        "date": "2020-01-04T16:53:23.226Z",
         "links": {
-            "npm": "https://www.npmjs.com/package/jformat",
-            "homepage": "https://github.com/TiagoDanin/JFormat#readme",
-            "repository": "https://github.com/TiagoDanin/JFormat",
-            "bugs": "https://github.com/TiagoDanin/JFormat/issues"
+            "npm": "https://www.npmjs.com/package/add-license-bot",
+            "homepage": "http://tiagodanin.github.io/Add-License-Bot",
+            "repository": "https://github.com/TiagoDanin/Add-License-Bot",
+            "bugs": "https://github.com/TiagoDanin/Add-License-Bot/issues"
         },
         "author": {
-            "name": "TiagoDanin",
+            "name": "Tiago Danin",
             "email": "TiagoDanin@outlook.com",
             "url": "https://TiagoDanin.github.io",
             "username": "tiagodanin"
@@ -743,7 +705,43 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 370
+        "downloads": 455
+    },
+    {
+        "name": "stickersplaybot",
+        "scope": "unscoped",
+        "version": "1.7.0",
+        "description": "Telegram bot - @stickersplaybot",
+        "keywords": [
+            "telegram",
+            "bot",
+            "telegraf-bot",
+            "stickers"
+        ],
+        "date": "2019-03-30T13:44:51.906Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/stickersplaybot",
+            "homepage": "https://tiagodanin.github.io/StickersPlayBot",
+            "repository": "https://github.com/TiagoDanin/StickersPlayBot",
+            "bugs": "https://github.com/TiagoDanin/StickersPlayBot/issues"
+        },
+        "author": {
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 394
     },
     {
         "name": "filexshared",
@@ -784,28 +782,30 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 363
+        "downloads": 378
     },
     {
-        "name": "stickersplaybot",
+        "name": "jformat",
         "scope": "unscoped",
-        "version": "1.7.0",
-        "description": "Telegram bot - @stickersplaybot",
+        "version": "1.1.0",
+        "description": "Python function str.format for JavaScript",
         "keywords": [
-            "telegram",
-            "bot",
-            "telegraf-bot",
-            "stickers"
+            "format",
+            "javascript",
+            "jformat",
+            "python",
+            "string",
+            "string-manipulation"
         ],
-        "date": "2019-03-30T13:44:51.906Z",
+        "date": "2019-04-24T18:28:21.461Z",
         "links": {
-            "npm": "https://www.npmjs.com/package/stickersplaybot",
-            "homepage": "https://tiagodanin.github.io/StickersPlayBot",
-            "repository": "https://github.com/TiagoDanin/StickersPlayBot",
-            "bugs": "https://github.com/TiagoDanin/StickersPlayBot/issues"
+            "npm": "https://www.npmjs.com/package/jformat",
+            "homepage": "https://github.com/TiagoDanin/JFormat#readme",
+            "repository": "https://github.com/TiagoDanin/JFormat",
+            "bugs": "https://github.com/TiagoDanin/JFormat/issues"
         },
         "author": {
-            "name": "Tiago Danin",
+            "name": "TiagoDanin",
             "email": "TiagoDanin@outlook.com",
             "url": "https://TiagoDanin.github.io",
             "username": "tiagodanin"
@@ -820,7 +820,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 358
+        "downloads": 374
     },
     {
         "name": "defend-the-castle",
@@ -859,82 +859,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 349
-    },
-    {
-        "name": "polybar-github",
-        "scope": "unscoped",
-        "version": "2.0.2",
-        "description": "A Polybar module to show unread notifications from GitHub",
-        "keywords": [
-            "polybar",
-            "github",
-            "notifications",
-            "notification"
-        ],
-        "date": "2021-02-21T01:14:11.849Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/polybar-github",
-            "homepage": "https://tiagodanin.github.io/Polybar-GitHub",
-            "repository": "https://github.com/TiagoDanin/Polybar-GitHub",
-            "bugs": "https://github.com/TiagoDanin/Polybar-GitHub/issues"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 337
-    },
-    {
-        "name": "choosealicense-list",
-        "scope": "unscoped",
-        "version": "1.2.0",
-        "description": "List of licenses from choosealicense.com",
-        "keywords": [
-            "license",
-            "licenses",
-            "mit",
-            "list",
-            "open source",
-            "choosealicense",
-            "spdx"
-        ],
-        "date": "2020-05-01T01:46:28.940Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/choosealicense-list",
-            "homepage": "https://github.com/TiagoDanin/ChooseALicense-List#readme",
-            "repository": "https://github.com/TiagoDanin/ChooseALicense-List",
-            "bugs": "https://github.com/TiagoDanin/ChooseALicense-List/issues"
-        },
-        "author": {
-            "name": "TiagoDanin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 335
+        "downloads": 360
     },
     {
         "name": "rock-paper-scissors-ml",
@@ -975,7 +900,43 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 329
+        "downloads": 347
+    },
+    {
+        "name": "polybar-github",
+        "scope": "unscoped",
+        "version": "2.0.2",
+        "description": "A Polybar module to show unread notifications from GitHub",
+        "keywords": [
+            "polybar",
+            "github",
+            "notifications",
+            "notification"
+        ],
+        "date": "2021-02-21T01:14:11.849Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/polybar-github",
+            "homepage": "https://tiagodanin.github.io/Polybar-GitHub",
+            "repository": "https://github.com/TiagoDanin/Polybar-GitHub",
+            "bugs": "https://github.com/TiagoDanin/Polybar-GitHub/issues"
+        },
+        "author": {
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 346
     },
     {
         "name": "handlebars-subresource-integrity",
@@ -1011,7 +972,46 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 326
+        "downloads": 327
+    },
+    {
+        "name": "choosealicense-list",
+        "scope": "unscoped",
+        "version": "1.2.0",
+        "description": "List of licenses from choosealicense.com",
+        "keywords": [
+            "license",
+            "licenses",
+            "mit",
+            "list",
+            "open source",
+            "choosealicense",
+            "spdx"
+        ],
+        "date": "2020-05-01T01:46:28.940Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/choosealicense-list",
+            "homepage": "https://github.com/TiagoDanin/ChooseALicense-List#readme",
+            "repository": "https://github.com/TiagoDanin/ChooseALicense-List",
+            "bugs": "https://github.com/TiagoDanin/ChooseALicense-List/issues"
+        },
+        "author": {
+            "name": "TiagoDanin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 317
     },
     {
         "name": "rock-paper-scissors-web",
@@ -1053,77 +1053,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 313
-    },
-    {
-        "name": "telegraf-start-parts",
-        "scope": "unscoped",
-        "version": "1.0.0",
-        "description": "Command /start parameters parser middleware for Telegraf",
-        "keywords": [
-            "telegraf",
-            "middleware",
-            "telegram",
-            "command"
-        ],
-        "date": "2018-09-17T13:37:49.798Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/telegraf-start-parts",
-            "homepage": "https://github.com/TiagoDanin/Telegraf-Start-Parts#readme",
-            "repository": "https://github.com/TiagoDanin/Telegraf-Start-Parts",
-            "bugs": "https://github.com/TiagoDanin/Telegraf-Start-Parts/issues"
-        },
-        "author": {
-            "name": "Tiago Danin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 275
-    },
-    {
-        "name": "docxtopdf-cli",
-        "scope": "unscoped",
-        "version": "1.1.0",
-        "description": "Convert .docx file to .pdf",
-        "keywords": [
-            "convert",
-            "covert",
-            "docx",
-            "pdf",
-            "pdf-viewer"
-        ],
-        "date": "2019-04-24T18:27:56.750Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/docxtopdf-cli",
-            "homepage": "https://github.com/TiagoDanin/DocxToPdf-CLI#readme",
-            "repository": "https://github.com/TiagoDanin/DocxToPdf-CLI",
-            "bugs": "https://github.com/TiagoDanin/DocxToPdf-CLI/issues"
-        },
-        "author": {
-            "name": "TiagoDanin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 271
+        "downloads": 309
     },
     {
         "name": "gen-package",
@@ -1160,7 +1090,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 271
+        "downloads": 295
     },
     {
         "name": "resxclone",
@@ -1200,7 +1130,148 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 267
+        "downloads": 294
+    },
+    {
+        "name": "telegraf-start-parts",
+        "scope": "unscoped",
+        "version": "1.0.0",
+        "description": "Command /start parameters parser middleware for Telegraf",
+        "keywords": [
+            "telegraf",
+            "middleware",
+            "telegram",
+            "command"
+        ],
+        "date": "2018-09-17T13:37:49.798Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/telegraf-start-parts",
+            "homepage": "https://github.com/TiagoDanin/Telegraf-Start-Parts#readme",
+            "repository": "https://github.com/TiagoDanin/Telegraf-Start-Parts",
+            "bugs": "https://github.com/TiagoDanin/Telegraf-Start-Parts/issues"
+        },
+        "author": {
+            "name": "Tiago Danin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 282
+    },
+    {
+        "name": "docxtopdf-cli",
+        "scope": "unscoped",
+        "version": "1.1.0",
+        "description": "Convert .docx file to .pdf",
+        "keywords": [
+            "convert",
+            "covert",
+            "docx",
+            "pdf",
+            "pdf-viewer"
+        ],
+        "date": "2019-04-24T18:27:56.750Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/docxtopdf-cli",
+            "homepage": "https://github.com/TiagoDanin/DocxToPdf-CLI#readme",
+            "repository": "https://github.com/TiagoDanin/DocxToPdf-CLI",
+            "bugs": "https://github.com/TiagoDanin/DocxToPdf-CLI/issues"
+        },
+        "author": {
+            "name": "TiagoDanin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 275
+    },
+    {
+        "name": "cubohub",
+        "scope": "unscoped",
+        "version": "1.4.1",
+        "description": "Automating page generation for GitHub!",
+        "keywords": [
+            "ghpages",
+            "generation",
+            "github",
+            "bot",
+            "html",
+            "git"
+        ],
+        "date": "2018-12-05T19:30:33.267Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/cubohub",
+            "homepage": "https://github.com/CuboHub/CuboHub#readme"
+        },
+        "author": {
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 273
+    },
+    {
+        "name": "node-orgmanager-api",
+        "scope": "unscoped",
+        "version": "1.1.2",
+        "description": "A Node.js client for the OrgManager API",
+        "keywords": [
+            "orgmanager",
+            "api"
+        ],
+        "date": "2018-03-06T20:09:28.775Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/node-orgmanager-api",
+            "homepage": "https://github.com/orgmanager/node-orgmanager-api#readme",
+            "repository": "https://github.com/orgmanager/node-orgmanager-api",
+            "bugs": "https://github.com/orgmanager/node-orgmanager-api/issues"
+        },
+        "author": {
+            "name": "OrgManager"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "m1guelpiedrafita",
+                "email": "soy@miguelpiedrafita.com"
+            },
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 271
     },
     {
         "name": "subtitlesx",
@@ -1238,78 +1309,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 267
-    },
-    {
-        "name": "cubohub",
-        "scope": "unscoped",
-        "version": "1.4.1",
-        "description": "Automating page generation for GitHub!",
-        "keywords": [
-            "ghpages",
-            "generation",
-            "github",
-            "bot",
-            "html",
-            "git"
-        ],
-        "date": "2018-12-05T19:30:33.267Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/cubohub",
-            "homepage": "https://github.com/CuboHub/CuboHub#readme"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 264
-    },
-    {
-        "name": "node-orgmanager-api",
-        "scope": "unscoped",
-        "version": "1.1.2",
-        "description": "A Node.js client for the OrgManager API",
-        "keywords": [
-            "orgmanager",
-            "api"
-        ],
-        "date": "2018-03-06T20:09:28.775Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/node-orgmanager-api",
-            "homepage": "https://github.com/orgmanager/node-orgmanager-api#readme",
-            "repository": "https://github.com/orgmanager/node-orgmanager-api",
-            "bugs": "https://github.com/orgmanager/node-orgmanager-api/issues"
-        },
-        "author": {
-            "name": "OrgManager"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "m1guelpiedrafita",
-                "email": "soy@miguelpiedrafita.com"
-            },
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 243
+        "downloads": 270
     },
     {
         "name": "github-vs",
@@ -1342,41 +1342,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 229
-    },
-    {
-        "name": "ddbots",
-        "scope": "unscoped",
-        "version": "1.2.0",
-        "description": "Bot do Grupo: DesenvolvimentoDeBots",
-        "keywords": [
-            "bot",
-            "telegram",
-            "grupo",
-            "desenvolvimento",
-            "bots"
-        ],
-        "date": "2018-12-16T15:07:34.865Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/ddbots",
-            "homepage": "https://github.com/DesenvolvimentoDeBots/Bot#readme",
-            "repository": "https://github.com/DesenvolvimentoDeBots/Bot",
-            "bugs": "https://github.com/DesenvolvimentoDeBots/Bot/issues"
-        },
-        "author": {
-            "name": "TiagoDanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 222
+        "downloads": 242
     },
     {
         "name": "scraperscript",
@@ -1414,44 +1380,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 219
-    },
-    {
-        "name": "polybar-helpers",
-        "scope": "unscoped",
-        "version": "1.0.2",
-        "description": "Polybar - Helpers to create plugin/module using NodeJS",
-        "keywords": [
-            "polybar",
-            "helpers",
-            "tail",
-            "poly",
-            "bar"
-        ],
-        "date": "2018-11-25T15:21:37.512Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/polybar-helpers",
-            "homepage": "https://TiagoDanin.github.io/Polybar-Helpers",
-            "repository": "https://github.com/TiagoDanin/Polybar-Helpers",
-            "bugs": "https://github.com/TiagoDanin/Polybar-Helpers/issues"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 219
+        "downloads": 239
     },
     {
         "name": "another-xss-example",
@@ -1492,7 +1421,41 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 215
+        "downloads": 237
+    },
+    {
+        "name": "ddbots",
+        "scope": "unscoped",
+        "version": "1.2.0",
+        "description": "Bot do Grupo: DesenvolvimentoDeBots",
+        "keywords": [
+            "bot",
+            "telegram",
+            "grupo",
+            "desenvolvimento",
+            "bots"
+        ],
+        "date": "2018-12-16T15:07:34.865Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/ddbots",
+            "homepage": "https://github.com/DesenvolvimentoDeBots/Bot#readme",
+            "repository": "https://github.com/DesenvolvimentoDeBots/Bot",
+            "bugs": "https://github.com/DesenvolvimentoDeBots/Bot/issues"
+        },
+        "author": {
+            "name": "TiagoDanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 235
     },
     {
         "name": "vuejs-with-express",
@@ -1532,62 +1495,31 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 202
+        "downloads": 234
     },
     {
-        "name": "cerebro-xkcd",
-        "scope": "unscoped",
-        "version": "1.0.2",
-        "description": "XKCD plugin for Cerebro",
-        "keywords": [
-            "cerebro",
-            "cerebro-plugin",
-            "xkcd"
-        ],
-        "date": "2018-09-19T13:22:22.606Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/cerebro-xkcd",
-            "homepage": "https://TiagoDanin.github.io/Cerebro-XKCD",
-            "repository": "https://github.com/TiagoDanin/Cerebro-XKCD",
-            "bugs": "https://github.com/TiagoDanin/Cerebro-XKCD/issues"
-        },
-        "author": {
-            "name": "TiagoDanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 200
-    },
-    {
-        "name": "awesome-proton",
+        "name": "npm-user-packages-downloads",
         "scope": "unscoped",
         "version": "1.0.0",
-        "description": "List of games tested with Proton (Tool for Steam Client on Linux)",
+        "description": "Get npm packages per author with download counts",
         "keywords": [
-            "proton",
-            "awesome",
-            "awesome-list",
-            "steam",
-            "games",
-            "list"
+            "api",
+            "homepage",
+            "npm",
+            "packages",
+            "user",
+            "version",
+            "downloads"
         ],
-        "date": "2018-10-01T15:13:25.803Z",
+        "date": "2018-12-11T13:54:20.473Z",
         "links": {
-            "npm": "https://www.npmjs.com/package/awesome-proton",
-            "homepage": "https://github.com/TiagoDanin/Awesome-Proton#readme",
-            "repository": "https://github.com/TiagoDanin/Awesome-Proton",
-            "bugs": "https://github.com/TiagoDanin/Awesome-Proton/"
+            "npm": "https://www.npmjs.com/package/npm-user-packages-downloads"
         },
         "author": {
-            "name": "Tiago Danin"
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
         },
         "publisher": {
             "username": "tiagodanin",
@@ -1599,7 +1531,44 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 198
+        "downloads": 233
+    },
+    {
+        "name": "polybar-helpers",
+        "scope": "unscoped",
+        "version": "1.0.2",
+        "description": "Polybar - Helpers to create plugin/module using NodeJS",
+        "keywords": [
+            "polybar",
+            "helpers",
+            "tail",
+            "poly",
+            "bar"
+        ],
+        "date": "2018-11-25T15:21:37.512Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/polybar-helpers",
+            "homepage": "https://TiagoDanin.github.io/Polybar-Helpers",
+            "repository": "https://github.com/TiagoDanin/Polybar-Helpers",
+            "bugs": "https://github.com/TiagoDanin/Polybar-Helpers/issues"
+        },
+        "author": {
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 220
     },
     {
         "name": "simpletriviajs",
@@ -1638,43 +1607,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 195
-    },
-    {
-        "name": "npm-user-packages-downloads",
-        "scope": "unscoped",
-        "version": "1.0.0",
-        "description": "Get npm packages per author with download counts",
-        "keywords": [
-            "api",
-            "homepage",
-            "npm",
-            "packages",
-            "user",
-            "version",
-            "downloads"
-        ],
-        "date": "2018-12-11T13:54:20.473Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/npm-user-packages-downloads"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 195
+        "downloads": 217
     },
     {
         "name": "rock-paper-scissors-cli",
@@ -1716,7 +1649,42 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 193
+        "downloads": 206
+    },
+    {
+        "name": "awesome-proton",
+        "scope": "unscoped",
+        "version": "1.0.0",
+        "description": "List of games tested with Proton (Tool for Steam Client on Linux)",
+        "keywords": [
+            "proton",
+            "awesome",
+            "awesome-list",
+            "steam",
+            "games",
+            "list"
+        ],
+        "date": "2018-10-01T15:13:25.803Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/awesome-proton",
+            "homepage": "https://github.com/TiagoDanin/Awesome-Proton#readme",
+            "repository": "https://github.com/TiagoDanin/Awesome-Proton",
+            "bugs": "https://github.com/TiagoDanin/Awesome-Proton/"
+        },
+        "author": {
+            "name": "Tiago Danin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 205
     },
     {
         "name": "msdos-pause",
@@ -1752,60 +1720,24 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 185
+        "downloads": 198
     },
     {
-        "name": "polybar-break-timer",
+        "name": "cerebro-xkcd",
         "scope": "unscoped",
         "version": "1.0.2",
-        "description": "Take a break",
+        "description": "XKCD plugin for Cerebro",
         "keywords": [
-            "polybar",
-            "timer",
-            "sleep",
-            "poly",
-            "bar"
+            "cerebro",
+            "cerebro-plugin",
+            "xkcd"
         ],
-        "date": "2018-11-25T15:28:45.477Z",
+        "date": "2018-09-19T13:22:22.606Z",
         "links": {
-            "npm": "https://www.npmjs.com/package/polybar-break-timer",
-            "homepage": "https://TiagoDanin.github.io/Polybar-Break-Timer",
-            "repository": "https://github.com/TiagoDanin/Polybar-Break-Timer",
-            "bugs": "https://github.com/TiagoDanin/Polybar-Break-Timer/issues"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 169
-    },
-    {
-        "name": "polybar-lastfm",
-        "scope": "unscoped",
-        "version": "1.2.0",
-        "description": "A Polybar module to scrobble &amp; love music in Lastfm",
-        "keywords": [
-            "lastfm",
-            "polybar"
-        ],
-        "date": "2018-10-02T15:45:41.618Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/polybar-lastfm",
-            "homepage": "https://github.com/TiagoDanin/Polybar-Lastfm#readme",
-            "repository": "https://github.com/TiagoDanin/Polybar-Lastfm",
-            "bugs": "https://github.com/TiagoDanin/Polybar-Lastfm/issues"
+            "npm": "https://www.npmjs.com/package/cerebro-xkcd",
+            "homepage": "https://TiagoDanin.github.io/Cerebro-XKCD",
+            "repository": "https://github.com/TiagoDanin/Cerebro-XKCD",
+            "bugs": "https://github.com/TiagoDanin/Cerebro-XKCD/issues"
         },
         "author": {
             "name": "TiagoDanin"
@@ -1820,7 +1752,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 166
+        "downloads": 192
     },
     {
         "name": "github-push-global",
@@ -1858,7 +1790,146 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 165
+        "downloads": 189
+    },
+    {
+        "name": "polybar-break-timer",
+        "scope": "unscoped",
+        "version": "1.0.2",
+        "description": "Take a break",
+        "keywords": [
+            "polybar",
+            "timer",
+            "sleep",
+            "poly",
+            "bar"
+        ],
+        "date": "2018-11-25T15:28:45.477Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/polybar-break-timer",
+            "homepage": "https://TiagoDanin.github.io/Polybar-Break-Timer",
+            "repository": "https://github.com/TiagoDanin/Polybar-Break-Timer",
+            "bugs": "https://github.com/TiagoDanin/Polybar-Break-Timer/issues"
+        },
+        "author": {
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 181
+    },
+    {
+        "name": "thanos-nodejs",
+        "scope": "unscoped",
+        "version": "1.1.0",
+        "description": "Reduce the file size of your project down to 50%, by randomly deleting half of the files.",
+        "keywords": [
+            "thans",
+            "reduce",
+            "size",
+            "down",
+            "delete",
+            "random"
+        ],
+        "date": "2019-03-28T01:28:34.258Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/thanos-nodejs",
+            "homepage": "https://tiagodanin.github.io/Thanos-NodeJS",
+            "repository": "https://github.com/TiagoDanin/Thanos-NodeJS",
+            "bugs": "https://github.com/TiagoDanin/Thanos-NodeJS/issues"
+        },
+        "author": {
+            "name": "TiagoDanin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 175
+    },
+    {
+        "name": "hacktoberfest-auto-label-bot",
+        "scope": "unscoped",
+        "version": "1.0.2",
+        "description": "Add label 'Hacktoberfest' in new issues.",
+        "keywords": [
+            "github",
+            "probot",
+            "probot-app"
+        ],
+        "date": "2020-01-04T17:07:28.266Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/hacktoberfest-auto-label-bot",
+            "homepage": "http://tiagodanin.github.io/Hacktoberfest-Auto-Label"
+        },
+        "author": {
+            "name": "Tiago Danin",
+            "email": "TiagoDanin@outlook.com",
+            "url": "https://TiagoDanin.github.io",
+            "username": "tiagodanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 175
+    },
+    {
+        "name": "polybar-lastfm",
+        "scope": "unscoped",
+        "version": "1.2.0",
+        "description": "A Polybar module to scrobble &amp; love music in Lastfm",
+        "keywords": [
+            "lastfm",
+            "polybar"
+        ],
+        "date": "2018-10-02T15:45:41.618Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/polybar-lastfm",
+            "homepage": "https://github.com/TiagoDanin/Polybar-Lastfm#readme",
+            "repository": "https://github.com/TiagoDanin/Polybar-Lastfm",
+            "bugs": "https://github.com/TiagoDanin/Polybar-Lastfm/issues"
+        },
+        "author": {
+            "name": "TiagoDanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 174
     },
     {
         "name": "require-benchmark",
@@ -1901,78 +1972,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 164
-    },
-    {
-        "name": "hacktoberfest-auto-label-bot",
-        "scope": "unscoped",
-        "version": "1.0.2",
-        "description": "Add label 'Hacktoberfest' in new issues.",
-        "keywords": [
-            "github",
-            "probot",
-            "probot-app"
-        ],
-        "date": "2020-01-04T17:07:28.266Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/hacktoberfest-auto-label-bot",
-            "homepage": "http://tiagodanin.github.io/Hacktoberfest-Auto-Label"
-        },
-        "author": {
-            "name": "Tiago Danin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 162
-    },
-    {
-        "name": "thanos-nodejs",
-        "scope": "unscoped",
-        "version": "1.1.0",
-        "description": "Reduce the file size of your project down to 50%, by randomly deleting half of the files.",
-        "keywords": [
-            "thans",
-            "reduce",
-            "size",
-            "down",
-            "delete",
-            "random"
-        ],
-        "date": "2019-03-28T01:28:34.258Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/thanos-nodejs",
-            "homepage": "https://tiagodanin.github.io/Thanos-NodeJS",
-            "repository": "https://github.com/TiagoDanin/Thanos-NodeJS",
-            "bugs": "https://github.com/TiagoDanin/Thanos-NodeJS/issues"
-        },
-        "author": {
-            "name": "TiagoDanin",
-            "email": "TiagoDanin@outlook.com",
-            "url": "https://TiagoDanin.github.io",
-            "username": "tiagodanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 160
+        "downloads": 168
     },
     {
         "name": "update-version-cli",
@@ -2013,7 +2013,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 150
+        "downloads": 160
     },
     {
         "name": "storeofbot",
@@ -2051,7 +2051,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 146
+        "downloads": 153
     },
     {
         "name": "telegraf-atom",
@@ -2095,7 +2095,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 143
+        "downloads": 148
     },
     {
         "name": "pseudo-cabeca",
@@ -2130,7 +2130,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 137
+        "downloads": 142
     },
     {
         "name": "updatemit",
@@ -2167,7 +2167,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 133
+        "downloads": 136
     },
     {
         "name": "desenvolvimento-de-bots-i18n",
@@ -2198,7 +2198,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 132
+        "downloads": 134
     },
     {
         "name": "@orgmanager/node-orgmanager-api",
@@ -2233,7 +2233,38 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 130
+        "downloads": 127
+    },
+    {
+        "name": "daysplash",
+        "scope": "unscoped",
+        "version": "1.0.0",
+        "description": "My app of wallpapers, using Electron!",
+        "keywords": [
+            "unsplash",
+            "wallpaper"
+        ],
+        "date": "2018-06-20T21:26:01.462Z",
+        "links": {
+            "npm": "https://www.npmjs.com/package/daysplash",
+            "homepage": "https://github.com/TiagoDanin/DaySplash#readme",
+            "repository": "https://github.com/TiagoDanin/DaySplash",
+            "bugs": "https://github.com/TiagoDanin/DaySplash/issues"
+        },
+        "author": {
+            "name": "TiagoDanin"
+        },
+        "publisher": {
+            "username": "tiagodanin",
+            "email": "TiagoDanin@outlook.com"
+        },
+        "maintainers": [
+            {
+                "username": "tiagodanin",
+                "email": "TiagoDanin@outlook.com"
+            }
+        ],
+        "downloads": 107
     },
     {
         "name": "cp-random",
@@ -2271,7 +2302,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 102
+        "downloads": 103
     },
     {
         "name": "desenvolvimentodebots-site",
@@ -2285,37 +2316,6 @@
         "date": "2018-09-19T16:26:07.356Z",
         "links": {
             "npm": "https://www.npmjs.com/package/desenvolvimentodebots-site"
-        },
-        "author": {
-            "name": "TiagoDanin"
-        },
-        "publisher": {
-            "username": "tiagodanin",
-            "email": "TiagoDanin@outlook.com"
-        },
-        "maintainers": [
-            {
-                "username": "tiagodanin",
-                "email": "TiagoDanin@outlook.com"
-            }
-        ],
-        "downloads": 102
-    },
-    {
-        "name": "daysplash",
-        "scope": "unscoped",
-        "version": "1.0.0",
-        "description": "My app of wallpapers, using Electron!",
-        "keywords": [
-            "unsplash",
-            "wallpaper"
-        ],
-        "date": "2018-06-20T21:26:01.462Z",
-        "links": {
-            "npm": "https://www.npmjs.com/package/daysplash",
-            "homepage": "https://github.com/TiagoDanin/DaySplash#readme",
-            "repository": "https://github.com/TiagoDanin/DaySplash",
-            "bugs": "https://github.com/TiagoDanin/DaySplash/issues"
         },
         "author": {
             "name": "TiagoDanin"
@@ -2366,7 +2366,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 97
+        "downloads": 100
     },
     {
         "name": "debug-console-js",
@@ -2401,7 +2401,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 97
+        "downloads": 100
     },
     {
         "name": "echo-lastfm",
@@ -2431,7 +2431,7 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 96
+        "downloads": 97
     },
     {
         "name": "junicodeinfo",
@@ -2467,6 +2467,6 @@
                 "email": "TiagoDanin@outlook.com"
             }
         ],
-        "downloads": 93
+        "downloads": 96
     }
 ]
