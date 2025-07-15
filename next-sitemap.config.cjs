@@ -6,6 +6,11 @@ module.exports = {
   additionalSitemaps: [
     'https://tiagodanin.com/github-sitemap.xml',
   ],
+  robotsTxtOptions: {
+    additionalSitemaps: [
+      'https://tiagodanin.com/github-sitemap.xml',
+    ],
+  },
   transform: async (config, path) => {
     let priority = 0.7;
     let changefreq = config.changefreq;
@@ -29,6 +34,9 @@ module.exports = {
       priority = 0.4;
       changefreq = 'monthly';
     } else if (path.startsWith('/social/')) {
+      priority = 0.1;
+      changefreq = 'monthly';
+    } else if (path.startsWith('/about')) {
       priority = 0.1;
       changefreq = 'monthly';
     }
