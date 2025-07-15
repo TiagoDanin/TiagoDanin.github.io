@@ -17,7 +17,6 @@ export function Footer() {
             <Link href="/" className="hover:text-primary">Home</Link>
             {!isHome && (
               <>
-                <Link href="/about" className="hover:text-primary">About</Link>
                 <Link href="/projects" className="hover:text-primary">Projects</Link>
               </>
             )}
