@@ -46,7 +46,7 @@ export function Projects() {
                         More projects
                       </Link>
                     </Button>
-                    <p className="text-muted-foreground mt-2 font-bold">+300 projects</p>
+                    <p className="text-muted-foreground mt-2 font-bold">+350 projects</p>
                     <p className="text-muted-foreground text-sm">
                       So far and more to come
                     </p>
