@@ -1,15 +1,25 @@
 'use client'
 
 import { useState } from "react";
-import { Briefcase, Code as CodeIcon, ChevronDown, ChevronUp } from "lucide-react";
+import { 
+  Briefcase, 
+  Code as CodeIcon, 
+  ChevronDown, 
+  ChevronUp,
+  Users,
+  Brain,
+  MessageCircle,
+  Target,
+  Calendar
+} from "lucide-react";
 import { 
   SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
   SiNodedotjs, SiPostgresql, SiSqlite,
-  SiFigma, SiCanva, SiUnity, SiBlender,
+  SiFigma, SiCanva, SiUnity, SiBlender, SiAdobexd,
   SiFirebase, SiGitlab, SiGithub, SiGooglecloud, SiDocker
 } from "react-icons/si";
-import { FaCode, FaServer, FaJava, FaMicrosoft } from "react-icons/fa";
+import { FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import workData from "@/data/work.json";
 import volunteerData from "@/data/volunteer.json";
@@ -131,9 +141,13 @@ export function Work() {
                 <div className="flex flex-wrap gap-2">
                   <TechIcon icon={SiFlutter} name="Flutter" color="#02569B" />
                   <TechIcon icon={SiReact} name="React Native" color="#0096b9" />
+                  <TechIcon icon={FaMicrosoft} name="Xamarin" color="#3498DB" />
                   <TechIcon icon={FaJava} name="Java" color="#d55a02" />
                   <TechIcon icon={SiKotlin} name="Kotlin" color="#7F52FF" />
+                  <TechIcon icon={FaCode} name="Obj-C" color="#438EFF" />
                   <TechIcon icon={SiSwift} name="Swift" color="#F05138" />
+                  <TechIcon icon={SiSwift} name="SwiftUI" color="#007AFF" />
+                  <TechIcon icon={SiKotlin} name="Jetpack Compose" color="#7F52FF" />
                   <TechIcon icon={SiIonic} name="Ionic" color="#3880FF" />
                 </div>
               </div>
@@ -148,6 +162,18 @@ export function Work() {
                   <TechIcon icon={FaMicrosoft} name="Azure" color="#0078D4" />
                   <TechIcon icon={SiGooglecloud} name="Google Cloud" color="#4285F4" />
                   <TechIcon icon={SiDocker} name="Docker" color="#2496ED" />
+                </div>
+              </div>
+
+              {/* Soft Skills */}
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium">Soft Skills</h4>
+                <div className="flex flex-wrap gap-2">
+                  <TechIcon icon={Users} name="Leadership" color="#8B5CF6" />
+                  <TechIcon icon={Target} name="Team Management" color="#3B82F6" />
+                  <TechIcon icon={Brain} name="Problem Solving" color="#10B981" />
+                  <TechIcon icon={MessageCircle} name="Communication" color="#6366F1" />
+                  <TechIcon icon={Calendar} name="Organization" color="#e11d48" />
                 </div>
               </div>
 
@@ -182,7 +208,8 @@ export function Work() {
                 <h4 className="text-sm font-medium">Design</h4>
                 <div className="flex flex-wrap gap-2">
                   <TechIcon icon={SiFigma} name="Figma" color="#F24E1E" />
-                  <TechIcon icon={FaCode} name="Adobe XD" color="#A855F7" />
+                  <TechIcon icon={FaCode} name="Mobile UX" color="#0ACF83" />
+                  <TechIcon icon={SiAdobexd} name="Adobe XD" color="#FF61F6" />
                   <TechIcon icon={SiCanva} name="Canva" color="#00bce5" />
                 </div>
               </div>
@@ -192,6 +219,9 @@ export function Work() {
                 <h4 className="text-sm font-medium">Game Development</h4>
                 <div className="flex flex-wrap gap-2">
                   <TechIcon icon={SiUnity} name="Unity" color="#000000" />
+                  <TechIcon icon={SiFlutter} name="Flame" color="#ff8835" />
+                  <TechIcon icon={FaGamepad} name="LÖVE" color="#EA316E" />
+                  <TechIcon icon={FaPalette} name="Pixel Art" color="#00ad48" />
                   <TechIcon icon={SiBlender} name="Blender" color="#F5792A" />
                 </div>
               </div>
