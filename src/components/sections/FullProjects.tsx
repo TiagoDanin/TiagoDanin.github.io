@@ -14,14 +14,15 @@ import projectsAUR from "@/data/aur.json";
 import projectsOffline from "@/data/offline.json";
 import { useState } from "react";
 
+const otherProjectsPrivateCount = 55;
 const projectSections = [
   {
     title: "GitHub",
     projects: projectsGithub
   },
   {
-    title: "Private",
-    projects: projectsPrivate
+    title: "Google Play",
+    projects: projectsGooglePlay
   },
   {
     title: "NPM",
@@ -44,16 +45,16 @@ const projectSections = [
     urlPrefix: "https://atom.io/packages/"
   },
   {
-    title: "Google Play",
-    projects: projectsGooglePlay
-  },
-  {
     title: "Microsoft Store",
     projects: projectsMicrosoftStore
   },
   {
     title: "AUR Archlinux",
     projects: projectsAUR
+  },
+  {
+    title: "Private",
+    projects: projectsPrivate
   },
   {
     title: "Offline/Old Websites",
@@ -71,7 +72,7 @@ export function FullProjects() {
     }));
   };
 
-  const totalProjects = projectSections.reduce((sum, section) => sum + section.projects.length, 0);
+  const totalProjects = projectSections.reduce((sum, section) => sum + section.projects.length, otherProjectsPrivateCount);
 
   return (
     <section className="relative py-20 overflow-hidden">
@@ -84,7 +85,7 @@ export function FullProjects() {
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">All Projects</h1>
           <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 rounded-full font-semibold">
-            +{totalProjects} Projects
+            {totalProjects} Projects
           </span>
         </div>
 
@@ -107,21 +108,29 @@ export function FullProjects() {
                   aria-controls={`accordion-color-body-${index}`}
                 >
                   <span className="text-xl">{section.title}</span>
-                  <svg
-                    className={`w-3 h-3 shrink-0 transition-transform ${expandedSections[section.title] ? 'rotate-180' : ''}`}
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 10 6"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 5 5 1 1 5"
-                    />
-                  </svg>
+                  <div className="flex items-center gap-3 ml-auto">
+                    <span className="px-2 py-1 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded text-sm">
+                      {section.title === "Private" ? 
+                        projectsPrivate.length + otherProjectsPrivateCount : 
+                        section.projects.length
+                      } projects
+                    </span>
+                    <svg
+                      className={`w-3 h-3 shrink-0 transition-transform ${expandedSections[section.title] ? 'rotate-180' : ''}`}
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 10 6"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 5 5 1 1 5"
+                      />
+                    </svg>
+                  </div>
                 </button>
               </h2>
               <div
@@ -130,17 +139,51 @@ export function FullProjects() {
                 aria-labelledby={`accordion-color-heading-${index}`}
               >
                 <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {section.projects.map((project: any, projectIndex) => (
-                      <ProjectCard
-                        key={projectIndex}
-                        {...project}
-                        title={project.title || project.name}
-                        description={project.description || ''}
-                        href={section.urlPrefix ? `${section.urlPrefix}${project.name}` : project.homepage || project.html_url || project.url || null}
-                      />
-                    ))}
-                  </div>
+                  {section.title === "Private" ? (
+                    <div className="space-y-8">
+                      {/* Regular Private Projects */}
+                      <div>
+                        <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+                          Regular Projects ({projectsPrivate.length})
+                        </h3>
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                          {projectsPrivate.map((project: any, projectIndex) => (
+                            <ProjectCard
+                              key={projectIndex}
+                              {...project}
+                              title={project.title || project.name}
+                              description={project.description || ''}
+                              href={section.urlPrefix ? `${section.urlPrefix}${project.name}` : project.homepage || project.html_url || project.url || null}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {/* Other Projects - Easter Egg */}
+                      <div>
+                        <div className="flex items-center gap-2 mb-4">
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                            Other 🥚
+                          </h3>
+                          <span className="px-2 py-1 bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 rounded text-sm font-bold">
+                            {otherProjectsPrivateCount} secret projects
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                      {section.projects.map((project: any, projectIndex) => (
+                        <ProjectCard
+                          key={projectIndex}
+                          {...project}
+                          title={project.title || project.name}
+                          description={project.description || ''}
+                          href={section.urlPrefix ? `${section.urlPrefix}${project.name}` : project.homepage || project.html_url || project.url || null}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
