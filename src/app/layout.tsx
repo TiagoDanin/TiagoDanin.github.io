@@ -8,10 +8,50 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Tiago Danin",
+    default: "Tiago Danin - Mobile Developer & Software Engineer",
     template: "%s | Tiago Danin"
   },
-  description: "I'm a Mobile Developer with expertise in Java, Kotlin, Obj-C, Swift, React Native, and Flutter, also experienced in front-end, back-end, and desktop development for macOS & Linux.",
+  description: "Mobile Developer with expertise in React Native, Flutter Java, Kotlin, Obj-C and Swift. Also experienced in front-end, back-end, and desktop development for macOS & Linux. Open source contributor and bug hunter.",
+  keywords: [
+    "Tiago Danin", "Mobile Developer", "Software Engineer", "Flutter", "React Native", 
+    "iOS", "Android", "Swift", "Kotlin", "Java", "TypeScript", "Open Source",
+    "Bug Hunter", "Frontend", "Backend", "DevOps", "Brasil", "Developer"
+  ],
+  authors: [{ name: "Tiago Danin", url: "https://tiagodanin.com" }],
+  creator: "Tiago Danin",
+  publisher: "Tiago Danin",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://tiagodanin.com',
+    title: 'Tiago Danin - Mobile Developer & Software Engineer',
+    description: 'Mobile Developer with expertise in Flutter, React Native, iOS, and Android development. Open source contributor and bug hunter.',
+    siteName: 'Tiago Danin',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tiago Danin - Mobile Developer & Software Engineer',
+    description: 'Mobile Developer with expertise in Flutter, React Native, iOS, and Android development.',
+    creator: '@tiagodanin',
+  },
+  alternates: {
+    canonical: 'https://tiagodanin.com',
+    languages: {
+      'en-US': 'https://tiagodanin.com',
+      'pt-BR': 'https://tiagodanin.com',
+    },
+  },
 };
 
 export default function RootLayout({
