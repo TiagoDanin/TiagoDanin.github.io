@@ -2,10 +2,25 @@
 
 import { useState } from "react";
 import { Briefcase, Code as CodeIcon, ChevronDown, ChevronUp } from "lucide-react";
+import { 
+  SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
+  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
+  SiNodedotjs, SiPostgresql, SiSqlite,
+  SiFigma, SiCanva, SiUnity, SiBlender,
+  SiFirebase, SiGitlab, SiGithub, SiGooglecloud, SiDocker
+} from "react-icons/si";
+import { FaCode, FaServer, FaJava, FaMicrosoft } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import workData from "@/data/work.json";
 import volunteerData from "@/data/volunteer.json";
 import { ExperienceItem } from "@/components/ui/experience-item";
+
+const TechIcon = ({ icon: Icon, name, color }: { icon: any, name: string, color: string }) => (
+  <div className="tech-badge" style={{ backgroundColor: color }}>
+    <Icon className="w-4 h-4" />
+    <span className="text-xs font-medium">{name}</span>
+  </div>
+);
 
 export function Work() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -109,21 +124,17 @@ export function Work() {
               <span className="ml-3">Technical Skills</span>
             </h3>
 
-            <div className="mt-6 space-y-6">
+            <div className="mt-6 space-y-4">
               {/* Mobile */}
               <div className="space-y-2">
                 <h4 className="text-sm font-medium">Mobile Development</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="skill-tag bg-[#02569B] text-white">Flutter</span>
-                  <span className="skill-tag bg-[#61DAFB] text-black">React Native</span>
-                  <span className="skill-tag bg-[#3498DB] text-white">Xamarin</span>
-                  <span className="skill-tag bg-[#B07219] text-white">Java</span>
-                  <span className="skill-tag bg-[#A97BFF] text-white">Kotlin</span>
-                  <span className="skill-tag bg-[#438EFF] text-white">Obj-C</span>
-                  <span className="skill-tag bg-[#F05138] text-white">Swift</span>
-                  <span className="skill-tag bg-[#F05138] text-white">SwiftUI</span>
-                  <span className="skill-tag bg-[#A97BFF] text-white">Jetpack Compose</span>
-                  <span className="skill-tag bg-[#3880FF] text-white">Ionic</span>
+                  <TechIcon icon={SiFlutter} name="Flutter" color="#02569B" />
+                  <TechIcon icon={SiReact} name="React Native" color="#0096b9" />
+                  <TechIcon icon={FaJava} name="Java" color="#d55a02" />
+                  <TechIcon icon={SiKotlin} name="Kotlin" color="#7F52FF" />
+                  <TechIcon icon={SiSwift} name="Swift" color="#F05138" />
+                  <TechIcon icon={SiIonic} name="Ionic" color="#3880FF" />
                 </div>
               </div>
 
@@ -131,24 +142,12 @@ export function Work() {
               <div className="space-y-2">
                 <h4 className="text-sm font-medium">DevOps</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="skill-tag bg-[#FFCA28] text-black">Firebase</span>
-                  <span className="skill-tag bg-[#FC6D26] text-white">GitLab CI/CD</span>
-                  <span className="skill-tag bg-[#2088FF] text-white">GitHub CI/CD</span>
-                  <span className="skill-tag bg-[#0078D4] text-white">Azure</span>
-                  <span className="skill-tag bg-[#4285F4] text-white">Google Cloud</span>
-                  <span className="skill-tag bg-[#2496ED] text-white">Docker</span>
-                </div>
-              </div>
-
-              {/* Soft Skills */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium">Soft Skills</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="skill-tag bg-purple-600 text-white">Leadership</span>
-                  <span className="skill-tag bg-blue-600 text-white">Team Management</span>
-                  <span className="skill-tag bg-green-600 text-white">Problem Solving</span>
-                  <span className="skill-tag bg-indigo-600 text-white">Communication</span>
-                  <span className="skill-tag bg-rose-600 text-white">Organization</span>
+                  <TechIcon icon={SiFirebase} name="Firebase" color="#ff2300" />
+                  <TechIcon icon={SiGitlab} name="GitLab CI/CD" color="#FC6D26" />
+                  <TechIcon icon={SiGithub} name="GitHub CI/CD" color="#181717" />
+                  <TechIcon icon={FaMicrosoft} name="Azure" color="#0078D4" />
+                  <TechIcon icon={SiGooglecloud} name="Google Cloud" color="#4285F4" />
+                  <TechIcon icon={SiDocker} name="Docker" color="#2496ED" />
                 </div>
               </div>
 
@@ -156,11 +155,13 @@ export function Work() {
               <div className="space-y-2">
                 <h4 className="text-sm font-medium">Frontend</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="skill-tag bg-[#61DAFB] text-black">React</span>
-                  <span className="skill-tag bg-[#4FC08D] text-white">Vue.js</span>
-                  <span className="skill-tag bg-[#3178C6] text-white">TypeScript</span>
-                  <span className="skill-tag bg-[#264DE4] text-white">CSS</span>
-                  <span className="skill-tag bg-[#E34F26] text-white">HTML</span>
+                  <TechIcon icon={SiHtml5} name="HTML" color="#E34F26" />
+                  <TechIcon icon={SiCss3} name="CSS" color="#264DE4" />
+                  <TechIcon icon={SiJavascript} name="JavaScript" color="#B8860B" />
+                  <TechIcon icon={SiTypescript} name="TypeScript" color="#3178C6" />
+                  <TechIcon icon={SiReact} name="React" color="#20A7C7" />
+                  <TechIcon icon={SiVuedotjs} name="Vue.js" color="#4FC08D" />
+                  <TechIcon icon={SiTailwindcss} name="Tailwind" color="#0891B2" />
                 </div>
               </div>
 
@@ -168,11 +169,11 @@ export function Work() {
               <div className="space-y-2">
                 <h4 className="text-sm font-medium">Backend</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="skill-tag bg-[#339933] text-white">Node.js</span>
-                  <span className="skill-tag bg-[#000000] text-white">Express</span>
-                  <span className="skill-tag bg-[#4B275F] text-white">Elixir</span>
-                  <span className="skill-tag bg-[#336791] text-white">PostgreSQL</span>
-                  <span className="skill-tag bg-[#003B57] text-white">SQLite</span>
+                  <TechIcon icon={SiNodedotjs} name="Node.js" color="#339933" />
+                  <TechIcon icon={FaServer} name="Express" color="#000000" />
+                  <TechIcon icon={FaCode} name="Elixir" color="#4B275F" />
+                  <TechIcon icon={SiPostgresql} name="PostgreSQL" color="#336791" />
+                  <TechIcon icon={SiSqlite} name="SQLite" color="#003B57" />
                 </div>
               </div>
 
@@ -180,10 +181,9 @@ export function Work() {
               <div className="space-y-2">
                 <h4 className="text-sm font-medium">Design</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="skill-tag bg-[#F24E1E] text-white">Figma</span>
-                  <span className="skill-tag bg-[#0ACF83] text-white">Mobile UX</span>
-                  <span className="skill-tag bg-[#FF61F6] text-white">Adobe XD</span>
-                  <span className="skill-tag bg-[#20C4CB] text-white">Canva</span>
+                  <TechIcon icon={SiFigma} name="Figma" color="#F24E1E" />
+                  <TechIcon icon={FaCode} name="Adobe XD" color="#A855F7" />
+                  <TechIcon icon={SiCanva} name="Canva" color="#00bce5" />
                 </div>
               </div>
 
@@ -191,11 +191,8 @@ export function Work() {
               <div className="space-y-2">
                 <h4 className="text-sm font-medium">Game Development</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="skill-tag bg-[#000000] text-white">Unity</span>
-                  <span className="skill-tag bg-[#ff8835] text-white">Flame</span>
-                  <span className="skill-tag bg-[#EA316E] text-white">LÖVE</span>
-                  <span className="skill-tag bg-[#59fd9d] text-black">Pixel Art</span>
-                  <span className="skill-tag bg-[#f5792a] text-white">Blender</span>
+                  <TechIcon icon={SiUnity} name="Unity" color="#000000" />
+                  <TechIcon icon={SiBlender} name="Blender" color="#F5792A" />
                 </div>
               </div>
             </div>
