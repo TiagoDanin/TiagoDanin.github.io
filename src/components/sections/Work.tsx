@@ -54,7 +54,7 @@ export function Work() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Experience Card */}
           <div className="bg-card/50 backdrop-blur-xl p-6 rounded-2xl relative">
-            <div className={`${isExpanded ? '' : 'h-[600px] overflow-hidden'} relative`}>
+            <div className={`${isExpanded ? '' : 'h-[660px] overflow-hidden'} relative`}>
               <h3 className="flex text-sm font-semibold items-center">
                 <Briefcase className="h-5 w-5 flex-none" />
                 <span className="ml-3">Professional Experience</span>
