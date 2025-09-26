@@ -21,7 +21,7 @@ export function Footer() {
               </>
             )}
             <Link href="/blog" className="hover:text-primary">Blog</Link>
-            <Link href="/timeline" className="hover:text-primary">Timeline</Link>
+            <Link href="/talks" className="hover:text-primary">Talks</Link>
             <Link href="/sitemap" className="hover:text-primary">Site Map</Link>
           </div>
           

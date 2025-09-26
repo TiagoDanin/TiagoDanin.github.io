@@ -1,10 +1,116 @@
 [
   {
     "date": "2025",
-    "title": "Soon™",
-    "description": "More to come...",
+    "title": "🏆 4º Lugar no CTF do Hack In Cariri - XibéSec",
+    "description": "Participou da primeira competição de cibersegurança presencial (CTF) no evento XibéSec em Belém, conquistando o 4º lugar na competição.",
     "tags": [
-      "soon"
+      "ctf",
+      "cybersecurity",
+      "xibesec",
+      "competition",
+      "events"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🤖 Agente de IA para Controlar Smartphone com Claude Code",
+    "description": "Criou um agente de IA usando Claude Code conectado ao Android-Debug-Bridge-MCP para automação de testes e documentação de apps Android.",
+    "tags": [
+      "ai",
+      "android",
+      "claudecode",
+      "automation",
+      "mcp",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🗣️ Palestra sobre Carreira Mobile",
+    "description": "Compartilhou jornada e aprendizados sobre carreira mobile em evento do Studio Code e OWASP Belém, abordando dicas práticas para iniciantes na área tech.",
+    "tags": [
+      "career",
+      "mobile",
+      "owasp",
+      "talks",
+      "events"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🗣️ Talk sobre Feature Flags no DevOpsDays Belém",
+    "description": "Palestrou no DevOpsDays Belém sobre 'O papel das Feature Flags na entrega contínua de Aplicativos Mobile', unindo estratégia e tecnologia.",
+    "tags": [
+      "devops",
+      "mobile",
+      "featureflags",
+      "talks",
+      "devopsdays",
+      "events"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "📝 Artigo sobre Segurança de SaaS",
+    "description": "Publicou artigo e vídeo demonstrando problemas de segurança em SaaS criados com ferramentas de VibeCoding, alertando sobre bancos de dados expostos.",
+    "tags": [
+      "security",
+      "saas",
+      "backend",
+      "infosec",
+      "content"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🤖 Agentes de IA com Cursor e MCP",
+    "description": "Desenvolveu agente de IA usando Cursor + MCP GitLab e Shortcut para automatizar criação de Merge Requests diretamente do editor.",
+    "tags": [
+      "ai",
+      "cursor",
+      "mcp",
+      "gitlab",
+      "automation",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "📱 Artigo sobre CAM Covers",
+    "description": "Compartilhou experiência criando editor de imagem com Flutter para transformar fotos em capas de álbuns, incluindo monetização e uso de IA.",
+    "tags": [
+      "flutter",
+      "mobile",
+      "produto",
+      "ia",
+      "editor",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🗣️ Palestra no Google DevFest Belém",
+    "description": "Apresentou talk 'O Ingrediente Secreto dos Apps de Sucesso: Teste A/B com Firebase' no DevFest Belém, organizado pelo GDG Belém.",
+    "tags": [
+      "googledevfest",
+      "firebase",
+      "testesab",
+      "talks",
+      "gdg",
+      "events"
+    ]
+  },
+  {
+    "date": "2023",
+    "title": "🗣️ Palestra no Google I/O Extended Belém",
+    "description": "Apresentou 'Implementado Firebase em aplicações Flutter: Tudo o que você precisa saber' no Google I/O Extended Belém na UNAMA.",
+    "tags": [
+      "googleio",
+      "firebase",
+      "flutter",
+      "talks",
+      "gdg",
+      "events"
     ]
   },
   {
@@ -38,14 +144,6 @@
       "estudo",
       "marketingdigital",
       "desenvolvimentopessoal"
-    ]
-  },
-  {
-    "date": "2023",
-    "title": "SOON™",
-    "description": "More to come...",
-    "tags": [
-      "soon"
     ]
   },
   {

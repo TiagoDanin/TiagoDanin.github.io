@@ -1,10 +1,17 @@
 [
   {
-    "date": "Jun 14, 2025",
-    "title": "Liquid Glass no Flutter: será que realmente precisamos disso?",
-    "description": "Sabe aquele momento em que a Apple lança uma novidade e, de repente, todo mundo só fala disso? Assim foi com o Liquid Glass. Se você acompanhou a WWDC 2025 ou já deu uma olhada no iOS 26, viu aquele efeito novo por todo o sistema operacional de vidro molhado, com blur. Mas será que a gente realmente precisa disso no Flutter?.",
-    "slug": "liquid-glass-no-flutter-sera-que-realmente-precisamos-disso",
-    "originalUrl": "https://www.linkedin.com/pulse/liquid-glass-flutter-ser%C3%A1-que-realmente-precisamos-disso-tiago-danin-zjptf/"
+    "date": "Sep 8, 2025",
+    "title": "Criando um Agente de IA no Claude Code para Controlar meu Smartphone",
+    "description": "Automatizando documentação e testes de apps Android com inteligência artificial. Eu estava enfrentando um desafio específico: precisava documentar automaticamente diversos fluxos de uma aplicação Android. Foi quando comecei a explorar maneiras de realizar esse processo, e uma das ferramentas que decidi testar foi o Claude Code.",
+    "slug": "criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone",
+    "originalUrl": "https://blog.idopterlabs.com.br/criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone-5b19672564c0"
+  },
+  {
+    "date": "Aug 22, 2025",
+    "title": "[EN] Creating an AI Agent in Claude Code to Control my Smartphone",
+    "description": "Automating Android app documentation and testing with artificial intelligence",
+    "slug": "mcp-claude-code-control-my-smartphone-english",
+    "originalUrl": "https://dev.to/tiagodanin/creating-an-ai-agent-in-claude-code-to-control-my-smartphone-1e3e"
   },
   {
     "date": "May 26, 2025",

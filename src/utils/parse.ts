@@ -54,6 +54,52 @@ export function getRandomColor(): string {
 }
 
 /**
+ * Extracts tags from post title and description based on technology keywords
+ */
+export function extractTagsFromPost(title: string, description: string): string[] {
+  const text = `${title} ${description}`.toLowerCase();
+  const tags: string[] = [];
+
+  const techKeywords = {
+    'React': ['react', 'jsx', 'react native', 'reactnative'],
+    'JavaScript': ['javascript', 'js', 'node', 'nodejs'],
+    'Flutter': ['flutter', 'dart'],
+    'Android': ['android', 'kotlin', 'jetpack compose'],
+    'iOS': ['ios', 'swift', 'xcode'],
+    'AI': ['ai', 'inteligência artificial', 'claude', 'gpt', 'machine learning'],
+    'GitHub': ['github', 'git'],
+    'DevOps': ['ci/cd', 'pipeline', 'gitlab', 'deployment'],
+    'Mobile': ['mobile', 'app', 'aplicativo'],
+    'Web': ['web', 'website', 'site'],
+    'Security': ['segurança', 'security', 'vulnerabilidade'],
+    'Tutorial': ['tutorial', 'como criar', 'guia', 'passo a passo'],
+    'Performance': ['performance', 'otimização', 'optimization'],
+    'UI/UX': ['ui', 'ux', 'interface', 'experiência', 'design'],
+    'Testing': ['test', 'teste', 'testing'],
+    'Backend': ['backend', 'api', 'server'],
+    'Frontend': ['frontend', 'client'],
+    'Tools': ['tools', 'ferramentas', 'automation', 'automação'],
+    'Career': ['carreira', 'linkedin', 'perfil', 'recrutador'],
+    'Linux': ['linux', 'terminal', 'bash', 'zsh']
+  };
+
+  for (const [tag, keywords] of Object.entries(techKeywords)) {
+    if (keywords.some(keyword => text.includes(keyword))) {
+      tags.push(tag);
+    }
+  }
+
+  // Add content type tags
+  if (text.includes('video') || text.includes('youtube')) {
+    tags.push('Video');
+  } else {
+    tags.push('Article');
+  }
+
+  return [...new Set(tags)];
+}
+
+/**
  * Converts a date string to ISO 8601 format (YYYY-MM-DD, YYYY-MM, or YYYY)
  * Accepts formats like 'May 13, 2025', 'Nov 2023', '2023', '2023-05-13', '13/05/2023'
  */

@@ -3,7 +3,7 @@ import posts from '@/data/posts.json';
 import { RedirectClient } from "@/components/layout/RedirectClient";
 import { toISODate } from '@/utils/parse';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = posts.find((post) => post.slug === params.slug);
 
   if (!post) {

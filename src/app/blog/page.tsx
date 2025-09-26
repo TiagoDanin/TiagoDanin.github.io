@@ -3,7 +3,7 @@ import posts from "@/data/posts.json";
 import { Badge } from "@/components/ui/badge";
 import { Flag, Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toISODate } from '@/utils/parse';
+import { toISODate, extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
 export const metadata = {
   title: "Blog",
@@ -101,6 +101,21 @@ const Blog = () => {
                   {post.description}
                 </Link>
               </p>
+
+              <div className="relative z-10 mt-3 flex flex-wrap gap-2">
+                {extractTagsFromPost(post.title, post.description).map((tag) => (
+                  <Badge
+                    key={tag}
+                    variant="outline"
+                    className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
+                    asChild
+                  >
+                    <Link href={`/blog/tags/${titleToSlug(tag)}`}>
+                      {tag}
+                    </Link>
+                  </Badge>
+                ))}
+              </div>
 
               <div className="relative z-10 mt-4 flex items-center text-sm font-medium text-primary">
                 {isYouTubePost(post.originalUrl) ? (

@@ -1,0 +1,2279 @@
+# Tiago Danin - Complete Professional Profile
+
+**Mobile Developer | Bug Hunter | Open Source Enthusiast**
+
+Website: https://tiagodanin.com | LinkedIn: https://linkedin.com/in/tiagodanin | Email: TiagoDanin@outlook.com
+
+## Personal Introduction
+
+Hi, I am **Tiago Danin**, a passionate Mobile Developer with expertise in Java, Kotlin, Obj-C, Swift, React Native, and Flutter. I'm also experienced in front-end, back-end, and desktop development for macOS & Linux. I'm passionate about open source, automation, and solving real-world problems, always looking for new challenges. Currently diving into Digital Marketing to expand my knowledge beyond coding.
+
+Outside of work, I'm a runner, dancer, and music lover—always seeking new ways to grow, challenge myself, and enjoy life. Let's build something amazing together! 🚀
+
+## Areas of Expertise
+
+### Mobile Development
+Native and cross-platform mobile apps using Flutter, React Native, Kotlin, Swift, and more.
+
+### Full Stack Development
+End-to-end web solutions with modern frontend technologies and robust backend systems using React, Node.js, and various databases.
+
+### Cybersecurity
+Implementation of security best practices, penetration testing, and secure coding principles to protect applications and data.
+
+### DevOps & CI/CD
+Streamlined deployment processes, cloud infrastructure, and continuous integration/deployment pipelines.
+
+## Professional Experience
+
+### **Idopter Labs** | Mobile Developer | 2022 — Present
+Development of hybrid solutions with React Native and Flutter, system architectures, project documentation, and test creation. Sometimes I work on Backend with Elixir (Phoenix) or Frontend.
+
+**Key responsibilities and achievements:**
+- App submission to stores (Google Play and App Store)
+- Integration/creation of native libraries (iOS and Android) in Swift, Objc, Java, and Kotlin for React Native apps
+- Platform management: AppCenter, Firebase, Onesignal
+- REST API Integration
+- React Native project architecture and structure
+- Implementation and improvement of automated tests using Jest
+
+### **VoxData Technology** | Mobile Developer | 2019 — 2022
+Development of native (Java, Swift, and Objc) and hybrid (Quasar, React Native) mobile solutions, system architectures, project documentation, and test creation.
+
+**Key mobile development skills:**
+- App submission to stores (Google Play and App Store)
+- Firebase Test Lab and Firebase Cloud Messaging
+- Integration/creation of native libraries with hybrid applications
+- REST API Integration
+- Android architecture and structure
+
+### **HackerOne** | Independent Security Researcher - Freelance | 2018 — Present
+Conducted vulnerability assessments for HackerOne partners, reporting security flaws to developers for remediation.
+
+**Key analysis skills:**
+- Cross-site scripting (XSS)
+- Cross Site Request Forgery (CSRF)
+- Open Redirect
+- Inadequate authentication procedures
+- Android app reverse engineering
+
+### **IssueHunt** | Backend Developer - Freelance | 2018 — 2019
+Developed and maintained Node.js applications and contributed to open source projects.
+
+## Volunteer Work & Community Involvement
+
+- **Devs Norte** | Organizador | 2019 — Present
+- **Node.js** | Documentation Translator | 2023 — Present
+- **ElectronJS** | Documentation Translator | 2017 — Present
+- **BrazilJS** | Event Organizer - On The Road Belém | 2019
+- **Node.js** | i18n Team Member | 2018 — 2023
+- **Synko** | Software Developer | 2014 — 2019
+
+## Featured Projects
+
+### **BICOS**
+An Open Banking application developed during a hackathon hosted by TecBan (company responsible for Banco24Horas ATMs). The project won the competition by showing that users don't need to understand Open Banking to benefit from it.
+
+### **CAM Covers**
+An application that transforms ordinary photos into professional-looking album covers, inspired by real music players. Available on Google Play Store.
+
+### **React Native - Zendesk SDK**
+A wrapper for Zendesk SDK in React Native, making it easy to integrate customer support functionality into your mobile apps.
+
+### **Stone World**
+A puzzle game set in a stone world, developed with Unity 3D. Coming soon!
+
+### **The Slime Dungeon**
+Survive in a dungeon of slimes! You are stuck with adorable creatures. How long can you survive? Built with Flutter and Bonfire engine.
+
+### **Virtual Pocket Air Conditioning**
+Have a virtual air conditioner in your pocket! This relaxing sound app provides better sleep. Created as a fun project to study animations in Flutter. Available on Google Play Store.
+
+**Total Projects:** Over 350 projects across various platforms including GitHub, NPM, Google Play, and private repositories.
+
+## Technical Skills
+
+### Mobile Development
+- **Frameworks:** Flutter, React Native, Xamarin, Ionic
+- **Native Languages:** Java, Kotlin, Obj-C, Swift
+- **UI Frameworks:** SwiftUI, Jetpack Compose
+
+### DevOps & Cloud Platforms
+- **CI/CD:** GitLab CI/CD, GitHub CI/CD
+- **Cloud Services:** Firebase, Azure, Google Cloud
+- **Containerization:** Docker
+
+### Frontend Technologies
+- **Languages:** HTML, CSS, JavaScript, TypeScript
+- **Frameworks:** React, Vue.js
+- **Styling:** Tailwind CSS
+
+### Backend Technologies
+- **Runtime:** Node.js
+- **Frameworks:** Express
+- **Languages:** Elixir
+- **Databases:** PostgreSQL, SQLite
+
+### Design & Prototyping
+- **Tools:** Figma, Adobe XD, Canva
+- **Specialties:** Mobile UX Design
+
+### Game Development
+- **Engines:** Unity, Flame, LÖVE
+- **Skills:** Pixel Art, Blender (3D modeling)
+
+### Soft Skills
+- Leadership
+- Team Management
+- Problem Solving
+- Communication
+- Organization
+
+## Recent Talks & Presentations (2023-2025)
+
+### **"Desenvolvimento Mobile: por onde começar"** | Jul 2025
+*Studio Code Meetup 2025*
+Descubra por onde começar no desenvolvimento mobile com um roadmap prático, comparação entre tecnologias (Flutter, React Native, Kotlin, etc.) e dicas para conseguir o primeiro emprego na área — mesmo começando do zero. Inclui estratégias para destacar seu perfil no LinkedIn, construir projetos e encontrar vagas.
+
+### **"O papel das Feature Flags na entrega contínua de Aplicativos Mobile"** | Jun 2025
+*DevOpsDays Belém 2025*
+Transforme seu fluxo de CI/CD mobile em uma poderosa ferramenta para experimentação contínua. Vamos explorar como utilizar Feature Flags e testes A/B para validar funcionalidades, personalizar a experiência do usuário e aumentar as vendas, sem depender de novos lançamentos.
+
+### **"O Ingrediente Secreto dos apps de sucesso: Teste A/B com Firebase"** | Dec 2024
+*DevFest Belém 2024*
+Descubra como os Testes A/B e Firebase são usados pelos maiores apps do mercado para criar experiências dinâmicas e adaptadas ao usuário. Abordemos desde a configuração até casos práticos que mostram o impacto dessas ferramentas na retenção e engajamento.
+
+### **"Gerenciando Certificados e Perfis Na App Store com Fastlane Match"** | Mar 2024
+*Idopter Labs Talks 2024*
+Gerenciar certificados e perfis na App Store é uma etapa crucial do desenvolvimento de aplicativos móveis. Lightning Talk sobre automação com Fastlane.
+
+### **"DevOps para Desenvolvimento Mobile"** | Nov 2023
+*DevOpsDays Belém 2023*
+Descubra o caminho para a automação no desenvolvimento mobile! Desafios únicos, diferenças essenciais do DevOps mobile e segredos para superar barreiras na distribuição de apps nas lojas.
+
+### **"Construindo lista perfomaticas no React Native"** | May 2023
+*Idopter Labs Talks 2023*
+Aprenda como usar o FlashList pode tornar suas listas mais performáticas e assim evitar os problemas comuns associados ao FlatList.
+
+**Total Talks:** 17 presentations covering mobile development, DevOps, security, and career guidance.
+
+## Recent Blog Posts & Articles
+
+### **"Liquid Glass no Flutter: será que realmente precisamos disso?"** | Jun 14, 2025
+Sabe aquele momento em que a Apple lança uma novidade e, de repente, todo mundo só fala disso? Assim foi com o Liquid Glass. Se você acompanhou a WWDC 2025 ou já deu uma olhada no iOS 26, viu aquele efeito novo por todo o sistema operacional de vidro molhado, com blur. Mas será que a gente realmente precisa disso no Flutter?
+
+### **"O grande problema de segurança nos SaaS criados com Vibe Coding"** | May 26, 2025
+SaaS criados no embalo da IA estão falhando no básico: segurança. Nesse artigo, eu te mostro um dos maiores problemas que venho encontrando em vários produtos feitos com ferramentas no estilo Vibe Coding: bancos de dados completamente expostos, sem nenhuma política mínima de segurança.
+
+### **"Criando um AI Agent no Cursor para interagir com o Gitlab e Shortcut"** | May 13, 2025
+No mundo do desenvolvimento ágil, falamos muito em produtividade, automação e menos trabalho repetitivo. Mas, na prática, quantas vezes você já perdeu tempo só para abrir um merge request? Buscar o contexto da issue, escrever a descrição, colocar link, título.
+
+### **"Criando um editor de imagem com Flutter - CAM Covers (Da Ideia à Realidade)"** | Mar 12, 2025
+Como criei um app de edição de imagens com Flutter. Veja os desafios, soluções e a monetização do CAM Covers, um editor de capas de álbuns.
+
+### **"Aprimorando a Experiência do Usuário com Teclados no iOS usando Keyboard Actions"** | Mar 13, 2025
+Você nunca mais vai lutar contra o Teclado do iOS no Flutter! Veja como resolver um problema comum em aplicativos mobile para iOS.
+
+**Total Blog Posts:** Over 30 articles covering mobile development, security, DevOps, and technology insights published across LinkedIn, Medium, Dev.to, and YouTube.
+
+## Open Source Contributions
+
+- **NPM Packages:** 66 published packages
+- **GitHub Projects:** 237 public repositories
+- **Google Play Apps:** 4 published applications
+- **LuaRocks Packages:** 3 published packages
+- **PyPI Packages:** 3 published packages
+- **Atom Packages:** 2 published packages
+- **Microsoft Store Apps:** 2 published applications
+- **AUR Archlinux:** 1 package
+
+## Contact & Social Links
+
+**Primary Contact:**
+- Email: TiagoDanin@outlook.com
+- LinkedIn: https://linkedin.com/in/tiagodanin
+
+**Professional Profiles:**
+- Website: https://tiagodanin.com
+- Projects Portfolio: https://tiagodanin.com/projects
+- Talks & Presentations: https://tiagodanin.com/talks
+- Blog: https://tiagodanin.com/blog
+- Professional Timeline: https://tiagodanin.com/timeline
+
+## Call to Action
+
+Whether you have a project in mind, want to discuss technology, or just want to say hello, I'm always open to new conversations and opportunities. Let's connect and build something amazing together!
+
+### Home
+
+Source: [https://tiagodanin.com/](https://tiagodanin.com/)
+
+Hi I am
+
+# Tiago Danin
+
+Mobile DeveloperBug Hunter
+
+I'm a Mobile Developer with expertise in Java, Kotlin, Obj-C, Swift, React Native, and Flutter, also experienced in front-end, back-end, and desktop development for macOS & Linux. Passionate about open source, automation, and solving real-world problems, always looking for new challenges. Currently diving into Digital Marketing to expand my knowledge beyond coding.  
+Outside of work, I'm a runner, dancer, and music lover—always seeking new ways to grow, challenge myself, and enjoy life. Let's build something amazing together! 🚀
+
+[Get in touch ](#contact)[View my projects](/projects)
+
+![Profile](https://avatars.githubusercontent.com/u/5731176?v=4)
+
+## My Expertise
+
+Areas where I excel and can help bring your ideas to life.
+
+### Mobile Development
+
+Native and cross-platform mobile apps using Flutter, React Native, Kotlin, Swift, and more.
+
+### Full Stack Development
+
+End-to-end web solutions with modern frontend technologies and robust backend systems using React, Node.js, and various databases.
+
+### Cybersecurity
+
+Implementation of security best practices, penetration testing, and secure coding principles to protect applications and data.
+
+### DevOps & CI/CD
+
+Streamlined deployment processes, cloud infrastructure, and continuous integration/deployment pipelines.
+
+## Projects
+
+Explore my portfolio of innovative projects, from mobile apps to web solutions. Each project represents a unique challenge tackled with creativity and technical expertise, showcasing my journey in software development.
+
+![BICOS](/projects/bicos-app.png)
+
+### BICOS
+
+An Open Banking application developed during a hackathon hosted by TecBan (company responsible for Banco24Horas ATMs). The project won the competition by showing that users don't need to understand Open Banking to benefit from it.
+
+![CAM Covers](/projects/cam-covers-app.png)
+
+### CAM Covers
+
+An application that transforms ordinary photos into professional-looking album covers, inspired by real music players.
+
+![React Native - Zendesk SDK](/projects/zendesk-sdk.png)
+
+### React Native - Zendesk SDK
+
+A wrapper for Zendesk SDK in React Native, making it easy to integrate customer support functionality into your mobile apps.
+
+![Stone World](/projects/stone-game.png)
+
+### Stone World
+
+A puzzle game set in a stone world, developed with Unity 3D. Coming soon!
+
+![The Slime Dungeon](/projects/slime-game.png)
+
+### The Slime Dungeon
+
+Survive in a dungeon of slimes! You are stuck with adorable creatures. How long can you survive? Built with Flutter and Bonfire engine.
+
+![Virtual Pocket Air Conditioning](/projects/air-conditionin.png)
+
+### Virtual Pocket Air Conditioning
+
+Have a virtual air conditioner in your pocket! This relaxing sound app provides better sleep. Created as a fun project to study animations in Flutter.
+
+[More projects](/projects)
+
++350 projects
+
+So far and more to come
+
+## Recent Thoughts
+
+PT-BR
+
+Some of my latest articles, insights, and ideas from the blog.
+
+### [Liquid Glass no Flutter: será que realmente precisamos disso?](/post/liquid-glass-no-flutter-sera-que-realmente-precisamos-disso)
+
+[Jun 14, 2025](/post/liquid-glass-no-flutter-sera-que-realmente-precisamos-disso)
+
+[Sabe aquele momento em que a Apple lança uma novidade e, de repente, todo mundo só fala disso? Assim foi com o Liquid Glass. Se você acompanhou a WWDC 2025 ou já deu uma olhada no iOS 26, viu aquele efeito novo por todo o sistema operacional de vidro molhado, com blur. Mas será que a gente realmente precisa disso no Flutter?.](/post/liquid-glass-no-flutter-sera-que-realmente-precisamos-disso)
+
+[Read more ](/post/liquid-glass-no-flutter-sera-que-realmente-precisamos-disso)
+
+### [O grande problema de segurança nos SaaS criados com Vibe Coding](/post/saas-criados-com-vibe-coding-problema-de-seguranca)
+
+[May 26, 2025](/post/saas-criados-com-vibe-coding-problema-de-seguranca)
+
+[SaaS criados no embalo da IA estão falhando no básico: segurança. Nesse vídeo, eu te mostro um dos maiores problemas que venho encontrando em vários produtos feitos com ferramentas no estilo Vibe Coding: bancos de dados completamente expostos, sem nenhuma política mínima de segurança. 😱 Na prática, você vai ver como isso acontece. O problema é grave, fácil de explorar e afeta muitos projetos de indie hackers que nem sabem que estão vulneráveis. 🔐 Se você está criando um produto digital, principalmente com ferramentas low-code/no-code, esse conteúdo é pra você.](/post/saas-criados-com-vibe-coding-problema-de-seguranca)
+
+[Read more ](/post/saas-criados-com-vibe-coding-problema-de-seguranca)
+
+### [Criando um AI Agent no Cursor para interagir com o Gitlab e Shortcut](/post/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut)
+
+[May 13, 2025](/post/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut)
+
+[No mundo do desenvolvimento ágil, falamos muito em produtividade, automação e menos trabalho repetitivo. Mas, na prática, quantas vezes você já perdeu tempo só para abrir um merge request? Buscar o contexto da issue, escrever a descrição, colocar link, título.](/post/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut)
+
+[Read more ](/post/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut)
+
+### [Criando um editor de imagem com Flutter - CAM Covers (Da Ideia à Realidade)](/post/criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade)
+
+[Mar 12, 2025](/post/criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade)
+
+[Como criei um app de edição de imagens com Flutter. Veja os desafios, soluções e a monetização do CAM Covers, um editor de capas de álbuns.](/post/criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade)
+
+[Read more ](/post/criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade)
+
+Previous slideNext slide
+
+[View all posts ](/blog)
+
+## Experience & Skills
+
+My professional journey and the technical skills I've developed over the years.
+
+### Professional Experience
+
+### Experience
+
+1. ![Idopter Labs](/business/idopterlabs.webp)  
+Company  
+Idopter Labs  
+Role  
+Mobile Developer  
+Date  
+2022 — Present
+2. ![VoxData Technology](/business/voxdata.png)  
+Company  
+VoxData Technology  
+Role  
+Mobile Developer  
+Date  
+2019 — 2022
+3. ![HackerOne](/business/h1.jpg)  
+Company  
+HackerOne  
+Role  
+Independent Security Researcher - Freelance  
+Date  
+2018 — 2022
+4. ![IssueHunt](/business/issue_hunt.png)  
+Company  
+IssueHunt  
+Role  
+Backend Developer - Freelance  
+Date  
+2018 — 2019
+
+### Volunteering
+
+1. ![Devs Norte](/business/devs_norte.png)  
+Company  
+Devs Norte  
+Role  
+Organizador  
+Date  
+2019 — Present
+2. ![Node.js](/business/nodejs.png)  
+Company  
+Node.js  
+Role  
+Documentation Translator  
+Date  
+2023 — Present
+3. ![ElectronJS](/business/electron_js.png)  
+Company  
+ElectronJS  
+Role  
+Documentation Translator  
+Date  
+2017 — Present
+4. ![BrazilJS](/business/braziljs.png)  
+Company  
+BrazilJS  
+Role  
+Event Organizer - On The Road Belém  
+Date  
+2019 — 2019
+5. ![Node.js](/business/nodejs.png)  
+Company  
+Node.js  
+Role  
+i18n Team Member  
+Date  
+2018 — 2023
+6. ![Synko](/business/synko.png)  
+Company  
+Synko  
+Role  
+Software Developer  
+Date  
+2014 — 2019
+[Open CV](https://linkedin.com/in/tiagodanin)
+
+Show More 
+
+### Technical Skills
+
+#### Mobile Development
+
+Flutter
+
+React Native
+
+Xamarin
+
+Java
+
+Kotlin
+
+Obj-C
+
+Swift
+
+SwiftUI
+
+Jetpack Compose
+
+Ionic
+
+#### DevOps
+
+Firebase
+
+GitLab CI/CD
+
+GitHub CI/CD
+
+Azure
+
+Google Cloud
+
+Docker
+
+#### Soft Skills
+
+Leadership
+
+Team Management
+
+Problem Solving
+
+Communication
+
+Organization
+
+#### Frontend
+
+HTML
+
+CSS
+
+JavaScript
+
+TypeScript
+
+React
+
+Vue.js
+
+Tailwind
+
+#### Backend
+
+Node.js
+
+Express
+
+Elixir
+
+PostgreSQL
+
+SQLite
+
+#### Design
+
+Figma
+
+Mobile UX
+
+Adobe XD
+
+Canva
+
+#### Game Development
+
+Unity
+
+Flame
+
+LÖVE
+
+Pixel Art
+
+Blender
+
+## Let's Connect
+
+Whether you have a project in mind, want to discuss tech, or just want to say hello, I'm always open to new conversations and opportunities.
+
+[Connect on LinkedIn](https://linkedin.com/in/tiagodanin)[Send me an email](mailto:TiagoDanin@outlook.com)
+
+### Projects
+
+Source: [https://tiagodanin.com/projects](https://tiagodanin.com/projects)
+
+## Projects
+
+Explore my portfolio of innovative projects, from mobile apps to web solutions. Each project represents a unique challenge tackled with creativity and technical expertise, showcasing my journey in software development.
+
+![BICOS](/projects/bicos-app.png)
+
+### BICOS
+
+An Open Banking application developed during a hackathon hosted by TecBan (company responsible for Banco24Horas ATMs). The project won the competition by showing that users don't need to understand Open Banking to benefit from it.
+
+![CAM Covers](/projects/cam-covers-app.png)
+
+### CAM Covers
+
+An application that transforms ordinary photos into professional-looking album covers, inspired by real music players.
+
+![React Native - Zendesk SDK](/projects/zendesk-sdk.png)
+
+### React Native - Zendesk SDK
+
+A wrapper for Zendesk SDK in React Native, making it easy to integrate customer support functionality into your mobile apps.
+
+![Stone World](/projects/stone-game.png)
+
+### Stone World
+
+A puzzle game set in a stone world, developed with Unity 3D. Coming soon!
+
+![The Slime Dungeon](/projects/slime-game.png)
+
+### The Slime Dungeon
+
+Survive in a dungeon of slimes! You are stuck with adorable creatures. How long can you survive? Built with Flutter and Bonfire engine.
+
+![Virtual Pocket Air Conditioning](/projects/air-conditionin.png)
+
+### Virtual Pocket Air Conditioning
+
+Have a virtual air conditioner in your pocket! This relaxing sound app provides better sleep. Created as a fun project to study animations in Flutter.
+
+# All Projects
+
+382 Projects
+
+## GitHub
+
+237 projects
+
+### Add-License-Bot
+
+Archived
+
+Generate LICENSE file from package.json
+
+### Android-Debug-Bridge-MCP
+
+MCP plugin to control Android devices via ADB (Android Debug Bridge) for automation, testing, and agent integration.
+
+### AndroidManifestExported
+
+A CLI tool to extract exported components and intent filters from AndroidManifest.xml files. This tool helps security researchers and developers identify potentially vulnerable Android components that are exposed to other applications.
+
+### Anonymous-Reporting-System-Example
+
+Anonymous Reporting System Example - IFPA Project - Database II
+
+### Another-XSS-Example
+
+Example app in my lecture: "XSS - From Theory to Practice" in Vue.js Norte 10th Edition
+
+### Aquamarine-Monitor
+
+Simples Elixir API to financial management
+
+### Atom-TerminalColor
+
+A auto-complet with colors for terminal(Bash) - Package for Atom
+
+### Awesome-Handlebars
+
+Curated list of Handlebars
+
+### Awesome-Polybar
+
+Curated list of Polybar 
+
+### Awesome-Proton
+
+List of games tested with Proton (Tool for Steam Client on Linux)
+
+### BeautifulBDS
+
+Um Tema Flat, Limpo e algumas utilidades para o site BancoDeSéries ❤️
+
+### BlocksIFPA
+
+### BrazilJS-TicTacToe-With-Brain.js
+
+Talk BrazilJS OnTheRoad Belém 2020 - \[PT-BR\] Redes neurais com Javascript utilizado Brain.js
+
+### Calculator-CleanUI
+
+Calculator CleanUI Android
+
+### CAMCovers
+
+Website of CAM Covers
+
+### Cerebro-XKCD
+
+XKCD plugin for Cerebro
+
+### ChooseALicense-List
+
+List of licenses from choosealicense.com
+
+### CP-Random
+
+Copy random files to a specific folder
+
+### DaySplash
+
+My app of wallpapers, using Electron!
+
+### DebugConsole
+
+Use o "debug" via console.\*
+
+### Defend-The-Castle
+
+Archived
+
+Telegram Bot Game - Defend The Castle
+
+### DocxToPdf-CLI
+
+Convert .docx file to .pdf
+
+### dotfiles
+
+My personal dotfiles
+
+### Echo-Lastfm
+
+ Echo of scrobble in Lastfm
+
+### Emoji-Memory-Jetpack
+
+Game build with Android Jetpack used MVVM
+
+### Fetch-GitHub-Graphql
+
+GitHub Graphql - Send request using Fetch API
+
+### FileXShared
+
+Share files Fast, Easy and Secure, to world or on your local network.
+
+### Firebase\_Test\_AB
+
+Talk: Goggle DevFest 2024 Belém
+
+### First-Android-App-Sample
+
+https://developer.android.com/training/basics/firstapp
+
+### Flutter-Bank-Dashboard
+
+Bank Dashboard Layout Example in Flutter
+
+### Flutter-Express
+
+Flutter web example aplication deployed with ExpressJs
+
+### Flutter-Face-Detection
+
+ML Kit Face Detection in Flutter Example
+
+### Flutter-Liquid-Glass-Example
+
+Liquid Glass Example in Flutter
+
+### GameOfKey
+
+The game made your keyboard, this is amazing!
+
+### GBotPod
+
+Archived
+
+Bot de um grupo do Podmaniacos
+
+### Gen-Package
+
+Intuitive and user-friendly generator of package.json
+
+### Gen-README
+
+Generate a README.md from package.json contents. \[Fork https://github.com/zeke/package-json-to-readme/\]
+
+### GenesiPassword
+
+Module and tool for create password
+
+### Getnet-Service
+
+Hackathon Getnet 2020 - API Service
+
+### GHOffline
+
+Check offline site in a repository of Github
+
+### ghuser.io.settings
+
+User metadata for my https://ghuser.io/TiagoDanin
+
+### GitHub-Push-Global
+
+Commit in all repositories with a command
+
+### GitHub-VS
+
+Compare two profiles of GitHub
+
+### Gitlab-Secure-File-Backup
+
+Download and upload your secure files to another repository in Gitlab
+
+### Gnome-WebApp
+
+Gnome WebApp
+
+### GX-Password
+
+Archived
+
+\[UWP\] A Quick, Easy and Secure Password Generator
+
+### Hacktoberfest-Auto-Label
+
+Archived
+
+Add label 'Hacktoberfest' in new issues.
+
+### Handlebars-Lorem-Ipsum
+
+Handlebars helper - Generate lorem ipsum text
+
+### Handlebars-Subresource-Integrity
+
+Handlebars helper - Generate string with base64-encoded sha384 hash
+
+### htmlEntities-for-lua
+
+Module for lua decoding html entities :)
+
+### Indicator-Reactions
+
+Simple indicator with Reactions ¯ \\ \_ (ツ) \_/¯ 
+
+### ISO639-Codes
+
+ISO639 Codes for JavaScript
+
+### JFormat
+
+Python function str.format for JavaScript
+
+### JUnicodeInfo
+
+Verify unicode in your text
+
+### jus-lite
+
+Archived
+
+🍉 An opinionated tool for making static websites
+
+### keyboard\_actions\_example
+
+\[Pt-br\] Repositório de exemplo do post sobre como usar o keyboard\_actions
+
+### LeoAutoClick
+
+A Autolick using the Arduino Leonardo
+
+### Locale-Codes
+
+ Language codes & country codes
+
+### MinecraftServerMundinho
+
+Source code of my minecraft server
+
+### MKToGitGHPages
+
+My script for create GH-Pages
+
+### MKToGitGHPages2
+
+My script for create GH-Pages - Version 2
+
+### MSDOS-Pause
+
+Pause command of Microsoft DOS in JavaScript
+
+### MyDatabaseGameAPI
+
+MyDatabaseGame API
+
+### MyDatabaseGameApp
+
+MyDatabaseGame App
+
+### NodeJS-i18n
+
+Minimalistic internationalization using gettext style for NodeJS
+
+### Npm-User-Packages-Downloads
+
+Get npm packages per author with download counts
+
+### NuCompose
+
+\[Pt-br\] Clone do dashboard do aplicativo mobile da Nu utilizando Jetpack Compose
+
+### Number-Label
+
+Convert a large number to nice formatted string
+
+### Nuxt-SEO
+
+Archived
+
+SEO / HTML Meta Tags Module for Nuxt.js
+
+### Nuxt-Vuikit
+
+Vuikit Module for Nuxt.js
+
+### OLD-TiagoDanin.github.io
+
+Archived
+
+MyPager Github.io
+
+### OpenTecBan-Service
+
+Hackathon TecBan 2020 - Open Banking API Service
+
+### PicFlix
+
+Example de layout in Flutter inspiration in Netflix App + Woody Woodpecker Characters
+
+### Polybar-Break-Timer
+
+Take a break
+
+### Polybar-GitHub
+
+Archived
+
+A Polybar module to show unread notifications from GitHub
+
+### Polybar-Helpers
+
+Polybar - Helpers to create plugin/module using NodeJS
+
+### Polybar-Lastfm
+
+A Polybar module to scrobble & love music in Lastfm
+
+### Pseudo-Cabeca
+
+\[PT\] Executar um pseudocódigo utilizado JavaScript
+
+### PSQL-StatsShow
+
+Web Monitoring PostgreSQL- Tracking execution statistics of all SQL statements executed by a server.
+
+### PythonColorize
+
+Simple module to colorize text on terminal
+
+### Quiz-Corona
+
+Samples app Quiz for CoronaSDK
+
+### React-Native-Tests-Lesson
+
+\[Pt-br\] Idopterlabs Talks -Testes com React Native 
+
+### RealTimeChatAPI
+
+A simples web api to real time chat using web socket.io and express
+
+### RelayDemo
+
+Demostration Relay Material Design
+
+### Require-Benchmark
+
+Package loading time in NodeJs
+
+### Require-From-Web
+
+Import/Load/Require module from url
+
+### resXClone
+
+A utility to clone and update xml resources file
+
+### Rock-Paper-Scissors-CLI
+
+Rock Paper Scissors Machine Learning CLI (Use my "Rock-Paper-Scissors-ML")
+
+### Rock-Paper-Scissors-ML
+
+Rock Paper Scissors Machine Learning
+
+### Rock-Paper-Scissors-Web
+
+Rock Paper Scissors Machine Learning Web (Use my "Rock-Paper-Scissors-ML")
+
+### RomanNumerals
+
+Module for convert numbers in Roman numbers :)
+
+### SamRobot
+
+\[UWP\] A very simple chatbot, your name is Sam!
+
+### ScraperScript
+
+ScraperScript is a query language for Web Scraping
+
+### SendCH-Telegram
+
+Archived
+
+Send message for channel (Telegram) using the Markdown or HTML
+
+### SiD
+
+Archived
+
+SiDBot V4 Based on otouto v3.2 by topkecleon
+
+### SiDBot
+
+SiDBot Version 5.2
+
+### SimpleTrivia.js
+
+Trival Game Web using Open Trivia DB API
+
+### SpotifyTelegram
+
+Archived
+
+Plugin Spotify for Telegram
+
+### SQL-Contact
+
+Android SQL CRUD
+
+### SQL-Note
+
+Android SQL CRUD
+
+### Add-License-Bot
+
+Archived
+
+Generate LICENSE file from package.json
+
+### Android-Debug-Bridge-MCP
+
+MCP plugin to control Android devices via ADB (Android Debug Bridge) for automation, testing, and agent integration.
+
+### AndroidManifestExported
+
+A CLI tool to extract exported components and intent filters from AndroidManifest.xml files. This tool helps security researchers and developers identify potentially vulnerable Android components that are exposed to other applications.
+
+### Anonymous-Reporting-System-Example
+
+Anonymous Reporting System Example - IFPA Project - Database II
+
+### Another-XSS-Example
+
+Example app in my lecture: "XSS - From Theory to Practice" in Vue.js Norte 10th Edition
+
+### Aquamarine-Monitor
+
+Simples Elixir API to financial management
+
+### Atom-TerminalColor
+
+A auto-complet with colors for terminal(Bash) - Package for Atom
+
+### Awesome-Handlebars
+
+Curated list of Handlebars
+
+### Awesome-Polybar
+
+Curated list of Polybar 
+
+### Awesome-Proton
+
+List of games tested with Proton (Tool for Steam Client on Linux)
+
+### BeautifulBDS
+
+Um Tema Flat, Limpo e algumas utilidades para o site BancoDeSéries ❤️
+
+### BlocksIFPA
+
+### BrazilJS-TicTacToe-With-Brain.js
+
+Talk BrazilJS OnTheRoad Belém 2020 - \[PT-BR\] Redes neurais com Javascript utilizado Brain.js
+
+### Calculator-CleanUI
+
+Calculator CleanUI Android
+
+### CAMCovers
+
+Website of CAM Covers
+
+### Cerebro-XKCD
+
+XKCD plugin for Cerebro
+
+### ChooseALicense-List
+
+List of licenses from choosealicense.com
+
+### CP-Random
+
+Copy random files to a specific folder
+
+### DaySplash
+
+My app of wallpapers, using Electron!
+
+### DebugConsole
+
+Use o "debug" via console.\*
+
+### Defend-The-Castle
+
+Archived
+
+Telegram Bot Game - Defend The Castle
+
+### DocxToPdf-CLI
+
+Convert .docx file to .pdf
+
+### dotfiles
+
+My personal dotfiles
+
+### Echo-Lastfm
+
+ Echo of scrobble in Lastfm
+
+### Emoji-Memory-Jetpack
+
+Game build with Android Jetpack used MVVM
+
+### Fetch-GitHub-Graphql
+
+GitHub Graphql - Send request using Fetch API
+
+### FileXShared
+
+Share files Fast, Easy and Secure, to world or on your local network.
+
+### Firebase\_Test\_AB
+
+Talk: Goggle DevFest 2024 Belém
+
+### First-Android-App-Sample
+
+https://developer.android.com/training/basics/firstapp
+
+### Flutter-Bank-Dashboard
+
+Bank Dashboard Layout Example in Flutter
+
+### Flutter-Express
+
+Flutter web example aplication deployed with ExpressJs
+
+### Flutter-Face-Detection
+
+ML Kit Face Detection in Flutter Example
+
+### Flutter-Liquid-Glass-Example
+
+Liquid Glass Example in Flutter
+
+### GameOfKey
+
+The game made your keyboard, this is amazing!
+
+### GBotPod
+
+Archived
+
+Bot de um grupo do Podmaniacos
+
+### Gen-Package
+
+Intuitive and user-friendly generator of package.json
+
+### Gen-README
+
+Generate a README.md from package.json contents. \[Fork https://github.com/zeke/package-json-to-readme/\]
+
+### GenesiPassword
+
+Module and tool for create password
+
+### Getnet-Service
+
+Hackathon Getnet 2020 - API Service
+
+### GHOffline
+
+Check offline site in a repository of Github
+
+### ghuser.io.settings
+
+User metadata for my https://ghuser.io/TiagoDanin
+
+### GitHub-Push-Global
+
+Commit in all repositories with a command
+
+### GitHub-VS
+
+Compare two profiles of GitHub
+
+### Gitlab-Secure-File-Backup
+
+Download and upload your secure files to another repository in Gitlab
+
+### Gnome-WebApp
+
+Gnome WebApp
+
+### GX-Password
+
+Archived
+
+\[UWP\] A Quick, Easy and Secure Password Generator
+
+### Hacktoberfest-Auto-Label
+
+Archived
+
+Add label 'Hacktoberfest' in new issues.
+
+### Handlebars-Lorem-Ipsum
+
+Handlebars helper - Generate lorem ipsum text
+
+### Handlebars-Subresource-Integrity
+
+Handlebars helper - Generate string with base64-encoded sha384 hash
+
+### htmlEntities-for-lua
+
+Module for lua decoding html entities :)
+
+### Indicator-Reactions
+
+Simple indicator with Reactions ¯ \\ \_ (ツ) \_/¯ 
+
+### ISO639-Codes
+
+ISO639 Codes for JavaScript
+
+### JFormat
+
+Python function str.format for JavaScript
+
+### JUnicodeInfo
+
+Verify unicode in your text
+
+### jus-lite
+
+Archived
+
+🍉 An opinionated tool for making static websites
+
+### keyboard\_actions\_example
+
+\[Pt-br\] Repositório de exemplo do post sobre como usar o keyboard\_actions
+
+### LeoAutoClick
+
+A Autolick using the Arduino Leonardo
+
+### Locale-Codes
+
+ Language codes & country codes
+
+### MinecraftServerMundinho
+
+Source code of my minecraft server
+
+### MKToGitGHPages
+
+My script for create GH-Pages
+
+### MKToGitGHPages2
+
+My script for create GH-Pages - Version 2
+
+### MSDOS-Pause
+
+Pause command of Microsoft DOS in JavaScript
+
+### MyDatabaseGameAPI
+
+MyDatabaseGame API
+
+### MyDatabaseGameApp
+
+MyDatabaseGame App
+
+### NodeJS-i18n
+
+Minimalistic internationalization using gettext style for NodeJS
+
+### Npm-User-Packages-Downloads
+
+Get npm packages per author with download counts
+
+### NuCompose
+
+\[Pt-br\] Clone do dashboard do aplicativo mobile da Nu utilizando Jetpack Compose
+
+### Number-Label
+
+Convert a large number to nice formatted string
+
+### Nuxt-SEO
+
+Archived
+
+SEO / HTML Meta Tags Module for Nuxt.js
+
+### Nuxt-Vuikit
+
+Vuikit Module for Nuxt.js
+
+### OLD-TiagoDanin.github.io
+
+Archived
+
+MyPager Github.io
+
+### OpenTecBan-Service
+
+Hackathon TecBan 2020 - Open Banking API Service
+
+### PicFlix
+
+Example de layout in Flutter inspiration in Netflix App + Woody Woodpecker Characters
+
+### Polybar-Break-Timer
+
+Take a break
+
+### Polybar-GitHub
+
+Archived
+
+A Polybar module to show unread notifications from GitHub
+
+### Polybar-Helpers
+
+Polybar - Helpers to create plugin/module using NodeJS
+
+### Polybar-Lastfm
+
+A Polybar module to scrobble & love music in Lastfm
+
+### Pseudo-Cabeca
+
+\[PT\] Executar um pseudocódigo utilizado JavaScript
+
+### PSQL-StatsShow
+
+Web Monitoring PostgreSQL- Tracking execution statistics of all SQL statements executed by a server.
+
+### PythonColorize
+
+Simple module to colorize text on terminal
+
+### Quiz-Corona
+
+Samples app Quiz for CoronaSDK
+
+### React-Native-Tests-Lesson
+
+\[Pt-br\] Idopterlabs Talks -Testes com React Native 
+
+### RealTimeChatAPI
+
+A simples web api to real time chat using web socket.io and express
+
+### RelayDemo
+
+Demostration Relay Material Design
+
+### Require-Benchmark
+
+Package loading time in NodeJs
+
+### Require-From-Web
+
+Import/Load/Require module from url
+
+### resXClone
+
+A utility to clone and update xml resources file
+
+### Rock-Paper-Scissors-CLI
+
+Rock Paper Scissors Machine Learning CLI (Use my "Rock-Paper-Scissors-ML")
+
+### Rock-Paper-Scissors-ML
+
+Rock Paper Scissors Machine Learning
+
+### Rock-Paper-Scissors-Web
+
+Rock Paper Scissors Machine Learning Web (Use my "Rock-Paper-Scissors-ML")
+
+### RomanNumerals
+
+Module for convert numbers in Roman numbers :)
+
+### SamRobot
+
+\[UWP\] A very simple chatbot, your name is Sam!
+
+### ScraperScript
+
+ScraperScript is a query language for Web Scraping
+
+### SendCH-Telegram
+
+Archived
+
+Send message for channel (Telegram) using the Markdown or HTML
+
+### SiD
+
+Archived
+
+SiDBot V4 Based on otouto v3.2 by topkecleon
+
+### SiDBot
+
+SiDBot Version 5.2
+
+### SimpleTrivia.js
+
+Trival Game Web using Open Trivia DB API
+
+### SpotifyTelegram
+
+Archived
+
+Plugin Spotify for Telegram
+
+### SQL-Contact
+
+Android SQL CRUD
+
+### SQL-Note
+
+Android SQL CRUD
+
+### StickersPlayBot
+
+Search series covers stickers via inline - @StickersPlayBot \[Base Text PT-Br\]
+
+### StoreOfBot
+
+Archived
+
+Search, Explore & Discover the bests bots, channel or groups - Telegram: @StoreOfBot
+
+### Styled-UI-Editor
+
+Styled UI Editor
+
+### SubtitlesX
+
+CLI Tool to download subtitles for movies and series.
+
+### SuperFIFA
+
+### TaskPlaySpotfiy
+
+Gnome Extension - Media playback controls for Spotify
+
+### Telegraf-Atom
+
+Archived
+
+Auto-complete plugin for Telegraf methods
+
+### Telegraf-GetChatMembers
+
+Implementation of getChatMembers method in Telegraf using cache
+
+### Telegraf-Start-Parts
+
+Command /start parameters parser middleware for Telegraf
+
+### Telegraf-Test
+
+Telegraf Test - Simple Test ToolKit of Telegram Bots
+
+### Telegram-Flatabulous
+
+A Telgram Desktop theme based on Flatabulous
+
+### TestGithub
+
+### Thanos-NodeJS
+
+Reduce the file size of your project down to 50%, by randomly deleting half of the files.
+
+### TiagoDanin
+
+README.md
+
+### TiagoDanin-Packages
+
+README with my npm packages
+
+### TiagoDanin.github.io
+
+### TicTacToeCompose
+
+TicTacToe with Android Jetpack Compose
+
+### TTgram
+
+Integration with Twitter <-> Telegram
+
+### TutorialFlutterFirebaseRemoteConfig
+
+Tutorial Flutter Firebase Remote Config
+
+### TutorialFlutterLottie
+
+Tutorial Flutter Lottie
+
+### TutorialSplashScreenAndroidJetpackComponse
+
+Tutorial Splash Screen Android Jetpack Componse
+
+### TycotBot
+
+Archived
+
+TycotBot
+
+### uHosts
+
+A editor of hosts
+
+### UltimosPregoesB3
+
+\[Pt-br\] Dashbaord com últimos Pregões da Bolsa B3
+
+### Unity3D-IFPA
+
+### Unsplash-Source-Node
+
+Wrapper for the Unsplash Source API
+
+### Update-Version-CLI
+
+Update Version number in NPM Package, Quasar & Cordova
+
+### UpdateMIT
+
+Package/Tool for update MIT license year
+
+### VSCode-Hacker-Typer
+
+VSCode Hacker Typer - In Progress
+
+### VueJs-with-Express
+
+Example PWA + Nuxt + Vue + Axios + Express
+
+### VuePressNorte
+
+\[PT-BR\] Arquivos da apresentação para o Meetup do Vuejs Norte - Edição 11º
+
+### WearOS-Count-Water-App
+
+WearOS Jetapck Compose - WearOS Count Water App
+
+### Web-Project-PHP-Example
+
+Web Project PHP Example
+
+### White-Label-Flutter
+
+The Flutter White Label Example App
+
+### Windows-Locale
+
+Windows Language Code Identifier (LCID) for JavaScript
+
+### XTLanguage
+
+Management system for Translation :)
+
+### Zendesk-SSO-Test
+
+## Google Play
+
+4 projects
+
+### Virtual Pocket Air Conditioning
+
+Virtual air conditioning in your pocket, this relaxing sound will provide better night's sleep.
+
+### Emoji Memory Jetpack
+
+Match similar emojis. Game open-source built with Android Jetpack Compose.
+
+### The Slime Dungeon
+
+You are stuck with adorable creatures (slimes). How long can you survive?
+
+### Petmob
+
+\[Pt-br\] Encontre o melhor cuidado para o seu pet, ou seja, um prestador de serviço e ganhe uma renda extra
+
+## NPM
+
+66 projects
+
+### windows-locale
+
+Windows Language Code Identifier (LCID) for JavaScript
+
+### iso639-codes
+
+ISO639 Codes for JavaScript
+
+### locale-codes
+
+Language codes & country codes
+
+### require-from-web
+
+Import/Load/Require module from url
+
+### numberlabel
+
+Convert a large number to nice formatted string.
+
+### handlebars-lorem-ipsum
+
+Handlebars helper - Generate lorem ipsum text
+
+### nodejs-i18n
+
+Minimalistic internationalization using gettext style for NodeJS
+
+### unsplash-source-node
+
+Wrapper for the Unsplash Source API
+
+### telegraf-test
+
+Telegraf Test - Simple Test ToolKit of Telegram Bots
+
+### gen-readme
+
+Generate a README.md from package.json contents.
+
+### tiagodanin.github.io
+
+Build my website
+
+### nuxt-vuikit
+
+Vuikit Module for Nuxt.js
+
+### ifmatriz
+
+Web App feito para disciplinar de Calculo I - 2018.02, realizar operações com matrizes quadradas
+
+### psqlstatsshow
+
+Web Monitoring PostgreSQL- Tracking execution statistics of all SQL statements executed by a server.
+
+### ttgram
+
+Integration with Twitter <-> Telegram
+
+### tiagodanin
+
+README with my npm packages
+
+### telegraf-getchatmembers
+
+Implementation of getChatMembers method in Telegraf using cache
+
+### add-license-bot
+
+Generate LICENSE file from package.json
+
+### stickersplaybot
+
+Telegram bot - @stickersplaybot
+
+### filexshared
+
+Share files Fast, Easy and Secure, to world or on your local network.
+
+### jformat
+
+Python function str.format for JavaScript
+
+### defend-the-castle
+
+Telegram Bot Game - Defend The Castle
+
+### rock-paper-scissors-ml
+
+Rock Paper Scissors Machine Learning
+
+### polybar-github
+
+A Polybar module to show unread notifications from GitHub
+
+### handlebars-subresource-integrity
+
+Handlebars helper - Generate string with base64-encoded sha384 hash
+
+### choosealicense-list
+
+List of licenses from choosealicense.com
+
+### rock-paper-scissors-web
+
+Rock Paper Scissors Machine Learning Web
+
+### gen-package
+
+Intuitive and user-friendly generator of package.json
+
+### resxclone
+
+A utility to clone and update xml resources file
+
+### telegraf-start-parts
+
+Command /start parameters parser middleware for Telegraf
+
+### docxtopdf-cli
+
+Convert .docx file to .pdf
+
+### cubohub
+
+Automating page generation for GitHub!
+
+### node-orgmanager-api
+
+A Node.js client for the OrgManager API
+
+### subtitlesx
+
+CLI to download subtitles for movies and series.
+
+### github-vs
+
+Compare two profiles of GitHub
+
+### scraperscript
+
+ScraperScript is a query language for Web Scraping
+
+### another-xss-example
+
+Example app in my lecture: "XSS - From Theory to Practice" in Vue.js Norte 10th Edition
+
+### ddbots
+
+Bot do Grupo: DesenvolvimentoDeBots
+
+### vuejs-with-express
+
+Example PWA + Nuxt + Vue + Axios + Express
+
+### npm-user-packages-downloads
+
+Get npm packages per author with download counts
+
+### polybar-helpers
+
+Polybar - Helpers to create plugin/module using NodeJS
+
+### simpletriviajs
+
+Trival Game Web using Open Trivia DB API
+
+### rock-paper-scissors-cli
+
+Rock Paper Scissors Machine Learning CLI
+
+### awesome-proton
+
+List of games tested with Proton (Tool for Steam Client on Linux)
+
+### msdos-pause
+
+Pause command of Microsoft DOS in JavaScript
+
+### cerebro-xkcd
+
+XKCD plugin for Cerebro
+
+### github-push-global
+
+Commit in all repositories with a command
+
+### polybar-break-timer
+
+Take a break
+
+### thanos-nodejs
+
+Reduce the file size of your project down to 50%, by randomly deleting half of the files.
+
+### hacktoberfest-auto-label-bot
+
+Add label 'Hacktoberfest' in new issues.
+
+### polybar-lastfm
+
+A Polybar module to scrobble &amp; love music in Lastfm
+
+### require-benchmark
+
+Package loading time in NodeJs
+
+### update-version-cli
+
+Update Version number in NPM Package, Quasar & Cordova
+
+### storeofbot
+
+Source code of bot StoreOfBot on Telegram
+
+### telegraf-atom
+
+Auto-complete plugin for Telegraf methods
+
+### pseudo-cabeca
+
+\[PT\] Executar um pseudocódigo utilizado JavaScript
+
+### updatemit
+
+Package/Tool for update MIT license year
+
+### desenvolvimento-de-bots-i18n
+
+Tradução da documentação do Telegram Bot API para PT-BR
+
+### @orgmanager/node-orgmanager-api
+
+A Node.js client for the OrgManager API
+
+### daysplash
+
+My app of wallpapers, using Electron!
+
+### cp-random
+
+Copy random files to a specific folder
+
+### desenvolvimentodebots-site
+
+Site do grupo - https://DesenvolvimentoDeBots.github.io
+
+### fetch-github-graphql
+
+GitHub Graphql - Send request using Fetch API
+
+### debug-console-js
+
+Use o "debug" via console.\*
+
+### echo-lastfm
+
+Echo of scrobble in Lastfm
+
+### junicodeinfo
+
+Verify unicode in your text
+
+## LuaRocks
+
+3 projects
+
+### genesi-password
+
+Module and tool for create password.
+
+### html-entities
+
+Module for lua, decoding html entities :)
+
+### roman-numerls
+
+Module for convert numbers in Roman numbers :)
+
+## Pypi
+
+3 projects
+
+### FileXShared
+
+Share files Fast and Easy, on your local network!
+
+### GHOffline
+
+Check offline site in a repository of Github.
+
+### PythonColorize
+
+Simple module to colorize text on terminal.
+
+## Atom
+
+2 projects
+
+### terminalcolor
+
+A auto-complet with colors for terminal(Bash).
+
+### telegraf-atom
+
+Auto-complete plugin for Telegraf methods
+
+## Microsoft Store
+
+2 projects
+
+### GX Password
+
+A Quick, Easy and Secure Password Generator.
+
+### Sam Robot
+
+A very simple chatbot, your name is Sam! Using the API Program-o.com.
+
+## AUR Archlinux
+
+1 projects
+
+### ghoffline-git
+
+Check offline site in a repository of Github.
+
+## Private
+
+60 projects
+
+### Regular Projects (5)
+
+### Robô ED para Telegram \[PT-BR\]
+
+Criado pela equipe Synko, o robô mais famoso do Brasil chega ao Telegram!
+
+### Game Maze ZX
+
+My first game. Create using Gamemake.
+
+### CompPDF
+
+Analyze similarity between 2 PDFs.
+
+### BDS APP \[PT-BR\]
+
+Uma alternativa do app padrão do Banco de Séries.
+
+### Other
+
+Top Secret :^)
+
+### Other 🥚
+
+55 secret projects
+
+## Offline/Old Websites
+
+4 projects
+
+### WSBrasil \[PT-BR\]
+
+Site de noticias tecnológicas.
+
+### WSForum \[PT-BR\]
+
+Um forum sobre tecnológia.
+
+### WSBSocial \[PT-BR\]
+
+Mais uma rede social no mundo :^)
+
+### WSBR \[PT-BR\]
+
+Canal de tutoriais no Youtube.
+
+### Talks
+
+Source: [https://tiagodanin.com/talks](https://tiagodanin.com/talks)
+
+# Talks
+
+Only PT-BR
+
+Talks, presentations and workshops about technology and development
+
+Total talks: 17
+
+[View Desenvolvimento Mobile: por onde começar](/talk/desenvolvimento-mobile-por-onde-comear)
+
+Jul 2025
+
+Studio Code Meetup 2025
+
+## [Desenvolvimento Mobile: por onde começar](/talk/desenvolvimento-mobile-por-onde-comear)
+
+[Descubra por onde começar no desenvolvimento mobile com um roadmap prático, comparação entre tecnologias (Flutter, React Native, Kotlin, etc.) e dicas para conseguir o primeiro emprego na área — mesmo começando do zero. Inclui estratégias para destacar seu perfil no LinkedIn, construir projetos e encontrar vagas.](/talk/desenvolvimento-mobile-por-onde-comear)
+
+mobilecareerlinkedin
+
+View details
+
+[View O papel das Feature Flags na entrega contínua de Aplicativos Mobile](/talk/o-papel-das-feature-flags-na-entrega-contnua-de-aplicativos-mobile)
+
+Jun 2025
+
+DevOpsDays Belém 2025
+
+## [O papel das Feature Flags na entrega contínua de Aplicativos Mobile](/talk/o-papel-das-feature-flags-na-entrega-contnua-de-aplicativos-mobile)
+
+[Transforme seu fluxo de CI/CD mobile em uma poderosa ferramenta para experimentação contínua. Vamos explorar como utilizar Feature Flags e testes A/B para validar funcionalidades, personalizar a experiência do usuário e aumentar as vendas, sem depender de novos lançamentos. Além disso, discutiremos como realizar rollbacks de forma eficiente, garantindo a estabilidade do app. Com exemplos práticos e insights reais, você aprenderá a integrar essas práticas ao DevOps, tomar decisões rápidas e otimizar o crescimento do seu app de maneira estratégica.](/talk/o-papel-das-feature-flags-na-entrega-contnua-de-aplicativos-mobile)
+
+feature-flagsmobiletestingfirebase
+
+View details
+
+[View O Ingrediente Secreto dos apps de sucesso: Teste A/B com Firebase](/talk/o-ingrediente-secreto-dos-apps-de-sucesso-teste-ab-com-firebase)
+
+Dec 2024
+
+DevFest Belém 2024
+
+## [O Ingrediente Secreto dos apps de sucesso: Teste A/B com Firebase](/talk/o-ingrediente-secreto-dos-apps-de-sucesso-teste-ab-com-firebase)
+
+[Descubra como os Testes A/B e Firebase são usados pelos maiores apps do mercado para criar experiências dinâmicas e adaptadas ao usuário. Abordemos desde a configuração até casos práticos que mostram o impacto dessas ferramentas na retenção e engajamento.](/talk/o-ingrediente-secreto-dos-apps-de-sucesso-teste-ab-com-firebase)
+
+firebasemobileflutter
+
+View details
+
+[View Gerenciando Certificados e Perfis Na App Store com Fastlane Match](/talk/gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match)
+
+Mar 2024
+
+Idopter Labs Talks 2024
+
+## [Gerenciando Certificados e Perfis Na App Store com Fastlane Match](/talk/gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match)
+
+[Gerenciar certificados e perfis na App Store é uma etapa crucial do desenvolvimento de aplicativos móveis. Neste vídeo, extraído de uma Lightning Talk ⚡️ interna da Idopter Labs](/talk/gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match)
+
+fastlanemobileios
+
+[View details](/talk/gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match)[Watch on YouTube](https://www.youtube.com/watch?v=uKe63jYwE1w)
+
+[View DevOps para Desenvolvimento Mobile](/talk/devops-para-desenvolvimento-mobile)
+
+Nov 2023
+
+DevOpsDays Belém 2023
+
+## [DevOps para Desenvolvimento Mobile](/talk/devops-para-desenvolvimento-mobile)
+
+[Descubra o caminho para a automação no desenvolvimento mobile! Desafios únicos, diferenças essenciais do DevOps mobile e segredos para superar barreiras na distribuição de apps nas lojas. Não perca esta oportunidade de dominar o DevOps no mundo mobile! Esta talk mostrará os caminhos do DevOps no desenvolvimento mobile. Abordaremos desafios exclusivos, diferenças essenciais e ferramentas vitais no Mobile. Além de compartilhar insights, experiências e erros, para ajudar você a criar uma esteira de DevOps sólida e eficaz.](/talk/devops-para-desenvolvimento-mobile)
+
+devopsmobile
+
+View details
+
+[View Construindo lista perfomaticas no React Native](/talk/construindo-lista-perfomaticas-no-react-native)
+
+May 2023
+
+Idopter Labs Talks 2023
+
+## [Construindo lista perfomaticas no React Native](/talk/construindo-lista-perfomaticas-no-react-native)
+
+[Aprenda como usar o FlashList pode tornar suas listas mais performáticas e assim evitar os problemas comuns associados ao FlatList](/talk/construindo-lista-perfomaticas-no-react-native)
+
+react-nativeperformancemobile
+
+[View details](/talk/construindo-lista-perfomaticas-no-react-native)[Watch on YouTube](https://www.youtube.com/watch?v=Z3-v01J9n0I)
+
+[View Roda de conversa sobre carreira](/talk/roda-de-conversa-sobre-carreira)
+
+May 2023
+
+DevsNorte 8º Meetup
+
+## [Roda de conversa sobre carreira](/talk/roda-de-conversa-sobre-carreira)
+
+[Roda de conversa sobre carreira com a galera da Devs Norte](/talk/roda-de-conversa-sobre-carreira)
+
+career
+
+View details
+
+[View Deixe seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis](/talk/deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infalveis)
+
+Fev 2023
+
+DevsNorte 7º Meetup
+
+## [Deixe seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis](/talk/deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infalveis)
+
+[Aprenda como deixar seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis.](/talk/deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infalveis)
+
+linkedinwebcareer
+
+View details
+
+[View Dicas de Clean Code](/talk/dicas-de-clean-code)
+
+Out 2022
+
+DevsNorte 5º Meetup
+
+## [Dicas de Clean Code](/talk/dicas-de-clean-code)
+
+[Aprenda a escrever código que é fácil de entender e manter. 11 boas práticas para escrever código legível e fácil de entender.](/talk/dicas-de-clean-code)
+
+codedocumentation
+
+View details
+
+[View Finalmente! O segredo dos testes no React Native foi revelado](/talk/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado)
+
+Set 2022
+
+DevsNorte 4º Meetup
+
+## [Finalmente! O segredo dos testes no React Native foi revelado](/talk/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado)
+
+[Aprenda como testar seu código no React Native de forma eficiente e eficaz.](/talk/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado)
+
+react-nativemobiletesting
+
+View details
+
+[View Testes no React Native](/talk/testes-no-react-native)
+
+Out 2022
+
+Idopter Labs Talks 2022
+
+## [Testes no React Native](/talk/testes-no-react-native)
+
+[Aprenda como testar seu código no React Native de forma eficiente e eficaz.](/talk/testes-no-react-native)
+
+react-nativemobiletesting
+
+View details
+
+[View Testes no React Native](/talk/testes-no-react-native)
+
+Out 2022
+
+Idopter Labs Talks 2022
+
+## [Testes no React Native](/talk/testes-no-react-native)
+
+[Aprenda como testar seu código no React Native de forma eficiente e eficaz.](/talk/testes-no-react-native)
+
+react-nativemobiletesting
+
+View details
+
+[View Como criar documentações com VuePress](/talk/como-criar-documentaes-com-vuepress)
+
+May 2020
+
+Vuejs Norte 11º Meetup
+
+## [Como criar documentações com VuePress](/talk/como-criar-documentaes-com-vuepress)
+
+[Aprenda a criar documentações com VuePress. Um guia para criar documentações com VuePress. Da configuração até casos práticos que mostram o impacto dessas ferramentas na retenção e engajamento.](/talk/como-criar-documentaes-com-vuepress)
+
+codedocumentation
+
+[View details](/talk/como-criar-documentaes-com-vuepress)[Watch on YouTube](https://www.youtube.com/watch?v=NZ%5FlBbi1gCw)
+
+[View Implementado Firebase em aplicações Flutter](/talk/implementado-firebase-em-aplicaes-flutter)
+
+Mar 2020
+
+Google I/O Extended Belém 2024
+
+## [Implementado Firebase em aplicações Flutter](/talk/implementado-firebase-em-aplicaes-flutter)
+
+[Aprenda a implementar Firebase em aplicações Flutter. Um guia para implementar Firebase em aplicações Flutter.](/talk/implementado-firebase-em-aplicaes-flutter)
+
+firebasemobileflutter
+
+View details
+
+[View Redes Neurais com JavaScript utilizado Brain.js](/talk/redes-neurais-com-javascript-utilizado-brainjs)
+
+Set 2020
+
+BrazilJS on the road Natal/Belém 2020
+
+## [Redes Neurais com JavaScript utilizado Brain.js](/talk/redes-neurais-com-javascript-utilizado-brainjs)
+
+[Aprenda como utilizar Redes Neurais com JavaScript utilizando a biblioteca Brain.js.](/talk/redes-neurais-com-javascript-utilizado-brainjs)
+
+webIAjavascript
+
+View details
+
+[View Instrodução ao vercionamento com Git](/talk/instroduo-ao-vercionamento-com-git)
+
+Set 2019
+
+VoxDataDay #1
+
+## [Instrodução ao vercionamento com Git](/talk/instroduo-ao-vercionamento-com-git)
+
+[Aprenda como usar o Git para gerenciar seu código.](/talk/instroduo-ao-vercionamento-com-git)
+
+GITcode
+
+View details
+
+[View Criando blogs com WordPress](/talk/criando-blogs-com-wordpress)
+
+Jul 2013
+
+Feira do Livro Belém 2013
+
+## [Criando blogs com WordPress](/talk/criando-blogs-com-wordpress)
+
+[Aprenda como criar blogs com WordPress.](/talk/criando-blogs-com-wordpress)
+
+wordpressweb
+
+View details
+
+### Timeline
+
+Source: [https://tiagodanin.com/timeline](https://tiagodanin.com/timeline)
+
+1. 2025soon  
+[Soon™More to come...](/timeline/2025/soon)
+2. 2023cleancodetalksdevsnorteevents  
+[🗣️ Talk on Clean Code at Meetup Devs NortePresented a compilation of '11 best practices for code readability' (Clean Code) at an edition of Meetup Devs Norte.](/timeline/2023/talk-on-clean-code-at-meetup-devs-norte)
+3. 2023devopsmobiletalksdevopsdaysevents  
+[🗣️ Talk at DevOpsDays BelémTalk on 'DevOps for Mobile Development' at the DevOpsDays Belém event (November 2023).](/timeline/2023/talk-at-devopsdays-belm)
+4. 2023estudomarketingdigitaldesenvolvimentopessoal  
+[📚 Studies in Digital MarketingBegan studies in Digital Marketing to expand knowledge beyond programming.](/timeline/2023/studies-in-digital-marketing)
+5. 2023soon  
+[SOON™More to come...](/timeline/2023/soon)
+6. 2022reactnativesdkmobileopensourceprojeto  
+[💻 Project: React Native - Zendesk SDKDeveloped a wrapper for the Zendesk SDK in React Native, facilitating customer support integration in mobile apps.](/timeline/2022/project-react-native---zendesk-sdk)
+7. 2022hacktoberfest  
+[💻 HacktoberfestParticipated in Hacktoberfest 2022.](/timeline/2022/hacktoberfest)
+8. 2022fluttergamedevbonfireenginemobileprojeto  
+[🎮 Project: Slime Dungeon Survival GameCreated the game 'Slime Dungeon Survival Game' using Flutter and the Bonfire engine.](/timeline/2022/project-slime-dungeon-survival-game)
+9. 2021fluttermobile  
+[📱 Project: Virtual Pocket Air ConditioningDeveloped the 'Virtual Pocket Air Conditioning' app as a Flutter animation study project, focused on relaxing sounds.](/timeline/2021/project-virtual-pocket-air-conditioning)
+10. 2021hacktoberfest  
+[💻 Open SourceParticipated in Hacktoberfest 2021.](/timeline/2021/open-source)
+11. 2020hackathonbraziljs  
+[🏆 AchievementsWon 1st TecBan Hackathon 2020\. Gave lecture about neural networks at BrazilJS.](/timeline/2020/achievements)
+12. 2019eventssecurity  
+[🗣 Events & SecurityParticipated in VueJs Norte, Flisol & DataTechDay. Started studying security with Hackerone.](/timeline/2019/events-security)
+13. 2018ifpaarduino  
+[🎓 IFPAStarted IFPA - Technologist degree in system analysis and development. Studied Probot, Telegraf & Arduino.](/timeline/2018/ifpa)
+14. 2017highschoolhacktoberfest  
+[🎓 Graduation & AchievementsFinished High School. Won multiple sports competitions. Participated in Hacktoberfest 2017.](/timeline/2017/graduation-achievements)
+15. 2016volleyballwindowsstorehacktoberfest  
+[🏐 Sports & DevelopmentCreated a volleyball team. Published first Windows Store apps (SamRobot and GX Password). Participated in Hacktoberfest 2016.](/timeline/2016/sports-development)
+16. 2015luafirstprogramtelegrambot  
+[Lua & First Programs ❤️Learned programming in Lua. Created my first program: a plugin to search music on Spotify via Telegram Bot.](/timeline/2015/lua-first-programs)
+17. 2014awardseducation  
+[🏆 Awards & Education3rd Position - Race - 100M 2nd Position - Long jump - Best jump 2.56 3rd Position - Valentine's Day for forumeiros.com 🎓 Finished Middle School](/timeline/2014/awards-education)
+18. 2013lectureblogging  
+[🗣 Lecture on Creation of BloggingContributed to a lecture talking about my experience.](/timeline/2013/lecture-on-creation-of-blogging)
+19. 2012websiteforumblog  
+[🖥 My first WebSiteThe name was WapSiteMobile. Later... My forum (WapSiteBr) and in 2013 my blog (WSBrasil).](/timeline/2012/my-first-website)
+20. 2008electroniccircuit  
+[Electronic Circuit 🔬Fascinated by electronic circuits.](/timeline/2008/electronic-circuit)
+21. 2006mathematics  
+[Mathematics 🔬Fascinated by mathematics.](/timeline/2006/mathematics)
+22. 1998birth  
+[😍 Birthprintf("Hello World!");](/timeline/1998/birth)
+
+### LinkedIn
+
+Source: [https://linkedin.com/in/tiagodanin](https://linkedin.com/in/tiagodanin)
+
+*Content available at [https://linkedin.com/in/tiagodanin](https://linkedin.com/in/tiagodanin)*
+
+
+## Optional
+
+### Blog
+
+Source: [https://tiagodanin.com/blog](https://tiagodanin.com/blog)
+
+*Optional content available at [https://tiagodanin.com/blog](https://tiagodanin.com/blog)*
+
+

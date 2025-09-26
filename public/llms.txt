@@ -1,0 +1,70 @@
+# Tiago Danin - Mobile Developer & Bug Hunter
+
+## About
+Mobile Developer with expertise in Java, Kotlin, Obj-C, Swift, React Native, and Flutter, also experienced in front-end, back-end, and desktop development for macOS & Linux. Passionate about open source, automation, and solving real-world problems, always looking for new challenges. Currently diving into Digital Marketing to expand my knowledge beyond coding.
+
+Outside of work, I'm a runner, dancer, and music lover—always seeking new ways to grow, challenge myself, and enjoy life.
+
+## Technical Skills
+
+### Mobile Development
+- Flutter, React Native, Xamarin
+- Java, Kotlin, Obj-C, Swift, SwiftUI, Jetpack Compose, Ionic
+
+### DevOps & Cloud
+- Firebase, GitLab CI/CD, GitHub CI/CD, Azure, Google Cloud, Docker
+
+### Frontend & Backend
+- HTML, CSS, JavaScript, TypeScript, React, Vue.js, Tailwind
+- Node.js, Express, Elixir, PostgreSQL, SQLite
+
+### Design & Game Development
+- Figma, Mobile UX, Adobe XD, Canva
+- Unity, Flame, LÖVE, Pixel Art, Blender
+
+## Professional Experience
+
+**Idopter Labs** (2022 - Present)
+Mobile Developer - Development of hybrid solutions with React Native and Flutter, system architectures, project documentation, and test creation.
+
+**VoxData Technology** (2019 - 2022)
+Mobile Developer - Development of native and hybrid mobile solutions, system architectures, project documentation, and test creation.
+
+**HackerOne** (2018 - Present)
+Independent Security Researcher - Vulnerability assessments, security flaw reporting, Android app reverse engineering.
+
+**IssueHunt** (2018 - 2019)
+Backend Developer - Node.js applications development and open source contributions.
+
+## Featured Projects
+
+**BICOS** - Open Banking application that won TecBan hackathon competition
+**CAM Covers** - Photo to album cover transformation app
+**React Native - Zendesk SDK** - Customer support integration wrapper
+**The Slime Dungeon** - Flutter game with Bonfire engine
+**Virtual Pocket Air Conditioning** - Relaxing sound app for better sleep
+
+## Recent Talks & Presentations
+
+- "Desenvolvimento Mobile: por onde começar" (Jul 2025)
+- "O papel das Feature Flags na entrega contínua de Aplicativos Mobile" (Jun 2025)
+- "O Ingrediente Secreto dos apps de sucesso: Teste A/B com Firebase" (Dec 2024)
+- "DevOps para Desenvolvimento Mobile" (Nov 2023)
+- "Construindo lista perfomaticas no React Native" (May 2023)
+
+## Recent Blog Posts
+
+- "Liquid Glass no Flutter: será que realmente precisamos disso?" (Jun 2025)
+- "O grande problema de segurança nos SaaS criados com Vibe Coding" (May 2025)
+- "Criando um AI Agent no Cursor para interagir com o Gitlab e Shortcut" (May 2025)
+- "Criando um editor de imagem com Flutter - CAM Covers" (Mar 2025)
+
+## Links
+- Website: https://tiagodanin.com
+- LinkedIn: https://linkedin.com/in/tiagodanin
+- Email: TiagoDanin@outlook.com
+- Projects: https://tiagodanin.com/projects
+- Talks: https://tiagodanin.com/talks
+- Blog: https://tiagodanin.com/blog
+- Timeline: https://tiagodanin.com/timeline
+

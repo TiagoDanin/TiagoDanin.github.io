@@ -137,5 +137,13 @@
     "description": "Descubra por onde começar no desenvolvimento mobile com um roadmap prático, comparação entre tecnologias (Flutter, React Native, Kotlin, etc.) e dicas para conseguir o primeiro emprego na área — mesmo começando do zero. Inclui estratégias para destacar seu perfil no LinkedIn, construir projetos e encontrar vagas.",
     "event": "Studio Code Meetup 2025",
     "tags": ["mobile", "career", "linkedin"]
+  },
+  {
+    "id": 18,
+    "date": "Set 2025",
+    "title": "Model Context Protocol (MCP) na Prática",
+    "description": "Nesta palestra iremos aprender o que é Model Context Protocol, ou MCP. Como funciona o protocolo, com exemplos reais de utilização em seus workflows. Por fim, iremos aprender como criar um MCP do zero!",
+    "event": "Idopter Labs Talks 2025",
+    "tags": ["mcp", "ia"]
   }
 ] 

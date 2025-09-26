@@ -8,20 +8,20 @@
     "description": "Development of hybrid solutions with React Native and Flutter, system architectures, project documentation, and test creation. Sometimes I work on Backend with Elixir (Phoenix) or Frontend.\n\nKey responsibilities and achievements:\n- App submission to stores (Google Play and App Store)\n- Integration/creation of native libraries (iOS and Android) in Swift, Objc, Java, and Kotlin for React Native apps\n- Platform management: AppCenter, Firebase, Onesignal\n- REST API Integration\n- React Native project architecture and structure\n- Implementation and improvement of automated tests using Jest"
   },
   {
+    "company": "HackerOne",
+    "role": "Independent Security Researcher - Freelance",
+    "startDate": "2018",
+    "endDate": "Present",
+    "logo": "/business/h1.jpg",
+    "description": "Conducted vulnerability assessments for HackerOne partners, reporting security flaws to developers for remediation.\n\nKey analysis skills:\n- Cross-site scripting (XSS)\n- Cross Site Request Forgery (CSRF)\n- Open Redirect\n- Inadequate authentication procedures\n- Android app reverse engineering"
+  },
+  {
     "company": "VoxData Technology",
     "role": "Mobile Developer",
     "startDate": "2019",
     "endDate": "2022",
     "logo": "/business/voxdata.png",
     "description": "Development of native (Java, Swift, and Objc) and hybrid (Quasar, React Native) mobile solutions, system architectures, project documentation, and test creation.\n\nKey mobile development skills:\n- App submission to stores (Google Play and App Store)\n- Firebase Test Lab and Firebase Cloud Messaging\n- Integration/creation of native libraries with hybrid applications\n- REST API Integration\n- Android architecture and structure"
-  },
-  {
-    "company": "HackerOne",
-    "role": "Independent Security Researcher - Freelance",
-    "startDate": "2018",
-    "endDate": "2022",
-    "logo": "/business/h1.jpg",
-    "description": "Conducted vulnerability assessments for HackerOne partners, reporting security flaws to developers for remediation.\n\nKey analysis skills:\n- Cross-site scripting (XSS)\n- Cross Site Request Forgery (CSRF)\n- Open Redirect\n- Inadequate authentication procedures\n- Android app reverse engineering"
   },
   {
     "company": "IssueHunt",
