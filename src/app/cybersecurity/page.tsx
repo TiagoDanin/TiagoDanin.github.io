@@ -54,7 +54,12 @@ export default function CybersecurityPage() {
       title: "Security Content Creator",
       period: "2024",
       description: "Published research on SaaS security vulnerabilities and database exposures"
-    }
+    },
+    {
+      title: "Banking Security Product Development",
+      period: "2019 - 2022, 2025",
+      description: "Worked on security-focused products for banking systems, implementing security measures and protocols in Mobile Apps"
+    },
   ];
 
   return (
@@ -186,10 +191,10 @@ export default function CybersecurityPage() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/about">
-                  <ArrowRight className="h-5 w-5 mr-2" />
-                  Learn More About Me
-                </Link>
+                <a href="https://hackerone.com/tiago-danin" target="_blank" rel="noopener noreferrer">
+                  <Shield className="h-5 w-5 mr-2" />
+                  View HackerOne Profile
+                </a>
               </Button>
             </div>
           </div>
