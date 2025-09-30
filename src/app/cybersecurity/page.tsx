@@ -52,12 +52,12 @@ export default function CybersecurityPage() {
     },
     {
       title: "Security Content Creator",
-      period: "2024",
+      period: "2024 - Present",
       description: "Published research on SaaS security vulnerabilities and database exposures"
     },
     {
       title: "Banking Security Product Development",
-      period: "2019 - 2022, 2025",
+      period: "2019 - 2022, 2025 - Present",
       description: "Worked on security-focused products for banking systems, implementing security measures and protocols in Mobile Apps"
     },
   ];
