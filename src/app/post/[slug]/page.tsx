@@ -9,18 +9,39 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!post) {
     return {
       title: 'Post not found',
-      description: 'The requested post could not be found.'
+      description: 'The requested post could not be found.',
+      robots: {
+        index: false,
+        follow: true,
+      },
     };
   }
 
+  // Truncate description to 160 characters
+  const truncatedDescription = post.description.length > 160
+    ? post.description.substring(0, 157) + '...'
+    : post.description;
+
   return {
     title: post.title,
-    description: post.description,
+    description: truncatedDescription,
+    keywords: ['blog', 'post', 'article', 'software development', 'technology', 'pt-br'],
+    alternates: {
+      canonical: `https://tiagodanin.com/post/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
-      description: post.description,
+      description: truncatedDescription,
+      url: `https://tiagodanin.com/post/${post.slug}`,
       type: 'article',
-      publishedTime: post.date,
+      publishedTime: toISODate(post.date),
+      authors: ['Tiago Danin'],
+      locale: 'pt_BR',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: truncatedDescription,
     },
   };
 }

@@ -21,7 +21,22 @@ import type { LucideIcon } from 'lucide-react';
 
 export const metadata = {
   title: "All Contacts",
-  description: "Contact Me & Social Media.",
+  description: "All contact methods and social media profiles for Tiago Danin. Connect on GitHub, LinkedIn, Twitter, and more professional platforms.",
+  keywords: ["contacts", "social media", "GitHub", "LinkedIn", "Twitter", "email", "contact", "networking"],
+  alternates: {
+    canonical: 'https://tiagodanin.com/all-contacts',
+  },
+  openGraph: {
+    title: "All Contacts - Tiago Danin",
+    description: "All contact methods and social media profiles. Connect on GitHub, LinkedIn, Twitter, and more.",
+    url: "https://tiagodanin.com/all-contacts",
+    type: "profile",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "All Contacts - Tiago Danin",
+    description: "All contact methods and social media profiles.",
+  },
 };
 
 const iconMap: Record<string, LucideIcon> = {

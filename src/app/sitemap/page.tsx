@@ -1,6 +1,27 @@
 import fs from 'fs';
 import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Sitemap",
+  description: "Complete sitemap of TiagoDanin.com. Browse all pages including blog posts, talks, projects, timeline events, and services.",
+  keywords: ["sitemap", "site navigation", "all pages", "website structure"],
+  alternates: {
+    canonical: 'https://tiagodanin.com/sitemap',
+  },
+  openGraph: {
+    title: "Sitemap - Tiago Danin",
+    description: "Complete sitemap with all pages and content.",
+    url: "https://tiagodanin.com/sitemap",
+    type: "website",
+  },
+  twitter: {
+    card: 'summary',
+    title: "Sitemap - Tiago Danin",
+    description: "Complete sitemap with all pages and content.",
+  },
+};
 
 interface SitemapURL {
   loc: string;

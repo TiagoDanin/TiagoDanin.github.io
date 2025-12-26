@@ -1,8 +1,28 @@
-
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Instagram, Linkedin, Youtube, Presentation, MessageCircle, AlignJustify } from "lucide-react";
 import linksData from "@/data/links.json";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Links",
+  description: "All my important links in one place - Social media, presentations, portfolio, and contact information for Tiago Danin.",
+  keywords: ["links", "social media", "contact", "portfolio", "linktree", "bio", "Tiago Danin"],
+  alternates: {
+    canonical: 'https://tiagodanin.com/links',
+  },
+  openGraph: {
+    title: "Links - Tiago Danin",
+    description: "All my important links in one place - Social media, presentations, and contact information.",
+    url: "https://tiagodanin.com/links",
+    type: "profile",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Links - Tiago Danin",
+    description: "All my important links in one place.",
+  },
+};
 
 const iconMap = {
   instagram: Instagram,

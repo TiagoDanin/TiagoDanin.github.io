@@ -7,15 +7,16 @@ import { ToasterProvider } from "@/components/ui/toaster-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tiagodanin.com'),
   title: {
     default: "Tiago Danin - Mobile Developer & Software Engineer",
     template: "%s | Tiago Danin"
   },
-  description: "Mobile Developer with expertise in React Native, Flutter Java, Kotlin, Obj-C and Swift. Also experienced in front-end, back-end, and desktop development for macOS & Linux. Open source contributor and bug hunter.",
+  description: "Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor, bug hunter, and cybersecurity researcher.",
   keywords: [
-    "Tiago Danin", "Mobile Developer", "Software Engineer", "Flutter", "React Native", 
-    "iOS", "Android", "Swift", "Kotlin", "Java", "TypeScript", "Open Source",
-    "Bug Hunter", "Frontend", "Backend", "DevOps", "Brasil", "Developer"
+    "Tiago Danin", "Mobile Developer", "Software Engineer", "Flutter", "React Native",
+    "iOS", "Android", "Swift", "Kotlin", "TypeScript", "Cybersecurity",
+    "Bug Hunter", "HackerOne", "Open Source", "Game Development", "Mentorship"
   ],
   authors: [{ name: "Tiago Danin", url: "https://tiagodanin.com" }],
   creator: "Tiago Danin",
@@ -34,16 +35,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
+    alternateLocale: ['pt_BR'],
     url: 'https://tiagodanin.com',
     title: 'Tiago Danin - Mobile Developer & Software Engineer',
-    description: 'Mobile Developer with expertise in Flutter, React Native, iOS, and Android development. Open source contributor and bug hunter.',
+    description: 'Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor and cybersecurity researcher.',
     siteName: 'Tiago Danin',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Tiago Danin - Mobile Developer & Software Engineer',
-    description: 'Mobile Developer with expertise in Flutter, React Native, iOS, and Android development.',
+    description: 'Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor.',
     creator: '@tiagodanin',
+    site: '@tiagodanin',
   },
   alternates: {
     canonical: 'https://tiagodanin.com',

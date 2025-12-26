@@ -9,7 +9,22 @@ export async function generateMetadata({ params }: { params: { page: string } })
   const pageNumber = Number(params.page) || 1;
   return {
     title: `Blog - Page ${pageNumber}`,
-    description: "Articles and thoughts about development, technology and more",
+    description: "Articles about software development, mobile apps, cybersecurity, and technology. Posts in Portuguese (PT-BR) covering Flutter, React Native, and more.",
+    keywords: ["blog", "software development", "mobile development", "Flutter", "React Native", "programming", "technology", "pt-br"],
+    alternates: {
+      canonical: `https://tiagodanin.com/blog/${pageNumber}`,
+    },
+    openGraph: {
+      title: `Blog - Page ${pageNumber} - Tiago Danin`,
+      description: "Articles about software development, mobile apps, and technology. Posts in Portuguese (PT-BR).",
+      url: `https://tiagodanin.com/blog/${pageNumber}`,
+      type: "website",
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Blog - Page ${pageNumber} - Tiago Danin`,
+      description: "Articles about software development, mobile apps, and technology.",
+    },
   };
 }
 

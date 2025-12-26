@@ -4,7 +4,27 @@ import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
 
 export const metadata = {
   title: "Timeline",
-  description: "My professional journey and career milestones",
+  description: "Professional journey and career milestones of Tiago Danin. From education to current work in mobile development and cybersecurity.",
+  keywords: ["timeline", "career", "professional journey", "work history", "experience"],
+  alternates: {
+    canonical: 'https://tiagodanin.com/timeline',
+    types: {
+      'application/rss+xml': [
+        { url: '/rss/timeline.xml', title: 'Timeline RSS Feed' }
+      ],
+    },
+  },
+  openGraph: {
+    title: "Professional Timeline - Tiago Danin",
+    description: "Career milestones and professional journey from education to current work in mobile development.",
+    url: "https://tiagodanin.com/timeline",
+    type: "profile",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Professional Timeline - Tiago Danin",
+    description: "Career milestones and professional journey.",
+  },
 };
 
 const Timeline = () => {

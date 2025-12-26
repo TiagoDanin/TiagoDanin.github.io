@@ -81,19 +81,28 @@ export async function generateMetadata({ params }: { params: { type: ProjectType
   const title = project.title || project.name || '';
   const description = project.description || `${title} - A ${type} project by Tiago Danin`;
 
+  // Truncate description to 160 characters
+  const truncatedDescription = description.length > 160
+    ? description.substring(0, 157) + '...'
+    : description;
+
   return {
-    title: `${title} on ${type}`,
-    description: description,
+    title: `${title} - ${type}`,
+    description: truncatedDescription,
+    keywords: ['project', type, title, 'open source', 'portfolio', 'Tiago Danin'],
+    alternates: {
+      canonical: `https://tiagodanin.com/project/${type}/${slug}`,
+    },
     openGraph: {
-      title: `${title} on ${type}`,
-      description: description,
+      title: `${title} - ${type} project`,
+      description: truncatedDescription,
       type: 'article',
-      url: `https://tiagodanin.dev/project/${type}/${slug}`,
+      url: `https://tiagodanin.com/project/${type}/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
       title: `${title} | ${type} | Tiago Danin`,
-      description: description,
+      description: truncatedDescription,
     },
   };
 }

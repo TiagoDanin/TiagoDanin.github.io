@@ -6,9 +6,27 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Cybersecurity Services | Tiago Danin - Independent Security Researcher",
+  title: "Cybersecurity Services",
   description: "Professional cybersecurity services by Tiago Danin. Vulnerability assessments, penetration testing, mobile security, and security consulting since 2018.",
-  keywords: ["cybersecurity", "security researcher", "vulnerability assessment", "penetration testing", "HackerOne", "mobile security", "web security"],
+  keywords: [
+    "cybersecurity services", "security researcher", "vulnerability assessment",
+    "penetration testing", "HackerOne", "mobile security", "web security",
+    "bug bounty", "security audit", "security consulting"
+  ],
+  alternates: {
+    canonical: 'https://tiagodanin.com/cybersecurity',
+  },
+  openGraph: {
+    title: "Cybersecurity Services | Tiago Danin - Security Researcher",
+    description: "Professional vulnerability assessment and security testing. HackerOne researcher with expertise in mobile and web security.",
+    url: "https://tiagodanin.com/cybersecurity",
+    type: "website",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Cybersecurity Services | Tiago Danin",
+    description: "Professional vulnerability assessment and security testing.",
+  },
 };
 
 export default function CybersecurityPage() {

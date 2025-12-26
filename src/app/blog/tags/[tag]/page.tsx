@@ -15,9 +15,35 @@ interface Post {
 
 export async function generateMetadata({ params }: { params: { tag: string } }) {
   const tagName = decodeURIComponent(params.tag);
+
+  // Find the original tag name
+  const allTagsMap = new Map<string, string>();
+  posts.forEach(post => {
+    const tags = extractTagsFromPost(post.title, post.description);
+    tags.forEach(tag => {
+      allTagsMap.set(titleToSlug(tag), tag);
+    });
+  });
+  const originalTagName = allTagsMap.get(params.tag) || tagName;
+
   return {
-    title: `Posts tagged with "${tagName}"`,
-    description: `All blog posts tagged with "${tagName}" - Articles and thoughts about development, technology and more`,
+    title: `Posts tagged with "${originalTagName}"`,
+    description: `All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles in Portuguese (PT-BR).`,
+    keywords: ["blog", "tag", originalTagName, "software development", "articles", "pt-br"],
+    alternates: {
+      canonical: `https://tiagodanin.com/blog/tags/${params.tag}`,
+    },
+    openGraph: {
+      title: `Posts tagged with "${originalTagName}" - Tiago Danin`,
+      description: `All blog posts tagged with "${originalTagName}"`,
+      url: `https://tiagodanin.com/blog/tags/${params.tag}`,
+      type: "website",
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Posts tagged "${originalTagName}" - Tiago Danin`,
+      description: `Blog posts about ${originalTagName}`,
+    },
   };
 }
 

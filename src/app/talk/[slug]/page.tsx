@@ -22,19 +22,29 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
 
+  // Truncate description to 160 characters
+  const truncatedDescription = talk.description.length > 160
+    ? talk.description.substring(0, 157) + '...'
+    : talk.description;
+
   return {
     title: `${talk.title} - ${talk.event}`,
-    description: talk.description,
+    description: truncatedDescription,
+    keywords: ['talk', 'presentation', 'workshop', 'speaking', 'mobile development', 'pt-br', talk.event],
+    alternates: {
+      canonical: `https://tiagodanin.com/talk/${slug}`,
+    },
     openGraph: {
       title: `${talk.title} - ${talk.event}`,
-      description: talk.description,
+      description: truncatedDescription,
       type: 'article',
       url: `https://tiagodanin.com/talk/${slug}`,
+      locale: 'pt_BR',
     },
     twitter: {
       card: 'summary_large_image',
       title: `${talk.title} | ${talk.event} | Tiago Danin`,
-      description: talk.description,
+      description: truncatedDescription,
     },
   };
 }

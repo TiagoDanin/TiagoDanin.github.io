@@ -47,22 +47,37 @@ export async function generateMetadata({ params }: { params: { network: string }
   if (!contact) {
     return {
       title: 'Contact Not Found',
-      description: 'This social/contact network does not exist.'
+      description: 'This social/contact network does not exist.',
+      robots: {
+        index: false,
+        follow: true,
+      },
     };
   }
+
+  const description = `Connect with Tiago Danin on ${contact.label}. Social media profile and contact information.`;
+
   return {
-    title: `${contact.label} | Social Contact` ,
-    description: `Find me on ${contact.label}. Social and contact information for Tiago Danin.`,
+    title: `${contact.label}` ,
+    description: description,
+    keywords: ['social media', 'contact', contact.label, 'profile', 'Tiago Danin'],
+    alternates: {
+      canonical: `https://tiagodanin.com/social/${params.network}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
-      title: `${contact.label} | Social Contact` ,
-      description: `Find me on ${contact.label}. Social and contact information for Tiago Danin.`,
+      title: `${contact.label} - Tiago Danin` ,
+      description: description,
       url: contact.url,
       type: 'profile',
     },
     twitter: {
       card: 'summary',
-      title: `${contact.label} | Social Contact` ,
-      description: `Find me on ${contact.label}. Social and contact information for Tiago Danin.`,
+      title: `${contact.label} - Tiago Danin` ,
+      description: description,
     },
   };
 }

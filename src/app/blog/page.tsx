@@ -7,7 +7,27 @@ import { toISODate, extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug
 
 export const metadata = {
   title: "Blog",
-  description: "Articles and thoughts about development, technology and more",
+  description: "Articles about software development, mobile apps, cybersecurity, and technology. Posts in Portuguese (PT-BR) covering Flutter, React Native, and more.",
+  keywords: ["blog", "software development", "mobile development", "Flutter", "React Native", "programming", "technology", "pt-br"],
+  alternates: {
+    canonical: 'https://tiagodanin.com/blog',
+    types: {
+      'application/rss+xml': [
+        { url: '/rss/blog.xml', title: 'Blog RSS Feed' }
+      ],
+    },
+  },
+  openGraph: {
+    title: "Blog - Tiago Danin",
+    description: "Articles about software development, mobile apps, and technology. Posts in Portuguese (PT-BR).",
+    url: "https://tiagodanin.com/blog",
+    type: "website",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Blog - Tiago Danin",
+    description: "Articles about software development, mobile apps, and technology.",
+  },
 };
 
 const POSTS_PER_PAGE = 10;

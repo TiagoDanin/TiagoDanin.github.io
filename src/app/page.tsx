@@ -7,12 +7,20 @@ import { Work } from "@/components/sections/Work";
 
 export const metadata = {
   title: "Home",
-  description: "Mobile Developer with expertise in Java, Kotlin, Obj-C, Swift, React Native, and Flutter, also experienced in front-end, back-end, and desktop development for macOS & Linux. Passionate about open source, automation, and solving real-world problems, always looking for new challenges.",
+  description: "Mobile developer specializing in Flutter, React Native, iOS & Android. Open source contributor, cybersecurity researcher, and mentor.",
+  alternates: {
+    canonical: 'https://tiagodanin.com',
+  },
   openGraph: {
-    title: "Tiago Danin - Mobile Developer & Software Engineer",
-    description: "Mobile Developer specialized in Flutter, React Native, iOS and Android development. Open source contributor with experience in full-stack development.",
-    url: "https://tiagodanin.com",
-    type: "website",
+    title: 'Tiago Danin - Mobile Developer & Software Engineer',
+    description: 'Mobile developer specializing in Flutter, React Native, iOS & Android. Open source contributor, cybersecurity researcher, and mentor.',
+    url: 'https://tiagodanin.com',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tiago Danin - Mobile Developer & Software Engineer',
+    description: 'Mobile developer specializing in Flutter, React Native, iOS & Android.',
   },
 };
 

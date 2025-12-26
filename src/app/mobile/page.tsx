@@ -6,9 +6,27 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mobile Development Services | Tiago Danin - Flutter & React Native Expert",
+  title: "Mobile Development Services",
   description: "Professional mobile app development services with Flutter and React Native. Financial, government solutions, native integrations, testing, UI/UX, and ASO expertise.",
-  keywords: ["mobile development", "Flutter", "React Native", "iOS", "Android", "native integration", "mobile security", "ASO", "app store optimization"],
+  keywords: [
+    "mobile development services", "Flutter development", "React Native development",
+    "iOS development", "Android development", "native integration", "mobile security",
+    "ASO", "app store optimization", "mobile app consulting", "cross-platform development"
+  ],
+  alternates: {
+    canonical: 'https://tiagodanin.com/mobile',
+  },
+  openGraph: {
+    title: "Mobile Development Services | Tiago Danin",
+    description: "Professional mobile app development with Flutter and React Native. Native integrations, testing, UI/UX, and ASO expertise.",
+    url: "https://tiagodanin.com/mobile",
+    type: "website",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Mobile Development Services | Tiago Danin",
+    description: "Professional mobile app development with Flutter and React Native.",
+  },
 };
 
 export default function MobilePage() {

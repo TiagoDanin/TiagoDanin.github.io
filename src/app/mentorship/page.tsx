@@ -6,9 +6,27 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mentorship Services | Tiago Danin - Game Development, AI & Mobile Mentoring",
+  title: "Mentorship Services",
   description: "Professional mentorship in game development, AI, and mobile development with weekly 1:1 calls. Personalized guidance from concept to deployment.",
-  keywords: ["mentorship", "game development", "AI development", "mobile development", "Flutter", "React Native", "weekly calls", "programming mentor"],
+  keywords: [
+    "mentorship", "game development mentorship", "AI development mentorship",
+    "mobile development mentorship", "Flutter mentor", "React Native mentor",
+    "weekly calls", "programming mentor", "1:1 mentorship", "tech mentor"
+  ],
+  alternates: {
+    canonical: 'https://tiagodanin.com/mentorship',
+  },
+  openGraph: {
+    title: "Mentorship Services | Tiago Danin - Game Dev, AI & Mobile",
+    description: "1:1 mentorship in game development, AI, and mobile development. Weekly video calls with personalized guidance.",
+    url: "https://tiagodanin.com/mentorship",
+    type: "website",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Mentorship Services | Tiago Danin",
+    description: "1:1 mentorship in game development, AI, and mobile development.",
+  },
 };
 
 export default function MentorshipPage() {

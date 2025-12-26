@@ -6,7 +6,27 @@ import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
 
 export const metadata = {
   title: "Talks",
-  description: "Talks and presentations about development, technology and more",
+  description: "Public speaking engagements, presentations, and workshops about mobile development, Flutter, React Native, and cybersecurity. Talks in Portuguese (PT-BR).",
+  keywords: ["talks", "presentations", "workshops", "speaking", "mobile development", "Flutter", "React Native", "cybersecurity", "pt-br"],
+  alternates: {
+    canonical: 'https://tiagodanin.com/talks',
+    types: {
+      'application/rss+xml': [
+        { url: '/rss/talks.xml', title: 'Talks RSS Feed' }
+      ],
+    },
+  },
+  openGraph: {
+    title: "Talks & Presentations - Tiago Danin",
+    description: "Public speaking engagements about mobile development, Flutter, React Native, and cybersecurity.",
+    url: "https://tiagodanin.com/talks",
+    type: "website",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Talks & Presentations - Tiago Danin",
+    description: "Public speaking about mobile development and cybersecurity.",
+  },
 };
 
 const TalksPage = () => {

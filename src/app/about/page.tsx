@@ -5,12 +5,20 @@ import { Work } from "@/components/sections/Work";
 
 export const metadata = {
   title: "About",
-  description: "Meet Tiago Danin, a Mobile Developer and Bug Hunter with expertise in multiple languages. Explore his projects and join him in building innovative solutions!",
+  description: "Learn about Tiago Danin, mobile developer with expertise in Flutter, React Native, iOS, and Android. Bug hunter, open source contributor, and mentor.",
+  alternates: {
+    canonical: 'https://tiagodanin.com/about',
+  },
   openGraph: {
-    title: "About Tiago Danin - Mobile Developer & Software Engineer",
-    description: "Learn more about Tiago Danin, a passionate Mobile Developer with expertise in Flutter, React Native, iOS, and Android development.",
+    title: "About Tiago Danin - Mobile Developer & Security Researcher",
+    description: "Mobile developer with expertise in Flutter, React Native, iOS, and Android. HackerOne bug hunter and open source contributor.",
     url: "https://tiagodanin.com/about",
-    type: "website",
+    type: "profile",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "About Tiago Danin - Mobile Developer & Security Researcher",
+    description: "Mobile developer with expertise in Flutter, React Native, iOS, and Android.",
   },
 };
 

@@ -29,19 +29,29 @@ export async function generateMetadata({ params }: { params: { year: string, slu
     };
   }
 
+  // Truncate description to 160 characters
+  const truncatedDescription = event.description.length > 160
+    ? event.description.substring(0, 157) + '...'
+    : event.description;
+
   return {
     title: `${event.title} (${event.date})`,
-    description: event.description,
+    description: truncatedDescription,
+    keywords: ['timeline', 'career', 'professional journey', 'milestone', ...event.tags],
+    alternates: {
+      canonical: `https://tiagodanin.com/timeline/${year}/${slug}`,
+    },
     openGraph: {
       title: `${event.title} (${event.date})`,
-      description: event.description,
+      description: truncatedDescription,
       type: 'article',
       url: `https://tiagodanin.com/timeline/${year}/${slug}`,
+      publishedTime: toISODate(event.date),
     },
     twitter: {
       card: 'summary_large_image',
       title: `${event.title} | ${event.date} | Tiago Danin`,
-      description: event.description,
+      description: truncatedDescription,
     },
   };
 }
