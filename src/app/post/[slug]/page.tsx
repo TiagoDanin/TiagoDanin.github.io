@@ -25,7 +25,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: post.title,
     description: truncatedDescription,
-    keywords: ['blog', 'post', 'article', 'software development', 'technology', 'pt-br'],
+    keywords: ['blog', 'artigo', 'software development', 'technology', 'pt-br', 'desenvolvimento', 'programação'],
     alternates: {
       canonical: `https://tiagodanin.com/post/${post.slug}`,
     },
@@ -35,13 +35,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       url: `https://tiagodanin.com/post/${post.slug}`,
       type: 'article',
       publishedTime: toISODate(post.date),
-      authors: ['Tiago Danin'],
+      authors: ['https://tiagodanin.com/about'],
       locale: 'pt_BR',
+      siteName: 'Tiago Danin',
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: truncatedDescription,
+      creator: '@tiagodanin',
+      site: '@tiagodanin',
     },
   };
 }
@@ -59,6 +62,31 @@ export default function Post({ params }: { params: { slug: string } }) {
     return <div className="container mx-auto py-32 text-center">Post not found</div>;
   }
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tiagodanin.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://tiagodanin.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://tiagodanin.com/post/${post.slug}`
+      }
+    ]
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -70,12 +98,18 @@ export default function Post({ params }: { params: { slug: string } }) {
     "isAccessibleForFree": true,
     "author": {
       "@type": "Person",
+      "name": "Tiago Danin",
+      "url": "https://tiagodanin.com"
+    },
+    "publisher": {
+      "@type": "Person",
       "name": "Tiago Danin"
     }
   };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <RedirectClient url={post.originalUrl} />
 

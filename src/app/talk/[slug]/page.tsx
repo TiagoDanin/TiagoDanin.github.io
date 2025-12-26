@@ -27,24 +27,54 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     ? talk.description.substring(0, 157) + '...'
     : talk.description;
 
+  const keywords = [
+    'palestra',
+    'talk',
+    'apresentação',
+    'workshop',
+    'mobile development',
+    'pt-br',
+    talk.event,
+    ...(talk.tags || [])
+  ];
+
   return {
     title: `${talk.title} - ${talk.event}`,
     description: truncatedDescription,
-    keywords: ['talk', 'presentation', 'workshop', 'speaking', 'mobile development', 'pt-br', talk.event],
+    keywords: keywords,
     alternates: {
       canonical: `https://tiagodanin.com/talk/${slug}`,
     },
     openGraph: {
       title: `${talk.title} - ${talk.event}`,
       description: truncatedDescription,
-      type: 'article',
+      type: talk.youtubeUrl ? 'video.other' : 'article',
       url: `https://tiagodanin.com/talk/${slug}`,
       locale: 'pt_BR',
+      siteName: 'Tiago Danin',
+      ...(talk.youtubeUrl && {
+        video: [{
+          url: talk.youtubeUrl,
+          type: 'text/html',
+          width: 1280,
+          height: 720,
+        }]
+      }),
     },
     twitter: {
-      card: 'summary_large_image',
-      title: `${talk.title} | ${talk.event} | Tiago Danin`,
+      card: talk.youtubeUrl ? 'player' : 'summary_large_image',
+      title: talk.title,
       description: truncatedDescription,
+      creator: '@tiagodanin',
+      site: '@tiagodanin',
+      ...(talk.youtubeUrl && {
+        players: [{
+          playerUrl: talk.youtubeUrl,
+          streamUrl: talk.youtubeUrl,
+          width: 1280,
+          height: 720,
+        }]
+      }),
     },
   };
 }
@@ -75,6 +105,31 @@ export default function TalkPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tiagodanin.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Talks",
+        "item": "https://tiagodanin.com/talks"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": talk.title,
+        "item": `https://tiagodanin.com/talk/${slug}`
+      }
+    ]
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Event",
@@ -83,9 +138,16 @@ export default function TalkPage({ params }: { params: { slug: string } }) {
     "startDate": toISODate(talk.date),
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": talk.youtubeUrl ? "https://schema.org/OnlineEventAttendanceMode" : "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
+    "location": talk.youtubeUrl ? {
+      "@type": "VirtualLocation",
+      "url": talk.youtubeUrl
+    } : {
       "@type": "Place",
-      "name": talk.event
+      "name": talk.event,
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BR"
+      }
     },
     "organizer": {
       "@type": "Organization",
@@ -93,21 +155,36 @@ export default function TalkPage({ params }: { params: { slug: string } }) {
     },
     "performer": {
       "@type": "Person",
-      "name": "Tiago Danin"
+      "name": "Tiago Danin",
+      "url": "https://tiagodanin.com"
     },
     "offers": talk.youtubeUrl ? {
       "@type": "Offer",
       "url": talk.youtubeUrl,
       "availability": "https://schema.org/InStock",
-      "price": 0,
+      "price": "0",
       "priceCurrency": "BRL"
     } : undefined,
     "url": `https://tiagodanin.com/talk/${slug}`,
-    "inLanguage": "pt-BR"
+    "inLanguage": "pt-BR",
+    ...(talk.youtubeUrl && {
+      "recordedIn": {
+        "@type": "VideoObject",
+        "url": talk.youtubeUrl,
+        "name": talk.title,
+        "description": talk.description,
+        "uploadDate": toISODate(talk.date),
+        "author": {
+          "@type": "Person",
+          "name": "Tiago Danin"
+        }
+      }
+    })
   };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container mx-auto py-32 px-4">
         <div className="max-w-3xl mx-auto">
