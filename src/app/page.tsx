@@ -6,21 +6,28 @@ import { Services } from "@/components/sections/Services";
 import { Work } from "@/components/sections/Work";
 
 export const metadata = {
-  title: "Home",
-  description: "Mobile developer specializing in Flutter, React Native, iOS & Android. Open source contributor, cybersecurity researcher, and mentor.",
+  title: "Flutter, React Native & iOS Developer | Tiago Danin",
+  description: "Expert mobile developer specializing in Flutter & React Native. Build high-quality iOS/Android apps with full-stack solutions, cybersecurity expertise & professional mentorship.",
+  keywords: [
+    "Mobile Developer", "Flutter Developer", "React Native Developer",
+    "iOS Developer", "Android Developer", "Full Stack Developer",
+    "Software Engineer", "Cybersecurity Researcher", "Open Source Contributor",
+    "Technical Mentorship", "Cross-Platform Development", "Native Mobile Apps"
+  ],
   alternates: {
     canonical: 'https://tiagodanin.com',
   },
   openGraph: {
-    title: 'Tiago Danin - Mobile Developer & Software Engineer',
-    description: 'Mobile developer specializing in Flutter, React Native, iOS & Android. Open source contributor, cybersecurity researcher, and mentor.',
+    title: 'Tiago Danin - Expert Mobile & Full Stack Developer',
+    description: 'Expert mobile developer specialized in Flutter, React Native, iOS & Android. Full-stack engineer, cybersecurity researcher, open source contributor & technical mentor.',
     url: 'https://tiagodanin.com',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tiago Danin - Mobile Developer & Software Engineer',
-    description: 'Mobile developer specializing in Flutter, React Native, iOS & Android.',
+    title: 'Tiago Danin - Expert Mobile & Full Stack Developer',
+    description: 'Mobile developer specializing in Flutter, React Native, iOS & Android. Expert in full-stack development, cybersecurity, open source & mentorship. Let\'s build amazing apps together.',
+    creator: '@tiagodanin',
   },
 };
 
@@ -70,16 +77,33 @@ const websiteSchema = {
   }
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://tiagodanin.com"
+    }
+  ]
+};
+
 const Index = () => {
   return (
     <>
-      <script 
-        type="application/ld+json" 
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <script 
-        type="application/ld+json" 
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <Hero />
       <Services />

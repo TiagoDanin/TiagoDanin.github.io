@@ -6,27 +6,30 @@ import { Button } from "@/components/ui/button";
 import { toISODate, extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
 export const metadata = {
-  title: "Blog",
-  description: "Articles about software development, mobile apps, cybersecurity, and technology. Posts in Portuguese (PT-BR) covering Flutter, React Native, and more.",
-  keywords: ["blog", "software development", "mobile development", "Flutter", "React Native", "programming", "technology", "pt-br"],
+  title: "Blog PT-BR: Artigos Sobre Desenvolvimento & IA",
+  description: "Blog sobre desenvolvimento de software, mobile, IA e segurança em português. Artigos semanais sobre Flutter, React Native, AI agents e tecnologia. Leia agora!",
+  keywords: ["blog português", "desenvolvimento de software", "mobile development", "Flutter", "React Native", "AI agents", "segurança", "programação", "artigos técnicos", "Android", "pt-br"],
   alternates: {
     canonical: 'https://tiagodanin.com/blog',
     types: {
       'application/rss+xml': [
-        { url: '/rss/blog.xml', title: 'Blog RSS Feed' }
+        { url: '/rss/blog.xml', title: 'Blog RSS Feed - PT-BR' }
       ],
     },
   },
   openGraph: {
-    title: "Blog - Tiago Danin",
-    description: "Articles about software development, mobile apps, and technology. Posts in Portuguese (PT-BR).",
+    title: "Blog PT-BR: Desenvolvimento, Mobile & IA",
+    description: "Artigos semanais sobre desenvolvimento de software, mobile apps, AI agents e segurança. Comunidade de developers brasileiros.",
     url: "https://tiagodanin.com/blog",
     type: "website",
+    siteName: "Tiago Danin",
+    locale: "pt_BR",
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Blog - Tiago Danin",
-    description: "Articles about software development, mobile apps, and technology.",
+    title: "Blog PT-BR: Desenvolvimento & IA | Tiago Danin",
+    description: "Artigos sobre mobile, AI agents, segurança e programação em português.",
+    creator: "@tiagodanin",
   },
 };
 
@@ -46,6 +49,12 @@ const Blog = () => {
     "name": metadata.title,
     "description": metadata.description,
     "url": "https://tiagodanin.com/blog",
+    "inLanguage": "pt-BR",
+    "author": {
+      "@type": "Person",
+      "name": "Tiago Danin",
+      "url": "https://tiagodanin.com"
+    },
     "blogPost": currentPosts.map((post) => ({
       "@type": "BlogPosting",
       "headline": post.title,
@@ -61,9 +70,29 @@ const Blog = () => {
     }))
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tiagodanin.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://tiagodanin.com/blog"
+      }
+    ]
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="container mx-auto py-32">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <div className="flex items-center justify-center gap-2">

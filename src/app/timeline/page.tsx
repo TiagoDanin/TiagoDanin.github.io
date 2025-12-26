@@ -3,9 +3,9 @@ import timelineData from "@/data/timeline.json";
 import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
 
 export const metadata = {
-  title: "Timeline",
-  description: "Professional journey and career milestones of Tiago Danin. From education to current work in mobile development and cybersecurity.",
-  keywords: ["timeline", "career", "professional journey", "work history", "experience"],
+  title: "Professional Timeline & Career Journey",
+  description: "Career timeline from education to senior mobile developer. Professional milestones, projects, and achievements in mobile development, cybersecurity, and open source.",
+  keywords: ["timeline", "career", "professional journey", "work history", "experience", "mobile developer career", "career milestones", "professional background"],
   alternates: {
     canonical: 'https://tiagodanin.com/timeline',
     types: {
@@ -15,21 +15,42 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Professional Timeline - Tiago Danin",
-    description: "Career milestones and professional journey from education to current work in mobile development.",
+    title: "Professional Timeline & Career Journey",
+    description: "Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source.",
     url: "https://tiagodanin.com/timeline",
     type: "profile",
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Professional Timeline - Tiago Danin",
-    description: "Career milestones and professional journey.",
+    title: "Career Timeline | Tiago Danin",
+    description: "Professional journey: education, projects, and career milestones in mobile development.",
+    creator: "@tiagodanin",
   },
 };
 
 const Timeline = () => {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tiagodanin.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Timeline",
+        "item": "https://tiagodanin.com/timeline"
+      }
+    ]
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "ItemList",

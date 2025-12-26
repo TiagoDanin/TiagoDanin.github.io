@@ -5,27 +5,29 @@ import { Flag, Mic, Video } from "lucide-react";
 import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
 
 export const metadata = {
-  title: "Talks",
-  description: "Public speaking engagements, presentations, and workshops about mobile development, Flutter, React Native, and cybersecurity. Talks in Portuguese (PT-BR).",
-  keywords: ["talks", "presentations", "workshops", "speaking", "mobile development", "Flutter", "React Native", "cybersecurity", "pt-br"],
+  title: "Palestras & Apresentações PT-BR | Tech Talks",
+  description: "Palestras sobre desenvolvimento mobile, Flutter, React Native e segurança. Apresentações em eventos tech, workshops e comunidades de desenvolvedores brasileiros.",
+  keywords: ["palestras", "talks", "apresentações", "workshops", "mobile development", "Flutter", "React Native", "cybersecurity", "pt-br", "eventos tech", "DevFest", "DevOpsDays"],
   alternates: {
     canonical: 'https://tiagodanin.com/talks',
     types: {
       'application/rss+xml': [
-        { url: '/rss/talks.xml', title: 'Talks RSS Feed' }
+        { url: '/rss/talks.xml', title: 'Talks RSS Feed - PT-BR' }
       ],
     },
   },
   openGraph: {
-    title: "Talks & Presentations - Tiago Danin",
-    description: "Public speaking engagements about mobile development, Flutter, React Native, and cybersecurity.",
+    title: "Palestras & Apresentações Tech PT-BR",
+    description: "Palestras sobre mobile development, Flutter, React Native e cybersecurity. Apresentações em eventos tech brasileiros.",
     url: "https://tiagodanin.com/talks",
     type: "website",
+    locale: "pt_BR",
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Talks & Presentations - Tiago Danin",
-    description: "Public speaking about mobile development and cybersecurity.",
+    title: "Palestras Tech PT-BR | Tiago Danin",
+    description: "Palestras sobre mobile, Flutter, React Native e segurança em eventos tech brasileiros.",
+    creator: "@tiagodanin",
   },
 };
 
@@ -35,6 +37,25 @@ const TalksPage = () => {
     const dateB = new Date(b.date);
     return dateB.getTime() - dateA.getTime();
   });
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tiagodanin.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Talks",
+        "item": "https://tiagodanin.com/talks"
+      }
+    ]
+  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -72,6 +93,7 @@ const TalksPage = () => {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container mx-auto py-32">
         <div className="max-w-2xl mx-auto mb-12 text-center">
