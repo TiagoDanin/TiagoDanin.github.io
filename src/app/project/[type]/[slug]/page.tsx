@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ExternalLink, Github, Package, Archive } from 'lucide-react';
+import Link from 'next/link';
 
 import projectsGithub from "@/data/github.json";
 import projectsPrivate from "@/data/private.json";
@@ -86,6 +87,12 @@ export async function generateMetadata({ params }: { params: { type: ProjectType
     ? description.substring(0, 157) + '...'
     : description;
 
+  const url = urlPrefixMap[type]
+    ? `${urlPrefixMap[type]}${project.name}`
+    : project.url || project.html_url || '';
+
+  const isSoftware = ["npm", "pypi", "luarocks", "atom", "github", "aur"].includes(type);
+
   return {
     title: `${title} - ${type}`,
     description: truncatedDescription,
@@ -104,6 +111,56 @@ export async function generateMetadata({ params }: { params: { type: ProjectType
       title: `${title} | ${type} | Tiago Danin`,
       description: truncatedDescription,
     },
+    other: {
+      'application/ld+json': JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": isSoftware ? "SoftwareApplication" : "CreativeWork",
+          "name": title,
+          "description": project.description || truncatedDescription,
+          "applicationCategory": isSoftware ? type : undefined,
+          "url": url,
+          "inLanguage": "en-US",
+          "isAccessibleForFree": true,
+          ...(project.homepage && { "image": project.homepage }),
+          "author": {
+            "@type": "Person",
+            "name": "Tiago Danin",
+            "url": "https://tiagodanin.com"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://tiagodanin.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Projects",
+              "item": "https://tiagodanin.com/projects"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": type.charAt(0).toUpperCase() + type.slice(1),
+              "item": `https://tiagodanin.com/projects#${type}`
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": title,
+              "item": `https://tiagodanin.com/project/${type}/${slug}`
+            }
+          ]
+        }
+      ])
+    }
   };
 }
 
@@ -162,26 +219,8 @@ export default function ProjectPage({ params }: { params: { type: ProjectType, s
 
   const installCommand = getInstallCommand();
 
-  const isSoftware = ["npm", "pypi", "luarocks", "atom", "github", "aur"].includes(type);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": isSoftware ? "SoftwareApplication" : "CreativeWork",
-    "name": title,
-    "description": description,
-    "applicationCategory": isSoftware ? type : undefined,
-    "url": url,
-    "inLanguage": "en-US",
-    "isAccessibleForFree": true,
-    ...(project.homepage && { "image": project.homepage }),
-    "author": {
-      "@type": "Person",
-      "name": "Tiago Danin"
-    }
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container mx-auto py-32 px-4">
         <div className="max-w-3xl mx-auto">
           {/* Project header */}
@@ -298,6 +337,54 @@ export default function ProjectPage({ params }: { params: { type: ProjectType, s
               </div>
             )}
           </div>
+
+          {/* Related Projects Section */}
+          {(() => {
+            // Get related projects from the same type or with the same language
+            const relatedProjects = projects
+              .filter((p) => {
+                const pTitle = p.title || p.name || '';
+                return (
+                  (p.language === project.language || type === type) &&
+                  titleToSlug(pTitle) !== slug
+                );
+              })
+              .slice(0, 3);
+
+            if (relatedProjects.length === 0) return null;
+
+            return (
+              <div className="mt-12">
+                <h2 className="text-2xl font-bold mb-6">Related Projects</h2>
+                <div className="grid gap-4 md:grid-cols-3">
+                  {relatedProjects.map((relatedProject, idx) => {
+                    const relatedTitle = relatedProject.title || relatedProject.name || '';
+                    const relatedSlug = titleToSlug(relatedTitle);
+
+                    return (
+                      <Link
+                        key={idx}
+                        href={`/project/${type}/${relatedSlug}`}
+                        className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                      >
+                        <h3 className="font-semibold mb-2 text-lg">{relatedTitle}</h3>
+                        {relatedProject.description && (
+                          <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                            {relatedProject.description}
+                          </p>
+                        )}
+                        {relatedProject.language && (
+                          <span className="inline-block mt-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-2 py-1 rounded text-xs">
+                            {relatedProject.language}
+                          </span>
+                        )}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
     </>

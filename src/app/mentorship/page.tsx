@@ -27,6 +27,78 @@ export const metadata: Metadata = {
     title: "Mentorship Services | Tiago Danin",
     description: "1:1 mentorship in game development, AI, and mobile development.",
   },
+  other: {
+    'application/ld+json': JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Development Mentorship",
+        "description": "Professional 1:1 mentorship in game development, AI, and mobile development",
+        "provider": {
+          "@type": "Person",
+          "name": "Tiago Danin",
+          "url": "https://tiagodanin.com"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Technical Mentorship",
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://tiagodanin.com/mentorship",
+          "availableLanguage": ["en", "pt-BR"]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How Mentorship Works",
+        "description": "Structured learning approach with personalized guidance",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Initial Assessment",
+            "text": "We start with a comprehensive assessment of your current skills and define clear learning objectives"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Personalized Learning Path",
+            "text": "Custom curriculum designed specifically for your goals, whether it's game dev, AI, or mobile development"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Weekly 1:1 Calls",
+            "text": "Regular video calls to review progress, solve challenges, and plan next steps in your learning journey"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Project-Based Learning",
+            "text": "Build real projects that you can showcase in your portfolio, from games to mobile apps"
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tiagodanin.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Mentorship Services",
+            "item": "https://tiagodanin.com/mentorship"
+          }
+        ]
+      }
+    ])
+  }
 };
 
 export default function MentorshipPage() {

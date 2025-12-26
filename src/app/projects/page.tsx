@@ -24,36 +24,53 @@ export const metadata = {
     title: "Developer Portfolio - 300+ Projects",
     description: "Open source libraries, Flutter apps, React Native projects, npm packages, and mobile games.",
   },
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://tiagodanin.com"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Projects",
-      "item": "https://tiagodanin.com/projects"
-    }
-  ]
+  other: {
+    'application/ld+json': JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "name": "Developer Portfolio - 300+ Projects",
+        "description": "Comprehensive portfolio of open source projects and applications",
+        "url": "https://tiagodanin.com/projects",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Tiago Danin",
+          "url": "https://tiagodanin.com",
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Mobile Application Developer",
+            "description": "Specializes in Flutter, React Native, and native development"
+          }
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tiagodanin.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Projects",
+            "item": "https://tiagodanin.com/projects"
+          }
+        ]
+      }
+    ])
+  }
 };
 
 const Index = () => {
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <div>
-        <Projects />
-        <FullProjects />
-      </div>
-    </>
+    <div>
+      <Projects />
+      <FullProjects />
+    </div>
   );
 };
 

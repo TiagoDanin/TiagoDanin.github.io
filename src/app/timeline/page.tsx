@@ -26,32 +26,9 @@ export const metadata = {
     description: "Professional journey: education, projects, and career milestones in mobile development.",
     creator: "@tiagodanin",
   },
-};
-
-const Timeline = () => {
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+  other: {
+    'application/ld+json': JSON.stringify([
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://tiagodanin.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Timeline",
-        "item": "https://tiagodanin.com/timeline"
-      }
-    ]
-  };
-
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "ItemList",
         "itemListElement": timelineData.map((item) => ({
@@ -76,10 +53,42 @@ const Timeline = () => {
           "url": `/timeline/${item.date.toString()}/${titleToSlug(item.title)}`,
           "inLanguage": "pt-BR"
         }))
-      }) }} />
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tiagodanin.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Timeline",
+            "item": "https://tiagodanin.com/timeline"
+          }
+        ]
+      }
+    ])
+  }
+};
+
+const Timeline = () => {
+  return (
+    <>
       <div className="container mx-auto py-20 px-4 sm:px-6 relative">
         <div className="absolute top-0 left-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2 hidden sm:block"></div>
         <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2 hidden sm:block"></div>
+
+        <div className="max-w-3xl w-full mx-auto mb-12">
+          <h1 className="text-4xl font-bold text-center mb-4">Professional Timeline & Career Journey</h1>
+          <p className="text-center text-muted-foreground">
+            Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source.
+          </p>
+        </div>
 
         <ol className="relative border-s border-gray-200 dark:border-gray-700 max-w-3xl w-full mx-auto">
           {timelineData.map((item, index) => {

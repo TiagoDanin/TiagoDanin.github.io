@@ -31,6 +31,67 @@ export const metadata = {
     description: "Artigos sobre mobile, AI agents, segurança e programação em português.",
     creator: "@tiagodanin",
   },
+  other: {
+    'application/ld+json': JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog PT-BR: Artigos Sobre Desenvolvimento & IA",
+        "description": "Blog sobre desenvolvimento de software, mobile, IA e segurança em português",
+        "url": "https://tiagodanin.com/blog",
+        "inLanguage": "pt-BR",
+        "author": {
+          "@type": "Person",
+          "name": "Tiago Danin",
+          "url": "https://tiagodanin.com"
+        },
+        "blogPost": posts.map((post) => ({
+          "@type": "BlogPosting",
+          "headline": post.title,
+          "description": post.description,
+          "datePublished": toISODate(post.date),
+          "url": `https://tiagodanin.com/post/${post.slug}`,
+          "inLanguage": "pt-BR",
+          "isAccessibleForFree": true,
+          "author": {
+            "@type": "Person",
+            "name": "Tiago Danin"
+          }
+        }))
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Blog PT-BR",
+        "description": "Complete blog collection with development articles",
+        "url": "https://tiagodanin.com/blog",
+        "inLanguage": "pt-BR",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Tiago Danin",
+          "url": "https://tiagodanin.com"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tiagodanin.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://tiagodanin.com/blog"
+          }
+        ]
+      }
+    ])
+  }
 };
 
 const POSTS_PER_PAGE = 10;
@@ -43,56 +104,8 @@ const Blog = () => {
 
   const isYouTubePost = (url: string) => url.includes("youtube.com");
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": metadata.title,
-    "description": metadata.description,
-    "url": "https://tiagodanin.com/blog",
-    "inLanguage": "pt-BR",
-    "author": {
-      "@type": "Person",
-      "name": "Tiago Danin",
-      "url": "https://tiagodanin.com"
-    },
-    "blogPost": currentPosts.map((post) => ({
-      "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.description,
-      "datePublished": toISODate(post.date),
-      "url": `https://tiagodanin.com/post/${post.slug}`,
-      "inLanguage": "pt-BR",
-      "isAccessibleForFree": true,
-      "author": {
-        "@type": "Person",
-        "name": "Tiago Danin"
-      }
-    }))
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://tiagodanin.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": "https://tiagodanin.com/blog"
-      }
-    ]
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="container mx-auto py-32">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <div className="flex items-center justify-center gap-2">

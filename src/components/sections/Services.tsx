@@ -2,6 +2,7 @@
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Code, Smartphone, Database, Zap, Shield } from "lucide-react";
+import Link from "next/link";
 
 export function Services() {
   const isMobile = useIsMobile();
@@ -26,15 +27,15 @@ export function Services() {
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
           {/* Mobile Development */}
-          <div className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <Link href="/mobile" className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow group">
             <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
               <Smartphone className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Mobile Development</h3>
+            <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Mobile Development</h3>
             <p className="text-muted-foreground">
               Native and cross-platform mobile apps using Flutter, React Native, Kotlin, Swift, and more.
             </p>
-          </div>
+          </Link>
           
           {/* Full Stack Development */}
           <div className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
@@ -48,15 +49,15 @@ export function Services() {
           </div>
           
           {/* Security */}
-          <div className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <Link href="/cybersecurity" className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow group">
             <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
               <Shield className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Cybersecurity</h3>
+            <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Cybersecurity</h3>
             <p className="text-muted-foreground">
               Implementation of security best practices, penetration testing, and secure coding principles to protect applications and data.
             </p>
-          </div>
+          </Link>
           
           {/* DevOps & CI/CD */}
           <div className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">

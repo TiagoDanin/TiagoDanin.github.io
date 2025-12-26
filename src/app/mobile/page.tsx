@@ -27,6 +27,90 @@ export const metadata: Metadata = {
     title: "Mobile Development Services | Tiago Danin",
     description: "Professional mobile app development with Flutter and React Native.",
   },
+  other: {
+    'application/ld+json': JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Mobile App Development",
+        "description": "Professional mobile development with Flutter, React Native, and native platforms for iOS and Android",
+        "provider": {
+          "@type": "Person",
+          "name": "Tiago Danin",
+          "url": "https://tiagodanin.com"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Mobile Application Development",
+        "hasOfferingDetails": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Flutter Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "React Native Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Native iOS Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Native Android Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile Security Consulting"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "App Store Optimization"
+            }
+          }
+        ],
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://tiagodanin.com/mobile",
+          "availableLanguage": ["en", "pt-BR"]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tiagodanin.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Mobile Development Services",
+            "item": "https://tiagodanin.com/mobile"
+          }
+        ]
+      }
+    ])
+  }
 };
 
 export default function MobilePage() {

@@ -27,6 +27,77 @@ export const metadata: Metadata = {
     title: "Cybersecurity Services | Tiago Danin",
     description: "Professional vulnerability assessment and security testing.",
   },
+  other: {
+    'application/ld+json': JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Cybersecurity Services",
+        "description": "Professional vulnerability assessment, penetration testing, and security consulting services",
+        "provider": {
+          "@type": "Person",
+          "name": "Tiago Danin",
+          "url": "https://tiagodanin.com",
+          "sameAs": "https://hackerone.com/tiago-danin"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Cybersecurity & Penetration Testing",
+        "hasOfferingDetails": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Vulnerability Assessment"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile Security Testing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Security Audit"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bug Bounty Consultation"
+            }
+          }
+        ],
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://tiagodanin.com/cybersecurity",
+          "availableLanguage": ["en", "pt-BR"]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tiagodanin.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Cybersecurity Services",
+            "item": "https://tiagodanin.com/cybersecurity"
+          }
+        ]
+      }
+    ])
+  }
 };
 
 export default function CybersecurityPage() {

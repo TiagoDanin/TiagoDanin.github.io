@@ -14,8 +14,11 @@ export function Hero() {
           <div className="space-y-8">
             <div className="space-y-4">
               <p className="text-lg text-muted-foreground">Hi I am</p>
-              <h1 className="text-5xl font-bold">Tiago Danin</h1>
-              <div className="flex items-center gap-4 text-3xl font-semibold">
+              <h1 className="text-5xl font-bold">
+                Tiago Danin
+                <span className="sr-only"> - Expert Mobile & Full Stack Developer, Bug Hunter</span>
+              </h1>
+              <div className="flex items-center gap-4 text-3xl font-semibold" aria-hidden="true">
                 <span>Mobile Developer</span>
                 <div className="h-2 w-2 rounded-full bg-primary" />
                 <span>Bug Hunter</span>
