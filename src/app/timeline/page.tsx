@@ -79,13 +79,13 @@ export const metadata = {
 const Timeline = () => {
   return (
     <>
-      <div className="container mx-auto py-20 px-4 sm:px-6 relative">
-        <div className="absolute top-0 left-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2 hidden sm:block"></div>
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2 hidden sm:block"></div>
+      <div className="container mx-auto py-16 sm:py-20 px-4 sm:px-6 relative">
+        <div className="absolute top-0 left-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 sm:opacity-30 translate-x-1/2 -translate-y-1/2"></div>
 
         <div className="max-w-3xl w-full mx-auto mb-12">
-          <h1 className="text-4xl font-bold text-center mb-4">Professional Timeline & Career Journey</h1>
-          <p className="text-center text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4">Professional Timeline & Career Journey</h1>
+          <p className="text-center text-sm sm:text-base text-muted-foreground">
             Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source.
           </p>
         </div>
@@ -124,11 +124,11 @@ const Timeline = () => {
                 </div>
 
                 {/* Content */}
-                <Link href={`/timeline/${year}/${slug}`} className="block group">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                <Link href={`/timeline/${year}/${slug}`} className="block group min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-base font-normal text-gray-500 dark:text-gray-400">
+                  <p className="text-sm sm:text-base font-normal text-gray-500 dark:text-gray-400">
                     {item.description}
                   </p>
                 </Link>

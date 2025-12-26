@@ -100,9 +100,10 @@
   .skill-tag {
     @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
   }
-  
+
   .tech-badge {
-    @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg text-white text-xs font-medium hover:scale-105 transition-transform duration-200;
+    @apply inline-flex items-center gap-2 px-3 py-2 rounded-lg text-white text-xs font-medium hover:scale-105 transition-transform duration-200 max-w-full;
+    word-break: break-word;
   }
 }
 

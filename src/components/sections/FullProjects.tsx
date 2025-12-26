@@ -75,16 +75,16 @@ export function FullProjects() {
   const totalProjects = projectSections.reduce((sum, section) => sum + section.projects.length, otherProjectsPrivateCount);
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-16 sm:py-20 overflow-hidden">
       {/* Blur effect circles */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-20 sm:opacity-30 translate-x-1/2 -translate-y-1/2"></div>
 
-      <div className="container mx-auto relative mb-2 pb-2">
+      <div className="container mx-auto relative mb-2 pb-2 px-4">
         {/* Add title and counter */}
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">All Projects</h1>
-          <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 rounded-full font-semibold">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">All Projects</h1>
+          <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 rounded-full font-semibold text-sm sm:text-base">
             {totalProjects} Projects
           </span>
         </div>
@@ -101,17 +101,18 @@ export function FullProjects() {
                 <button
                   type="button"
                   onClick={() => toggleSection(section.title)}
-                  className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${index === 0 ? 'rounded-t-xl' : ''
+                  className={`flex items-center justify-between w-full p-4 sm:p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 min-h-[44px] ${index === 0 ? 'rounded-t-xl' : ''
                     } ${index === projectSections.length - 1 && !expandedSections[section.title] ? 'rounded-b-xl border-b' : ''
                     }`}
                   aria-expanded={expandedSections[section.title]}
                   aria-controls={`accordion-color-body-${index}`}
+                  aria-label={`Toggle ${section.title} projects section`}
                 >
-                  <span className="text-xl">{section.title}</span>
-                  <div className="flex items-center gap-3 ml-auto">
-                    <span className="px-2 py-1 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded text-sm">
-                      {section.title === "Private" ? 
-                        projectsPrivate.length + otherProjectsPrivateCount : 
+                  <span className="text-base sm:text-lg lg:text-xl">{section.title}</span>
+                  <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+                    <span className="px-2 py-1 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded text-xs sm:text-sm">
+                      {section.title === "Private" ?
+                        projectsPrivate.length + otherProjectsPrivateCount :
                         section.projects.length
                       } projects
                     </span>

@@ -6,38 +6,31 @@ import posts from "@/data/posts.json";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Link from "next/link";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 export function RecentPosts() {
-  const isMobile = useIsMobile();
-
-  if (isMobile) {
-    return null;
-  }
-
   const recentPosts = posts.slice(0, 4);
 
   return (
-    <section id="blog" className="relative py-20 bg-secondary/30 overflow-hidden">
+    <section id="blog" className="relative py-16 sm:py-20 bg-secondary/30 overflow-hidden">
       {/* Blur effect circles */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 sm:opacity-30 translate-x-1/2 -translate-y-1/2"></div>
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-2xl mx-auto mb-12 text-center">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <h2 className="text-3xl font-bold tracking-tight">Recent Thoughts</h2>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Recent Thoughts</h2>
             <Badge variant="outline" className="flex items-center gap-1">
               <Flag className="h-3 w-3" />
               PT-BR
             </Badge>
           </div>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-4 text-sm sm:text-base text-muted-foreground">
             Some of my latest articles, insights, and ideas from the blog.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8">
           <Carousel
             opts={{
               align: "start",
@@ -45,15 +38,13 @@ export function RecentPosts() {
             }}
             className="w-full"
           >
-            <CarouselContent>
+            <CarouselContent className="-ml-2 sm:-ml-4">
               {recentPosts.map((post, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+                <CarouselItem key={index} className="pl-2 sm:pl-4 basis-full sm:basis-1/2 lg:basis-1/4">
                   <Card className="h-full group hover:shadow-lg transition-all duration-300">
                     <CardHeader>
-                      <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
-                        <Link
-                          href={`/post/${post.slug}`}
-                        >
+                      <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors text-base sm:text-lg">
+                        <Link href={`/post/${post.slug}`}>
                           {post.title}
                         </Link>
                       </CardTitle>
@@ -63,9 +54,7 @@ export function RecentPosts() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-muted-foreground line-clamp-3">
-                        <Link
-                          href={`/post/${post.slug}`}
-                        >
+                        <Link href={`/post/${post.slug}`}>
                           {post.description}
                         </Link>
                       </p>
@@ -73,7 +62,8 @@ export function RecentPosts() {
                     <CardFooter>
                       <Link
                         href={`/post/${post.slug}`}
-                        className="inline-flex items-center text-sm font-medium text-primary hover:underline"
+                        className="inline-flex items-center text-sm font-medium text-primary hover:underline min-h-[44px] min-w-[44px]"
+                        aria-label={`Read more about ${post.title}`}
                       >
                         Read more <ArrowRight className="ml-1 h-4 w-4" />
                       </Link>
@@ -83,8 +73,14 @@ export function RecentPosts() {
               ))}
             </CarouselContent>
             <div className="flex justify-end gap-2 mt-4">
-              <CarouselPrevious className="relative translate-y-0 left-0" />
-              <CarouselNext className="relative translate-y-0 right-0" />
+              <CarouselPrevious
+                className="relative translate-y-0 left-0 min-h-[44px] min-w-[44px]"
+                aria-label="Previous posts"
+              />
+              <CarouselNext
+                className="relative translate-y-0 right-0 min-h-[44px] min-w-[44px]"
+                aria-label="Next posts"
+              />
             </div>
           </Carousel>
         </div>
@@ -92,7 +88,7 @@ export function RecentPosts() {
         <div className="flex justify-center mt-10">
           <Link
             href="/blog"
-            className="inline-flex items-center px-4 py-2 border border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-all"
+            className="inline-flex items-center px-4 py-2 border border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-all min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             View all posts <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
