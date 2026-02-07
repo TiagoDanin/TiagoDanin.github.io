@@ -10,9 +10,17 @@ const main = async (): Promise<void> => {
 	console.log('Get github projects')
 	for (const page of pages) {
 		const response = await fetch(baseUrl(page))
-		const data = await response.json()
+		const data = await response.json() as any[]
 		allProjects = [...allProjects, ...data]
 	}
+
+	const uniqueProjects = Array.from(
+		new Map(allProjects.map(project => [project.id, project])).values()
+	)
+
+	uniqueProjects.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+
+	allProjects = uniqueProjects
 
 	fs.writeFile('src/data/github.json', JSON.stringify(allProjects, null, 4), (err: NodeJS.ErrnoException | null) => {
 		if(err) {
