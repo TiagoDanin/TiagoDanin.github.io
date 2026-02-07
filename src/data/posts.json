@@ -1,10 +1,24 @@
 [
   {
+    "date": "Jan 26, 2026",
+    "title": "Criando um Agente no ChatGPT para escrever stories técnicas",
+    "description": "Automatizando a criação de stories técnicas consolidando informações dispersas em conversas, mensagens e feedbacks. Uma solução para transformar inputs caóticos em artefatos técnicos claros e padronizados, liberando capacidade cognitiva para análises de trade-offs e decisões técnicas de maior valor.",
+    "slug": "criando-um-agente-chatgpt-para-escrever-stories-tecnicas",
+    "originalUrl": "https://www.linkedin.com/pulse/criando-um-agente-chatgpt-para-escrever-stories-t%C3%A9cnicas-tiago-danin-jvaqf/?trackingId=u%2FtjVtwzG%2B9Dlb%2BQjZEHXg%3D%3D"
+  },
+  {
     "date": "Sep 8, 2025",
     "title": "Criando um Agente de IA no Claude Code para Controlar meu Smartphone",
     "description": "Automatizando documentação e testes de apps Android com inteligência artificial. Eu estava enfrentando um desafio específico: precisava documentar automaticamente diversos fluxos de uma aplicação Android. Foi quando comecei a explorar maneiras de realizar esse processo, e uma das ferramentas que decidi testar foi o Claude Code.",
     "slug": "criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone",
     "originalUrl": "https://blog.idopterlabs.com.br/criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone-5b19672564c0"
+  },
+  {
+    "date": "Jun 14, 2025",
+    "title": "Liquid Glass no Flutter: será que realmente precisamos disso?",
+    "description": "Uma reflexão crítica sobre o efeito Liquid Glass no Flutter e sua real necessidade em aplicações móveis. Explorando quando esse recurso agrega valor à experiência do usuário e quando pode ser apenas complexidade desnecessária ao projeto.",
+    "slug": "liquid-glass-flutter-sera-que-realmente-precisamos-disso",
+    "originalUrl": "https://www.linkedin.com/pulse/liquid-glass-flutter-ser%C3%A1-que-realmente-precisamos-disso-tiago-danin-zjptf/"
   },
   {
     "date": "Aug 22, 2025",
