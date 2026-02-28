@@ -1,5 +1,4 @@
-[
-    {
+[{
         "title": "Instagram",
         "url": "https://www.instagram.com/tiagodanin/",
         "icon": "instagram",
@@ -27,11 +26,17 @@
         "title": "Apresentação Studio Code",
         "url": "https://www.canva.com/design/DAGsf0UHIEk/r-5bEmsp_qNiLOH6V8rRnw/edit?utm_content=DAGsf0UHIEk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
         "icon": "presentation",
-        "enabled": true
+        "enabled": false
     },
     {
         "title": "Link para Buscar de Vagas",
         "url": "https://www.notion.so/Buscar-de-vagas-22e3bc9b9579804294c5dd49d32609ea?source=copy_link",
+        "icon": "list",
+        "enabled": false
+    },
+    {
+        "title": "Mobile em 2026: Como Se Destacar no Mercado",
+        "url": "https://forms.gle/ZtP1mHTN9QF86VEX7",
         "icon": "list",
         "enabled": true
     },
