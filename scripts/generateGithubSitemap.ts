@@ -21,7 +21,7 @@ async function generateGithubSitemap(): Promise<void> {
   try {
     console.log('Generating GitHub projects sitemap...');
     
-    const projectsPath = path.join(__dirname, '..', 'src', 'data', 'github.json');
+    const projectsPath = path.join(__dirname, '..', 'contents', 'github', 'index.json');
     const projectsData: GithubProject[] = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
     
     if (!projectsData || projectsData.length === 0) {

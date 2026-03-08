@@ -14,12 +14,14 @@ console.log('Get npm packages');
 
 		uniquePackages.sort((a: any, b: any) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
-		fs.writeFile('src/data/npm.json', JSON.stringify(uniquePackages, null, 4), (err: NodeJS.ErrnoException | null) => {
+		fs.mkdirSync('contents/npm', { recursive: true })
+		fs.writeFile('contents/npm/index.json', JSON.stringify(uniquePackages, null, 4), (err: NodeJS.ErrnoException | null) => {
 			if (err) {
 				return console.log(err);
 			}
 			return console.log('OK!');
 		});
+		process.stdout.write(JSON.stringify(uniquePackages, null, 4));
 	} catch (err) {
 		console.error(err);
 	}
