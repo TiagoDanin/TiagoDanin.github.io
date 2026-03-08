@@ -2110,10 +2110,10 @@ next@^15.2.4:
     "@next/swc-win32-x64-msvc" "15.5.7"
     sharp "^0.34.3"
 
-nextjs-studio@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/nextjs-studio/-/nextjs-studio-0.1.0.tgz#384637ff3c1ffd253bbca7b6ae71ba48f88d464d"
-  integrity sha512-fPG/ZsBDZy+Da+cYpLOUbNZCF4L3+kC2hFfOGtzRmrWWlZz4DUjl8uIsUIKaoo7SnjYytT1DU/SHHf9T/UkinA==
+nextjs-studio@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nextjs-studio/-/nextjs-studio-0.2.0.tgz#02fe4863ea377b721506838810903b9d069c048d"
+  integrity sha512-m1UjC040amxw2XBjI19ThM9/F0K/P6IuOgLqkujWK7Tukf36928oFzVfc2XLrO5C5L7M3Ot46qiBwwdADvgsFw==
   dependencies:
     "@sindresorhus/slugify" "^3.0.0"
     chokidar "^5.0.0"
