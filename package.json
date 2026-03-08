@@ -59,6 +59,7 @@
     "next": "^15.2.4",
     "next-sitemap": "^4.2.3",
     "next-themes": "^0.3.0",
+    "nextjs-studio": "^0.1.0",
     "nextjs-toploader": "^3.8.16",
     "node-fetch": "^3.3.2",
     "npm-user-packages-downloads": "^1.0.0",

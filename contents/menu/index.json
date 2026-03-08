@@ -1,0 +1,13 @@
+[{
+	"title": "Home",
+	"href": "/"
+}, {
+	"title": "Projects",
+	"href": "/projects"
+}, {
+	"title": "Blog",
+	"href": "https://dev.to/tiagodanin"
+}, {
+	"title": "Youtube",
+	"href": "https://www.youtube.com/channel/UCC2wpNWwPLPq0vjpOtGcajw"
+}]

@@ -1,0 +1,226 @@
+[
+  {
+    "date": "Jan 26, 2026",
+    "title": "Criando um Agente no ChatGPT para escrever stories técnicas",
+    "description": "Automatizando a criação de stories técnicas consolidando informações dispersas em conversas, mensagens e feedbacks. Uma solução para transformar inputs caóticos em artefatos técnicos claros e padronizados, liberando capacidade cognitiva para análises de trade-offs e decisões técnicas de maior valor.",
+    "slug": "criando-um-agente-chatgpt-para-escrever-stories-tecnicas",
+    "originalUrl": "https://www.linkedin.com/pulse/criando-um-agente-chatgpt-para-escrever-stories-t%C3%A9cnicas-tiago-danin-jvaqf/?trackingId=u%2FtjVtwzG%2B9Dlb%2BQjZEHXg%3D%3D"
+  },
+  {
+    "date": "Sep 8, 2025",
+    "title": "Criando um Agente de IA no Claude Code para Controlar meu Smartphone",
+    "description": "Automatizando documentação e testes de apps Android com inteligência artificial. Eu estava enfrentando um desafio específico: precisava documentar automaticamente diversos fluxos de uma aplicação Android. Foi quando comecei a explorar maneiras de realizar esse processo, e uma das ferramentas que decidi testar foi o Claude Code.",
+    "slug": "criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone",
+    "originalUrl": "https://blog.idopterlabs.com.br/criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone-5b19672564c0"
+  },
+  {
+    "date": "Jun 14, 2025",
+    "title": "Liquid Glass no Flutter: será que realmente precisamos disso?",
+    "description": "Uma reflexão crítica sobre o efeito Liquid Glass no Flutter e sua real necessidade em aplicações móveis. Explorando quando esse recurso agrega valor à experiência do usuário e quando pode ser apenas complexidade desnecessária ao projeto.",
+    "slug": "liquid-glass-flutter-sera-que-realmente-precisamos-disso",
+    "originalUrl": "https://www.linkedin.com/pulse/liquid-glass-flutter-ser%C3%A1-que-realmente-precisamos-disso-tiago-danin-zjptf/"
+  },
+  {
+    "date": "Aug 22, 2025",
+    "title": "[EN] Creating an AI Agent in Claude Code to Control my Smartphone",
+    "description": "Automating Android app documentation and testing with artificial intelligence",
+    "slug": "mcp-claude-code-control-my-smartphone-english",
+    "originalUrl": "https://dev.to/tiagodanin/creating-an-ai-agent-in-claude-code-to-control-my-smartphone-1e3e"
+  },
+  {
+    "date": "May 26, 2025",
+    "title": "O grande problema de segurança nos SaaS criados com Vibe Coding",
+    "description": "SaaS criados no embalo da IA estão falhando no básico: segurança. Nesse vídeo, eu te mostro um dos maiores problemas que venho encontrando em vários produtos feitos com ferramentas no estilo Vibe Coding: bancos de dados completamente expostos, sem nenhuma política mínima de segurança. 😱 Na prática, você vai ver como isso acontece. O problema é grave, fácil de explorar e afeta muitos projetos de indie hackers que nem sabem que estão vulneráveis. 🔐 Se você está criando um produto digital, principalmente com ferramentas low-code/no-code, esse conteúdo é pra você.",
+    "slug": "saas-criados-com-vibe-coding-problema-de-seguranca",
+    "originalUrl": "https://www.youtube.com/watch?v=4hD4UGtLWqU"
+  },
+  {
+    "date": "May 13, 2025",
+    "title": "Criando um AI Agent no Cursor para interagir com o Gitlab e Shortcut",
+    "description": "No mundo do desenvolvimento ágil, falamos muito em produtividade, automação e menos trabalho repetitivo. Mas, na prática, quantas vezes você já perdeu tempo só para abrir um merge request? Buscar o contexto da issue, escrever a descrição, colocar link, título.",
+    "slug": "criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut",
+    "originalUrl": "https://blog.idopterlabs.com.br/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut-4243a7a29bf8"
+  },
+  {
+    "date": "Mar 12, 2025",
+    "title": "Criando um editor de imagem com Flutter - CAM Covers (Da Ideia à Realidade)",
+    "description": "Como criei um app de edição de imagens com Flutter. Veja os desafios, soluções e a monetização do CAM Covers, um editor de capas de álbuns.",
+    "slug": "criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade",
+    "originalUrl": "https://www.linkedin.com/pulse/criando-um-editor-de-imagem-com-flutter-cam-covers-da-tiago-danin-xxarf"
+  },
+  {
+    "date": "Mar 13, 2025",
+    "title": "Aprimorando a Experiência do Usuário com Teclados no iOS usando Keyboard Actions",
+    "description": "Você nunca mais vai lutar contra o Teclado do iOS no Flutter! Veja como resolver um problema comum em aplicativos mobile para iOS que é…",
+    "slug": "aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions",
+    "originalUrl": "https://medium.com/idopterlabs/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions-5f077dd5a1d2"
+  },
+  {
+    "date": "Mar 26, 2024",
+    "title": "Gerenciando Certificados e Perfis Na App Store com Fastlane Match",
+    "description": "Aprenda como gerenciar certificados e perfis na App Store com Fastlane Match.",
+    "slug": "gerenciando-certificados-e-perfis-na-app-store-com-fastlane-match",
+    "originalUrl": "https://www.youtube.com/watch?v=uKe63jYwE1w"
+  },
+  {
+    "date": "Feb 24, 2024",
+    "title": "Flutter: Configurando Seu App à Distância com Firebase Remote Config",
+    "description": "Vamos explorar como implementar e aproveitar ao máximo o Firebase Remote Config em seus aplicativos Flutter",
+    "slug": "flutter-configurando-seu-app-a-distancia-com-firebase-remote-config",
+    "originalUrl": "https://www.youtube.com/watch?v=ocZE-5QuhIQ"
+  },
+  {
+    "date": "Feb 17, 2024",
+    "title": "Flutter: Implementando Animações Incríveis com Lottie",
+    "description": "Quer tornar seus aplicativos Flutter mais dinâmicos e atraentes?",
+    "slug": "flutter-implementando-animações-incriveis-com-lottie",
+    "originalUrl": "https://www.youtube.com/watch?v=9wvNjtbQIpk"
+  },
+  {
+    "date": "Feb 17, 2024",
+    "title": "Crie Ícones Adptativos para Aplicativos Android",
+    "description": "Aprenda como criar ícones adaptáveis para aplicativos Android.",
+    "slug": "crie-icones-adaptativos-para-aplicativos-android",
+    "originalUrl": "https://www.youtube.com/watch?v=YRJnugSqrl4"
+  },
+  {
+    "date": "Feb 11, 2024",
+    "title": "Android Splash Screen em Jetpack Compose: Construindo uma Introdução Impactante para seu App",
+    "description": "No mundo dos aplicativos móveis, a primeira impressão é crucial. E a Splash Screen é a primeira tela que o usuário vê quando abre o seu aplicativo. Neste vídeo, vamos criar uma Splash Screen incrível para o nosso aplicativo usando Jetpack Compose.",
+    "slug": "android-splash-screen-em-jetpack-compose-construindo-uma-introducao-impactante-para-seu-app",
+    "originalUrl": "https://www.youtube.com/watch?v=GLBY4YHoVFk"
+  },
+  {
+    "date": "Mar 4, 2023",
+    "title": "Construindo listas performáticas no ReactNative",
+    "description": "Aprenda como construir listas performáticas no ReactNative.",
+    "slug": "construindo-listas-performaticas-no-reactnative",
+    "originalUrl": "https://www.youtube.com/watch?v=Z3-v01J9n0I"
+  },
+  {
+    "date": "Feb 18, 2023",
+    "title": "Deixe seu perfil no LinkedIn pronto para os recrutadores com essas dicas infalíveis",
+    "description": "Se você está começando agora no mercado de trabalho e busca dicas para criar um perfil no LinkedIn que chame a atenção dos recrutadores, este vídeo é para você",
+    "slug": "deixe-seu-perfil-no-linkedin-pronto-para-os-recrutadores-com-essas-dicas-infaliveis",
+    "originalUrl": "https://www.youtube.com/watch?v=qVdrUKHjldM"
+  },
+  {
+    "date": "Feb 1, 2023",
+    "title": "Como criar pipelines poderosos para React Native no Gitlab",
+    "description": "Neste post vamos falar sobre como implementar um pipeline de testes para React Native utilizando o Gitlab.",
+    "slug": "como-criar-pipelines-poderosos-para-react-native-no-gitlab",
+    "originalUrl": "https://medium.com/idopterlabs/como-criar-pipelines-poderosos-para-react-native-no-gitlab-5da018126289"
+  },
+  {
+    "date": "Jan 2, 2023",
+    "title": "Convertendo Figma para o Jetpack Compose com RELAY",
+    "description": "Convertendo componentes do Figma para o Android Jetpack Compose com Material Design Relay",
+    "slug": "convertendo-figma-para-o-jetpack-compose-com-relay",
+    "originalUrl": "https://www.youtube.com/watch?v=-VSB_Cxw5H0"
+  },
+  {
+    "date": "Sep 29, 2022",
+    "title": "Finalmente! O segredo dos testes no React Native foi revelado",
+    "description": "Tudo o que você precisa saber sobre os testes no React Native",
+    "slug": "finalmente-o-segredo-dos-testes-no-react-native-foi-revelado",
+    "originalUrl": "https://medium.com/idopterlabs/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado-d997ffa82768"
+  },
+  {
+    "date": "Aug 3, 2022",
+    "title": "React 18 - Uma nova maneira de usar o useState (Processamento em lote)",
+    "description": "Uma análise sobre as mudanças no React 18 e como o processamento em lote do useState foi modificado para melhor performance.",
+    "slug": "react-18-uma-nova-maneira-de-usar-o-usestate",
+    "originalUrl": "https://dev.to/tiagodanin/react-18-uma-nova-maneira-de-usar-o-usestate-processamento-em-lote-1ee9"
+  },
+  {
+    "date": "Jun 25, 2022",
+    "title": "Criando aplicativos para Android Wear OS com Jetpack Compose",
+    "description": "Um guia prático sobre como desenvolver aplicativos para Android Wear OS utilizando o moderno toolkit Jetpack Compose.",
+    "slug": "criando-aplicativos-para-android-wear-os-com-jetpack-compose",
+    "originalUrl": "https://dev.to/tiagodanin/criando-aplicativos-no-android-wear-os-com-jetpack-compose-436g"
+  },
+  {
+    "date": "Dec 13, 2021",
+    "title": "Clean Code: Dicas para tornar o seu código mais legível",
+    "description": "Aprenda como escrever código limpo e fácil de entender com essas dicas incríveis.",
+    "slug": "clean-code-dicas-para-tornar-o-seu-codigo-mais-legivel",
+    "originalUrl": "https://www.youtube.com/watch?v=Vol2r1Lb8fo"
+  },
+  {
+    "date": "Dec 1, 2021",
+    "title": "Jogo da Velha utilizado Jetpack Compose - Criando Projetos Juntos #1",
+    "description": "Neste vídeo, vamos criar um jogo da velha utilizando Jetpack Compose.",
+    "slug": "jogo-da-velha-utilizado-jetpack-compose-criando-projetos-juntos-1",
+    "originalUrl": "https://www.youtube.com/watch?v=d85QDuFEKr4"
+  },
+  {
+    "date": "Apr 7, 2019",
+    "title": "Arrow Function Vs Normal Function",
+    "description": "Uma comparação detalhada entre Arrow Functions e funções normais em JavaScript, explicando suas diferenças e casos de uso.",
+    "slug": "arrow-function-vs-normal-function",
+    "originalUrl": "https://dev.to/tiagodanin/arrow-function-vs-normal-function-55gl"
+  },
+  {
+    "date": "Feb 23, 2019",
+    "title": "Lista de apps — Automatizando fluxo de trabalho no GitHub",
+    "description": "Uma lista de apps que podem ajudar você a automatizar seu fluxo de trabalho no GitHub.",
+    "slug": "lista-de-apps-automatizando-fluxo-de-trabalho-no-github",
+    "originalUrl": "https://dev.to/tiagodanin/lista-de-apps-automatizando-fluxo-de-trabalho-no-github-gdm"
+  },
+  {
+    "date": "Feb 23, 2019",
+    "title": "Usando PulseAudio no HDMI",
+    "description": "Um guia prático sobre como configurar corretamente o PulseAudio para saída de áudio via HDMI no Linux.",
+    "slug": "usando-pulseaudio-no-hdmi",
+    "originalUrl": "https://dev.to/tiagodanin/usando-pulseaudio-no-hdmi-c3f"
+  },
+  {
+    "date": "Dec 29, 2018",
+    "title": "O melhor plugin de Auto Complete para ZSH",
+    "description": "Descubra como melhorar sua experiência no terminal com o melhor plugin de autocompletar para ZSH.",
+    "slug": "o-melhor-plugin-de-auto-complete-para-zsh",
+    "originalUrl": "https://dev.to/tiagodanin/o-melhor-plugin-de-auto-complete-para-zsh-2g8m"
+  },
+  {
+    "date": "Nov 6, 2018",
+    "title": "O perfil perfeito no GitHub",
+    "description": "Vou dar algumas dicas de como criar um perfil apresentável no GitHub.",
+    "slug": "o-perfil-perfeito-no-github",
+    "originalUrl": "https://dev.to/tiagodanin/o-perfil-perfeito-no-github-5cco"
+  },
+  {
+    "date": "Sep 16, 2018",
+    "title": "Construindo meu novo site com UIKit, Jus e CuboHub",
+    "description": "Como construí meu site pessoal utilizando UIKit para o frontend, Jus como gerador estático e CuboHub para hospedagem.",
+    "slug": "construindo-meu-novo-site-com-uikit-jus-e-cubohub",
+    "originalUrl": "https://dev.to/tiagodanin/construindo-meu-novo-site-com-uikit-jus-e-cubohub-3apf"
+  },
+  {
+    "date": "Jun 6, 2018",
+    "title": "GitHub vs Outros",
+    "description": "Uma análise comparativa entre o GitHub e outras plataformas de hospedagem de código.",
+    "slug": "github-vs-outros",
+    "originalUrl": "https://dev.to/tiagodanin/github-vs-outros-5705"
+  },
+  {
+    "date": "Mar 17, 2018",
+    "title": "Resolvendo erro do wine não fazer conexões SSL",
+    "description": "Como resolver problemas de conexão SSL no Wine para melhor compatibilidade com aplicações Windows.",
+    "slug": "resolvendo-erro-do-wine-nao-fazer-conexoes-ssl",
+    "originalUrl": "https://dev.to/tiagodanin/resolvendo-erro-do-wine-nao-fazer-conexoes-ssl-bhj"
+  },
+  {
+    "date": "Mar 3, 2018",
+    "title": "Três comandos que você precisar ter em seu terminal",
+    "description": "Conheça três comandos essenciais que todo desenvolvedor deveria ter em seu terminal para aumentar a produtividade.",
+    "slug": "tres-comandos-que-voce-precisar-ter-em-seu-terminal",
+    "originalUrl": "https://dev.to/tiagodanin/tres-comandos-que-voce-precisar-ter-em-seu-terminal-39em"
+  },
+  {
+    "date": "Mar 2, 2018",
+    "title": "Crie seu primeiro aplicativo com Electron",
+    "description": "Um guia passo a passo para criar sua primeira aplicação desktop usando Electron e JavaScript.",
+    "slug": "crie-seu-primeiro-aplicativo-com-electron",
+    "originalUrl": "https://dev.to/tiagodanin/crie-seu-primeiro-aplicativo-com-electron-14o6"
+  }
+]
