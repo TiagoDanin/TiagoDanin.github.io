@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import NextTopLoader from 'nextjs-toploader';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { ToasterProvider } from "@/components/ui/toaster-provider";
+import { queryCollection } from 'nextjs-studio/server';
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -62,6 +63,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const socialLinksData = queryCollection('sociallinks');
   return (
     <html lang="en">
       <body>
@@ -75,7 +77,7 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
           </main>
-          <Footer />
+          <Footer socialLinks={[...socialLinksData]} />
         </div>
         <ToasterProvider />
       </body>

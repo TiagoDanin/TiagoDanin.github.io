@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ExternalLink, Github, Package, Archive } from 'lucide-react';
 import Link from 'next/link';
 
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from "@/utils/parse";
 
 type GenericProject = {

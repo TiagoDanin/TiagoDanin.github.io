@@ -1,8 +1,17 @@
 import { Github, Linkedin, Youtube, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { queryCollection } from 'nextjs-studio';
 
 import type { LucideIcon } from "lucide-react";
+
+interface SocialLink {
+  label: string;
+  url: string;
+  icon: "Github" | "Linkedin" | "Youtube" | "Instagram";
+}
+
+interface SocialLinksProps {
+  socialLinks: SocialLink[];
+}
 
 const iconMap: Record<string, LucideIcon> = {
   Github,
@@ -11,8 +20,8 @@ const iconMap: Record<string, LucideIcon> = {
   Instagram,
 };
 
-export function SocialLinks() {
-  const socialLinksData = queryCollection('sociallinks');
+export function SocialLinks({ socialLinks }: SocialLinksProps) {
+  const socialLinksData = socialLinks;
   return (
     <div className="flex gap-4">
       {socialLinksData.map((link) => {

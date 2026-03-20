@@ -5,10 +5,20 @@ import { ArrowRight, Flag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Link from "next/link";
-import { queryCollection } from 'nextjs-studio';
 
-export function RecentPosts() {
-  const posts = queryCollection('posts');
+interface PostsEntry {
+  date: string;
+  title: string;
+  description: string;
+  slug: string;
+  originalUrl: string;
+}
+
+interface RecentPostsProps {
+  posts: PostsEntry[];
+}
+
+export function RecentPosts({ posts }: RecentPostsProps) {
   const recentPosts = posts.slice(0, 4);
 
   return (

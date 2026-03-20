@@ -1,4 +1,4 @@
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 import {
   ExternalLink,
   Home,

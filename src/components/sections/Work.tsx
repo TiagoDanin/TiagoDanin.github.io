@@ -21,7 +21,55 @@ import {
 import { FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { ExperienceItem } from "@/components/ui/experience-item";
-import { queryCollection } from 'nextjs-studio';
+
+interface WorkEntry {
+  company: string;
+  role: string;
+  startDate: string;
+  endDate: string;
+  logo: string;
+  description: string;
+}
+
+interface VolunteerEntry {
+  organization: string;
+  role: string;
+  startDate: string;
+  endDate: string;
+  logo: string;
+  description: string;
+  category: string;
+}
+
+interface SkillItem {
+  name: string;
+  icon: string;
+  color: string;
+}
+
+interface SkillsEntry {
+  category: string;
+  items: SkillItem[];
+}
+
+interface AboutEntry {
+  name: string;
+  greeting: string;
+  roles: string[];
+  avatar: string;
+  bio: string;
+  bioExtra: string;
+  seoDescription: string;
+  cvUrl: string;
+  email: string;
+}
+
+interface WorkProps {
+  work: WorkEntry[];
+  volunteer: VolunteerEntry[];
+  skills: SkillsEntry[];
+  about: AboutEntry;
+}
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
@@ -44,11 +92,7 @@ const TechIcon = ({ icon: iconName, name, color }: { icon: string, name: string,
   );
 };
 
-export function Work() {
-  const workData = queryCollection('work');
-  const volunteerData = queryCollection('volunteer');
-  const skillsData = queryCollection('skills');
-  const aboutData = queryCollection('about').first()!;
+export function Work({ work, volunteer, skills, about }: WorkProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -82,7 +126,7 @@ export function Work() {
                   <span>Experience</span>
                 </h3>
 
-                {workData.map((job, index) => (
+                {work.map((job, index) => (
                   <ExperienceItem
                     key={index}
                     company={job.company}
@@ -101,7 +145,7 @@ export function Work() {
                   <span>Volunteering</span>
                 </h3>
 
-                {volunteerData.map((job, index) => (
+                {volunteer.map((job, index) => (
                   <ExperienceItem
                     key={index}
                     company={job.organization}
@@ -115,7 +159,7 @@ export function Work() {
               </ol>
 
               <Button className="w-full group" variant="outline" asChild>
-                <a href={aboutData.cvUrl} className="inline-flex items-center gap-2">
+                <a href={about.cvUrl} className="inline-flex items-center gap-2">
                   Open CV
                   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-4 w-4 stroke-muted-foreground transition group-hover:stroke-primary">
                     <path d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -151,7 +195,7 @@ export function Work() {
             </h3>
 
             <div className="mt-6 space-y-4">
-              {skillsData.map((category) => (
+              {skills.map((category) => (
                 <div key={category.category} className="space-y-2">
                   <h4 className="text-sm font-medium">{category.category}</h4>
                   <div className="flex flex-wrap gap-2">

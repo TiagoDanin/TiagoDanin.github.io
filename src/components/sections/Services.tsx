@@ -1,6 +1,6 @@
 import { Code, Smartphone, Shield, Zap } from "lucide-react";
 import Link from "next/link";
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 
 import type { LucideIcon } from "lucide-react";
 

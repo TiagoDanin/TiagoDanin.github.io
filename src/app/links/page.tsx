@@ -1,7 +1,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Instagram, Linkedin, Youtube, Presentation, MessageCircle, AlignJustify } from "lucide-react";
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

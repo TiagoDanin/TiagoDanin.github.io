@@ -6,7 +6,22 @@ import { Badge } from "@/components/ui/badge";
 import { Package, Download, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { queryCollection } from 'nextjs-studio';
+
+interface NpmPackage {
+  name: string;
+  description: string;
+  downloads: number;
+  version: string;
+  keywords: string[];
+  links: {
+    npm: string;
+    repository: string;
+  };
+}
+
+interface NPMRankingsClientProps {
+  npmData: NpmPackage[];
+}
 
 interface AnimatedCounterProps {
   target: number;
@@ -52,8 +67,7 @@ function AnimatedCounter({ target, duration = 2000, formatNumber = true }: Anima
   );
 }
 
-export default function NPMRankingsPage() {
-  const npmData = queryCollection('npm');
+export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
   // Sort packages by downloads in descending order and take top 10
   const sortedPackages = [...npmData]
     .sort((a, b) => b.downloads - a.downloads)

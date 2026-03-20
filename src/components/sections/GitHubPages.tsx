@@ -2,15 +2,24 @@
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { useState, useMemo } from "react";
-import { queryCollection } from 'nextjs-studio';
 
-export default function GitHubPagesSection() {
-  const projectsGithub = queryCollection('github');
+interface GitHubPageProject {
+  name: string;
+  description: string;
+  homepage: string;
+  html_url: string;
+}
+
+interface GitHubPagesSectionProps {
+  githubProjects: GitHubPageProject[];
+}
+
+export default function GitHubPagesSection({ githubProjects }: GitHubPagesSectionProps) {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Filter projects that have homepage field and match search
   const githubPages = useMemo(() => {
-    const pages = projectsGithub.filter((project) =>
+    const pages = githubProjects.filter((project) =>
       project.homepage && project.homepage.trim() !== ""
     );
 
@@ -20,7 +29,7 @@ export default function GitHubPagesSection() {
       project.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description?.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [searchQuery]);
+  }, [githubProjects, searchQuery]);
 
   return (
     <section className="relative py-16 sm:py-20 overflow-hidden">

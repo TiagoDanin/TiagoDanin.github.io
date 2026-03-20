@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { queryCollection } from 'nextjs-studio/server';
 import NPMRankingsClient from './NPMRankingsClient';
 
 export const metadata: Metadata = {
@@ -42,5 +43,6 @@ export const metadata: Metadata = {
 };
 
 export default function NPMRankingsPage() {
-  return <NPMRankingsClient />;
+  const npmData = queryCollection('npm');
+  return <NPMRankingsClient npmData={[...npmData]} />;
 }

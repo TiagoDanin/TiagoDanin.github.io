@@ -1,4 +1,5 @@
 import GitHubPagesSection from "@/components/sections/GitHubPages";
+import { queryCollection } from 'nextjs-studio/server';
 
 export const metadata = {
   title: "GitHub Pages",
@@ -20,10 +21,19 @@ export const metadata = {
   },
 };
 
-const Index = () => (
-  <div>
-    <GitHubPagesSection />
-  </div>
-);
+const Index = () => {
+  const githubProjects = queryCollection('github').map(p => ({
+    name: p.name,
+    description: p.description || '',
+    homepage: p.homepage || '',
+    html_url: p.html_url || '',
+  }));
+
+  return (
+    <div>
+      <GitHubPagesSection githubProjects={githubProjects} />
+    </div>
+  );
+};
 
 export default Index;

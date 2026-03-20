@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 import { RedirectClient } from "@/components/layout/RedirectClient";
 import { toISODate } from '@/utils/parse';
 

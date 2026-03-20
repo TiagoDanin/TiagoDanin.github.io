@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { queryCollection } from 'nextjs-studio/server';
 import GitHubRankingsClient from './GitHubRankingsClient';
 
 export const metadata: Metadata = {
@@ -42,5 +43,6 @@ export const metadata: Metadata = {
 };
 
 export default function GitHubRankingsPage() {
-  return <GitHubRankingsClient />;
+  const githubData = queryCollection('github');
+  return <GitHubRankingsClient githubData={[...githubData]} />;
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
 
 export function generateMetadata() {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
 import { Tag, Video, ChevronLeft, Text, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -3,10 +3,11 @@ import { SocialLinks } from "@/components/ui/SocialLinks";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 
 export function Hero() {
-  const aboutData = queryCollection('about').first()!;
+  const aboutData = queryCollection('about').one();
+  const socialLinksData = queryCollection('sociallinks');
   return (
     <section id="hero" className="relative pt-32 pb-20 md:py-20 overflow-hidden">
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-green-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
@@ -62,7 +63,7 @@ export function Hero() {
               />
             </div>
             <div className="mt-8 sm:absolute sm:-bottom-16 sm:left-1/2 sm:-translate-x-1/2">
-              <SocialLinks />
+              <SocialLinks socialLinks={[...socialLinksData]} />
             </div>
           </div>
         </div>

@@ -2,77 +2,26 @@
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { useState } from "react";
-import { queryCollection } from 'nextjs-studio';
 
-interface ProjectForCard {
+export interface ProjectForCard {
   title: string;
   description: string;
   href: string | null;
   archived?: boolean;
 }
 
-function toCards<T extends { name: string; description: string }>(
-  items: T[],
-  getHref: (item: T) => string | null
-): ProjectForCard[] {
-  return items.map(item => ({
-    title: item.name,
-    description: item.description || '',
-    href: getHref(item),
-  }));
+export interface ProjectSection {
+  title: string;
+  projects: ProjectForCard[];
+}
+
+interface FullProjectsProps {
+  projectSections: ProjectSection[];
 }
 
 const otherProjectsPrivateCount = 55;
 
-export function FullProjects() {
-  const projectSections = [
-    {
-      title: "GitHub",
-      projects: queryCollection('github').map(p => ({
-        title: p.name,
-        description: p.description || '',
-        href: p.homepage || p.html_url || null,
-        archived: p.archived,
-      })),
-    },
-    {
-      title: "Google Play",
-      projects: toCards(queryCollection('googleplay'), p => p.url),
-    },
-    {
-      title: "NPM",
-      projects: toCards(queryCollection('npm'), p => `https://www.npmjs.com/package/${p.name}`),
-    },
-    {
-      title: "LuaRocks",
-      projects: toCards(queryCollection('luarocks'), p => `https://luarocks.org/modules/tiagodanin/${p.name}`),
-    },
-    {
-      title: "Pypi",
-      projects: toCards(queryCollection('pypi'), p => `https://pypi.python.org/pypi/${p.name}`),
-    },
-    {
-      title: "Atom",
-      projects: toCards(queryCollection('atom'), p => `https://atom.io/packages/${p.name}`),
-    },
-    {
-      title: "Microsoft Store",
-      projects: toCards(queryCollection('windows'), p => p.url),
-    },
-    {
-      title: "AUR Archlinux",
-      projects: toCards(queryCollection('aur'), p => p.url),
-    },
-    {
-      title: "Private",
-      projects: toCards(queryCollection('private'), p => p.url),
-    },
-    {
-      title: "Offline/Old Websites",
-      projects: toCards(queryCollection('offline'), () => null),
-    },
-  ];
-
+export function FullProjects({ projectSections }: FullProjectsProps) {
   const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
 
   const toggleSection = (title: string) => {

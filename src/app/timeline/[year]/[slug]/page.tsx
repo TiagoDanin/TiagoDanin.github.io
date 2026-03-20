@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 
-import { queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 
 type TimelineEvent = {

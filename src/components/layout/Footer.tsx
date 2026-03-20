@@ -5,7 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 
-export function Footer() {
+interface FooterProps {
+  socialLinks: { label: string; url: string; icon: string }[];
+}
+
+export function Footer({ socialLinks }: FooterProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -28,7 +32,7 @@ export function Footer() {
           <div>
             <h3 className="text-sm text-muted-foreground mb-4">Follow me on social media:</h3>
             <div className="flex justify-center">
-              <SocialLinks />
+              <SocialLinks socialLinks={socialLinks} />
             </div>
           </div>
         </div>
