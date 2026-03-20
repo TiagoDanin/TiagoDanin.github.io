@@ -236,6 +236,7 @@ export interface PostsEntry {
   slug: string;
   originalUrl: HttpUrl;
   lang: "en" | "pt";
+  tags: Array<"JavaScript" | "React" | "Flutter" | "Android" | "iOS" | "AI" | "GitHub" | "DevOps" | "Mobile" | "Web" | "Security" | "Tutorial" | "Performance" | "UI/UX" | "Testing" | "Backend" | "Frontend" | "Tools" | "Career" | "Linux" | "Video" | "Article">;
 }
 
 /** Data shape for the "private" collection. */

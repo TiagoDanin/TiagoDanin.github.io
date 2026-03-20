@@ -112,7 +112,7 @@ export default async function PostPt({ params }: { params: Promise<{ slug: strin
               </Button>
               <Badge variant="secondary" className="flex items-center gap-1">
                 <Globe className="h-3 w-3" />
-                PT-BR
+                PT
               </Badge>
             </div>
 

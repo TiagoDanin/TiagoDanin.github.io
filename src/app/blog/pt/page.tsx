@@ -1,48 +1,37 @@
 import Link from "next/link";
 import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
-import { Video, ChevronRight, Text } from "lucide-react";
+import { Video, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toISODate, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
 export function generateMetadata() {
-  const posts = queryCollection('posts').where({ lang: 'en' });
+  const posts = queryCollection('posts').where({ lang: 'pt' });
 
   return {
-    title: "Blog: Articles on Development & AI",
-    description: "Blog about software development, mobile, AI and security. Weekly articles about Flutter, React Native, AI agents and technology.",
-    keywords: ["blog", "software development", "mobile development", "Flutter", "React Native", "AI agents", "security", "programming", "technical articles"],
+    title: "Blog: Artigos sobre Desenvolvimento & IA",
+    description: "Blog sobre desenvolvimento de software, mobile, IA e seguranca. Artigos sobre Flutter, React Native, agentes IA e tecnologia.",
+    keywords: ["blog", "desenvolvimento de software", "mobile", "Flutter", "React Native", "IA", "seguranca", "programacao", "artigos tecnicos"],
     alternates: {
-      canonical: 'https://tiagodanin.com/blog',
-      types: {
-        'application/rss+xml': [
-          { url: '/rss/blog.xml', title: 'Blog RSS Feed' }
-        ],
-      },
+      canonical: 'https://tiagodanin.com/blog/pt',
     },
     openGraph: {
-      title: "Blog: Development, Mobile & AI",
-      description: "Weekly articles about software development, mobile apps, AI agents and security.",
-      url: "https://tiagodanin.com/blog",
+      title: "Blog: Desenvolvimento, Mobile & IA",
+      description: "Artigos sobre desenvolvimento de software, apps mobile, agentes IA e seguranca.",
+      url: "https://tiagodanin.com/blog/pt",
       type: "website",
       siteName: "Tiago Danin",
-      locale: "en_US",
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: "Blog: Development & AI | Tiago Danin",
-      description: "Articles about mobile, AI agents, security and programming.",
-      creator: "@tiagodanin",
+      locale: "pt_BR",
     },
     other: {
       'application/ld+json': JSON.stringify([
         {
           "@context": "https://schema.org",
           "@type": "Blog",
-          "name": "Blog: Articles on Development & AI",
-          "description": "Blog about software development, mobile, AI and security",
-          "url": "https://tiagodanin.com/blog",
-          "inLanguage": "en",
+          "name": "Blog: Artigos sobre Desenvolvimento & IA",
+          "description": "Blog sobre desenvolvimento de software, mobile, IA e seguranca",
+          "url": "https://tiagodanin.com/blog/pt",
+          "inLanguage": "pt-BR",
           "author": {
             "@type": "Person",
             "name": "Tiago Danin",
@@ -53,8 +42,8 @@ export function generateMetadata() {
             "headline": post.title,
             "description": post.description,
             "datePublished": toISODate(post.date),
-            "url": `https://tiagodanin.com/post/${post.slug}`,
-            "inLanguage": "en",
+            "url": `https://tiagodanin.com/post/${post.slug}/pt`,
+            "inLanguage": "pt-BR",
             "isAccessibleForFree": true,
             "author": {
               "@type": "Person",
@@ -67,7 +56,8 @@ export function generateMetadata() {
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog" }
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog" },
+            { "@type": "ListItem", "position": 3, "name": "PT", "item": "https://tiagodanin.com/blog/pt" }
           ]
         }
       ])
@@ -75,12 +65,8 @@ export function generateMetadata() {
   };
 }
 
-const POSTS_PER_PAGE = 10;
-
-const Blog = () => {
-  const posts = queryCollection('posts').where({ lang: 'en' });
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const currentPosts = posts.slice(0, POSTS_PER_PAGE);
+const BlogPt = () => {
+  const posts = queryCollection('posts').where({ lang: 'pt' });
 
   const isYouTubePost = (url: string) => url.includes("youtube.com");
 
@@ -89,22 +75,22 @@ const Blog = () => {
       <div className="max-w-2xl mx-auto mb-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
         <p className="mt-4 text-muted-foreground">
-          Thoughts, insights, and ideas about technology and development
+          Pensamentos, insights e ideias sobre tecnologia e desenvolvimento
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          {posts.length} articles
+          {posts.length} artigos
         </p>
         <div className="mt-4">
           <Button variant="outline" size="sm" asChild>
-            <Link href="/blog/pt">PT</Link>
+            <Link href="/blog">EN</Link>
           </Button>
         </div>
       </div>
 
       <div className="max-w-2xl mx-auto space-y-16">
-        {currentPosts.map((post, index) => (
+        {posts.map((post, index) => (
           <article key={index} className="group relative flex flex-col items-start cursor-pointer">
-            <Link href={`/post/${post.slug}`} className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-6" aria-label={`Read ${post.title}`} />
+            <Link href={`/post/${post.slug}/pt`} className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-6" aria-label={`Ler ${post.title}`} />
             <div className="absolute -inset-x-4 -inset-y-6 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl pointer-events-none" />
 
             <div className="relative pointer-events-none order-first mb-3 flex items-center gap-2">
@@ -122,7 +108,7 @@ const Blog = () => {
               ) : (
                 <Badge variant="secondary" className="flex items-center gap-1">
                   <Text className="h-3 w-3" />
-                  Article
+                  Artigo
                 </Badge>
               )}
             </div>
@@ -136,7 +122,7 @@ const Blog = () => {
             </p>
 
             <div className="relative z-10 mt-3 flex flex-wrap gap-2 pointer-events-auto">
-              {(post.tags || []).map((tag: string) => (
+              {((post.tags as string[]) || []).map((tag: string) => (
                 <Link key={tag} href={`/blog/tags/${titleToSlug(tag)}`}>
                   <Badge
                     variant="outline"
@@ -149,7 +135,7 @@ const Blog = () => {
             </div>
 
             <div className="relative pointer-events-none mt-4 flex items-center text-sm font-medium text-primary">
-              Read article
+              Ler artigo
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
                 <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -157,27 +143,8 @@ const Blog = () => {
           </article>
         ))}
       </div>
-
-      {totalPages > 1 && (
-        <div className="mt-16 flex justify-center gap-2">
-          <Button variant="outline" disabled>
-            <span className="flex items-center">Previous</span>
-          </Button>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">
-              Page 1 of {totalPages}
-            </span>
-          </div>
-          <Button variant="outline" asChild>
-            <Link href="/blog/2">
-              Next
-              <ChevronRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
 
-export default Blog;
+export default BlogPt;

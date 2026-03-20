@@ -3,21 +3,26 @@ import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
 import { Tag, Video, Text, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
+import { getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
 
 function getPosts() {
   return queryCollection('posts').where({ lang: 'en' });
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
-  const { tag: tagSlug } = await params;
+function getAllTagsMap() {
   const posts = getPosts();
-  const allTagsMap = new Map<string, string>();
+  const map = new Map<string, string>();
   posts.forEach((post) => {
-    extractTagsFromPost(post.title, post.description).forEach(tag => {
-      allTagsMap.set(titleToSlug(tag), tag);
+    ((post.tags as string[]) || []).forEach((tag: string) => {
+      map.set(titleToSlug(tag), tag);
     });
   });
+  return map;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
+  const { tag: tagSlug } = await params;
+  const allTagsMap = getAllTagsMap();
   const originalTagName = allTagsMap.get(tagSlug) || decodeURIComponent(tagSlug);
 
   return {
@@ -36,29 +41,19 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
 }
 
 export function generateStaticParams() {
-  const posts = getPosts();
-  const allTags = new Set<string>();
-  posts.forEach((post) => {
-    extractTagsFromPost(post.title, post.description).forEach(tag => allTags.add(titleToSlug(tag)));
-  });
-  return Array.from(allTags).map(tag => ({ tag }));
+  const allTagsMap = getAllTagsMap();
+  return Array.from(allTagsMap.keys()).map(tag => ({ tag }));
 }
 
 const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
   const { tag: tagSlug } = await params;
   const posts = getPosts();
-
-  const allTagsMap = new Map<string, string>();
-  posts.forEach((post) => {
-    extractTagsFromPost(post.title, post.description).forEach(tag => {
-      allTagsMap.set(titleToSlug(tag), tag);
-    });
-  });
+  const allTagsMap = getAllTagsMap();
   const originalTagName = allTagsMap.get(tagSlug) || decodeURIComponent(tagSlug);
 
   const taggedPosts = posts.filter((post) => {
-    const postTags = extractTagsFromPost(post.title, post.description);
-    return postTags.some(tag => titleToSlug(tag) === tagSlug);
+    const postTags = (post.tags as string[]) || [];
+    return postTags.some((tag: string) => titleToSlug(tag) === tagSlug);
   });
 
   const isYouTubePost = (url: string) => url.includes("youtube.com");
@@ -121,13 +116,11 @@ const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
         ) : (
           <div className="max-w-2xl mx-auto space-y-16">
             {taggedPosts.map((post, index) => (
-              <article key={index} className="group relative flex flex-col items-start hover:shadow-lg">
-                <Link href={`/post/${post.slug}`} className="absolute inset-0 z-10">
-                  <span className="sr-only">Read {post.title}</span>
-                </Link>
-                <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
+              <article key={index} className="group relative flex flex-col items-start cursor-pointer">
+                <Link href={`/post/${post.slug}`} className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-6" aria-label={`Read ${post.title}`} />
+                <div className="absolute -inset-x-4 -inset-y-6 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl pointer-events-none" />
 
-                <div className="relative z-10 order-first mb-3 flex items-center gap-2">
+                <div className="relative pointer-events-none order-first mb-3 flex items-center gap-2">
                   <time className="flex items-center text-sm text-zinc-400 pl-3.5">
                     <span className="absolute inset-y-0 left-0 flex items-center">
                       <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
@@ -147,16 +140,16 @@ const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
                   )}
                 </div>
 
-                <h2 className="relative z-10 text-base font-semibold tracking-tight">
+                <h2 className="relative pointer-events-none text-base font-semibold tracking-tight">
                   {post.title}
                 </h2>
 
-                <p className="relative z-10 mt-2 text-sm text-zinc-600">
+                <p className="relative pointer-events-none mt-2 text-sm text-zinc-600">
                   {post.description}
                 </p>
 
-                <div className="relative z-10 mt-3 flex flex-wrap gap-2">
-                  {extractTagsFromPost(post.title, post.description).map((tag) => (
+                <div className="relative z-10 mt-3 flex flex-wrap gap-2 pointer-events-auto">
+                  {((post.tags as string[]) || []).map((tag: string) => (
                     <Link key={tag} href={`/blog/tags/${titleToSlug(tag)}`}>
                       <Badge
                         variant="outline"
@@ -168,7 +161,7 @@ const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
                   ))}
                 </div>
 
-                <div className="relative z-10 mt-4 flex items-center text-sm font-medium text-primary">
+                <div className="relative pointer-events-none mt-4 flex items-center text-sm font-medium text-primary">
                   Read article
                   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
                     <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

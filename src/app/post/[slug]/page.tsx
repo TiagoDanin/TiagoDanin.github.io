@@ -131,7 +131,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                 <Button variant="outline" size="sm" asChild>
                   <Link href={`/post/${post.slug}/pt`} className="flex items-center gap-1">
                     <Globe className="h-3 w-3" />
-                    PT-BR
+                    PT
                   </Link>
                 </Button>
               )}

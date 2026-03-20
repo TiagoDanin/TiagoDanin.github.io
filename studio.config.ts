@@ -96,6 +96,18 @@ const config: StudioConfig = {
             required: true,
             options: [opt("en"), opt("pt")],
           },
+          {
+            name: "tags",
+            type: "multi-select",
+            required: true,
+            options: [
+              opt("JavaScript"), opt("React"), opt("Flutter"), opt("Android"),
+              opt("iOS"), opt("AI"), opt("GitHub"), opt("DevOps"), opt("Mobile"),
+              opt("Web"), opt("Security"), opt("Tutorial"), opt("Performance"),
+              opt("UI/UX"), opt("Testing"), opt("Backend"), opt("Frontend"),
+              opt("Tools"), opt("Career"), opt("Linux"), opt("Video"), opt("Article"),
+            ],
+          },
         ],
       },
     },
