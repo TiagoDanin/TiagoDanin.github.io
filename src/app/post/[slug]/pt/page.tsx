@@ -13,11 +13,11 @@ import { toISODate } from '@/utils/parse';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug, 'en');
+  const post = getPostBySlug(slug, 'pt');
 
   if (!post) {
     return {
-      title: 'Post not found',
+      title: 'Post nao encontrado',
       robots: { index: false, follow: true },
     };
   }
@@ -29,57 +29,39 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: post.title,
     description: truncatedDescription,
-    keywords: ['blog', 'article', 'software development', 'technology'],
     alternates: {
-      canonical: `https://tiagodanin.com/post/${post.slug}`,
+      canonical: `https://tiagodanin.com/post/${post.slug}/pt`,
     },
     openGraph: {
       title: post.title,
       description: truncatedDescription,
-      url: `https://tiagodanin.com/post/${post.slug}`,
+      url: `https://tiagodanin.com/post/${post.slug}/pt`,
       type: 'article',
       publishedTime: toISODate(post.date),
-      authors: ['https://tiagodanin.com/about'],
-      locale: 'en_US',
+      locale: 'pt_BR',
       siteName: 'Tiago Danin',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: truncatedDescription,
-      creator: '@tiagodanin',
-      site: '@tiagodanin',
     },
   };
 }
 
 export function generateStaticParams() {
   const posts = queryCollection('posts').where({ lang: 'en' });
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return posts
+    .filter((post) => postHasLocale(post.slug, 'pt'))
+    .map((post) => ({
+      slug: post.slug,
+    }));
 }
 
-export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
+export default async function PostPt({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug, 'en');
+  const post = getPostBySlug(slug, 'pt');
 
   if (!post) {
     notFound();
   }
 
-  const hasPt = postHasLocale(slug, 'pt');
   const mdxContent = await renderMdx(post.body);
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog" },
-      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://tiagodanin.com/post/${post.slug}` },
-    ],
-  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -87,8 +69,8 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     "headline": post.title,
     "description": post.description,
     "datePublished": toISODate(post.date),
-    "url": `https://tiagodanin.com/post/${post.slug}`,
-    "inLanguage": "en",
+    "url": `https://tiagodanin.com/post/${post.slug}/pt`,
+    "inLanguage": "pt-BR",
     "isAccessibleForFree": true,
     "author": { "@type": "Person", "name": "Tiago Danin", "url": "https://tiagodanin.com" },
     "publisher": { "@type": "Person", "name": "Tiago Danin" },
@@ -96,7 +78,6 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <article className="container mx-auto py-32 px-4">
@@ -121,21 +102,22 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
               {post.description}
             </p>
 
-            {/* Language toggle */}
-            <div className="mt-4 flex items-center gap-3">
+             {/* Language toggle */}
+             <div className="mt-4 flex items-center gap-3">
+              <Button variant="outline" size="sm" asChild>
+                <Link href={`/post/${post.slug}`} className="flex items-center gap-1">
+                  <Globe className="h-3 w-3" />
+                  EN
+                </Link>
+              </Button>
               <Badge variant="secondary" className="flex items-center gap-1">
                 <Globe className="h-3 w-3" />
-                EN
+                PT-BR
               </Badge>
-              {hasPt && (
-                <Button variant="outline" size="sm" asChild>
-                  <Link href={`/post/${post.slug}/pt`} className="flex items-center gap-1">
-                    <Globe className="h-3 w-3" />
-                    PT-BR
-                  </Link>
-                </Button>
-              )}
             </div>
+
+            {/* Giscus Comments */}
+            <GiscusComments term={`${post.slug}-pt`} />
           </header>
 
           {/* MDX Content */}
@@ -143,20 +125,9 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             {mdxContent}
           </div>
 
-          {/* Giscus Comments */}
-          <GiscusComments term={`${post.slug}-en`} />
-
-          {/* LLM Translation Notice */}
-          <div className="mt-8 p-4 rounded-lg bg-secondary/50 border border-border">
-            <p className="text-sm text-muted-foreground">
-              This article was translated from Portuguese with the help of an LLM.
-              The original version may contain nuances not fully captured in this translation.
-            </p>
-          </div>
-
           {/* Original article link */}
           {post.originalUrl && (
-            <div className="mt-4">
+            <div className="mt-8">
               <Button variant="outline" size="sm" asChild>
                 <a
                   href={post.originalUrl}
@@ -165,7 +136,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
                   className="flex items-center gap-2"
                 >
                   <ExternalLink className="h-4 w-4" />
-                  Read original article
+                  Ler artigo original
                 </a>
               </Button>
             </div>

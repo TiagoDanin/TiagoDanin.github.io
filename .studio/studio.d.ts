@@ -228,13 +228,14 @@ export interface OfflineEntry {
   description: string;
 }
 
-/** Data shape for the "posts" collection. */
+/** Data shape for the "Blog Posts" collection. */
 export interface PostsEntry {
-  date: string;
   title: string;
+  date: string;
   description: string;
   slug: string;
   originalUrl: HttpUrl;
+  lang: "en" | "pt";
 }
 
 /** Data shape for the "private" collection. */

@@ -1,29 +1,24 @@
 import Link from "next/link";
 import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
-import { Flag, Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
+import { Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
-export function generateMetadata({ params }: { params: { page: string } }) {
-  const pageNumber = Number(params.page) || 1;
+export async function generateMetadata({ params }: { params: Promise<{ page: string }> }) {
+  const { page } = await params;
+  const pageNumber = Number(page) || 1;
   return {
     title: `Blog - Page ${pageNumber}`,
-    description: "Articles about software development, mobile apps, cybersecurity, and technology. Posts in Portuguese (PT-BR) covering Flutter, React Native, and more.",
-    keywords: ["blog", "software development", "mobile development", "Flutter", "React Native", "programming", "technology", "pt-br"],
+    description: "Articles about software development, mobile apps, AI and technology.",
     alternates: {
       canonical: `https://tiagodanin.com/blog/${pageNumber}`,
     },
     openGraph: {
       title: `Blog - Page ${pageNumber} - Tiago Danin`,
-      description: "Articles about software development, mobile apps, and technology. Posts in Portuguese (PT-BR).",
+      description: "Articles about software development, mobile apps, and technology.",
       url: `https://tiagodanin.com/blog/${pageNumber}`,
       type: "website",
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `Blog - Page ${pageNumber} - Tiago Danin`,
-      description: "Articles about software development, mobile apps, and technology.",
     },
   };
 }
@@ -31,7 +26,7 @@ export function generateMetadata({ params }: { params: { page: string } }) {
 const POSTS_PER_PAGE = 10;
 
 export function generateStaticParams() {
-  const posts = queryCollection('posts');
+  const posts = queryCollection('posts').where({ lang: 'en' });
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const pages = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -40,14 +35,11 @@ export function generateStaticParams() {
   return pages;
 }
 
-const BlogPage = ({
-  params
-}: {
-  params: { page: string }
-}) => {
-  const posts = queryCollection('posts');
+const BlogPage = async ({ params }: { params: Promise<{ page: string }> }) => {
+  const { page } = await params;
+  const posts = queryCollection('posts').where({ lang: 'en' });
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const currentPage = Number(params.page) || 1;
+  const currentPage = Number(page) || 1;
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;
   const currentPosts = posts.slice(startIndex, endIndex);
@@ -57,18 +49,12 @@ const BlogPage = ({
   return (
     <div className="container mx-auto py-32">
       <div className="max-w-2xl mx-auto mb-12 text-center">
-        <div className="flex items-center justify-center gap-2">
-          <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
-          <Badge variant="outline" className="flex items-center gap-1">
-            <Flag className="h-3 w-3" />
-            Only PT-BR
-          </Badge>
-        </div>
+        <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
         <p className="mt-4 text-muted-foreground">
           Thoughts, insights, and ideas about technology and development
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          Total posts: {posts.length}
+          {posts.length} articles
         </p>
       </div>
 
@@ -101,39 +87,31 @@ const BlogPage = ({
             </div>
 
             <h2 className="relative z-10 text-base font-semibold tracking-tight">
-              <Link href={`/post/${post.slug}`} className="relative z-10">
-                <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
-                {post.title}
-              </Link>
+              {post.title}
             </h2>
 
             <p className="relative z-10 mt-2 text-sm text-zinc-600">
-              <Link href={`/post/${post.slug}`} className="relative z-10">
-                {post.description}
-              </Link>
+              {post.description}
             </p>
 
             <div className="relative z-10 mt-3 flex flex-wrap gap-2">
               {extractTagsFromPost(post.title, post.description).map((tag) => (
-                <Badge
-                  key={tag}
-                  variant="outline"
-                  className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
-                >
-                  <Link href={`/blog/tags/${titleToSlug(tag)}`}>
+                <Link key={tag} href={`/blog/tags/${titleToSlug(tag)}`}>
+                  <Badge
+                    variant="outline"
+                    className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
+                  >
                     {tag}
-                  </Link>
-                </Badge>
+                  </Badge>
+                </Link>
               ))}
             </div>
 
             <div className="relative z-10 mt-4 flex items-center text-sm font-medium text-primary">
               Read article
-              <Link href={`/post/${post.slug}`} className="relative z-10">
-                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
-                  <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
+                <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </div>
           </article>
         ))}
@@ -186,4 +164,4 @@ const BlogPage = ({
   );
 };
 
-export default BlogPage; 
+export default BlogPage;

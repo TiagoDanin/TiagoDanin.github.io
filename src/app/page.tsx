@@ -123,7 +123,7 @@ export const metadata = {
 };
 
 const Index = () => {
-  const posts = queryCollection('posts');
+  const posts = queryCollection('posts').where({ lang: 'en' });
   const projectsData = queryCollection('projects');
   const workData = queryCollection('work');
   const volunteerData = queryCollection('volunteer');

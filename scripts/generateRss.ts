@@ -1,7 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 import RSS from 'rss';
-import posts from '../contents/posts/index.json' assert { type: 'json' };
+import matter from 'gray-matter';
+
+// Read English posts from MDX files
+const postsDir = path.join(process.cwd(), 'contents', 'posts');
+const posts = fs.readdirSync(postsDir)
+  .filter(f => f.endsWith('.mdx') && !f.includes('.pt.'))
+  .map(f => {
+    const raw = fs.readFileSync(path.join(postsDir, f), 'utf-8');
+    return matter(raw).data as { title: string; date: string; description: string; slug: string; originalUrl: string };
+  });
 import talks from '../contents/talks/index.json' assert { type: 'json' };
 import timeline from '../contents/timeline/index.json' assert { type: 'json' };
 import projectsGithub from '../contents/github/index.json' assert { type: 'json' };
@@ -33,7 +42,7 @@ const blogFeed = new RSS({
   language: 'en',
   copyright: 'Tiago Danin',
 });
-posts.forEach((post: any) => {
+posts.forEach((post) => {
   blogFeed.item({
     title: post.title,
     description: post.description,

@@ -1,82 +1,61 @@
 import Link from "next/link";
 import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
-import { Tag, Video, ChevronLeft, Text, ArrowLeft } from "lucide-react";
+import { Tag, Video, Text, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
 
-export function generateMetadata({ params }: { params: { tag: string } }) {
-  const posts = queryCollection('posts');
-  const tagName = decodeURIComponent(params.tag);
+function getPosts() {
+  return queryCollection('posts').where({ lang: 'en' });
+}
 
-  // Find the original tag name
+export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
+  const { tag: tagSlug } = await params;
+  const posts = getPosts();
   const allTagsMap = new Map<string, string>();
   posts.forEach((post) => {
-    const tags = extractTagsFromPost(post.title, post.description);
-    tags.forEach(tag => {
+    extractTagsFromPost(post.title, post.description).forEach(tag => {
       allTagsMap.set(titleToSlug(tag), tag);
     });
   });
-  const originalTagName = allTagsMap.get(params.tag) || tagName;
+  const originalTagName = allTagsMap.get(tagSlug) || decodeURIComponent(tagSlug);
 
   return {
     title: `Posts tagged with "${originalTagName}"`,
-    description: `All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles in Portuguese (PT-BR).`,
-    keywords: ["blog", "tag", originalTagName, "software development", "articles", "pt-br"],
+    description: `All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles.`,
     alternates: {
-      canonical: `https://tiagodanin.com/blog/tags/${params.tag}`,
+      canonical: `https://tiagodanin.com/blog/tags/${tagSlug}`,
     },
     openGraph: {
       title: `Posts tagged with "${originalTagName}" - Tiago Danin`,
       description: `All blog posts tagged with "${originalTagName}"`,
-      url: `https://tiagodanin.com/blog/tags/${params.tag}`,
+      url: `https://tiagodanin.com/blog/tags/${tagSlug}`,
       type: "website",
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `Posts tagged "${originalTagName}" - Tiago Danin`,
-      description: `Blog posts about ${originalTagName}`,
     },
   };
 }
 
 export function generateStaticParams() {
-  const posts = queryCollection('posts');
+  const posts = getPosts();
   const allTags = new Set<string>();
-
   posts.forEach((post) => {
-    const tags = extractTagsFromPost(post.title, post.description);
-    tags.forEach(tag => allTags.add(titleToSlug(tag)));
+    extractTagsFromPost(post.title, post.description).forEach(tag => allTags.add(titleToSlug(tag)));
   });
-
-  return Array.from(allTags).map(tag => ({
-    tag: tag
-  }));
+  return Array.from(allTags).map(tag => ({ tag }));
 }
 
-const TagPage = ({
-  params
-}: {
-  params: { tag: string }
-}) => {
-  const posts = queryCollection('posts');
-  const tagSlug = params.tag;
-  const tagName = decodeURIComponent(tagSlug);
+const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
+  const { tag: tagSlug } = await params;
+  const posts = getPosts();
 
-  // Find the original tag name by matching slug
-  let originalTagName = tagName;
   const allTagsMap = new Map<string, string>();
-
   posts.forEach((post) => {
-    const tags = extractTagsFromPost(post.title, post.description);
-    tags.forEach(tag => {
+    extractTagsFromPost(post.title, post.description).forEach(tag => {
       allTagsMap.set(titleToSlug(tag), tag);
     });
   });
+  const originalTagName = allTagsMap.get(tagSlug) || decodeURIComponent(tagSlug);
 
-  originalTagName = allTagsMap.get(tagSlug) || tagName;
-
-  // Filter posts that have this tag
   const taggedPosts = posts.filter((post) => {
     const postTags = extractTagsFromPost(post.title, post.description);
     return postTags.some(tag => titleToSlug(tag) === tagSlug);
@@ -88,7 +67,6 @@ const TagPage = ({
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": `Posts tagged with "${originalTagName}"`,
-    "description": `All blog posts tagged with "${originalTagName}"`,
     "url": `https://tiagodanin.com/blog/tags/${tagSlug}`,
     "blogPost": taggedPosts.map((post) => ({
       "@type": "BlogPosting",
@@ -96,13 +74,9 @@ const TagPage = ({
       "description": post.description,
       "datePublished": toISODate(post.date),
       "url": `https://tiagodanin.com/post/${post.slug}`,
-      "inLanguage": "pt-BR",
+      "inLanguage": "en",
       "isAccessibleForFree": true,
-      "keywords": originalTagName,
-      "author": {
-        "@type": "Person",
-        "name": "Tiago Danin"
-      }
+      "author": { "@type": "Person", "name": "Tiago Danin" }
     }))
   };
 
@@ -121,13 +95,9 @@ const TagPage = ({
           </div>
 
           <div className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <h1 className="text-3xl font-bold tracking-tight">Posts tagged with</h1>
-            </div>
+            <h1 className="text-3xl font-bold tracking-tight mb-4">Posts tagged with</h1>
             <div className="flex justify-center mb-4">
-              <Badge
-                className={`flex items-center gap-2 text-lg px-4 py-2 ${getRandomColorWithDarkMode(originalTagName)}`}
-              >
+              <Badge className={`flex items-center gap-2 text-lg px-4 py-2 ${getRandomColorWithDarkMode(originalTagName)}`}>
                 <Tag className="h-4 w-4" />
                 {originalTagName}
               </Badge>
@@ -140,9 +110,7 @@ const TagPage = ({
 
         {taggedPosts.length === 0 ? (
           <div className="max-w-2xl mx-auto text-center py-16">
-            <p className="text-muted-foreground text-lg">
-              No posts found with this tag.
-            </p>
+            <p className="text-muted-foreground text-lg">No posts found with this tag.</p>
             <Button variant="outline" className="mt-4" asChild>
               <Link href="/blog">
                 <ArrowLeft className="h-4 w-4 mr-2" />
@@ -180,64 +148,31 @@ const TagPage = ({
                 </div>
 
                 <h2 className="relative z-10 text-base font-semibold tracking-tight">
-                  <Link href={`/post/${post.slug}`} className="relative z-10">
-                    <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
-                    {post.title}
-                  </Link>
+                  {post.title}
                 </h2>
 
                 <p className="relative z-10 mt-2 text-sm text-zinc-600">
-                  <Link href={`/post/${post.slug}`} className="relative z-10">
-                    {post.description}
-                  </Link>
+                  {post.description}
                 </p>
 
                 <div className="relative z-10 mt-3 flex flex-wrap gap-2">
                   {extractTagsFromPost(post.title, post.description).map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="outline"
-                      className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
-                    >
-                      <Link href={`/blog/tags/${titleToSlug(tag)}`}>
+                    <Link key={tag} href={`/blog/tags/${titleToSlug(tag)}`}>
+                      <Badge
+                        variant="outline"
+                        className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
+                      >
                         {tag}
-                      </Link>
-                    </Badge>
+                      </Badge>
+                    </Link>
                   ))}
                 </div>
 
                 <div className="relative z-10 mt-4 flex items-center text-sm font-medium text-primary">
-                  {isYouTubePost(post.originalUrl) ? (
-                    <div className="flex gap-4">
-                      <Link
-                        href={`/post/${post.slug}`}
-                        className="flex items-center hover:underline"
-                      >
-                        Read article
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
-                          <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </Link>
-                      <Link
-                        href={post.originalUrl}
-                        className="flex items-center text-red-600 dark:text-red-400 hover:underline z-20"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Video className="h-4 w-4 mr-1" />
-                        Watch on YouTube
-                      </Link>
-                    </div>
-                  ) : (
-                    <>
-                      Read article
-                      <Link href={`/post/${post.slug}`} className="relative z-10">
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
-                          <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </Link>
-                    </>
-                  )}
+                  Read article
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
+                    <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
               </article>
             ))}

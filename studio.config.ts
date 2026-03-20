@@ -80,6 +80,25 @@ const config: StudioConfig = {
         ],
       },
     },
+    posts: {
+      schema: {
+        collection: "posts",
+        label: "Blog Posts",
+        fields: [
+          { name: "title", type: "text", required: true },
+          { name: "date", type: "text", required: true },
+          { name: "description", type: "long-text", required: true },
+          { name: "slug", type: "text", required: true },
+          { name: "originalUrl", type: "url", required: true },
+          {
+            name: "lang",
+            type: "select",
+            required: true,
+            options: [opt("en"), opt("pt")],
+          },
+        ],
+      },
+    },
     github: {
       scripts: {
         sync: "tsx scripts/getProjectsGithub.ts",
