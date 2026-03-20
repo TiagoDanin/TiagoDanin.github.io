@@ -12,6 +12,19 @@ export type MediaPath = Brand<string, 'MediaPath'>;
 export type ID        = Brand<string, 'ID'>;
 export type Slug      = Brand<string, 'Slug'>;
 
+/** Data shape for the "About Me" collection. */
+export interface AboutEntry {
+  name: string;
+  greeting: string;
+  roles: Array<"Mobile Developer" | "Bug Hunter" | "Full Stack Developer" | "DevOps">;
+  avatar: HttpUrl;
+  bio: string;
+  bioExtra: string;
+  seoDescription: string;
+  cvUrl: HttpUrl;
+  email: Email;
+}
+
 /** Data shape for the "atom" collection. */
 export interface AtomEntry {
   name: string;
@@ -30,6 +43,14 @@ export interface ContactsEntry {
   url: string;
   icon: string;
   label: string;
+}
+
+/** Data shape for the "My Expertise" collection. */
+export interface ExpertiseEntry {
+  title: string;
+  description: string;
+  icon: "Smartphone" | "Code" | "Shield" | "Zap";
+  link: string;
 }
 
 /** Data shape for the "github" collection. */
@@ -237,6 +258,23 @@ export interface PypiEntry {
   description: string;
 }
 
+/** Data shape for the "Technical Skills" collection. */
+export interface SkillsEntry {
+  category: string;
+  items: Array<{
+    name: string;
+    icon: string;
+    color: string;
+  }>;
+}
+
+/** Data shape for the "Social Media Links" collection. */
+export interface SociallinksEntry {
+  label: string;
+  url: HttpUrl;
+  icon: "Github" | "Linkedin" | "Youtube" | "Instagram";
+}
+
 /** Data shape for the "talks" collection. */
 export interface TalksEntry {
   id: number;
@@ -287,9 +325,11 @@ export interface WorkEntry {
 // Augment the nextjs-studio module so queryCollection() is fully typed.
 declare module 'nextjs-studio' {
   interface CollectionTypeMap {
+    "about": AboutEntry;
     "atom": AtomEntry;
     "aur": AurEntry;
     "contacts": ContactsEntry;
+    "expertise": ExpertiseEntry;
     "github": GithubEntry;
     "googleplay": GoogleplayEntry;
     "links": LinksEntry;
@@ -301,6 +341,8 @@ declare module 'nextjs-studio' {
     "private": PrivateEntry;
     "projects": ProjectsEntry;
     "pypi": PypiEntry;
+    "skills": SkillsEntry;
+    "sociallinks": SociallinksEntry;
     "talks": TalksEntry;
     "timeline": TimelineEntry;
     "volunteer": VolunteerEntry;

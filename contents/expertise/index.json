@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Mobile Development",
+    "description": "Native and cross-platform mobile apps using Flutter, React Native, Kotlin, Swift, and more.",
+    "icon": "Smartphone",
+    "link": "/mobile"
+  },
+  {
+    "title": "Full Stack Development",
+    "description": "End-to-end web solutions with modern frontend technologies and robust backend systems using React, Node.js, and various databases.",
+    "icon": "Code",
+    "link": null
+  },
+  {
+    "title": "Cybersecurity",
+    "description": "Implementation of security best practices, penetration testing, and secure coding principles to protect applications and data.",
+    "icon": "Shield",
+    "link": "/cybersecurity"
+  },
+  {
+    "title": "DevOps & CI/CD",
+    "description": "Streamlined deployment processes, cloud infrastructure, continuous integration/deployment pipelines.",
+    "icon": "Zap",
+    "link": null
+  }
+]
