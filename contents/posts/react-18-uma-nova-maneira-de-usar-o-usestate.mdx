@@ -1,11 +1,62 @@
 ---
-title: "React 18 - A New Way to Use useState (Automatic Batching)"
+title: "React 18 - A New Way to Use useState (Batch Processing)"
 date: "Aug 3, 2022"
-description: "An analysis of the changes in React 18 and how useState's batch processing was modified for better performance."
-slug: "react-18-uma-nova-maneira-de-usar-o-usestate"
+description: "An analysis of the changes in React 18 and how useState batch processing was modified for better performance."
+slug: "react-18-a-new-way-to-use-usestate"
 originalUrl: "https://dev.to/tiagodanin/react-18-uma-nova-maneira-de-usar-o-usestate-processamento-em-lote-1ee9"
 lang: "en"
 tags: ["React", "Performance", "Article"]
 ---
 
-{/* Content coming soon */}
+## What Changed in React 18?
+
+One of the biggest changes from React 17 to React 18 was that state processing is done in batches by default. Because of this, you need to pay attention to the new behavior when migrating an application.
+
+## What is Batch Processing?
+
+Imagine an assembly line that manufactures a piece of equipment and each robotic arm places a type of part, but most importantly, at no point does this line stop while it's producing or skip a step. Batch processing, also commonly known as Batch, is exactly that — we have a data input and all tasks are executed in order without skipping steps, and at the end there's a result coming from all the steps performed.
+
+See more at [pt.wikipedia.org/wiki/Processamento_em_lote](https://pt.wikipedia.org/wiki/Processamento_em_lote)
+
+## New State Update Cycle
+
+To better understand, let's look at an example — below is a React 17 application that fetches a list of superheroes and planets from Star Wars using [SWAPI](https://swapi.dev/) and shows their total count on screen.
+
+We can observe that there's a task that will execute a call to the `fetchData` function and subsequently obtain the list of superheroes and planets and update two states (`heros` and `planets`).
+
+Now if we create a watcher for both states that updates the sum of the total of both lists whenever there's a change in either state, the total will be updated on screen.
+
+If we look at the application Console, or even watch the screen in slow motion, we'll notice there are three data updates on screen.
+
+1. The first is the initial state of the application after loading.
+2. The second is because of the `heros` state change.
+3. The third is because of the `planets` state change.
+
+We can conclude that the processing was not done in Batch, because before finishing the fetchData function task we had the event output firing (state changes) more than once.
+
+Now let's look at the same application, but this time running with React 18.
+
+Let's look at the application Console again:
+
+1. The first is the initial state of the application after loading.
+2. The second is because of the `heros` and `planets` state changes. **But only one event is fired**, so only one screen update is performed.
+
+This way, event invokers, timeouts, and asynchronous operations in React 18 now update states in batches.
+
+## Advantages and Disadvantages
+
+One disadvantage is that existing applications after migration need careful checking to verify everything is working normally, as it can impact their observer flows. Other than that, `Automatic Batching` greatly improves application performance since updates will occur less frequently and it will be easier to manage state updates — similar to how it's done in [Redux](https://react-redux.js.org/api/batch) or [Flutter](https://api.flutter.dev/flutter/widgets/State/setState.html), where it's possible to use Batch or immediate update.
+
+## How to Use Immediate Update Again
+
+We can use `flushSync` from `react-dom` to force the update.
+
+This way we can reproduce the same behavior we had in React 17.
+
+See more at [reactjs.org/blog/2022/03/29/react-v18.html#new-feature-automatic-batching](https://reactjs.org/blog/2022/03/29/react-v18.html#new-feature-automatic-batching)
+
+### Source code:
+
+- React 17 [https://codesandbox.io/s/react-17-status-y63xcn](https://codesandbox.io/s/react-17-status-y63xcn?file=/src/App.js)
+- React 18 [https://codesandbox.io/s/react-18-status-5e16rc](https://codesandbox.io/s/react-18-status-5e16rc?file=/src/App.js)
+- React 18 with FlushSync [https://codesandbox.io/s/react-18-status-flushsync-0bp0vq](https://codesandbox.io/s/react-18-status-flushsync-0bp0vq?file=/src/App.js)
