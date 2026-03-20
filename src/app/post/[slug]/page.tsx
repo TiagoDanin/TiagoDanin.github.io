@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
-import posts from '@/data/posts.json';
+import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
 import { RedirectClient } from "@/components/layout/RedirectClient";
 import { toISODate } from '@/utils/parse';
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
   const post = posts.find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -50,12 +52,16 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 export async function generateStaticParams() {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default function Post({ params }: { params: { slug: string } }) {
+export default async function Post({ params }: { params: { slug: string } }) {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
   const post = posts.find((post) => post.slug === params.slug);
 
   if (!post) {

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 
-import timelineData from "@/data/timeline.json";
+import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
 import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 
 type TimelineEvent = {
@@ -14,9 +14,11 @@ type TimelineEvent = {
 };
 
 export async function generateMetadata({ params }: { params: { year: string, slug: string } }): Promise<Metadata> {
+  await ensureContentLoaded();
+  const timelineData = queryCollection('timeline');
   const { year, slug } = params;
-  
-  const event = timelineData.find((item) => {
+
+  const event = timelineData.find((item: any) => {
     const itemYear = item.date.toString();
     const itemSlug = titleToSlug(item.title);
     return itemYear === year && itemSlug === slug;
@@ -57,12 +59,14 @@ export async function generateMetadata({ params }: { params: { year: string, slu
 }
 
 export async function generateStaticParams() {
+  await ensureContentLoaded();
+  const timelineData = queryCollection('timeline');
   const params: { year: string, slug: string }[] = [];
 
-  timelineData.forEach((event) => {
+  timelineData.forEach((event: any) => {
     const year = event.date.toString();
     const slug = titleToSlug(event.title);
-    
+
     if (year && slug) {
       params.push({ year, slug });
     }
@@ -71,10 +75,12 @@ export async function generateStaticParams() {
   return params;
 }
 
-export default function TimelineEventPage({ params }: { params: { year: string, slug: string } }) {
+export default async function TimelineEventPage({ params }: { params: { year: string, slug: string } }) {
+  await ensureContentLoaded();
+  const timelineData = queryCollection('timeline');
   const { year, slug } = params;
-  
-  const event = timelineData.find((item) => {
+
+  const event = timelineData.find((item: any) => {
     const itemYear = item.date.toString();
     const itemSlug = titleToSlug(item.title);
     return itemYear === year && itemSlug === slug;

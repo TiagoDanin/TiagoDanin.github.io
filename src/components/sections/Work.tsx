@@ -21,8 +21,8 @@ import {
 } from "react-icons/si";
 import { FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import workData from "@/data/work.json";
-import volunteerData from "@/data/volunteer.json";
+import workData from "../../../contents/work/index.json";
+import volunteerData from "../../../contents/volunteer/index.json";
 import { ExperienceItem } from "@/components/ui/experience-item";
 
 const TechIcon = ({ icon: Icon, name, color }: { icon: any, name: string, color: string }) => (

@@ -1,103 +1,110 @@
 import Link from "next/link";
-import posts from "@/data/posts.json";
+import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
 import { Badge } from "@/components/ui/badge";
 import { Flag, Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toISODate, extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
-export const metadata = {
-  title: "Blog PT-BR: Artigos Sobre Desenvolvimento & IA",
-  description: "Blog sobre desenvolvimento de software, mobile, IA e segurança em português. Artigos semanais sobre Flutter, React Native, AI agents e tecnologia. Leia agora!",
-  keywords: ["blog português", "desenvolvimento de software", "mobile development", "Flutter", "React Native", "AI agents", "segurança", "programação", "artigos técnicos", "Android", "pt-br"],
-  alternates: {
-    canonical: 'https://tiagodanin.com/blog',
-    types: {
-      'application/rss+xml': [
-        { url: '/rss/blog.xml', title: 'Blog RSS Feed - PT-BR' }
-      ],
+export async function generateMetadata() {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
+
+  return {
+    title: "Blog PT-BR: Artigos Sobre Desenvolvimento & IA",
+    description: "Blog sobre desenvolvimento de software, mobile, IA e segurança em português. Artigos semanais sobre Flutter, React Native, AI agents e tecnologia. Leia agora!",
+    keywords: ["blog português", "desenvolvimento de software", "mobile development", "Flutter", "React Native", "AI agents", "segurança", "programação", "artigos técnicos", "Android", "pt-br"],
+    alternates: {
+      canonical: 'https://tiagodanin.com/blog',
+      types: {
+        'application/rss+xml': [
+          { url: '/rss/blog.xml', title: 'Blog RSS Feed - PT-BR' }
+        ],
+      },
     },
-  },
-  openGraph: {
-    title: "Blog PT-BR: Desenvolvimento, Mobile & IA",
-    description: "Artigos semanais sobre desenvolvimento de software, mobile apps, AI agents e segurança. Comunidade de developers brasileiros.",
-    url: "https://tiagodanin.com/blog",
-    type: "website",
-    siteName: "Tiago Danin",
-    locale: "pt_BR",
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: "Blog PT-BR: Desenvolvimento & IA | Tiago Danin",
-    description: "Artigos sobre mobile, AI agents, segurança e programação em português.",
-    creator: "@tiagodanin",
-  },
-  other: {
-    'application/ld+json': JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "Blog PT-BR: Artigos Sobre Desenvolvimento & IA",
-        "description": "Blog sobre desenvolvimento de software, mobile, IA e segurança em português",
-        "url": "https://tiagodanin.com/blog",
-        "inLanguage": "pt-BR",
-        "author": {
-          "@type": "Person",
-          "name": "Tiago Danin",
-          "url": "https://tiagodanin.com"
-        },
-        "blogPost": posts.map((post) => ({
-          "@type": "BlogPosting",
-          "headline": post.title,
-          "description": post.description,
-          "datePublished": toISODate(post.date),
-          "url": `https://tiagodanin.com/post/${post.slug}`,
+    openGraph: {
+      title: "Blog PT-BR: Desenvolvimento, Mobile & IA",
+      description: "Artigos semanais sobre desenvolvimento de software, mobile apps, AI agents e segurança. Comunidade de developers brasileiros.",
+      url: "https://tiagodanin.com/blog",
+      type: "website",
+      siteName: "Tiago Danin",
+      locale: "pt_BR",
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: "Blog PT-BR: Desenvolvimento & IA | Tiago Danin",
+      description: "Artigos sobre mobile, AI agents, segurança e programação em português.",
+      creator: "@tiagodanin",
+    },
+    other: {
+      'application/ld+json': JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "Blog PT-BR: Artigos Sobre Desenvolvimento & IA",
+          "description": "Blog sobre desenvolvimento de software, mobile, IA e segurança em português",
+          "url": "https://tiagodanin.com/blog",
           "inLanguage": "pt-BR",
-          "isAccessibleForFree": true,
           "author": {
             "@type": "Person",
-            "name": "Tiago Danin"
-          }
-        }))
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Blog PT-BR",
-        "description": "Complete blog collection with development articles",
-        "url": "https://tiagodanin.com/blog",
-        "inLanguage": "pt-BR",
-        "isPartOf": {
-          "@type": "WebSite",
-          "name": "Tiago Danin",
-          "url": "https://tiagodanin.com"
-        }
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://tiagodanin.com"
+            "name": "Tiago Danin",
+            "url": "https://tiagodanin.com"
           },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Blog",
-            "item": "https://tiagodanin.com/blog"
+          "blogPost": posts.map((post) => ({
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.description,
+            "datePublished": toISODate(post.date),
+            "url": `https://tiagodanin.com/post/${post.slug}`,
+            "inLanguage": "pt-BR",
+            "isAccessibleForFree": true,
+            "author": {
+              "@type": "Person",
+              "name": "Tiago Danin"
+            }
+          }))
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Blog PT-BR",
+          "description": "Complete blog collection with development articles",
+          "url": "https://tiagodanin.com/blog",
+          "inLanguage": "pt-BR",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "Tiago Danin",
+            "url": "https://tiagodanin.com"
           }
-        ]
-      }
-    ])
-  }
-};
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://tiagodanin.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://tiagodanin.com/blog"
+            }
+          ]
+        }
+      ])
+    }
+  };
+}
 
 const POSTS_PER_PAGE = 10;
-const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
-const Blog = () => {
+const Blog = async () => {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const startIndex = 0;
   const endIndex = POSTS_PER_PAGE;
   const currentPosts = posts.slice(startIndex, endIndex);
@@ -182,8 +189,8 @@ const Blog = () => {
               <div className="relative z-10 mt-4 flex items-center text-sm font-medium text-primary">
                 {isYouTubePost(post.originalUrl) ? (
                   <div className="flex gap-4">
-                    <Link 
-                      href={`/post/${post.slug}`} 
+                    <Link
+                      href={`/post/${post.slug}`}
                       className="flex items-center hover:underline"
                     >
                       Read article
@@ -191,8 +198,8 @@ const Blog = () => {
                         <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </Link>
-                    <Link 
-                      href={post.originalUrl} 
+                    <Link
+                      href={post.originalUrl}
                       className="flex items-center text-red-600 dark:text-red-400 hover:underline z-20"
                       target="_blank"
                       rel="noopener noreferrer"

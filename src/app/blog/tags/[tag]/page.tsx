@@ -1,24 +1,18 @@
 import Link from "next/link";
-import posts from "@/data/posts.json";
+import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
 import { Badge } from "@/components/ui/badge";
 import { Tag, Video, ChevronLeft, Text, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
 
-interface Post {
-  date: string;
-  title: string;
-  description: string;
-  slug: string;
-  originalUrl: string;
-}
-
 export async function generateMetadata({ params }: { params: { tag: string } }) {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
   const tagName = decodeURIComponent(params.tag);
 
   // Find the original tag name
   const allTagsMap = new Map<string, string>();
-  posts.forEach(post => {
+  posts.forEach((post) => {
     const tags = extractTagsFromPost(post.title, post.description);
     tags.forEach(tag => {
       allTagsMap.set(titleToSlug(tag), tag);
@@ -48,9 +42,11 @@ export async function generateMetadata({ params }: { params: { tag: string } }) 
 }
 
 export async function generateStaticParams() {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
   const allTags = new Set<string>();
 
-  posts.forEach(post => {
+  posts.forEach((post) => {
     const tags = extractTagsFromPost(post.title, post.description);
     tags.forEach(tag => allTags.add(titleToSlug(tag)));
   });
@@ -65,6 +61,8 @@ const TagPage = async ({
 }: {
   params: { tag: string }
 }) => {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
   const tagSlug = params.tag;
   const tagName = decodeURIComponent(tagSlug);
 
@@ -72,7 +70,7 @@ const TagPage = async ({
   let originalTagName = tagName;
   const allTagsMap = new Map<string, string>();
 
-  posts.forEach(post => {
+  posts.forEach((post) => {
     const tags = extractTagsFromPost(post.title, post.description);
     tags.forEach(tag => {
       allTagsMap.set(titleToSlug(tag), tag);
@@ -82,7 +80,7 @@ const TagPage = async ({
   originalTagName = allTagsMap.get(tagSlug) || tagName;
 
   // Filter posts that have this tag
-  const taggedPosts = posts.filter(post => {
+  const taggedPosts = posts.filter((post) => {
     const postTags = extractTagsFromPost(post.title, post.description);
     return postTags.some(tag => titleToSlug(tag) === tagSlug);
   });

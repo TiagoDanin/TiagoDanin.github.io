@@ -3,16 +3,7 @@ import { notFound } from 'next/navigation';
 import { ExternalLink, Github, Package, Archive } from 'lucide-react';
 import Link from 'next/link';
 
-import projectsGithub from "@/data/github.json";
-import projectsPrivate from "@/data/private.json";
-import projectsNpm from "@/data/npm.json";
-import projectsLuarocks from "@/data/luarocks.json";
-import projectsPypi from "@/data/pypi.json";
-import projectsAtom from "@/data/atom.json";
-import projectsGooglePlay from "@/data/googleplay.json";
-import projectsMicrosoftStore from "@/data/windows.json";
-import projectsAUR from "@/data/aur.json";
-import projectsOffline from "@/data/offline.json";
+import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
 import { titleToSlug } from "@/utils/parse";
 
 type GenericProject = {
@@ -35,18 +26,21 @@ type GenericProject = {
   [key: string]: any;
 };
 
-const projectsMap: Record<string, GenericProject[]> = {
-  github: projectsGithub as GenericProject[],
-  private: projectsPrivate as GenericProject[],
-  npm: projectsNpm as GenericProject[],
-  luarocks: projectsLuarocks as GenericProject[],
-  pypi: projectsPypi as GenericProject[],
-  atom: projectsAtom as GenericProject[],
-  googleplay: projectsGooglePlay as GenericProject[],
-  windows: projectsMicrosoftStore as GenericProject[],
-  aur: projectsAUR as GenericProject[],
-  offline: projectsOffline as GenericProject[],
-};
+async function getProjectsMap(): Promise<Record<string, GenericProject[]>> {
+  await ensureContentLoaded();
+  return {
+    github: queryCollection('github') as unknown as GenericProject[],
+    private: queryCollection('private') as unknown as GenericProject[],
+    npm: queryCollection('npm') as unknown as GenericProject[],
+    luarocks: queryCollection('luarocks') as unknown as GenericProject[],
+    pypi: queryCollection('pypi') as unknown as GenericProject[],
+    atom: queryCollection('atom') as unknown as GenericProject[],
+    googleplay: queryCollection('googleplay') as unknown as GenericProject[],
+    windows: queryCollection('windows') as unknown as GenericProject[],
+    aur: queryCollection('aur') as unknown as GenericProject[],
+    offline: queryCollection('offline') as unknown as GenericProject[],
+  };
+}
 
 const urlPrefixMap: Record<string, string> = {
   npm: "https://www.npmjs.com/package/",
@@ -61,11 +55,12 @@ const urlPrefixMap: Record<string, string> = {
   offline: "",
 };
 
-type ProjectType = keyof typeof projectsMap;
+type ProjectType = string;
 
 export async function generateMetadata({ params }: { params: { type: ProjectType, slug: string } }): Promise<Metadata> {
+  const projectsMap = await getProjectsMap();
   const { type, slug } = params;
-  
+
   const projects = projectsMap[type] || [];
   const project = projects.find((p) => 
     (p.name && titleToSlug(p.name) === slug) || 
@@ -165,6 +160,7 @@ export async function generateMetadata({ params }: { params: { type: ProjectType
 }
 
 export async function generateStaticParams() {
+  const projectsMap = await getProjectsMap();
   const params: { type: string, slug: string }[] = [];
 
   Object.entries(projectsMap).forEach(([type, projects]) => {
@@ -179,9 +175,10 @@ export async function generateStaticParams() {
   return params;
 }
 
-export default function ProjectPage({ params }: { params: { type: ProjectType, slug: string } }) {
+export default async function ProjectPage({ params }: { params: { type: ProjectType, slug: string } }) {
+  const projectsMap = await getProjectsMap();
   const { type, slug } = params;
-  
+
   const projects = projectsMap[type] || [];
   const project = projects.find((p) => 
     (p.name && titleToSlug(p.name) === slug) || 

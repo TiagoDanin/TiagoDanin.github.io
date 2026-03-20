@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Package, Download, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import npmData from "@/data/npm.json";
+import npmData from "../../../../contents/npm/index.json";
 
 interface AnimatedCounterProps {
   target: number;

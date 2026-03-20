@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Star, GitFork, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import githubData from "@/data/github.json";
+import githubData from "../../../../contents/github/index.json";
 
 interface AnimatedCounterProps {
   target: number;

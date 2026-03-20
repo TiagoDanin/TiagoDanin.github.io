@@ -1,82 +1,90 @@
 import Link from "next/link";
-import timelineData from "@/data/timeline.json";
+import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
 import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
 
-export const metadata = {
-  title: "Professional Timeline & Career Journey",
-  description: "Career timeline from education to senior mobile developer. Professional milestones, projects, and achievements in mobile development, cybersecurity, and open source.",
-  keywords: ["timeline", "career", "professional journey", "work history", "experience", "mobile developer career", "career milestones", "professional background"],
-  alternates: {
-    canonical: 'https://tiagodanin.com/timeline',
-    types: {
-      'application/rss+xml': [
-        { url: '/rss/timeline.xml', title: 'Timeline RSS Feed' }
-      ],
-    },
-  },
-  openGraph: {
-    title: "Professional Timeline & Career Journey",
-    description: "Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source.",
-    url: "https://tiagodanin.com/timeline",
-    type: "profile",
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: "Career Timeline | Tiago Danin",
-    description: "Professional journey: education, projects, and career milestones in mobile development.",
-    creator: "@tiagodanin",
-  },
-  other: {
-    'application/ld+json': JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "itemListElement": timelineData.map((item) => ({
-          "@type": "Event",
-          "name": item.title,
-          "description": item.description,
-          "startDate": toISODate(item.date),
-          "eventStatus": "https://schema.org/EventScheduled",
-          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-          "location": {
-            "@type": "Place",
-            "name": item.title
-          },
-          "organizer": {
-            "@type": "Organization",
-            "name": item.title
-          },
-          "performer": {
-            "@type": "Person",
-            "name": "Tiago Danin"
-          },
-          "url": `/timeline/${item.date.toString()}/${titleToSlug(item.title)}`,
-          "inLanguage": "pt-BR"
-        }))
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://tiagodanin.com"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Timeline",
-            "item": "https://tiagodanin.com/timeline"
-          }
-        ]
-      }
-    ])
-  }
-};
+export async function generateMetadata() {
+  await ensureContentLoaded();
+  const timelineData = queryCollection('timeline');
 
-const Timeline = () => {
+  return {
+    title: "Professional Timeline & Career Journey",
+    description: "Career timeline from education to senior mobile developer. Professional milestones, projects, and achievements in mobile development, cybersecurity, and open source.",
+    keywords: ["timeline", "career", "professional journey", "work history", "experience", "mobile developer career", "career milestones", "professional background"],
+    alternates: {
+      canonical: 'https://tiagodanin.com/timeline',
+      types: {
+        'application/rss+xml': [
+          { url: '/rss/timeline.xml', title: 'Timeline RSS Feed' }
+        ],
+      },
+    },
+    openGraph: {
+      title: "Professional Timeline & Career Journey",
+      description: "Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source.",
+      url: "https://tiagodanin.com/timeline",
+      type: "profile",
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: "Career Timeline | Tiago Danin",
+      description: "Professional journey: education, projects, and career milestones in mobile development.",
+      creator: "@tiagodanin",
+    },
+    other: {
+      'application/ld+json': JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": timelineData.map((item: any) => ({
+            "@type": "Event",
+            "name": item.title,
+            "description": item.description,
+            "startDate": toISODate(item.date),
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": {
+              "@type": "Place",
+              "name": item.title
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": item.title
+            },
+            "performer": {
+              "@type": "Person",
+              "name": "Tiago Danin"
+            },
+            "url": `/timeline/${item.date.toString()}/${titleToSlug(item.title)}`,
+            "inLanguage": "pt-BR"
+          }))
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://tiagodanin.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Timeline",
+              "item": "https://tiagodanin.com/timeline"
+            }
+          ]
+        }
+      ])
+    }
+  };
+}
+
+const Timeline = async () => {
+  await ensureContentLoaded();
+  const timelineData = queryCollection('timeline');
+
   return (
     <>
       <div className="container mx-auto py-16 sm:py-20 px-4 sm:px-6 relative">
@@ -91,10 +99,10 @@ const Timeline = () => {
         </div>
 
         <ol className="relative border-s border-gray-200 dark:border-gray-700 max-w-3xl w-full mx-auto">
-          {timelineData.map((item, index) => {
+          {timelineData.map((item: any, index: number) => {
             const year = item.date.toString();
             const slug = titleToSlug(item.title);
-            
+
             return (
               <li key={index} className="mb-10 ms-4">
                 {/* Timeline dot */}
@@ -113,7 +121,7 @@ const Timeline = () => {
                   </span>
 
                   {/* Tags */}
-                  {item.tags && item.tags.map((tag, index) => (
+                  {item.tags && item.tags.map((tag: string, index: number) => (
                     <span
                       key={index}
                       className={`text-sm font-medium px-3 ml-2 py-1 rounded-full ${getRandomColor()}`}

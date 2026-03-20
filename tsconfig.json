@@ -32,6 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+    ".studio/**/*.ts",
     "next-env.d.ts",
     "src/types/**/*.d.ts",
     "dist/types/**/*.ts"

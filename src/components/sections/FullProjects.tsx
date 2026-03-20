@@ -1,17 +1,17 @@
 'use client'
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import projectsGithub from "@/data/github.json";
-import projectsPrivate from "@/data/private.json";
-import projectsNpm from "@/data/npm.json";
-import projectsLuarocks from "@/data/luarocks.json";
-import projectsPypi from "@/data/pypi.json";
-import projectsAtom from "@/data/atom.json";
+import projectsGithub from "../../../contents/github/index.json";
+import projectsPrivate from "../../../contents/private/index.json";
+import projectsNpm from "../../../contents/npm/index.json";
+import projectsLuarocks from "../../../contents/luarocks/index.json";
+import projectsPypi from "../../../contents/pypi/index.json";
+import projectsAtom from "../../../contents/atom/index.json";
 
-import projectsGooglePlay from "@/data/googleplay.json";
-import projectsMicrosoftStore from "@/data/windows.json";
-import projectsAUR from "@/data/aur.json";
-import projectsOffline from "@/data/offline.json";
+import projectsGooglePlay from "../../../contents/googleplay/index.json";
+import projectsMicrosoftStore from "../../../contents/windows/index.json";
+import projectsAUR from "../../../contents/aur/index.json";
+import projectsOffline from "../../../contents/offline/index.json";
 import { useState } from "react";
 
 const otherProjectsPrivateCount = 55;

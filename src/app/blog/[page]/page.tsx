@@ -1,5 +1,5 @@
 import Link from "next/link";
-import posts from "@/data/posts.json";
+import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
 import { Badge } from "@/components/ui/badge";
 import { Flag, Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,9 +29,11 @@ export async function generateMetadata({ params }: { params: { page: string } })
 }
 
 const POSTS_PER_PAGE = 10;
-const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
 export async function generateStaticParams() {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const pages = [];
   for (let i = 1; i <= totalPages; i++) {
     pages.push({ page: i.toString() });
@@ -44,6 +46,9 @@ const BlogPage = async ({
 }: {
   params: { page: string }
 }) => {
+  await ensureContentLoaded();
+  const posts = queryCollection('posts');
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const currentPage = Number(params.page) || 1;
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
   const endIndex = startIndex + POSTS_PER_PAGE;

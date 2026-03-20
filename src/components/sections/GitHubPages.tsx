@@ -1,7 +1,7 @@
 'use client'
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import projectsGithub from "@/data/github.json";
+import projectsGithub from "../../../contents/github/index.json";
 import { useState, useMemo } from "react";
 
 export default function GitHubPagesSection() {

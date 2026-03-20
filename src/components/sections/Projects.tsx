@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import projectsData from "@/data/projects.json";
+import projectsData from "../../../contents/projects/index.json";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";

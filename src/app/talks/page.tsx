@@ -1,5 +1,5 @@
 import Link from "next/link";
-import talks from "@/data/talks.json";
+import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
 import { Badge } from "@/components/ui/badge";
 import { Flag, Mic, Video } from "lucide-react";
 import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
@@ -31,8 +31,10 @@ export const metadata = {
   },
 };
 
-const TalksPage = () => {
-  const sortedTalks = [...talks].sort((a, b) => {
+const TalksPage = async () => {
+  await ensureContentLoaded();
+  const talks = queryCollection('talks');
+  const sortedTalks = [...talks].sort((a: any, b: any) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
     return dateB.getTime() - dateA.getTime();
