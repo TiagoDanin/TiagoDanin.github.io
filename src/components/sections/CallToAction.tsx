@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
-import aboutData from "../../../contents/about/index.json";
-import socialLinksData from "../../../contents/sociallinks/index.json";
+import { queryCollection } from 'nextjs-studio';
 
 export function CallToAction() {
+  const aboutData = queryCollection('about').first()!;
+  const socialLinksData = queryCollection('sociallinks');
   const linkedIn = socialLinksData.find((l) => l.label === "LinkedIn");
 
   return (

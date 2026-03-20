@@ -48,7 +48,7 @@ export function Work() {
   const workData = queryCollection('work');
   const volunteerData = queryCollection('volunteer');
   const skillsData = queryCollection('skills');
-  const aboutData = queryCollection('about');
+  const aboutData = queryCollection('about').first()!;
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (

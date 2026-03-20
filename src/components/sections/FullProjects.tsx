@@ -1,68 +1,78 @@
 'use client'
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import projectsGithub from "../../../contents/github/index.json";
-import projectsPrivate from "../../../contents/private/index.json";
-import projectsNpm from "../../../contents/npm/index.json";
-import projectsLuarocks from "../../../contents/luarocks/index.json";
-import projectsPypi from "../../../contents/pypi/index.json";
-import projectsAtom from "../../../contents/atom/index.json";
-
-import projectsGooglePlay from "../../../contents/googleplay/index.json";
-import projectsMicrosoftStore from "../../../contents/windows/index.json";
-import projectsAUR from "../../../contents/aur/index.json";
-import projectsOffline from "../../../contents/offline/index.json";
 import { useState } from "react";
+import { queryCollection } from 'nextjs-studio';
+
+interface ProjectForCard {
+  title: string;
+  description: string;
+  href: string | null;
+  archived?: boolean;
+}
+
+function toCards<T extends { name: string; description: string }>(
+  items: T[],
+  getHref: (item: T) => string | null
+): ProjectForCard[] {
+  return items.map(item => ({
+    title: item.name,
+    description: item.description || '',
+    href: getHref(item),
+  }));
+}
 
 const otherProjectsPrivateCount = 55;
-const projectSections = [
-  {
-    title: "GitHub",
-    projects: projectsGithub
-  },
-  {
-    title: "Google Play",
-    projects: projectsGooglePlay
-  },
-  {
-    title: "NPM",
-    projects: projectsNpm,
-    urlPrefix: "https://www.npmjs.com/package/"
-  },
-  {
-    title: "LuaRocks",
-    projects: projectsLuarocks,
-    urlPrefix: "https://luarocks.org/modules/tiagodanin/"
-  },
-  {
-    title: "Pypi",
-    projects: projectsPypi,
-    urlPrefix: "https://pypi.python.org/pypi/"
-  },
-  {
-    title: "Atom",
-    projects: projectsAtom,
-    urlPrefix: "https://atom.io/packages/"
-  },
-  {
-    title: "Microsoft Store",
-    projects: projectsMicrosoftStore
-  },
-  {
-    title: "AUR Archlinux",
-    projects: projectsAUR
-  },
-  {
-    title: "Private",
-    projects: projectsPrivate
-  },
-  {
-    title: "Offline/Old Websites",
-    projects: projectsOffline
-  }
-];
 
 export function FullProjects() {
+  const projectSections = [
+    {
+      title: "GitHub",
+      projects: queryCollection('github').map(p => ({
+        title: p.name,
+        description: p.description || '',
+        href: p.homepage || p.html_url || null,
+        archived: p.archived,
+      })),
+    },
+    {
+      title: "Google Play",
+      projects: toCards(queryCollection('googleplay'), p => p.url),
+    },
+    {
+      title: "NPM",
+      projects: toCards(queryCollection('npm'), p => `https://www.npmjs.com/package/${p.name}`),
+    },
+    {
+      title: "LuaRocks",
+      projects: toCards(queryCollection('luarocks'), p => `https://luarocks.org/modules/tiagodanin/${p.name}`),
+    },
+    {
+      title: "Pypi",
+      projects: toCards(queryCollection('pypi'), p => `https://pypi.python.org/pypi/${p.name}`),
+    },
+    {
+      title: "Atom",
+      projects: toCards(queryCollection('atom'), p => `https://atom.io/packages/${p.name}`),
+    },
+    {
+      title: "Microsoft Store",
+      projects: toCards(queryCollection('windows'), p => p.url),
+    },
+    {
+      title: "AUR Archlinux",
+      projects: toCards(queryCollection('aur'), p => p.url),
+    },
+    {
+      title: "Private",
+      projects: toCards(queryCollection('private'), p => p.url),
+    },
+    {
+      title: "Offline/Old Websites",
+      projects: toCards(queryCollection('offline'), () => null),
+    },
+  ];
+
   const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
 
   const toggleSection = (title: string) => {
@@ -72,6 +82,7 @@ export function FullProjects() {
     }));
   };
 
+  const privateProjects = projectSections.find(s => s.title === "Private")?.projects ?? [];
   const totalProjects = projectSections.reduce((sum, section) => sum + section.projects.length, otherProjectsPrivateCount);
 
   return (
@@ -112,7 +123,7 @@ export function FullProjects() {
                   <div className="flex items-center gap-2 sm:gap-3 ml-auto">
                     <span className="px-2 py-1 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded text-xs sm:text-sm">
                       {section.title === "Private" ?
-                        projectsPrivate.length + otherProjectsPrivateCount :
+                        privateProjects.length + otherProjectsPrivateCount :
                         section.projects.length
                       } projects
                     </span>
@@ -145,21 +156,20 @@ export function FullProjects() {
                       {/* Regular Private Projects */}
                       <div>
                         <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
-                          Regular Projects ({projectsPrivate.length})
+                          Regular Projects ({privateProjects.length})
                         </h3>
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                          {projectsPrivate.map((project: any, projectIndex) => (
+                          {privateProjects.map((project, projectIndex) => (
                             <ProjectCard
                               key={projectIndex}
-                              {...project}
-                              title={project.title || project.name}
-                              description={project.description || ''}
-                              href={section.urlPrefix ? `${section.urlPrefix}${project.name}` : project.homepage || project.html_url || project.url || null}
+                              title={project.title}
+                              description={project.description}
+                              href={project.href ?? undefined}
                             />
                           ))}
                         </div>
                       </div>
-                      
+
                       {/* Other Projects - Easter Egg */}
                       <div>
                         <div className="flex items-center gap-2 mb-4">
@@ -174,13 +184,13 @@ export function FullProjects() {
                     </div>
                   ) : (
                     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                      {section.projects.map((project: any, projectIndex) => (
+                      {section.projects.map((project, projectIndex) => (
                         <ProjectCard
                           key={projectIndex}
-                          {...project}
-                          title={project.title || project.name}
-                          description={project.description || ''}
-                          href={section.urlPrefix ? `${section.urlPrefix}${project.name}` : project.homepage || project.html_url || project.url || null}
+                          title={project.title}
+                          description={project.description}
+                          href={project.href ?? undefined}
+                          archived={project.archived}
                         />
                       ))}
                     </div>
