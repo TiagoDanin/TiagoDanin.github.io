@@ -81,6 +81,7 @@ const config: StudioConfig = {
       },
     },
     posts: {
+      mediaDir: "public/images/posts",
       schema: {
         collection: "posts",
         label: "Blog Posts",
