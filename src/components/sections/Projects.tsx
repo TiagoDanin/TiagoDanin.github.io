@@ -4,12 +4,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import projectsData from "../../../contents/projects/index.json";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { queryCollection } from 'nextjs-studio';
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export function Projects() {
+  const projectsData = queryCollection('projects');
   const pathname = usePathname();
   const isFullProjects = pathname === "/projects";
 

@@ -1,10 +1,10 @@
-"use client";
-
 import { Code, Smartphone, Shield, Zap } from "lucide-react";
 import Link from "next/link";
-import expertiseData from "../../../contents/expertise/index.json";
+import { queryCollection } from 'nextjs-studio';
 
-const iconMap: Record<string, any> = {
+import type { LucideIcon } from "lucide-react";
+
+const iconMap: Record<string, LucideIcon> = {
   Code,
   Smartphone,
   Shield,
@@ -12,6 +12,7 @@ const iconMap: Record<string, any> = {
 };
 
 export function Services() {
+  const expertiseData = queryCollection('expertise');
   return (
     <section id="skills" className="relative py-16 sm:py-20 bg-secondary/30 overflow-hidden">
       {/* Blur effect circles */}

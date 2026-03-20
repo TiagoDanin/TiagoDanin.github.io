@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Star, GitFork, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import githubData from "../../../../contents/github/index.json";
+import { queryCollection } from 'nextjs-studio';
 
 interface AnimatedCounterProps {
   target: number;
@@ -53,6 +53,7 @@ function AnimatedCounter({ target, duration = 2000, formatNumber = true }: Anima
 }
 
 export default function GitHubRankingsPage() {
+  const githubData = queryCollection('github');
   // Sort repositories by stars in descending order and take top 10
   const sortedRepos = [...githubData]
     .sort((a, b) => b.stargazers_count - a.stargazers_count)

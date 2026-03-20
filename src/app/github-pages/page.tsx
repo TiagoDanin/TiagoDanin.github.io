@@ -20,12 +20,10 @@ export const metadata = {
   },
 };
 
-const Index = () => {
-  return (
-    <div>
-      <GitHubPagesSection />
-    </div>
-  );
-};
+const Index = () => (
+  <div>
+    <GitHubPagesSection />
+  </div>
+);
 
 export default Index;

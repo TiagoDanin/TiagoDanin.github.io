@@ -23,7 +23,7 @@ type GenericProject = {
   pushed_at?: string;
   readme_html?: string;
   homepage?: string;
-  [key: string]: any;
+  [key: string]: string | number | boolean | undefined;
 };
 
 function getProjectsMap(): Record<string, GenericProject[]> {

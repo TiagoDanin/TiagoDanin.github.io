@@ -2,12 +2,13 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Flag } from "lucide-react";
-import posts from "../../../contents/posts/index.json";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Link from "next/link";
+import { queryCollection } from 'nextjs-studio';
 
 export function RecentPosts() {
+  const posts = queryCollection('posts');
   const recentPosts = posts.slice(0, 4);
 
   return (

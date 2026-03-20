@@ -20,13 +20,10 @@ import {
 } from "react-icons/si";
 import { FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import workData from "../../../contents/work/index.json";
-import volunteerData from "../../../contents/volunteer/index.json";
-import skillsData from "../../../contents/skills/index.json";
-import aboutData from "../../../contents/about/index.json";
 import { ExperienceItem } from "@/components/ui/experience-item";
+import { queryCollection } from 'nextjs-studio';
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
   SiNodedotjs, SiPostgresql, SiSqlite,
@@ -48,6 +45,10 @@ const TechIcon = ({ icon: iconName, name, color }: { icon: string, name: string,
 };
 
 export function Work() {
+  const workData = queryCollection('work');
+  const volunteerData = queryCollection('volunteer');
+  const skillsData = queryCollection('skills');
+  const aboutData = queryCollection('about');
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
