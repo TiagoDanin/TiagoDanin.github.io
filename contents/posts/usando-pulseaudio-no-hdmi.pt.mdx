@@ -8,4 +8,16 @@ lang: "pt"
 tags: ["Tutorial", "UI/UX", "Linux", "Article"]
 ---
 
-{/* Conteúdo em breve */}
+Depois que migrei para o PulseAudio tive um problema ao tentar usar o HDMI do notebook. Jogos, vídeos e músicas não estavam reproduzindo na saída do HDMI.
+
+## Solução
+
+Instalar o pavucontrol.
+
+```
+$ pacman -S pavucontrol
+```
+
+Depois podemos abrir o pavucontrol, navegue até onde tem seu dispositivo HDMI e clique no botão de ativar.
+
+Agora ele é o dispositivo padrão de saída de áudio. :)

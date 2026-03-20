@@ -8,4 +8,250 @@ lang: "pt"
 tags: ["React", "Testing", "Article"]
 ---
 
-{/* Conteúdo em breve */}
+![Finalmente! O segredo dos testes no React Native foi revelado](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/cover.png)
+
+## Introdução
+
+Este artigo aborda a implementação de testes automatizados em aplicativos construídos com React Native.
+
+## Motivos para usar testes automatizados
+
+![Diagrama de testes automatizados](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-01.png)
+
+Há diversos motivos para o uso de testes automatizados, entre eles se destacam três pontos: confiabilidade, velocidade e análise.
+
+### Confiabilidade
+
+Um ponto importante ao realizar testes é ter um feedback de que um fluxo está realmente funcionando como esperado, tendo as entradas e saídas sendo executadas como previsto, isto é, os retornos batem com o que foi escrito anteriormente.
+
+### Velocidade
+
+Conforme as funcionalidades de uma aplicação aumentam, mais testes são precisos, e realizá-los manualmente toda vez que uma alteração for feita começa a tornar-se inviável. Em vez disso, a automação vai sempre realizar os mesmos testes escritos, sem esquecer um passo ou mesmo a realização de um dos testes, em um tempo muito menor que a realização manual dele.
+
+### Análise
+
+É possível gerar diversos relatórios a partir da execução de testes automatizados, como o de cobertura, ou de testes que passaram com sucesso que podem ser usados como controle de qualidade do software. Além disso, os próprios testes funcionam como uma espécie de documentação. Por exemplo, se precisarmos saber o que acontece quando há uma entrada de senha errada, basta olharmos para o teste que faz referência a essa ação.
+
+## Ferramentas
+
+![Ferramentas de testes para React Native](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-02.png)
+
+Há muitas ferramentas para testes em aplicativos mobiles, mas o artigo trabalha com duas: Jest e o React Native Test Library.
+
+![Jest - framework de testes](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-03.png)
+
+### Jest
+
+O Jest é uma framework de testes mantido pelo Meta, mesma empresa por trás do desenvolvimento do React Native, o que torna muito mais fácil sua utilização, configuração e a inclusão de recursos, já que seu desenvolvimento está sempre alinhado com os produtos em que ela é utilizada.
+
+![React Native Test Library](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-04.png)
+
+### React Native Test Library
+
+A segunda ferramenta funciona como utilitário que facilitará a realização de teste, inicialmente desenvolvida pela própria organização do Test Library, e posteriormente migrado para a Callstack, organização responsável por diversas bibliotecas bastante usadas no React Native, como o React Native Paper.
+
+## Configurando o Jest
+
+![Configurando o Jest no projeto](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-05.png)
+
+Logo de início precisaremos instalar os pacotes das ferramentas no projeto. Podemos fazer isso através do NPM ou Yarn:
+
+```
+$ yarn add @testing-library/jest-native @testing-library/react-hooks @testing-library/react-native @types/jest babel-jest jest
+```
+
+E na raiz do projeto criar um arquivo de configuração para o Jest:
+
+```javascript
+// jest.config.js
+module.exports = {
+  preset: 'react-native',
+};
+```
+
+Como dito anteriormente, o Jest já é preparado para o React Native, então basta informarmos para ele no `preset` que a configuração padrão que queremos usar é o react-native.
+
+Para executar os testes pode usar o comando jest no terminal ou a extensão do VS Code Jest Runner que adiciona um botão `run` para seus escopos de testes.
+
+## Criando testes
+
+![Estrutura de arquivos de testes](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-06.png)
+
+Os testes precisam ser criados em um arquivo à parte. Esse arquivo pode ser localizado dentro de uma pasta `__tests__`, ou arquivos terminado com `.test.js`, `.test.ts`, `.test.jsx`, `.test.tsx`, `.spec.js`, `.spec.ts`, `.spec.jsx` e `.spec.tsx`, isso é dado pela regra padrão via regex podendo ser alterado nas configurações do Jest pelo campo testMatch.
+
+Na IdopterLabs adotou-se o padrão de colocar os testes ao lado do arquivo principal do componente, tela ou utilitário o qual será o escopo dos testes.
+
+Isso facilita saber onde tem ou não testes faltados, pois ao acessar a pasta de um componente, por exemplo, fica claro a existência ou não do arquivo de testes.
+
+![Escrevendo testes com Jest](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-07.png)
+
+Para escrevermos os testes, precisaremos da seguinte estrutura inicialmente no nosso arquivo:
+
+```typescript
+import { render } from '@testing-library/react-native';
+import Button from './index';
+
+describe('Button', () => {
+  it('should render without crashing', () => {
+    render(<Button />);
+  });
+});
+```
+
+Onde o primeiro parâmetro do `describe` vamos descrever quem é o nosso escopo, e no primeiro parâmetro do `it` a descrição do teste que vai ser realizado.
+
+**NOTA:** O `it` pode ser substituído pelo `test` no lugar, a única diferença é a sua escrita.
+
+![Callbacks beforeEach e afterEach](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-08.png)
+
+Quando precisamos executar alguma tarefa antes ou depois de cada teste, podemos utilizar os callback `beforeEach` e `afterEach` respectivamente.
+
+```typescript
+describe('Button', () => {
+  beforeEach(() => {
+    console.log('antes de cada teste');
+  });
+
+  afterEach(() => {
+    console.log('depois de cada teste');
+  });
+
+  it('should render without crashing', () => {
+    render(<Button />);
+  });
+});
+```
+
+![Componente Button de exemplo](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-09.png)
+
+Agora vamos realmente escrever um teste funcional. Temos a seguinte tela com um componente de botão:
+
+```typescript
+// components/Button/index.tsx
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+
+interface ButtonProps {
+  onPress: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ onPress }) => (
+  <TouchableOpacity onPress={onPress}>
+    <Text>Clique aqui</Text>
+  </TouchableOpacity>
+);
+
+export default Button;
+```
+
+![Testando renderização do componente](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-10.png)
+
+Queremos testar se tudo deu certo na renderização do componente. Podemos utilizar o próprio render para isso:
+
+```typescript
+// components/Button/index.spec.tsx
+import { render } from '@testing-library/react-native';
+import Button from './index';
+
+describe('Button', () => {
+  it('should render without crashing', () => {
+    render(<Button onPress={() => {}} />);
+  });
+});
+```
+
+![Nota sobre testes no Jest](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-11.png)
+
+**NOTA:** Os testes no Jest são executados de modo a simular a visualização do nativo, mas de fato não é realizado no nativo. Isso significa que não é preciso ter um smartphone com a build instalada para poder usar. Apesar dessa estratégia trazer diversos benefícios, há alguns pontos negativos. O principal é não conseguirmos verificar toda a parte de módulos nativos utilizados no projeto, precisando esses serem mockados muitas das vezes.
+
+Temos como melhorar a verificação desse componente olhando se o texto está escrito igual ao informado no parâmetro, ou se há evento no clique do botão. Porém, para isso precisaremos isolar uma parte do elemento de nosso componente de exemplo.
+
+![Extraindo elementos pelo id e texto](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-12.png)
+
+Podemos extrair uma parte de um elemento visual na tela utilizando os recursos do Testing Library. Os dois meios mais comuns são pelo id e texto.
+
+```typescript
+// components/Button/index.tsx
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+
+interface ButtonProps {
+  onPress: () => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ onPress }) => (
+  <TouchableOpacity testID="button-component" onPress={onPress}>
+    <Text>Clique aqui</Text>
+  </TouchableOpacity>
+);
+
+export default Button;
+```
+
+```typescript
+// components/Button/index.spec.tsx
+import { render, screen } from '@testing-library/react-native';
+import Button from './index';
+
+describe('Button', () => {
+  it('should render without crashing', () => {
+    const { getByTestId } = render(<Button onPress={() => {}} />);
+    const button = getByTestId('button-component');
+    expect(button).toBeTruthy();
+  });
+});
+```
+
+![Usando getByTestId e getByText](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-13.png)
+
+Para extrair por ID precisamos identificar o elemento pela propriedade `testID`, e puxar pelo `getByTestId('meu-id')`, ou pelo texto podemos utilizar o `getByText('texto')`. Se escrevemos o id ou texto diferente do que era esperado, veremos um erro. Desse modo, podemos usar o `getByTestId` para verificar se realmente algo está sendo mostrado na tela ou `getByText` para verificar se algo foi escrito igual e existe na tela.
+
+![Verificando texto com getByText](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-14.png)
+
+Sabendo disso, agora podemos escrever o nosso teste para verificar se o texto está sendo mostrado corretamente:
+
+```typescript
+// components/Button/index.spec.tsx
+import { render } from '@testing-library/react-native';
+import Button from './index';
+
+describe('Button', () => {
+  it('should render button text correctly', () => {
+    const { getByText } = render(<Button onPress={() => {}} />);
+    const buttonText = getByText('Clique aqui');
+    expect(buttonText).toBeTruthy();
+  });
+});
+```
+
+![FireEvent do Testing Library](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-15.png)
+
+Para simular o clique no botão, vamos usar o FireEvent do Testing Library. Por padrão, há três tipos de eventos já implementados: o `fireEvent.changeText(...)`, utilizado para alterar texto em TextInput, `fireEvent.scroll(...)` para realizar scroll na página e o `fireEvent.press(...)` para realizar clique em um `View`.
+
+```typescript
+// components/Button/index.spec.tsx
+import { render, fireEvent } from '@testing-library/react-native';
+import Button from './index';
+
+describe('Button', () => {
+  it('should call onPress when button is pressed', () => {
+    const mockOnPress = jest.fn();
+    const { getByTestId } = render(<Button onPress={mockOnPress} />);
+    const button = getByTestId('button-component');
+    fireEvent.press(button);
+    expect(mockOnPress).toHaveBeenCalled();
+  });
+});
+```
+
+![Simulando clique no botão com fireEvent.press](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-16.png)
+
+![Cobertura de testes completa](/images/posts/finalmente-o-segredo-dos-testes-no-react-native-foi-revelado/testing-17.png)
+
+## Conclusão
+
+Neste post, vimos como testar um simples componente de botão de uma aplicação em React Native. O mesmo pode ser aplicado para uma tela inteira de uma aplicação. O ideal é escrevermos testes unitários, testes dos componentes, e os testes das telas que seriam as páginas utilizando os componentes. Desse modo, conseguimos verificar que a integração funciona como esperado, como também os componentes funcionam corretamente individualmente.
+
+Para os interessados, o código-fonte completo usado nesse post está no repositório do GitHub.
+
+Espero que este post ajude você em seu próximo projeto. Caso sua empresa precise de ajuda na construção de aplicações mobile, entre em contato!

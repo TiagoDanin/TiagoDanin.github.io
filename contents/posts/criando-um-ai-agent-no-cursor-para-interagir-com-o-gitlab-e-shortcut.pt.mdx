@@ -8,4 +8,141 @@ lang: "pt"
 tags: ["AI", "GitHub", "DevOps", "UI/UX", "Tools", "Article"]
 ---
 
-{/* Conteúdo em breve */}
+![Criando um AI Agent no Cursor para interagir com o Gitlab e Shortcut](/images/posts/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut/cover.png)
+
+## Cursor, MCP e Agentes de IA: o combo que mudou meu jeito de trabalhar
+
+O Cursor vai muito além de um editor de código com "chat com IA". Ele entende o contexto do projeto, lê e edita arquivos, acessa documentações, executa comandos no terminal e permite criar agentes que automatizam tarefas inteiras.
+
+O segredo está nas integrações com servidores MCP, o Model Context Protocol. É um sistema de "plugins" que conecta o Cursor e as LLMs a ferramentas externas. No caso apresentado, utiliza-se o MCP do GitLab (para repositórios) e do Shortcut (para stories). Com o MCP, as LLMs conseguem buscar dados, executar comandos, criar MRs e consultar issues.
+
+![Screenshot do agente no Cursor](/images/posts/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut/cursor-agent.png)
+
+A configuração é simples: vá nas configurações do Cursor > MCP e adicione um novo servidor. No arquivo JSON, coloque os comandos de inicialização:
+
+```json
+{
+  "mcpServers": {
+    "gitlab": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gitlab"],
+      "env": {
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "seu_token"
+      }
+    },
+    "shortcut": {
+      "command": "npx",
+      "args": ["-y", "@shortcut/mcp"],
+      "env": {
+        "SHORTCUT_API_TOKEN": "seu_token"
+      }
+    }
+  }
+}
+```
+
+Após reiniciar o Cursor, todos os MCPs disponíveis aparecem. É totalmente adaptável -- se mudar para GitHub, basta trocar o MCP.
+
+![Integração GitLab e Shortcut via MCP](/images/posts/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut/gitlab-shortcut.png)
+
+## Como criei meu agente customizado (e por que não vivo mais sem)
+
+Um agente de IA no Cursor é um aliado que entende seu projeto, segue instruções personalizadas e realiza tarefas do início ao fim. Ele executa comandos, acessa arquivos, interage com outras ferramentas e toma decisões baseado no contexto.
+
+Para criar um agente de abrir MR, vá até o chat, clique no menu de agentes e selecione "Add custom mode". Habilite:
+
+- Todos os recursos de **Search**, menos a de **Rules**
+- **Run**
+- **MCP**, somente do **Gitlab** e **Shortcut**
+- **Auto run**
+
+O prompt utilizado segue a seguinte estrutura:
+
+```xml
+<prompt model="Claude 3.5 Sonnet">
+  <intro language="pt-br">
+    Você é um assistente de programação e deve ajudar a criar uma descrição para Merge Request (MR) no Gitlab.
+    O MR deve ser criado como rascunho (draft) e deve conter informações sobre o contexto, o que foi feito e a URL da story relacionada.
+    Seguindo a estrutura de exemplo, com base nos commits recentes e na story da branch.
+  </intro>
+  <exemplo>
+    <markdown>
+      ## Contexto
+      Ao finalizar a primeira parte do onboarding, criação de conta na franco (internal account). Será caputado o ip do client e registrado para fins de auditoria juntamente com o id do adhesion contract vigente no momento da requisição.
+
+      ## O que foi feito?
+
+      - Criado plug para capturar o client ip
+      - Criado tabela adhesion_contracts
+      - Criado modulo para consultar e criar o registro contrado de adesão pelo o usuário
+      - Adicionado no fluxo de criação de conta interna o registro da adesão aceitada pelo usuário
+      - Atualizado o fallback_controller
+
+      ## URL da Story
+      - https://app.shortcut.com/idopterlabs-project-x/story/52460/
+    </markdown>
+  </exemplo>
+  <instrucoes>
+    <passo>
+      Leia o Diff com a Main Branch e resuma as mudanças em até 5 tópicos objetivos.
+    </passo>
+    <passo>
+      Obtenha o nome da branch e url do repositório com o comando no terminal:
+      git log -5 --oneline && git remote -v
+    </passo>
+    <passo>
+      Busque a story relacionada usando:
+      shortcut.get-story
+    </passo>
+    <passo>
+      Monte o titulo do MR em markdown, em Português do Brasil, com o formato: "[sc-xxxx] Nome da story" (Se preciso modifique levemente o título)
+    </passo>
+    <passo>
+      Monte a descrição do MR em markdown, em Português do Brasil, com os blocos: Contexto, O que foi feito, URL da Story.
+    </passo>
+    <passo>
+      Se foi solicitado criar um MR e a URL for do Gitlab, crie o MR como draft usando gitlab.create_merge_request, com título: Draft: [sc-xxxx] Nome da story, e a descrição gerada.
+    </passo>
+    <passo>Mande o resultado no chat.</passo>
+  </instrucoes>
+</prompt>
+```
+
+O agente funciona nas seguintes etapas:
+
+- Busca o nome da branch e a URL do repositório
+- Consulta a story no Shortcut para saber o contexto real
+- Gera a descrição do MR já no template padrão
+- Abre o MR no Gitlab como draft
+
+Um detalhe crucial: os merge requests sempre são iniciados como draft para revisão antes de solicitar code review ao time.
+
+![Configuração do agente no Cursor](/images/posts/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut/screenshot-04.png)
+
+## Exemplo real: usando o agente na prática
+
+Após terminar uma feature e dar commit, basta digitar no chat do Cursor: "Crie o meu MR". O agente:
+
+- Pega a branch e o repositório
+- Busca a story no Shortcut
+- Monta a descrição do MR com base nos commits
+- Abre o MR no Gitlab como draft
+
+Em menos de 1 minuto, está tudo pronto para revisão. Não é necessário abrir abas ou copiar e colar.
+
+![Agente abrindo MR no Gitlab](/images/posts/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut/screenshot-05.png)
+
+## O que faz diferença de verdade
+
+- **Menos trabalho repetitivo:** Não é necessário abrir MR manualmente, buscar link ou copiar template
+- **Padronização:** Todo MR segue o mesmo padrão, facilitando revisão e entendimento do histórico
+- **Contexto completo:** O agente garante que a story, repositório e template estão corretos, reduzindo erros
+- **Adaptável:** Funciona com Gitlab e Shortcut, mas pode ser utilizado com Github, Jira ou outras ferramentas
+
+![Resultado do MR gerado pelo agente](/images/posts/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut/screenshot-06.png)
+
+![Detalhes do MR gerado](/images/posts/criando-um-ai-agent-no-cursor-para-interagir-com-o-gitlab-e-shortcut/screenshot-07.png)
+
+## Conclusão
+
+Automatizar a abertura de MRs com agente de IA no Cursor melhorou o fluxo de desenvolvimento. O ganho de tempo, padronização do processo e eliminação de tarefas repetitivas representam um avanço significativo. Este é apenas o começo -- o Cursor pode ser utilizado para executar outros agentes, como automação de testes e geração de telas em Flutter.

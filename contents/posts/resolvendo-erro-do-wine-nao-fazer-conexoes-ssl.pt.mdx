@@ -8,4 +8,19 @@ lang: "pt"
 tags: ["Article"]
 ---
 
-{/* Conteúdo em breve */}
+Depois de instalar o Wine no Manjaro, ao verificar os logs, descobri as seguintes mensagens de erro:
+
+```
+004f:err:winediag:schan_imp_init Failed to load libgnutls, secure connections will not be available.
+004f:err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+```
+
+## Solução
+
+A resolução é direta: instalar os pacotes necessários para suportar conexões seguras.
+
+```
+sudo pacman -S lib32-gnutls gnutls
+```
+
+Após a instalação desses pacotes, é necessário reiniciar o Wine para que as conexões SSL funcionem corretamente.

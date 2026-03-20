@@ -8,4 +8,276 @@ lang: "pt"
 tags: ["Android", "Mobile", "Tutorial", "UI/UX", "Article"]
 ---
 
-{/* Conteúdo em breve */}
+## Jetpack Compose no Wear OS
+
+![Seleção de template no Android Studio](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/01-template-selection.png)
+
+A Google anunciou na Google I/O o beta do Jetpack Compose para o Wear OS, versão do Android para Smartwatch. O Compose permite criar interfaces rapidamente usando sintaxe declarativa, similar ao SwiftUI do iOS. Este artigo demonstra criar um aplicativo simples em poucos minutos usando tecnologia moderna para desenvolvimento Android.
+
+## O Aplicativo
+
+O aplicativo controla a quantidade de água consumida durante o dia. Requer a versão mais recente do Android Studio (neste caso, Android Studio Electric Eel 2022.1.1 Canary 5).
+
+## Iniciando um novo projeto
+
+![Template Wear OS Empty Compose Activity](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/02-wear-os-template.png)
+
+Com Android Studio aberto, crie um novo projeto. Na lista de templates, selecione "Wear OS >> Empty Compose Activity" e continue.
+
+![Tela de configuração do projeto](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/03-project-config.png)
+
+Configure o app com nome, ID, localização do projeto e versão mínima do Android Wear OS (API Level 30 para este exemplo).
+
+## Customização de Cores
+
+![Estrutura do arquivo MainActivity.kt](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/04-main-activity.png)
+
+A customização no Compose ocorre através de arquivos Kotlin em `/theme`, não via XML. Para trocar cores, modifique as referências de variáveis como `primary`:
+
+```kotlin
+val Blue700 = Color(0xFF1976d2)
+val Blue900 = Color(0xFF0d47a1)
+val DeepPurple200 = Color(0xFFb39ddb)
+val DeepPurple400 = Color(0xFF512da8)
+
+internal val wearColorPalette: Colors = Colors(
+    primary = Blue700,
+    primaryVariant = Blue900,
+    secondary = DeepPurple200,
+    secondaryVariant = DeepPurple400,
+    error = Color.Red,
+    onPrimary = Color.Black,
+    onSecondary = Color.Black,
+    onError = Color.Black
+)
+```
+
+**Nota:** A função `Color` representa cores em ARGB (exemplo: vermelho é `Color(0xFFFF0000)`).
+
+## Criando a Tela Principal
+
+![Tela padrão do app Wear OS](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/05-default-screen.png)
+
+A tela principal reside em `MainActivity.kt`. O Scaffold é um componente que fornece estrutura base, mostrando elementos do sistema como relógio no topo:
+
+```kotlin
+@OptIn(ExperimentalWearMaterialApi::class)
+@Composable
+fun WearApp() {
+    WaterWearOSTheme {
+        Scaffold(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colors.background),
+            timeText = {
+                TimeText()
+            },
+        ) {}
+    }
+}
+```
+
+O layout usa:
+- `WaterWearOSTheme { UI }` - aplica tema aos elementos internos
+- `Scaffold(Props) { UI }` - estrutura base de layout
+- `TimeText()` - relógio padrão no topo
+
+Os modificadores (`Modifier`) customizam elementos. `.fillMaxSize()` ocupa máximo espaço; `.background()` define cor de fundo.
+
+![Diagrama do layout Scaffold](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/06-scaffold-layout.png)
+
+![Scaffold com TimeText implementado](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/07-scaffold-timetext.png)
+
+## Barra de Progresso Circular
+
+![Estado inicial do CircularProgressIndicator](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/08-progress-indicator.png)
+
+Importe a nova função de Compose no corpo do Scaffold:
+
+```kotlin
+@OptIn(ExperimentalWearMaterialApi::class)
+@Composable
+fun WearApp() {
+    WaterWearOSTheme {
+        Scaffold(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colors.background),
+            timeText = {
+                TimeText()
+            },
+        ) {
+            ProgressIndicatorWater()
+        }
+    }
+}
+
+@Composable
+fun ProgressIndicatorWater() {}
+```
+
+Use `CircularProgressIndicator` para criar a barra. As propriedades principais são:
+- `startAngle` - ângulo inicial
+- `endAngle` - ângulo final
+- `progress` - valor entre 0.0f (0%) e 1.0f (100%)
+
+![Diagrama de posicionamento de ângulos](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/09-angle-diagram.png)
+
+Os ângulos seguem disposição circular padrão. Configure `startAngle = 295f, endAngle = 245f` para posicionar a barra acima do texto da hora.
+
+```kotlin
+@Composable
+fun ProgressIndicatorWater() {
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        CircularProgressIndicator(
+            startAngle = 295f,
+            endAngle = 245f,
+            progress = 0.5f,
+            strokeWidth = 5.dp,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(all = 10.dp)
+        )
+        InfoWater()
+    }
+}
+
+@Composable
+fun InfoWater() {}
+```
+
+![Barra de progresso com ângulos ajustados](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/10-progress-angles.png)
+
+## Adicionando Informações e Ações
+
+Dentro de `InfoWater`, use `Column` para alinhar elementos verticalmente:
+
+```kotlin
+@Composable
+fun InfoWater() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp),
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colors.primary,
+            text = "Você já bebeu 1 litro de água hoje"
+        )
+
+        Button(
+            modifier = Modifier.padding(top = 5.dp),
+            onClick = {},
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.cup_water),
+                contentDescription = "Cup Water",
+                modifier = Modifier
+                    .size(ButtonDefaults.DefaultButtonSize)
+                    .wrapContentSize(align = Alignment.Center),
+            )
+        }
+    }
+}
+```
+
+Os três elementos de layout principais são:
+
+![Diagrama dos tipos de container de layout](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/11-layout-containers.png)
+
+- **Box** - sobrepõe elementos
+- **Column** - alinha verticalmente
+- **Row** - alinha horizontalmente
+
+![Hierarquia da estrutura de UI](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/12-ui-hierarchy.png)
+
+Para importar ícones customizados, baixe SVGs do Material Design Icons Community e use "New > Vector Asset" na pasta `res`.
+
+![Implementação do Column layout](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/13-column-layout.png)
+
+## Lógica de Estado
+
+![Menu de importação de recurso Vector Asset](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/14-import-resource.png)
+
+![Dialog de importação SVG](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/15-svg-import.png)
+
+Crie estado para rastrear litros consumidos:
+
+```kotlin
+private val count: MutableState<Float> = mutableStateOf(0f)
+```
+
+Modifique a barra de progresso para considerar a recomendação de 3 litros diários:
+
+```kotlin
+@Composable
+fun ProgressIndicatorWater() {
+    val recomedByDay = 3.0f
+    val progressOfDay: Float = count.value / recomedByDay
+
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        CircularProgressIndicator(
+            startAngle = 295f,
+            endAngle = 245f,
+            progress = progressOfDay,
+            strokeWidth = 5.dp,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(all = 10.dp)
+        )
+        InfoWater()
+    }
+}
+```
+
+Atualize texto e botão para refletir o estado:
+
+```kotlin
+@Composable
+fun InfoWater() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp),
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colors.primary,
+            text = "Você já bebeu ${count.value} litro de água hoje"
+        )
+        Button(
+            modifier = Modifier.padding(top = 5.dp),
+            onClick = { count.value += 0.5f },
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.cup_water),
+                contentDescription = "airplane",
+                modifier = Modifier
+                    .size(ButtonDefaults.DefaultButtonSize)
+                    .wrapContentSize(align = Alignment.Center),
+            )
+        }
+    }
+}
+```
+
+Cada clique no botão adiciona 0.5 litros.
+
+## Próximos Passos
+
+![Demo final do app Wear OS](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/16-final-demo.gif)
+
+![Resultado final do app](/images/posts/criando-aplicativos-para-android-wear-os-com-jetpack-compose/17-final-result.png)
+
+O desenvolvimento usou componentes disponíveis do Jetpack Compose para Wear OS. Consulte a documentação em "developer.android.com/training/wearables/compose" para explorar outros componentes UI.
+
+Considere implementar persistência de dados para melhorias futuras.
+
+**Repositório:** [Github.com/TiagoDanin/WearOS-Count-Water-App](https://github.com/TiagoDanin/WearOS-Count-Water-App/)

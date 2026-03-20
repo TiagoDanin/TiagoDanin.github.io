@@ -8,4 +8,57 @@ lang: "pt"
 tags: ["React", "Performance", "Article"]
 ---
 
-{/* Conteúdo em breve */}
+## O que mudou no React 18?
+
+Uma das maiores mudanças do React 17 para o React 18 foi o processamento dos estados serem feitos em lote por padrão, é com isso é preciso ficar atento ao novo funcionamento na hora de migrar uma aplicação.
+
+## O que é processamento em lote (Batch)?
+
+Imagine uma esteira, que fábrica um equipamento e cada braço mecânico colocar um tipo de peça, mas o mais importante em nenhum momento essa esteira fica desligada enquanto tá produzindo ou pular uma etapa. O processamento em lote, mais conhecido também como Batch, é exatamente isso, temos uma entrada de dados e todas as tarefas são executadas em ordem sem pular passos, e no final tem um resultado provindo de todos os passos realizadas.
+
+Veja mais em [pt.wikipedia.org/wiki/Processamento_em_lote](https://pt.wikipedia.org/wiki/Processamento_em_lote)
+
+## Novo ciclo de atualização de estados
+
+Para entender melhor, vamos ao um exemplo, abaixo há uma aplicação em React 17, no qual pegar uma lista de super-heróis e planetas do Star Wars usando o [SWAPI](https://swapi.dev/) e mostrar o seu total na tela.
+
+Podemos observar que há uma tarefa que vai executar uma chamada da função `fetchData` e posteriormente vai obter a lista de super-heróis e planetas e atualizar dois estados (`heros` e `planets`).
+
+Agora se criamos um observado para os dois estados, e ele atualizar a soma do total das duas lista.
+
+Dessa modo toda vez que houve uma alteração em um dos dois estados, o total vai ser atualizado na tela.
+
+Se olhamos o Console da aplicação, ou mesmo olhamos em câmera lenta para tela vamos nota que há três atualizações dos dados do total na tela.
+
+1. O primeiro é o estado inicial da aplicação após carregada.
+2. O segundo é por causa da mudança do estado do `heros`.
+3. O terceiro é por causa da mudança do estado do `planets`.
+
+Podemos concluir que o processamos não foi feito em Batch, pois antes de terminar a tarefa da função fetchData tivemos o disparo de saída de eventos (troca de estados) mais de uma vez.
+
+Agora vamos olhar a mesma aplicação, só que dessa vez rodando com React 18.
+
+Vamos olhar novamente o Console da aplicação
+
+1. O primeiro é o estado inicial da aplicação após carregada.
+2. O segundo é por causa da mudança do estado do `heros` e `planets`. **Mas só um evento é disparado**, por sua vez apenas uma atualização da tela é realizada.
+
+Desse modo os invocadores de eventos, timeouts e operações assíncronas agora no React 18 atualizam em lotes os estados.
+
+## Quais as vantagens e desvantagens
+
+Uma desvantagem é que as aplicações já existente depois de migrado precisam de um cuidado para verificar se está tudo funcionando normalmente, já que pode ter impactos em seu fluxo de observadores. Fora isso o `Automatic Batching` melhorar muito o desempenho da aplicação uma vez que as atualizações vão ocorrer com menos frequências e vai ser mais fácil de gerência a atualização dos estados, assim como é feito no [Redux](https://react-redux.js.org/api/batch) ou [Flutter](https://api.flutter.dev/flutter/widgets/State/setState.html), onde é possível usar Batch ou atualização imediata.
+
+## Como usar novamente a atualização imediata
+
+Podemos usar o `flushSync` do `react-dom` para força a atualização.
+
+Com isso podemos reproduzir o mesmo comportamento que tínhamos no React 17
+
+Veja mais em [reactjs.org/blog/2022/03/29/react-v18.html#new-feature-automatic-batching](https://reactjs.org/blog/2022/03/29/react-v18.html#new-feature-automatic-batching)
+
+### Source code:
+
+- React 17 [https://codesandbox.io/s/react-17-status-y63xcn](https://codesandbox.io/s/react-17-status-y63xcn?file=/src/App.js)
+- React 18 [https://codesandbox.io/s/react-18-status-5e16rc](https://codesandbox.io/s/react-18-status-5e16rc?file=/src/App.js)
+- React 18 com FlushSync [https://codesandbox.io/s/react-18-status-flushsync-0bp0vq](https://codesandbox.io/s/react-18-status-flushsync-0bp0vq?file=/src/App.js)

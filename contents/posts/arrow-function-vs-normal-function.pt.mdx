@@ -8,4 +8,109 @@ lang: "pt"
 tags: ["JavaScript", "AI", "Article"]
 ---
 
-{/* Conteúdo em breve */}
+![Arrow Function Vs Normal Function](/images/posts/arrow-function-vs-normal-function/cover.png)
+
+## O que é Arrow Function ?
+
+Uma alternativa mais simples para criar funções, com algumas características diferente da função regular.
+
+```javascript
+// Syntax
+const soma = (a, b) => a + b
+const mult = (a, b) => {
+    return a * b
+}
+```
+
+## This (Contexto)
+
+Seu contexto por padrão é o contexto global. Veja um exemplo de comparação:
+
+```javascript
+const a = () => this === object
+const b = function() {
+    return this === object
+}
+
+const object = {
+    a,
+    b
+}
+
+console.log(object.a()) //false
+console.log(object.b()) //true
+```
+
+No Chrome o contexto padrão é o `window`, logo:
+
+```javascript
+const a = () => this === window
+...
+console.log(object.a()) //true
+```
+
+## Arguments (Argumentos)
+
+Não há `Arguments`, em alguns casos como no Node.Js ele pode recebe os argumentos globais.
+
+```javascript
+const a = () => arguments //Uncaught ReferenceError: arguments is not defined
+console.log(a(true))
+```
+
+Em uma regular função teríamos uma saída: `{ '0': true }`
+
+## Constructor (Construtor)
+
+Sem `Constructor`.
+
+```javascript
+const a = () => true
+console.log(new a()) //TypeError: a is not a constructor
+```
+
+## Nome da Função
+
+Em Arrow, o nome é o identificado que está recebendo a função. Numa regular podemos define o nome de uma função, como no exemplo abaixo, eu coloquei o nome sendo `d`.
+
+```javascript
+const a = () => true
+const b = function () { return true }
+const c = function d () { return true}
+
+console.log(a.name) //a
+console.log(b.name) //b
+console.log(c.name) //d
+```
+
+## Retorno de Objeto
+
+```javascript
+const casaA = () => {cozinha: true}
+const casaB = () => ({cozinha: true})
+const casaC = function () {
+    return {cozinha: true}
+}
+
+console.log(casaA()) //undefined
+console.log(casaB()) //{ cozinha: true }
+console.log(casaC()) //{ cozinha: true }
+```
+
+**Note:** A `casaA` retorna `undefined` pois não há retorno na função. Não viu isso ? Vou rescrever `casaA` e `casaB` no modo normal:
+
+```javascript
+const casaA = function () {
+    {cozinha: true}
+}
+const casaB = function () {
+    return {cozinha: true}
+}
+
+console.log(casaA()) //undefined
+console.log(casaB()) //{ cozinha: true }
+```
+
+Sacou? Por isso usamos o parênteses no primeiro exemplo, `casaB`.
+
+Veja mais em MDN: [developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
