@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ExternalLink, Github, Package, Archive } from 'lucide-react';
 import Link from 'next/link';
 
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import { titleToSlug } from "@/utils/parse";
 
 type GenericProject = {
@@ -26,8 +26,7 @@ type GenericProject = {
   [key: string]: any;
 };
 
-async function getProjectsMap(): Promise<Record<string, GenericProject[]>> {
-  await ensureContentLoaded();
+function getProjectsMap(): Record<string, GenericProject[]> {
   return {
     github: queryCollection('github') as unknown as GenericProject[],
     private: queryCollection('private') as unknown as GenericProject[],
@@ -57,8 +56,8 @@ const urlPrefixMap: Record<string, string> = {
 
 type ProjectType = string;
 
-export async function generateMetadata({ params }: { params: { type: ProjectType, slug: string } }): Promise<Metadata> {
-  const projectsMap = await getProjectsMap();
+export function generateMetadata({ params }: { params: { type: ProjectType, slug: string } }): Metadata {
+  const projectsMap = getProjectsMap();
   const { type, slug } = params;
 
   const projects = projectsMap[type] || [];
@@ -159,8 +158,8 @@ export async function generateMetadata({ params }: { params: { type: ProjectType
   };
 }
 
-export async function generateStaticParams() {
-  const projectsMap = await getProjectsMap();
+export function generateStaticParams() {
+  const projectsMap = getProjectsMap();
   const params: { type: string, slug: string }[] = [];
 
   Object.entries(projectsMap).forEach(([type, projects]) => {
@@ -175,8 +174,8 @@ export async function generateStaticParams() {
   return params;
 }
 
-export default async function ProjectPage({ params }: { params: { type: ProjectType, slug: string } }) {
-  const projectsMap = await getProjectsMap();
+export default function ProjectPage({ params }: { params: { type: ProjectType, slug: string } }) {
+  const projectsMap = getProjectsMap();
   const { type, slug } = params;
 
   const projects = projectsMap[type] || [];

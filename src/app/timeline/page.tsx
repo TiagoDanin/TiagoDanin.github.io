@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
 
-export async function generateMetadata() {
-  await ensureContentLoaded();
+export function generateMetadata() {
   const timelineData = queryCollection('timeline');
 
   return {
@@ -35,7 +34,7 @@ export async function generateMetadata() {
         {
           "@context": "https://schema.org",
           "@type": "ItemList",
-          "itemListElement": timelineData.map((item: any) => ({
+          "itemListElement": timelineData.map((item) => ({
             "@type": "Event",
             "name": item.title,
             "description": item.description,
@@ -81,8 +80,7 @@ export async function generateMetadata() {
   };
 }
 
-const Timeline = async () => {
-  await ensureContentLoaded();
+const Timeline = () => {
   const timelineData = queryCollection('timeline');
 
   return (
@@ -99,7 +97,7 @@ const Timeline = async () => {
         </div>
 
         <ol className="relative border-s border-gray-200 dark:border-gray-700 max-w-3xl w-full mx-auto">
-          {timelineData.map((item: any, index: number) => {
+          {timelineData.map((item, index) => {
             const year = item.date.toString();
             const slug = titleToSlug(item.title);
 

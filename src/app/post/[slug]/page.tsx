@@ -1,10 +1,9 @@
 import { Metadata } from 'next';
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import { RedirectClient } from "@/components/layout/RedirectClient";
 import { toISODate } from '@/utils/parse';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  await ensureContentLoaded();
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const posts = queryCollection('posts');
   const post = posts.find((post) => post.slug === params.slug);
 
@@ -51,16 +50,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export async function generateStaticParams() {
-  await ensureContentLoaded();
+export function generateStaticParams() {
   const posts = queryCollection('posts');
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
-  await ensureContentLoaded();
+export default function Post({ params }: { params: { slug: string } }) {
   const posts = queryCollection('posts');
   const post = posts.find((post) => post.slug === params.slug);
 

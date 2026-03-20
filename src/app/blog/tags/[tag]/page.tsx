@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import { Badge } from "@/components/ui/badge";
 import { Tag, Video, ChevronLeft, Text, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
 
-export async function generateMetadata({ params }: { params: { tag: string } }) {
-  await ensureContentLoaded();
+export function generateMetadata({ params }: { params: { tag: string } }) {
   const posts = queryCollection('posts');
   const tagName = decodeURIComponent(params.tag);
 
@@ -41,8 +40,7 @@ export async function generateMetadata({ params }: { params: { tag: string } }) 
   };
 }
 
-export async function generateStaticParams() {
-  await ensureContentLoaded();
+export function generateStaticParams() {
   const posts = queryCollection('posts');
   const allTags = new Set<string>();
 
@@ -56,12 +54,11 @@ export async function generateStaticParams() {
   }));
 }
 
-const TagPage = async ({
+const TagPage = ({
   params
 }: {
   params: { tag: string }
 }) => {
-  await ensureContentLoaded();
   const posts = queryCollection('posts');
   const tagSlug = params.tag;
   const tagName = decodeURIComponent(tagSlug);

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import { Badge } from "@/components/ui/badge";
 import { Flag, Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
-export async function generateMetadata({ params }: { params: { page: string } }) {
+export function generateMetadata({ params }: { params: { page: string } }) {
   const pageNumber = Number(params.page) || 1;
   return {
     title: `Blog - Page ${pageNumber}`,
@@ -30,8 +30,7 @@ export async function generateMetadata({ params }: { params: { page: string } })
 
 const POSTS_PER_PAGE = 10;
 
-export async function generateStaticParams() {
-  await ensureContentLoaded();
+export function generateStaticParams() {
   const posts = queryCollection('posts');
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const pages = [];
@@ -41,12 +40,11 @@ export async function generateStaticParams() {
   return pages;
 }
 
-const BlogPage = async ({
+const BlogPage = ({
   params
 }: {
   params: { page: string }
 }) => {
-  await ensureContentLoaded();
   const posts = queryCollection('posts');
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const currentPage = Number(params.page) || 1;

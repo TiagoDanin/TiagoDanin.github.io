@@ -1,7 +1,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Instagram, Linkedin, Youtube, Presentation, MessageCircle, AlignJustify } from "lucide-react";
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -33,8 +33,7 @@ const iconMap = {
   list: AlignJustify,
 };
 
-export default async function Links() {
-  await ensureContentLoaded();
+export default function Links() {
   const linksData = queryCollection('links');
 
   return (

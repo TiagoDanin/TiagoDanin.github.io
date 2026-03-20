@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 
 type TimelineEvent = {
@@ -13,12 +13,11 @@ type TimelineEvent = {
   tags: string[];
 };
 
-export async function generateMetadata({ params }: { params: { year: string, slug: string } }): Promise<Metadata> {
-  await ensureContentLoaded();
+export function generateMetadata({ params }: { params: { year: string, slug: string } }): Metadata {
   const timelineData = queryCollection('timeline');
   const { year, slug } = params;
 
-  const event = timelineData.find((item: any) => {
+  const event = timelineData.find((item) => {
     const itemYear = item.date.toString();
     const itemSlug = titleToSlug(item.title);
     return itemYear === year && itemSlug === slug;
@@ -58,12 +57,11 @@ export async function generateMetadata({ params }: { params: { year: string, slu
   };
 }
 
-export async function generateStaticParams() {
-  await ensureContentLoaded();
+export function generateStaticParams() {
   const timelineData = queryCollection('timeline');
   const params: { year: string, slug: string }[] = [];
 
-  timelineData.forEach((event: any) => {
+  timelineData.forEach((event) => {
     const year = event.date.toString();
     const slug = titleToSlug(event.title);
 
@@ -75,12 +73,11 @@ export async function generateStaticParams() {
   return params;
 }
 
-export default async function TimelineEventPage({ params }: { params: { year: string, slug: string } }) {
-  await ensureContentLoaded();
+export default function TimelineEventPage({ params }: { params: { year: string, slug: string } }) {
   const timelineData = queryCollection('timeline');
   const { year, slug } = params;
 
-  const event = timelineData.find((item: any) => {
+  const event = timelineData.find((item) => {
     const itemYear = item.date.toString();
     const itemSlug = titleToSlug(item.title);
     return itemYear === year && itemSlug === slug;

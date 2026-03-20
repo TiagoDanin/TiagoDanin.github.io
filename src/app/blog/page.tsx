@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import { Badge } from "@/components/ui/badge";
 import { Flag, Video, ChevronLeft, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toISODate, extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
-export async function generateMetadata() {
-  await ensureContentLoaded();
+export function generateMetadata() {
   const posts = queryCollection('posts');
 
   return {
@@ -101,8 +100,7 @@ export async function generateMetadata() {
 
 const POSTS_PER_PAGE = 10;
 
-const Blog = async () => {
-  await ensureContentLoaded();
+const Blog = () => {
   const posts = queryCollection('posts');
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const startIndex = 0;

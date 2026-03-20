@@ -1,4 +1,4 @@
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import {
   ExternalLink,
   Home,
@@ -42,10 +42,9 @@ const iconMap: Record<string, LucideIcon> = {
   'ti-layout-tab': LayoutTemplate,
 };
 
-export async function generateMetadata({ params }: { params: { network: string } }) {
-  await ensureContentLoaded();
+export function generateMetadata({ params }: { params: { network: string } }) {
   const contacts = queryCollection('contacts');
-  const contact = contacts.find((c: any) => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
+  const contact = contacts.find((c) => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
   if (!contact) {
     return {
       title: 'Contact Not Found',
@@ -84,10 +83,9 @@ export async function generateMetadata({ params }: { params: { network: string }
   };
 }
 
-export default async function SocialContactPage({ params }: { params: { network: string } }) {
-  await ensureContentLoaded();
+export default function SocialContactPage({ params }: { params: { network: string } }) {
   const contacts = queryCollection('contacts');
-  const contact = contacts.find((c: any) => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
+  const contact = contacts.find((c) => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
   if (!contact) return notFound();
   const LucideIcon = iconMap[contact.icon] || Globe;
   return (
@@ -111,8 +109,7 @@ export default async function SocialContactPage({ params }: { params: { network:
   );
 }
 
-export async function generateStaticParams() {
-  await ensureContentLoaded();
+export function generateStaticParams() {
   const contacts = queryCollection('contacts');
-  return contacts.map((contact: any) => ({ network: contact.label.toLowerCase().replace(/\s+/g, '') }));
+  return contacts.map((contact) => ({ network: contact.label.toLowerCase().replace(/\s+/g, '') }));
 } 

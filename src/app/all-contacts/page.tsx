@@ -1,4 +1,4 @@
-import { ensureContentLoaded, queryCollection } from 'nextjs-studio';
+import { queryCollection } from 'nextjs-studio';
 import {
   ExternalLink,
   Home,
@@ -61,8 +61,7 @@ const iconMap: Record<string, LucideIcon> = {
   'ti-layout-tab': LayoutTemplate,
 };
 
-export default async function AllContactsPage() {
-  await ensureContentLoaded();
+export default function AllContactsPage() {
   const contacts = queryCollection('contacts');
 
   return (
@@ -73,7 +72,7 @@ export default async function AllContactsPage() {
       <div className="max-w-3xl mx-auto relative z-10">
         <h1 className="text-3xl font-bold mb-8 text-center">All Contacts</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {contacts.map((contact: any) => {
+          {contacts.map((contact) => {
             const LucideIcon = iconMap[contact.icon] || Globe;
             return (
               <a
