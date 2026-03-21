@@ -87,7 +87,7 @@ const config: StudioConfig = {
         label: "Blog Posts",
         fields: [
           { name: "title", type: "text", required: true },
-          { name: "date", type: "text", required: true },
+          { name: "date", type: "date", includeDay: false, required: true },
           { name: "description", type: "long-text", required: true },
           { name: "slug", type: "text", required: true },
           { name: "originalUrl", type: "url", required: true },

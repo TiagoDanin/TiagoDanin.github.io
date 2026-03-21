@@ -100,6 +100,24 @@ export function extractTagsFromPost(title: string, description: string): string[
 }
 
 /**
+ * Formats a "YYYY-MM" date string to "Month Name, Year" for display
+ * Also handles full "YYYY-MM-DD" dates (ignores day)
+ */
+export function formatDate(dateString: string): string {
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December',
+  ];
+  const match = dateString.match(/^(\d{4})-(\d{2})/);
+  if (match) {
+    const year = match[1];
+    const month = parseInt(match[2], 10);
+    return `${monthNames[month - 1]}, ${year}`;
+  }
+  return dateString;
+}
+
+/**
  * Converts a date string to ISO 8601 format (YYYY-MM-DD, YYYY-MM, or YYYY)
  * Accepts formats like 'May 13, 2025', 'Nov 2023', '2023', '2023-05-13', '13/05/2023'
  */

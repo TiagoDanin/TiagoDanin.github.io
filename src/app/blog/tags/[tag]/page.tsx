@@ -3,10 +3,10 @@ import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
 import { Tag, Video, Text, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
+import { getRandomColorWithDarkMode, titleToSlug, toISODate, formatDate } from '@/utils/parse';
 
 function getPosts() {
-  return queryCollection('posts').where({ lang: 'en' });
+  return [...queryCollection('posts').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
 }
 
 function getAllTagsMap() {
@@ -125,7 +125,7 @@ const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
                     <span className="absolute inset-y-0 left-0 flex items-center">
                       <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
                     </span>
-                    {post.date}
+                    {formatDate(post.date)}
                   </time>
                   {isYouTubePost(post.originalUrl) ? (
                     <Badge variant="secondary" className="flex items-center gap-1">

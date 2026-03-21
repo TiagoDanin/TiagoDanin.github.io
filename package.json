@@ -63,7 +63,7 @@
         "next-mdx-remote": "^6.0.0",
         "next-sitemap": "^4.2.3",
         "next-themes": "^0.3.0",
-        "nextjs-studio": "1.0.3",
+        "nextjs-studio": "^1.0.7",
         "nextjs-toploader": "^3.8.16",
         "node-fetch": "^3.3.2",
         "npm-user-packages-downloads": "^1.0.0",

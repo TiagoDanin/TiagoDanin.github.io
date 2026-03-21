@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ArrowRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Link from "next/link";
+import { formatDate } from "@/utils/parse";
 
 interface PostsEntry {
   date: string;
@@ -55,7 +56,7 @@ export function RecentPosts({ posts }: RecentPostsProps) {
                         </Link>
                       </CardTitle>
                       <CardDescription>
-                        <Link href={`/post/${post.slug}`}>{post.date}</Link>
+                        <Link href={`/post/${post.slug}`}>{formatDate(post.date)}</Link>
                       </CardDescription>
                     </CardHeader>
                     <CardContent>

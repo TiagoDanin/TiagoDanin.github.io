@@ -12,11 +12,11 @@ export type MediaPath = Brand<string, 'MediaPath'>;
 export type ID        = Brand<string, 'ID'>;
 export type Slug      = Brand<string, 'Slug'>;
 
-/** Data shape for the "About Me" collection. */
+/** Data shape for the "about" collection. */
 export interface AboutEntry {
   name: string;
   greeting: string;
-  roles: Array<"Mobile Developer" | "Bug Hunter" | "Full Stack Developer" | "DevOps">;
+  roles: Array<"Mobile Developer" | "Bug Hunter">;
   avatar: HttpUrl;
   bio: string;
   bioExtra: string;
@@ -45,11 +45,11 @@ export interface ContactsEntry {
   label: string;
 }
 
-/** Data shape for the "My Expertise" collection. */
+/** Data shape for the "expertise" collection. */
 export interface ExpertiseEntry {
   title: string;
   description: string;
-  icon: "Smartphone" | "Code" | "Shield" | "Zap";
+  icon: string;
   link: string;
 }
 
@@ -228,15 +228,15 @@ export interface OfflineEntry {
   description: string;
 }
 
-/** Data shape for the "Blog Posts" collection. */
+/** Data shape for the "posts" collection. */
 export interface PostsEntry {
   title: string;
   date: string;
   description: string;
   slug: string;
   originalUrl: HttpUrl;
-  lang: "en" | "pt";
-  tags: Array<"JavaScript" | "React" | "Flutter" | "Android" | "iOS" | "AI" | "GitHub" | "DevOps" | "Mobile" | "Web" | "Security" | "Tutorial" | "Performance" | "UI/UX" | "Testing" | "Backend" | "Frontend" | "Tools" | "Career" | "Linux" | "Video" | "Article">;
+  lang: string;
+  tags: Array<"Android" | "Mobile" | "UI/UX" | "Video" | "Flutter" | "iOS" | "AI" | "Article" | "JavaScript" | "React" | "GitHub" | "DevOps" | "Tutorial" | "Testing" | "Web" | "Frontend" | "Tools" | "Career" | "Linux" | "Performance" | "Security">;
 }
 
 /** Data shape for the "private" collection. */
@@ -260,7 +260,7 @@ export interface PypiEntry {
   description: string;
 }
 
-/** Data shape for the "Technical Skills" collection. */
+/** Data shape for the "skills" collection. */
 export interface SkillsEntry {
   category: string;
   items: Array<{
@@ -270,11 +270,11 @@ export interface SkillsEntry {
   }>;
 }
 
-/** Data shape for the "Social Media Links" collection. */
+/** Data shape for the "sociallinks" collection. */
 export interface SociallinksEntry {
   label: string;
   url: HttpUrl;
-  icon: "Github" | "Linkedin" | "Youtube" | "Instagram";
+  icon: string;
 }
 
 /** Data shape for the "talks" collection. */

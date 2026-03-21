@@ -3,7 +3,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
 import { Video, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toISODate, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
+import { toISODate, formatDate, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
 export function generateMetadata() {
   const posts = queryCollection('posts').where({ lang: 'pt' });
@@ -66,7 +66,7 @@ export function generateMetadata() {
 }
 
 const BlogPt = () => {
-  const posts = queryCollection('posts').where({ lang: 'pt' });
+  const posts = [...queryCollection('posts').where({ lang: 'pt' })].sort((a, b) => b.date.localeCompare(a.date));
 
   const isYouTubePost = (url: string) => url.includes("youtube.com");
 
@@ -98,7 +98,7 @@ const BlogPt = () => {
                 <span className="absolute inset-y-0 left-0 flex items-center">
                   <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
                 </span>
-                {post.date}
+                {formatDate(post.date)}
               </time>
               {isYouTubePost(post.originalUrl) ? (
                 <Badge variant="secondary" className="flex items-center gap-1">

@@ -9,7 +9,7 @@ import { GiscusComments } from '@/components/ui/GiscusComments';
 import { CallToAction } from '@/components/sections/CallToAction';
 import { getPostBySlug, postHasLocale } from '@/lib/mdx';
 import { renderMdx } from '@/lib/render-mdx';
-import { toISODate } from '@/utils/parse';
+import { toISODate, formatDate } from '@/utils/parse';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -94,7 +94,7 @@ export default async function PostPt({ params }: { params: Promise<{ slug: strin
 
           {/* Header */}
           <header className="mb-8">
-            <time className="text-sm text-muted-foreground">{post.date}</time>
+            <time className="text-sm text-muted-foreground">{formatDate(post.date)}</time>
             <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
               {post.title}
             </h1>
