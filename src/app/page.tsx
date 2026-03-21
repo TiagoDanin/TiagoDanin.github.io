@@ -4,6 +4,7 @@ import { Projects } from "@/components/sections/Projects";
 import { RecentPosts } from "@/components/sections/RecentPosts";
 import { Services } from "@/components/sections/Services";
 import { Work } from "@/components/sections/Work";
+import { queryCollection } from 'nextjs-studio/server';
 
 export const metadata = {
   title: "Flutter, React Native & iOS Developer | Tiago Danin",
@@ -122,13 +123,20 @@ export const metadata = {
 };
 
 const Index = () => {
+  const posts = queryCollection('posts').where({ lang: 'en' });
+  const projectsData = queryCollection('projects');
+  const workData = queryCollection('work');
+  const volunteerData = queryCollection('volunteer');
+  const skillsData = queryCollection('skills');
+  const aboutData = queryCollection('about').one();
+
   return (
     <>
       <Hero />
       <Services />
-      <Projects />
-      <RecentPosts />
-      <Work />
+      <Projects projects={[...projectsData]} />
+      <RecentPosts posts={[...posts]} />
+      <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />
       <CallToAction />
     </>
   );

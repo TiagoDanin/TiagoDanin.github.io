@@ -1,0 +1,26 @@
+---
+title: "Solving Wine Error: Unable to Make SSL Connections"
+date: "Mar 17, 2018"
+description: "How to fix SSL connection problems in Wine for better compatibility with Windows applications."
+slug: "solving-wine-error-unable-to-make-ssl-connections"
+originalUrl: "https://dev.to/tiagodanin/resolvendo-erro-do-wine-nao-fazer-conexoes-ssl-bhj"
+lang: "en"
+tags: ["Article"]
+---
+
+After installing Wine on Manjaro, while checking the logs, I discovered the following error messages:
+
+```
+004f:err:winediag:schan_imp_init Failed to load libgnutls, secure connections will not be available.
+004f:err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+```
+
+## Solution
+
+The fix is straightforward: install the necessary packages to support secure connections.
+
+```
+sudo pacman -S lib32-gnutls gnutls
+```
+
+After installing these packages, Wine needs to be restarted for SSL connections to work correctly.

@@ -1,9 +1,18 @@
-"use client";
-
 import { Code, Smartphone, Shield, Zap } from "lucide-react";
 import Link from "next/link";
+import { queryCollection } from 'nextjs-studio/server';
+
+import type { LucideIcon } from "lucide-react";
+
+const iconMap: Record<string, LucideIcon> = {
+  Code,
+  Smartphone,
+  Shield,
+  Zap,
+};
 
 export function Services() {
+  const expertiseData = queryCollection('expertise');
   return (
     <section id="skills" className="relative py-16 sm:py-20 bg-secondary/30 overflow-hidden">
       {/* Blur effect circles */}
@@ -19,59 +28,40 @@ export function Services() {
         </div>
 
         <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-          {/* Mobile Development */}
-          <Link
-            href="/mobile"
-            className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-all group min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
-              <Smartphone className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-              Mobile Development
-            </h3>
-            <p className="text-sm sm:text-base text-muted-foreground">
-              Native and cross-platform mobile apps using Flutter, React Native, Kotlin, Swift, and more.
-            </p>
-          </Link>
+          {expertiseData.map((item) => {
+            const Icon = iconMap[item.icon];
+            const content = (
+              <>
+                <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
+                  {Icon && <Icon className="h-6 w-6" />}
+                </div>
+                <h3 className={`text-lg sm:text-xl font-semibold mb-3 ${item.link ? "group-hover:text-primary transition-colors" : ""}`}>
+                  {item.title}
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  {item.description}
+                </p>
+              </>
+            );
 
-          {/* Full Stack Development */}
-          <div className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
-              <Code className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-3">Full Stack Development</h3>
-            <p className="text-sm sm:text-base text-muted-foreground">
-              End-to-end web solutions with modern frontend technologies and robust backend systems using React, Node.js, and various databases.
-            </p>
-          </div>
+            if (item.link) {
+              return (
+                <Link
+                  key={item.title}
+                  href={item.link}
+                  className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-all group min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  {content}
+                </Link>
+              );
+            }
 
-          {/* Security */}
-          <Link
-            href="/cybersecurity"
-            className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-all group min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
-              <Shield className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-              Cybersecurity
-            </h3>
-            <p className="text-sm sm:text-base text-muted-foreground">
-              Implementation of security best practices, penetration testing, and secure coding principles to protect applications and data.
-            </p>
-          </Link>
-
-          {/* DevOps & CI/CD */}
-          <div className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-12 w-12 flex items-center justify-center rounded-lg bg-primary/10 text-primary mb-5">
-              <Zap className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-3">DevOps & CI/CD</h3>
-            <p className="text-sm sm:text-base text-muted-foreground">
-              Streamlined deployment processes, cloud infrastructure, continuous integration/deployment pipelines.
-            </p>
-          </div>
+            return (
+              <div key={item.title} className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                {content}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,0 +1,122 @@
+---
+title: "Criando um editor de imagem com Flutter - CAM Covers (Da Ideia à Realidade)"
+date: "Mar 12, 2025"
+description: "Como criei um app de edição de imagens com Flutter. Veja os desafios, soluções e a monetização do CAM Covers, um editor de capas de álbuns."
+slug: "creating-an-image-editor-with-flutter-cam-covers-from-idea-to-reality"
+originalUrl: "https://www.linkedin.com/pulse/criando-um-editor-de-imagem-com-flutter-cam-covers-da-tiago-danin-xxarf"
+lang: "pt"
+tags: ["Flutter", "iOS", "Mobile", "Article"]
+---
+
+![CAM Covers - editor de imagens com Flutter](/images/posts/criando-um-editor-de-imagem-com-flutter-cam-covers-da-ideia-a-realidade/cover.jpg)
+
+No mundo digital de hoje, tendências surgem e se espalham rapidamente pelas redes sociais. Há algum tempo atrás, notei uma treading comum no Instagram, onde as pessoas transformando suas fotos em capas de álbuns de música, como se fossem artistas lançando seus próprios álbuns, na estética de players de música como Spotify, combinada com fotos pessoais, que viralizavam nas redes sociais.
+
+Um certo dia eu tentei criar uma dessas montagens manualmente e descobri que o processo era surpreendentemente complexo. Era necessário usar stickers do Instagram, ajustar elementos manualmente e realizar uma série de edições que demandavam tempo e habilidade. Foi então que tive uma ideia: por que não criar um aplicativo que automatizasse todo esse processo?
+
+Assim nasceu o CAM Covers, um aplicativo para transformar fotos comuns em capas de álbuns com aparência profissional, inspiradas em players de música reais.
+
+## A Visão do Projeto
+
+Minha visão para o CAM Covers era clara: criar uma ferramenta que permitisse a qualquer pessoa, independentemente de suas habilidades de design, transformar suas fotos em capas de álbuns com aparência profissional em apenas alguns toques.
+
+O fluxo do aplicativo seria simples e intuitivo:
+
+1. Selecionar um modelo de player de música que combine com sua foto
+2. Personalizar os elementos como título, nome do artista e outros detalhes
+3. Publicar diretamente no Instagram ou outras redes sociais
+
+Parecia simples na teoria, mas a implementação trouxe desafios interessantes que precisei superar e é justamente isso que vou compartilhar com vocês neste artigo.
+
+## Desafio 1: Criando um Canvas Editável
+
+O primeiro grande desafio foi criar um canvas editável onde os usuários pudessem visualizar suas criações em tempo real enquanto faziam ajustes.
+
+Inicialmente, testei várias abordagens, incluindo bibliotecas de edição de imagem existentes, mas nenhuma oferecia a flexibilidade que eu precisava. Foi então que tive uma ideia, usar a própria tela do celular como canvas.
+
+O problema é que cada dispositivo tem uma tela diferente, então a solução veio através do widget AspectRatio do Flutter, que me permitiu manter uma proporção consistente (9:16) independentemente do tamanho da tela do dispositivo:
+
+```dart
+AspectRatio(
+  aspectRatio: 9 / 16,
+  child: buildTemplate(context, viewModel),
+),
+```
+
+Dentro deste container eu podia construir uma visualização em tempo real do template sendo editado. Quando o usuário terminava suas edições, capturava a visualização usando RenderRepaintBoundary, que me permitia converter a UI em uma imagem, uma das partes que mais gosto no Flutter é a quantidade de controle que temos sobre a UI, podemos capturar a UI inteira e convertê-la em uma imagem, é incrível.
+
+```dart
+final RenderRepaintBoundary boundary =
+    globalRepaintBoundaryKey.currentContext!.findRenderObject()
+        as RenderRepaintBoundary;
+final ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+final ByteData? byteData =
+    await image.toByteData(format: ui.ImageByteFormat.png);
+final Uint8List pngBytes = byteData!.buffer.asUint8List();
+
+final String directory = (await getExternalStorageDirectory())!.path;
+final File imgFile = File("$directory/cam-covers.png");
+await imgFile.writeAsBytes(pngBytes);
+
+await GallerySaver.saveImage(
+  imgFile.path,
+  albumName: "CAM Covers",
+);
+```
+
+Esta abordagem foi uma verdadeira revelação! Ao invés de criar um sistema complexo de edição de imagens, aproveitei o próprio sistema de renderização do Flutter para criar a experiência de edição e capturar o resultado final como uma imagem pronta para compartilhamento.
+
+## Desafio 2: Implementando um Modelo de Monetização
+
+Como qualquer desenvolvedor independente sabe, monetizar um aplicativo pode ser um desafio significativo. Decidi implementar um modelo freemium com um paywall para desbloquear recursos premium, como não visualizar anúncios.
+
+Após pesquisar várias soluções, encontrei o Superwall, que tornou a implementação do paywall surpreendentemente simples. A configuração básica foi direta:
+
+```dart
+Superwall.configure(ConfigBase.superwallApiKey);
+```
+
+Uma das principais vantagens do Superwall é a capacidade de editar campanhas sem lançar atualizações do aplicativo. Isso me permitiu:
+
+- Realizar testes A/B para otimizar a conversão
+- Ajustar preços e ofertas em tempo real
+- Personalizar a experiência do paywall usando um editor visual
+
+Integrei análises de eventos para acionar o paywall em momentos estratégicos da jornada do usuário:
+
+```dart
+Superwall.shared.registerEvent(
+  eventName,
+  params: parameters,
+  feature: () {
+    callbackContinue();
+  },
+);
+```
+
+Esta abordagem permitiu que eu oferecesse valor imediato aos usuários gratuitos enquanto apresentava recursos premium em momentos estratégicos da experiência do usuário. Uma das vantagens do Superwall é que ele é muito fácil de configurar e usar, além de ter uma interface visual para editar as campanhas com campanhas já prontas para uso, é o preço da ferramenta que é bem baixo.
+
+## Desafio 3: Criando Templates Diversos com a Ajuda da IA
+
+O terceiro desafio surgiu quando percebi que precisava de uma grande variedade de templates para oferecer opções atraentes aos usuários. Criar cada template manualmente seria extremamente demorado - os dois primeiros templates me tomaram aproximadamente 2 horas cada.
+
+Em vez de gastar horas criando templates, decidi experimentar uma abordagem inovadora: usar IA para acelerar o processo. Utilizei o Claude 3.5 através do Cursor para analisar os dois templates que já havia criado e gerar outros quatro baseados nos mesmos princípios de design.
+
+O processo foi surpreendentemente eficiente. Treinei o chat para compreender a estrutura e o estilo dos templates existentes e, em seguida, solicitei que criasse variações seguindo a mesma estética, mas com elementos diferentes. O resultado foi impressionante: consegui economizar aproximadamente 8 horas de trabalho que teria gasto criando os templates adicionais manualmente.
+
+## Resultado Final
+
+Após superar esses desafios, o CAM Covers finalmente ganhou vida. O aplicativo agora permite que qualquer pessoa:
+
+- Transforme suas fotos em capas de álbuns com aparência profissional
+- Escolha entre diferentes estilos de player de música
+- Personalize títulos, nomes de artistas e elementos decorativos
+- Compartilhe instantaneamente suas criações nas redes sociais
+
+O que começou como uma solução para uma necessidade pessoal se transformou em um aplicativo completo, aprendi bastante com este projeto, pois quando pensamos em editor de imagem, pensamos logo em uma solução complexa e demorada de ser feita e trabalhando com Nativo, mas com Flutter acabou sendo possível criar um aplicativo com uma experiência incrível e com um custo muito baixo.
+
+Se você quiser experimentar o CAM Covers, ele está disponível para download na [Google Play](https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers). Transforme suas memórias em obras-primas inspiradas na música e compartilhe suas criações com o mundo!
+
+Espero que você tenha gostado do artigo e que ele te ajude a entender um pouco mais sobre como criar produtos com Flutter.
+
+Até a próxima!

@@ -4,12 +4,23 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import projectsData from "@/data/projects.json";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-export function Projects() {
+interface ProjectsEntry {
+  title: string;
+  description: string;
+  imageUrl: string;
+  href: string;
+}
+
+interface ProjectsProps {
+  projects: ProjectsEntry[];
+}
+
+export function Projects({ projects }: ProjectsProps) {
+  const projectsData = projects;
   const pathname = usePathname();
   const isFullProjects = pathname === "/projects";
 

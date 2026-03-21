@@ -1,0 +1,69 @@
+---
+title: "Creating an Agent in ChatGPT to Write Technical Stories"
+date: "Jan 26, 2026"
+description: "Automating the creation of technical stories by consolidating dispersed information from conversations, messages, and feedback. A solution to transform chaotic inputs into clear and standardized technical artifacts, freeing up cognitive capacity for trade-off analysis and higher-value technical decisions."
+slug: "creating-a-chatgpt-agent-to-write-technical-stories"
+originalUrl: "https://www.linkedin.com/pulse/criando-um-agente-chatgpt-para-escrever-stories-t%C3%A9cnicas-tiago-danin-jvaqf/?trackingId=u%2FtjVtwzG%2B9Dlb%2BQjZEHXg%3D%3D"
+lang: "en"
+tags: ["AI", "Article"]
+---
+
+![Creating an Agent in ChatGPT to Write Technical Stories](/images/posts/criando-um-agente-chatgpt-para-escrever-stories-tecnicas/cover.jpg)
+
+In my day-to-day work, my role is not limited to implementing code — I participate in technical decisions, impact assessments, risk analysis, flow definition, and alignment between Product and Engineering, and naturally I end up involved in story creation.
+
+This information comes from multiple sources: asynchronous conversations, loose messages in threads, screenshots of unexpected behavior, comments during calls, or decisions made informally. At some point, all of this needs to be consolidated into a clear, traceable, and shareable artifact with the team.
+
+## The friction isn't writing, it's repeating the process
+
+Writing a story was never the problem — the friction lies in repeating the process every time I need to add a new item to the backlog. It's not difficult, but it's recurring. And when something is recurring, I immediately think about how I can automate parts of the process.
+
+It was from this that I started using ChatGPT as an operational support tool in my daily work. I would throw in loose texts, pieces of conversations, raw ideas, and ask it to help organize them within a story template I was already used to using.
+
+It wasn't just about "rewriting better": it helped me align the text to a known standard and raise questions that completed the story before it became part of the backlog. Over time, ChatGPT became a mirror, quickly showing where the idea was still incomplete.
+
+The problem is that this still required repeating the same request every time. I needed to explain the context, reinforce the format, remember what could or could not go into the story. It worked, but it wasn't reusable.
+
+That's when the question that changed everything arose: how to transform these ChatGPT conversations into something consistent, reusable, and not dependent on me making the same request every time?
+
+At that moment I remembered that I already used some agents from the Explore GPTs tab. I went to understand how to create one. There was nothing very sophisticated about it — it was more about structuring the prompt well, which I had already been doing in previous conversations.
+
+I went back to past interactions, asked ChatGPT itself to summarize what it had learned from me in that story creation flow, reviewed it, adjusted it, cut excesses, and compiled everything into a single place. From that, I created a fixed prompt with clear rules and an immutable structure.
+
+The idea was simple: whenever I threw in any input — loose text, feedback, conversation, or raw idea — the agent returned a ready-made technical story in the standard I already used daily; when this started working consistently, it became clear that I hadn't just created a better prompt, but a work agent.
+
+## Creating the Agent in GPTs
+
+With this clear, I went directly to the GPTs editor at https://chatgpt.com/gpts/editor, and started configuring my new agent.
+
+The editor itself is relatively simple. It allows you to define name, description, instructions, examples, model, and permissions. However, it quickly becomes clear that the agent's behavior is determined almost exclusively by the base prompt.
+
+In my case, I already had a prompt that worked well in loose conversations. The work here was to transform that into something fixed, explicit, and without room for interpretation. I wanted it to behave the same way every time.
+
+I started by making the agent's role explicit:
+
+> you are an assistant specialized in…
+
+This way I don't treat the prompt as a request, but as a behavioral specification. An assistant specialized in standardizing technical stories for Product and Engineering teams. This anchors the domain and eliminates generic or didactic responses.
+
+Then, I defined rigid clear rules about what it can and cannot do:
+
+> Write stories in Brazilian Portuguese; Do not explain what you are doing; Do not use emojis; etc
+
+A central point is defining a fixed output structure (provide a Markdown model of an organized story), with title, expectation, context, acceptance criteria, scenarios, observations, and refinement questions — not as an optional example, but as a contract to follow. I also made clear what type of input it should expect: loose text, conversation, feedback, raw idea. The more specific it is, the less room the agent will have to improvise.
+
+During tests, any behavior outside expectations (excessive explanations, unnecessary creativity, or format variation) was corrected directly in the prompt by adding new rules to the "can and cannot do" list. The focus was on eliminating ambiguity until the output became predictable.
+
+With this, the agent started working predictably: the input can be chaotic, but the output is always a standardized technical story. When it reached that point, it became clear that I no longer depended on manual adjustments — any text became a story in the expected standard.
+
+After that, I published the agent in GPTs Explore. The Story Writer is available here and you can test it exactly the way I use it daily: https://chatgpt.com/g/g-696a498b7d0c8191b3c00ad1b40e6afa-story-writer
+
+## Conclusion and Next Steps
+
+The main gain wasn't "creating a GPT", but removing a recurring cognitive cost from daily work. The responsibility to think, prioritize, and decide remains human. The agent acts only on the mechanical part of the process: organizing, standardizing, and structuring information.
+
+The Story Writer doesn't think for me or decide what should be done. It only solves the repetitive part of the process — the part that doesn't need to be re-evaluated every time. This frees up time and attention for what really matters: discussing impact, evaluating trade-offs, and making better technical decisions.
+
+This frees up time and attention for higher-value activities, such as trade-off analysis, impact assessment, and technical decision-making.
+
+The next step is to apply the same logic to other points in the routine where there is repetition, a well-defined standard, and unnecessary wear. Not treating these agents as definitive solutions, but as evolutionary tools that make sense as long as they continue solving real problems. Just like code fragments, these agents only justify their existence while delivering practical value in daily use.

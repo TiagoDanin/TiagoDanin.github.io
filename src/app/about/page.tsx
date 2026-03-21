@@ -2,6 +2,7 @@ import { CallToAction } from "@/components/sections/CallToAction";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Work } from "@/components/sections/Work";
+import { queryCollection } from 'nextjs-studio/server';
 
 export const metadata = {
   title: "Mobile Developer & Bug Hunter | Portfolio",
@@ -100,14 +101,19 @@ const aboutPageSchema = {
 };
 
 const Index = () => {
+  const workData = queryCollection('work');
+  const volunteerData = queryCollection('volunteer');
+  const skillsData = queryCollection('skills');
+  const aboutData = queryCollection('about').one();
+
   return (
     <>
-      <script 
-        type="application/ld+json" 
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
       <Hero />
-      <Work />
+      <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />
       <Services />
       <CallToAction />
     </>

@@ -1,25 +1,35 @@
 'use client'
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import projectsGithub from "@/data/github.json";
 import { useState, useMemo } from "react";
 
-export default function GitHubPagesSection() {
+interface GitHubPageProject {
+  name: string;
+  description: string;
+  homepage: string;
+  html_url: string;
+}
+
+interface GitHubPagesSectionProps {
+  githubProjects: GitHubPageProject[];
+}
+
+export default function GitHubPagesSection({ githubProjects }: GitHubPagesSectionProps) {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Filter projects that have homepage field and match search
   const githubPages = useMemo(() => {
-    const pages = projectsGithub.filter((project: any) =>
+    const pages = githubProjects.filter((project) =>
       project.homepage && project.homepage.trim() !== ""
     );
 
     if (!searchQuery) return pages;
 
-    return pages.filter((project: any) =>
+    return pages.filter((project) =>
       project.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description?.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }, [searchQuery]);
+  }, [githubProjects, searchQuery]);
 
   return (
     <section className="relative py-16 sm:py-20 overflow-hidden">
@@ -75,7 +85,7 @@ export default function GitHubPagesSection() {
         {/* Projects grid */}
         {githubPages.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {githubPages.map((project: any, index) => (
+            {githubPages.map((project, index) => (
               <ProjectCard
                 key={index}
                 {...project}

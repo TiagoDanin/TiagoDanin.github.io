@@ -1,23 +1,27 @@
 import { Metadata } from 'next';
-import posts from '@/data/posts.json';
-import { RedirectClient } from "@/components/layout/RedirectClient";
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { queryCollection } from 'nextjs-studio/server';
+import { ArrowLeft, Globe, ExternalLink } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { GiscusComments } from '@/components/ui/GiscusComments';
+import { CallToAction } from '@/components/sections/CallToAction';
+import { getPostBySlug, postHasLocale } from '@/lib/mdx';
+import { renderMdx } from '@/lib/render-mdx';
 import { toISODate } from '@/utils/parse';
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = posts.find((post) => post.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug, 'en');
 
   if (!post) {
     return {
       title: 'Post not found',
-      description: 'The requested post could not be found.',
-      robots: {
-        index: false,
-        follow: true,
-      },
+      robots: { index: false, follow: true },
     };
   }
 
-  // Truncate description to 160 characters
   const truncatedDescription = post.description.length > 160
     ? post.description.substring(0, 157) + '...'
     : post.description;
@@ -25,7 +29,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: post.title,
     description: truncatedDescription,
-    keywords: ['blog', 'artigo', 'software development', 'technology', 'pt-br', 'desenvolvimento', 'programação'],
+    keywords: ['blog', 'article', 'software development', 'technology'],
     alternates: {
       canonical: `https://tiagodanin.com/post/${post.slug}`,
     },
@@ -36,7 +40,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
       type: 'article',
       publishedTime: toISODate(post.date),
       authors: ['https://tiagodanin.com/about'],
-      locale: 'pt_BR',
+      locale: 'en_US',
       siteName: 'Tiago Danin',
     },
     twitter: {
@@ -49,42 +53,32 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export async function generateStaticParams() {
-  return posts.map((post) => ({
+export function generateStaticParams() {
+  const posts = queryCollection('posts').where({ lang: 'en' });
+  return posts.map((post: { slug: string; }) => ({
     slug: post.slug,
   }));
 }
 
-export default function Post({ params }: { params: { slug: string } }) {
-  const post = posts.find((post) => post.slug === params.slug);
+export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug, 'en');
 
   if (!post) {
-    return <div className="container mx-auto py-32 text-center">Post not found</div>;
+    notFound();
   }
+
+  const hasPt = postHasLocale(slug, 'pt');
+  const mdxContent = await renderMdx(post.body);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://tiagodanin.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": "https://tiagodanin.com/blog"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": post.title,
-        "item": `https://tiagodanin.com/post/${post.slug}`
-      }
-    ]
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://tiagodanin.com/post/${post.slug}` },
+    ],
   };
 
   const jsonLd = {
@@ -94,41 +88,92 @@ export default function Post({ params }: { params: { slug: string } }) {
     "description": post.description,
     "datePublished": toISODate(post.date),
     "url": `https://tiagodanin.com/post/${post.slug}`,
-    "inLanguage": "pt-BR",
+    "inLanguage": "en",
     "isAccessibleForFree": true,
-    "author": {
-      "@type": "Person",
-      "name": "Tiago Danin",
-      "url": "https://tiagodanin.com"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Tiago Danin"
-    }
+    "author": { "@type": "Person", "name": "Tiago Danin", "url": "https://tiagodanin.com" },
+    "publisher": { "@type": "Person", "name": "Tiago Danin" },
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <RedirectClient url={post.originalUrl} />
 
-      <div className="container mx-auto py-32">
+      <article className="container mx-auto py-32 px-4">
         <div className="max-w-2xl mx-auto">
-          <time className="text-sm text-zinc-400">{post!.date}</time>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl">
-            {post!.title}
-          </h1>
-          <p className="mt-6 text-base text-zinc-600 blur-lg">
-            {post!.description}
-          </p>
-          <div className="mt-8 text-sm">
-            <a href={post.originalUrl} className="text-blue-600 hover:underline font-medium">
-              Click here if you are not redirected automatically
-            </a>
+          {/* Back to blog */}
+          <div className="mb-8">
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/blog" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Blog
+              </Link>
+            </Button>
           </div>
+
+          {/* Header */}
+          <header className="mb-8">
+            <time className="text-sm text-muted-foreground">{post.date}</time>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+              {post.title}
+            </h1>
+            <p className="mt-4 text-lg text-muted-foreground">
+              {post.description}
+            </p>
+
+            {/* Language toggle */}
+            <div className="mt-4 flex items-center gap-3">
+              <Badge variant="secondary" className="flex items-center gap-1">
+                <Globe className="h-3 w-3" />
+                EN
+              </Badge>
+              {hasPt && (
+                <Button variant="outline" size="sm" asChild>
+                  <Link href={`/post/${post.slug}/pt`} className="flex items-center gap-1">
+                    <Globe className="h-3 w-3" />
+                    PT
+                  </Link>
+                </Button>
+              )}
+            </div>
+          </header>
+
+          {/* MDX Content */}
+          <div className="prose prose-zinc max-w-none">
+            {mdxContent}
+          </div>
+
+          {/* Giscus Comments */}
+          <GiscusComments term={`${post.slug}-en`} />
+
+          {/* LLM Translation Notice */}
+          <div className="mt-8 p-4 rounded-lg bg-secondary/50 border border-border">
+            <p className="text-sm text-muted-foreground">
+              This article was translated from Portuguese with the help of an LLM.
+              The original version may contain nuances not fully captured in this translation.
+            </p>
+          </div>
+
+          {/* Original article link */}
+          {post.originalUrl && (
+            <div className="mt-4">
+              <Button variant="outline" size="sm" asChild>
+                <a
+                  href={post.originalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Read original article
+                </a>
+              </Button>
+            </div>
+          )}
         </div>
-      </div>
+      </article>
+
+      <CallToAction />
     </>
   );
 }

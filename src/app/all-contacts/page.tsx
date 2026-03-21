@@ -1,4 +1,4 @@
-import contacts from '@/data/contacts.json';
+import { queryCollection } from 'nextjs-studio/server';
 import {
   ExternalLink,
   Home,
@@ -62,6 +62,8 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export default function AllContactsPage() {
+  const contacts = queryCollection('contacts');
+
   return (
     <div className="relative py-32 px-4 container mx-auto overflow-hidden">
       {/* Blur background */}

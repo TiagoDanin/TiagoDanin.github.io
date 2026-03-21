@@ -1,18 +1,17 @@
 'use client'
 
 import { useState } from "react";
-import { 
-  Briefcase, 
-  Code as CodeIcon, 
-  ChevronDown, 
-  ChevronUp,
+import {
+  Briefcase,
+  Code as CodeIcon,
+  ChevronDown,
   Users,
   Brain,
   MessageCircle,
   Target,
   Calendar
 } from "lucide-react";
-import { 
+import {
   SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
   SiNodedotjs, SiPostgresql, SiSqlite,
@@ -21,18 +20,79 @@ import {
 } from "react-icons/si";
 import { FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import workData from "@/data/work.json";
-import volunteerData from "@/data/volunteer.json";
 import { ExperienceItem } from "@/components/ui/experience-item";
 
-const TechIcon = ({ icon: Icon, name, color }: { icon: any, name: string, color: string }) => (
-  <div className="tech-badge" style={{ backgroundColor: color }}>
-    <Icon className="w-4 h-4" />
-    <span className="text-xs font-medium">{name}</span>
-  </div>
-);
+interface WorkEntry {
+  company: string;
+  role: string;
+  startDate: string;
+  endDate: string;
+  logo: string;
+  description: string;
+}
 
-export function Work() {
+interface VolunteerEntry {
+  organization: string;
+  role: string;
+  startDate: string;
+  endDate: string;
+  logo: string;
+  description: string;
+  category: string;
+}
+
+interface SkillItem {
+  name: string;
+  icon: string;
+  color: string;
+}
+
+interface SkillsEntry {
+  category: string;
+  items: SkillItem[];
+}
+
+interface AboutEntry {
+  name: string;
+  greeting: string;
+  roles: string[];
+  avatar: string;
+  bio: string;
+  bioExtra: string;
+  seoDescription: string;
+  cvUrl: string;
+  email: string;
+}
+
+interface WorkProps {
+  work: WorkEntry[];
+  volunteer: VolunteerEntry[];
+  skills: SkillsEntry[];
+  about: AboutEntry;
+}
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
+  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
+  SiNodedotjs, SiPostgresql, SiSqlite,
+  SiFigma, SiCanva, SiUnity, SiBlender, SiAdobexd,
+  SiFirebase, SiGitlab, SiGithub, SiGooglecloud, SiDocker,
+  FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette,
+  Users, Brain, MessageCircle, Target, Calendar,
+};
+
+const TechIcon = ({ icon: iconName, name, color }: { icon: string, name: string, color: string }) => {
+  const Icon = iconMap[iconName];
+  if (!Icon) return null;
+  return (
+    <div className="tech-badge" style={{ backgroundColor: color }}>
+      <Icon className="w-4 h-4" />
+      <span className="text-xs font-medium">{name}</span>
+    </div>
+  );
+};
+
+export function Work({ work, volunteer, skills, about }: WorkProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -66,7 +126,7 @@ export function Work() {
                   <span>Experience</span>
                 </h3>
 
-                {workData.map((job, index) => (
+                {work.map((job, index) => (
                   <ExperienceItem
                     key={index}
                     company={job.company}
@@ -85,7 +145,7 @@ export function Work() {
                   <span>Volunteering</span>
                 </h3>
 
-                {volunteerData.map((job, index) => (
+                {volunteer.map((job, index) => (
                   <ExperienceItem
                     key={index}
                     company={job.organization}
@@ -99,7 +159,7 @@ export function Work() {
               </ol>
 
               <Button className="w-full group" variant="outline" asChild>
-                <a href="https://linkedin.com/in/tiagodanin" className="inline-flex items-center gap-2">
+                <a href={about.cvUrl} className="inline-flex items-center gap-2">
                   Open CV
                   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-4 w-4 stroke-muted-foreground transition group-hover:stroke-primary">
                     <path d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -135,96 +195,21 @@ export function Work() {
             </h3>
 
             <div className="mt-6 space-y-4">
-              {/* Mobile */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium">Mobile Development</h4>
-                <div className="flex flex-wrap gap-2">
-                  <TechIcon icon={SiFlutter} name="Flutter" color="#02569B" />
-                  <TechIcon icon={SiReact} name="React Native" color="#0096b9" />
-                  <TechIcon icon={FaMicrosoft} name="Xamarin" color="#3498DB" />
-                  <TechIcon icon={FaJava} name="Java" color="#d55a02" />
-                  <TechIcon icon={SiKotlin} name="Kotlin" color="#7F52FF" />
-                  <TechIcon icon={FaCode} name="Obj-C" color="#438EFF" />
-                  <TechIcon icon={SiSwift} name="Swift" color="#F05138" />
-                  <TechIcon icon={SiSwift} name="SwiftUI" color="#007AFF" />
-                  <TechIcon icon={SiKotlin} name="Jetpack Compose" color="#7F52FF" />
-                  <TechIcon icon={SiIonic} name="Ionic" color="#3880FF" />
+              {skills.map((category) => (
+                <div key={category.category} className="space-y-2">
+                  <h4 className="text-sm font-medium">{category.category}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {category.items.map((item) => (
+                      <TechIcon
+                        key={item.name}
+                        icon={item.icon}
+                        name={item.name}
+                        color={item.color}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              {/* DevOps */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium">DevOps</h4>
-                <div className="flex flex-wrap gap-2">
-                  <TechIcon icon={SiFirebase} name="Firebase" color="#ff2300" />
-                  <TechIcon icon={SiGitlab} name="GitLab CI/CD" color="#FC6D26" />
-                  <TechIcon icon={SiGithub} name="GitHub CI/CD" color="#181717" />
-                  <TechIcon icon={FaMicrosoft} name="Azure" color="#0078D4" />
-                  <TechIcon icon={SiGooglecloud} name="Google Cloud" color="#4285F4" />
-                  <TechIcon icon={SiDocker} name="Docker" color="#2496ED" />
-                </div>
-              </div>
-
-              {/* Soft Skills */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium">Soft Skills</h4>
-                <div className="flex flex-wrap gap-2">
-                  <TechIcon icon={Users} name="Leadership" color="#8B5CF6" />
-                  <TechIcon icon={Target} name="Team Management" color="#3B82F6" />
-                  <TechIcon icon={Brain} name="Problem Solving" color="#10B981" />
-                  <TechIcon icon={MessageCircle} name="Communication" color="#6366F1" />
-                  <TechIcon icon={Calendar} name="Organization" color="#e11d48" />
-                </div>
-              </div>
-
-              {/* Frontend */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium">Frontend</h4>
-                <div className="flex flex-wrap gap-2">
-                  <TechIcon icon={SiHtml5} name="HTML" color="#E34F26" />
-                  <TechIcon icon={SiCss3} name="CSS" color="#264DE4" />
-                  <TechIcon icon={SiJavascript} name="JavaScript" color="#B8860B" />
-                  <TechIcon icon={SiTypescript} name="TypeScript" color="#3178C6" />
-                  <TechIcon icon={SiReact} name="React" color="#20A7C7" />
-                  <TechIcon icon={SiVuedotjs} name="Vue.js" color="#4FC08D" />
-                  <TechIcon icon={SiTailwindcss} name="Tailwind" color="#0891B2" />
-                </div>
-              </div>
-
-              {/* Backend */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium">Backend</h4>
-                <div className="flex flex-wrap gap-2">
-                  <TechIcon icon={SiNodedotjs} name="Node.js" color="#339933" />
-                  <TechIcon icon={FaServer} name="Express" color="#000000" />
-                  <TechIcon icon={FaCode} name="Elixir" color="#4B275F" />
-                  <TechIcon icon={SiPostgresql} name="PostgreSQL" color="#336791" />
-                  <TechIcon icon={SiSqlite} name="SQLite" color="#003B57" />
-                </div>
-              </div>
-
-              {/* Design */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium">Design</h4>
-                <div className="flex flex-wrap gap-2">
-                  <TechIcon icon={SiFigma} name="Figma" color="#F24E1E" />
-                  <TechIcon icon={FaCode} name="Mobile UX" color="#0ACF83" />
-                  <TechIcon icon={SiAdobexd} name="Adobe XD" color="#FF61F6" />
-                  <TechIcon icon={SiCanva} name="Canva" color="#00bce5" />
-                </div>
-              </div>
-
-              {/* Game Development */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-medium">Game Development</h4>
-                <div className="flex flex-wrap gap-2">
-                  <TechIcon icon={SiUnity} name="Unity" color="#000000" />
-                  <TechIcon icon={SiFlutter} name="Flame" color="#ff8835" />
-                  <TechIcon icon={FaGamepad} name="LÖVE" color="#EA316E" />
-                  <TechIcon icon={FaPalette} name="Pixel Art" color="#00ad48" />
-                  <TechIcon icon={SiBlender} name="Blender" color="#F5792A" />
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

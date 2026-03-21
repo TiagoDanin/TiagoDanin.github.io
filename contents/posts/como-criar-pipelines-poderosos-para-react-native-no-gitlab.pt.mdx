@@ -1,0 +1,218 @@
+---
+title: "Como criar pipelines poderosos para React Native no Gitlab"
+date: "Feb 1, 2023"
+description: "Neste post vamos falar sobre como implementar um pipeline de testes para React Native utilizando o Gitlab."
+slug: "how-to-create-powerful-pipelines-for-react-native-in-gitlab"
+originalUrl: "https://medium.com/idopterlabs/como-criar-pipelines-poderosos-para-react-native-no-gitlab-5da018126289"
+lang: "pt"
+tags: ["React", "GitHub", "DevOps", "Tutorial", "Testing", "Article"]
+---
+
+![Como criar pipelines poderosos para React Native no Gitlab](/images/posts/como-criar-pipelines-poderosos-para-react-native-no-gitlab/cover.png)
+
+## Gitlab Pipeline
+
+O Gitlab fornece ferramentas de DevOps, sendo o Gitlab Pipeline uma delas. Esta ferramenta permite "construir uma esteira de automação para integração contínua" que oferece feedback rápido sobre commits, branches ou merge requests. As tarefas são declaradas em um arquivo YML com suas dependências necessárias, como imagens Docker específicas.
+
+## Criação do pipeline de testes
+
+![Diagrama do pipeline GitLab CI/CD](/images/posts/como-criar-pipelines-poderosos-para-react-native-no-gitlab/pipeline-diagram.png)
+
+É necessário possuir uma aplicação com testes já integrados antes de começar. O arquivo `.gitlab-ci.yml` deve ser criado na pasta principal. Um exemplo básico utiliza Node.js como base:
+
+```yaml
+image: node:16.10.0
+
+cache:
+  paths:
+    - node_modules/
+
+test_async:
+  script:
+    - npm install
+    - node ./specs/start.js ./specs/async.spec.js
+```
+
+Para usar Yarn como gerenciador de dependência, adicione as instruções de instalação através de `before_script`:
+
+```yaml
+image: node:16.10.0
+
+before_script:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+cache:
+  paths:
+    - node_modules/
+
+test_async:
+  script:
+    - yarn install
+    - yarn test
+```
+
+## Melhorando o Pipeline
+
+![Screenshot do GitLab CI/CD](/images/posts/como-criar-pipelines-poderosos-para-react-native-no-gitlab/gitlab-cicd.png)
+
+### Dividir em estágios
+
+Organize tarefas através da chave `stages`:
+
+```yaml
+stages:
+  - build-deps
+  - test
+
+build-deps:
+  stage: build-deps
+  script:
+    - yarn install
+
+run_tests:
+  stage: test
+  script:
+    - yarn test
+```
+
+### Otimizar tempo de execução
+
+Implemente variáveis para cache mais rápido:
+
+```yaml
+variables:
+  FF_USE_FASTZIP: "true"
+  ARTIFACT_COMPRESSION_LEVEL: "fast"
+  CACHE_COMPRESSION_LEVEL: "fast"
+
+cache:
+  - key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules/
+    policy: pull-push
+```
+
+### Extrair cobertura de testes
+
+Use Regex para capturar a cobertura:
+
+```yaml
+run_tests:
+  stage: test
+  coverage: '/All\\sfiles\[\\s\]\*\\|\[\\s\]\*(\\d+\\.\\d+)/'
+  script:
+    - yarn test:ci
+```
+
+### Configurar timezone
+
+No `package.json`, use `cross-env` para garantir compatibilidade:
+
+```json
+{
+  "scripts": {
+    "test": "cross-env TZ=America/Sao_Paulo jest",
+    "test:coverage": "cross-env TZ=America/Sao_Paulo jest --coverage --watchAll=false"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
+```
+
+![Configuração do pipeline](/images/posts/como-criar-pipelines-poderosos-para-react-native-no-gitlab/pipeline-config.png)
+
+### Adicionar relatórios JUnit
+
+Instale `jest-junit`:
+
+```bash
+yarn add jest-junit --dev
+```
+
+Configure no `package.json`:
+
+```json
+{
+  "scripts": {
+    "test:ci": "cross-env TZ=America/Sao_Paulo jest --coverage --watchAll=false --reporters=default --reporters=jest-junit --silent"
+  }
+}
+```
+
+E no pipeline:
+
+```yaml
+run_tests:
+  stage: test
+  coverage: '/All\\sfiles\[\\s\]\*\\|\[\\s\]\*(\\d+\\.\\d+)/'
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - junit.xml
+  script:
+    - yarn test:ci
+```
+
+![Estágio do pipeline](/images/posts/como-criar-pipelines-poderosos-para-react-native-no-gitlab/pipeline-stage.png)
+
+## Arquivo final completo
+
+```yaml
+image: node:16.10.0
+
+variables:
+  FF_USE_FASTZIP: "true"
+  ARTIFACT_COMPRESSION_LEVEL: "fast"
+  CACHE_COMPRESSION_LEVEL: "fast"
+
+cache:
+  - key:
+      files:
+        - yarn.lock
+    paths:
+      - node_modules/
+    policy: pull-push
+  - key: yarn-$CI_JOB_IMAGE
+    paths:
+      - .yarn
+    policy: pull-push
+
+before_script:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+stages:
+  - build-deps
+  - test
+
+build-deps:
+  stage: build-deps
+  script:
+    - yarn install --cache-folder .yarn
+
+run_tests:
+  stage: test
+  coverage: '/All\\sfiles\[\\s\]\*\\|\[\\s\]\*(\\d+\\.\\d+)/'
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - junit.xml
+  script:
+    - yarn test:ci
+```
+
+![Resultado do pipeline](/images/posts/como-criar-pipelines-poderosos-para-react-native-no-gitlab/pipeline-result.png)
+
+## Definir timeout
+
+Configure tempo de expiração em CI/CD Settings >> General pipelines >> Timeout para evitar custos inesperados. O exemplo utiliza 20 minutos.
+
+## Conclusão
+
+O artigo demonstra como utilizar o Gitlab Pipeline para testar aplicações React Native com otimizações de tempo e garantia de qualidade antes de aprovar merge requests.

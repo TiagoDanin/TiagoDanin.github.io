@@ -1,0 +1,79 @@
+[
+  {
+    "category": "Mobile Development",
+    "items": [
+      { "name": "Flutter", "icon": "SiFlutter", "color": "#02569B" },
+      { "name": "React Native", "icon": "SiReact", "color": "#0096b9" },
+      { "name": "Xamarin", "icon": "FaMicrosoft", "color": "#3498DB" },
+      { "name": "Java", "icon": "FaJava", "color": "#d55a02" },
+      { "name": "Kotlin", "icon": "SiKotlin", "color": "#7F52FF" },
+      { "name": "Obj-C", "icon": "FaCode", "color": "#438EFF" },
+      { "name": "Swift", "icon": "SiSwift", "color": "#F05138" },
+      { "name": "SwiftUI", "icon": "SiSwift", "color": "#007AFF" },
+      { "name": "Jetpack Compose", "icon": "SiKotlin", "color": "#7F52FF" },
+      { "name": "Ionic", "icon": "SiIonic", "color": "#3880FF" }
+    ]
+  },
+  {
+    "category": "DevOps",
+    "items": [
+      { "name": "Firebase", "icon": "SiFirebase", "color": "#ff2300" },
+      { "name": "GitLab CI/CD", "icon": "SiGitlab", "color": "#FC6D26" },
+      { "name": "GitHub CI/CD", "icon": "SiGithub", "color": "#181717" },
+      { "name": "Azure", "icon": "FaMicrosoft", "color": "#0078D4" },
+      { "name": "Google Cloud", "icon": "SiGooglecloud", "color": "#4285F4" },
+      { "name": "Docker", "icon": "SiDocker", "color": "#2496ED" }
+    ]
+  },
+  {
+    "category": "Soft Skills",
+    "items": [
+      { "name": "Leadership", "icon": "Users", "color": "#8B5CF6" },
+      { "name": "Team Management", "icon": "Target", "color": "#3B82F6" },
+      { "name": "Problem Solving", "icon": "Brain", "color": "#10B981" },
+      { "name": "Communication", "icon": "MessageCircle", "color": "#6366F1" },
+      { "name": "Organization", "icon": "Calendar", "color": "#e11d48" }
+    ]
+  },
+  {
+    "category": "Frontend",
+    "items": [
+      { "name": "HTML", "icon": "SiHtml5", "color": "#E34F26" },
+      { "name": "CSS", "icon": "SiCss3", "color": "#264DE4" },
+      { "name": "JavaScript", "icon": "SiJavascript", "color": "#B8860B" },
+      { "name": "TypeScript", "icon": "SiTypescript", "color": "#3178C6" },
+      { "name": "React", "icon": "SiReact", "color": "#20A7C7" },
+      { "name": "Vue.js", "icon": "SiVuedotjs", "color": "#4FC08D" },
+      { "name": "Tailwind", "icon": "SiTailwindcss", "color": "#0891B2" }
+    ]
+  },
+  {
+    "category": "Backend",
+    "items": [
+      { "name": "Node.js", "icon": "SiNodedotjs", "color": "#339933" },
+      { "name": "Express", "icon": "FaServer", "color": "#000000" },
+      { "name": "Elixir", "icon": "FaCode", "color": "#4B275F" },
+      { "name": "PostgreSQL", "icon": "SiPostgresql", "color": "#336791" },
+      { "name": "SQLite", "icon": "SiSqlite", "color": "#003B57" }
+    ]
+  },
+  {
+    "category": "Design",
+    "items": [
+      { "name": "Figma", "icon": "SiFigma", "color": "#F24E1E" },
+      { "name": "Mobile UX", "icon": "FaCode", "color": "#0ACF83" },
+      { "name": "Adobe XD", "icon": "SiAdobexd", "color": "#FF61F6" },
+      { "name": "Canva", "icon": "SiCanva", "color": "#00bce5" }
+    ]
+  },
+  {
+    "category": "Game Development",
+    "items": [
+      { "name": "Unity", "icon": "SiUnity", "color": "#000000" },
+      { "name": "Flame", "icon": "SiFlutter", "color": "#ff8835" },
+      { "name": "LÖVE", "icon": "FaGamepad", "color": "#EA316E" },
+      { "name": "Pixel Art", "icon": "FaPalette", "color": "#00ad48" },
+      { "name": "Blender", "icon": "SiBlender", "color": "#F5792A" }
+    ]
+  }
+]

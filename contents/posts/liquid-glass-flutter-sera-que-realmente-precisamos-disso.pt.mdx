@@ -1,0 +1,47 @@
+---
+title: "Liquid Glass no Flutter: será que realmente precisamos disso?"
+date: "Jun 14, 2025"
+description: "Uma reflexão crítica sobre o efeito Liquid Glass no Flutter e sua real necessidade em aplicações móveis. Explorando quando esse recurso agrega valor à experiência do usuário e quando pode ser apenas complexidade desnecessária ao projeto."
+slug: "liquid-glass-flutter-do-we-really-need-it"
+originalUrl: "https://www.linkedin.com/pulse/liquid-glass-flutter-ser%C3%A1-que-realmente-precisamos-disso-tiago-danin-zjptf/"
+lang: "pt"
+tags: ["Flutter", "UI/UX", "Article"]
+---
+
+![Liquid Glass no Flutter - será que realmente precisamos disso?](/images/posts/liquid-glass-flutter-sera-que-realmente-precisamos-disso/cover.jpg)
+
+Sabe aquele momento em que a Apple lança uma novidade e, de repente, todo mundo só fala disso? Assim foi com o Liquid Glass. Se você acompanhou a WWDC 2025 ou já deu uma olhada no iOS 26, viu aquele efeito novo por todo o sistema operacional de vidro molhado, com blur. Mas será que a gente realmente precisa disso no Flutter?
+
+Não demorou para a comunidade começar a comparar: "No React Native, é só atualizar o Xcode e pronto, Liquid Glass no app!". E é verdade, como o React Native usa componentes nativos, se a Apple muda o visual, seu app já acompanha. Parece mágica, mas tem um preço. Muitos apps podem quebrar do nada, por exemplo, a navigation bar do iOS mudou de fixa para flutuante, e isso impactar em diversos apps, que vão começar a realmente testarem essas novas abordagens com mais frequência quando sair do beta, já que mais devs e usuários finais vão ter acesso.
+
+Souce: developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#Navigation
+
+No Flutter, a abordagem é diferente, o framework desenha tudo do zero na tela como se fosse um papel, usando o motor Skia ou Impeller nas versões mais recentes do Flutter. Isso garante que o visual do seu app será consistente em todas as plataformas, mas também significa que novidades visuais do sistema operacional não são herdadas automaticamente. Aqui na Idopter Labs, já passamos por situações em que o design ficava diferente entre Android e iOS, mas com Flutter, essas inconsistências são raras, o que é um dos grandes motivos de termos escolhido essa stack.
+
+## Shaders: o superpoder do Flutter
+
+O time do Flutter é conhecido por ser cauteloso antes de implementar novidades, cada recurso precisa funcionar em todas as plataformas suportadas. Por isso, antes de adotar algo como o Liquid Glass, é preciso avaliar se faz sentido para o ecossistema como um todo, afinal Google, Meta, Facebook e outros têm seus próprios design systems, muitas vezes na contramão do que a Apple propõe.
+
+Mesmo sem suporte nativo, o Flutter oferece uma alternativa poderosa: Shaders, que são pequenos programas que rodam na GPU e permitem criar efeitos visuais avançados, como blur, distorção, vidro, água e muito mais. Com o suporte a shaders GLSL, é possível simular algo próximo ao Liquid Glass da Apple de forma customizada no Impeller. Eu mesmo criei um shader para imitar o Liquid Glass, e compartilhei o código neste repositório.
+
+https://github.com/TiagoDanin/Flutter-Liquid-Glass-Example
+
+O shader, implementado no arquivo shaders/glass.frag, utiliza técnicas de SDF (Signed Distance Functions) para desenhar formas arredondadas como um modal, aplica refração com diferentes índices para cada canal, criando assim o efeito de chromatic aberration (Um tipo de distorção de lentes de vidro) e mistura tudo com o fundo da tela. O segredo está em manipular as texturas e simular como a luz se comporta ao atravessar um vidro.
+
+A integração com o Flutter é feita no main.dart, usando o FragmentProgram.fromAsset para carregar o shader. O resultado é um cartão com bordas arredondadas, reflexos e um visual incrível, tudo rodando de forma performática graças ao poder dos shaders.
+
+Se quiser experimentar, basta conferir o repositório e observar como o shader é carregado e aplicado ao widget. O código é aberto e pode ser adaptado para diferentes necessidades.
+
+## Nativo vs. Desenhado: qual o melhor?
+
+Usar componentes nativos tem suas vantagens, como integração perfeita com o sistema operacional. No entanto, isso também traz riscos: basta uma atualização no Android ou iOS para o app ficar estranho, perder um efeito ou até quebrar. Um exemplo clássico é o elevation, presente nos botões do Android, mas ausente nos componentes nativos do iOS. No Flutter, como tudo é desenhado, o controle é total, garantindo consistência e performance em todas as plataformas, desse modo o elevation no Flutter existe tanto no Android quanto no iOS.
+
+Minha opinião? Se o objetivo é entregar uma "experiência premium Apple", vá de SwiftUI. Mas se o foco é compatibilidade, consistência e menos dor de cabeça com atualizações, Flutter é a escolha certa.
+
+## Liquid Glass: tendência ou polêmica?
+
+O Liquid Glass é visualmente impressionante, mas ainda é uma novidade. Não sabemos se outros apps além da Apple vão adotar, e já surgiram discussões sobre acessibilidade e legibilidade, já que fundos translúcidos podem dificultar a leitura, especialmente para quem tem baixa visão. Além disso, o efeito vai na contramão da tendência flat e minimalista que domina o design atual da maioria dos apps, e fora uma certa nostalgia do Windows Vista (quem lembra do Aero Glass?), não há nada parecido em outros sistemas operacionais.
+
+---
+
+E você, o que acha do Liquid Glass? Acha que veio pra ficar ou é só mais uma moda passageira? Deixe sua opinião nos comentários!

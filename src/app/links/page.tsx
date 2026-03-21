@@ -1,7 +1,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Instagram, Linkedin, Youtube, Presentation, MessageCircle, AlignJustify } from "lucide-react";
-import linksData from "@/data/links.json";
+import { queryCollection } from 'nextjs-studio/server';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -34,6 +34,8 @@ const iconMap = {
 };
 
 export default function Links() {
+  const linksData = queryCollection('links');
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto py-32 px-4">

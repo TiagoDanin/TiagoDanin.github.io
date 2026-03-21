@@ -1,0 +1,19 @@
+[
+	{
+		"name": "Robô ED para Telegram [PT-BR]",
+		"url": "https://t.me/RoboED",
+		"description": "Criado pela equipe Synko, o robô mais famoso do Brasil chega ao Telegram!"
+	}, {
+		"name": "Game Maze ZX",
+		"description": "My first game. Create using Gamemake."
+	}, {
+		"name": "CompPDF",
+		"description": "Analyze similarity between 2 PDFs."
+	}, {
+		"name": "BDS APP [PT-BR]",
+		"description": "Uma alternativa do app padrão do Banco de Séries."
+	}, {
+		"name": "Other",
+		"description": "Top Secret :^)"
+	}
+]

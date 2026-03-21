@@ -1,19 +1,28 @@
 import fs from 'fs';
 import path from 'path';
 import RSS from 'rss';
-import posts from '../src/data/posts.json' assert { type: 'json' };
-import talks from '../src/data/talks.json' assert { type: 'json' };
-import timeline from '../src/data/timeline.json' assert { type: 'json' };
-import projectsGithub from '../src/data/github.json' assert { type: 'json' };
-import projectsPrivate from '../src/data/private.json' assert { type: 'json' };
-import projectsNpm from '../src/data/npm.json' assert { type: 'json' };
-import projectsLuarocks from '../src/data/luarocks.json' assert { type: 'json' };
-import projectsPypi from '../src/data/pypi.json' assert { type: 'json' };
-import projectsAtom from '../src/data/atom.json' assert { type: 'json' };
-import projectsGooglePlay from '../src/data/googleplay.json' assert { type: 'json' };
-import projectsMicrosoftStore from '../src/data/windows.json' assert { type: 'json' };
-import projectsAUR from '../src/data/aur.json' assert { type: 'json' };
-import projectsOffline from '../src/data/offline.json' assert { type: 'json' };
+import matter from 'gray-matter';
+
+// Read English posts from MDX files
+const postsDir = path.join(process.cwd(), 'contents', 'posts');
+const posts = fs.readdirSync(postsDir)
+  .filter(f => f.endsWith('.mdx') && !f.includes('.pt.'))
+  .map(f => {
+    const raw = fs.readFileSync(path.join(postsDir, f), 'utf-8');
+    return matter(raw).data as { title: string; date: string; description: string; slug: string; originalUrl: string };
+  });
+import talks from '../contents/talks/index.json' assert { type: 'json' };
+import timeline from '../contents/timeline/index.json' assert { type: 'json' };
+import projectsGithub from '../contents/github/index.json' assert { type: 'json' };
+import projectsPrivate from '../contents/private/index.json' assert { type: 'json' };
+import projectsNpm from '../contents/npm/index.json' assert { type: 'json' };
+import projectsLuarocks from '../contents/luarocks/index.json' assert { type: 'json' };
+import projectsPypi from '../contents/pypi/index.json' assert { type: 'json' };
+import projectsAtom from '../contents/atom/index.json' assert { type: 'json' };
+import projectsGooglePlay from '../contents/googleplay/index.json' assert { type: 'json' };
+import projectsMicrosoftStore from '../contents/windows/index.json' assert { type: 'json' };
+import projectsAUR from '../contents/aur/index.json' assert { type: 'json' };
+import projectsOffline from '../contents/offline/index.json' assert { type: 'json' };
 import { titleToSlug } from '../src/utils/parse'
 
 const siteUrl = 'https://tiagodanin.com';
@@ -33,7 +42,7 @@ const blogFeed = new RSS({
   language: 'en',
   copyright: 'Tiago Danin',
 });
-posts.forEach((post: any) => {
+posts.forEach((post) => {
   blogFeed.item({
     title: post.title,
     description: post.description,

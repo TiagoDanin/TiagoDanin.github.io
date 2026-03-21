@@ -3,13 +3,14 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Calendar, Mic, Video, Tag } from 'lucide-react';
 
-import talks from "@/data/talks.json";
+import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 import { Button } from '@/components/ui/button';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const talks = queryCollection('talks');
   const { slug } = params;
-  
+
   const talk = talks.find((item) => {
     const itemSlug = titleToSlug(item.title);
     return itemSlug === slug;
@@ -79,12 +80,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
+  const talks = queryCollection('talks');
   const params: { slug: string }[] = [];
 
   talks.forEach((talk) => {
     const slug = titleToSlug(talk.title);
-    
+
     if (slug) {
       params.push({ slug });
     }
@@ -94,8 +96,9 @@ export async function generateStaticParams() {
 }
 
 export default function TalkPage({ params }: { params: { slug: string } }) {
+  const talks = queryCollection('talks');
   const { slug } = params;
-  
+
   const talk = talks.find((item) => {
     const itemSlug = titleToSlug(item.title);
     return itemSlug === slug;

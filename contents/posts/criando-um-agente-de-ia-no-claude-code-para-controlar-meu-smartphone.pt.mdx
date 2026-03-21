@@ -1,0 +1,97 @@
+---
+title: "Criando um Agente de IA no Claude Code para Controlar meu Smartphone"
+date: "Sep 8, 2025"
+description: "Automatizando documentação e testes de apps Android com inteligência artificial. Eu estava enfrentando um desafio específico: precisava documentar automaticamente diversos fluxos de uma aplicação Android. Foi quando comecei a explorar maneiras de realizar esse processo, e uma das ferramentas que decidi testar foi o Claude Code."
+slug: "creating-an-ai-agent-in-claude-code-to-control-my-smartphone"
+originalUrl: "https://blog.idopterlabs.com.br/criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone-5b19672564c0"
+lang: "pt"
+tags: ["Android", "AI", "Mobile", "UI/UX", "Testing", "Tools", "Article"]
+---
+
+![Criando um Agente de IA no Claude Code para Controlar meu Smartphone](/images/posts/criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone/cover.png)
+
+## Automatizando documentação e testes de apps Android com inteligência artificial
+
+## O Desafio Inicial
+
+Eu estava enfrentando um desafio específico: precisava documentar automaticamente diversos fluxos de uma aplicação Android. Foi quando comecei a explorar maneiras de realizar esse processo, e uma das ferramentas que decidi testar foi o Claude Code.
+
+Inicialmente, o Claude Code não parecia uma boa escolha para criar um agente autônomo, eu tinha que ficar "ensinado" como usar comandos do ADB para simular ações do usuário como cliques, digitação e outras interações, para que a IA pudesse controlar meu smartphone.
+
+Pensei em procurar um MCP (Model Context Protocol) que já implementasse essa funcionalidade, mas não consegui encontrar nenhum adequado, então decidi construir o meu próprio: [Android-Debug-Bridge-MCP](https://github.com/TiagoDanin/Android-Debug-Bridge-MCP).
+
+## O Poder do ADB UI Automator
+
+Uma das ferramentas mais valiosas do ADB para o que estamos construindo é o UI Automator, que retorna um XML detalhado da interface atual. Isso torna o uso do comando `adb shell tap x y` muito mais preciso para clicar em elementos específicos da tela, para a LLM o formato XML ou Markdown é mais eficaz que uma imagem.
+
+O que eu precisava organizar era:
+
+- Quais tipos de elementos detectar na interface
+- Como mostrar o conteúdo e posição de cada elemento
+- Como permitir que o Claude Code executasse a ação correta na posição exata
+
+![Diagrama do agente controlando o smartphone via ADB](/images/posts/criando-um-agente-de-ia-no-claude-code-para-controlar-meu-smartphone/agent-diagram.png)
+
+## Evoluindo o Agente
+
+Após integrar o Claude Code com meu MCP, reescrevi o agente e o aprimorei gradualmente até chegar a um fluxo eficiente. Meu agente de IA segue um padrão simples, mas eficaz:
+
+1. **Visualizar** o conteúdo atual da tela
+2. **Executar** uma ação específica
+3. **Repetir** o processo
+4. **Gerar** um relatório de teste completo
+
+## Exemplo Real: Testando o App Stock Pulse
+
+Vou mostrar como o agente testou automaticamente o processo de adicionar uma ação (NVDA) dentro de um aplicativo que ajudei a desenvolver chamado Stock Pulse:
+
+### Comando Utilizado
+
+> @agent-app-tester Open br.com.idopterlabs.Tickerapp, add an Nvidia stock to the portfolio, click Save, and I expect the stock's current data to be displayed on the screen.
+
+O agente então executou todo o fluxo automaticamente. Ele criou uma pasta de teste chamada `tickerapp_nvda_test`, abriu o app Stock Pulse e começou seu trabalho. Primeiro, capturou a tela inicial mostrando a tela de portfólio vazia. Depois, navegou para adicionar uma nova ação clicou no botão "+" e capturou a tela de seleção de ações.
+
+Em seguida, o agente selecionou a NVIDIA (NVDA) da lista, verificou se os detalhes da ação eram exibidos corretamente e gerou um relatório completo com todas as capturas de tela e resultados documentados.
+
+## Resultado Final
+
+O agente gerou automaticamente:
+
+- Screenshots organizadas
+- Relatório completo em markdown
+- Documentação de cada etapa
+- Status de sucesso/falha para cada estágio
+
+Tudo isso em menos de 2 minutos, sem intervenção manual!
+
+## Casos de Uso e Possibilidades
+
+A combinação de **MCP** com o **Claude Code** abre várias possibilidades:
+
+**Automação de Testes** se torna incrivelmente poderosa com essa abordagem. Você pode executar testes de regressão automatizados para fluxos críticos sem qualquer intervenção manual, validar elementos e layouts de interface automaticamente e simular interações realistas de usuários para testes de usabilidade.
+
+**Documentação Inteligente** é outro divisor de águas. O sistema pode capturar automaticamente screenshots organizadas para documentação de aplicativos, criar documentação detalhada de jornadas de usuário dentro de aplicações, gerar manuais técnicos com guias passo a passo e evidências visuais, e até realizar monitoramento periódico para verificar estados de aplicação.
+
+As possibilidades são praticamente infinitas -- qualquer necessidade envolvendo controle automatizado de dispositivos Android pode se beneficiar desta solução.
+
+## Configuração Rápida
+
+Começar é simples, você precisará do ADB instalado e configurado em seu sistema, um dispositivo Android conectado ou emulador em execução, e o Claude Code adequadamente configurado.
+
+Para instalar o MCP, adicione-o ao Claude Code com o comando `claude mcp add --scope project android-debug-bridge-mcp -- npx android-debug-bridge-mcp`.
+
+Em seguida, configure um agente personalizado com prompts específicos para seus casos de teste. Você pode encontrar minha configuração em: [app-tester.md](https://github.com/TiagoDanin/Android-Debug-Bridge-MCP/issues/4)
+
+Uma vez que tudo esteja configurado, você pode começar a executar testes usando comandos simples e diretos para iniciar a automação.
+
+## Conclusão
+
+O Claude Code, quando combinado com as ferramentas certas e instruções bem estruturadas, demonstra um potencial impressionante para automação. Este experimento representa apenas o início de uma exploração mais ampla -- há muito espaço para melhorias futuras.
+
+É importante reconhecer que para cenários mais complexos, a expertise de um QA profissional ainda é necessária. A automação com IA complementa, mas não substitui completamente, o conhecimento especializado em testes.
+
+Apesar das limitações, confesso que foi extremamente gratificante desenvolver esta solução. Ela não apenas atendeu ao meu objetivo inicial de documentar fluxos de aplicação, mas também abriu portas para novas possibilidades de automação que antes pareciam impraticáveis.
+
+O projeto continuará evoluindo, e espero trazer novos recursos no futuro.
+
+<YouTubeEmbed videoId="zp38frEGcPA" title="Criando um Agente de IA no Claude Code para Controlar meu Smartphone" />

@@ -22,12 +22,14 @@ const main = async (): Promise<void> => {
 
 	allProjects = uniqueProjects
 
-	fs.writeFile('src/data/github.json', JSON.stringify(allProjects, null, 4), (err: NodeJS.ErrnoException | null) => {
+	fs.mkdirSync('contents/github', { recursive: true })
+	fs.writeFile('contents/github/index.json', JSON.stringify(allProjects, null, 4), (err: NodeJS.ErrnoException | null) => {
 		if(err) {
 			return console.log(err);
 		}
 		return console.log('OK!')
 	})
+	process.stdout.write(JSON.stringify(allProjects, null, 4))
 }
 
 main()

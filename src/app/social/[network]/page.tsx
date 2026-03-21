@@ -1,4 +1,4 @@
-import contacts from '@/data/contacts.json';
+import { queryCollection } from 'nextjs-studio/server';
 import {
   ExternalLink,
   Home,
@@ -42,8 +42,9 @@ const iconMap: Record<string, LucideIcon> = {
   'ti-layout-tab': LayoutTemplate,
 };
 
-export async function generateMetadata({ params }: { params: { network: string } }) {
-  const contact = contacts.find(c => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
+export function generateMetadata({ params }: { params: { network: string } }) {
+  const contacts = queryCollection('contacts');
+  const contact = contacts.find((c) => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
   if (!contact) {
     return {
       title: 'Contact Not Found',
@@ -83,7 +84,8 @@ export async function generateMetadata({ params }: { params: { network: string }
 }
 
 export default function SocialContactPage({ params }: { params: { network: string } }) {
-  const contact = contacts.find(c => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
+  const contacts = queryCollection('contacts');
+  const contact = contacts.find((c) => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
   if (!contact) return notFound();
   const LucideIcon = iconMap[contact.icon] || Globe;
   return (
@@ -107,6 +109,7 @@ export default function SocialContactPage({ params }: { params: { network: strin
   );
 }
 
-export async function generateStaticParams() {
-  return contacts.map(contact => ({ network: contact.label.toLowerCase().replace(/\s+/g, '') }));
+export function generateStaticParams() {
+  const contacts = queryCollection('contacts');
+  return contacts.map((contact) => ({ network: contact.label.toLowerCase().replace(/\s+/g, '') }));
 } 

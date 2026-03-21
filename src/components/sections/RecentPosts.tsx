@@ -1,13 +1,23 @@
 "use client";
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Flag } from "lucide-react";
-import posts from "@/data/posts.json";
-import { Badge } from "@/components/ui/badge";
+import { ArrowRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Link from "next/link";
 
-export function RecentPosts() {
+interface PostsEntry {
+  date: string;
+  title: string;
+  description: string;
+  slug: string;
+  originalUrl: string;
+}
+
+interface RecentPostsProps {
+  posts: PostsEntry[];
+}
+
+export function RecentPosts({ posts }: RecentPostsProps) {
   const recentPosts = posts.slice(0, 4);
 
   return (
@@ -20,10 +30,6 @@ export function RecentPosts() {
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-2">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Recent Thoughts</h2>
-            <Badge variant="outline" className="flex items-center gap-1">
-              <Flag className="h-3 w-3" />
-              PT-BR
-            </Badge>
           </div>
           <p className="mt-4 text-sm sm:text-base text-muted-foreground">
             Some of my latest articles, insights, and ideas from the blog.

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Calendar } from 'lucide-react';
 
-import timelineData from "@/data/timeline.json";
+import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 
 type TimelineEvent = {
@@ -13,9 +13,10 @@ type TimelineEvent = {
   tags: string[];
 };
 
-export async function generateMetadata({ params }: { params: { year: string, slug: string } }): Promise<Metadata> {
+export function generateMetadata({ params }: { params: { year: string, slug: string } }): Metadata {
+  const timelineData = queryCollection('timeline');
   const { year, slug } = params;
-  
+
   const event = timelineData.find((item) => {
     const itemYear = item.date.toString();
     const itemSlug = titleToSlug(item.title);
@@ -56,13 +57,14 @@ export async function generateMetadata({ params }: { params: { year: string, slu
   };
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
+  const timelineData = queryCollection('timeline');
   const params: { year: string, slug: string }[] = [];
 
   timelineData.forEach((event) => {
     const year = event.date.toString();
     const slug = titleToSlug(event.title);
-    
+
     if (year && slug) {
       params.push({ year, slug });
     }
@@ -72,8 +74,9 @@ export async function generateStaticParams() {
 }
 
 export default function TimelineEventPage({ params }: { params: { year: string, slug: string } }) {
+  const timelineData = queryCollection('timeline');
   const { year, slug } = params;
-  
+
   const event = timelineData.find((item) => {
     const itemYear = item.date.toString();
     const itemSlug = titleToSlug(item.title);

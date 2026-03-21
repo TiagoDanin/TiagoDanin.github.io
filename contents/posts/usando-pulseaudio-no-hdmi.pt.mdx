@@ -1,0 +1,23 @@
+---
+title: "Usando PulseAudio no HDMI"
+date: "Feb 23, 2019"
+description: "Um guia prático sobre como configurar corretamente o PulseAudio para saída de áudio via HDMI no Linux."
+slug: "using-pulseaudio-on-hdmi"
+originalUrl: "https://dev.to/tiagodanin/usando-pulseaudio-no-hdmi-c3f"
+lang: "pt"
+tags: ["Tutorial", "UI/UX", "Linux", "Article"]
+---
+
+Depois que migrei para o PulseAudio tive um problema ao tentar usar o HDMI do notebook. Jogos, vídeos e músicas não estavam reproduzindo na saída do HDMI.
+
+## Solução
+
+Instalar o pavucontrol.
+
+```
+$ pacman -S pavucontrol
+```
+
+Depois podemos abrir o pavucontrol, navegue até onde tem seu dispositivo HDMI e clique no botão de ativar.
+
+Agora ele é o dispositivo padrão de saída de áudio. :)

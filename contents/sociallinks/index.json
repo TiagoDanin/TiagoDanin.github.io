@@ -1,0 +1,22 @@
+[
+  {
+    "label": "LinkedIn",
+    "url": "https://linkedin.com/in/tiagodanin",
+    "icon": "Linkedin"
+  },
+  {
+    "label": "Instagram",
+    "url": "https://instagram.com/tiagodanin",
+    "icon": "Instagram"
+  },
+  {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/channel/UCC2wpNWwPLPq0vjpOtGcajw",
+    "icon": "Youtube"
+  },
+  {
+    "label": "GitHub",
+    "url": "https://github.com/tiagodanin",
+    "icon": "Github"
+  }
+]

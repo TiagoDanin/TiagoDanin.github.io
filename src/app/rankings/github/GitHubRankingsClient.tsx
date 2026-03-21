@@ -6,7 +6,23 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Star, GitFork, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import githubData from "@/data/github.json";
+
+interface GitHubRepo {
+  id: number;
+  name: string;
+  description: string;
+  stargazers_count: number;
+  forks_count: number;
+  language: string;
+  homepage: string;
+  html_url: string;
+  size: number;
+  private: boolean;
+}
+
+interface GitHubRankingsClientProps {
+  githubData: GitHubRepo[];
+}
 
 interface AnimatedCounterProps {
   target: number;
@@ -52,7 +68,7 @@ function AnimatedCounter({ target, duration = 2000, formatNumber = true }: Anima
   );
 }
 
-export default function GitHubRankingsPage() {
+export default function GitHubRankingsClient({ githubData }: GitHubRankingsClientProps) {
   // Sort repositories by stars in descending order and take top 10
   const sortedRepos = [...githubData]
     .sort((a, b) => b.stargazers_count - a.stargazers_count)

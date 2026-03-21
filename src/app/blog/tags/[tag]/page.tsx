@@ -1,90 +1,59 @@
 import Link from "next/link";
-import posts from "@/data/posts.json";
+import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
-import { Tag, Video, ChevronLeft, Text, ArrowLeft } from "lucide-react";
+import { Tag, Video, Text, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { extractTagsFromPost, getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
+import { getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
 
-interface Post {
-  date: string;
-  title: string;
-  description: string;
-  slug: string;
-  originalUrl: string;
+function getPosts() {
+  return queryCollection('posts').where({ lang: 'en' });
 }
 
-export async function generateMetadata({ params }: { params: { tag: string } }) {
-  const tagName = decodeURIComponent(params.tag);
-
-  // Find the original tag name
-  const allTagsMap = new Map<string, string>();
-  posts.forEach(post => {
-    const tags = extractTagsFromPost(post.title, post.description);
-    tags.forEach(tag => {
-      allTagsMap.set(titleToSlug(tag), tag);
+function getAllTagsMap() {
+  const posts = getPosts();
+  const map = new Map<string, string>();
+  posts.forEach((post) => {
+    ((post.tags as string[]) || []).forEach((tag: string) => {
+      map.set(titleToSlug(tag), tag);
     });
   });
-  const originalTagName = allTagsMap.get(params.tag) || tagName;
+  return map;
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
+  const { tag: tagSlug } = await params;
+  const allTagsMap = getAllTagsMap();
+  const originalTagName = allTagsMap.get(tagSlug) || decodeURIComponent(tagSlug);
 
   return {
     title: `Posts tagged with "${originalTagName}"`,
-    description: `All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles in Portuguese (PT-BR).`,
-    keywords: ["blog", "tag", originalTagName, "software development", "articles", "pt-br"],
+    description: `All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles.`,
     alternates: {
-      canonical: `https://tiagodanin.com/blog/tags/${params.tag}`,
+      canonical: `https://tiagodanin.com/blog/tags/${tagSlug}`,
     },
     openGraph: {
       title: `Posts tagged with "${originalTagName}" - Tiago Danin`,
       description: `All blog posts tagged with "${originalTagName}"`,
-      url: `https://tiagodanin.com/blog/tags/${params.tag}`,
+      url: `https://tiagodanin.com/blog/tags/${tagSlug}`,
       type: "website",
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `Posts tagged "${originalTagName}" - Tiago Danin`,
-      description: `Blog posts about ${originalTagName}`,
     },
   };
 }
 
-export async function generateStaticParams() {
-  const allTags = new Set<string>();
-
-  posts.forEach(post => {
-    const tags = extractTagsFromPost(post.title, post.description);
-    tags.forEach(tag => allTags.add(titleToSlug(tag)));
-  });
-
-  return Array.from(allTags).map(tag => ({
-    tag: tag
-  }));
+export function generateStaticParams() {
+  const allTagsMap = getAllTagsMap();
+  return Array.from(allTagsMap.keys()).map(tag => ({ tag }));
 }
 
-const TagPage = async ({
-  params
-}: {
-  params: { tag: string }
-}) => {
-  const tagSlug = params.tag;
-  const tagName = decodeURIComponent(tagSlug);
+const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
+  const { tag: tagSlug } = await params;
+  const posts = getPosts();
+  const allTagsMap = getAllTagsMap();
+  const originalTagName = allTagsMap.get(tagSlug) || decodeURIComponent(tagSlug);
 
-  // Find the original tag name by matching slug
-  let originalTagName = tagName;
-  const allTagsMap = new Map<string, string>();
-
-  posts.forEach(post => {
-    const tags = extractTagsFromPost(post.title, post.description);
-    tags.forEach(tag => {
-      allTagsMap.set(titleToSlug(tag), tag);
-    });
-  });
-
-  originalTagName = allTagsMap.get(tagSlug) || tagName;
-
-  // Filter posts that have this tag
-  const taggedPosts = posts.filter(post => {
-    const postTags = extractTagsFromPost(post.title, post.description);
-    return postTags.some(tag => titleToSlug(tag) === tagSlug);
+  const taggedPosts = posts.filter((post) => {
+    const postTags = (post.tags as string[]) || [];
+    return postTags.some((tag: string) => titleToSlug(tag) === tagSlug);
   });
 
   const isYouTubePost = (url: string) => url.includes("youtube.com");
@@ -93,7 +62,6 @@ const TagPage = async ({
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": `Posts tagged with "${originalTagName}"`,
-    "description": `All blog posts tagged with "${originalTagName}"`,
     "url": `https://tiagodanin.com/blog/tags/${tagSlug}`,
     "blogPost": taggedPosts.map((post) => ({
       "@type": "BlogPosting",
@@ -101,13 +69,9 @@ const TagPage = async ({
       "description": post.description,
       "datePublished": toISODate(post.date),
       "url": `https://tiagodanin.com/post/${post.slug}`,
-      "inLanguage": "pt-BR",
+      "inLanguage": "en",
       "isAccessibleForFree": true,
-      "keywords": originalTagName,
-      "author": {
-        "@type": "Person",
-        "name": "Tiago Danin"
-      }
+      "author": { "@type": "Person", "name": "Tiago Danin" }
     }))
   };
 
@@ -126,13 +90,9 @@ const TagPage = async ({
           </div>
 
           <div className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <h1 className="text-3xl font-bold tracking-tight">Posts tagged with</h1>
-            </div>
+            <h1 className="text-3xl font-bold tracking-tight mb-4">Posts tagged with</h1>
             <div className="flex justify-center mb-4">
-              <Badge
-                className={`flex items-center gap-2 text-lg px-4 py-2 ${getRandomColorWithDarkMode(originalTagName)}`}
-              >
+              <Badge className={`flex items-center gap-2 text-lg px-4 py-2 ${getRandomColorWithDarkMode(originalTagName)}`}>
                 <Tag className="h-4 w-4" />
                 {originalTagName}
               </Badge>
@@ -145,9 +105,7 @@ const TagPage = async ({
 
         {taggedPosts.length === 0 ? (
           <div className="max-w-2xl mx-auto text-center py-16">
-            <p className="text-muted-foreground text-lg">
-              No posts found with this tag.
-            </p>
+            <p className="text-muted-foreground text-lg">No posts found with this tag.</p>
             <Button variant="outline" className="mt-4" asChild>
               <Link href="/blog">
                 <ArrowLeft className="h-4 w-4 mr-2" />
@@ -158,13 +116,11 @@ const TagPage = async ({
         ) : (
           <div className="max-w-2xl mx-auto space-y-16">
             {taggedPosts.map((post, index) => (
-              <article key={index} className="group relative flex flex-col items-start hover:shadow-lg">
-                <Link href={`/post/${post.slug}`} className="absolute inset-0 z-10">
-                  <span className="sr-only">Read {post.title}</span>
-                </Link>
-                <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
+              <article key={index} className="group relative flex flex-col items-start cursor-pointer">
+                <Link href={`/post/${post.slug}`} className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-6" aria-label={`Read ${post.title}`} />
+                <div className="absolute -inset-x-4 -inset-y-6 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl pointer-events-none" />
 
-                <div className="relative z-10 order-first mb-3 flex items-center gap-2">
+                <div className="relative pointer-events-none order-first mb-3 flex items-center gap-2">
                   <time className="flex items-center text-sm text-zinc-400 pl-3.5">
                     <span className="absolute inset-y-0 left-0 flex items-center">
                       <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
@@ -184,65 +140,32 @@ const TagPage = async ({
                   )}
                 </div>
 
-                <h2 className="relative z-10 text-base font-semibold tracking-tight">
-                  <Link href={`/post/${post.slug}`} className="relative z-10">
-                    <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
-                    {post.title}
-                  </Link>
+                <h2 className="relative pointer-events-none text-base font-semibold tracking-tight">
+                  {post.title}
                 </h2>
 
-                <p className="relative z-10 mt-2 text-sm text-zinc-600">
-                  <Link href={`/post/${post.slug}`} className="relative z-10">
-                    {post.description}
-                  </Link>
+                <p className="relative pointer-events-none mt-2 text-sm text-zinc-600">
+                  {post.description}
                 </p>
 
-                <div className="relative z-10 mt-3 flex flex-wrap gap-2">
-                  {extractTagsFromPost(post.title, post.description).map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="outline"
-                      className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
-                    >
-                      <Link href={`/blog/tags/${titleToSlug(tag)}`}>
+                <div className="relative z-10 mt-3 flex flex-wrap gap-2 pointer-events-auto">
+                  {((post.tags as string[]) || []).map((tag: string) => (
+                    <Link key={tag} href={`/blog/tags/${titleToSlug(tag)}`}>
+                      <Badge
+                        variant="outline"
+                        className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
+                      >
                         {tag}
-                      </Link>
-                    </Badge>
+                      </Badge>
+                    </Link>
                   ))}
                 </div>
 
-                <div className="relative z-10 mt-4 flex items-center text-sm font-medium text-primary">
-                  {isYouTubePost(post.originalUrl) ? (
-                    <div className="flex gap-4">
-                      <Link
-                        href={`/post/${post.slug}`}
-                        className="flex items-center hover:underline"
-                      >
-                        Read article
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
-                          <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </Link>
-                      <Link
-                        href={post.originalUrl}
-                        className="flex items-center text-red-600 dark:text-red-400 hover:underline z-20"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Video className="h-4 w-4 mr-1" />
-                        Watch on YouTube
-                      </Link>
-                    </div>
-                  ) : (
-                    <>
-                      Read article
-                      <Link href={`/post/${post.slug}`} className="relative z-10">
-                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
-                          <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </Link>
-                    </>
-                  )}
+                <div className="relative pointer-events-none mt-4 flex items-center text-sm font-medium text-primary">
+                  Read article
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
+                    <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
               </article>
             ))}

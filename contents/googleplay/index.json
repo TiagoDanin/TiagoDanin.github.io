@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Virtual Pocket Air Conditioning",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning",
+		"description": "Virtual air conditioning in your pocket, this relaxing sound will provide better night's sleep."
+	}, {
+		"name": "Emoji Memory Jetpack",
+		"description": "Match similar emojis. Game open-source built with Android Jetpack Compose."
+	}, {
+		"name": "The Slime Dungeon",
+		"description": "You are stuck with adorable creatures (slimes).  How long can you survive?"
+	}, {
+		"name": "Petmob",
+		"description": "[Pt-br] Encontre o melhor cuidado para o seu pet, ou seja, um prestador de serviço e ganhe uma renda extra"
+	}
+]

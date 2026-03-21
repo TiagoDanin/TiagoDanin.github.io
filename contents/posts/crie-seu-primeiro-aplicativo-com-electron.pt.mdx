@@ -1,0 +1,94 @@
+---
+title: "Crie seu primeiro aplicativo com Electron"
+date: "Mar 2, 2018"
+description: "Um guia passo a passo para criar sua primeira aplicação desktop usando Electron e JavaScript."
+slug: "create-your-first-app-with-electron"
+originalUrl: "https://dev.to/tiagodanin/crie-seu-primeiro-aplicativo-com-electron-14o6"
+lang: "pt"
+tags: ["JavaScript", "Mobile", "Tutorial", "UI/UX", "Article"]
+---
+
+## Historia do Electron
+
+Electron inicialmente chamava-se Atom Shell, pois era o "núcleo" do Atom (Editor de código) desenvolvido pelo Github, começou em Abril de 2013. Seu código fonte foi disponibilizado em Maio de 2014 e em Abril de 2015 ele foi renomeado para Electron, sendo uma ótima escolha de nome.
+
+## Motivos para usar Electron
+
+*   Usar o que tem de melhor do V8 e NodeJS.
+*   Suporte ao principais sistema operacionais (macOS, Linux, Windows).
+*   Capacidade de usar funções nativa do sistema, como exibição de notificações.
+*   Grande empresas fazem seu uso como Spotify, Microsoft e Docker.
+*   Você pode publicar seu aplicativo em lojas como Microsoft Stote, Mac App Store e Ubuntu Store.
+
+## Instalado o Electron
+
+1.  Primeiramente vamos criar uma pasta para nosso aplicativo.
+
+```
+$ git clone https://github.com/electron/electron-quick-start NossoApp
+```
+
+2.  E em seguida a instalação do NodeJS e NPM [veja aqui](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+3.  Vamos editar o package.json.
+
+4.  Instalando o Electron via npm.
+
+```
+$ npm install
+# ou no modo global
+$ npm install -g electron
+```
+
+5.  Abra o projeto com seu editor favorito (O meu é o Atom).
+
+## Começado a criar seu aplicativo
+
+Vamos ver o `main.js`.
+
+Função acima criar uma janela com 800x600 de dimensão e faz o carregamento do nosso index.html.
+
+Caso você execute o comando electron na pasta `NossoAPP`.
+
+```
+$ electron .
+```
+
+Uma janela com o conteúdo do index.html será carregada, é bem semelhante ao funcionamento de um site...
+
+**Note:** o index.html faz requirimento do `renderer.js`. Logo o mesmo é processado pelo Electron.
+
+Agora vamos refatora usado um pacotes feito para NodeJS. Para esse exemplo vou usar um dos meus, o jformat.
+
+```
+$ npm install jformat
+```
+
+Editando o index.js e renderer.js.
+
+Veja que eu fiz isso para obter o mesmo resultado da nossa primeira execução, no entanto agora estamos usado o poder do NodeJS.
+
+No front-end eu costumo usar algumas dessas frameworks:
+
+*   Onsen UI
+*   WinJS
+*   UIKit
+
+## Dicas
+
+JQuery no Electron.
+
+Caso abra o terminal de desenvolvendo no Electron app e digita "$", vamos ter um resultado tipo esse:
+Solução: Importe o jQuery usando o window.$
+
+```
+window.$ = require("./jquery-3.min.js")
+```
+
+Trocando de nome a janela. A tag no HTML pode alterar o nome, mas há um outro modo de fazer isso usando NodeJS:
+
+```
+require('electron').app.setName('Nome do meu APP')
+```
+
+Documentação do Electron é bem detalhada e tem sendo traduzida para outra linguagem. Veja electronjs.org/docs

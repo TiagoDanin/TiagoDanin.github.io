@@ -1,0 +1,358 @@
+---
+title: "Aprimorando a Experiência do Usuário com Teclados no iOS usando Keyboard Actions"
+date: "Mar 13, 2025"
+description: "Você nunca mais vai lutar contra o Teclado do iOS no Flutter! Veja como resolver um problema comum em aplicativos mobile para iOS que é…"
+slug: "enhancing-user-experience-with-keyboards-on-ios-using-keyboard-actions"
+originalUrl: "https://medium.com/idopterlabs/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions-5f077dd5a1d2"
+lang: "pt"
+tags: ["Flutter", "iOS", "AI", "Mobile", "UI/UX", "Article"]
+---
+
+![Aprimorando teclados no iOS com Keyboard Actions](/images/posts/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions/cover.png)
+
+## Resumo
+
+Neste artigo, vamos explorar como resolvemos um problema comum em aplicativos mobile para iOS: a ausência do botão "Done" (Concluído) e "Next" (Próximo) no teclado numérico do iOS, e também falaremos sobre como implementamos uma solução elegante utilizando o pacote **keyboard_actions**.
+
+## O Problema do Teclado iOS
+
+Desenvolvedores de aplicativos mobile frequentemente enfrentam um desafio frustrante ao trabalhar com teclados no iOS, especialmente com teclado numérico, que é um **teclado sem botões de ação** que ajudam no fluxo de navegação entre os campos de um formulário.
+
+Este problema torna-se particularmente irritante quando:
+
+1. Os usuários precisam preencher formulários com múltiplos campos numéricos;
+2. A navegação entre campos se torna difícil sem uma maneira clara de finalizar a entrada;
+3. A experiência do usuário é prejudicada, especialmente em aplicativos com muita entrada de dados;
+4. Dificuldade para fechar o teclado após a digitação.
+
+Nos deparamos com esse problema durante o desenvolvimento de um aplicativo financeiro onde os usuários precisavam inserir valores em vários campos numéricos. A ausência de uma forma intuitiva de concluir a entrada e navegar entre campos estava causando atritos na experiência do usuário.
+
+## A Solução: Keyboard Actions
+
+![Keyboard Actions - barra de ações personalizada no teclado iOS](/images/posts/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions/keyboard-actions.png)
+
+Encontramos uma solução robusta utilizando o pacote **keyboard_actions**. Esta biblioteca nos permitiu criar uma barra de ações personalizada que flutua sobre o teclado, oferecendo botões de navegação e um botão "Done" (Concluir) explícito.
+
+Primeiro precisamos adicionar a dependência ao nosso projeto. No arquivo **pubspec.yaml**:
+
+```dart
+dependencies:
+  flutter:
+    sdk: flutter
+  keyboard_actions: ^4.2.0  # Versão no momento da criação deste post
+```
+
+Antes de criar nossa solução encapsulada, vamos entender como o pacote **keyboard_actions** funciona diretamente. Veja como seria a implementação básica para um formulário simples:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
+// ... //
+class _FormularioBasicoScreenState extends State<FormularioBasicoScreen> {
+  final FocusNode _valorFocusNode = FocusNode();
+  final FocusNode _quantidadeFocusNode = FocusNode();
+  final FocusNode _observacaoFocusNode = FocusNode();
+
+  final TextEditingController _valorController = TextEditingController();
+  final TextEditingController _quantidadeController = TextEditingController();
+  final TextEditingController _observacaoController = TextEditingController();
+
+  KeyboardActionsConfig _buildConfig(BuildContext context) {
+    return KeyboardActionsConfig(
+      keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
+      keyboardBarColor: Colors.grey[200],
+      nextFocus: true,
+      actions: [
+        KeyboardActionsItem(
+          focusNode: _valorFocusNode,
+          displayArrows: true,
+          displayDoneButton: false,
+          toolbarButtons: [
+            (node) {
+              return GestureDetector(
+                onTap: () => _quantidadeFocusNode.requestFocus(),
+                child: Text("NEXT"),
+              );
+            },
+          ],
+        ),
+        KeyboardActionsItem(
+          focusNode: _quantidadeFocusNode,
+          displayArrows: true,
+          displayDoneButton: false,
+          toolbarButtons: [
+            (node) {
+              return GestureDetector(
+                onTap: () => _observacaoFocusNode.requestFocus(),
+                child: Text("NEXT"),
+              );
+            },
+          ],
+        ),
+        KeyboardActionsItem(
+          focusNode: _observacaoFocusNode,
+          displayArrows: true,
+          displayDoneButton: false,
+          toolbarButtons: [
+            (node) {
+              return GestureDetector(
+                onTap: () => _submitForm(),
+                child: Text("DONE"),
+              );
+            },
+          ],
+        ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Formulário Básico")),
+      body: KeyboardActions(
+        config: _buildConfig(context),
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextFormField(
+                focusNode: _valorFocusNode,
+                controller: _valorController,
+                decoration: InputDecoration(labelText: "Valor"),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+              ),
+              // ... //
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+Como podemos ver, essa abordagem básica funciona, mas apresenta vários problemas:
+
+1. **Código repetitivo**: Precisamos definir manualmente cada botão ("Next" e "Done") da barra de ferramentas para cada campo.
+2. **Difícil manutenção**: Se adicionarmos ou removermos campos, precisamos refazer manualmente todas as conexões entre focus nodes.
+3. **Falta de reutilização**: A lógica de navegação entre campos precisa ser reimplementada em cada formulário do aplicativo.
+4. **Consistência visual**: É difícil garantir que a aparência dos botões seja consistente em todos os formulários.
+5. **Complexidade crescente**: A complexidade aumenta exponencialmente com o número de campos no formulário.
+
+## Por que Encapsular?
+
+Diante desses desafios, decidimos encapsular a lógica do **keyboard_actions** em uma classe, isso nos proporcionou diversos benefícios:
+
+1. **Reutilização de código**: Podemos usar a mesma solução em todos os formulários do aplicativo.
+2. **Manutenção simplificada**: Atualizações na interface do teclado são feitas em um único lugar.
+3. **Consistência visual**: Garantimos que todos os formulários tenham a mesma aparência e comportamento.
+4. **Facilidade de uso**: Reduzimos a quantidade de código boilerplate necessário para implementar a barra de ferramentas do teclado.
+5. **Adaptabilidade**: Nossa solução se adapta automaticamente ao número de campos do formulário.
+
+Em seguida, desenvolvemos um controlador reutilizável para gerenciar as ações do teclado consistentemente em todo o aplicativo. Esse controlador se tornou um componente crucial que agora usamos em todos os nossos formulários.
+
+## Implementado o Keyboard Actions Controller
+
+Criamos uma classe utilitária chamada **KeyboardActionsController** que encapsula toda a lógica necessária para configurar a barra de ações personalizada. Esta classe gera configurações para o widget **KeyboardActions** com base em uma lista de nós de foco e um callback para quando o usuário finaliza a entrada.
+
+```dart
+import "package:flutter/material.dart";
+import "package:keyboard_actions/keyboard_actions.dart";
+
+class KeyboardActionsController {
+  static List<KeyboardActionsItem> _buildKeyboardItems(
+    BuildContext context,
+    List<FocusNode> focusNodesSteps,
+    VoidCallback? doneCallback,
+  ) {
+    return List.generate(
+      focusNodesSteps.length,
+      (index) {
+        void previousStep() {
+          focusNodesSteps[index - 1].requestFocus();
+        }
+
+        void nextStep() {
+          focusNodesSteps[index + 1].requestFocus();
+        }
+
+        void doneStep() {
+          focusNodesSteps[index].unfocus();
+          doneCallback?.call();
+        }
+
+        return KeyboardActionsItem(
+          focusNode: focusNodesSteps[index],
+          displayDoneButton: false,
+          displayArrows: false,
+          toolbarButtons: [
+            (node) {
+              return IconButton(
+                icon: const Icon(Icons.close),
+                tooltip: "Close",
+                iconSize: IconTheme.of(context).size,
+                color: IconTheme.of(context).color,
+                onPressed: node.unfocus,
+              );
+            },
+            (_) {
+              return IconButton(
+                icon: const Icon(Icons.keyboard_arrow_up),
+                tooltip: "Previous",
+                iconSize: IconTheme.of(context).size,
+                color: IconTheme.of(context).color,
+                disabledColor: Theme.of(context).disabledColor,
+                onPressed: index > 0 ? previousStep : null,
+              );
+            },
+            (_) {
+              return IconButton(
+                icon: const Icon(Icons.keyboard_arrow_down),
+                tooltip: "Next",
+                iconSize: IconTheme.of(context).size,
+                color: IconTheme.of(context).color,
+                disabledColor: Theme.of(context).disabledColor,
+                onPressed: index < focusNodesSteps.length - 1 ? nextStep : null,
+              );
+            },
+            (_) => const Spacer(),
+            (node) {
+              return Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: TextButton(
+                  onPressed:
+                      index < focusNodesSteps.length - 1 ? nextStep : doneStep,
+                  child: Text(
+                    index < focusNodesSteps.length - 1 ? "NEXT" : "DONE",
+                    style: TextStyle(
+                      color: IconTheme.of(context).color,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ],
+        );
+      },
+    );
+  }
+
+  static KeyboardActionsConfig buildConfigKeyboardActions({
+    required BuildContext context,
+    required List<FocusNode> focusNodesSteps,
+    VoidCallback? doneCallback,
+  }) {
+    return KeyboardActionsConfig(
+      keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
+      keyboardBarColor: Colors.grey[200],
+      nextFocus: true,
+      actions: _buildKeyboardItems(context, focusNodesSteps, doneCallback),
+    );
+  }
+}
+```
+
+## Implementação em um Caso Real
+
+Em nosso aplicativo financeiro, implementamos esta solução em um formulário de criação de alertas de preço para ações. Veja como integramos o **KeyboardActionsController** no fluxo real:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
+import 'keyboard_actions_controller.dart';
+
+// Controladores para os campos de texto
+final TextEditingController valorController = TextEditingController();
+final TextEditingController quantidadeController = TextEditingController();
+final TextEditingController observacaoController = TextEditingController();
+
+// FocusNodes para cada campo de texto
+final List<FocusNode> focusNodes = List.generate(3, (_) => FocusNode());
+
+void submitForm() {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text("Formulário enviado com sucesso!"),
+      duration: Duration(seconds: 2),
+    ),
+  );
+}
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: KeyboardActions(
+      config: KeyboardActionsController.buildConfigKeyboardActions(
+        context: context,
+        focusNodesSteps: focusNodes,
+        doneCallback: submitForm,
+      ),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 24),
+            TextFormField(
+              focusNode: focusNodes[0],
+              controller: valorController,
+              decoration: const InputDecoration(
+                hintText: "Digite o valor",
+              ),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              textInputAction: TextInputAction.next,
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              focusNode: focusNodes[1],
+              controller: quantidadeController,
+              decoration: const InputDecoration(
+                hintText: "Digite a quantidade",
+              ),
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              textInputAction: TextInputAction.next,
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              focusNode: focusNodes[2],
+              controller: observacaoController,
+              decoration: const InputDecoration(
+                hintText: "Digite uma observação",
+              ),
+              textInputAction: TextInputAction.done,
+            ),
+            const SizedBox(height: 24),
+            Center(
+              child: ElevatedButton(
+                onPressed: submitForm,
+                child: const Text("ENVIAR FORMULÁRIO"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+```
+
+Implementação completa em [github.com/TiagoDanin/keyboard_actions_example](https://github.com/TiagoDanin/keyboard_actions_example/blob/main/lib/custom_keyboad_actions_example.dart).
+
+## Resultados Obtidos
+
+![Demo do comportamento do teclado no iOS com Keyboard Actions](/images/posts/aprimorando-a-experiencia-do-usuario-com-teclados-no-ios-usando-keyboard-actions/demo.gif)
+
+Após implementar esta solução, observamos melhorias significativas na experiência do usuário:
+
+1. A navegação intuitiva entre campos acelerou o processo de entrada de dados;
+2. Usuários de Android e iOS agora têm uma experiência uniforme, independentemente das diferenças nativas dos teclados;
+3. Permite fechar o teclado após a digitação.
+
+A chave para o sucesso é a configuração correta dos **FocusNodes** e a personalização dos botões da barra de ferramentas. Em nosso controlador, os botões de navegação são habilitados ou desabilitados de forma inteligente com base na posição atual do foco.
+
+## Conclusão
+
+A experiência do usuário em aplicativos móveis muitas vezes é determinada por detalhes aparentemente pequenos, como a facilidade de preenchimento de formulários. Nosso **KeyboardActionsController** resolveu um problema específico do iOS que estava prejudicando a experiência dos usuários de nossos aplicativos mobile em Flutter.
+
+Esta solução demonstra como podemos superar as limitações das plataformas nativas enquanto mantemos uma experiência de usuário consistente e de alta qualidade em todos os dispositivos. O código que compartilhamos é flexível e adaptável para diferentes projetos e cenários, o que o torna uma ferramenta valiosa no kit de desenvolvimento Flutter de qualquer equipe.
