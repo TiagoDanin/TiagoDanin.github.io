@@ -47,8 +47,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export function generateStaticParams() {
   const posts = queryCollection('posts').where({ lang: 'en' });
   return posts
-    .filter((post) => postHasLocale(post.slug, 'pt'))
-    .map((post) => ({
+    .filter((post: { slug: string; }) => postHasLocale(post.slug, 'pt'))
+    .map((post: { slug: string; }) => ({
       slug: post.slug,
     }));
 }
@@ -115,15 +115,15 @@ export default async function PostPt({ params }: { params: Promise<{ slug: strin
                 PT
               </Badge>
             </div>
-
-            {/* Giscus Comments */}
-            <GiscusComments term={`${post.slug}-pt`} />
           </header>
 
           {/* MDX Content */}
           <div className="prose prose-zinc max-w-none">
             {mdxContent}
           </div>
+
+          {/* Giscus Comments */}
+          <GiscusComments term={`${post.slug}-pt`} />
 
           {/* Original article link */}
           {post.originalUrl && (

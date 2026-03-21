@@ -324,8 +324,35 @@ export interface WorkEntry {
   description: string;
 }
 
-// Augment the nextjs-studio module so queryCollection() is fully typed.
+// Augment both entry points so queryCollection() is fully typed regardless of import path.
 declare module 'nextjs-studio' {
+  interface CollectionTypeMap {
+    "about": AboutEntry;
+    "atom": AtomEntry;
+    "aur": AurEntry;
+    "contacts": ContactsEntry;
+    "expertise": ExpertiseEntry;
+    "github": GithubEntry;
+    "googleplay": GoogleplayEntry;
+    "links": LinksEntry;
+    "luarocks": LuarocksEntry;
+    "menu": MenuEntry;
+    "npm": NpmEntry;
+    "offline": OfflineEntry;
+    "posts": PostsEntry;
+    "private": PrivateEntry;
+    "projects": ProjectsEntry;
+    "pypi": PypiEntry;
+    "skills": SkillsEntry;
+    "sociallinks": SociallinksEntry;
+    "talks": TalksEntry;
+    "timeline": TimelineEntry;
+    "volunteer": VolunteerEntry;
+    "windows": WindowsEntry;
+    "work": WorkEntry;
+  }
+}
+declare module 'nextjs-studio/server' {
   interface CollectionTypeMap {
     "about": AboutEntry;
     "atom": AtomEntry;

@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export function generateStaticParams() {
   const posts = queryCollection('posts').where({ lang: 'en' });
-  return posts.map((post) => ({
+  return posts.map((post: { slug: string; }) => ({
     slug: post.slug,
   }));
 }

@@ -1,8 +1,4 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-
-const POSTS_DIR = path.join(process.cwd(), 'contents', 'posts');
+import { queryCollection } from 'nextjs-studio/server';
 
 export interface PostContent {
   title: string;
@@ -15,28 +11,26 @@ export interface PostContent {
 }
 
 export function getPostBySlug(slug: string, lang: string = 'en'): PostContent | null {
-  const suffix = lang === 'en' ? '' : `.${lang}`;
-  const filename = `${slug}${suffix}.mdx`;
-  const filepath = path.join(POSTS_DIR, filename);
-
-  if (!fs.existsSync(filepath)) return null;
-
-  const raw = fs.readFileSync(filepath, 'utf-8');
-  const { data, content } = matter(raw);
+  const query = lang === 'en'
+    ? queryCollection('posts').where({ slug, lang: 'en' })
+    : queryCollection('posts').locale(lang).where({ slug });
+  const post = query.first();
+  if (!post) return null;
 
   return {
-    title: data.title || '',
-    date: data.date || '',
-    description: data.description || '',
-    slug: data.slug || slug,
-    originalUrl: data.originalUrl || '',
-    lang: data.lang || lang,
-    body: content.trim(),
+    title: post.title,
+    date: post.date,
+    description: post.description,
+    slug: post.slug,
+    originalUrl: post.originalUrl,
+    lang: post.lang,
+    body: post.body ?? '',
   };
 }
 
 export function postHasLocale(slug: string, lang: string): boolean {
-  const suffix = lang === 'en' ? '' : `.${lang}`;
-  const filename = `${slug}${suffix}.mdx`;
-  return fs.existsSync(path.join(POSTS_DIR, filename));
+  if (lang === 'en') {
+    return queryCollection('posts').where({ slug, lang: 'en' }).count() > 0;
+  }
+  return queryCollection('posts').locale(lang).where({ slug }).count() > 0;
 }
