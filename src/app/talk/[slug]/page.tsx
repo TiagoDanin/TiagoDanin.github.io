@@ -7,9 +7,9 @@ import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 import { Button } from '@/components/ui/button';
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const talks = queryCollection('talks');
-  const { slug } = params;
+  const { slug } = await params;
 
   const talk = talks.find((item) => {
     const itemSlug = titleToSlug(item.title);
@@ -95,9 +95,9 @@ export function generateStaticParams() {
   return params;
 }
 
-export default function TalkPage({ params }: { params: { slug: string } }) {
+export default async function TalkPage({ params }: { params: Promise<{ slug: string }> }) {
   const talks = queryCollection('talks');
-  const { slug } = params;
+  const { slug } = await params;
 
   const talk = talks.find((item) => {
     const itemSlug = titleToSlug(item.title);

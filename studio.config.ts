@@ -114,12 +114,12 @@ const config: StudioConfig = {
     },
     github: {
       scripts: {
-        sync: "tsx scripts/getProjectsGithub.ts",
+        sync: "tsx scripts/getProjectsGithub.ts --output-terminal",
       },
     },
     npm: {
       scripts: {
-        sync: "tsx scripts/getProjectsNPM.ts",
+        sync: "tsx scripts/getProjectsNPM.ts --output-terminal",
       },
     },
   },

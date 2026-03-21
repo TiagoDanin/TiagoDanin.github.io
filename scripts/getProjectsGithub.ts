@@ -29,7 +29,9 @@ const main = async (): Promise<void> => {
 		}
 		return console.log('OK!')
 	})
-	process.stdout.write(JSON.stringify(allProjects, null, 4))
+	if (process.argv.includes('--output-terminal')) {
+		process.stdout.write(JSON.stringify(allProjects, null, 4))
+	}
 }
 
 main()

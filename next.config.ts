@@ -32,10 +32,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
+typescript: {
     ignoreBuildErrors: true,
   },
   poweredByHeader: false,

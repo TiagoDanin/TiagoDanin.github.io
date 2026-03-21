@@ -21,7 +21,9 @@ console.log('Get npm packages');
 			}
 			return console.log('OK!');
 		});
-		process.stdout.write(JSON.stringify(uniquePackages, null, 4));
+		if (process.argv.includes('--output-terminal')) {
+			process.stdout.write(JSON.stringify(uniquePackages, null, 4));
+		}
 	} catch (err) {
 		console.error(err);
 	}

@@ -56,9 +56,9 @@ const urlPrefixMap: Record<string, string> = {
 
 type ProjectType = string;
 
-export function generateMetadata({ params }: { params: { type: ProjectType, slug: string } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ type: ProjectType, slug: string }> }): Promise<Metadata> {
   const projectsMap = getProjectsMap();
-  const { type, slug } = params;
+  const { type, slug } = await params;
 
   const projects = projectsMap[type] || [];
   const project = projects.find((p) => 
@@ -174,9 +174,9 @@ export function generateStaticParams() {
   return params;
 }
 
-export default function ProjectPage({ params }: { params: { type: ProjectType, slug: string } }) {
+export default async function ProjectPage({ params }: { params: Promise<{ type: ProjectType, slug: string }> }) {
   const projectsMap = getProjectsMap();
-  const { type, slug } = params;
+  const { type, slug } = await params;
 
   const projects = projectsMap[type] || [];
   const project = projects.find((p) => 

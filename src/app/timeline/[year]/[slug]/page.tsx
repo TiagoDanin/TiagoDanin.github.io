@@ -13,9 +13,9 @@ type TimelineEvent = {
   tags: string[];
 };
 
-export function generateMetadata({ params }: { params: { year: string, slug: string } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ year: string, slug: string }> }): Promise<Metadata> {
   const timelineData = queryCollection('timeline');
-  const { year, slug } = params;
+  const { year, slug } = await params;
 
   const event = timelineData.find((item) => {
     const itemYear = item.date.toString();
@@ -73,9 +73,9 @@ export function generateStaticParams() {
   return params;
 }
 
-export default function TimelineEventPage({ params }: { params: { year: string, slug: string } }) {
+export default async function TimelineEventPage({ params }: { params: Promise<{ year: string, slug: string }> }) {
   const timelineData = queryCollection('timeline');
-  const { year, slug } = params;
+  const { year, slug } = await params;
 
   const event = timelineData.find((item) => {
     const itemYear = item.date.toString();

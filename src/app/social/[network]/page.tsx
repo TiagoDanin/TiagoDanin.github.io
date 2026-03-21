@@ -42,9 +42,10 @@ const iconMap: Record<string, LucideIcon> = {
   'ti-layout-tab': LayoutTemplate,
 };
 
-export function generateMetadata({ params }: { params: { network: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ network: string }> }) {
+  const { network } = await params;
   const contacts = queryCollection('contacts');
-  const contact = contacts.find((c) => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
+  const contact = contacts.find((c) => c.label.toLowerCase().replace(/\s+/g, '') === network.toLowerCase());
   if (!contact) {
     return {
       title: 'Contact Not Found',
@@ -63,7 +64,7 @@ export function generateMetadata({ params }: { params: { network: string } }) {
     description: description,
     keywords: ['social media', 'contact', contact.label, 'profile', 'Tiago Danin'],
     alternates: {
-      canonical: `https://tiagodanin.com/social/${params.network}`,
+      canonical: `https://tiagodanin.com/social/${network}`,
     },
     robots: {
       index: true,
@@ -83,9 +84,10 @@ export function generateMetadata({ params }: { params: { network: string } }) {
   };
 }
 
-export default function SocialContactPage({ params }: { params: { network: string } }) {
+export default async function SocialContactPage({ params }: { params: Promise<{ network: string }> }) {
+  const { network } = await params;
   const contacts = queryCollection('contacts');
-  const contact = contacts.find((c) => c.label.toLowerCase().replace(/\s+/g, '') === params.network.toLowerCase());
+  const contact = contacts.find((c) => c.label.toLowerCase().replace(/\s+/g, '') === network.toLowerCase());
   if (!contact) return notFound();
   const LucideIcon = iconMap[contact.icon] || Globe;
   return (
