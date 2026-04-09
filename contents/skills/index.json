@@ -3,48 +3,48 @@
     "category": "Mobile Development",
     "items": [
       { "name": "Flutter", "icon": "SiFlutter", "color": "#02569B" },
-      { "name": "React Native", "icon": "SiReact", "color": "#0096b9" },
-      { "name": "Xamarin", "icon": "FaMicrosoft", "color": "#3498DB" },
-      { "name": "Java", "icon": "FaJava", "color": "#d55a02" },
+      { "name": "React Native", "icon": "SiReact", "color": "#007F9D" },
+      { "name": "Xamarin", "icon": "FaMicrosoft", "color": "#287AB1" },
+      { "name": "Java", "icon": "FaJava", "color": "#C25202" },
       { "name": "Kotlin", "icon": "SiKotlin", "color": "#7F52FF" },
-      { "name": "Obj-C", "icon": "FaCode", "color": "#438EFF" },
-      { "name": "Swift", "icon": "SiSwift", "color": "#F05138" },
-      { "name": "SwiftUI", "icon": "SiSwift", "color": "#007AFF" },
+      { "name": "Obj-C", "icon": "FaCode", "color": "#3573D0" },
+      { "name": "Swift", "icon": "SiSwift", "color": "#CE442F" },
+      { "name": "SwiftUI", "icon": "SiSwift", "color": "#0070EB" },
       { "name": "Jetpack Compose", "icon": "SiKotlin", "color": "#7F52FF" },
-      { "name": "Ionic", "icon": "SiIonic", "color": "#3880FF" }
+      { "name": "Ionic", "icon": "SiIonic", "color": "#3070E0" }
     ]
   },
   {
     "category": "DevOps",
     "items": [
-      { "name": "Firebase", "icon": "SiFirebase", "color": "#ff2300" },
-      { "name": "GitLab CI/CD", "icon": "SiGitlab", "color": "#FC6D26" },
+      { "name": "Firebase", "icon": "SiFirebase", "color": "#E41E00" },
+      { "name": "GitLab CI/CD", "icon": "SiGitlab", "color": "#C1521B" },
       { "name": "GitHub CI/CD", "icon": "SiGithub", "color": "#181717" },
       { "name": "Azure", "icon": "FaMicrosoft", "color": "#0078D4" },
-      { "name": "Google Cloud", "icon": "SiGooglecloud", "color": "#4285F4" },
-      { "name": "Docker", "icon": "SiDocker", "color": "#2496ED" }
+      { "name": "Google Cloud", "icon": "SiGooglecloud", "color": "#3872D2" },
+      { "name": "Docker", "icon": "SiDocker", "color": "#1B78BF" }
     ]
   },
   {
     "category": "Soft Skills",
     "items": [
-      { "name": "Leadership", "icon": "Users", "color": "#8B5CF6" },
-      { "name": "Team Management", "icon": "Target", "color": "#3B82F6" },
-      { "name": "Problem Solving", "icon": "Brain", "color": "#10B981" },
-      { "name": "Communication", "icon": "MessageCircle", "color": "#6366F1" },
+      { "name": "Leadership", "icon": "Users", "color": "#8357E9" },
+      { "name": "Team Management", "icon": "Target", "color": "#3371D8" },
+      { "name": "Problem Solving", "icon": "Brain", "color": "#08855B" },
+      { "name": "Communication", "icon": "MessageCircle", "color": "#6063EB" },
       { "name": "Organization", "icon": "Calendar", "color": "#e11d48" }
     ]
   },
   {
     "category": "Frontend",
     "items": [
-      { "name": "HTML", "icon": "SiHtml5", "color": "#E34F26" },
+      { "name": "HTML", "icon": "SiHtml5", "color": "#CD4621" },
       { "name": "CSS", "icon": "SiCss3", "color": "#264DE4" },
-      { "name": "JavaScript", "icon": "SiJavascript", "color": "#B8860B" },
+      { "name": "JavaScript", "icon": "SiJavascript", "color": "#976D07" },
       { "name": "TypeScript", "icon": "SiTypescript", "color": "#3178C6" },
-      { "name": "React", "icon": "SiReact", "color": "#20A7C7" },
-      { "name": "Vue.js", "icon": "SiVuedotjs", "color": "#4FC08D" },
-      { "name": "Tailwind", "icon": "SiTailwindcss", "color": "#0891B2" }
+      { "name": "React", "icon": "SiReact", "color": "#167F97" },
+      { "name": "Vue.js", "icon": "SiVuedotjs", "color": "#33825E" },
+      { "name": "Tailwind", "icon": "SiTailwindcss", "color": "#067F9C" }
     ]
   },
   {

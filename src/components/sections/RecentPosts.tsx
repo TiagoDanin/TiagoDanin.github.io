@@ -70,9 +70,9 @@ export function RecentPosts({ posts }: RecentPostsProps) {
                       <Link
                         href={`/post/${post.slug}`}
                         className="inline-flex items-center text-sm font-medium text-primary hover:underline min-h-[44px] min-w-[44px]"
-                        aria-label={`Read more about ${post.title}`}
+                        aria-label={`Read article about ${post.title}`}
                       >
-                        Read more <ArrowRight className="ml-1 h-4 w-4" />
+                        Read article <ArrowRight className="ml-1 h-4 w-4" />
                       </Link>
                     </CardFooter>
                   </Card>

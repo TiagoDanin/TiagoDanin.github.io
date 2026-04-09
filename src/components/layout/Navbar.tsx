@@ -62,6 +62,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"
+              aria-label="LinkedIn"
             >
               <Linkedin className="h-4 w-4" />
               <span className="hidden sm:inline">LinkedIn</span>

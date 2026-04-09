@@ -32,7 +32,7 @@ export function CallToAction() {
                 </a>
               </Button>
             )}
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
               <a href={`mailto:${aboutData.email}`}>Send me an email</a>
             </Button>
           </div>

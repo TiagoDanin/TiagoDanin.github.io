@@ -85,7 +85,7 @@ const TechIcon = ({ icon: iconName, name, color }: { icon: string, name: string,
   const Icon = iconMap[iconName];
   if (!Icon) return null;
   return (
-    <div className="tech-badge" style={{ backgroundColor: color }}>
+    <div className="tech-badge" style={{ backgroundColor: color, color: '#fff' }}>
       <Icon className="w-4 h-4" />
       <span className="text-xs font-medium">{name}</span>
     </div>
@@ -121,42 +121,46 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
               </h3>
 
               {/* Experience */}
-              <ol className="mt-6 space-y-6">
+              <div className="mt-6 space-y-6">
                 <h3 className="flex text-sm font-semibold items-center">
                   <span>Experience</span>
                 </h3>
 
-                {work.map((job, index) => (
-                  <ExperienceItem
-                    key={index}
-                    company={job.company}
-                    role={job.role}
-                    startDate={job.startDate}
-                    endDate={job.endDate}
-                    logo={job.logo}
-                    description={job.description}
-                  />
-                ))}
-              </ol>
+                <ol className="space-y-6">
+                  {work.map((job, index) => (
+                    <ExperienceItem
+                      key={index}
+                      company={job.company}
+                      role={job.role}
+                      startDate={job.startDate}
+                      endDate={job.endDate}
+                      logo={job.logo}
+                      description={job.description}
+                    />
+                  ))}
+                </ol>
+              </div>
 
               {/* Volunteering */}
-              <ol className="mt-8 space-y-6">
+              <div className="mt-8 space-y-6">
                 <h3 className="flex text-sm font-semibold items-center">
                   <span>Volunteering</span>
                 </h3>
 
-                {volunteer.map((job, index) => (
-                  <ExperienceItem
-                    key={index}
-                    company={job.organization}
-                    role={job.role}
-                    startDate={job.startDate}
-                    endDate={job.endDate}
-                    logo={job.logo}
-                    description={job.description}
-                  />
-                ))}
-              </ol>
+                <ol className="space-y-6">
+                  {volunteer.map((job, index) => (
+                    <ExperienceItem
+                      key={index}
+                      company={job.organization}
+                      role={job.role}
+                      startDate={job.startDate}
+                      endDate={job.endDate}
+                      logo={job.logo}
+                      description={job.description}
+                    />
+                  ))}
+                </ol>
+              </div>
 
               <Button className="w-full group" variant="outline" asChild>
                 <a href={about.cvUrl} className="inline-flex items-center gap-2">
