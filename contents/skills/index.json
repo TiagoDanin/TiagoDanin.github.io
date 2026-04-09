@@ -50,7 +50,7 @@
   {
     "category": "Backend",
     "items": [
-      { "name": "Node.js", "icon": "SiNodedotjs", "color": "#339933" },
+      { "name": "Node.js", "icon": "SiNodedotjs", "color": "#2B852B" },
       { "name": "Express", "icon": "FaServer", "color": "#000000" },
       { "name": "Elixir", "icon": "FaCode", "color": "#4B275F" },
       { "name": "PostgreSQL", "icon": "SiPostgresql", "color": "#336791" },
