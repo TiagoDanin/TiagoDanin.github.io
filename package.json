@@ -91,7 +91,6 @@
         "@types/rss": "^0.0.32",
         "autoprefixer": "^10.4.20",
         "globals": "^15.9.0",
-        "lovable-tagger": "^1.0.19",
         "postcss": "^8",
         "tailwindcss": "^3.4.1",
         "typescript": "^5"

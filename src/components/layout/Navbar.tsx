@@ -33,6 +33,7 @@ export function Navbar() {
             <SheetContent side="left" className="w-[240px] p-4">
               <div className="flex flex-col gap-4 pt-8">
                 <Link href="/" className="font-medium hover:text-primary min-h-[44px] flex items-center">Home</Link>
+                <Link href="/services" className="font-medium hover:text-primary min-h-[44px] flex items-center">Services</Link>
                 <Link href="/projects" className="font-medium hover:text-primary min-h-[44px] flex items-center">Projects</Link>
                 <Link href="/blog" className="font-medium hover:text-primary min-h-[44px] flex items-center">Blog</Link>
                 <Link href="/talks" className="font-medium hover:text-primary min-h-[44px] flex items-center">Talks</Link>
@@ -49,6 +50,7 @@ export function Navbar() {
         <div className="flex items-center gap-4 sm:gap-8">
           <div className="hidden md:flex gap-6">
             <Link href="/" className="font-medium hover:text-primary hover:scale-105 transition-all">Home</Link>
+            <Link href="/services" className="font-medium hover:text-primary hover:scale-105 transition-all">Services</Link>
             <Link href="/projects" className="font-medium hover:text-primary hover:scale-105 transition-all">Projects</Link>
             <Link href="/blog" className="font-medium hover:text-primary hover:scale-105 transition-all">Blog</Link>
             <Link href="/talks" className="font-medium hover:text-primary hover:scale-105 transition-all">Talks</Link>

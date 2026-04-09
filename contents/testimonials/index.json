@@ -1,0 +1,23 @@
+[
+  {
+    "name": "TecBan Hackathon",
+    "role": "1st Place Winner",
+    "company": "TecBan",
+    "quote": "Winning the TecBan Hackathon with the BICOS Open Banking app proved that users don't need to understand Open Banking to benefit from it. A creative solution that stood out among all competitors.",
+    "avatar": null
+  },
+  {
+    "name": "Open Source Community",
+    "role": "Arctic Code Vault Contributor",
+    "company": "GitHub",
+    "quote": "Recognized as an Arctic Code Vault Contributor with 70+ published npm packages and 494+ stars on Awesome-Polybar. Contributing to Node.js and ElectronJS ecosystems.",
+    "avatar": null
+  },
+  {
+    "name": "DevOpsDays & DevFest",
+    "role": "Speaker",
+    "company": "Community Events",
+    "quote": "Invited speaker at DevOpsDays Belem, Google DevFest, BrazilJS, and 15+ other tech conferences. Sharing knowledge on mobile development, DevOps, and security with the community.",
+    "avatar": null
+  }
+]

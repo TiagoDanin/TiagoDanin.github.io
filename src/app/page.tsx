@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 import { RecentPosts } from "@/components/sections/RecentPosts";
 import { Services } from "@/components/sections/Services";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { Work } from "@/components/sections/Work";
 import { queryCollection } from 'nextjs-studio/server';
 
@@ -135,6 +136,7 @@ const Index = () => {
       <Hero />
       <Services />
       <Projects projects={[...projectsData]} />
+      <Testimonials />
       <RecentPosts posts={[...posts]} />
       <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />
       <CallToAction />

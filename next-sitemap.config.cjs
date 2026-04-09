@@ -17,7 +17,7 @@ module.exports = {
 
     if (path === '/') {
       priority = 1;
-    } else if (path === '/projects' || path === '/blog' || path === '/talks') {
+    } else if (path === '/projects' || path === '/blog' || path === '/talks' || path === '/services') {
       priority = 0.9;
     } else if (path === '/rss/blog.xml' || path === '/rss/talks.xml' || path === '/rss/timeline.xml' || path === '/rss/projects.xml') {
       priority = 0.1;

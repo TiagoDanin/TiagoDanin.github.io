@@ -22,7 +22,7 @@ export function RecentPosts({ posts }: RecentPostsProps) {
   const recentPosts = posts.slice(0, 4);
 
   return (
-    <section id="blog" className="relative py-16 sm:py-20 bg-secondary/30 overflow-hidden">
+    <section id="blog" className="relative py-16 sm:py-20 overflow-hidden">
       {/* Blur effect circles */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 sm:opacity-30 translate-x-1/2 -translate-y-1/2"></div>

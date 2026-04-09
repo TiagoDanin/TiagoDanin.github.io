@@ -57,7 +57,7 @@ export function Projects({ projects }: ProjectsProps) {
                         More projects
                       </Link>
                     </Button>
-                    <p className="text-muted-foreground mt-2 font-bold">+350 projects</p>
+                    <p className="text-muted-foreground mt-2 font-bold">+250 projects</p>
                     <p className="text-muted-foreground text-sm">
                       So far and more to come
                     </p>

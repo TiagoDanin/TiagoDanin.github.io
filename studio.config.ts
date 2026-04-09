@@ -122,6 +122,19 @@ const config: StudioConfig = {
         sync: "tsx scripts/getProjectsNPM.ts --output-terminal",
       },
     },
+    testimonials: {
+      schema: {
+        collection: "testimonials",
+        label: "Testimonials",
+        fields: [
+          { name: "name", type: "text", required: true },
+          { name: "role", type: "text", required: true },
+          { name: "company", type: "text", required: true },
+          { name: "quote", type: "long-text", required: true },
+          { name: "avatar", type: "url" },
+        ],
+      },
+    },
   },
 };
 

@@ -89,7 +89,7 @@ Survive in a dungeon of slimes! You are stuck with adorable creatures. How long 
 ### **Virtual Pocket Air Conditioning**
 Have a virtual air conditioner in your pocket! This relaxing sound app provides better sleep. Created as a fun project to study animations in Flutter. Available on Google Play Store.
 
-**Total Projects:** Over 350 projects across various platforms including GitHub, NPM, Google Play, and private repositories.
+**Total Projects:** Over 250 projects across various platforms including GitHub, NPM, Google Play, and private repositories.
 
 ## Technical Skills
 
@@ -283,7 +283,7 @@ Have a virtual air conditioner in your pocket! This relaxing sound app provides 
 
 [More projects](/projects)
 
-+350 projects
++250 projects
 
 So far and more to come
 
