@@ -60,20 +60,20 @@
   {
     "category": "Design",
     "items": [
-      { "name": "Figma", "icon": "SiFigma", "color": "#F24E1E" },
-      { "name": "Mobile UX", "icon": "FaCode", "color": "#0ACF83" },
-      { "name": "Adobe XD", "icon": "SiAdobexd", "color": "#FF61F6" },
-      { "name": "Canva", "icon": "SiCanva", "color": "#00bce5" }
+      { "name": "Figma", "icon": "SiFigma", "color": "#D14218" },
+      { "name": "Mobile UX", "icon": "FaCode", "color": "#048553" },
+      { "name": "Adobe XD", "icon": "SiAdobexd", "color": "#B844B1" },
+      { "name": "Canva", "icon": "SiCanva", "color": "#007F9B" }
     ]
   },
   {
     "category": "Game Development",
     "items": [
       { "name": "Unity", "icon": "SiUnity", "color": "#000000" },
-      { "name": "Flame", "icon": "SiFlutter", "color": "#ff8835" },
-      { "name": "LÖVE", "icon": "FaGamepad", "color": "#EA316E" },
-      { "name": "Pixel Art", "icon": "FaPalette", "color": "#00ad48" },
-      { "name": "Blender", "icon": "SiBlender", "color": "#F5792A" }
+      { "name": "Flame", "icon": "SiFlutter", "color": "#B25D22" },
+      { "name": "LÖVE", "icon": "FaGamepad", "color": "#D92D65" },
+      { "name": "Pixel Art", "icon": "FaPalette", "color": "#008736" },
+      { "name": "Blender", "icon": "SiBlender", "color": "#B8591D" }
     ]
   }
 ]
