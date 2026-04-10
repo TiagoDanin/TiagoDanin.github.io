@@ -7,6 +7,7 @@ export interface PostContent {
   slug: string;
   originalUrl: string;
   lang: string;
+  tags: string[];
   body: string;
 }
 
@@ -24,6 +25,7 @@ export function getPostBySlug(slug: string, lang: string = 'en'): PostContent | 
     slug: post.slug,
     originalUrl: post.originalUrl,
     lang: post.lang,
+    tags: post.tags ?? [],
     body: post.body ?? '',
   };
 }

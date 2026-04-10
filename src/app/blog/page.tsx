@@ -5,6 +5,8 @@ import { Video, ChevronRight, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toISODate, formatDate, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
 
+const POSTS_PER_PAGE = 10;
+
 export function generateMetadata() {
   const posts = queryCollection('posts').where({ lang: 'en' });
 
@@ -75,16 +77,17 @@ export function generateMetadata() {
   };
 }
 
-const POSTS_PER_PAGE = 10;
-
 const Blog = () => {
   const posts = [...queryCollection('posts').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const currentPosts = posts.slice(0, POSTS_PER_PAGE);
+  const hasNextPage = totalPages > 1;
 
   const isYouTubePost = (url: string) => url.includes("youtube.com");
 
   return (
+    <>
+      {hasNextPage && <link rel="next" href="https://tiagodanin.com/blog/2" />}
     <div className="container mx-auto py-32">
       <div className="max-w-2xl mx-auto mb-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
@@ -177,6 +180,7 @@ const Blog = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

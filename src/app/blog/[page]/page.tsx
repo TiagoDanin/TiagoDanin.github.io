@@ -44,9 +44,16 @@ const BlogPage = async ({ params }: { params: Promise<{ page: string }> }) => {
   const endIndex = startIndex + POSTS_PER_PAGE;
   const currentPosts = posts.slice(startIndex, endIndex);
 
+  const prevUrl = currentPage === 2
+    ? 'https://tiagodanin.com/blog'
+    : `https://tiagodanin.com/blog/${currentPage - 1}`;
+
   const isYouTubePost = (url: string) => url.includes("youtube.com");
 
   return (
+    <>
+      {currentPage > 1 && <link rel="prev" href={prevUrl} />}
+      {currentPage < totalPages && <link rel="next" href={`https://tiagodanin.com/blog/${currentPage + 1}`} />}
     <div className="container mx-auto py-32">
       <div className="max-w-2xl mx-auto mb-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
@@ -159,6 +166,7 @@ const BlogPage = async ({ params }: { params: Promise<{ page: string }> }) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { existsSync } from 'fs';
+import { join } from 'path';
 import { queryCollection } from 'nextjs-studio/server';
 import { ArrowLeft, Globe, ExternalLink } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -26,10 +28,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ? post.description.substring(0, 157) + '...'
     : post.description;
 
+  const coverPath = join(process.cwd(), 'public', 'images', 'posts', slug, 'cover.png');
+  const coverUrl = existsSync(coverPath)
+    ? `https://tiagodanin.com/images/posts/${slug}/cover.png`
+    : undefined;
+
+  const keywords = post.tags.length > 0
+    ? [...post.tags, 'Tiago Danin', 'blog']
+    : ['blog', 'software development', 'technology'];
+
   return {
     title: post.title,
     description: truncatedDescription,
-    keywords: ['blog', 'article', 'software development', 'technology'],
+    keywords,
     alternates: {
       canonical: `https://tiagodanin.com/post/${post.slug}`,
     },
@@ -42,6 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       authors: ['https://tiagodanin.com/about'],
       locale: 'en_US',
       siteName: 'Tiago Danin',
+      ...(coverUrl && { images: [{ url: coverUrl, alt: post.title }] }),
     },
     twitter: {
       card: 'summary_large_image',
@@ -49,6 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: truncatedDescription,
       creator: '@tiagodanin',
       site: '@tiagodanin',
+      ...(coverUrl && { images: [coverUrl] }),
     },
   };
 }

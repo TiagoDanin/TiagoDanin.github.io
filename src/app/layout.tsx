@@ -7,6 +7,13 @@ import { ToasterProvider } from "@/components/ui/toaster-provider";
 import { queryCollection } from 'nextjs-studio/server';
 import "./globals.css";
 
+const OG_IMAGE = {
+  url: 'https://avatars.githubusercontent.com/u/5731176?v=4',
+  width: 400,
+  height: 400,
+  alt: 'Tiago Danin - Mobile Developer & Software Engineer',
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://tiagodanin.com'),
   title: {
@@ -41,6 +48,7 @@ export const metadata: Metadata = {
     title: 'Tiago Danin - Mobile Developer & Software Engineer',
     description: 'Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor and cybersecurity researcher.',
     siteName: 'Tiago Danin',
+    images: [OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
@@ -48,6 +56,7 @@ export const metadata: Metadata = {
     description: 'Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor.',
     creator: '@tiagodanin',
     site: '@tiagodanin',
+    images: [OG_IMAGE.url],
   },
   alternates: {
     canonical: 'https://tiagodanin.com',
