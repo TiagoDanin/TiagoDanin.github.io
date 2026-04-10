@@ -167,8 +167,25 @@ export interface GithubEntry {
 /** Data shape for the "googleplay" collection. */
 export interface GoogleplayEntry {
   name: string;
+  slug: string;
+  tagline: string;
   url: HttpUrl;
   description: string;
+  storeDescription: string;
+  category: string;
+  icon: string;
+  accentColor: string;
+  features: Array<{
+    icon: string;
+    title: string;
+    description: string;
+  }>;
+  buildStory: {
+    problem: string;
+    solution: string;
+    learned: string;
+  };
+  tags: Array<"flutter" | "photography" | "creative" | "instagram" | "freemium" | "relaxation" | "sleep" | "white noise" | "ambient" | "game" | "survival" | "arcade" | "bonfire" | "education" | "CNH" | "DETRAN" | "gamification" | "brazil" | "android" | "ios" | "memory" | "jetpack compose" | "open source" | "pets" | "marketplace" | "services">;
 }
 
 /** Data shape for the "links" collection. */
@@ -288,6 +305,15 @@ export interface TalksEntry {
   youtubeUrl: HttpUrl;
 }
 
+/** Data shape for the "testimonials" collection. */
+export interface TestimonialsEntry {
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  avatar: string;
+}
+
 /** Data shape for the "timeline" collection. */
 export interface TimelineEntry {
   date: string;
@@ -346,6 +372,7 @@ declare module 'nextjs-studio' {
     "skills": SkillsEntry;
     "sociallinks": SociallinksEntry;
     "talks": TalksEntry;
+    "testimonials": TestimonialsEntry;
     "timeline": TimelineEntry;
     "volunteer": VolunteerEntry;
     "windows": WindowsEntry;
@@ -373,6 +400,7 @@ declare module 'nextjs-studio/server' {
     "skills": SkillsEntry;
     "sociallinks": SociallinksEntry;
     "talks": TalksEntry;
+    "testimonials": TestimonialsEntry;
     "timeline": TimelineEntry;
     "volunteer": VolunteerEntry;
     "windows": WindowsEntry;

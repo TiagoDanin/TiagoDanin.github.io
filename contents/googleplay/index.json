@@ -1,16 +1,234 @@
 [
 	{
+		"name": "CAM Covers",
+		"slug": "cam-covers",
+		"tagline": "Turn your photos into music album covers.",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers",
+		"description": "Transform ordinary photos into professional-looking album covers, inspired by real music players like Spotify.",
+		"storeDescription": "Spotted that viral trend of turning selfies into music album covers? CAM Covers makes it instant. Pick a player template, drop in your photo, customize the title and artist name — then share straight to Instagram. No design skills required.",
+		"category": "Photography",
+		"icon": "🎵",
+		"accentColor": "#EC4899",
+		"features": [
+			{
+				"icon": "🎨",
+				"title": "Multiple Player Templates",
+				"description": "Choose from templates inspired by real music players. Each has a distinct aesthetic — find the one that fits your vibe."
+			},
+			{
+				"icon": "✏️",
+				"title": "Fully Customizable",
+				"description": "Edit the song title, artist name, and decorative elements. Every detail is yours to control."
+			},
+			{
+				"icon": "📤",
+				"title": "Share Instantly",
+				"description": "Export and share to Instagram, WhatsApp, or save to your gallery — all in one tap."
+			},
+			{
+				"icon": "💎",
+				"title": "Freemium Model",
+				"description": "Core features are free. Unlock premium templates and remove ads with a one-time upgrade."
+			}
+		],
+		"buildStory": {
+			"problem": "I tried to create an album cover montage manually on Instagram and it took forever — stickers, manual cropping, multiple apps. There had to be a faster way.",
+			"solution": "An app that uses Flutter's own rendering system as the editing canvas. RenderRepaintBoundary captures the live UI as a high-res image. No complex image manipulation library needed — Flutter itself became the editor.",
+			"learned": "AI-assisted template creation cut 8 hours of design work to under 1 hour. I used Claude 3.5 via Cursor to generate 4 templates from 2 existing ones. The lesson: think about what parts of your product can be accelerated with AI before writing them from scratch."
+		},
+		"tags": ["flutter", "photography", "creative", "instagram", "freemium"]
+	},
+	{
 		"name": "Virtual Pocket Air Conditioning",
+		"slug": "virtual-pocket-air-conditioning",
+		"tagline": "Better sleep starts with the right sound.",
 		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning",
-		"description": "Virtual air conditioning in your pocket, this relaxing sound will provide better night's sleep."
-	}, {
-		"name": "Emoji Memory Jetpack",
-		"description": "Match similar emojis. Game open-source built with Android Jetpack Compose."
-	}, {
+		"description": "Virtual air conditioning in your pocket — a relaxing sound that helps you sleep better at night.",
+		"storeDescription": "Struggling to fall asleep? Virtual Pocket Air Conditioning turns your phone into a white noise machine — playing the calming, continuous hum of an air conditioner so you can drift off faster and sleep deeper. Created as a fun project to study animations in Flutter.",
+		"category": "Health & Fitness",
+		"icon": "❄️",
+		"accentColor": "#3B82F6",
+		"features": [
+			{
+				"icon": "🎵",
+				"title": "Realistic AC Sound",
+				"description": "High-quality audio loop that mimics a real air conditioner — no distracting cuts or loops."
+			},
+			{
+				"icon": "🌙",
+				"title": "Sleep-Optimized",
+				"description": "Continuous playback designed to mask background noise and help your brain wind down."
+			},
+			{
+				"icon": "🔋",
+				"title": "Battery Friendly",
+				"description": "Lightweight and optimized so it won't drain your battery overnight."
+			},
+			{
+				"icon": "📱",
+				"title": "Simple & Distraction-Free",
+				"description": "One tap to start. No ads, no unnecessary permissions, no friction."
+			}
+		],
+		"buildStory": {
+			"problem": "I couldn't sleep without background noise. Air conditioning units are expensive and not always available — so I built a virtual one.",
+			"solution": "A dead-simple Flutter app that plays a looped AC ambient sound. The project also served as a sandbox for experimenting with animations in Flutter.",
+			"learned": "The apps users keep are the ones that do one thing extremely well. No feature creep needed."
+		},
+		"tags": ["flutter", "relaxation", "sleep", "white noise", "ambient"]
+	},
+	{
 		"name": "The Slime Dungeon",
-		"description": "You are stuck with adorable creatures (slimes).  How long can you survive?"
-	}, {
+		"slug": "the-slime-dungeon",
+		"tagline": "Surrounded by adorable danger. How long can you last?",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.the_slime_dungeon",
+		"description": "Survive in a dungeon full of slimes! You are stuck with adorable creatures. How long can you survive?",
+		"storeDescription": "You wake up trapped in a dungeon filled with slimes — cute, relentless, and closing in. Dodge, survive, and see how long your reflexes hold. A fast-paced survival game built with Flutter and the Bonfire game engine.",
+		"category": "Games",
+		"icon": "🟢",
+		"accentColor": "#10B981",
+		"features": [
+			{
+				"icon": "🎮",
+				"title": "Survival Gameplay",
+				"description": "Classic arcade survival loop — stay alive as long as possible against increasingly aggressive slimes."
+			},
+			{
+				"icon": "🐛",
+				"title": "Adorable Enemies",
+				"description": "Slimes are cute. They're also relentless. The contrast makes losing feel almost okay."
+			},
+			{
+				"icon": "⚡",
+				"title": "Fast Sessions",
+				"description": "Each run takes seconds to start and minutes to master. Perfect for short breaks."
+			},
+			{
+				"icon": "🔥",
+				"title": "Built with Bonfire",
+				"description": "Powered by the Bonfire game engine on top of Flutter — smooth performance on Android."
+			}
+		],
+		"buildStory": {
+			"problem": "I wanted to build a mobile game that was genuinely fun to play — not just a tutorial project I'd never open again.",
+			"solution": "A survival dungeon game with a single twist: the enemies are cute slimes. Used Flutter with the Bonfire engine, which gave me RPG-style game mechanics without writing a full engine from scratch.",
+			"learned": "Game feel matters more than graphics. Getting the movement and hit detection right took longer than building the entire visual layer. Bonfire made the RPG primitives easy — the hard part was tuning the difficulty curve."
+		},
+		"tags": ["flutter", "game", "survival", "arcade", "bonfire"]
+	},
+	{
+		"name": "Direção Fácil",
+		"slug": "direcao-facil",
+		"tagline": "Pass your CNH exam. 5 minutes a day.",
+		"url": "https://play.google.com/store/apps/details?id=com.direcaofacil",
+		"description": "Gamified app to help Brazilians pass the CNH theoretical driving exam through short lessons and interactive quizzes.",
+		"storeDescription": "Direção Fácil is a Duolingo-style app for studying the Brazilian driver's license (CNH) theoretical exam. Study traffic laws, signaling, and defensive driving in 5-minute lessons, then test yourself with realistic practice exams that mirror the official DETRAN format.",
+		"category": "Education",
+		"icon": "🚗",
+		"accentColor": "#F59E0B",
+		"features": [
+			{
+				"icon": "📚",
+				"title": "9 Official DETRAN Modules",
+				"description": "All content mapped to official exam topics: legislation, signaling, defensive driving, first aid, mechanics, and more."
+			},
+			{
+				"icon": "⏱️",
+				"title": "5-Minute Lessons",
+				"description": "Short, focused sessions designed to fit into your day — no hour-long study marathons required."
+			},
+			{
+				"icon": "🏆",
+				"title": "Gamified Progress",
+				"description": "Points, levels, and achievements keep you coming back — the same loop that makes Duolingo addictive."
+			},
+			{
+				"icon": "📝",
+				"title": "Realistic Practice Exams",
+				"description": "Simulados that match the official DETRAN test format so there are no surprises on exam day."
+			}
+		],
+		"buildStory": {
+			"problem": "Studying for the CNH theoretical exam in Brazil is boring, dense, and most people fail on the first try because the study materials are awful.",
+			"solution": "A gamified study app modeled after Duolingo — short lessons, adaptive quizzes, and realistic simulados covering all 9 official DETRAN modules.",
+			"learned": "Gamification only works when the core learning loop is solid. Points and levels are motivators, not substitutes for well-structured content."
+		},
+		"tags": ["education", "CNH", "DETRAN", "gamification", "brazil", "android", "ios"]
+	},
+	{
+		"name": "Emoji Memory Jetpack",
+		"slug": "emoji-memory-jetpack",
+		"tagline": "Train your brain. Match your emojis.",
+		"description": "Match similar emojis. Memory game open-source, built with Android Jetpack Compose.",
+		"storeDescription": "A fun and colorful memory card game built entirely with Jetpack Compose. Flip cards, find matching emoji pairs, and challenge your brain — all in a smooth, modern Android UI.",
+		"category": "Games",
+		"icon": "🧠",
+		"accentColor": "#EF4444",
+		"features": [
+			{
+				"icon": "😀",
+				"title": "Emoji Cards",
+				"description": "Vibrant emoji pairs that make the game visually engaging and universally accessible."
+			},
+			{
+				"icon": "⚡",
+				"title": "Jetpack Compose",
+				"description": "Built entirely with Jetpack Compose — smooth animations, declarative UI, modern Android."
+			},
+			{
+				"icon": "🔓",
+				"title": "Open Source",
+				"description": "Full source code available. Learn how a real Android game is built with Compose."
+			},
+			{
+				"icon": "🏆",
+				"title": "Progressive Difficulty",
+				"description": "Board sizes grow as you improve, keeping the challenge fresh every session."
+			}
+		],
+		"buildStory": {
+			"problem": "I wanted to practice MVVM architecture and Jetpack Compose with a real, shipped project — not just a tutorial exercise.",
+			"solution": "A memory card game inspired by iagocavalcante/memorize, rebuilt from scratch in Kotlin with Jetpack Compose and a clean MVVM structure.",
+			"learned": "Managing game state through a ViewModel feels different from regular UI state — the ViewModel becomes the game engine, not just a data holder."
+		},
+		"tags": ["game", "memory", "jetpack compose", "open source", "android"]
+	},
+	{
 		"name": "Petmob",
-		"description": "[Pt-br] Encontre o melhor cuidado para o seu pet, ou seja, um prestador de serviço e ganhe uma renda extra"
+		"slug": "petmob",
+		"tagline": "Find the best care for your pet.",
+		"description": "Find the best pet care provider near you, or register as a service provider and earn extra income.",
+		"storeDescription": "Petmob connects pet owners with the best service providers in their area — grooming, vet visits, boarding, walks and more. Love animals? Register as a provider and start earning on your own schedule.",
+		"category": "Lifestyle",
+		"icon": "🐾",
+		"accentColor": "#8B5CF6",
+		"features": [
+			{
+				"icon": "🔍",
+				"title": "Find Providers",
+				"description": "Search for pet services near you: grooming, vet, boarding, walks and more."
+			},
+			{
+				"icon": "💰",
+				"title": "Earn Extra Income",
+				"description": "Register as a provider and start serving pets in your area on your own schedule."
+			},
+			{
+				"icon": "⭐",
+				"title": "Verified Reviews",
+				"description": "Choose providers based on real reviews from other pet owners in your area."
+			},
+			{
+				"icon": "📅",
+				"title": "Easy Scheduling",
+				"description": "Book services directly in the app with instant confirmation."
+			}
+		],
+		"buildStory": {
+			"problem": "Finding a reliable pet caregiver is hard. Most recommendations still happen by word of mouth.",
+			"solution": "A pet services marketplace connecting owners and providers with ratings, scheduling, and integrated payments.",
+			"learned": "The biggest challenge in local services marketplaces is the bootstrap problem: the app only has value when there's density on both sides."
+		},
+		"tags": ["pets", "marketplace", "services", "android", "brazil"]
 	}
 ]
