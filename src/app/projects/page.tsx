@@ -2,6 +2,9 @@ import { Projects } from "@/components/sections/Projects";
 import { FullProjects } from "@/components/sections/FullProjects";
 import type { ProjectForCard } from "@/components/sections/FullProjects";
 import { queryCollection } from 'nextjs-studio/server';
+import Link from 'next/link';
+import { Github, Package, Smartphone, ArrowRight } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 export const metadata = {
   title: "Developer Portfolio - Projects & Open Source",
@@ -93,7 +96,11 @@ const Index = () => {
     },
     {
       title: "Google Play",
-      projects: toCards(queryCollection('googleplay'), p => p.url ?? null),
+      projects: queryCollection('googleplay').map(p => ({
+        title: p.name,
+        description: p.description,
+        href: `/app/${p.slug}`,
+      })),
     },
     {
       title: "NPM",
@@ -132,6 +139,59 @@ const Index = () => {
   return (
     <div>
       <Projects projects={[...projectsData]} />
+
+      <section className="container mx-auto px-4 -mt-20 mb-4 relative z-10">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Explore</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <Link href="/rankings/github">
+            <Card className="border-2 hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer h-full">
+              <CardContent className="p-5 flex items-center gap-4">
+                <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
+                  <Github className="h-6 w-6" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold">GitHub Rankings</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">Top repos by stars & forks</p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link href="/rankings/npm">
+            <Card className="border-2 hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer h-full">
+              <CardContent className="p-5 flex items-center gap-4">
+                <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
+                  <Package className="h-6 w-6" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold">NPM Rankings</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">Most downloaded packages</p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link href="/apps">
+            <Card className="border-2 hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer h-full">
+              <CardContent className="p-5 flex items-center gap-4">
+                <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
+                  <Smartphone className="h-6 w-6" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold">Android Apps</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">Published on Google Play</p>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0" />
+              </CardContent>
+            </Card>
+          </Link>
+        </div>
+      </section>
+
       <FullProjects projectSections={projectSections} />
     </div>
   );
