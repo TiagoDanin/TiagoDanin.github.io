@@ -94,16 +94,10 @@ const Blog = () => {
           Thoughts, insights, and ideas about technology and development
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          {posts.length} articles
+          {posts.length} articles · <Link href="/blog/pt" className="underline hover:text-foreground transition-colors">Ler em Português</Link>
         </p>
-        <div className="mt-4">
-          <Button variant="outline" size="sm" asChild>
-            <Link href="/blog/pt">PT</Link>
-          </Button>
-        </div>
+        <TagFilter posts={posts} />
       </div>
-
-      <TagFilter posts={posts} />
 
       <div className="max-w-2xl mx-auto space-y-16">
         {currentPosts.map((post, index) => (

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { queryCollection } from 'nextjs-studio/server';
-import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
 import { toISODate } from '@/utils/parse';
@@ -76,16 +75,10 @@ const BlogPt = () => {
           Pensamentos, insights e ideias sobre tecnologia e desenvolvimento
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          {posts.length} artigos
+          {posts.length} artigos · <Link href="/blog" className="underline hover:text-foreground transition-colors">Read in English</Link>
         </p>
-        <div className="mt-4">
-          <Button variant="outline" size="sm" asChild>
-            <Link href="/blog">EN</Link>
-          </Button>
-        </div>
+        <TagFilter posts={posts} />
       </div>
-
-      <TagFilter posts={posts} />
 
       <div className="max-w-2xl mx-auto space-y-16">
         {posts.map((post, index) => (

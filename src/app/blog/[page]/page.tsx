@@ -61,9 +61,8 @@ const BlogPage = async ({ params }: { params: Promise<{ page: string }> }) => {
         <p className="mt-2 text-sm text-muted-foreground">
           {posts.length} articles
         </p>
+        <TagFilter posts={posts} />
       </div>
-
-      <TagFilter posts={posts} />
 
       <div className="max-w-2xl mx-auto space-y-16">
         {currentPosts.map((post, index) => (

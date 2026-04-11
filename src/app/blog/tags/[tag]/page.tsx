@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { queryCollection } from 'nextjs-studio/server';
-import { Badge } from "@/components/ui/badge";
-import { Tag, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
-import { getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
+import { titleToSlug, toISODate } from '@/utils/parse';
 
 function getPosts() {
   return [...queryCollection('posts').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
@@ -90,20 +89,15 @@ const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
           </div>
 
           <div className="text-center">
-            <h1 className="text-3xl font-bold tracking-tight mb-4">Posts tagged with</h1>
-            <div className="flex justify-center mb-4">
-              <Badge className={`flex items-center gap-2 text-lg px-4 py-2 ${getRandomColorWithDarkMode(originalTagName)}`}>
-                <Tag className="h-4 w-4" />
-                {originalTagName}
-              </Badge>
-            </div>
-            <p className="text-muted-foreground">
+            <h1 className="text-3xl font-bold tracking-tight">
+              Posts tagged with &ldquo;{originalTagName}&rdquo;
+            </h1>
+            <p className="mt-2 text-muted-foreground">
               {taggedPosts.length} {taggedPosts.length === 1 ? 'post' : 'posts'} found
             </p>
+            <TagFilter posts={posts} />
           </div>
         </div>
-
-        <TagFilter posts={posts} />
 
         {taggedPosts.length === 0 ? (
           <div className="max-w-2xl mx-auto text-center py-16">

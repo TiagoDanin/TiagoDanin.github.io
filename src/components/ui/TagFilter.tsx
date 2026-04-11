@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
+import { titleToSlug } from '@/utils/parse';
 
 interface TagFilterProps {
   posts: Array<{ tags: string[] }>;
@@ -15,19 +15,17 @@ export function TagFilter({ posts, basePath = '/blog/tags' }: TagFilterProps) {
   if (allTags.length === 0) return null;
 
   return (
-    <div className="max-w-2xl mx-auto mb-8">
-      <div className="flex flex-wrap justify-center gap-2">
-        {allTags.map((tag) => (
-          <Link key={tag} href={`${basePath}/${titleToSlug(tag)}`}>
-            <Badge
-              variant="outline"
-              className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
-            >
-              {tag}
-            </Badge>
-          </Link>
-        ))}
-      </div>
+    <div className="flex flex-wrap justify-center gap-1.5 mt-4">
+      {allTags.map((tag) => (
+        <Link key={tag} href={`${basePath}/${titleToSlug(tag)}`}>
+          <Badge
+            variant="outline"
+            className="text-[10px] text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {tag}
+          </Badge>
+        </Link>
+      ))}
     </div>
   );
 }
