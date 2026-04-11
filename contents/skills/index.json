@@ -61,9 +61,7 @@
     "category": "Design",
     "items": [
       { "name": "Figma", "icon": "SiFigma", "color": "#D14218" },
-      { "name": "Mobile UX", "icon": "FaCode", "color": "#048553" },
-      { "name": "Adobe XD", "icon": "SiAdobexd", "color": "#B844B1" },
-      { "name": "Canva", "icon": "SiCanva", "color": "#007F9B" }
+      { "name": "Mobile UX", "icon": "FaCode", "color": "#048553" }
     ]
   },
   {

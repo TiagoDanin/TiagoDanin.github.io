@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { queryCollection } from 'nextjs-studio/server';
-import { Badge } from "@/components/ui/badge";
-import { Video, Text } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toISODate, formatDate, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
+import { ArticleCard } from "@/components/ui/ArticleCard";
+import { TagFilter } from "@/components/ui/TagFilter";
+import { getCoverImagePath } from "@/lib/cover-image";
+import { toISODate } from '@/utils/parse';
 
 export function generateMetadata() {
   const posts = queryCollection('posts').where({ lang: 'pt' });
@@ -68,8 +69,6 @@ export function generateMetadata() {
 const BlogPt = () => {
   const posts = [...queryCollection('posts').where({ lang: 'pt' })].sort((a, b) => b.date.localeCompare(a.date));
 
-  const isYouTubePost = (url: string) => url.includes("youtube.com");
-
   return (
     <div className="container mx-auto py-32">
       <div className="max-w-2xl mx-auto mb-12 text-center">
@@ -87,60 +86,16 @@ const BlogPt = () => {
         </div>
       </div>
 
+      <TagFilter posts={posts} />
+
       <div className="max-w-2xl mx-auto space-y-16">
         {posts.map((post, index) => (
-          <article key={index} className="group relative flex flex-col items-start cursor-pointer">
-            <Link href={`/post/${post.slug}/pt`} className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-6" aria-label={`Ler ${post.title}`} />
-            <div className="absolute -inset-x-4 -inset-y-6 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl pointer-events-none" />
-
-            <div className="relative pointer-events-none order-first mb-3 flex items-center gap-2">
-              <time className="flex items-center text-sm text-zinc-400 pl-3.5">
-                <span className="absolute inset-y-0 left-0 flex items-center">
-                  <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
-                </span>
-                {formatDate(post.date)}
-              </time>
-              {isYouTubePost(post.originalUrl) ? (
-                <Badge variant="secondary" className="flex items-center gap-1">
-                  <Video className="h-3 w-3" />
-                  Video
-                </Badge>
-              ) : (
-                <Badge variant="secondary" className="flex items-center gap-1">
-                  <Text className="h-3 w-3" />
-                  Artigo
-                </Badge>
-              )}
-            </div>
-
-            <h2 className="relative pointer-events-none text-base font-semibold tracking-tight">
-              {post.title}
-            </h2>
-
-            <p className="relative pointer-events-none mt-2 text-sm text-zinc-600">
-              {post.description}
-            </p>
-
-            <div className="relative z-10 mt-3 flex flex-wrap gap-2 pointer-events-auto">
-              {((post.tags as string[]) || []).map((tag: string) => (
-                <Link key={tag} href={`/blog/tags/${titleToSlug(tag)}`}>
-                  <Badge
-                    variant="outline"
-                    className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
-                  >
-                    {tag}
-                  </Badge>
-                </Link>
-              ))}
-            </div>
-
-            <div className="relative pointer-events-none mt-4 flex items-center text-sm font-medium text-primary">
-              Ler artigo
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
-                <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-          </article>
+          <ArticleCard
+            key={index}
+            post={post}
+            locale="pt"
+            coverImage={getCoverImagePath(post.slug)}
+          />
         ))}
       </div>
     </div>

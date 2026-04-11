@@ -162,7 +162,7 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
                 </ol>
               </div>
 
-              <Button className="w-full group" variant="outline" asChild>
+              <Button className="w-full group mt-8" variant="outline" asChild>
                 <a href={about.cvUrl} className="inline-flex items-center gap-2">
                   Open CV
                   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-4 w-4 stroke-muted-foreground transition group-hover:stroke-primary">
