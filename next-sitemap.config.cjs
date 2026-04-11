@@ -25,6 +25,11 @@ module.exports = {
     } else if (path === '/llms-full.txt' || path === '/llms.txt') {
       priority = 0.1;
       changefreq = 'monthly';
+    } else if (path === '/skills') {
+      priority = 0.8;
+    } else if (path.startsWith('/skills/')) {
+      priority = 0.5;
+      changefreq = 'monthly';
     } else if (path.startsWith('/blog')) {
       priority = 0.6; 
     } else if (path.startsWith('/project/')) {
