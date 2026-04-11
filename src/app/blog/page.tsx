@@ -4,7 +4,6 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
-import { getCoverImagePath } from "@/lib/cover-image";
 import { toISODate } from '@/utils/parse';
 
 const POSTS_PER_PAGE = 10;
@@ -112,7 +111,6 @@ const Blog = () => {
             key={index}
             post={post}
             locale="en"
-            coverImage={getCoverImagePath(post.slug)}
           />
         ))}
       </div>

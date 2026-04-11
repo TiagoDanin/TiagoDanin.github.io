@@ -5,7 +5,6 @@ import { Tag, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
-import { getCoverImagePath } from "@/lib/cover-image";
 import { getRandomColorWithDarkMode, titleToSlug, toISODate } from '@/utils/parse';
 
 function getPosts() {
@@ -123,7 +122,6 @@ const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
                 key={index}
                 post={post}
                 locale="en"
-                coverImage={getCoverImagePath(post.slug)}
               />
             ))}
           </div>

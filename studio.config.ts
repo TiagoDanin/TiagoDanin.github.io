@@ -97,6 +97,7 @@ const config: StudioConfig = {
             required: true,
             options: [opt("en"), opt("pt")],
           },
+          { name: "cover", type: "media", accept: ["image/*"] },
           {
             name: "tags",
             type: "multi-select",

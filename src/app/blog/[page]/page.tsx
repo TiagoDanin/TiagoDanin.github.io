@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
-import { getCoverImagePath } from "@/lib/cover-image";
 
 export async function generateMetadata({ params }: { params: Promise<{ page: string }> }) {
   const { page } = await params;
@@ -72,7 +71,6 @@ const BlogPage = async ({ params }: { params: Promise<{ page: string }> }) => {
             key={index}
             post={post}
             locale="en"
-            coverImage={getCoverImagePath(post.slug)}
           />
         ))}
       </div>

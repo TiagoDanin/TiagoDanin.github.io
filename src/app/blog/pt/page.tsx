@@ -3,7 +3,6 @@ import { queryCollection } from 'nextjs-studio/server';
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
-import { getCoverImagePath } from "@/lib/cover-image";
 import { toISODate } from '@/utils/parse';
 
 export function generateMetadata() {
@@ -94,7 +93,6 @@ const BlogPt = () => {
             key={index}
             post={post}
             locale="pt"
-            coverImage={getCoverImagePath(post.slug)}
           />
         ))}
       </div>

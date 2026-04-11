@@ -253,6 +253,7 @@ export interface PostsEntry {
   slug: string;
   originalUrl: HttpUrl;
   lang: string;
+  cover: string;
   tags: Array<"Android" | "Mobile" | "UI/UX" | "Video" | "Flutter" | "iOS" | "AI" | "Article" | "JavaScript" | "React" | "GitHub" | "DevOps" | "Tutorial" | "Testing" | "Web" | "Frontend" | "Tools" | "Career" | "Linux" | "Performance" | "Security">;
 }
 

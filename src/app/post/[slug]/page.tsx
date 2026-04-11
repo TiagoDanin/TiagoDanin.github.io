@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { queryCollection } from 'nextjs-studio/server';
-import { getCoverImagePath } from '@/lib/cover-image';
 import { ArrowLeft, Globe, ExternalLink } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -27,9 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ? post.description.substring(0, 157) + '...'
     : post.description;
 
-  const coverRelPath = getCoverImagePath(slug);
-  const coverUrl = coverRelPath
-    ? `https://tiagodanin.com${coverRelPath}`
+  const coverUrl = post.cover
+    ? `https://tiagodanin.com${post.cover}`
     : undefined;
 
   const keywords = post.tags.length > 0

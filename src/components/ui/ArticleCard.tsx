@@ -12,12 +12,12 @@ interface ArticleCardProps {
     date: string;
     originalUrl: string;
     tags: string[];
+    cover: string;
   };
   locale?: 'en' | 'pt';
-  coverImage: string | null;
 }
 
-export function ArticleCard({ post, locale = 'en', coverImage }: ArticleCardProps) {
+export function ArticleCard({ post, locale = 'en' }: ArticleCardProps) {
   const postUrl = locale === 'pt' ? `/post/${post.slug}/pt` : `/post/${post.slug}`;
   const ariaLabel = locale === 'pt' ? `Ler ${post.title}` : `Read ${post.title}`;
   const readLabel = locale === 'pt' ? 'Ler artigo' : 'Read article';
@@ -28,10 +28,10 @@ export function ArticleCard({ post, locale = 'en', coverImage }: ArticleCardProp
       <Link href={postUrl} className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-6" aria-label={ariaLabel} />
       <div className="absolute -inset-x-4 -inset-y-6 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl pointer-events-none" />
 
-      {coverImage && (
+      {post.cover && (
         <div className="relative pointer-events-none w-full mb-4">
           <Image
-            src={coverImage}
+            src={post.cover}
             alt={post.title}
             width={672}
             height={378}
