@@ -5,8 +5,8 @@ import { Work } from "@/components/sections/Work";
 import { queryCollection } from 'nextjs-studio/server';
 
 export const metadata = {
-  title: "Mobile Developer & Bug Hunter | Portfolio",
-  description: "Mobile developer specializing in Flutter, React Native & native iOS/Android. Bug hunter, open source contributor, mentorship expert. Let's build something amazing together.",
+  title: "About Tiago Danin - Mobile Developer, Bug Hunter & Open Source Contributor",
+  description: "Mobile developer with 8+ years of experience in Flutter, React Native & native iOS/Android. Bug hunter on HackerOne, 70+ npm packages, 18+ conference talks. Based in Brazil.",
   keywords: ["Mobile Developer", "Flutter Developer", "React Native Developer", "iOS Developer", "Android Developer", "Bug Hunter", "Open Source Contributor", "Security Researcher", "Technical Mentor"],
   alternates: {
     canonical: 'https://tiagodanin.com/about',

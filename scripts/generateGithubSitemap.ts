@@ -14,43 +14,54 @@ type GithubProject = {
   homepage?: string;
 };
 
+function titleToSlug(title: string): string {
+  const validChars = title.match(/[a-z0-9\s-]+/gi)?.join('') || '';
+  return validChars
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .trim()
+    .replace(/^-+|-+$/g, '');
+}
+
 /**
- * Generates a sitemap XML for GitHub projects
+ * Generates a sitemap XML for GitHub projects.
+ * Points to the canonical /project/github/[slug] URLs instead of legacy GitHub Pages paths.
  */
 async function generateGithubSitemap(): Promise<void> {
   try {
     console.log('Generating GitHub projects sitemap...');
-    
+
     const projectsPath = path.join(__dirname, '..', 'contents', 'github', 'index.json');
     const projectsData: GithubProject[] = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
-    
+
     if (!projectsData || projectsData.length === 0) {
       console.warn('No GitHub projects data found');
       return;
     }
-    
-    const tiagoDaninProjects = projectsData.filter(project => 
+
+    const tiagoDaninProjects = projectsData.filter(project =>
       project.homepage && (
-        project.homepage.toLowerCase().startsWith('https://www.tiagodanin') || 
+        project.homepage.toLowerCase().startsWith('https://www.tiagodanin') ||
         project.homepage.toLowerCase().startsWith('https://tiagodanin') ||
         project.homepage.toLowerCase().startsWith('http://www.tiagodanin') ||
         project.homepage.toLowerCase().startsWith('http://tiagodanin')
       )
     );
-    
+
     console.log(`Found ${tiagoDaninProjects.length} GitHub projects with TiagoDanin homepage`);
-    
+
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
-    
+
     tiagoDaninProjects.forEach(project => {
-      sitemap += `\n  <url>\n    <loc>${siteUrl}/${project.name}/</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+      const slug = titleToSlug(project.name);
+      sitemap += `\n  <url>\n    <loc>${siteUrl}/project/github/${slug}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`;
     });
-    
+
     sitemap += `\n</urlset>`;
-    
+
     const sitemapPath = path.join(__dirname, '..', 'public', 'github-sitemap.xml');
     fs.writeFileSync(sitemapPath, sitemap);
-    
+
     console.log(`Successfully generated GitHub projects sitemap with ${tiagoDaninProjects.length} entries at ${sitemapPath}`);
   } catch (error) {
     console.error('Error generating GitHub projects sitemap:', error);

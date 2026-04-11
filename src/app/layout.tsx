@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     default: "Tiago Danin - Mobile Developer & Software Engineer",
     template: "%s | Tiago Danin"
   },
-  description: "Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor, bug hunter, and cybersecurity researcher.",
+  description: "Mobile Developer with 250+ projects. Flutter, React Native, iOS & Android specialist. Open source contributor with 70+ npm packages. Bug hunter on HackerOne.",
   keywords: [
     "Tiago Danin", "Mobile Developer", "Software Engineer", "Flutter", "React Native",
     "iOS", "Android", "Swift", "Kotlin", "TypeScript", "Cybersecurity",

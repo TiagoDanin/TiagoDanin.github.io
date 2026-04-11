@@ -5,9 +5,9 @@ import { Globe, Mic, Video } from "lucide-react";
 import { getRandomColor, toISODate } from '@/utils/parse';
 
 export const metadata = {
-  title: "Talks & Presentations | Tech Talks",
-  description: "Talks about mobile development, Flutter, React Native and security. Presentations at tech events, workshops and developer communities.",
-  keywords: ["talks", "presentations", "workshops", "mobile development", "Flutter", "React Native", "cybersecurity", "tech events", "DevFest", "DevOpsDays"],
+  title: "Tech Talks & Presentations - Flutter, React Native & Security",
+  description: "Watch talks on mobile development, Flutter, React Native, and cybersecurity. Presentations at DevFest, DevOpsDays, and developer meetups. Slides and videos available.",
+  keywords: ["tech talks", "developer presentations", "Flutter talk", "React Native presentation", "cybersecurity talk", "DevFest", "DevOpsDays", "mobile development talks", "feature flags", "fastlane match", "MCP protocol"],
   alternates: {
     canonical: 'https://tiagodanin.com/talks',
     types: {

@@ -8,27 +8,28 @@ import { Work } from "@/components/sections/Work";
 import { queryCollection } from 'nextjs-studio/server';
 
 export const metadata = {
-  title: "Flutter, React Native & iOS Developer | Tiago Danin",
-  description: "Expert mobile developer specializing in Flutter & React Native. Build high-quality iOS/Android apps with full-stack solutions, cybersecurity expertise & professional mentorship.",
+  title: "Tiago Danin - Mobile Developer | Flutter, React Native & iOS/Android",
+  description: "Mobile developer with 250+ projects and 70+ open source packages. Specializing in Flutter, React Native, iOS & Android. Bug hunter on HackerOne. Hire me or explore my work.",
   keywords: [
-    "Mobile Developer", "Flutter Developer", "React Native Developer",
+    "Tiago Danin", "Mobile Developer", "Flutter Developer", "React Native Developer",
     "iOS Developer", "Android Developer", "Full Stack Developer",
     "Software Engineer", "Cybersecurity Researcher", "Open Source Contributor",
-    "Technical Mentorship", "Cross-Platform Development", "Native Mobile Apps"
+    "Technical Mentorship", "Cross-Platform Development", "Native Mobile Apps",
+    "npm packages", "GitHub projects", "bug hunter", "HackerOne"
   ],
   alternates: {
     canonical: 'https://tiagodanin.com',
   },
   openGraph: {
-    title: 'Tiago Danin - Expert Mobile & Full Stack Developer',
-    description: 'Expert mobile developer specialized in Flutter, React Native, iOS & Android. Full-stack engineer, cybersecurity researcher, open source contributor & technical mentor.',
+    title: 'Tiago Danin - Mobile Developer | 250+ Projects & 70+ Open Source Packages',
+    description: 'Flutter, React Native, iOS & Android developer. 250+ projects delivered, bug hunter on HackerOne, and open source contributor.',
     url: 'https://tiagodanin.com',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tiago Danin - Expert Mobile & Full Stack Developer',
-    description: 'Mobile developer specializing in Flutter, React Native, iOS & Android. Expert in full-stack development, cybersecurity, open source & mentorship. Let\'s build amazing apps together.',
+    title: 'Tiago Danin - Mobile Developer | Flutter & React Native',
+    description: '250+ projects, 70+ open source packages. Flutter, React Native, iOS & Android. Bug hunter on HackerOne.',
     creator: '@tiagodanin',
   },
   other: {

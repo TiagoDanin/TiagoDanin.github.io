@@ -12,9 +12,9 @@ export function generateMetadata() {
   const posts = queryCollection('posts').where({ lang: 'en' });
 
   return {
-    title: "Blog: Articles on Development & AI",
-    description: "Blog about software development, mobile, AI and security. Weekly articles about Flutter, React Native, AI agents and technology.",
-    keywords: ["blog", "software development", "mobile development", "Flutter", "React Native", "AI agents", "security", "programming", "technical articles"],
+    title: "Blog - Flutter, React Native, AI & Cybersecurity Articles",
+    description: "Technical articles on mobile development, AI agents, and cybersecurity. Tutorials on Flutter, React Native, Node.js, and more. Free, in-depth guides for developers.",
+    keywords: ["blog", "software development", "mobile development", "Flutter tutorial", "React Native tutorial", "AI agents", "cybersecurity", "Node.js i18n", "zsh autocomplete", "nuxt seo", "programming articles"],
     alternates: {
       canonical: 'https://tiagodanin.com/blog',
       types: {
@@ -24,8 +24,8 @@ export function generateMetadata() {
       },
     },
     openGraph: {
-      title: "Blog: Development, Mobile & AI",
-      description: "Weekly articles about software development, mobile apps, AI agents and security.",
+      title: "Blog - Technical Articles on Flutter, AI & Cybersecurity",
+      description: "In-depth tutorials and articles on mobile development, AI agents, cybersecurity, and open source. Free guides for developers.",
       url: "https://tiagodanin.com/blog",
       type: "website",
       siteName: "Tiago Danin",
@@ -33,8 +33,8 @@ export function generateMetadata() {
     },
     twitter: {
       card: 'summary_large_image',
-      title: "Blog: Development & AI | Tiago Danin",
-      description: "Articles about mobile, AI agents, security and programming.",
+      title: "Dev Blog - Flutter, AI & Security | Tiago Danin",
+      description: "Free technical articles on mobile development, AI agents, and cybersecurity. Tutorials and in-depth guides.",
       creator: "@tiagodanin",
     },
     other: {

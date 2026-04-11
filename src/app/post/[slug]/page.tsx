@@ -91,17 +91,37 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     ],
   };
 
+  const coverUrl = post.cover
+    ? `https://tiagodanin.com${post.cover}`
+    : undefined;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
     "datePublished": toISODate(post.date),
+    "dateModified": toISODate(post.date),
     "url": `https://tiagodanin.com/post/${post.slug}`,
     "inLanguage": "en",
     "isAccessibleForFree": true,
-    "author": { "@type": "Person", "name": "Tiago Danin", "url": "https://tiagodanin.com" },
-    "publisher": { "@type": "Person", "name": "Tiago Danin" },
+    ...(coverUrl && { "image": coverUrl }),
+    "author": {
+      "@type": "Person",
+      "name": "Tiago Danin",
+      "url": "https://tiagodanin.com",
+      "image": "https://avatars.githubusercontent.com/u/5731176?v=4"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Tiago Danin",
+      "url": "https://tiagodanin.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://tiagodanin.com/post/${post.slug}`
+    },
+    ...(post.tags.length > 0 && { "keywords": post.tags.join(', ') }),
   };
 
   return (

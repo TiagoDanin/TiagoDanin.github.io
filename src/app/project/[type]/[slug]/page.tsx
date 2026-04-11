@@ -76,33 +76,52 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
   const title = project.title || project.name || '';
   const description = project.description || `${title} - A ${type} project by Tiago Danin`;
 
-  // Truncate description to 160 characters
-  const truncatedDescription = description.length > 160
-    ? description.substring(0, 157) + '...'
-    : description;
-
   const url = urlPrefixMap[type]
     ? `${urlPrefixMap[type]}${project.name}`
     : project.url || project.html_url || '';
 
   const isSoftware = ["npm", "pypi", "luarocks", "atom", "github", "aur"].includes(type);
 
+  // Build a richer description for SEO
+  const languageLabel = project.language ? ` Built with ${project.language}.` : '';
+  const starsLabel = project.stargazers_count ? ` ${project.stargazers_count} stars on GitHub.` : '';
+  const typeLabel: Record<string, string> = {
+    npm: 'npm package',
+    pypi: 'Python package',
+    luarocks: 'Lua package',
+    atom: 'Atom package',
+    github: 'open source project',
+    aur: 'AUR package',
+    googleplay: 'Android app',
+    windows: 'Windows app',
+    private: 'project',
+    offline: 'project',
+  };
+  const enrichedDescription = `${description}${languageLabel}${starsLabel}`;
+  const truncatedDescription = enrichedDescription.length > 160
+    ? enrichedDescription.substring(0, 157) + '...'
+    : enrichedDescription;
+
+  // Better title for search results: "locale-codes - ISO Language Codes | npm Package"
+  const platformSuffix = typeLabel[type] || type;
+  const seoTitle = `${title} | ${platformSuffix.charAt(0).toUpperCase() + platformSuffix.slice(1)}`;
+
   return {
-    title: `${title} - ${type}`,
+    title: seoTitle,
     description: truncatedDescription,
-    keywords: ['project', type, title, 'open source', 'portfolio', 'Tiago Danin'],
+    keywords: [title, type, project.language, 'open source', 'Tiago Danin', ...(isSoftware ? ['developer tools', 'package'] : ['portfolio'])].filter(Boolean) as string[],
     alternates: {
       canonical: `https://tiagodanin.com/project/${type}/${slug}`,
     },
     openGraph: {
-      title: `${title} - ${type} project`,
+      title: `${title} - ${description.substring(0, 60)}`,
       description: truncatedDescription,
       type: 'article',
       url: `https://tiagodanin.com/project/${type}/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | ${type} | Tiago Danin`,
+      title: seoTitle,
       description: truncatedDescription,
     },
     other: {
@@ -116,7 +135,17 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
           "url": url,
           "inLanguage": "en-US",
           "isAccessibleForFree": true,
-          ...(project.homepage && { "image": project.homepage }),
+          ...(project.language && { "programmingLanguage": project.language }),
+          ...(project.created_at && { "dateCreated": project.created_at }),
+          ...(project.updated_at && { "dateModified": project.updated_at }),
+          ...(project.stargazers_count && {
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": Math.min(5, Math.max(1, Math.round(project.stargazers_count / 10))),
+              "ratingCount": project.stargazers_count,
+              "bestRating": 5
+            }
+          }),
           "author": {
             "@type": "Person",
             "name": "Tiago Danin",

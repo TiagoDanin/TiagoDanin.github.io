@@ -19,6 +19,9 @@ module.exports = {
       priority = 1;
     } else if (path === '/projects' || path === '/blog' || path === '/talks' || path === '/services') {
       priority = 0.9;
+    } else if (path === '/rankings/github' || path === '/rankings/npm') {
+      priority = 0.8;
+      changefreq = 'weekly';
     } else if (path === '/rss/blog.xml' || path === '/rss/talks.xml' || path === '/rss/timeline.xml' || path === '/rss/projects.xml') {
       priority = 0.1;
       changefreq = 'monthly';
@@ -30,8 +33,13 @@ module.exports = {
     } else if (path.startsWith('/skills/')) {
       priority = 0.5;
       changefreq = 'monthly';
+    } else if (path.startsWith('/post/')) {
+      priority = 0.7;
     } else if (path.startsWith('/blog')) {
-      priority = 0.6; 
+      priority = 0.6;
+    } else if (path.startsWith('/project/npm/') || path.startsWith('/project/github/')) {
+      priority = 0.5;
+      changefreq = 'monthly';
     } else if (path.startsWith('/project/')) {
       priority = 0.3;
       changefreq = 'monthly';
@@ -45,7 +53,7 @@ module.exports = {
       priority = 0.1;
       changefreq = 'monthly';
     } else if (path.startsWith('/about')) {
-      priority = 0.1;
+      priority = 0.5;
       changefreq = 'monthly';
     }
 

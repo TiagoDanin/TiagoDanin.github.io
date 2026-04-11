@@ -7,9 +7,9 @@ import { Github, Package, Smartphone, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const metadata = {
-  title: "Developer Portfolio - Projects & Open Source",
-  description: "Explore my portfolio of 20+ projects: open source libraries, Flutter & React Native apps, npm packages, and mobile games. iOS, Android, TypeScript, Kotlin.",
-  keywords: ["projects", "portfolio", "open source", "GitHub", "NPM", "Flutter", "React Native", "mobile apps", "TypeScript", "Kotlin", "Swift", "developer portfolio", "games"],
+  title: "250+ Projects - Open Source, NPM Packages & Mobile Apps",
+  description: "Browse 250+ projects: 70+ npm packages, Flutter & React Native apps, GitHub tools, and mobile games. Open source libraries used by thousands of developers worldwide.",
+  keywords: ["projects", "portfolio", "open source", "GitHub", "NPM packages", "Flutter apps", "React Native", "mobile apps", "locale-codes", "telegraf-test", "polybar", "developer tools", "Node.js libraries"],
   alternates: {
     canonical: 'https://tiagodanin.com/projects',
     types: {
@@ -19,15 +19,15 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Developer Portfolio - 300+ Projects & Open Source",
-    description: "Explore my portfolio of 20+ projects: open source libraries, Flutter & React Native apps, npm packages, and mobile games.",
+    title: "250+ Open Source Projects - NPM Packages, Flutter Apps & Tools",
+    description: "Browse 250+ projects including 70+ npm packages, Flutter apps, React Native projects, and developer tools. Open source libraries used worldwide.",
     url: "https://tiagodanin.com/projects",
     type: "website",
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Developer Portfolio - 300+ Projects",
-    description: "Open source libraries, Flutter apps, React Native projects, npm packages, and mobile games.",
+    title: "250+ Open Source Projects | Tiago Danin",
+    description: "70+ npm packages, Flutter apps, React Native projects, and developer tools. Browse the full portfolio.",
   },
   other: {
     'application/ld+json': JSON.stringify([
