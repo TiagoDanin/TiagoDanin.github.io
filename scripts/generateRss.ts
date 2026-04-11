@@ -11,7 +11,14 @@ const posts = fs.readdirSync(postsDir)
     const raw = fs.readFileSync(path.join(postsDir, f), 'utf-8');
     return matter(raw).data as { title: string; date: string; description: string; slug: string; originalUrl: string };
   });
-import talks from '../contents/talks/index.json' assert { type: 'json' };
+// Read English talks from MDX files
+const talksDir = path.join(process.cwd(), 'contents', 'talks');
+const talks = fs.readdirSync(talksDir)
+  .filter(f => f.endsWith('.mdx') && !f.includes('.pt.'))
+  .map(f => {
+    const raw = fs.readFileSync(path.join(talksDir, f), 'utf-8');
+    return matter(raw).data as { title: string; date: string; description: string; slug: string; event: string; youtubeUrl?: string };
+  });
 import timeline from '../contents/timeline/index.json' assert { type: 'json' };
 import projectsGithub from '../contents/github/index.json' assert { type: 'json' };
 import projectsPrivate from '../contents/private/index.json' assert { type: 'json' };
@@ -62,13 +69,12 @@ const talksFeed = new RSS({
   language: 'en',
   copyright: 'Tiago Danin',
 });
-talks.forEach((talk: any) => {
-  const slug = titleToSlug(talk.title);
+talks.forEach((talk) => {
   talksFeed.item({
     title: talk.title,
     description: talk.description,
-    url: `${siteUrl}/talk/${slug}`,
-    guid: `${siteUrl}/talk/${slug}`,
+    url: `${siteUrl}/talk/${talk.slug}`,
+    guid: `${siteUrl}/talk/${talk.slug}`,
     date: talk.date,
   });
 });

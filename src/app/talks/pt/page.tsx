@@ -5,11 +5,11 @@ import { Globe, Mic, Video } from "lucide-react";
 import { getRandomColor, toISODate } from '@/utils/parse';
 
 export const metadata = {
-  title: "Talks & Presentations | Tech Talks",
-  description: "Talks about mobile development, Flutter, React Native and security. Presentations at tech events, workshops and developer communities.",
-  keywords: ["talks", "presentations", "workshops", "mobile development", "Flutter", "React Native", "cybersecurity", "tech events", "DevFest", "DevOpsDays"],
+  title: "Palestras & Apresentações PT-BR | Tech Talks",
+  description: "Palestras sobre desenvolvimento mobile, Flutter, React Native e segurança. Apresentações em eventos tech, workshops e comunidades de desenvolvedores brasileiros.",
+  keywords: ["palestras", "talks", "apresentações", "workshops", "mobile development", "Flutter", "React Native", "cybersecurity", "pt-br", "eventos tech", "DevFest", "DevOpsDays"],
   alternates: {
-    canonical: 'https://tiagodanin.com/talks',
+    canonical: 'https://tiagodanin.com/talks/pt',
     types: {
       'application/rss+xml': [
         { url: '/rss/talks.xml', title: 'Talks RSS Feed' }
@@ -17,22 +17,22 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Talks & Presentations",
-    description: "Talks about mobile development, Flutter, React Native and cybersecurity. Presentations at tech events.",
-    url: "https://tiagodanin.com/talks",
+    title: "Palestras & Apresentações Tech PT-BR",
+    description: "Palestras sobre mobile development, Flutter, React Native e cybersecurity. Apresentações em eventos tech brasileiros.",
+    url: "https://tiagodanin.com/talks/pt",
     type: "website",
-    locale: "en_US",
+    locale: "pt_BR",
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Tech Talks | Tiago Danin",
-    description: "Talks about mobile, Flutter, React Native and security at tech events.",
+    title: "Palestras Tech PT-BR | Tiago Danin",
+    description: "Palestras sobre mobile, Flutter, React Native e segurança em eventos tech brasileiros.",
     creator: "@tiagodanin",
   },
 };
 
-const TalksPage = () => {
-  const talks = queryCollection('talks').where({ lang: 'en' });
+const TalksPtPage = () => {
+  const talks = queryCollection('talks').where({ lang: 'pt' });
   const sortedTalks = [...talks].sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
@@ -52,8 +52,8 @@ const TalksPage = () => {
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Talks",
-        "item": "https://tiagodanin.com/talks"
+        "name": "Palestras",
+        "item": "https://tiagodanin.com/talks/pt"
       }
     ]
   };
@@ -80,15 +80,8 @@ const TalksPage = () => {
         "@type": "Person",
         "name": "Tiago Danin"
       },
-      "offers": talk.youtubeUrl ? {
-        "@type": "Offer",
-        "url": talk.youtubeUrl,
-        "availability": "https://schema.org/InStock",
-        "price": 0,
-        "priceCurrency": "BRL"
-      } : undefined,
-      "url": `https://tiagodanin.com/talk/${talk.slug}`,
-      "inLanguage": "en"
+      "url": `https://tiagodanin.com/talk/${talk.slug}/pt`,
+      "inLanguage": "pt-BR"
     }))
   };
 
@@ -99,23 +92,23 @@ const TalksPage = () => {
       <div className="container mx-auto py-32">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <div className="flex items-center justify-center gap-2">
-            <h1 className="text-3xl font-bold tracking-tight">Talks</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Palestras</h1>
           </div>
           <p className="mt-4 text-muted-foreground">
-            Talks, presentations and workshops about technology and development
+            Palestras, apresentações e workshops sobre tecnologia e desenvolvimento
           </p>
           <div className="mt-2 flex items-center justify-center gap-3">
             <p className="text-sm text-muted-foreground">
-              Total talks: {talks.length}
+              Total de palestras: {talks.length}
             </p>
-            <Badge variant="outline" className="flex items-center gap-1">
+            <Link href="/talks" className="text-sm text-primary hover:underline flex items-center gap-1">
               <Globe className="h-3 w-3" />
               EN
-            </Badge>
-            <Link href="/talks/pt" className="text-sm text-primary hover:underline flex items-center gap-1">
+            </Link>
+            <Badge variant="outline" className="flex items-center gap-1">
               <Globe className="h-3 w-3" />
               PT
-            </Link>
+            </Badge>
           </div>
         </div>
 
@@ -123,8 +116,8 @@ const TalksPage = () => {
           {sortedTalks.map((talk) => {
             return (
               <article key={talk.slug} className="group relative flex flex-col items-start hover:shadow-lg">
-                <Link href={`/talk/${talk.slug}`} className="absolute inset-0 z-10">
-                  <span className="sr-only">View {talk.title}</span>
+                <Link href={`/talk/${talk.slug}/pt`} className="absolute inset-0 z-10">
+                  <span className="sr-only">Ver {talk.title}</span>
                 </Link>
                 <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800" />
 
@@ -142,14 +135,14 @@ const TalksPage = () => {
                 </div>
 
                 <h2 className="relative z-10 text-base font-semibold tracking-tight">
-                  <Link href={`/talk/${talk.slug}`} className="relative z-10">
+                  <Link href={`/talk/${talk.slug}/pt`} className="relative z-10">
                     <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
                     {talk.title}
                   </Link>
                 </h2>
 
                 <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  <Link href={`/talk/${talk.slug}`} className="relative z-10">
+                  <Link href={`/talk/${talk.slug}/pt`} className="relative z-10">
                     {talk.description}
                   </Link>
                 </p>
@@ -169,10 +162,10 @@ const TalksPage = () => {
                   {talk.youtubeUrl ? (
                     <div className="flex gap-4">
                       <Link
-                        href={`/talk/${talk.slug}`}
+                        href={`/talk/${talk.slug}/pt`}
                         className="flex items-center hover:underline"
                       >
-                        View details
+                        Ver detalhes
                         <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
                           <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -184,12 +177,12 @@ const TalksPage = () => {
                         rel="noopener noreferrer"
                       >
                         <Video className="h-4 w-4 mr-1" />
-                        Watch on YouTube
+                        Assistir no YouTube
                       </Link>
                     </div>
                   ) : (
                     <div className="flex items-center">
-                      View details
+                      Ver detalhes
                       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
                         <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -205,4 +198,4 @@ const TalksPage = () => {
   );
 };
 
-export default TalksPage;
+export default TalksPtPage;

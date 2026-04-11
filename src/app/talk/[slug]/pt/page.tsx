@@ -13,12 +13,12 @@ import { toISODate, formatDate, getRandomColorWithDarkMode } from '@/utils/parse
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const talk = getTalkBySlug(slug, 'en');
+  const talk = getTalkBySlug(slug, 'pt');
 
   if (!talk) {
     return {
-      title: 'Talk Not Found',
-      description: 'The requested talk could not be found.',
+      title: 'Talk nao encontrada',
+      robots: { index: false, follow: true },
     };
   }
 
@@ -26,25 +26,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ? talk.description.substring(0, 157) + '...'
     : talk.description;
 
-  const keywords = [
-    'talk', 'presentation', 'workshop',
-    talk.event,
-    ...(talk.tags || [])
-  ];
-
   return {
     title: `${talk.title} - ${talk.event}`,
     description: truncatedDescription,
-    keywords,
     alternates: {
-      canonical: `https://tiagodanin.com/talk/${slug}`,
+      canonical: `https://tiagodanin.com/talk/${slug}/pt`,
     },
     openGraph: {
       title: `${talk.title} - ${talk.event}`,
       description: truncatedDescription,
       type: talk.youtubeUrl ? 'video.other' : 'article',
-      url: `https://tiagodanin.com/talk/${slug}`,
-      locale: 'en_US',
+      url: `https://tiagodanin.com/talk/${slug}/pt`,
+      locale: 'pt_BR',
       siteName: 'Tiago Danin',
       ...(talk.youtubeUrl && {
         video: [{
@@ -61,34 +54,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: truncatedDescription,
       creator: '@tiagodanin',
       site: '@tiagodanin',
-      ...(talk.youtubeUrl && {
-        players: [{
-          playerUrl: talk.youtubeUrl,
-          streamUrl: talk.youtubeUrl,
-          width: 1280,
-          height: 720,
-        }]
-      }),
     },
   };
 }
 
 export function generateStaticParams() {
   const talks = queryCollection('talks').where({ lang: 'en' });
-  return talks.map((talk: { slug: string }) => ({
-    slug: talk.slug,
-  }));
+  return talks
+    .filter((talk: { slug: string }) => talkHasLocale(talk.slug, 'pt'))
+    .map((talk: { slug: string }) => ({
+      slug: talk.slug,
+    }));
 }
 
-export default async function TalkPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function TalkPtPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const talk = getTalkBySlug(slug, 'en');
+  const talk = getTalkBySlug(slug, 'pt');
 
   if (!talk) {
     notFound();
   }
 
-  const hasPt = talkHasLocale(slug, 'pt');
   const mdxContent = await renderMdx(talk.body);
 
   const breadcrumbSchema = {
@@ -97,7 +83,7 @@ export default async function TalkPage({ params }: { params: Promise<{ slug: str
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
       { "@type": "ListItem", "position": 2, "name": "Talks", "item": "https://tiagodanin.com/talks" },
-      { "@type": "ListItem", "position": 3, "name": talk.title, "item": `https://tiagodanin.com/talk/${slug}` },
+      { "@type": "ListItem", "position": 3, "name": talk.title, "item": `https://tiagodanin.com/talk/${slug}/pt` },
     ],
   };
 
@@ -119,8 +105,8 @@ export default async function TalkPage({ params }: { params: Promise<{ slug: str
     },
     "organizer": { "@type": "Organization", "name": talk.event },
     "performer": { "@type": "Person", "name": "Tiago Danin", "url": "https://tiagodanin.com" },
-    "url": `https://tiagodanin.com/talk/${slug}`,
-    "inLanguage": "en",
+    "url": `https://tiagodanin.com/talk/${slug}/pt`,
+    "inLanguage": "pt-BR",
     ...(talk.youtubeUrl && {
       "recordedIn": {
         "@type": "VideoObject",
@@ -193,18 +179,16 @@ export default async function TalkPage({ params }: { params: Promise<{ slug: str
 
             {/* Language toggle */}
             <div className="mt-4 flex items-center gap-3">
+              <Button variant="outline" size="sm" asChild>
+                <Link href={`/talk/${talk.slug}`} className="flex items-center gap-1">
+                  <Globe className="h-3 w-3" />
+                  EN
+                </Link>
+              </Button>
               <Badge variant="secondary" className="flex items-center gap-1">
                 <Globe className="h-3 w-3" />
-                EN
+                PT
               </Badge>
-              {hasPt && (
-                <Button variant="outline" size="sm" asChild>
-                  <Link href={`/talk/${talk.slug}/pt`} className="flex items-center gap-1">
-                    <Globe className="h-3 w-3" />
-                    PT
-                  </Link>
-                </Button>
-              )}
             </div>
           </header>
 
@@ -214,15 +198,7 @@ export default async function TalkPage({ params }: { params: Promise<{ slug: str
           </div>
 
           {/* Giscus Comments */}
-          <GiscusComments term={`${talk.slug}-en`} category="Talk Comments" categoryId="DIC_kwDONy7kws4C6oQH" />
-
-          {/* LLM Translation Notice */}
-          <div className="mt-8 p-4 rounded-lg bg-secondary/50 border border-border">
-            <p className="text-sm text-muted-foreground">
-              This talk content was translated from Portuguese with the help of an LLM.
-              The original version may contain nuances not fully captured in this translation.
-            </p>
-          </div>
+          <GiscusComments term={`${talk.slug}-pt`} category="Talk Comments" categoryId="DIC_kwDONy7kws4C6oQH" />
         </div>
       </article>
 

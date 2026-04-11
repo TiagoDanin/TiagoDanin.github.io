@@ -113,6 +113,38 @@ const config: StudioConfig = {
         ],
       },
     },
+    talks: {
+      schema: {
+        collection: "talks",
+        label: "Talks",
+        fields: [
+          { name: "title", type: "text", required: true },
+          { name: "date", type: "date", includeDay: false, required: true },
+          { name: "description", type: "long-text", required: true },
+          { name: "slug", type: "text", required: true },
+          { name: "event", type: "text", required: true },
+          {
+            name: "lang",
+            type: "select",
+            required: true,
+            options: [opt("en"), opt("pt")],
+          },
+          { name: "youtubeUrl", type: "url" },
+          {
+            name: "tags",
+            type: "multi-select",
+            required: true,
+            options: [
+              opt("devops"), opt("mobile"), opt("firebase"), opt("flutter"),
+              opt("code"), opt("documentation"), opt("react-native"), opt("performance"),
+              opt("testing"), opt("fastlane"), opt("ios"), opt("web"), opt("ia"),
+              opt("javascript"), opt("git"), opt("wordpress"), opt("linkedin"),
+              opt("career"), opt("feature-flags"), opt("mcp"),
+            ],
+          },
+        ],
+      },
+    },
     github: {
       scripts: {
         sync: "tsx scripts/getProjectsGithub.ts --output-terminal",
