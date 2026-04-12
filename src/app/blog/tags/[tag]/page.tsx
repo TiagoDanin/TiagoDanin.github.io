@@ -95,7 +95,7 @@ const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
             <p className="mt-2 text-muted-foreground">
               {taggedPosts.length} {taggedPosts.length === 1 ? 'post' : 'posts'} found
             </p>
-            <TagFilter posts={posts} />
+            <TagFilter posts={posts} basePath="/blog/tags" />
           </div>
         </div>
 

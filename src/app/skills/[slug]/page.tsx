@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { queryCollection } from 'nextjs-studio/server';
-import { ArrowRight, Briefcase, BookOpen } from 'lucide-react';
+import { ArrowRight, Briefcase, BookOpen, Mic } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CallToAction } from '@/components/sections/CallToAction';
@@ -119,6 +119,14 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
     )
   ).slice(0, 5);
 
+  // Related talks
+  const allTalks = [...queryCollection('talks').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
+  const relatedTalks = allTalks.filter((talk) =>
+    (talk.tags as string[])?.some((tag: string) =>
+      tag.toLowerCase() === skill.name.toLowerCase()
+    )
+  ).slice(0, 5);
+
   // Related GitHub projects
   const allProjects = [...queryCollection('github')];
   const relatedProjects = allProjects
@@ -212,6 +220,32 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
                     </div>
                     <h3 className="font-medium group-hover:text-primary transition-colors">{post.title}</h3>
                     <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{post.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Related Talks */}
+          {relatedTalks.length > 0 && (
+            <section className="mb-12">
+              <h2 className="text-xl font-semibold tracking-tight mb-6 flex items-center gap-2">
+                <Mic className="h-5 w-5" />
+                Talks about {skill.name}
+              </h2>
+              <div className="space-y-4">
+                {relatedTalks.map((talk) => (
+                  <Link
+                    key={talk.slug}
+                    href={`/talk/${talk.slug}`}
+                    className="block group p-4 rounded-lg border border-border hover:border-primary/30 hover:bg-secondary/30 transition-colors"
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <time className="text-xs text-muted-foreground">{formatDate(talk.date)}</time>
+                      <Badge variant="secondary" className="text-[10px]">{talk.event}</Badge>
+                    </div>
+                    <h3 className="font-medium group-hover:text-primary transition-colors">{talk.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{talk.description}</p>
                   </Link>
                 ))}
               </div>

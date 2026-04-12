@@ -33,6 +33,10 @@ module.exports = {
     } else if (path.startsWith('/skills/')) {
       priority = 0.5;
       changefreq = 'monthly';
+    } else if (path === '/tags') {
+      priority = 0.8;
+    } else if (path.startsWith('/tags/')) {
+      priority = 0.6;
     } else if (path.startsWith('/post/')) {
       priority = 0.7;
     } else if (path.startsWith('/blog')) {
