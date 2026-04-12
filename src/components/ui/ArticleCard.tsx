@@ -70,7 +70,7 @@ export function ArticleCard({ post, locale = 'en' }: ArticleCardProps) {
 
       <div className="relative z-10 mt-3 flex flex-wrap gap-2 pointer-events-auto">
         {(post.tags || []).map((tag: string) => (
-          <Link key={tag} href={`/blog/tags/${titleToSlug(tag)}`}>
+          <Link key={tag} href={`/tags/${titleToSlug(tag)}`}>
             <Badge
               variant="outline"
               className={`text-xs ${getRandomColorWithDarkMode(tag)}`}

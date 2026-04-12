@@ -7,7 +7,7 @@ interface TagFilterProps {
   basePath?: string;
 }
 
-export function TagFilter({ posts, basePath = '/blog/tags' }: TagFilterProps) {
+export function TagFilter({ posts, basePath = '/tags' }: TagFilterProps) {
   const allTags = Array.from(
     new Set(posts.flatMap((post) => post.tags || []))
   ).sort();
