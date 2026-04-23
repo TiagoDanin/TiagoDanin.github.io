@@ -7,7 +7,9 @@ import { TagFilter } from "@/components/ui/TagFilter";
 import { titleToSlug, toISODate } from '@/utils/parse';
 
 function getPosts() {
-  return [...queryCollection('posts').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
+  return [...queryCollection('posts').where({ lang: 'en' })]
+    .filter((p) => !((p.tags as string[]) || []).includes('Video'))
+    .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 function getAllTagsMap() {

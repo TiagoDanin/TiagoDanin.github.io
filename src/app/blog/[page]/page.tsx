@@ -26,7 +26,9 @@ export async function generateMetadata({ params }: { params: Promise<{ page: str
 const POSTS_PER_PAGE = 10;
 
 export function generateStaticParams() {
-  const posts = queryCollection('posts').where({ lang: 'en' });
+  const posts = [...queryCollection('posts').where({ lang: 'en' })].filter(
+    (p) => !((p.tags as string[]) || []).includes('Video')
+  );
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const pages = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -37,7 +39,9 @@ export function generateStaticParams() {
 
 const BlogPage = async ({ params }: { params: Promise<{ page: string }> }) => {
   const { page } = await params;
-  const posts = [...queryCollection('posts').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
+  const posts = [...queryCollection('posts').where({ lang: 'en' })]
+    .filter((p) => !((p.tags as string[]) || []).includes('Video'))
+    .sort((a, b) => b.date.localeCompare(a.date));
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const currentPage = Number(page) || 1;
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;

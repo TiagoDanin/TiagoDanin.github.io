@@ -9,7 +9,9 @@ import { toISODate } from '@/utils/parse';
 const POSTS_PER_PAGE = 10;
 
 export function generateMetadata() {
-  const posts = queryCollection('posts').where({ lang: 'en' });
+  const posts = [...queryCollection('posts').where({ lang: 'en' })].filter(
+    (p) => !((p.tags as string[]) || []).includes('Video')
+  );
 
   return {
     title: "Blog - Flutter, React Native, AI & Cybersecurity Articles",
@@ -84,7 +86,9 @@ export function generateMetadata() {
 }
 
 const Blog = () => {
-  const posts = [...queryCollection('posts').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
+  const posts = [...queryCollection('posts').where({ lang: 'en' })]
+    .filter((p) => !((p.tags as string[]) || []).includes('Video'))
+    .sort((a, b) => b.date.localeCompare(a.date));
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const currentPosts = posts.slice(0, POSTS_PER_PAGE);
   const hasNextPage = totalPages > 1;
