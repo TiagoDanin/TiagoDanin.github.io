@@ -11,15 +11,16 @@ import { Star } from "lucide-react";
 const API_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL ?? "";
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
-type RatingKey = "geral" | "slides" | "fala" | "conteudo" | "aplicabilidade";
+type RatingKey = "slides" | "fala" | "conteudo" | "aplicabilidade";
 
 const RATING_LABELS: Record<RatingKey, string> = {
-  geral: "Avaliação geral",
   slides: "Slides",
   fala: "Apresentação / Fala",
   conteudo: "Conteúdo",
   aplicabilidade: "Aplicabilidade",
 };
+
+const RATING_KEYS = Object.keys(RATING_LABELS) as RatingKey[];
 
 declare global {
   interface Window {
@@ -39,7 +40,6 @@ export default function FeedbackForm() {
   const bonus = searchParams.get("bonus") ?? "";
 
   const [ratings, setRatings] = useState<Record<RatingKey, number>>({
-    geral: 0,
     slides: 0,
     fala: 0,
     conteudo: 0,
@@ -52,8 +52,16 @@ export default function FeedbackForm() {
   const [turnstileToken, setTurnstileToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [showErrors, setShowErrors] = useState(false);
+  const [shake, setShake] = useState(false);
   const turnstileRef = useRef<HTMLDivElement>(null);
   const turnstileWidgetId = useRef<string | null>(null);
+  const ratingRefs = useRef<Record<RatingKey, HTMLDivElement | null>>({
+    slides: null,
+    fala: null,
+    conteudo: null,
+    aplicabilidade: null,
+  });
 
   useEffect(() => {
     if (!TURNSTILE_SITE_KEY) return;
@@ -83,17 +91,33 @@ export default function FeedbackForm() {
     setRatings((prev) => ({ ...prev, [key]: value }));
   };
 
-  const allRatingsFilled = (Object.keys(ratings) as RatingKey[]).every((k) => ratings[k] >= 1);
+  const firstMissingRating = RATING_KEYS.find((k) => ratings[k] < 1);
+  const allRatingsFilled = !firstMissingRating;
+
+  const triggerShake = () => {
+    setShake(true);
+    setTimeout(() => setShake(false), 500);
+  };
+
+  const focusFirstMissing = () => {
+    if (!firstMissingRating) return;
+    const el = ratingRefs.current[firstMissingRating];
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     if (!allRatingsFilled) {
-      setError("Por favor, preencha todas as avaliações de 1 a 5 estrelas.");
+      setShowErrors(true);
+      triggerShake();
+      focusFirstMissing();
       return;
     }
-    if (!turnstileToken) {
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
       setError("Aguarde o captcha carregar e tente novamente.");
       return;
     }
@@ -139,7 +163,16 @@ export default function FeedbackForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+      <style>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          20%, 60% { transform: translateX(-6px); }
+          40%, 80% { transform: translateX(6px); }
+        }
+        .shake { animation: shake 0.4s ease-in-out; }
+      `}</style>
+
       <div>
         <h2 className="text-lg font-semibold mb-1">{talk}</h2>
         <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -147,10 +180,31 @@ export default function FeedbackForm() {
         </p>
       </div>
 
-      <div className="space-y-4">
-        {(Object.keys(RATING_LABELS) as RatingKey[]).map((key) => (
-          <RatingRow key={key} label={RATING_LABELS[key]} value={ratings[key]} onChange={(v) => setRating(key, v)} />
-        ))}
+      <div className="space-y-3">
+        {RATING_KEYS.map((key) => {
+          const isError = showErrors && ratings[key] < 1;
+          return (
+            <div
+              key={key}
+              ref={(el) => { ratingRefs.current[key] = el; }}
+              className={`rounded-md border px-3 py-2 transition-colors ${
+                isError
+                  ? `border-red-400 bg-red-50 dark:bg-red-950/40 ${shake ? "shake" : ""}`
+                  : "border-transparent"
+              }`}
+            >
+              <RatingRow
+                label={RATING_LABELS[key]}
+                value={ratings[key]}
+                onChange={(v) => setRating(key, v)}
+                isError={isError}
+              />
+              {isError && (
+                <p className="text-xs text-red-600 dark:text-red-400 mt-1">Selecione de 1 a 5 estrelas.</p>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <div className="space-y-4">
@@ -173,7 +227,7 @@ export default function FeedbackForm() {
       </div>
 
       {TURNSTILE_SITE_KEY ? (
-        <div ref={turnstileRef} />
+        <div ref={turnstileRef} className="flex justify-center" />
       ) : (
         <div className="rounded-md bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-900 p-3 text-sm text-yellow-800 dark:text-yellow-300">
           ⚠️ Captcha não configurado: defina <code>NEXT_PUBLIC_TURNSTILE_SITE_KEY</code> no <code>.env.local</code>.
@@ -186,20 +240,30 @@ export default function FeedbackForm() {
         </div>
       )}
 
-      <Button type="submit" className="w-full h-12" disabled={submitting || (TURNSTILE_SITE_KEY ? !turnstileToken : false)}>
+      <Button type="submit" className="w-full h-12" disabled={submitting}>
         {submitting ? "Enviando..." : "Enviar feedback e acessar bônus"}
       </Button>
-      {TURNSTILE_SITE_KEY && !turnstileToken && (
+      {allRatingsFilled && TURNSTILE_SITE_KEY && !turnstileToken && (
         <p className="text-xs text-gray-500 text-center">Aguardando verificação do captcha...</p>
       )}
     </form>
   );
 }
 
-function RatingRow({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
+function RatingRow({
+  label,
+  value,
+  onChange,
+  isError,
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  isError?: boolean;
+}) {
   return (
     <div className="flex items-center justify-between gap-4">
-      <span className="text-sm font-medium">{label}</span>
+      <span className={`text-sm font-medium ${isError ? "text-red-700 dark:text-red-400" : ""}`}>{label}</span>
       <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map((n) => (
           <button
@@ -211,7 +275,11 @@ function RatingRow({ label, value, onChange }: { label: string; value: number; o
           >
             <Star
               className={`w-6 h-6 ${
-                n <= value ? "fill-yellow-400 text-yellow-400" : "text-gray-300 dark:text-gray-600"
+                n <= value
+                  ? "fill-yellow-400 text-yellow-400"
+                  : isError
+                  ? "text-red-400"
+                  : "text-gray-300 dark:text-gray-600"
               }`}
             />
           </button>
