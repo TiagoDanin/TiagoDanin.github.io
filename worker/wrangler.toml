@@ -1,0 +1,13 @@
+name = "tiagodanin-feedback"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[vars]
+# Comma-separated list of allowed origins (production domains).
+# localhost / 127.0.0.1 are always allowed for development.
+ALLOWED_ORIGIN = "https://tiagodanin.com,https://www.tiagodanin.com"
+DATABASE_ID = "34b3bc9b-9579-8093-989c-000b266d1886"
+
+# Secrets (set via `wrangler secret put NAME`):
+#   NOTION_TOKEN
+#   TURNSTILE_SECRET
