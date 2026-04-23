@@ -58,6 +58,30 @@ function getDescription(skillName: string, category: string): string {
     'Figma': `Designing mobile and web interfaces in Figma. Creating design systems, component libraries, and prototypes. Experienced with auto-layout, design tokens, and developer handoff.`,
     'PostgreSQL': `Designing and optimizing relational databases with PostgreSQL. Experienced with migrations, indexing, query optimization, and integration with Node.js and Elixir backends.`,
     'Unity': `Developing 2D and 3D games with Unity and C#. Experienced with physics, animations, UI systems, and publishing to mobile platforms.`,
+    'Xamarin': `Cross-platform mobile development with Xamarin and C#. Building shared codebases for iOS and Android using Xamarin.Forms, native platform APIs, and MVVM architecture with .NET ecosystem integration.`,
+    'Obj-C': `Objective-C developer with experience in legacy iOS and macOS codebases. Proficient in UIKit, Foundation, memory management, and bridging with Swift for modernization projects.`,
+    'Ionic': `Building hybrid mobile apps with Ionic framework. Experienced with Angular/React integration, Capacitor plugins, native device APIs, and deploying to iOS and Android from a single codebase.`,
+    'GitLab CI/CD': `Setting up continuous integration and delivery pipelines with GitLab CI. Experienced with .gitlab-ci.yml configuration, multi-stage pipelines, Docker runners, artifact management, and automated deployments.`,
+    'GitHub CI/CD': `Automating workflows with GitHub Actions. Building CI/CD pipelines for testing, building, and deploying applications. Experienced with custom actions, matrix builds, and release automation.`,
+    'Azure': `Deploying and managing applications on Microsoft Azure. Experienced with App Service, Azure Functions, Azure DevOps pipelines, and cloud infrastructure for scalable applications.`,
+    'Google Cloud': `Building and deploying on Google Cloud Platform. Experienced with Cloud Run, Cloud Functions, Firestore, Cloud Storage, and integrating GCP services into mobile and web applications.`,
+    'Leadership': `Leading development teams and driving technical decisions. Experienced in mentoring junior developers, conducting code reviews, setting engineering standards, and aligning technical strategy with business goals.`,
+    'Team Management': `Managing cross-functional development teams. Experienced with agile methodologies, sprint planning, task delegation, conflict resolution, and fostering a collaborative engineering culture.`,
+    'Problem Solving': `Systematic approach to debugging and solving complex technical challenges. Experienced in root cause analysis, performance profiling, architectural trade-off evaluation, and breaking down ambiguous problems into actionable solutions.`,
+    'Communication': `Clear technical communication across teams and stakeholders. Experienced in writing documentation, presenting technical proposals, translating complex concepts for non-technical audiences, and facilitating productive discussions.`,
+    'Organization': `Structured approach to project organization and workflow management. Experienced with task prioritization, documentation systems, knowledge bases, and maintaining clean codebases through consistent conventions.`,
+    'HTML': `Semantic HTML5 development with focus on accessibility and SEO. Experienced with structured markup, ARIA attributes, microdata, forms, media elements, and building accessible web experiences.`,
+    'CSS': `Advanced CSS styling with modern layout techniques. Proficient in Flexbox, Grid, CSS custom properties, animations, responsive design, and building design systems with scalable CSS architectures.`,
+    'Vue.js': `Building reactive web applications with Vue.js. Experienced with Vue 3 Composition API, Vuex/Pinia state management, Vue Router, Nuxt.js for SSR, and component-driven development patterns.`,
+    'Tailwind': `Rapid UI development with Tailwind CSS utility-first framework. Building responsive, consistent interfaces with custom design tokens, component patterns, and integrating with React and Vue projects.`,
+    'Express': `Building RESTful APIs and web servers with Express.js. Experienced with middleware patterns, route handling, authentication, error handling, and integrating with databases and external services.`,
+    'Elixir': `Functional programming with Elixir and the BEAM ecosystem. Experienced with Phoenix framework, LiveView, OTP patterns, GenServers, and building fault-tolerant, concurrent applications.`,
+    'SQLite': `Lightweight database development with SQLite. Experienced with embedded databases for mobile apps, local-first architectures, migrations, query optimization, and integration with Android, iOS, and Electron apps.`,
+    'Mobile UX': `Designing intuitive mobile user experiences. Experienced with platform-specific design guidelines (Material Design, Human Interface Guidelines), user research, prototyping, interaction patterns, and accessibility standards for mobile apps.`,
+    'Flame': `2D game development with the Flame engine for Flutter. Building mobile games with sprite animations, collision detection, particle systems, and leveraging Flutter's rendering pipeline for smooth gameplay.`,
+    'LÖVE': `2D game development with the LÖVE framework and Lua. Building pixel-art games with physics, tilemaps, audio systems, and rapid prototyping for game jams and indie projects.`,
+    'Pixel Art': `Creating pixel art assets for games and digital media. Experienced with sprite design, animation frames, tileset creation, color palette management, and tools like Aseprite for production-quality game art.`,
+    'Blender': `3D modeling and rendering with Blender. Creating game assets, character models, environments, and animations. Experienced with modeling workflows, UV mapping, texturing, and exporting for game engines.`,
   };
 
   return descriptions[skillName] ||
@@ -113,30 +137,38 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
 
   // Related posts
   const allPosts = [...queryCollection('posts').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
-  const relatedPosts = allPosts.filter((post) =>
+  const allRelatedPosts = allPosts.filter((post) =>
     (post.tags as string[])?.some((tag: string) =>
       tag.toLowerCase() === skill.name.toLowerCase()
     )
-  ).slice(0, 5);
+  );
+  const relatedPosts = allRelatedPosts.slice(0, 5);
 
   // Related talks
   const allTalks = [...queryCollection('talks').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
-  const relatedTalks = allTalks.filter((talk) =>
+  const allRelatedTalks = allTalks.filter((talk) =>
     (talk.tags as string[])?.some((tag: string) =>
       tag.toLowerCase() === skill.name.toLowerCase()
     )
-  ).slice(0, 5);
+  );
+  const relatedTalks = allRelatedTalks.slice(0, 5);
 
   // Related GitHub projects
   const allProjects = [...queryCollection('github')];
-  const relatedProjects = allProjects
+  const skillSlug = titleToSlug(skill.name);
+  const allRelatedProjects = allProjects
     .filter((p) => {
-      const lang = (p.language as string || '').toLowerCase();
-      const name = skill.name.toLowerCase();
-      return lang === name || (p.topics as string[])?.some((t: string) => t.toLowerCase() === name);
+      const lang = titleToSlug(p.language as string || '');
+      return lang === skillSlug || (p.topics as string[])?.some((t: string) => titleToSlug(t) === skillSlug);
     })
-    .sort((a, b) => (b.stargazers_count as number) - (a.stargazers_count as number))
-    .slice(0, 6);
+    .sort((a, b) => (b.stargazers_count as number) - (a.stargazers_count as number));
+  const relatedProjects = allRelatedProjects.slice(0, 6);
+
+  // Metrics
+  const totalPosts = allRelatedPosts.length;
+  const totalTalks = allRelatedTalks.length;
+  const totalProjects = allRelatedProjects.length;
+  const totalStars = allRelatedProjects.reduce((sum, p) => sum + ((p.stargazers_count as number) || 0), 0);
 
   // Other skills in same category
   const allSkills = getAllSkills();
@@ -194,6 +226,31 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
               {description}
             </p>
+
+            {/* Metrics */}
+            {(totalProjects > 0 || totalPosts > 0 || totalTalks > 0) && (
+              <div className="mt-6 flex flex-wrap gap-4">
+                {totalProjects > 0 && (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground bg-secondary/50 px-3 py-1.5 rounded-full">
+                    <Briefcase className="h-4 w-4" />
+                    <span>{totalProjects} open source project{totalProjects !== 1 ? 's' : ''}</span>
+                    {totalStars > 0 && <span className="text-yellow-600 dark:text-yellow-400">({totalStars} stars)</span>}
+                  </div>
+                )}
+                {totalPosts > 0 && (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground bg-secondary/50 px-3 py-1.5 rounded-full">
+                    <BookOpen className="h-4 w-4" />
+                    <span>{totalPosts} article{totalPosts !== 1 ? 's' : ''}</span>
+                  </div>
+                )}
+                {totalTalks > 0 && (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground bg-secondary/50 px-3 py-1.5 rounded-full">
+                    <Mic className="h-4 w-4" />
+                    <span>{totalTalks} talk{totalTalks !== 1 ? 's' : ''}</span>
+                  </div>
+                )}
+              </div>
+            )}
           </header>
 
           {/* Related Posts */}

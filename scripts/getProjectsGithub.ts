@@ -10,7 +10,11 @@ const main = async (): Promise<void> => {
 	console.log('Get github projects')
 	for (const page of pages) {
 		const response = await fetch(baseUrl(page))
-		const data = await response.json() as any[]
+		const data = await response.json() as any
+		if (!Array.isArray(data)) {
+			console.error(`GitHub API error on page ${page} (status ${response.status}):`, data)
+			throw new Error(`Failed to fetch page ${page}`)
+		}
 		allProjects = [...allProjects, ...data]
 	}
 

@@ -1,10 +1,17 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ExternalLink, Github, Package, Archive } from 'lucide-react';
+import { ExternalLink, Github, Package, Archive, Globe, Scale, Download, Tag, Hash } from 'lucide-react';
 import Link from 'next/link';
 
 import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from "@/utils/parse";
+
+type LicenseInfo = {
+  key?: string;
+  name?: string;
+  spdx_id?: string;
+  url?: string;
+};
 
 type GenericProject = {
   name?: string;
@@ -21,9 +28,14 @@ type GenericProject = {
   created_at?: string;
   updated_at?: string;
   pushed_at?: string;
-  readme_html?: string;
   homepage?: string;
-  [key: string]: string | number | boolean | undefined;
+  topics?: string[];
+  license?: LicenseInfo;
+  keywords?: string[];
+  downloads?: number;
+  version?: string;
+  scope?: string;
+  [key: string]: unknown;
 };
 
 function getProjectsMap(): Record<string, GenericProject[]> {
@@ -109,7 +121,12 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
   return {
     title: seoTitle,
     description: truncatedDescription,
-    keywords: [title, type, project.language, 'open source', 'Tiago Danin', ...(isSoftware ? ['developer tools', 'package'] : ['portfolio'])].filter(Boolean) as string[],
+    keywords: [
+      title, type, project.language, 'open source', 'Tiago Danin',
+      ...(isSoftware ? ['developer tools', 'package'] : ['portfolio']),
+      ...((project.topics as string[]) || []),
+      ...((project.keywords as string[]) || []),
+    ].filter(Boolean) as string[],
     alternates: {
       canonical: `https://tiagodanin.com/project/${type}/${slug}`,
     },
@@ -138,6 +155,9 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
           ...(project.language && { "programmingLanguage": project.language }),
           ...(project.created_at && { "dateCreated": project.created_at }),
           ...(project.updated_at && { "dateModified": project.updated_at }),
+          ...((project.license as LicenseInfo)?.spdx_id && { "license": `https://spdx.org/licenses/${(project.license as LicenseInfo).spdx_id}` }),
+          ...((project.topics as string[])?.length && { "keywords": (project.topics as string[]).join(', ') }),
+          ...((project.keywords as string[])?.length && { "keywords": (project.keywords as string[]).join(', ') }),
           ...(project.stargazers_count && {
             "aggregateRating": {
               "@type": "AggregateRating",
@@ -244,10 +264,27 @@ export default async function ProjectPage({ params }: { params: Promise<{ type: 
 
   const installCommand = getInstallCommand();
 
+  // Google Play apps have a richer dedicated page at /app/[slug]
+  const googlePlaySlug = type === 'googleplay' ? (project as GenericProject & { slug?: string }).slug : null;
+
   return (
     <>
       <div className="container mx-auto py-32 px-4">
         <div className="max-w-3xl mx-auto">
+          {/* Google Play banner */}
+          {googlePlaySlug && (
+            <Link
+              href={`/app/${googlePlaySlug}`}
+              className="flex items-center gap-2 mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors"
+            >
+              <span className="text-2xl">📱</span>
+              <span className="text-green-800 dark:text-green-200 font-medium">
+                View the full app page with features, screenshots and build story
+              </span>
+              <ExternalLink className="h-4 w-4 text-green-600 dark:text-green-400 ml-auto" />
+            </Link>
+          )}
+
           {/* Project header */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-2">
@@ -276,23 +313,58 @@ export default async function ProjectPage({ params }: { params: Promise<{ type: 
             {description && (
               <p className="text-lg text-gray-700 dark:text-gray-300">{description}</p>
             )}
+
+            {/* Topics / Keywords */}
+            {(() => {
+              const tags = (project.topics as string[]) || (project.keywords as string[]) || [];
+              if (tags.length === 0) return null;
+              return (
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {tags.map((tag) => (
+                    <Link
+                      key={tag}
+                      href={`/tags/${titleToSlug(tag)}`}
+                      className="inline-flex items-center gap-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    >
+                      <Hash className="h-3 w-3" />
+                      {tag}
+                    </Link>
+                  ))}
+                </div>
+              );
+            })()}
           </div>
 
           {/* Project details - single column layout */}
           <div className="space-y-6 mb-10">
             {/* Project links */}
-            {url && (
+            {(url || project.homepage) && (
               <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
-                <h2 className="text-xl font-semibold mb-3">Project Link</h2>
-                <a 
-                  href={url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  {url}
-                </a>
+                <h2 className="text-xl font-semibold mb-3">Links</h2>
+                <div className="space-y-2">
+                  {url && (
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      {type === 'github' ? 'Repository' : type === 'npm' ? 'npm Package' : 'Project Page'}
+                    </a>
+                  )}
+                  {project.homepage && project.homepage !== url && (
+                    <a
+                      href={project.homepage as string}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                    >
+                      <Globe className="h-4 w-4" />
+                      Homepage
+                    </a>
+                  )}
+                </div>
               </div>
             )}
 
@@ -306,15 +378,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ type: 
               </div>
             )}
 
+            {/* License */}
+            {project.license && (project.license as LicenseInfo).name && (
+              <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
+                <h2 className="text-xl font-semibold mb-3">License</h2>
+                <div className="flex items-center gap-2">
+                  <Scale className="h-4 w-4 text-gray-500" />
+                  <span>{(project.license as LicenseInfo).spdx_id || (project.license as LicenseInfo).name}</span>
+                </div>
+              </div>
+            )}
+
             {/* Project stats */}
-            {project.stargazers_count !== undefined && (
+            {(project.stargazers_count !== undefined || project.downloads !== undefined) && (
               <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
                 <h2 className="text-xl font-semibold mb-3">Statistics</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Stars</p>
-                    <p className="text-lg font-medium">{project.stargazers_count}</p>
-                  </div>
+                  {project.stargazers_count !== undefined && (
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Stars</p>
+                      <p className="text-lg font-medium">{project.stargazers_count}</p>
+                    </div>
+                  )}
                   {project.forks_count !== undefined && (
                     <div>
                       <p className="text-sm text-gray-500 dark:text-gray-400">Forks</p>
@@ -331,6 +416,24 @@ export default async function ProjectPage({ params }: { params: Promise<{ type: 
                     <div>
                       <p className="text-sm text-gray-500 dark:text-gray-400">Open Issues</p>
                       <p className="text-lg font-medium">{project.open_issues_count}</p>
+                    </div>
+                  )}
+                  {project.downloads !== undefined && (
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Downloads</p>
+                      <p className="text-lg font-medium flex items-center gap-1">
+                        <Download className="h-4 w-4" />
+                        {(project.downloads as number).toLocaleString()}
+                      </p>
+                    </div>
+                  )}
+                  {project.version && (
+                    <div>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Version</p>
+                      <p className="text-lg font-medium flex items-center gap-1">
+                        <Tag className="h-4 w-4" />
+                        {project.version as string}
+                      </p>
                     </div>
                   )}
                 </div>
