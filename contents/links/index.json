@@ -1,4 +1,5 @@
-[{
+[
+    {
         "title": "Instagram",
         "url": "https://www.instagram.com/tiagodanin/",
         "icon": "instagram",
@@ -38,12 +39,19 @@
         "title": "Mobile em 2026: Como Se Destacar no Mercado",
         "url": "https://forms.gle/ZtP1mHTN9QF86VEX7",
         "icon": "list",
-        "enabled": true
+        "enabled": false
     },
     {
         "title": "Grupo Studio Code",
         "url": "https://chat.whatsapp.com/BfYiNPxyXTH2QS2jnc6MYB",
         "icon": "whatsapp",
-        "enabled": true
+        "enabled": false
+    },
+    {
+        "title": "Construindo Produtos Reais com Agentes Inteligentes: Da Ideia ao Código",
+        "url": "https://google.drive.com/4324343",
+        "icon": "presentation",
+        "enabled": true,
+        "talk_avaliation": true
     }
 ]

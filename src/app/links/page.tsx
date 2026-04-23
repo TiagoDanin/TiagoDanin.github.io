@@ -63,40 +63,53 @@ export default function Links() {
             <div className="space-y-4">
               {linksData.filter((link) => link.enabled).map((link, index) => {
                 const IconComponent = iconMap[link.icon as keyof typeof iconMap];
-                
+                const needsFeedback = Boolean(link.talk_avaliation);
+                const href = needsFeedback
+                  ? `/links/talk/?talk=${encodeURIComponent(link.title as string)}&bonus=${encodeURIComponent(link.url as string)}`
+                  : (link.url as string);
+
                 return (
                   <Button
                     key={index}
                     variant="outline"
-                    className="w-full h-14 bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md dark:bg-gray-800/80 dark:border-gray-700 dark:hover:bg-gray-800"
+                    className="w-full min-h-14 h-auto whitespace-normal bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md dark:bg-gray-800/80 dark:border-gray-700 dark:hover:bg-gray-800"
                     asChild
                   >
                     <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between px-6"
+                      href={href}
+                      target={needsFeedback ? undefined : "_blank"}
+                      rel={needsFeedback ? undefined : "noopener noreferrer"}
+                      className="flex items-center justify-between px-6 py-3 gap-3 w-full"
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 min-w-0 flex-1">
                         {IconComponent && (
-                          <IconComponent className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                          <IconComponent className="w-5 h-5 text-gray-600 dark:text-gray-300 shrink-0" />
                         )}
-                        <span className="font-medium text-gray-900 dark:text-white">
+                        <span className="font-medium text-gray-900 dark:text-white text-left break-words">
                           {link.title}
                         </span>
                       </div>
                       <svg
-                        className="w-4 h-4 text-gray-400"
+                        className="w-4 h-4 text-gray-400 shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
+                        {needsFeedback ? (
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        ) : (
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        )}
                       </svg>
                     </a>
                   </Button>
