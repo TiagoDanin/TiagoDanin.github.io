@@ -17,6 +17,11 @@ export function generateMetadata() {
     keywords: ["blog", "software development", "mobile development", "Flutter tutorial", "React Native tutorial", "AI agents", "cybersecurity", "Node.js i18n", "zsh autocomplete", "nuxt seo", "programming articles"],
     alternates: {
       canonical: 'https://tiagodanin.com/blog',
+      languages: {
+        'en-US': 'https://tiagodanin.com/blog',
+        'pt-BR': 'https://tiagodanin.com/blog/pt',
+        'x-default': 'https://tiagodanin.com/blog',
+      },
       types: {
         'application/rss+xml': [
           { url: '/rss/blog.xml', title: 'Blog RSS Feed' }

@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     canonical: 'https://tiagodanin.com',
     languages: {
       'en-US': 'https://tiagodanin.com',
-      'pt-BR': 'https://tiagodanin.com',
+      'x-default': 'https://tiagodanin.com',
     },
   },
 };

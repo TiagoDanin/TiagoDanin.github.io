@@ -32,12 +32,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ...(talk.tags || [])
   ];
 
+  const hasPtVariant = talkHasLocale(slug, 'pt');
+
   return {
     title: `${talk.title} - ${talk.event}`,
     description: truncatedDescription,
     keywords,
     alternates: {
       canonical: `https://tiagodanin.com/talk/${slug}`,
+      languages: {
+        'en-US': `https://tiagodanin.com/talk/${slug}`,
+        ...(hasPtVariant && { 'pt-BR': `https://tiagodanin.com/talk/${slug}/pt` }),
+        'x-default': `https://tiagodanin.com/talk/${slug}`,
+      },
     },
     openGraph: {
       title: `${talk.title} - ${talk.event}`,

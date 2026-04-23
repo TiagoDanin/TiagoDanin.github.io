@@ -13,6 +13,11 @@ export function generateMetadata() {
     keywords: ["blog", "desenvolvimento de software", "mobile", "Flutter", "React Native", "IA", "seguranca", "programacao", "artigos tecnicos"],
     alternates: {
       canonical: 'https://tiagodanin.com/blog/pt',
+      languages: {
+        'en-US': 'https://tiagodanin.com/blog',
+        'pt-BR': 'https://tiagodanin.com/blog/pt',
+        'x-default': 'https://tiagodanin.com/blog',
+      },
     },
     openGraph: {
       title: "Blog: Desenvolvimento, Mobile & IA",

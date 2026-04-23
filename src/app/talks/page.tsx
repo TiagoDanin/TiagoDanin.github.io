@@ -10,6 +10,11 @@ export const metadata = {
   keywords: ["tech talks", "developer presentations", "Flutter talk", "React Native presentation", "cybersecurity talk", "DevFest", "DevOpsDays", "mobile development talks", "feature flags", "fastlane match", "MCP protocol"],
   alternates: {
     canonical: 'https://tiagodanin.com/talks',
+    languages: {
+      'en-US': 'https://tiagodanin.com/talks',
+      'pt-BR': 'https://tiagodanin.com/talks/pt',
+      'x-default': 'https://tiagodanin.com/talks',
+    },
     types: {
       'application/rss+xml': [
         { url: '/rss/talks.xml', title: 'Talks RSS Feed' }

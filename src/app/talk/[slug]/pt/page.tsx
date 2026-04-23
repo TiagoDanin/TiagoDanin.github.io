@@ -31,6 +31,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: truncatedDescription,
     alternates: {
       canonical: `https://tiagodanin.com/talk/${slug}/pt`,
+      languages: {
+        'en-US': `https://tiagodanin.com/talk/${slug}`,
+        'pt-BR': `https://tiagodanin.com/talk/${slug}/pt`,
+        'x-default': `https://tiagodanin.com/talk/${slug}`,
+      },
     },
     openGraph: {
       title: `${talk.title} - ${talk.event}`,

@@ -31,6 +31,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: truncatedDescription,
     alternates: {
       canonical: `https://tiagodanin.com/post/${post.slug}/pt`,
+      languages: {
+        'en-US': `https://tiagodanin.com/post/${post.slug}`,
+        'pt-BR': `https://tiagodanin.com/post/${post.slug}/pt`,
+        'x-default': `https://tiagodanin.com/post/${post.slug}`,
+      },
     },
     openGraph: {
       title: post.title,

@@ -30,12 +30,16 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     title: `Posts tagged with "${originalTagName}"`,
     description: `All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles.`,
     alternates: {
-      canonical: `https://tiagodanin.com/blog/tags/${tagSlug}`,
+      canonical: `https://tiagodanin.com/tags/${tagSlug}`,
+    },
+    robots: {
+      index: false,
+      follow: true,
     },
     openGraph: {
       title: `Posts tagged with "${originalTagName}" - Tiago Danin`,
       description: `All blog posts tagged with "${originalTagName}"`,
-      url: `https://tiagodanin.com/blog/tags/${tagSlug}`,
+      url: `https://tiagodanin.com/tags/${tagSlug}`,
       type: "website",
     },
   };

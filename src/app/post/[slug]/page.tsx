@@ -34,12 +34,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ? [...post.tags, 'Tiago Danin', 'blog']
     : ['blog', 'software development', 'technology'];
 
+  const hasPtVariant = postHasLocale(slug, 'pt');
+
   return {
     title: post.title,
     description: truncatedDescription,
     keywords,
     alternates: {
       canonical: `https://tiagodanin.com/post/${post.slug}`,
+      languages: {
+        'en-US': `https://tiagodanin.com/post/${post.slug}`,
+        ...(hasPtVariant && { 'pt-BR': `https://tiagodanin.com/post/${post.slug}/pt` }),
+        'x-default': `https://tiagodanin.com/post/${post.slug}`,
+      },
     },
     openGraph: {
       title: post.title,

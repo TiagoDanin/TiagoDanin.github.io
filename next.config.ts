@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
   output: "export",
 
   /**
+   * Generate /page/index.html instead of /page.html to align with GitHub Pages
+   * directory-based serving and avoid unnecessary redirects.
+   */
+  trailingSlash: true,
+
+  /**
    * The directory where the build output is stored.
    *
    * @see https://nextjs.org/docs/app/building-your-application/deploying/static-exports#the-dist-directory
