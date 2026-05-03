@@ -286,12 +286,6 @@ export default function WebDevelopmentPage() {
                   Send an Email
                 </a>
               </Button>
-              <Button size="lg" variant="ghost" asChild>
-                <Link href="/services">
-                  <ArrowRight className="h-5 w-5 mr-2" />
-                  All Services
-                </Link>
-              </Button>
             </div>
           </div>
         </div>
