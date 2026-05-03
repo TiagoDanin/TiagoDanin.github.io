@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Smartphone, Code, Shield, GraduationCap, ArrowRight, CheckCircle, Briefcase } from "lucide-react";
+import { Smartphone, Code, Shield, GraduationCap, ArrowRight, CheckCircle, Briefcase, Gamepad2, Chrome, Brain, Globe } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
 import { queryCollection } from 'nextjs-studio/server';
@@ -137,6 +137,33 @@ const services = [
   },
 ];
 
+const additionalServices = [
+  {
+    icon: <Gamepad2 className="h-4 w-4" />,
+    title: "Game Development",
+    description: "Indie and casual games for mobile and web — idle, arcade, and survival, from prototype to Google Play.",
+    href: "/game-development",
+  },
+  {
+    icon: <Chrome className="h-4 w-4" />,
+    title: "Chrome Extensions",
+    description: "Custom browser extensions with Manifest V3 and TypeScript — productivity tools, integrations, and Web Store publishing.",
+    href: "/chrome-extensions",
+  },
+  {
+    icon: <Brain className="h-4 w-4" />,
+    title: "AI Automation",
+    description: "Agents, RAG, MCP servers, and LLM integration — production-grade AI with evals and cost control.",
+    href: "/ai-automation",
+  },
+  {
+    icon: <Globe className="h-4 w-4" />,
+    title: "Web Development",
+    description: "Modern websites and web apps with Next.js, React, and TypeScript — fast, SEO-ready, and accessible.",
+    href: "/web-development",
+  },
+];
+
 const stats = [
   { value: "250+", label: "Projects Delivered" },
   { value: "8+", label: "Years of Experience" },
@@ -240,6 +267,19 @@ export default function ServicesPage() {
                   </Button>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+            <span>Also available:</span>
+            {additionalServices.map((service, idx) => (
+              <span key={service.title} className="inline-flex items-center gap-x-2">
+                <Link href={service.href} className="text-foreground hover:text-primary underline-offset-4 hover:underline inline-flex items-center gap-1">
+                  {service.icon}
+                  {service.title}
+                </Link>
+                {idx < additionalServices.length - 1 && <span>·</span>}
+              </span>
             ))}
           </div>
         </div>
