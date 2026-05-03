@@ -230,5 +230,49 @@
 			"learned": "The biggest challenge in local services marketplaces is the bootstrap problem: the app only has value when there's density on both sides."
 		},
 		"tags": ["pets", "marketplace", "services", "android", "brazil"]
+	},
+	{
+		"name": "Idle Elevator",
+		"slug": "idle-elevator",
+		"tagline": "How high can your elevator go?",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.idle_elevator",
+		"description": "Idle clicker game where you manage an elevator that never stops climbing. Upgrade attributes, collect coins, and unlock prestige bonuses.",
+		"storeDescription": "Idle Elevator is an idle clicker game where you manage an elevator that climbs endlessly. Tap to earn extra coins while the elevator rises automatically, pick up passengers for a 3x income bonus, chain combos to multiply earnings, and hit BOOST to accelerate the elevator by 5x. Invest in Speed, Capacity, and Profit upgrades — buy in bulk with 10x, 100x, or MAX. Reach enough floors to unlock prestige and restart with permanent income bonuses. Your elevator keeps earning offline, too.",
+		"category": "Games",
+		"icon": "🛗",
+		"accentColor": "#6366F1",
+		"features": [
+			{
+				"icon": "🛗",
+				"title": "Endless Climb",
+				"description": "The elevator rises automatically — tap the building for extra coins and pick up passengers for a 3x income bonus."
+			},
+			{
+				"icon": "⚡",
+				"title": "Combos & Boost",
+				"description": "Chain combos to multiply your earnings and activate BOOST to accelerate the elevator by 5x."
+			},
+			{
+				"icon": "📈",
+				"title": "Three Upgrade Paths",
+				"description": "Invest in Speed, Capacity, and Profit. Buy upgrades individually or in bulk with 10x, 100x, or MAX."
+			},
+			{
+				"icon": "🏆",
+				"title": "Prestige System",
+				"description": "Reach enough floors to unlock prestige and restart with permanent income bonuses that compound run after run."
+			},
+			{
+				"icon": "💤",
+				"title": "Offline Earnings",
+				"description": "Your elevator keeps working when the app is closed. Collect accumulated coins on return — or watch an ad to double them."
+			}
+		],
+		"buildStory": {
+			"problem": "I wanted to explore the idle/incremental genre — games where progression keeps happening even when the player isn't actively playing — and ship a polished version of one.",
+			"solution": "An elevator-themed idle clicker with three upgrade trees, a prestige loop, and offline earnings. The elevator metaphor maps naturally to vertical progression, which makes the core loop intuitive on first open.",
+			"learned": "Idle games live or die by their numbers. Tuning the cost curves and prestige multipliers took longer than building the entire UI — the game has to feel rewarding at minute 1 and still be motivating at hour 10."
+		},
+		"tags": ["game", "idle", "clicker", "android", "prestige"]
 	}
 ]
