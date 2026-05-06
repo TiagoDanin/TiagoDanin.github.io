@@ -1,0 +1,151 @@
+---
+title: "Flutter Widgetbook: Como Documentar seu Design System do jeito certo!"
+date: "2026-05"
+description: "Como o Widgetbook resolve o problema de documentar componentes em projetos Flutter com design system próprio. No Direção Fácil, virou catálogo visual, contrato com o Figma e contexto preciso para o Claude Code gerar telas usando os widgets certos."
+slug: "flutter-widgetbook-how-to-document-your-design-system-the-right-way"
+originalUrl: "https://www.linkedin.com/pulse/flutter-widgetbook-como-documentar-seu-design-system-do-tiago-danin-ocgnf/"
+lang: "pt"
+cover: "/images/posts/flutter-widgetbook-como-documentar-seu-design-system-do-jeito-certo/cover.png"
+tags: ["Flutter", "Design System", "Widgetbook", "Mobile", "UI/UX", "Article"]
+---
+
+![Flutter Widgetbook: Como Documentar seu Design System do jeito certo!](/images/posts/flutter-widgetbook-como-documentar-seu-design-system-do-jeito-certo/cover.png)
+
+Quando comecei a desenvolver o Direção Fácil, ficou claro desde cedo que o app teria um design system próprio. Cada botão, cada card, cada barra de progresso com visual específico, tudo desenhado pixel-perfect no Figma.
+
+Para implementar os componentes mais rápido, usei LLM com o Figma como referência. Foi um processo direto: desenhei, passei para o modelo, ajustei, parti para o próximo. Quando terminei, tinha 25 componentes prontos: `DFButton` em 5 variantes, `DFModule` em 4 estados, `DFQuizBar`, `DFQuestion` e mais uma dúzia de outros.
+
+![Design dos componentes do Direção Fácil no Figma antes de virar código](/images/posts/flutter-widgetbook-como-documentar-seu-design-system-do-jeito-certo/figma-direcao-facil.png)
+
+Mas conforme os componentes iam ficando prontos, fui percebendo um gap: como eu sabia que o componente estava correto se nunca conseguia vê-lo isolado, fora do contexto do app inteiro? Eu queria poder abrir o `DFModule` com todos os seus estados lado a lado, ver o `DFButton` em todas as variantes de uma vez, e comparar com o Figma antes de sair usando nas telas. Precisava de um catálogo visual, do tipo que o Material Design tem para os widgets nativos do Flutter, mas para os componentes do meu próprio design system.
+
+A primeira opção que veio à cabeça foi o Storybook, mas ele não tem suporte para Flutter. Foi procurando uma alternativa que descobri o Widgetbook.
+
+## O que é o Widgetbook
+
+O Widgetbook é, basicamente, o Storybook do Flutter. Você cria "use cases" para cada componente: funções que renderizam o widget em estados específicos. O Widgetbook monta uma interface separada do seu app principal, onde você navega por todos os componentes, troca parâmetros em tempo real e valida visualmente.
+
+Na prática, ele funciona como um entry point alternativo dentro do mesmo projeto Flutter: o app real continua inalterado, e o Widgetbook é só uma forma diferente de rodar o mesmo código, agora em modo catálogo.
+
+## Instalação
+
+No `pubspec.yaml`, você precisa de quatro dependências:
+
+```yaml
+dependencies:
+  widgetbook: ^3.0.0
+
+dev_dependencies:
+  widgetbook_annotation: ^3.0.0
+  widgetbook_generator: ^3.0.0
+  build_runner: ^2.4.0
+```
+
+O `widgetbook` é o runtime com a interface visual, o `widgetbook_annotation` traz as anotações `@UseCase` e `@App`, e o `widgetbook_generator` é o que faz a parte mais interessante: roda via `build_runner`, descobre automaticamente todos os use cases do projeto e gera o arquivo de diretórios que monta o menu lateral do catálogo.
+
+## Criando o primeiro use case
+
+Para cada componente, você cria um arquivo `*_use_case.dart` ao lado do widget, seguindo um padrão simples: uma função anotada com `@UseCase` que retorna um `Widget`.
+
+No Direção Fácil, comecei pelo `DFButton`, que tem 5 variantes. O arquivo de use cases ficou assim:
+
+```dart
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+
+import '../components/buttons/df_button.dart';
+
+@widgetbook.UseCase(name: 'Primary Button', type: DFButton)
+Widget buildPrimaryButton(BuildContext context) {
+  return DFButton.primary(label: 'Botão Primary', onPressed: () {});
+}
+
+@widgetbook.UseCase(name: 'Text Button', type: DFButton)
+Widget buildTextButton(BuildContext context) {
+  return DFButton.text(label: 'Botão Text', onPressed: () {});
+}
+
+...
+```
+
+Cada `@UseCase` recebe um `name`, que aparece no menu lateral do catálogo, e um `type`, que é o widget sendo documentado. Você pode criar quantos use cases quiser para o mesmo componente.
+
+![Catálogo do Widgetbook mostrando as variantes do DFButton](/images/posts/flutter-widgetbook-como-documentar-seu-design-system-do-jeito-certo/widgetbook-button-view.png)
+
+## Configurando o entry point
+
+Com os use cases criados, você precisa de um entry point separado para o Widgetbook: uma classe anotada com `@App()` onde você configura os addons. O `build_runner` gera automaticamente o arquivo de diretórios a partir dos seus use cases, sem precisar registrar nada manualmente. A [documentação oficial](https://docs.widgetbook.io) cobre esse passo em detalhes.
+
+Os addons são um dos pontos mais fortes do Widgetbook. Funciona parecido com um sistema de plugins: cada addon adiciona um controle no painel lateral que muda como o componente é exibido, sem alterar o código. Com o `ViewportAddon` você simula tamanhos de tela específicos, do iPhone 13 a um Galaxy Note, sem precisar trocar de dispositivo. O `TextScaleAddon` aumenta a escala de fonte para testar acessibilidade. O `MaterialThemeAddon` alterna entre temas do app em tempo real. E o `AlignmentAddon` reposiciona o componente na tela para testar diferentes contextos de layout, e por aí vai...
+
+Depois de configurado, rodar o catálogo é simples:
+
+```bash
+# No simulador
+flutter run -t lib/main_widgetbook.dart
+
+# No navegador, para compartilhar com o time de design
+flutter run -d chrome -t lib/main_widgetbook.dart
+```
+
+O exemplo abaixo mostra o `DFProfileBar` no catálogo:
+
+![DFProfileBar no Widgetbook com 5 vidas e knobs na sidebar](/images/posts/flutter-widgetbook-como-documentar-seu-design-system-do-jeito-certo/widgetbook-view-profile_bar_dfprofilebar_full-lives_5_lives.png)
+
+O mesmo componente no app real, para comparar:
+
+![DFProfileBar no app Direção Fácil em produção](/images/posts/flutter-widgetbook-como-documentar-seu-design-system-do-jeito-certo/Screenshot-result-app-mobile-df_profile-bar.png)
+
+## Knobs: parâmetros interativos
+
+O que torna o Widgetbook mais útil no dia a dia são os knobs. Em vez de criar um use case para cada combinação possível de parâmetros, você expõe os parâmetros como controles na sidebar. Design e dev conseguem testar variações sem editar código.
+
+Em um outro projeto que usa o mesmo padrão, o use case do botão principal ficou assim:
+
+```dart
+@UseCase(name: "default", type: AppButton)
+Widget buildButtonUseCase(BuildContext context) {
+  final variant = context.knobs.object.dropdown<AppButtonVariant>(
+    label: "variant",
+    options: AppButtonVariant.values,
+    initialOption: AppButtonVariant.tonal,
+    labelBuilder: (value) => value.name,
+  );
+
+  final label = context.knobs.string(
+    label: "label",
+    initialValue: "Continuar",
+  );
+
+  final enabled = context.knobs.boolean(
+    label: "enabled",
+    initialValue: true,
+  );
+
+  return AppButton(
+    label: label,
+    variant: variant,
+    enabled: enabled,
+    onPressed: () {},
+  );
+}
+```
+
+Com isso, você abre o catálogo, navega até o componente e tem um painel lateral para trocar a variante, editar o texto e habilitar ou desabilitar em tempo real. O Widgetbook oferece knobs para `string`, `boolean`, `int`, `double`, `color`, `duration` e dropdown.
+
+![Knobs do DFButton no painel lateral do Widgetbook](/images/posts/flutter-widgetbook-como-documentar-seu-design-system-do-jeito-certo/widgetbook-button-knobs.png)
+
+## O pulo do jogo: Widgetbook como contexto para LLM
+
+A combinação que mais acelerou o desenvolvimento foi essa: design system documentado no Widgetbook, com a lista de componentes exportada como arquivo de texto, passada como contexto para o Claude Code na hora de escrever as telas.
+
+O fluxo no Direção Fácil ficou assim: conforme implementava os componentes com ajuda do LLM, ia criando os use cases do Widgetbook ao lado de cada um. Quando um componente ficava pronto, rodava o catálogo para validar visualmente em comparação com o Figma. Depois, quando ia implementar uma tela, passava dois contextos para o Claude Code: o arquivo com a documentação dos componentes e as instruções de arquitetura. A instrução central era direta: não crie novos componentes, use somente os listados nesta documentação.
+
+Com isso, o LLM criava telas inteiras com os widgets certos, os construtores corretos e os parâmetros exatos. Sem esse catálogo, o modelo ficaria inventando nomes e assinaturas de widgets que não existem, e a tela não rodaria na primeira tentativa. A documentação dos use cases virou o contrato entre o design system e a geração de código.
+
+## Conclusão
+
+O Widgetbook resolve um problema real em projetos Flutter com design system próprio: a falta de um lugar visual para consultar todos os componentes disponíveis.
+
+Se você está começando um projeto Flutter que vai ter componentes customizados, vale configurar o Widgetbook desde o primeiro widget. O custo de manter o catálogo atualizado é praticamente zero quando você cria o use case junto com o componente. E o benefício de ter um catálogo que roda no simulador ou no navegador, que pode ser compartilhado com design para validação e que serve como contexto preciso para qualquer colaborador, compensa muito antes do projeto crescer.
+
+O que usei aqui é só a base. O Widgetbook vai bem além disso: tem suporte a [golden tests](https://docs.widgetbook.io/glossary/golden-tests), que são testes de regressão visual automatizados, onde você tira um snapshot do componente e qualquer mudança futura é comparada contra essa referência. Se algo mudar sem querer, o teste falha. E tem o [Widgetbook Cloud](https://docs.widgetbook.io/cloud/reviews), que integra revisões visuais diretamente no fluxo de pull request: a cada PR, a plataforma compara as mudanças visuais entre builds e publica o resultado como um status no repositório, permitindo que design e dev aprovem ou bloqueiem a mesclagem com base no que realmente mudou na interface. Para times que trabalham com design system, essas duas funcionalidades mudam o nível do jogo.
