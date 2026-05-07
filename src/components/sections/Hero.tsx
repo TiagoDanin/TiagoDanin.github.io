@@ -69,7 +69,7 @@ export function Hero() {
                   {aboutData.roles.join(" · ")}
                 </p>
 
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.02] text-foreground">
+                <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-[1.02] text-foreground">
                   <span className="sr-only">
                     {aboutData.name} - {aboutData.seoDescription}
                   </span>

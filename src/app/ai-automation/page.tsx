@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "AI Automation & Integration | Tiago Danin",
-    description: "Agent workflows, LLM integration, RAG, MCP servers, and AI-powered automation — built to ship.",
+    description: "Agent workflows, LLM integration, RAG, MCP servers, and AI-powered automation, built to ship.",
     url: "https://tiagodanin.com/ai-automation",
     type: "website",
   },
@@ -66,19 +66,19 @@ export default function AIAutomationPage() {
     {
       icon: <Bot className="h-6 w-6" />,
       title: "AI Agents & Workflows",
-      description: "Multi-step agents that act on real systems — Claude Code, custom SDK agents, and autonomous workflows tuned for reliability.",
+      description: "Multi-step agents that act on real systems, Claude Code, custom SDK agents, and autonomous workflows tuned for reliability.",
       features: ["Claude Agent SDK", "Tool use & function calling", "Multi-agent orchestration", "Long-running workflows"],
     },
     {
       icon: <Plug className="h-6 w-6" />,
       title: "LLM Integration",
-      description: "Production-grade integration with Claude, GPT, and open-source models — including caching, streaming, and cost control.",
+      description: "Production-grade integration with Claude, GPT, and open-source models, including caching, streaming, and cost control.",
       features: ["Anthropic & OpenAI SDKs", "Prompt caching", "Streaming responses", "Token & cost optimization"],
     },
     {
       icon: <Database className="h-6 w-6" />,
       title: "RAG & Knowledge Systems",
-      description: "Retrieval-augmented generation built on your data — embeddings, vector stores, and grounded answers with citations.",
+      description: "Retrieval-augmented generation built on your data, embeddings, vector stores, and grounded answers with citations.",
       features: ["Vector databases", "Hybrid search", "Citation & grounding", "Document ingestion pipelines"],
     },
     {
@@ -90,36 +90,36 @@ export default function AIAutomationPage() {
     {
       icon: <Sparkles className="h-6 w-6" />,
       title: "Prompt Engineering",
-      description: "Systematic prompt design with evals, A/B testing, and version control — not vibes-based prompting.",
+      description: "Systematic prompt design with evals, A/B testing, and version control, not vibes-based prompting.",
       features: ["Prompt evaluation suites", "Few-shot & CoT patterns", "Output schema enforcement", "Regression testing"],
     },
     {
       icon: <Zap className="h-6 w-6" />,
       title: "AI-Powered Automation",
-      description: "Replace repetitive workflows with AI — document processing, classification, summarization, and human-in-the-loop pipelines.",
+      description: "Replace repetitive workflows with AI, document processing, classification, summarization, and human-in-the-loop pipelines.",
       features: ["Document & email processing", "Classification & extraction", "Approval workflows", "Slack/Notion integrations"],
     },
   ];
 
   const stack = [
-    { icon: <Brain className="h-6 w-6" />, title: "Claude (Anthropic)", description: "Primary LLM for agents and reasoning — Opus, Sonnet, Haiku, with prompt caching and extended thinking." },
+    { icon: <Brain className="h-6 w-6" />, title: "Claude (Anthropic)", description: "Primary LLM for agents and reasoning, Opus, Sonnet, Haiku, with prompt caching and extended thinking." },
     { icon: <Code className="h-6 w-6" />, title: "MCP & Agent SDK", description: "Model Context Protocol servers and Claude Agent SDK for production-grade autonomous systems." },
-    { icon: <Database className="h-6 w-6" />, title: "Vector Stores", description: "Pinecone, Qdrant, pgvector — chosen based on scale, latency, and ops requirements." },
+    { icon: <Database className="h-6 w-6" />, title: "Vector Stores", description: "Pinecone, Qdrant, pgvector, chosen based on scale, latency, and ops requirements." },
     { icon: <Plug className="h-6 w-6" />, title: "TypeScript & Python", description: "TypeScript for product integration, Python for data pipelines and ML-adjacent work." },
   ];
 
   const process = [
     { icon: <Target className="h-6 w-6" />, title: "Discovery", description: "Map the actual problem. Most 'AI projects' are really data, workflow, or UX problems wearing an AI hat." },
-    { icon: <Code className="h-6 w-6" />, title: "Prototype with Evals", description: "A working prototype plus a small eval set — measure quality from day one, not after launch." },
+    { icon: <Code className="h-6 w-6" />, title: "Prototype with Evals", description: "A working prototype plus a small eval set, measure quality from day one, not after launch." },
     { icon: <Sparkles className="h-6 w-6" />, title: "Harden", description: "Cost optimization, prompt caching, fallbacks, observability, and guardrails for the real world." },
-    { icon: <Rocket className="h-6 w-6" />, title: "Ship & Iterate", description: "Deploy with monitoring, then iterate based on real usage — not synthetic test cases." },
+    { icon: <Rocket className="h-6 w-6" />, title: "Ship & Iterate", description: "Deploy with monitoring, then iterate based on real usage, not synthetic test cases." },
   ];
 
   const useCases = [
-    { title: "Product Features", description: "AI-powered features inside your existing product — chat, summarization, classification, generation." },
+    { title: "Product Features", description: "AI-powered features inside your existing product, chat, summarization, classification, generation." },
     { title: "Internal Automation", description: "Replace manual workflows: triage support tickets, process documents, draft responses, sync across tools." },
     { title: "Developer Tooling", description: "Custom Claude Code workflows, MCP servers, and agent setups that make your engineering team faster." },
-    { title: "AI Strategy & Audit", description: "Already have AI in production? I review prompts, costs, evals, and architecture — and tell you what to fix." },
+    { title: "AI Strategy & Audit", description: "Already have AI in production? I review prompts, costs, evals, and architecture, and tell you what to fix." },
   ];
 
   return (
@@ -136,7 +136,7 @@ export default function AIAutomationPage() {
               AI That Actually Ships.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Agents, RAG, MCP servers, and AI-powered automation — built with evals, cost control,
+              Agents, RAG, MCP servers, and AI-powered automation, built with evals, cost control,
               and production reliability from day one.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -161,7 +161,7 @@ export default function AIAutomationPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">What I Build</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The full stack of AI work — from a single LLM call to multi-agent systems.
+              The full stack of AI work, from a single LLM call to multi-agent systems.
             </p>
           </div>
 
@@ -200,7 +200,7 @@ export default function AIAutomationPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">Stack & Tooling</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Modern AI tooling, picked based on the problem — not the hype cycle.
+              Modern AI tooling, picked based on the problem, not the hype cycle.
             </p>
           </div>
 
@@ -227,7 +227,7 @@ export default function AIAutomationPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">From Prompt to Production</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              An opinionated process built around evals — because AI without measurement is theatre.
+              An opinionated process built around evals, because AI without measurement is theatre.
             </p>
           </div>
 
@@ -254,7 +254,7 @@ export default function AIAutomationPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">Common Use Cases</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Where AI actually pays off — and where I&apos;ve seen it work.
+              Where AI actually pays off, and where I&apos;ve seen it work.
             </p>
           </div>
 

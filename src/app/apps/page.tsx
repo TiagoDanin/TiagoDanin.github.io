@@ -8,14 +8,14 @@ import { queryCollection } from "nextjs-studio/server";
 
 export const metadata: Metadata = {
   title: "Android Apps - Google Play",
-  description: "Android apps built by Tiago Danin and published on Google Play — games, productivity tools, and relaxation apps.",
+  description: "Android apps built by Tiago Danin and published on Google Play, games, productivity tools, and relaxation apps.",
   keywords: ["android apps", "google play", "tiago danin apps", "mobile games", "jetpack compose"],
   alternates: {
     canonical: "https://tiagodanin.com/apps",
   },
   openGraph: {
     title: "Android Apps | Tiago Danin",
-    description: "Android apps built and published on Google Play — games, productivity tools, and relaxation apps.",
+    description: "Android apps built and published on Google Play, games, productivity tools, and relaxation apps.",
     url: "https://tiagodanin.com/apps",
     type: "website",
   },
@@ -68,7 +68,7 @@ export default function AppsPage() {
               My Android Apps
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Games, utilities, and tools I&apos;ve built and shipped to Google Play — each one solving a real problem or scratching a creative itch.
+              Games, utilities, and tools I&apos;ve built and shipped to Google Play, each one solving a real problem or scratching a creative itch.
             </p>
           </div>
         </div>

@@ -20,14 +20,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Website Development | Tiago Danin",
-    description: "Modern websites with Next.js, React, and TypeScript — fast, accessible, and SEO-ready.",
+    description: "Modern websites with Next.js, React, and TypeScript, fast, accessible, and SEO-ready.",
     url: "https://tiagodanin.com/web-development",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Website Development | Tiago Danin",
-    description: "Modern websites with Next.js, React, and TypeScript — fast, accessible, and SEO-ready.",
+    description: "Modern websites with Next.js, React, and TypeScript, fast, accessible, and SEO-ready.",
   },
   other: {
     "application/ld+json": JSON.stringify([
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         "@context": "https://schema.org",
         "@type": "Service",
         "name": "Website Development",
-        "description": "Modern web development with Next.js, React, and TypeScript — landing pages, marketing sites, e-commerce, and web apps.",
+        "description": "Modern web development with Next.js, React, and TypeScript, landing pages, marketing sites, e-commerce, and web apps.",
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
@@ -66,13 +66,13 @@ export default function WebDevelopmentPage() {
     {
       icon: <Layout className="h-6 w-6" />,
       title: "Landing & Marketing Sites",
-      description: "Conversion-focused sites that load fast, rank well, and look great on every device — from solo founders to scale-ups.",
+      description: "Conversion-focused sites that load fast, rank well, and look great on every device, from solo founders to scale-ups.",
       features: ["Static export & edge hosting", "CMS-driven content", "A/B test ready", "Analytics & conversion tracking"],
     },
     {
       icon: <Code className="h-6 w-6" />,
       title: "Web Apps & Dashboards",
-      description: "Full-stack web apps with auth, databases, and real-time features — built on the Next.js App Router.",
+      description: "Full-stack web apps with auth, databases, and real-time features, built on the Next.js App Router.",
       features: ["Server components & actions", "Auth (NextAuth, Clerk, custom)", "Postgres, SQLite, Cloudflare D1", "Real-time with WebSockets"],
     },
     {
@@ -84,14 +84,14 @@ export default function WebDevelopmentPage() {
   ];
 
   const stack = [
-    { icon: <Code className="h-6 w-6" />, title: "Next.js + React", description: "App Router, server components, and static export — the framework I default to for almost every site." },
+    { icon: <Code className="h-6 w-6" />, title: "Next.js + React", description: "App Router, server components, and static export, the framework I default to for almost every site." },
     { icon: <Sparkles className="h-6 w-6" />, title: "TypeScript + Tailwind", description: "Type-safe by default, styled with Tailwind and shadcn/ui for fast, consistent design systems." },
-    { icon: <Server className="h-6 w-6" />, title: "Edge Hosting", description: "Cloudflare Pages, Vercel, and GitHub Pages — picked based on cost, dynamic needs, and traffic profile." },
-    { icon: <Search className="h-6 w-6" />, title: "SEO & Performance", description: "Core Web Vitals, structured data, sitemaps, and OG tags — built in, not bolted on." },
+    { icon: <Server className="h-6 w-6" />, title: "Edge Hosting", description: "Cloudflare Pages, Vercel, and GitHub Pages, picked based on cost, dynamic needs, and traffic profile." },
+    { icon: <Search className="h-6 w-6" />, title: "SEO & Performance", description: "Core Web Vitals, structured data, sitemaps, and OG tags, built in, not bolted on." },
   ];
 
   const process = [
-    { icon: <Target className="h-6 w-6" />, title: "Goals & Scope", description: "Define what the site is for: leads, sales, content, app. Scope follows the goal — not the other way around." },
+    { icon: <Target className="h-6 w-6" />, title: "Goals & Scope", description: "Define what the site is for: leads, sales, content, app. Scope follows the goal, not the other way around." },
     { icon: <Layout className="h-6 w-6" />, title: "Design & Prototype", description: "Wireframes and a working prototype within a week. Validate the layout before investing in polish." },
     { icon: <Code className="h-6 w-6" />, title: "Build", description: "Component-driven development with TypeScript, Tailwind, and shadcn/ui. Clean code, easy to extend." },
     { icon: <Rocket className="h-6 w-6" />, title: "Launch & Iterate", description: "Deploy with monitoring, analytics, and SEO instrumentation. Iterate based on real traffic." },
@@ -101,7 +101,7 @@ export default function WebDevelopmentPage() {
     {
       icon: <Gauge className="h-12 w-12 text-primary mx-auto" />,
       title: "Built for Speed",
-      description: "Lighthouse 90+ targets, image optimization, edge caching, and lazy loading — fast on real devices, not just in the lab.",
+      description: "Lighthouse 90+ targets, image optimization, edge caching, and lazy loading, fast on real devices, not just in the lab.",
     },
     {
       icon: <Search className="h-12 w-12 text-primary mx-auto" />,
@@ -129,7 +129,7 @@ export default function WebDevelopmentPage() {
               Websites That Perform.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Modern websites and web apps built with Next.js, React, and TypeScript —
+              Modern websites and web apps built with Next.js, React, and TypeScript,
               fast, accessible, and ready to rank.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -154,7 +154,7 @@ export default function WebDevelopmentPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">What I Build</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From a one-page launch site to a full SaaS — same engineering bar.
+              From a one-page launch site to a full SaaS, same engineering bar.
             </p>
           </div>
 
@@ -193,7 +193,7 @@ export default function WebDevelopmentPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">Stack & Tooling</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The same tools I use to ship my own products — battle-tested, not trendy.
+              The same tools I use to ship my own products, battle-tested, not trendy.
             </p>
           </div>
 
@@ -247,7 +247,7 @@ export default function WebDevelopmentPage() {
           <div className="text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold">Performance, SEO & Accessibility</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Three things every website should get right — and most don&apos;t.
+              Three things every website should get right, and most don&apos;t.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">

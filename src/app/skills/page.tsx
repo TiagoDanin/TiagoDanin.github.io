@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: 'https://tiagodanin.com/skills',
   },
   openGraph: {
-    title: 'Technical Skills — Tiago Danin',
+    title: 'Technical Skills, Tiago Danin',
     description: 'Expert mobile and full-stack developer. Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, and more.',
     url: 'https://tiagodanin.com/skills',
     type: 'profile',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Technical Skills | Tiago Danin',
-    description: 'Flutter, React Native, Swift, Kotlin, Node.js, TypeScript — see all skills.',
+    description: 'Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, see all skills.',
     creator: '@tiagodanin',
   },
 };
@@ -43,7 +43,7 @@ export default function SkillsPage() {
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Technical Skills — Tiago Danin",
+    "name": "Technical Skills, Tiago Danin",
     "numberOfItems": skills.reduce((acc, cat) => acc + cat.items.length, 0),
     "itemListElement": skills.flatMap((cat, ci) =>
       cat.items.map((item, ii) => ({

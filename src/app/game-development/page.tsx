@@ -85,14 +85,14 @@ export default function GameDevelopmentPage() {
 
   const stack = [
     { icon: <Code className="h-6 w-6" />, title: "Flutter", description: "Single codebase shipping to Android, iOS, and web with native performance." },
-    { icon: <Gamepad2 className="h-6 w-6" />, title: "Bonfire Engine", description: "RPG-style mechanics on top of Flutter — movement, collisions, AI without writing an engine from scratch." },
+    { icon: <Gamepad2 className="h-6 w-6" />, title: "Bonfire Engine", description: "RPG-style mechanics on top of Flutter, movement, collisions, AI without writing an engine from scratch." },
     { icon: <TrendingUp className="h-6 w-6" />, title: "Monetization", description: "Ads, in-app purchases, double-or-nothing rewards, and prestige economies tuned to the game." },
     { icon: <Rocket className="h-6 w-6" />, title: "Publishing", description: "Google Play submission, store listing optimization, and post-launch updates." },
   ];
 
   const process = [
     { icon: <Target className="h-6 w-6" />, title: "Concept & Loop Design", description: "Define the core gameplay loop, target session length, and what keeps players coming back." },
-    { icon: <Code className="h-6 w-6" />, title: "Prototype", description: "A playable prototype within weeks — proves the loop works before investing in art and content." },
+    { icon: <Code className="h-6 w-6" />, title: "Prototype", description: "A playable prototype within weeks, proves the loop works before investing in art and content." },
     { icon: <Sparkles className="h-6 w-6" />, title: "Tuning & Polish", description: "Number tuning, game feel, animations, and onboarding. The difference between shipped and abandoned." },
     { icon: <Rocket className="h-6 w-6" />, title: "Launch & Live Ops", description: "Google Play release, analytics setup, and iteration based on player behavior." },
   ];
@@ -117,7 +117,7 @@ export default function GameDevelopmentPage() {
               Indie Games, Shipped.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              From idle clickers to arcade survival, I design and ship casual games for mobile and web —
+              From idle clickers to arcade survival, I design and ship casual games for mobile and web,
               with the loops, monetization, and polish that make players stay.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -181,7 +181,7 @@ export default function GameDevelopmentPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">Stack & Tooling</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Pragmatic tools chosen to ship — not to impress on a CV.
+              Pragmatic tools chosen to ship, not to impress on a CV.
             </p>
           </div>
 
@@ -235,7 +235,7 @@ export default function GameDevelopmentPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">Shipped Games</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Real games published on Google Play — not just demos.
+              Real games published on Google Play, not just demos.
             </p>
           </div>
 

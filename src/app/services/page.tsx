@@ -141,25 +141,25 @@ const additionalServices = [
   {
     icon: <Gamepad2 className="h-4 w-4" />,
     title: "Game Development",
-    description: "Indie and casual games for mobile and web — idle, arcade, and survival, from prototype to Google Play.",
+    description: "Indie and casual games for mobile and web, idle, arcade, and survival, from prototype to Google Play.",
     href: "/game-development",
   },
   {
     icon: <Chrome className="h-4 w-4" />,
     title: "Chrome Extensions",
-    description: "Custom browser extensions with Manifest V3 and TypeScript — productivity tools, integrations, and Web Store publishing.",
+    description: "Custom browser extensions with Manifest V3 and TypeScript, productivity tools, integrations, and Web Store publishing.",
     href: "/chrome-extensions",
   },
   {
     icon: <Brain className="h-4 w-4" />,
     title: "AI Automation",
-    description: "Agents, RAG, MCP servers, and LLM integration — production-grade AI with evals and cost control.",
+    description: "Agents, RAG, MCP servers, and LLM integration, production-grade AI with evals and cost control.",
     href: "/ai-automation",
   },
   {
     icon: <Globe className="h-4 w-4" />,
     title: "Web Development",
-    description: "Modern websites and web apps with Next.js, React, and TypeScript — fast, SEO-ready, and accessible.",
+    description: "Modern websites and web apps with Next.js, React, and TypeScript, fast, SEO-ready, and accessible.",
     href: "/web-development",
   },
 ];
@@ -308,7 +308,7 @@ export default function ServicesPage() {
                 <Shield className="h-12 w-12 text-primary mx-auto" />
                 <CardTitle>Security-First Approach</CardTitle>
                 <CardDescription>
-                  As a HackerOne security researcher since 2018, I build apps with security baked in from day one — not bolted on after.
+                  As a HackerOne security researcher since 2018, I build apps with security baked in from day one, not bolted on after.
                 </CardDescription>
               </CardContent>
             </Card>

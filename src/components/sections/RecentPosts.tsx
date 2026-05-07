@@ -25,8 +25,8 @@ export function RecentPosts({ posts }: RecentPostsProps) {
 
   return (
     <section id="blog" className="relative py-16 sm:py-20 overflow-x-clip">
-      <div aria-hidden="true" className="absolute top-0 left-0 w-[500px] h-[500px] bg-green-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-      <div aria-hidden="true" className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-100 rounded-full blur-3xl opacity-20 sm:opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+      <div aria-hidden="true" className="pointer-events-none absolute top-0 left-0 w-[500px] h-[500px] bg-green-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2" />
+      <div aria-hidden="true" className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] bg-green-100 rounded-full blur-3xl opacity-20 sm:opacity-30 translate-x-1/2 -translate-y-1/2" />
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-2xl mx-auto mb-12 text-center">

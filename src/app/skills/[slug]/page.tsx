@@ -97,7 +97,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const { skill, category } = entry;
-  const description = `Tiago Danin — ${skill.name} developer with expertise in ${category}. Hire for freelance projects, consulting, and mentorship.`;
+  const description = `Tiago Danin, ${skill.name} developer with expertise in ${category}. Hire for freelance projects, consulting, and mentorship.`;
 
   return {
     title: `${skill.name} Developer | Tiago Danin`,
@@ -107,7 +107,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: `https://tiagodanin.com/skills/${slug}`,
     },
     openGraph: {
-      title: `${skill.name} Developer — Tiago Danin`,
+      title: `${skill.name} Developer, Tiago Danin`,
       description,
       url: `https://tiagodanin.com/skills/${slug}`,
       type: 'profile',
@@ -207,7 +207,7 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
       "name": "Tiago Danin",
       "url": "https://tiagodanin.com",
     },
-    "serviceType": `${category} — ${skill.name}`,
+    "serviceType": `${category}, ${skill.name}`,
     "areaServed": "Worldwide",
   };
 

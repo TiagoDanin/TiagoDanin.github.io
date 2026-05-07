@@ -20,6 +20,7 @@ export function Footer({ socialLinks }: FooterProps) {
         <div className="grid grid-cols-1 gap-8 text-center">
           <nav aria-label="Footer" className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <Link href="/" className="hover:text-primary min-h-[44px] flex items-center">Home</Link>
+            <Link href="/services" className="hover:text-primary min-h-[44px] flex items-center">Services</Link>
             {!isHome && (
               <Link href="/projects" className="hover:text-primary min-h-[44px] flex items-center">Projects</Link>
             )}

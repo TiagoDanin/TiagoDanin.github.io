@@ -72,7 +72,7 @@ export default function ChromeExtensionsPage() {
     {
       icon: <Puzzle className="h-6 w-6" />,
       title: "API & SaaS Integrations",
-      description: "Bridge browser sessions with external APIs, dashboards, and internal tools — securely and at scale.",
+      description: "Bridge browser sessions with external APIs, dashboards, and internal tools, securely and at scale.",
       features: ["OAuth & API auth", "Background sync", "Cross-origin requests", "Real-time messaging"],
     },
     {
@@ -84,21 +84,21 @@ export default function ChromeExtensionsPage() {
   ];
 
   const stack = [
-    { icon: <Code className="h-6 w-6" />, title: "Manifest V3", description: "Service workers, declarativeNetRequest, and modern background scripts — built the way Chrome wants." },
+    { icon: <Code className="h-6 w-6" />, title: "Manifest V3", description: "Service workers, declarativeNetRequest, and modern background scripts, built the way Chrome wants." },
     { icon: <Code className="h-6 w-6" />, title: "TypeScript + React", description: "Type-safe extensions with React-based popups and options pages, bundled with Vite or Webpack." },
     { icon: <Globe className="h-6 w-6" />, title: "Cross-Browser", description: "Same codebase shipping to Chrome, Edge, Brave, and (with polyfills) Firefox." },
-    { icon: <Rocket className="h-6 w-6" />, title: "Chrome Web Store", description: "Listing, screenshots, review prep, and post-launch updates — including handling Google review pushback." },
+    { icon: <Rocket className="h-6 w-6" />, title: "Chrome Web Store", description: "Listing, screenshots, review prep, and post-launch updates, including handling Google review pushback." },
   ];
 
   const process = [
-    { icon: <Target className="h-6 w-6" />, title: "Scope & Permissions", description: "Decide what the extension actually needs — minimal permissions reduce review friction and earn user trust." },
+    { icon: <Target className="h-6 w-6" />, title: "Scope & Permissions", description: "Decide what the extension actually needs, minimal permissions reduce review friction and earn user trust." },
     { icon: <Code className="h-6 w-6" />, title: "Prototype", description: "A working extension loaded unpacked within days. Validate the UX before polishing." },
     { icon: <Shield className="h-6 w-6" />, title: "Hardening", description: "Manifest V3 compliance, CSP, sandboxed iframes, and a clean permission story for review." },
     { icon: <Rocket className="h-6 w-6" />, title: "Publish & Iterate", description: "Chrome Web Store submission, listing optimization, and updates based on real install feedback." },
   ];
 
   const useCases = [
-    { title: "Internal Tools", description: "Extensions distributed via enterprise policy or private listing — no Web Store dance required." },
+    { title: "Internal Tools", description: "Extensions distributed via enterprise policy or private listing, no Web Store dance required." },
     { title: "Public Products", description: "Free or paid extensions published on the Chrome Web Store, with onboarding and analytics built in." },
     { title: "Migration to Manifest V3", description: "Bring legacy MV2 extensions into compliance before Chrome removes them entirely." },
   ];
@@ -117,7 +117,7 @@ export default function ChromeExtensionsPage() {
               Browser Extensions, Done Right.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Custom Chrome extensions built with Manifest V3, TypeScript, and a clean permission story —
+              Custom Chrome extensions built with Manifest V3, TypeScript, and a clean permission story,
               from productivity tools to enterprise integrations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
@@ -142,7 +142,7 @@ export default function ChromeExtensionsPage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">Where I Focus</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Extensions that solve real workflow problems — not just toy demos.
+              Extensions that solve real workflow problems, not just toy demos.
             </p>
           </div>
 

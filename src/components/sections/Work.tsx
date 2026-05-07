@@ -100,11 +100,11 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
       {/* Blur effect circles */}
       <div
         aria-hidden="true"
-        className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"
+        className="pointer-events-none absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-25 translate-x-1/3 translate-y-1/3"
+        className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-25 translate-x-1/3 translate-y-1/3"
       />
 
       <div className="container mx-auto relative px-4">
