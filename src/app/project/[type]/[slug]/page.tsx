@@ -90,7 +90,7 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
 
   const url = urlPrefixMap[type]
     ? `${urlPrefixMap[type]}${project.name}`
-    : project.url || project.html_url || '';
+    : project.html_url || project.url || '';
 
   const isSoftware = ["npm", "pypi", "luarocks", "atom", "github", "aur"].includes(type);
 
@@ -239,9 +239,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ type: 
 
   const title = project.title || project.name || '';
   const description = project.description || '';
-  const url = urlPrefixMap[type] 
-    ? `${urlPrefixMap[type]}${project.name}` 
-    : project.url || project.html_url || '';
+  const url = urlPrefixMap[type]
+    ? `${urlPrefixMap[type]}${project.name}`
+    : project.html_url || project.url || '';
 
   const getInstallCommand = () => {
     switch (type) {
