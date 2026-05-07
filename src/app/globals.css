@@ -122,6 +122,21 @@
   animation: fadeIn 0.2s ease-out;
 }
 
+@keyframes orbit-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-orbit-cw {
+  animation: orbit-cw 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbit-cw {
+    animation: none;
+  }
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
