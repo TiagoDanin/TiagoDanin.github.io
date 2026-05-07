@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
 import { ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
@@ -11,24 +10,15 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ title, description, imageUrl, href, archived }: ProjectCardProps) {
-  const { toast } = useToast();
-
+  const interactive = Boolean(href);
   const handleClick = () => {
-    if (href) {
-      window.open(href, '_blank');
-    } else {
-      toast({
-        title: "No link available",
-        description: "No link available for this project.",
-        variant: "default",
-      });
-    }
+    if (href) window.open(href, '_blank');
   };
 
   return (
-    <Card 
-      className="overflow-hidden transition-all hover:shadow-lg cursor-pointer" 
-      onClick={handleClick}
+    <Card
+      className={`overflow-hidden ${interactive ? "transition-shadow hover:shadow-lg cursor-pointer" : ""}`}
+      onClick={interactive ? handleClick : undefined}
     >
       {imageUrl && (
         <div className="aspect-[16/9] overflow-hidden">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -29,8 +29,9 @@ export function Projects({ projects }: ProjectsProps) {
 
   return (
     <section id="projects" className="relative py-20 overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+      <div aria-hidden="true" className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+      <div aria-hidden="true" className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+      <div aria-hidden="true" className="absolute bottom-0 left-1/2 w-[480px] h-[480px] bg-purple-100 rounded-full blur-3xl opacity-25 -translate-x-1/2 translate-y-1/3"></div>
 
       <div className="container mx-auto relative px-4">
         <div className="space-y-16">
@@ -49,12 +50,12 @@ export function Projects({ projects }: ProjectsProps) {
             </div>
 
             {!isFullProjects && (
-              <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-3 text-center">
-                <p className="text-2xl sm:text-3xl font-bold tabular-nums tracking-tight">
-                  250+ projects
-                </p>
+              <div className="mt-12 flex justify-center">
                 <Button size="lg" variant="outline" asChild>
-                  <Link href="/projects">Browse the full archive</Link>
+                  <Link href="/projects">
+                    See all 250+ projects
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
             )}
