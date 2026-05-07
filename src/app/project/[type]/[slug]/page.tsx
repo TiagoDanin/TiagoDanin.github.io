@@ -258,10 +258,73 @@ export default async function ProjectPage({ params }: { params: Promise<{ type: 
   }
 
   const title = project.title || project.name || '';
-  const description = project.description || '';
+  const baseDescription = (project.description || '').trim();
   const url = urlPrefixMap[type]
     ? `${urlPrefixMap[type]}${project.name}`
     : project.html_url || project.url || '';
+
+  const isSoftware = ["npm", "pypi", "luarocks", "atom", "github", "aur"].includes(type);
+
+  const platformDisplayLabels: Record<string, string> = {
+    npm: 'NPM Package',
+    pypi: 'PyPI Package',
+    luarocks: 'LuaRocks Module',
+    atom: 'Atom Package',
+    github: 'Open Source Project',
+    aur: 'AUR Package',
+    googleplay: 'Android App',
+    windows: 'Windows App',
+    private: 'Project',
+    offline: 'Project',
+  };
+  const platformLabel = platformDisplayLabels[type] ?? type;
+
+  const allTags = Array.from(new Set([
+    ...(Array.isArray(project.topics) ? project.topics : []),
+    ...(Array.isArray(project.keywords) ? project.keywords : []),
+  ].filter(Boolean) as string[]));
+
+  const licenseInfo = project.license as LicenseInfo | undefined;
+  const licenseDisplay = licenseInfo?.spdx_id || licenseInfo?.name;
+
+  const sentences: string[] = [];
+  if (baseDescription) {
+    sentences.push(baseDescription.endsWith('.') ? baseDescription : `${baseDescription}.`);
+  } else {
+    sentences.push(`${title} is a ${platformLabel.toLowerCase()} by Tiago Danin.`);
+  }
+  if (project.language) {
+    sentences.push(`Built with ${project.language}.`);
+  }
+  if (allTags.length) {
+    sentences.push(`Topics: ${allTags.slice(0, 6).join(', ')}.`);
+  }
+  if (project.stargazers_count) {
+    sentences.push(`${project.stargazers_count} stars on GitHub.`);
+  }
+  if (project.downloads) {
+    sentences.push(`${Number(project.downloads).toLocaleString('en-US')} downloads.`);
+  }
+  if (licenseDisplay) {
+    sentences.push(`Licensed under ${licenseDisplay}.`);
+  }
+  const enrichedDisplayDescription = sentences.join(' ');
+  const isThin = baseDescription.length < 50;
+
+  const crossPlatformSiblings = isSoftware
+    ? Object.entries(projectsMap)
+        .flatMap(([siblingType, siblingProjects]) =>
+          siblingType !== type
+            ? siblingProjects
+                .filter((p) => (p.name || p.title) && titleToSlug(p.name || p.title || '') === slug)
+                .map((p) => ({
+                  type: siblingType,
+                  slug: titleToSlug(p.name || p.title || ''),
+                  label: platformDisplayLabels[siblingType] ?? siblingType,
+                }))
+            : []
+        )
+    : [];
 
   const getInstallCommand = () => {
     switch (type) {
@@ -330,8 +393,32 @@ export default async function ProjectPage({ params }: { params: Promise<{ type: 
               )}
             </div>
             
-            {description && (
-              <p className="text-lg text-gray-700 dark:text-gray-300">{description}</p>
+            {baseDescription && (
+              <p className="text-lg text-gray-700 dark:text-gray-300">{baseDescription}</p>
+            )}
+
+            {isThin && (
+              <p className="mt-3 text-base text-gray-600 dark:text-gray-400">
+                {enrichedDisplayDescription}
+              </p>
+            )}
+
+            {crossPlatformSiblings.length > 0 && (
+              <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
+                Also available as:{' '}
+                {crossPlatformSiblings.map((s, i) => (
+                  <span key={`${s.type}-${s.slug}`}>
+                    <Link
+                      href={`/project/${s.type}/${s.slug}`}
+                      className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline"
+                    >
+                      {s.label}
+                    </Link>
+                    {i < crossPlatformSiblings.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+                .
+              </p>
             )}
 
             {/* Topics / Keywords */}

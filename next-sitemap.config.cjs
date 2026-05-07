@@ -11,58 +11,58 @@ module.exports = {
       'https://tiagodanin.com/github-sitemap.xml',
     ],
   },
-  transform: async (config, path) => {
+  transform: async (config, urlPath) => {
     let priority = 0.7;
     let changefreq = config.changefreq;
 
-    if (path === '/') {
+    if (urlPath === '/') {
       priority = 1;
-    } else if (path === '/projects' || path === '/blog' || path === '/talks' || path === '/services') {
+    } else if (urlPath === '/projects' || urlPath === '/blog' || urlPath === '/talks' || urlPath === '/services') {
       priority = 0.9;
-    } else if (path === '/rankings/github' || path === '/rankings/npm') {
+    } else if (urlPath === '/rankings/github' || urlPath === '/rankings/npm') {
       priority = 0.8;
       changefreq = 'weekly';
-    } else if (path === '/rss/blog.xml' || path === '/rss/talks.xml' || path === '/rss/timeline.xml' || path === '/rss/projects.xml') {
+    } else if (urlPath === '/rss/blog.xml' || urlPath === '/rss/talks.xml' || urlPath === '/rss/timeline.xml' || urlPath === '/rss/projects.xml') {
       priority = 0.1;
       changefreq = 'monthly';
-    } else if (path === '/llms-full.txt' || path === '/llms.txt') {
+    } else if (urlPath === '/llms-full.txt' || urlPath === '/llms.txt') {
       priority = 0.1;
       changefreq = 'monthly';
-    } else if (path === '/skills') {
+    } else if (urlPath === '/skills') {
       priority = 0.8;
-    } else if (path.startsWith('/skills/')) {
+    } else if (urlPath.startsWith('/skills/')) {
       priority = 0.5;
       changefreq = 'monthly';
-    } else if (path === '/tags') {
+    } else if (urlPath === '/tags') {
       priority = 0.8;
-    } else if (path.startsWith('/tags/')) {
+    } else if (urlPath.startsWith('/tags/')) {
       priority = 0.6;
-    } else if (path.startsWith('/post/')) {
+    } else if (urlPath.startsWith('/post/')) {
       priority = 0.7;
-    } else if (path.startsWith('/blog')) {
+    } else if (urlPath.startsWith('/blog')) {
       priority = 0.6;
-    } else if (path.startsWith('/project/npm/') || path.startsWith('/project/github/')) {
+    } else if (urlPath.startsWith('/project/npm/') || urlPath.startsWith('/project/github/')) {
       priority = 0.5;
       changefreq = 'monthly';
-    } else if (path.startsWith('/project/')) {
+    } else if (urlPath.startsWith('/project/')) {
       priority = 0.3;
       changefreq = 'monthly';
-    } else if (path.startsWith('/timeline/')) {
+    } else if (urlPath.startsWith('/timeline/')) {
       priority = 0.2;
       changefreq = 'monthly';
-    } else if (path.startsWith('/talk/')) {
+    } else if (urlPath.startsWith('/talk/')) {
       priority = 0.4;
       changefreq = 'monthly';
-    } else if (path.startsWith('/social/')) {
+    } else if (urlPath.startsWith('/social/')) {
       priority = 0.1;
       changefreq = 'monthly';
-    } else if (path.startsWith('/about')) {
+    } else if (urlPath.startsWith('/about')) {
       priority = 0.5;
       changefreq = 'monthly';
     }
 
     return {
-      loc: path,
+      loc: urlPath,
       changefreq: changefreq,
       priority: priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,

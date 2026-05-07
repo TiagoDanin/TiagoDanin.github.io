@@ -14,6 +14,46 @@ const OG_IMAGE = {
   alt: 'Tiago Danin - Mobile Developer & Software Engineer',
 };
 
+const PERSON_ID = 'https://tiagodanin.com/#person';
+const WEBSITE_ID = 'https://tiagodanin.com/#website';
+
+const siteSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': PERSON_ID,
+      name: 'Tiago Danin',
+      url: 'https://tiagodanin.com',
+      image: OG_IMAGE.url,
+      jobTitle: 'Mobile Developer & Security Researcher',
+      description: 'Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor and bug hunter on HackerOne.',
+      knowsAbout: [
+        'Flutter', 'React Native', 'iOS Development', 'Android Development',
+        'Swift', 'Kotlin', 'TypeScript', 'JavaScript',
+        'Cybersecurity', 'Bug Bounty', 'Open Source', 'DevOps',
+      ],
+      sameAs: [
+        'https://github.com/TiagoDanin',
+        'https://www.linkedin.com/in/tiagodanin',
+        'https://twitter.com/tiagodanin',
+        'https://hackerone.com/tiago-danin',
+        'https://www.npmjs.com/~tiagodanin',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': WEBSITE_ID,
+      url: 'https://tiagodanin.com',
+      name: 'Tiago Danin',
+      description: 'Mobile Developer with 250+ projects. Flutter, React Native, iOS & Android specialist. Open source contributor with 70+ npm packages. Bug hunter on HackerOne.',
+      inLanguage: ['en-US', 'pt-BR'],
+      publisher: { '@id': PERSON_ID },
+      author: { '@id': PERSON_ID },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://tiagodanin.com'),
   title: {
@@ -75,6 +115,12 @@ export default function RootLayout({
   const socialLinksData = queryCollection('sociallinks');
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+        />
+      </head>
       <body>
         <GoogleTagManager gtmId="GTM-WT3T53NB" />
         <NextTopLoader
