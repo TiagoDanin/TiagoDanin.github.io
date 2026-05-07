@@ -86,33 +86,13 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
   }
 
   const title = project.title || project.name || '';
-  const description = project.description || `${title} - A ${type} project by Tiago Danin`;
+  const baseDescription = (project.description || '').trim();
 
   const url = urlPrefixMap[type]
     ? `${urlPrefixMap[type]}${project.name}`
     : project.html_url || project.url || '';
 
   const isSoftware = ["npm", "pypi", "luarocks", "atom", "github", "aur"].includes(type);
-
-  // Build a richer description for SEO
-  const languageLabel = project.language ? ` Built with ${project.language}.` : '';
-  const starsLabel = project.stargazers_count ? ` ${project.stargazers_count} stars on GitHub.` : '';
-  const typeLabel: Record<string, string> = {
-    npm: 'npm package',
-    pypi: 'Python package',
-    luarocks: 'Lua package',
-    atom: 'Atom package',
-    github: 'open source project',
-    aur: 'AUR package',
-    googleplay: 'Android app',
-    windows: 'Windows app',
-    private: 'project',
-    offline: 'project',
-  };
-  const enrichedDescription = `${description}${languageLabel}${starsLabel}`;
-  const truncatedDescription = enrichedDescription.length > 160
-    ? enrichedDescription.substring(0, 157) + '...'
-    : enrichedDescription;
 
   const platformLabel: Record<string, string> = {
     npm: 'NPM Package',
@@ -126,7 +106,37 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
     private: 'Project',
     offline: 'Project',
   };
-  const seoTitle = `${title} | ${platformLabel[type] ?? type}`;
+  const platformContext = platformLabel[type] ?? type;
+  const seoTitle = `${title} | ${platformContext}`;
+
+  const tags = Array.from(new Set([
+    ...(Array.isArray(project.topics) ? project.topics : []),
+    ...(Array.isArray(project.keywords) ? project.keywords : []),
+  ].map((t) => String(t).toLowerCase()).filter(Boolean))).slice(0, 5);
+
+  const languageLabel = project.language ? ` Built with ${project.language}.` : '';
+  const tagsLabel = tags.length ? ` Topics: ${tags.join(', ')}.` : '';
+  const starsLabel = project.stargazers_count ? ` ${project.stargazers_count} stars on GitHub.` : '';
+  const downloadsLabel = project.downloads ? ` ${Number(project.downloads).toLocaleString('en-US')} downloads.` : '';
+  const licenseName = (project.license as LicenseInfo | undefined)?.name;
+  const licenseLabel = licenseName ? ` Licensed under ${licenseName}.` : '';
+
+  const MIN_DESCRIPTION_LEN = 50;
+  const isThin = baseDescription.length < MIN_DESCRIPTION_LEN;
+
+  let enrichedDescription: string;
+  if (isThin) {
+    const lead = baseDescription
+      ? `${baseDescription}.`
+      : `${title}: ${platformContext} by Tiago Danin.`;
+    enrichedDescription = `${lead}${languageLabel}${tagsLabel}${starsLabel}${downloadsLabel}${licenseLabel}`.trim();
+  } else {
+    enrichedDescription = `${baseDescription}${languageLabel}${starsLabel}${downloadsLabel}`.trim();
+  }
+
+  const truncatedDescription = enrichedDescription.length > 160
+    ? enrichedDescription.substring(0, 157) + '...'
+    : enrichedDescription;
 
   return {
     title: seoTitle,
@@ -141,7 +151,7 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
       canonical: `https://tiagodanin.com/project/${type}/${slug}`,
     },
     openGraph: {
-      title: `${title} - ${description.substring(0, 60)}`,
+      title: `${title} - ${(baseDescription || enrichedDescription).substring(0, 60)}`,
       description: truncatedDescription,
       type: 'article',
       url: `https://tiagodanin.com/project/${type}/${slug}`,

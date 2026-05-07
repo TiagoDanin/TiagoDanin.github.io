@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     title: `Posts tagged with "${originalTagName}"`,
     description: `All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles.`,
     alternates: {
-      canonical: `https://tiagodanin.com/tags/${tagSlug}`,
+      canonical: `https://tiagodanin.com/blog/tags/${tagSlug}`,
     },
     robots: {
       index: false,
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     openGraph: {
       title: `Posts tagged with "${originalTagName}" - Tiago Danin`,
       description: `All blog posts tagged with "${originalTagName}"`,
-      url: `https://tiagodanin.com/tags/${tagSlug}`,
+      url: `https://tiagodanin.com/blog/tags/${tagSlug}`,
       type: "website",
     },
   };

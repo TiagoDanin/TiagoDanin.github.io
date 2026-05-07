@@ -35,6 +35,7 @@ CLAUDE.md
 note.md
 
 # misc
+/tmp/
 .DS_Store
 *.pem
 
