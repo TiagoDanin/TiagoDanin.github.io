@@ -21,7 +21,7 @@ export function Services() {
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-2xl mx-auto mb-12 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">My Expertise</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">My Expertise</h2>
           <p className="mt-4 text-sm sm:text-base text-muted-foreground">
             Areas where I excel and can help bring your ideas to life.
           </p>
