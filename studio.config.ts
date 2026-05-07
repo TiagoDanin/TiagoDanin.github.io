@@ -165,6 +165,11 @@ const config: StudioConfig = {
           { name: "company", type: "text", required: true },
           { name: "quote", type: "long-text", required: true },
           { name: "avatar", type: "url" },
+          {
+            name: "icon",
+            type: "select",
+            options: [opt("Trophy"), opt("Github"), opt("Mic")],
+          },
         ],
       },
     },

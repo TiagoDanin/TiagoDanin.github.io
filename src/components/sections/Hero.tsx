@@ -128,27 +128,27 @@ export function Hero() {
               viewBox="0 0 100 100"
               className="absolute inset-0 w-full h-full overflow-visible"
             >
+              <defs>
+                <linearGradient id="orbitTrailA" x1="100%" y1="50%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="rgb(148 163 184)" stopOpacity="0.7" />
+                  <stop offset="60%" stopColor="rgb(148 163 184)" stopOpacity="0.22" />
+                  <stop offset="100%" stopColor="rgb(148 163 184)" stopOpacity="0" />
+                </linearGradient>
+                <linearGradient id="orbitTrailB" x1="0%" y1="50%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="rgb(148 163 184)" stopOpacity="0.7" />
+                  <stop offset="60%" stopColor="rgb(148 163 184)" stopOpacity="0.22" />
+                  <stop offset="100%" stopColor="rgb(148 163 184)" stopOpacity="0" />
+                </linearGradient>
+              </defs>
               <circle
                 cx="50"
                 cy="50"
                 r="49"
                 fill="none"
                 stroke="rgb(226 232 240)"
-                strokeWidth="0.3"
-                strokeDasharray="0.8 1.6"
+                strokeWidth="0.25"
+                strokeDasharray="0.6 1.8"
               />
-              <defs>
-                <linearGradient id="orbitTrailGreen" x1="100%" y1="50%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="rgb(148 163 184)" stopOpacity="0.85" />
-                  <stop offset="60%" stopColor="rgb(148 163 184)" stopOpacity="0.3" />
-                  <stop offset="100%" stopColor="rgb(148 163 184)" stopOpacity="0" />
-                </linearGradient>
-                <linearGradient id="orbitTrailPurple" x1="0%" y1="50%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgb(148 163 184)" stopOpacity="0.85" />
-                  <stop offset="60%" stopColor="rgb(148 163 184)" stopOpacity="0.3" />
-                  <stop offset="100%" stopColor="rgb(148 163 184)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
               <g
                 className="animate-orbit-cw"
                 style={{ transformOrigin: "50% 50%" }}
@@ -156,22 +156,24 @@ export function Hero() {
                 <path
                   d="M 50 1 A 49 49 0 0 1 99 50"
                   fill="none"
-                  stroke="url(#orbitTrailGreen)"
-                  strokeWidth="0.7"
-                  strokeDasharray="1.4 1.6"
+                  stroke="url(#orbitTrailA)"
+                  strokeWidth="0.55"
+                  strokeDasharray="1.4 1.8"
                   strokeLinecap="round"
                 />
                 <path
                   d="M 50 99 A 49 49 0 0 1 1 50"
                   fill="none"
-                  stroke="url(#orbitTrailPurple)"
-                  strokeWidth="0.7"
-                  strokeDasharray="1.4 1.6"
+                  stroke="url(#orbitTrailB)"
+                  strokeWidth="0.55"
+                  strokeDasharray="1.4 1.8"
                   strokeLinecap="round"
                 />
-                <circle cx="99" cy="50" r="2.2" fill="rgb(34 197 94)" fillOpacity="0.18" />
+                <circle cx="99" cy="50" r="3.6" fill="rgb(34 197 94)" fillOpacity="0.08" />
+                <circle cx="99" cy="50" r="2.2" fill="rgb(34 197 94)" fillOpacity="0.2" />
                 <circle cx="99" cy="50" r="1.3" fill="rgb(34 197 94)" />
-                <circle cx="1" cy="50" r="2.2" fill="rgb(168 85 247)" fillOpacity="0.18" />
+                <circle cx="1" cy="50" r="3.6" fill="rgb(168 85 247)" fillOpacity="0.08" />
+                <circle cx="1" cy="50" r="2.2" fill="rgb(168 85 247)" fillOpacity="0.2" />
                 <circle cx="1" cy="50" r="1.3" fill="rgb(168 85 247)" />
               </g>
             </svg>
