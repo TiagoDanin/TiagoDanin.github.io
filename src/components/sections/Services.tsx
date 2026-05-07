@@ -14,7 +14,7 @@ const iconMap: Record<string, LucideIcon> = {
 export function Services() {
   const expertiseData = queryCollection('expertise');
   return (
-    <section id="skills" className="relative py-16 sm:py-20 bg-secondary/30 overflow-hidden">
+    <section id="skills" className="relative py-16 sm:py-20 bg-secondary/30 overflow-x-clip">
       {/* Blur effect circles */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-20 sm:opacity-30 translate-x-1/2 translate-y-1/2"></div>

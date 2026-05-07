@@ -7,7 +7,7 @@ export function CallToAction() {
   const linkedIn = socialLinksData.find((l) => l.label === "LinkedIn");
 
   return (
-    <section id="contact" className="relative py-20 overflow-hidden bg-primary text-primary-foreground">
+    <section id="contact" className="relative py-20 overflow-x-clip bg-primary text-primary-foreground">
       {/* Blur effect circles */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl opacity-10 -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl opacity-10 translate-x-1/2 translate-y-1/2"></div>

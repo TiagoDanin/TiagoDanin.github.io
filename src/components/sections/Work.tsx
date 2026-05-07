@@ -96,7 +96,7 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section id="work" className="relative py-20 overflow-hidden">
+    <section id="work" className="relative py-20 bg-secondary/30 overflow-x-clip">
       {/* Blur effect circles */}
       <div
         aria-hidden="true"
@@ -110,7 +110,7 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
       <div className="container mx-auto relative px-4">
         {/* Title and description */}
         <div className="max-w-2xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl font-bold tracking-tight">Experience and skills</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Experience and skills</h2>
           <p className="mt-4 text-muted-foreground">
             Where I've worked, and what I work with day to day.
           </p>

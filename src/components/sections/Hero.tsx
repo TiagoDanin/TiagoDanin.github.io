@@ -45,22 +45,18 @@ export function Hero() {
   const [lede, ...rest] = bioParagraphs;
 
   return (
-    <section id="hero" className="relative pt-28 pb-28 md:pt-32 md:pb-32 overflow-hidden">
+    <section id="hero" className="relative pt-28 pb-28 md:pt-32 md:pb-32 overflow-x-clip">
       {/* Strategic blur orbs */}
       <div
         aria-hidden="true"
-        className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-green-100 rounded-full blur-3xl opacity-40"
+        className="pointer-events-none absolute top-32 right-0 w-[480px] h-[480px] bg-purple-100 rounded-full blur-3xl opacity-25 translate-x-1/3"
       />
       <div
         aria-hidden="true"
-        className="absolute top-32 right-0 w-[480px] h-[480px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/3"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 right-10 lg:right-24 w-[360px] h-[360px] bg-blue-100 rounded-full blur-3xl opacity-30 translate-y-1/3"
+        className="pointer-events-none absolute -bottom-20 right-10 lg:right-24 w-[360px] h-[360px] bg-blue-100 rounded-full blur-3xl opacity-25"
       />
 
-      <div className="container mx-auto relative px-4">
+      <div className="container mx-auto relative z-10 px-4">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-16 items-center">
           {/* Left: copy */}
           <div className="space-y-10 max-w-xl">
@@ -110,7 +106,7 @@ export function Hero() {
             </dl>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button size="lg" asChild className="min-h-[44px]">
+              <Button size="lg" asChild className="min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white">
                 <Link href="#contact">
                   Get in touch <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -123,6 +119,10 @@ export function Hero() {
 
           {/* Right: avatar with orbital ring */}
           <div className="relative justify-self-center w-[280px] sm:w-[340px] lg:w-[400px] aspect-square">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-24 -left-28 w-[440px] h-[440px] bg-green-100 rounded-full blur-3xl opacity-60"
+            />
             <svg
               aria-hidden="true"
               viewBox="0 0 100 100"

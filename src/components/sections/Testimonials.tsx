@@ -33,7 +33,7 @@ export function Testimonials() {
     text.replace(/\{(\w+)\}/g, (_, key) => tokens[key] ?? `{${key}}`);
 
   return (
-    <section id="testimonials" className="relative py-16 sm:py-20 bg-secondary/30 overflow-hidden">
+    <section id="testimonials" className="relative py-16 sm:py-20 bg-secondary/30 overflow-x-clip">
       <div aria-hidden="true" className="absolute top-0 left-0 w-[500px] h-[500px] bg-yellow-100 rounded-full blur-3xl opacity-20 sm:opacity-30 -translate-x-1/2 -translate-y-1/2" />
       <div aria-hidden="true" className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-yellow-100 rounded-full blur-3xl opacity-20 sm:opacity-30 translate-x-1/2 translate-y-1/2" />
 

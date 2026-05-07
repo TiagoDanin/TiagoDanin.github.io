@@ -82,7 +82,7 @@ export function Navbar() {
             })}
           </div>
 
-          <Button asChild size="sm" className="h-10 px-4">
+          <Button asChild size="sm" className="h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white">
             <a
               href="https://linkedin.com/in/tiagodanin"
               target="_blank"

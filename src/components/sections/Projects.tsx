@@ -28,7 +28,7 @@ export function Projects({ projects }: ProjectsProps) {
   const isMobile = useIsMobile();
 
   return (
-    <section id="projects" className="relative py-20 overflow-hidden">
+    <section id="projects" className="relative py-20 overflow-x-clip">
       <div aria-hidden="true" className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
       <div aria-hidden="true" className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
       <div aria-hidden="true" className="absolute bottom-0 left-1/2 w-[480px] h-[480px] bg-purple-100 rounded-full blur-3xl opacity-25 -translate-x-1/2 translate-y-1/3"></div>
