@@ -32,8 +32,8 @@ export function Hero() {
   );
 
   const stats = [
-    { value: formatProjects(projectsTotal), label: "open source projects" },
     { value: formatDownloads(npmDownloadsTotal), label: "npm downloads" },
+    { value: formatProjects(projectsTotal), label: "projects" },
     { value: String(posts.length + videos.length), label: "posts & videos" },
     { value: String(talks.length), label: "talks" },
   ];
