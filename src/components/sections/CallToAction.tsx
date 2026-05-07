@@ -14,10 +14,9 @@ export function CallToAction() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-6">
-          <h2 className="text-4xl font-bold tracking-tight">Let's Connect</h2>
-          <p className="text-xl text-primary-foreground/80 leading-relaxed">
-            Whether you have a project in mind, want to discuss tech, or just want to say hello,
-            I'm always open to new conversations and opportunities.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Hire me, or just say hi</h2>
+          <p className="text-base sm:text-lg text-primary-foreground/80 leading-relaxed max-w-2xl mx-auto">
+            Whether you have a project in mind, want to talk tech, or just want to say hi, I read everything that lands in the inbox.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
