@@ -15,13 +15,25 @@ interface ExperienceItemProps {
 export function ExperienceItem({ company, role, startDate, endDate, logo, description }: ExperienceItemProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const toggle = () => setIsExpanded(prev => !prev);
+  const isDateLike = (value: string) => /^\d{4}(-\d{2}(-\d{2})?)?$/.test(value);
+
   return (
-    <li 
-      className="flex flex-col gap-4 group cursor-pointer hover:bg-muted/50 rounded-lg p-2 transition-all"
-      onClick={() => setIsExpanded(!isExpanded)}
+    <li
+      role="button"
+      tabIndex={0}
+      aria-expanded={isExpanded}
+      className="flex flex-col gap-4 group cursor-pointer hover:bg-muted/50 rounded-lg p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      onClick={toggle}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      }}
     >
       <div className="flex gap-4">
-        <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-background/50 shadow-sm ring-1 ring-zinc-900/5 transition group-hover:bg-background">
+        <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-background/50 shadow-sm ring-1 ring-slate-900/5 transition group-hover:bg-background">
           <Image
             src={logo}
             alt={company}
@@ -57,9 +69,9 @@ export function ExperienceItem({ company, role, startDate, endDate, logo, descri
           </dd>
           <dt className="sr-only">Date</dt>
           <dd className="ml-auto text-xs text-muted-foreground">
-            <time dateTime={startDate}>{startDate}</time>
-            <span aria-hidden="true"> — </span>
-            <time dateTime={endDate}>{endDate}</time>
+            {isDateLike(startDate) ? <time dateTime={startDate}>{startDate}</time> : <span>{startDate}</span>}
+            <span aria-hidden="true"> – </span>
+            {isDateLike(endDate) ? <time dateTime={endDate}>{endDate}</time> : <span>{endDate}</span>}
           </dd>
         </dl>
       </div>

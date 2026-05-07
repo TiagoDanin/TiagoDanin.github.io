@@ -98,15 +98,21 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
   return (
     <section id="work" className="relative py-20 overflow-hidden">
       {/* Blur effect circles */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2"></div>
+      <div
+        aria-hidden="true"
+        className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-25 translate-x-1/3 translate-y-1/3"
+      />
 
       <div className="container mx-auto relative px-4">
         {/* Title and description */}
         <div className="max-w-2xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl font-bold tracking-tight">Experience & Skills</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Experience and skills</h2>
           <p className="mt-4 text-muted-foreground">
-            My professional journey and the technical skills I've developed over the years.
+            Where I've worked, and what I work with day to day.
           </p>
         </div>
 
@@ -120,32 +126,23 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
                 <span className="ml-3">Professional Experience</span>
               </h3>
 
-              {/* Experience */}
-              <div className="mt-6 space-y-6">
-                <h3 className="flex text-sm font-semibold items-center">
-                  <span>Experience</span>
-                </h3>
-
-                <ol className="space-y-6">
-                  {work.map((job, index) => (
-                    <ExperienceItem
-                      key={index}
-                      company={job.company}
-                      role={job.role}
-                      startDate={job.startDate}
-                      endDate={job.endDate}
-                      logo={job.logo}
-                      description={job.description}
-                    />
-                  ))}
-                </ol>
-              </div>
+              <ol className="mt-6 space-y-6">
+                {work.map((job, index) => (
+                  <ExperienceItem
+                    key={index}
+                    company={job.company}
+                    role={job.role}
+                    startDate={job.startDate}
+                    endDate={job.endDate}
+                    logo={job.logo}
+                    description={job.description}
+                  />
+                ))}
+              </ol>
 
               {/* Volunteering */}
               <div className="mt-8 space-y-6">
-                <h3 className="flex text-sm font-semibold items-center">
-                  <span>Volunteering</span>
-                </h3>
+                <h4 className="text-sm font-medium">Volunteering</h4>
 
                 <ol className="space-y-6">
                   {volunteer.map((job, index) => (
@@ -162,7 +159,24 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
                 </ol>
               </div>
 
-              <Button className="w-full group mt-8" variant="outline" asChild>
+              {!isExpanded && (
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-card/90 to-transparent pointer-events-none" />
+              )}
+            </div>
+
+            <div className="flex flex-col gap-3 mt-6">
+              {!isExpanded && (
+                <Button
+                  onClick={() => setIsExpanded(true)}
+                  variant="outline"
+                  className="w-full"
+                >
+                  <span className="flex items-center gap-2">
+                    Show more <ChevronDown className="h-4 w-4" />
+                  </span>
+                </Button>
+              )}
+              <Button className="w-full group" variant="outline" asChild>
                 <a href={about.cvUrl} className="inline-flex items-center gap-2">
                   Open CV
                   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-4 w-4 stroke-muted-foreground transition group-hover:stroke-primary">
@@ -170,24 +184,7 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
                   </svg>
                 </a>
               </Button>
-
-              {!isExpanded && (
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-card/90 to-transparent pointer-events-none" />
-              )}
             </div>
-
-            {!isExpanded && (<div className="flex flex-col gap-3 mt-6">
-              <Button
-                onClick={() => setIsExpanded(!isExpanded)}
-                variant="outline"
-                className="w-full"
-              >
-
-                <span className="flex items-center gap-2">
-                  Show More <ChevronDown className="h-4 w-4" />
-                </span>
-              </Button>
-            </div>)}
 
           </div>
 
