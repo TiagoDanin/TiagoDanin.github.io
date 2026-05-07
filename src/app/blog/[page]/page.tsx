@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ page: str
   const { page } = await params;
   const pageNumber = Number(page) || 1;
   return {
-    title: `Blog - Page ${pageNumber} - Flutter, AI & Security Articles`,
+    title: `Blog - Page ${pageNumber} - Flutter, AI & Security`,
     description: `Page ${pageNumber} of technical articles on Flutter, React Native, AI agents, and cybersecurity. Free in-depth tutorials for developers.`,
     alternates: {
       canonical: `https://tiagodanin.com/blog/${pageNumber}`,

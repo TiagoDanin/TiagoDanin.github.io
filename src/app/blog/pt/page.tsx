@@ -9,8 +9,8 @@ export function generateMetadata() {
 
   return {
     title: "Blog: Artigos sobre Desenvolvimento & IA",
-    description: "Blog sobre desenvolvimento de software, mobile, IA e seguranca. Artigos sobre Flutter, React Native, agentes IA e tecnologia.",
-    keywords: ["blog", "desenvolvimento de software", "mobile", "Flutter", "React Native", "IA", "seguranca", "programacao", "artigos tecnicos"],
+    description: "Blog sobre desenvolvimento de software, mobile, IA e segurança. Artigos sobre Flutter, React Native, agentes IA e tecnologia.",
+    keywords: ["blog", "desenvolvimento de software", "mobile", "Flutter", "React Native", "IA", "segurança", "programação", "artigos técnicos"],
     alternates: {
       canonical: 'https://tiagodanin.com/blog/pt',
       languages: {
@@ -21,7 +21,7 @@ export function generateMetadata() {
     },
     openGraph: {
       title: "Blog: Desenvolvimento, Mobile & IA",
-      description: "Artigos sobre desenvolvimento de software, apps mobile, agentes IA e seguranca.",
+      description: "Artigos sobre desenvolvimento de software, apps mobile, agentes IA e segurança.",
       url: "https://tiagodanin.com/blog/pt",
       type: "website",
       siteName: "Tiago Danin",
@@ -33,7 +33,7 @@ export function generateMetadata() {
           "@context": "https://schema.org",
           "@type": "Blog",
           "name": "Blog: Artigos sobre Desenvolvimento & IA",
-          "description": "Blog sobre desenvolvimento de software, mobile, IA e seguranca",
+          "description": "Blog sobre desenvolvimento de software, mobile, IA e segurança",
           "url": "https://tiagodanin.com/blog/pt",
           "inLanguage": "pt-BR",
           "author": {

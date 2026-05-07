@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import { queryCollection } from 'nextjs-studio/server';
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Services - Mobile, Cybersecurity & AI",
   description: "Professional services by Tiago Danin: mobile app development with Flutter & React Native, cybersecurity consulting, and technical mentorship. 250+ projects delivered.",
   keywords: [
     "mobile development services", "Flutter developer for hire", "React Native developer",

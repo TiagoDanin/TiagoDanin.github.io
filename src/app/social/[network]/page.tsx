@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ network: 
   const description = `Connect with Tiago Danin on ${contact.label}. Social media profile and contact information.`;
 
   return {
-    title: `${contact.label}` ,
+    title: `${contact.label} - Contact & Profile`,
     description: description,
     keywords: ['social media', 'contact', contact.label, 'profile', 'Tiago Danin'],
     alternates: {

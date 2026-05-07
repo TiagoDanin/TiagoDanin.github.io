@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!talk) {
     return {
-      title: 'Talk nao encontrada',
+      title: 'Palestra não encontrada',
       robots: { index: false, follow: true },
     };
   }

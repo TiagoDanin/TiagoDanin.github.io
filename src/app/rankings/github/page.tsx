@@ -3,7 +3,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import GitHubRankingsClient from './GitHubRankingsClient';
 
 export const metadata: Metadata = {
-  title: "GitHub Repository Rankings by Stars - Most Starred Repos (All Time)",
+  title: "GitHub Stars Ranking - Most Starred Repos",
   description: "See the most starred GitHub repositories ranked by stars, forks & watchers. Updated rankings of top open source projects. Compare repos and discover trending projects.",
   keywords: [
     "GitHub rankings",

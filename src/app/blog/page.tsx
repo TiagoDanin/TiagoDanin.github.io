@@ -14,7 +14,7 @@ export function generateMetadata() {
   );
 
   return {
-    title: "Blog - Flutter, React Native, AI & Cybersecurity Articles",
+    title: "Blog - Flutter, AI & Cybersecurity",
     description: "Technical articles on mobile development, AI agents, and cybersecurity. Tutorials on Flutter, React Native, Node.js, and more. Free, in-depth guides for developers.",
     keywords: ["blog", "software development", "mobile development", "Flutter tutorial", "React Native tutorial", "AI agents", "cybersecurity", "Node.js i18n", "zsh autocomplete", "nuxt seo", "programming articles"],
     alternates: {

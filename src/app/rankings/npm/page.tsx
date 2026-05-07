@@ -3,7 +3,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import NPMRankingsClient from './NPMRankingsClient';
 
 export const metadata: Metadata = {
-  title: "NPM Package Rankings - Most Downloaded Node.js Packages",
+  title: "NPM Rankings - Most Downloaded Packages",
   description: "Rankings of the most downloaded NPM packages with real-time statistics. Compare downloads, versions & dependencies across top JavaScript and Node.js packages.",
   keywords: [
     "NPM rankings",

@@ -20,7 +20,7 @@ import {
 import type { LucideIcon } from 'lucide-react';
 
 export const metadata = {
-  title: "All Contacts",
+  title: "All Contacts - GitHub, NPM, LinkedIn & More",
   description: "All contact methods and social media profiles for Tiago Danin. Connect on GitHub, LinkedIn, Twitter, and more professional platforms.",
   keywords: ["contacts", "social media", "GitHub", "LinkedIn", "Twitter", "email", "contact", "networking"],
   alternates: {

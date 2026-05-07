@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!post) {
     return {
-      title: 'Post nao encontrado',
+      title: 'Post não encontrado',
       robots: { index: false, follow: true },
     };
   }

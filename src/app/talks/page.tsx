@@ -5,7 +5,7 @@ import { Globe, Mic, Video } from "lucide-react";
 import { getRandomColor, toISODate } from '@/utils/parse';
 
 export const metadata = {
-  title: "Tech Talks & Presentations - Flutter, React Native & Security",
+  title: "Tech Talks - Flutter, React Native & Security",
   description: "Watch talks on mobile development, Flutter, React Native, and cybersecurity. Presentations at DevFest, DevOpsDays, and developer meetups. Slides and videos available.",
   keywords: ["tech talks", "developer presentations", "Flutter talk", "React Native presentation", "cybersecurity talk", "DevFest", "DevOpsDays", "mobile development talks", "feature flags", "fastlane match", "MCP protocol"],
   alternates: {

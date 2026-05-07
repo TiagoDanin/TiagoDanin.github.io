@@ -114,9 +114,19 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
     ? enrichedDescription.substring(0, 157) + '...'
     : enrichedDescription;
 
-  // Better title for search results: "locale-codes - ISO Language Codes | npm Package"
-  const platformSuffix = typeLabel[type] || type;
-  const seoTitle = `${title} | ${platformSuffix.charAt(0).toUpperCase() + platformSuffix.slice(1)}`;
+  const platformLabel: Record<string, string> = {
+    npm: 'NPM Package',
+    pypi: 'PyPI Package',
+    luarocks: 'LuaRocks Module',
+    atom: 'Atom Package',
+    github: 'Open Source Project',
+    aur: 'AUR Package',
+    googleplay: 'Android App',
+    windows: 'Windows App',
+    private: 'Project',
+    offline: 'Project',
+  };
+  const seoTitle = `${title} | ${platformLabel[type] ?? type}`;
 
   return {
     title: seoTitle,

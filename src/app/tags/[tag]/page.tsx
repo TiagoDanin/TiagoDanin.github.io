@@ -32,10 +32,22 @@ function getAllTagsMap() {
   return map;
 }
 
+const TAG_DISPLAY_OVERRIDES: Record<string, string> = {
+  ai: 'AI', ios: 'iOS', uiux: 'UI/UX', devops: 'DevOps', api: 'API', css: 'CSS',
+};
+
+function prettifyTagSlug(slug: string): string {
+  if (TAG_DISPLAY_OVERRIDES[slug]) return TAG_DISPLAY_OVERRIDES[slug];
+  return decodeURIComponent(slug)
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
   const { tag: tagSlug } = await params;
   const allTagsMap = getAllTagsMap();
-  const originalTagName = allTagsMap.get(tagSlug) || decodeURIComponent(tagSlug);
+  const originalTagName = allTagsMap.get(tagSlug) || prettifyTagSlug(tagSlug);
 
   return {
     title: `${originalTagName} - Articles & Talks`,
@@ -62,7 +74,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
   const posts = getPosts();
   const talks = getTalks();
   const allTagsMap = getAllTagsMap();
-  const originalTagName = allTagsMap.get(tagSlug) || decodeURIComponent(tagSlug);
+  const originalTagName = allTagsMap.get(tagSlug) || prettifyTagSlug(tagSlug);
 
   const taggedPosts = posts.filter((post) => {
     const postTags = (post.tags as string[]) || [];

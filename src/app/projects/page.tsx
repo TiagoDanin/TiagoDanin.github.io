@@ -7,7 +7,7 @@ import { Github, Package, Smartphone, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export const metadata = {
-  title: "250+ Projects - Open Source, NPM Packages & Mobile Apps",
+  title: "Projects - 250+ Open Source & NPM Packages",
   description: "Browse 250+ projects: 70+ npm packages, Flutter & React Native apps, GitHub tools, and mobile games. Open source libraries used by thousands of developers worldwide.",
   keywords: ["projects", "portfolio", "open source", "GitHub", "NPM packages", "Flutter apps", "React Native", "mobile apps", "locale-codes", "telegraf-test", "polybar", "developer tools", "Node.js libraries"],
   alternates: {

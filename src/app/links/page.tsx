@@ -5,7 +5,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Links",
+  title: "Link in Bio - All Contacts & Profiles",
   description: "All my important links in one place - Social media, presentations, portfolio, and contact information for Tiago Danin.",
   keywords: ["links", "social media", "contact", "portfolio", "linktree", "bio", "Tiago Danin"],
   alternates: {
