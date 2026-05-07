@@ -9,7 +9,7 @@
     "title": "Full Stack Development",
     "description": "End-to-end web in React and Node.js, plus the database layer that holds it together.",
     "icon": "Code",
-    "link": null
+    "link": "/web-development"
   },
   {
     "title": "Cybersecurity",
@@ -21,6 +21,6 @@
     "title": "DevOps & CI/CD",
     "description": "Pipelines, cloud infra, and the build/test/deploy loop that keeps releases boring.",
     "icon": "Zap",
-    "link": null
+    "link": "/services"
   }
 ]
