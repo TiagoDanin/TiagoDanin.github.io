@@ -59,7 +59,7 @@ const config: StudioConfig = {
             itemFields: [
               { name: "name", type: "text", required: true },
               { name: "icon", type: "text", required: true },
-              { name: "color", type: "text", required: true },
+              { name: "color", type: "color", required: true },
             ],
           },
         ],
