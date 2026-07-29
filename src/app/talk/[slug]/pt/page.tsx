@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { GiscusComments } from '@/components/ui/GiscusComments';
 import { CallToAction } from '@/components/sections/CallToAction';
-import { getTalkBySlug, talkHasLocale } from '@/lib/talks';
+import { getTalkBySlug, talkHasLocale, eventLabel } from '@/lib/talks';
 import { renderMdx } from '@/lib/render-mdx';
 import { toISODate, formatDate, getRandomColorWithDarkMode } from '@/utils/parse';
 
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     : talk.description;
 
   return {
-    title: `${talk.title} - ${talk.event}`,
+    title: `${talk.title} - ${eventLabel(talk)}`,
     description: truncatedDescription,
     alternates: {
       canonical: `https://tiagodanin.com/talk/${slug}/pt`,
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       },
     },
     openGraph: {
-      title: `${talk.title} - ${talk.event}`,
+      title: `${talk.title} - ${eventLabel(talk)}`,
       description: truncatedDescription,
       type: talk.youtubeUrl ? 'video.other' : 'article',
       url: `https://tiagodanin.com/talk/${slug}/pt`,
@@ -105,7 +105,7 @@ export default async function TalkPtPage({ params }: { params: Promise<{ slug: s
       "url": talk.youtubeUrl
     } : {
       "@type": "Place",
-      "name": talk.event,
+      "name": eventLabel(talk),
       "address": { "@type": "PostalAddress", "addressCountry": "BR" }
     },
     "organizer": { "@type": "Organization", "name": talk.event },
@@ -155,7 +155,7 @@ export default async function TalkPtPage({ params }: { params: Promise<{ slug: s
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <Badge variant="secondary" className="flex items-center gap-1">
                 <Mic className="h-3 w-3" />
-                {talk.event}
+                {eventLabel(talk)}
               </Badge>
               {talk.youtubeUrl && (
                 <Button variant="outline" size="sm" asChild>

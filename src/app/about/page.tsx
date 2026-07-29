@@ -112,7 +112,7 @@ const Index = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
-      <Hero />
+      <Hero showPressKit />
       <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />
       <Services />
       <CallToAction />

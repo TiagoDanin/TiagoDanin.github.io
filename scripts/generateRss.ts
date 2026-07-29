@@ -17,7 +17,7 @@ const talks = fs.readdirSync(talksDir)
   .filter(f => f.endsWith('.mdx') && !f.includes('.pt.'))
   .map(f => {
     const raw = fs.readFileSync(path.join(talksDir, f), 'utf-8');
-    return matter(raw).data as { title: string; date: string; description: string; slug: string; event: string; youtubeUrl?: string };
+    return matter(raw).data as { title: string; date: string; description: string; slug: string; event: string; edition: string; youtubeUrl?: string };
   });
 import timeline from '../contents/timeline/index.json' assert { type: 'json' };
 import projectsGithub from '../contents/github/index.json' assert { type: 'json' };

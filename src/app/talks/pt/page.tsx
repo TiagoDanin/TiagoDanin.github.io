@@ -3,6 +3,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import { Badge } from "@/components/ui/badge";
 import { Globe, Mic, Video } from "lucide-react";
 import { getRandomColor, toISODate } from '@/utils/parse';
+import { eventLabel } from '@/lib/talks';
 
 export const metadata = {
   title: "Palestras & Apresentações PT-BR | Tech Talks",
@@ -75,7 +76,7 @@ const TalksPtPage = () => {
       "eventAttendanceMode": talk.youtubeUrl ? "https://schema.org/OnlineEventAttendanceMode" : "https://schema.org/OfflineEventAttendanceMode",
       "location": {
         "@type": "Place",
-        "name": talk.event
+        "name": eventLabel(talk)
       },
       "organizer": {
         "@type": "Organization",
@@ -135,7 +136,7 @@ const TalksPtPage = () => {
                   </time>
                   <Badge variant="secondary" className="flex items-center gap-1">
                     <Mic className="h-3 w-3" />
-                    {talk.event}
+                    {eventLabel(talk)}
                   </Badge>
                 </div>
 

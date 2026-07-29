@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CallToAction } from '@/components/sections/CallToAction';
 import { titleToSlug, formatDate } from '@/utils/parse';
+import { eventLabel } from '@/lib/talks';
 
 interface SkillItem {
   name: string;
@@ -299,7 +300,7 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
                   >
                     <div className="flex items-center gap-2 mb-1">
                       <time className="text-xs text-muted-foreground">{formatDate(talk.date)}</time>
-                      <Badge variant="secondary" className="text-[10px]">{talk.event}</Badge>
+                      <Badge variant="secondary" className="text-[10px]">{eventLabel(talk)}</Badge>
                     </div>
                     <h3 className="font-medium group-hover:text-primary transition-colors">{talk.title}</h3>
                     <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{talk.description}</p>

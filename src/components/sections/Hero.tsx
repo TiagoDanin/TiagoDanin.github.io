@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Newspaper } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { queryCollection } from 'nextjs-studio/server';
@@ -13,7 +13,12 @@ const PROJECT_COLLECTIONS = [
 const formatProjects = (n: number) => `${Math.ceil(n / 50) * 50}+`;
 const formatDownloads = (n: number) => `${(Math.floor(n / 100_000) / 10).toFixed(1)}M+`;
 
-export function Hero() {
+interface HeroProps {
+  /** Only /about surfaces the press kit; the home page keeps the two primary CTAs. */
+  showPressKit?: boolean;
+}
+
+export function Hero({ showPressKit = false }: HeroProps) {
   const aboutData = queryCollection('about').one();
   const socialLinksData = queryCollection('sociallinks');
 
@@ -114,6 +119,14 @@ export function Hero() {
               <Button size="lg" variant="outline" asChild className="min-h-[44px]">
                 <Link href="/projects">View my projects</Link>
               </Button>
+              {showPressKit && (
+                <Button size="lg" variant="outline" asChild className="min-h-[44px]">
+                  <Link href="/press-kit">
+                    <Newspaper className="mr-2 h-4 w-4" aria-hidden="true" />
+                    Press kit
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
 

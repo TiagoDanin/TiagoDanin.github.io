@@ -106,11 +106,19 @@ const isBioLang = (value: unknown): value is BioLang =>
 const isBioFocus = (value: unknown): value is BioFocus =>
   BIO_FOCUSES.some(focus => focus.key === value);
 
-/** Rows come from the `bios` collection, so they arrive untyped. */
-export function buildBios(
-  rows: readonly Record<string, unknown>[],
-  stats: BioStats
-): BioTable {
+/**
+ * A row as it comes out of the `bios` collection. Every field is unknown so the
+ * guards below decide what is a valid language and focus.
+ */
+export interface BioRow {
+  lang?: unknown;
+  focus?: unknown;
+  short?: unknown;
+  medium?: unknown;
+  long?: unknown;
+}
+
+export function buildBios(rows: readonly BioRow[], stats: BioStats): BioTable {
   const table = {} as BioTable;
 
   for (const lang of BIO_LANGUAGES) {

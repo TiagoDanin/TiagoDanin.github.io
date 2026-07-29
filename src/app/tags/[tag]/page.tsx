@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
 import { titleToSlug, toISODate, getRandomColorWithDarkMode } from '@/utils/parse';
+import { eventLabel } from '@/lib/talks';
 
 function getPosts() {
   return [...queryCollection('posts').where({ lang: 'en' })].sort((a, b) => b.date.localeCompare(a.date));
@@ -177,7 +178,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
                     </time>
                     <Badge variant="secondary" className="flex items-center gap-1">
                       <Mic className="h-3 w-3" />
-                      {talk.event}
+                      {eventLabel(talk)}
                     </Badge>
                   </div>
 

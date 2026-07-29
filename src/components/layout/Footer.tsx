@@ -26,7 +26,6 @@ export function Footer({ socialLinks }: FooterProps) {
             )}
             <Link href="/blog" className="hover:text-primary min-h-[44px] flex items-center">Blog</Link>
             <Link href="/talks" className="hover:text-primary min-h-[44px] flex items-center">Talks</Link>
-            <Link href="/press-kit" className="hover:text-primary min-h-[44px] flex items-center">Press Kit</Link>
             <Link href="/sitemap" className="hover:text-primary min-h-[44px] flex items-center">Sitemap</Link>
           </nav>
 

@@ -38,6 +38,15 @@ export interface AurEntry {
   description: string;
 }
 
+/** Data shape for the "bios" collection. */
+export interface BiosEntry {
+  lang: string;
+  focus: string;
+  short: string;
+  medium: string;
+  long: string;
+}
+
 /** Data shape for the "contacts" collection. */
 export interface ContactsEntry {
   url: string;
@@ -125,7 +134,7 @@ export interface GithubEntry {
   updated_at: Date;
   pushed_at: Date;
   git_url: string;
-  ssh_url: Email;
+  ssh_url: string;
   clone_url: HttpUrl;
   svn_url: HttpUrl;
   homepage: string;
@@ -185,7 +194,7 @@ export interface GoogleplayEntry {
     solution: string;
     learned: string;
   };
-  tags: Array<"flutter" | "photography" | "creative" | "instagram" | "freemium" | "relaxation" | "sleep" | "white noise" | "ambient" | "game" | "survival" | "arcade" | "bonfire" | "education" | "CNH" | "DETRAN" | "gamification" | "brazil" | "android" | "ios" | "memory" | "jetpack compose" | "open source" | "pets" | "marketplace" | "services">;
+  tags: Array<"flutter" | "photography" | "creative" | "instagram" | "freemium" | "relaxation" | "sleep" | "white noise" | "ambient" | "game" | "survival" | "arcade" | "bonfire" | "education" | "CNH" | "DETRAN" | "gamification" | "brazil" | "android" | "ios" | "memory" | "jetpack compose" | "open source" | "pets" | "marketplace" | "services" | "idle" | "clicker" | "prestige">;
 }
 
 /** Data shape for the "links" collection. */
@@ -194,6 +203,7 @@ export interface LinksEntry {
   url: HttpUrl;
   icon: string;
   enabled: boolean;
+  talk_avaliation: boolean;
 }
 
 /** Data shape for the "luarocks" collection. */
@@ -254,7 +264,13 @@ export interface PostsEntry {
   originalUrl: HttpUrl;
   lang: string;
   cover: string;
-  tags: Array<"Android" | "Mobile" | "UI/UX" | "Video" | "Flutter" | "iOS" | "AI" | "Article" | "JavaScript" | "React" | "GitHub" | "DevOps" | "Tutorial" | "Testing" | "Web" | "Frontend" | "Tools" | "Career" | "Linux" | "Performance" | "Security">;
+  tags: Array<"Android" | "Mobile" | "UI/UX" | "Video" | "Flutter" | "iOS" | "Article" | "JavaScript" | "React Native" | "DevOps" | "Tutorial" | "Testing" | "Web" | "Frontend" | "AI" | "Tools" | "GitHub" | "Career" | "Design System" | "Widgetbook" | "Linux" | "React" | "Performance" | "Security">;
+}
+
+/** Data shape for the "presskit" collection. */
+export interface PresskitEntry {
+  file: string;
+  caption: string;
 }
 
 /** Data shape for the "private" collection. */
@@ -297,13 +313,15 @@ export interface SociallinksEntry {
 
 /** Data shape for the "talks" collection. */
 export interface TalksEntry {
-  id: number;
-  date: string;
   title: string;
+  date: string;
   description: string;
+  slug: string;
   event: string;
-  tags: Array<"devops" | "mobile" | "firebase" | "flutter" | "code" | "documentation" | "react-native" | "performance" | "testing" | "fastlane" | "ios" | "web" | "IA" | "javascript" | "GIT" | "wordpress" | "linkedin" | "career" | "feature-flags" | "mcp" | "ia">;
-  youtubeUrl: HttpUrl;
+  edition: string;
+  lang: string;
+  youtubeUrl: string;
+  tags: Array<"Tutorial" | "React Native" | "Performance" | "Mobile" | "ia" | "code" | "Web" | "Career" | "DevOps" | "Testing" | "iOS" | "Firebase" | "Flutter" | "GitHub" | "AI" | "JavaScript">;
 }
 
 /** Data shape for the "testimonials" collection. */
@@ -313,6 +331,7 @@ export interface TestimonialsEntry {
   company: string;
   quote: string;
   avatar: string;
+  icon: string;
 }
 
 /** Data shape for the "timeline" collection. */
@@ -357,6 +376,7 @@ declare module 'nextjs-studio' {
     "about": AboutEntry;
     "atom": AtomEntry;
     "aur": AurEntry;
+    "bios": BiosEntry;
     "contacts": ContactsEntry;
     "expertise": ExpertiseEntry;
     "github": GithubEntry;
@@ -367,6 +387,7 @@ declare module 'nextjs-studio' {
     "npm": NpmEntry;
     "offline": OfflineEntry;
     "posts": PostsEntry;
+    "presskit": PresskitEntry;
     "private": PrivateEntry;
     "projects": ProjectsEntry;
     "pypi": PypiEntry;
@@ -385,6 +406,7 @@ declare module 'nextjs-studio/server' {
     "about": AboutEntry;
     "atom": AtomEntry;
     "aur": AurEntry;
+    "bios": BiosEntry;
     "contacts": ContactsEntry;
     "expertise": ExpertiseEntry;
     "github": GithubEntry;
@@ -395,6 +417,7 @@ declare module 'nextjs-studio/server' {
     "npm": NpmEntry;
     "offline": OfflineEntry;
     "posts": PostsEntry;
+    "presskit": PresskitEntry;
     "private": PrivateEntry;
     "projects": ProjectsEntry;
     "pypi": PypiEntry;

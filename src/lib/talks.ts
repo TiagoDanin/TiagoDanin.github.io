@@ -6,10 +6,20 @@ export interface TalkContent {
   description: string;
   slug: string;
   event: string;
+  edition: string;
   lang: string;
   youtubeUrl: string;
   tags: string[];
   body: string;
+}
+
+/**
+ * The event as a reader sees it: brand plus the edition that hosted the talk.
+ * `event` alone is the brand ("DevOpsDays Belém"), so counting or grouping by
+ * event must use the raw field, never this label.
+ */
+export function eventLabel(talk: { event: string; edition?: string }): string {
+  return talk.edition ? `${talk.event} ${talk.edition}` : talk.event;
 }
 
 export function getTalkBySlug(slug: string, lang: string = 'en'): TalkContent | null {
@@ -25,6 +35,7 @@ export function getTalkBySlug(slug: string, lang: string = 'en'): TalkContent | 
     description: talk.description,
     slug: talk.slug,
     event: talk.event,
+    edition: talk.edition ?? '',
     lang: talk.lang,
     youtubeUrl: talk.youtubeUrl ?? '',
     tags: talk.tags ?? [],

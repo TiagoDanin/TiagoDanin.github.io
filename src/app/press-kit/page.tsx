@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BioBrowser } from "./BioBrowser";
 import { buildBios } from "./bios";
+import { eventLabel } from "@/lib/talks";
 import {
   ArrowRight,
   Bot,
@@ -147,6 +148,7 @@ const PressKitPage = () => {
     ? sortedTalks[sortedTalks.length - 1].date.slice(0, 4)
     : '';
 
+  // Events, not editions: five DevOpsDays Belém years are one event.
   const events = Array.from(new Set(sortedTalks.map(talk => talk.event)));
 
   const workYears = work
@@ -531,7 +533,7 @@ const PressKitPage = () => {
                     {talk.title}
                   </span>
                   <span className="shrink-0 text-sm text-muted-foreground">
-                    {talk.event}, {talk.date}
+                    {eventLabel(talk)}, {talk.date}
                   </span>
                 </Link>
               </li>

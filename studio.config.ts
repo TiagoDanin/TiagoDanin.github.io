@@ -123,6 +123,7 @@ const config: StudioConfig = {
           { name: "description", type: "long-text", required: true },
           { name: "slug", type: "text", required: true },
           { name: "event", type: "text", required: true },
+          { name: "edition", type: "text", required: true },
           {
             name: "lang",
             type: "select",
