@@ -9,8 +9,12 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-CLAUDE.md
-.claude/
+
+# CLAUDE
+!CLAUDE.md
+!.claude/
+.claude/settings.local.json
+.claude/**/*.local.json
 
 # testing
 /coverage
