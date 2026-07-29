@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { BioBrowser } from "./BioBrowser";
 import { buildBios } from "./bios";
 import { eventLabel } from "@/lib/talks";
+import { getPressItems } from "@/lib/press";
 import {
   ArrowRight,
   Bot,
@@ -137,6 +138,7 @@ const PressKitPage = () => {
   const work = [...queryCollection('work')];
   const npmPackages = [...queryCollection('npm')];
   const bioEntries = [...queryCollection('bios')];
+  const pressItems = getPressItems();
 
   const projectsTotal = PROJECT_COLLECTIONS.reduce(
     (sum, key) => sum + [...queryCollection(key)].length,
@@ -561,26 +563,67 @@ const PressKitPage = () => {
         </div>
       </section>
 
+      {/* In the press */}
+      {pressItems.length > 0 && (
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">In the press</h2>
+            <p className="mt-3 text-muted-foreground max-w-prose">
+              {pressItems.length} articles and releases published by others, all in Portuguese.
+            </p>
+
+            <ul className="mt-8 divide-y divide-border/60 border-y border-border/60 lg:max-w-3xl">
+              {pressItems.slice(0, 3).map(item => (
+                <li key={item.url} className="py-4">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                  >
+                    <span className="font-medium group-hover:text-primary transition-colors">
+                      {item.title}
+                    </span>
+                    <span className="shrink-0 text-sm text-muted-foreground">
+                      {item.outlet}, {item.date.slice(0, 4)}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8">
+              <Button variant="outline" asChild className="min-h-[44px]">
+                <Link href="/press">
+                  See all {pressItems.length} mentions <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Contact */}
-      <section className="py-16">
+      <section className="py-16 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="max-w-prose">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Booking and press</h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Email is the fastest way to reach me. I answer in Portuguese or English.
+              LinkedIn is where I answer fastest. Email works as a second option.
+              Either way, in Portuguese or English.
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <Button asChild className="min-h-[44px]">
-                <a href={`mailto:${about.email}?subject=Talk%20invitation`}>
-                  <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
-                  {about.email}
-                </a>
-              </Button>
-              <Button variant="outline" asChild className="min-h-[44px]">
                 <a href="https://linkedin.com/in/tiagodanin" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="mr-2 h-4 w-4" aria-hidden="true" />
                   LinkedIn
+                </a>
+              </Button>
+              <Button variant="outline" asChild className="min-h-[44px]">
+                <a href={`mailto:${about.email}?subject=Talk%20invitation`}>
+                  <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
+                  {about.email}
                 </a>
               </Button>
             </div>

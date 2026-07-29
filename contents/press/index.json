@@ -1,0 +1,68 @@
+[
+  {
+    "outlet": "Diário Online",
+    "title": "Trabalhar com produção de jogos vai muito além da diversão",
+    "url": "https://dol.com.br/entretenimento/games/783643/trabalhar-com-producao-de-jogos-vai-muito-alem-da-diversao?d=1",
+    "date": "2022-11-27",
+    "author": "Cintia Magno",
+    "lang": "pt",
+    "topic": "Game development",
+    "summary": "Feature on the games industry in Pará. Tiago appears as an IFPA student who built and published his own mobile game.",
+    "quote": "Aluno do curso de desenvolvimento de software do IFPA, Tiago Danin, 24 anos, não só já desenvolveu o seu próprio game para dispositivos móveis, como já consegue monetizar o produto."
+  },
+  {
+    "outlet": "TI Inside",
+    "title": "Hackathon TecBan seleciona startups voltadas para ecossistema de Open Banking",
+    "url": "https://tiinside.com.br/14/08/2020/hackathon-tecban-seleciona-startups-voltadas-para-ecossistema-de-open-banking/",
+    "date": "2020-08-14",
+    "author": "Redação",
+    "lang": "pt",
+    "topic": "TecBan Hackathon 2020",
+    "summary": "Results of the hackathon, with the winning projects and the full team behind Bicos.",
+    "quote": "O grande vencedor da maratona foi o case 'Bicos', um aplicativo voltado para trabalhadores informais."
+  },
+  {
+    "outlet": "Canaltech",
+    "title": "App focado na economia de \"bicos\" vence hackathon open banking da Tecban",
+    "url": "https://canaltech.com.br/inovacao/app-focado-na-economia-de-bicos-vence-hackathon-open-banking-da-tecban-169871/",
+    "date": "2020-08-13",
+    "author": "Rui Maciel",
+    "lang": "pt",
+    "topic": "TecBan Hackathon 2020",
+    "summary": "How Bicos works and why it won: hiring a gig worker and paying straight from a bank balance.",
+    "quote": "O BICOS, um aplicativo de conexão e contratação de prestação de serviços. Com ele, é possível contratar um profissional para trabalhos rápidos e efetuar o pagamento diretamente pelo saldo bancário."
+  },
+  {
+    "outlet": "TecBan",
+    "title": "Paraenses vencem Hackathon voltado para o ecossistema de Open Banking",
+    "url": "https://www.tecban.com.br/release/paraenses-vencem-hackathon-voltado-para-o-ecossistema-de-open-banking",
+    "date": "2020-08-05",
+    "author": "Redação",
+    "lang": "pt",
+    "topic": "TecBan Hackathon 2020",
+    "summary": "Official release announcing the winners of the first TecBan Hackathon, 1046 entries across 24 states.",
+    "quote": "O BICOS nasceu para democratizar o acesso ao Open Banking àqueles que, antes, eram invisíveis ao sistema financeiro."
+  },
+  {
+    "outlet": "TecMundo",
+    "title": "Ninguém precisa entender o \"Open Banking\" para lucrar com isso",
+    "url": "https://www.tecmundo.com.br/mercado/155846-ninguem-precisa-entender-open-banking-lucrar.htm",
+    "date": "2020-08-04",
+    "author": "Leonardo Muller",
+    "lang": "pt",
+    "topic": "TecBan Hackathon 2020",
+    "summary": "Explainer on open banking in Brazil that uses Bicos as the example of what the model makes possible.",
+    "quote": "De quebra, o projeto ainda procura oferecer microcrédito para trabalhadores informais e desbancarizados."
+  },
+  {
+    "outlet": "IFPA Campus Belém",
+    "title": "Aluno do IFPA Campus Belém é premiado em competição nacional",
+    "url": "https://belem.ifpa.edu.br/publicacoes/686-aluno-do-ifpa-campus-belem-e-premiado-em-competicao-nacional",
+    "date": "2020-07-30",
+    "author": "Redação",
+    "lang": "pt",
+    "topic": "TecBan Hackathon 2020",
+    "summary": "His college covers the win, with an interview about what he was studying at the time.",
+    "quote": "Entre os vencedores, Tiago Danin, aluno do 3º semestre do curso de graduação em Análise e Desenvolvimento de Sistemas (TADS), do IFPA Campus Belém."
+  }
+]

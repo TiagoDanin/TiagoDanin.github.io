@@ -182,6 +182,28 @@ const config: StudioConfig = {
         sync: "tsx scripts/getProjectsNPM.ts --output-terminal",
       },
     },
+    press: {
+      schema: {
+        collection: "press",
+        label: "Press Coverage",
+        fields: [
+          { name: "outlet", type: "text", required: true },
+          { name: "title", type: "text", required: true },
+          { name: "url", type: "url", required: true },
+          { name: "date", type: "date", required: true },
+          { name: "author", type: "text" },
+          {
+            name: "lang",
+            type: "select",
+            required: true,
+            options: [opt("en"), opt("pt")],
+          },
+          { name: "topic", type: "text", required: true },
+          { name: "summary", type: "long-text", required: true },
+          { name: "quote", type: "long-text" },
+        ],
+      },
+    },
     presskit: {
       mediaDir: "public/images/press",
       schema: {
