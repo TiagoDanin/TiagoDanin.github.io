@@ -145,6 +145,32 @@ const config: StudioConfig = {
         ],
       },
     },
+    bios: {
+      schema: {
+        collection: "bios",
+        label: "Press Kit Bios",
+        fields: [
+          {
+            name: "lang",
+            type: "select",
+            required: true,
+            options: [opt("en"), opt("pt")],
+          },
+          {
+            name: "focus",
+            type: "select",
+            required: true,
+            options: [
+              opt("general"), opt("mobile"), opt("flutter"), opt("programming"),
+              opt("security"), opt("ai"), opt("career"),
+            ],
+          },
+          { name: "short", type: "long-text", required: true },
+          { name: "medium", type: "long-text", required: true },
+          { name: "long", type: "long-text", required: true },
+        ],
+      },
+    },
     github: {
       scripts: {
         sync: "tsx scripts/getProjectsGithub.ts --output-terminal",

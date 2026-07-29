@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withStudio } from "nextjs-studio/next";
 
 const nextConfig: NextConfig = {
   /**
@@ -44,4 +45,8 @@ typescript: {
   poweredByHeader: false,
 };
 
-export default nextConfig;
+/**
+ * withStudio puts `contents/` under the dev watcher, so editing a collection
+ * hot reloads the browser instead of waiting for a manual refresh.
+ */
+export default withStudio(nextConfig);
