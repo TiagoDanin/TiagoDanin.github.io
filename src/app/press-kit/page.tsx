@@ -62,11 +62,19 @@ interface PressPhoto {
   label: string;
 }
 
+/** Fallback caption for a file that has no entry in the presskit collection. */
+function labelFromFilename(file: string): string {
+  const base = path.basename(file, path.extname(file));
+  const words = base.replace(/^\d+[-_]?/, '').replace(/[-_]+/g, ' ').trim();
+  return words ? words.charAt(0).toUpperCase() + words.slice(1) : base;
+}
+
 /**
- * Reads the press photo folder at build time, so dropping a file into
- * public/images/press is enough to publish it here.
+ * Lists the press photo folder at build time. Captions and order come from the
+ * presskit collection; a file dropped into public/images/press without an entry
+ * still shows up, at the end, with a caption derived from its filename.
  */
-function readPressPhotos(): PressPhoto[] {
+function readPressPhotos(captions: { file: string; caption: string }[]): PressPhoto[] {
   let files: string[] = [];
   try {
     files = fs.readdirSync(PRESS_PHOTO_DIR);
@@ -74,18 +82,29 @@ function readPressPhotos(): PressPhoto[] {
     return [];
   }
 
-  return files
-    .filter(file => IMAGE_EXTENSIONS.includes(path.extname(file).toLowerCase()))
+  const available = new Set(
+    files.filter(file => IMAGE_EXTENSIONS.includes(path.extname(file).toLowerCase()))
+  );
+
+  const curated = captions
+    .filter(entry => available.has(entry.file))
+    .map(entry => ({
+      file: entry.file,
+      src: `/images/press/${entry.file}`,
+      label: entry.caption,
+    }));
+
+  const listed = new Set(curated.map(photo => photo.file));
+  const extras = [...available]
+    .filter(file => !listed.has(file))
     .sort((a, b) => a.localeCompare(b))
-    .map(file => {
-      const base = path.basename(file, path.extname(file));
-      const words = base.replace(/^\d+[-_]?/, '').replace(/[-_]+/g, ' ').trim();
-      return {
-        file,
-        src: `/images/press/${file}`,
-        label: words ? words.charAt(0).toUpperCase() + words.slice(1) : base,
-      };
-    });
+    .map(file => ({
+      file,
+      src: `/images/press/${file}`,
+      label: labelFromFilename(file),
+    }));
+
+  return [...curated, ...extras];
 }
 
 const TOPICS = [
@@ -144,7 +163,11 @@ const PressKitPage = () => {
     firstTalkYear,
   });
 
-  const pressPhotos = readPressPhotos();
+  const photoCaptions = [...queryCollection('presskit')].map(entry => ({
+    file: String(entry.file),
+    caption: String(entry.caption),
+  }));
+  const pressPhotos = readPressPhotos(photoCaptions);
   const profilePhoto = pressPhotos.find(photo => photo.file.toLowerCase().startsWith('profile'));
   const galleryPhotos = pressPhotos.filter(photo => photo !== profilePhoto);
 
@@ -421,7 +444,7 @@ const PressKitPage = () => {
                         alt={`${about.name}, ${photo.label.toLowerCase()}`}
                         width={640}
                         height={800}
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover object-[50%_30%]"
                       />
                     </div>
                     <figcaption className="mt-3 flex items-center justify-between gap-2">

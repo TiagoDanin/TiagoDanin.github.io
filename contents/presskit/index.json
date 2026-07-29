@@ -1,0 +1,42 @@
+[
+  {
+    "file": "01-retrato-camisa-preta.jpg",
+    "caption": "Portrait, black shirt"
+  },
+  {
+    "file": "02-terno-sem-fundo.png",
+    "caption": "Suit, transparent background"
+  },
+  {
+    "file": "03-programando-sem-fundo.png",
+    "caption": "At the laptop, transparent background"
+  },
+  {
+    "file": "04-terno-completo.jpg",
+    "caption": "Suit, full length"
+  },
+  {
+    "file": "05-retrato-camisa-xadrez.jpg",
+    "caption": "Portrait, plaid shirt"
+  },
+  {
+    "file": "06-retrato-moletom.jpg",
+    "caption": "Portrait, hoodie"
+  },
+  {
+    "file": "07-corpo-inteiro-mural.jpg",
+    "caption": "Full length, in front of a mural"
+  },
+  {
+    "file": "08-neon-verde.jpg",
+    "caption": "Green neon"
+  },
+  {
+    "file": "09-neon-noite.jpg",
+    "caption": "Neon at night"
+  },
+  {
+    "file": "10-corrida-utinga.jpg",
+    "caption": "Running at Parque do Utinga"
+  }
+]

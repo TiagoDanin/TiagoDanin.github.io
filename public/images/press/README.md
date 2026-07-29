@@ -1,27 +1,33 @@
 # Press photos
 
-Drop image files here and they show up automatically on `/press-kit`.
-The page reads this folder at build time (`readPressPhotos` in
-`src/app/press-kit/page.tsx`), so no code change is needed to add or remove a photo.
+Files here are published on `/press-kit`. The page lists this folder at build time
+(`readPressPhotos` in `src/app/press-kit/page.tsx`).
+
+## Captions and order
+
+Captions live in the CMS, not in the filename: `contents/presskit/index.json`,
+editable in the studio as "Press Kit Photos". Each entry is:
+
+```json
+{ "file": "01-retrato-camisa-preta.jpg", "caption": "Portrait, black shirt" }
+```
+
+The order of that array is the order on the page. A file dropped in here without an
+entry still shows up, at the end, with a caption derived from its filename
+(numeric prefix stripped, dashes turned into spaces).
 
 ## Rules
 
 - Accepted extensions: `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`.
-- Files are listed in alphabetical order. Prefix with `01-`, `02-`, ... to control the order.
-- The filename becomes the caption: the numeric prefix is stripped and dashes turn
-  into spaces, so `03-portrait-neon.jpg` is shown as "Portrait neon".
-- A file named `profile.*` is special: it replaces the GitHub avatar in the
-  "Profile photo" card and enables the real download button there. It is not
-  repeated in the gallery grid.
-- Rotate photos before saving. The page renders them as they are, and phone photos
-  that rely on EXIF orientation will show up sideways.
-- Cards use a 4:5 crop with `object-cover`, so keep the subject near the center.
-
-## Current naming
-
-```
-profile.jpg          Profile photo, square, replaces the GitHub avatar
-01-<name>.jpg        Gallery photo
-02-<name>.jpg        Gallery photo
-...
-```
+- `profile.jpg` is special: it fills the "Profile photo" card and enables the
+  download button there. It is not repeated in the gallery grid.
+- Rotate before saving. The originals from a phone often carry an EXIF orientation
+  flag instead of rotated pixels, which is fragile. The current files were baked
+  upright and stripped of that flag.
+- Keep the long side at 2000px and JPEG quality around 85. This is a static site on
+  GitHub Pages, so every byte here is shipped to the visitor.
+- Keep transparency as PNG. `02-terno-sem-fundo.png` and `03-programando-sem-fundo.png`
+  have alpha channels and are the most useful files for someone building an event banner.
+- Cards use a 4:5 crop with `object-cover object-[50%_10%]`. The crop sits just below
+  the top edge, not at the centre, so a tall portrait keeps the head instead of losing
+  it while still leaving a little headroom. Frame the subject near the top of the image.

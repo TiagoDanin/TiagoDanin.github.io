@@ -106,6 +106,8 @@ const about = queryCollection('about').one();
 
 The `studio.config.ts` at the project root configures collection scripts for CMS integration.
 
+`next.config.ts` wraps the config with `withStudio()` from `nextjs-studio/next`. That is what makes saving a file in `contents/` refresh the browser in dev; without it the dev server serves fresh content only on a full page load. It only works on webpack, which is why dev must run as `npx next dev --webpack`.
+
 #### Never hardcode content in code
 
 **nextjs-studio is the CMS. Copy belongs in `contents/`, never in a `.ts`/`.tsx` file.** If a change adds prose the user could plausibly want to edit later (bios, page copy, descriptions, quotes, FAQ answers, list items with text), it goes in a collection:

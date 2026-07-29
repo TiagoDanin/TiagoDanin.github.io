@@ -181,6 +181,17 @@ const config: StudioConfig = {
         sync: "tsx scripts/getProjectsNPM.ts --output-terminal",
       },
     },
+    presskit: {
+      mediaDir: "public/images/press",
+      schema: {
+        collection: "presskit",
+        label: "Press Kit Photos",
+        fields: [
+          { name: "file", type: "text", required: true },
+          { name: "caption", type: "text", required: true },
+        ],
+      },
+    },
     testimonials: {
       schema: {
         collection: "testimonials",
