@@ -4,107 +4,126 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is Tiago Danin's personal website built with Next.js 15, featuring a static-exported site deployed on GitHub Pages. The site showcases blog posts, talks, projects, timeline events, and professional information.
+Tiago Danin's personal website: Next.js 16 (App Router) + React 19 + TypeScript, statically exported to `dist/` and deployed on GitHub Pages. It showcases blog posts, talks, projects, timeline events, press coverage and professional information, in English and Portuguese.
 
 ## Development Commands
 
 ```bash
 # Development
-yarn dev                    # Start development server
-yarn build                  # Build for production (static export)
+yarn dev                    # Start dev server (webpack, required - see below)
+yarn build                  # Build for production (static export to dist/)
 yarn start                  # Start production server
-yarn lint                   # Run ESLint
 
-# Data Generation (run before builds)
-yarn data:github           # Fetch GitHub projects data
-yarn data:npm              # Fetch NPM packages data
-yarn data:rss              # Generate RSS feeds
+# Data Generation
+yarn data:github           # Fetch GitHub projects into contents/github/
+yarn data:npm              # Fetch NPM packages into contents/npm/
+yarn data:rss              # Generate RSS feeds into public/rss/
 
 # Sitemap Generation
-yarn sitemap               # Generate sitemaps (runs after build)
+yarn sitemap               # generateGithubSitemap.ts + next-sitemap
 
 # Full Deployment Pipeline
 yarn deploy                # data:github + data:rss + build + sitemap + build (second build picks up the generated sitemap)
 ```
 
+Package manager is **Yarn 4** (`packageManager: yarn@4.6.0`, Corepack). Node version is pinned in `.nvmrc`.
+
 `prebuild` runs `yarn data:rss` and `postbuild` runs `yarn sitemap` automatically; `yarn build` alone is enough during local iteration. Run `yarn data:github` / `yarn data:npm` manually when you need fresh external data.
 
 **No test suite is configured** (no jest/vitest, no `test` script). Treat correctness claims for UI changes as unverified until exercised in the browser. Do not invent passing tests.
 
+**`yarn lint` is currently broken.** The script still calls `next lint`, which Next 16 removed; it now parses `lint` as a directory and fails with `Invalid project directory provided`. There is also no `eslint.config.*` / `.eslintrc*` in the repo. Do not run it to validate a change and do not report it as passing. Verify types by reading them directly or with `npx tsc --noEmit`.
+
 ## Architecture
 
 ### Core Structure
-- **Next.js App Router**: Uses `src/app/` directory structure with TypeScript
-- **Static Export**: Configured for GitHub Pages deployment (`output: "export"`)
-- **Component-Based**: Modular React components with shadcn/ui + Radix UI
-- **Data-Driven**: Content sourced from JSON collections in `contents/`, accessed via nextjs-studio
+- **Next.js App Router** in `src/app/` with TypeScript
+- **Static Export** (`output: "export"`, `trailingSlash: true`, `distDir: 'dist'`) for GitHub Pages
+- **Component-Based**: React components with shadcn/ui + Radix UI
+- **Data-Driven**: all content lives in `contents/` collections, accessed via nextjs-studio
 
 ### Key Directories
-- `src/app/`: Next.js App Router pages and layouts
-- `src/components/`: Reusable UI components (layout, sections, ui)
-- `src/data/`: Legacy JSON data files (kept for reference; active data is now in `contents/`)
-- `contents/`: Active content collections (posts, talks, github, npm, timeline, etc.)
-- `src/lib/studio.ts`: Studio content layer helper (`queryCollection`)
-- `studio.config.ts`: nextjs-studio configuration for collections and import scripts
-- `scripts/`: Build-time scripts for data fetching and RSS generation
-- `public/`: Static assets and generated files
+- `src/app/`: App Router pages and layouts
+- `src/components/`: `layout/`, `sections/`, `ui/` (shadcn primitives + custom components)
+- `src/lib/`: content helpers (`mdx.ts`, `talks.ts`, `press.ts`, `render-mdx.tsx`, `utils.ts`)
+- `src/utils/parse.ts`: `titleToSlug`, `formatDate`, `toISODate`, tag/color helpers. The slug function here defines every project/post URL.
+- `contents/`: all content collections
+- `studio.config.ts`: nextjs-studio collection schemas and sync scripts
+- `scripts/`: build-time data fetching, RSS and GitHub sitemap generation
+- `public/`: static assets and generated RSS/sitemap files
+
+`src/App.tsx` is an empty leftover from the pre-Next.js Vite/react-router version. `react-router-dom` and `@tanstack/react-query` are still in `package.json` for the same reason. Do not build on any of them.
 
 ### Data Flow
 1. Scripts fetch external data (GitHub, NPM) and write to `contents/<collection>/index.json`
-2. All components (server and client) use `queryCollection()` from `nextjs-studio` to access data
-3. RSS feeds and sitemaps are generated from `contents/` JSON data
-4. Static site is exported to `dist/` directory
+2. Server components read data with `queryCollection()` from `nextjs-studio/server`
+3. RSS feeds (`blog`, `talks`, `timeline`, `projects`) and sitemaps are generated from `contents/`
+4. Static site is exported to `dist/`, uploaded by `.github/workflows/deploy.yml`, which runs `yarn deploy` on every push to `main`
+
+### Routing Architecture
+
+All dynamic routes are statically pre-rendered via `generateStaticParams()`. Adding content to a collection is enough for a page to exist; there is no runtime fallback.
+
+**Bilingual routing is duplicated route segments, not i18n middleware.** English lives at the base path and Portuguese at a `/pt` child segment:
+
+| English | Portuguese |
+|---|---|
+| `/blog`, `/blog/[page]` | `/blog/pt` |
+| `/post/[slug]` | `/post/[slug]/pt` |
+| `/talks` | `/talks/pt` |
+| `/talk/[slug]` | `/talk/[slug]/pt` |
+
+The locale of a post/talk comes from the **filename suffix**, not from frontmatter alone: `my-post.mdx` is EN, `my-post.pt.mdx` is PT. `src/lib/mdx.ts` and `src/lib/talks.ts` wrap this: `getPostBySlug(slug, lang)` / `getTalkBySlug(slug, lang)` and `postHasLocale` / `talkHasLocale`. Use the `*HasLocale` helpers before emitting `alternates.languages` in metadata so hreflang never points at a page that was not generated.
+
+**Project routes** are `/project/[type]/[slug]`, where `type` is one of ten collections mapped in `src/app/project/[type]/[slug]/page.tsx`: `github`, `private`, `npm`, `luarocks`, `pypi`, `atom`, `googleplay`, `windows`, `aur`, `offline`. Slugs come from `titleToSlug(project.name ?? project.title)`. Adding a new project source means adding the collection *and* registering it in `getProjectsMap()` plus `urlPrefixMap`.
+
+Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/tags/[tag]`, `/blog/tags/[tag]`, `/timeline/[year]/[slug]`.
 
 ### Component Architecture
-- **Layout Components**: `Navbar`, `Footer`, shared layout structure
-- **Section Components**: Page-specific sections (`Hero`, `Projects`, `Services`, etc.)
-- **UI Components**: shadcn/ui components in `src/components/ui/`
-- **Utility Functions**: `src/lib/utils.ts` (cn function for className merging)
+- **Layout**: `Navbar`, `Footer`, `RedirectClient`
+- **Sections**: page-level blocks (`Hero`, `Projects`, `RecentPosts`, `Services`, `Testimonials`, `Work`, `CallToAction`, ...)
+- **UI**: shadcn/ui primitives plus project components (`ArticleCard`, `ProjectCard`, `TagFilter`, `CopyButton`, `GiscusComments`, `SocialLinks`)
+- **Utilities**: `cn()` in `src/lib/utils.ts`
 
 ### Styling
-- **Tailwind CSS**: primary styling framework, mobile-first.
+- **Tailwind CSS** (v3), mobile-first.
 - **CSS Custom Properties**: theme variables in `globals.css` (currently HSL-based shadcn defaults; the design direction in `DESIGN.md` migrates these to OKLCH tokens).
 - **No dark mode**: brand decision recorded in `PRODUCT.md`. The `.dark` block in `globals.css` and `next-themes` are legacy and should not be reintroduced or wired to a toggle.
 
 ### Content Management
 
-The site uses **nextjs-studio** as a content layer. All collections live in `contents/` as JSON files (e.g., `contents/posts/index.json`), replacing the old `src/data/` imports.
+The site uses **nextjs-studio** as a content layer. All collections live in `contents/`, replacing the old `src/data/` imports (that directory no longer exists).
 
-- **Posts**: blog posts as `.mdx` files in `contents/posts/` with frontmatter (`title`, `date`, `description`, `slug`, `tags`, `lang`). Bilingual: locale comes from the filename suffix (e.g. `my-post.mdx` is EN, `my-post.pt.mdx` is PT). Treat EN and PT as equal-weight surfaces.
-- **Talks**: speaking engagements in `contents/talks/index.json`
-- **Projects**: Multiple sources — `contents/github/`, `contents/npm/`, `contents/private/`, etc.
-- **Timeline**: Career events in `contents/timeline/index.json`
-- **Work/Volunteer**: Professional experience in `contents/work/` and `contents/volunteer/`
-- **Contacts/Links**: Social profiles and link-in-bio data in `contents/contacts/` and `contents/links/`
+- **Posts**: `.mdx` files in `contents/posts/` with frontmatter (`title`, `date`, `description`, `slug`, `originalUrl`, `lang`, `cover`, `tags`). Bilingual via filename suffix. Treat EN and PT as equal-weight surfaces.
+- **Talks**: `.mdx` files in `contents/talks/`, same bilingual convention, plus `event`, `edition`, `youtubeUrl`.
+- **Projects**: multiple JSON sources - `contents/github/`, `contents/npm/`, `contents/private/`, `contents/pypi/`, and the rest of the ten types above.
+- **Timeline / Work / Volunteer**: `contents/timeline/`, `contents/work/`, `contents/volunteer/`
+- **Press**: `contents/press/` (coverage), `contents/presskit/` and `contents/bios/` (press kit)
+- **Site copy**: `contents/about/`, `contents/expertise/`, `contents/skills/`, `contents/testimonials/`, `contents/sociallinks/`, `contents/menu/`, `contents/contacts/`, `contents/links/`
 
 #### Data Access Patterns
 
 **nextjs-studio** has two entry points:
-- `nextjs-studio` — client-safe: `queryCollection`, types, pure utilities (no fs)
-- `nextjs-studio/server` — server-only: auto-init, FsAdapter, loadContent
+- `nextjs-studio` - client-safe: types and pure utilities (no fs)
+- `nextjs-studio/server` - server-only: auto-init, FsAdapter, `queryCollection`, `loadContent`
 
 **Server components** (pages, layouts, server-only components):
 ```ts
 import { queryCollection } from 'nextjs-studio/server';
 ```
 
-**Client components** (`'use client'`) must **NOT** call `queryCollection` — they can only import types from `nextjs-studio`. Data must be fetched in a parent server component and passed as props:
+**Client components** (`'use client'`) must **NOT** call `queryCollection` - they can only import types from `nextjs-studio`. Data must be fetched in a parent server component and passed as props:
 ```ts
 // Server component (page.tsx)
 import { queryCollection } from 'nextjs-studio/server';
 const posts = queryCollection('posts');
 return <ClientComponent posts={[...posts]} />;
-// Spread into array to serialize QueryResult for client
+// Spread into an array to serialize QueryResult for the client
 ```
 
-For singleton collections (e.g., `about`), use `.one()`:
-```ts
-const about = queryCollection('about').one();
-```
+Query API in use across the codebase: `.where({...})`, `.locale('pt')`, `.first()`, `.count()`, and `.one()` for singleton collections (e.g. `queryCollection('about').one()`).
 
-**Do NOT** import JSON directly from `contents/` — always use the `queryCollection` API.
-
-The `studio.config.ts` at the project root configures collection scripts for CMS integration.
+**Do NOT** import JSON directly from `contents/` - always use the `queryCollection` API. The only exception is build-time scripts in `scripts/`, which run outside Next and read the JSON with `fs`.
 
 `next.config.ts` wraps the config with `withStudio()` from `nextjs-studio/next`. That is what makes saving a file in `contents/` refresh the browser in dev; without it the dev server serves fresh content only on a full page load. It only works on webpack, which is why `yarn dev` and `yarn build` both pass `--webpack` explicitly. Next 16 defaults to Turbopack and aborts the build when a `webpack` config is present without a `turbopack` config, so the flag is required, not optional.
 
@@ -124,7 +143,7 @@ Code in the same folder as a collection consumer should only hold types, UI chro
 
 ## TypeScript Rules
 
-- **Never use `any`** — always use proper types. Use `unknown` when the type is truly unknown, or define explicit interfaces/types. Using `any` defeats the purpose of TypeScript.
+- **Never use `any`** - always use proper types. Use `unknown` when the type is truly unknown, or define explicit interfaces/types. Using `any` defeats the purpose of TypeScript.
 
 ## Design Context
 
@@ -154,12 +173,27 @@ Hard bans:
 
 Use `/impeccable <command>` for design work. Each command reads `PRODUCT.md` and `DESIGN.md` before acting.
 
+## Project Skills
+
+`.claude/skills/` holds project skills (`create-post`, `create-talk`, `create-timeline`, `sync-projects`, `validate-data`, `generate-metadata`, `seo-audit`, `deploy-site`, `impeccable`).
+
+**Several of them, and `.claude/skills/README.md`, still describe the old `src/data/*.json` layout and predate the MDX migration.** Their intent (slug rules, date formats, ordering, validation checks) is still useful, but when a skill tells you to edit `src/data/posts.json` or `src/data/talks.json`, write to the `contents/` collection instead: posts and talks are `.mdx` files, everything else is `contents/<collection>/index.json`. Prefer the conventions in this file over the skill text where they disagree.
+
+## SEO Conventions
+
+Metadata is defined per page with `generateMetadata`, hardcoding `https://tiagodanin.com` as the origin (static export has no request context).
+
+- Always set `alternates.canonical`, and `alternates.languages` with `en-US`, `pt-BR` and `x-default` when a locale variant actually exists.
+- Descriptions are truncated to 160 chars before use.
+- Page priorities and changefreq are centralized in the `transform` function of `next-sitemap.config.cjs`; add new route prefixes there rather than leaving them at the 0.7 default.
+- `scripts/generateGithubSitemap.ts` emits `public/github-sitemap.xml` pointing at canonical `/project/github/[slug]` URLs, and it is registered as an additional sitemap in the config.
+- Blog posts carry Giscus comments via the `GiscusComments` component.
+
 ## Important Notes
 
-- TypeScript and ESLint errors are ignored during builds (`ignoreBuildErrors: true`). Do not rely on the build to surface type errors; check with `yarn lint` and by reading types directly.
-- Images are unoptimized (`next/image` `unoptimized` flag) for static export compatibility.
+- TypeScript errors are ignored during builds (`typescript.ignoreBuildErrors: true`). The build will not surface type errors, and `yarn lint` is broken (see above), so type safety has to be checked by reading types or running `tsc` manually.
+- Images are unoptimized (`images.unoptimized`) for static export compatibility; `next/image` gets no server-side optimization.
 - All data must be pre-generated before building (the `prebuild` hook handles RSS; GitHub/NPM data is committed under `contents/`).
 - Site uses Google Analytics (`G-4M6BE19CKV`) and Google Tag Manager (`GTM-WT3T53NB`), wired in `src/app/layout.tsx`.
-- RSS feeds are generated for blog, talks, timeline, and projects.
-- Sitemap includes dynamic GitHub project pages, generated by `scripts/generateGithubSitemap.ts` before `next-sitemap` runs.
-- Never run `yarn build`, `yarn deploy`, or any data-fetching command without explicit user permission. Builds are slow and overwrite generated files.
+- `.mcp.json` registers the `chrome-devtools` MCP server, useful for verifying UI changes in a real browser.
+- Never run `yarn build`, `yarn deploy`, or any data-fetching command without explicit user permission. Builds are slow and overwrite generated files (`dist/`, `public/rss/`, `public/*sitemap*`, `contents/github`, `contents/npm`).
