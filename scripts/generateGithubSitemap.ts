@@ -11,7 +11,6 @@ const siteUrl = 'https://tiagodanin.com';
 
 type GithubProject = {
   name: string;
-  homepage?: string;
 };
 
 function titleToSlug(title: string): string {
@@ -39,21 +38,20 @@ async function generateGithubSitemap(): Promise<void> {
       return;
     }
 
-    const tiagoDaninProjects = projectsData.filter(project =>
-      project.homepage && (
-        project.homepage.toLowerCase().startsWith('https://www.tiagodanin') ||
-        project.homepage.toLowerCase().startsWith('https://tiagodanin') ||
-        project.homepage.toLowerCase().startsWith('http://www.tiagodanin') ||
-        project.homepage.toLowerCase().startsWith('http://tiagodanin')
-      )
-    );
+    // Every repo in contents/github has a landing page at /project/github/[slug]
+    // (see generateStaticParams in src/app/project/[type]/[slug]/page.tsx),
+    // so the sitemap lists all of them.
+    const slugs = [...new Set(
+      projectsData
+        .map(project => titleToSlug(project.name))
+        .filter(Boolean)
+    )];
 
-    console.log(`Found ${tiagoDaninProjects.length} GitHub projects with TiagoDanin homepage`);
+    console.log(`Found ${slugs.length} GitHub project pages`);
 
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
-    tiagoDaninProjects.forEach(project => {
-      const slug = titleToSlug(project.name);
+    slugs.forEach(slug => {
       sitemap += `\n  <url>\n    <loc>${siteUrl}/project/github/${slug}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`;
     });
 
@@ -62,11 +60,11 @@ async function generateGithubSitemap(): Promise<void> {
     const sitemapPath = path.join(__dirname, '..', 'public', 'github-sitemap.xml');
     fs.writeFileSync(sitemapPath, sitemap);
 
-    console.log(`Successfully generated GitHub projects sitemap with ${tiagoDaninProjects.length} entries at ${sitemapPath}`);
+    console.log(`Successfully generated GitHub projects sitemap with ${slugs.length} entries at ${sitemapPath}`);
   } catch (error) {
     console.error('Error generating GitHub projects sitemap:', error);
   }
 }
 
 console.log('Starting GitHub projects sitemap generation...');
-generateGithubSitemap(); 
+generateGithubSitemap();
