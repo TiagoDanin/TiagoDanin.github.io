@@ -186,7 +186,8 @@ Metadata is defined per page with `generateMetadata`, hardcoding `https://tiagod
 - Always set `alternates.canonical`, and `alternates.languages` with `en-US`, `pt-BR` and `x-default` when a locale variant actually exists.
 - Descriptions are truncated to 160 chars before use.
 - Page priorities and changefreq are centralized in the `transform` function of `next-sitemap.config.cjs`; add new route prefixes there rather than leaving them at the 0.7 default.
-- `scripts/generateGithubSitemap.ts` emits `public/github-sitemap.xml` pointing at canonical `/project/github/[slug]` URLs, and it is registered as an additional sitemap in the config.
+- The site has four sitemaps, all generated and git-ignored. `scripts/generateSitemaps.ts` writes `sitemap.xml` (the index), `sitemap-project-github.xml` (one entry per `/project/github/[slug]` landing page) and `sitemap-homepage-github.xml` (the GitHub Pages homepages served under the custom domain, normalized from each repo's `homepage` field). `next-sitemap` then writes `sitemap-site.xml` for the site pages; it has `generateIndexSitemap: false` so it never overwrites the index, and excludes `/project/github/*` so the three lists stay disjoint.
+- `/sitemap` renders all four as tables, reading the XML from `public/` at build time. That is why `yarn deploy` builds twice: the first build has no sitemaps to read.
 - Blog posts carry Giscus comments via the `GiscusComments` component.
 
 ## Important Notes

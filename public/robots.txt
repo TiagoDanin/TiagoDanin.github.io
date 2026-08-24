@@ -6,5 +6,7 @@ Allow: /
 Host: https://tiagodanin.com
 
 # Sitemaps
+Sitemap: https://tiagodanin.com/sitemap-site.xml
 Sitemap: https://tiagodanin.com/sitemap.xml
-Sitemap: https://tiagodanin.com/github-sitemap.xml
+Sitemap: https://tiagodanin.com/sitemap-project-github.xml
+Sitemap: https://tiagodanin.com/sitemap-homepage-github.xml

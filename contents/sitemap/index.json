@@ -1,0 +1,26 @@
+{
+  "title": "Sitemap",
+  "description": "Every page on tiagodanin.com, grouped by the XML sitemap that lists it.",
+  "sections": [
+    {
+      "file": "sitemap.xml",
+      "title": "Sitemap index",
+      "description": "The root sitemap submitted to search engines, pointing at the three sitemaps below."
+    },
+    {
+      "file": "sitemap-site.xml",
+      "title": "Site pages",
+      "description": "Blog posts, talks, timeline, press and everything under the main navigation."
+    },
+    {
+      "file": "sitemap-project-github.xml",
+      "title": "GitHub project pages",
+      "description": "One page per public repository, with its description, language, license and stats."
+    },
+    {
+      "file": "sitemap-homepage-github.xml",
+      "title": "GitHub Pages homepages",
+      "description": "Demos and documentation published from a repository, served under this domain."
+    }
+  ]
+}

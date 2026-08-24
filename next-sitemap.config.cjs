@@ -3,12 +3,17 @@ module.exports = {
   siteUrl: 'https://tiagodanin.com',
   generateRobotsTxt: true,
   changefreq: 'weekly',
-  additionalSitemaps: [
-    'https://tiagodanin.com/github-sitemap.xml',
-  ],
+  // The sitemap index is written by scripts/generateSitemaps.ts, which also lists
+  // sitemap-project-github.xml and sitemap-homepage-github.xml alongside this file.
+  sitemapBaseFileName: 'sitemap-site',
+  generateIndexSitemap: false,
+  // Listed by sitemap-project-github.xml instead, so the three sitemaps stay disjoint.
+  exclude: ['/project/github/*'],
   robotsTxtOptions: {
     additionalSitemaps: [
-      'https://tiagodanin.com/github-sitemap.xml',
+      'https://tiagodanin.com/sitemap.xml',
+      'https://tiagodanin.com/sitemap-project-github.xml',
+      'https://tiagodanin.com/sitemap-homepage-github.xml',
     ],
   },
   transform: async (config, urlPath) => {

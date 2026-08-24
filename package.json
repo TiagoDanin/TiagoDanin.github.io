@@ -9,7 +9,7 @@
         "build": "next build --webpack",
         "start": "next start",
         "lint": "next lint",
-        "sitemap": "tsx scripts/generateGithubSitemap.ts && next-sitemap --config next-sitemap.config.cjs",
+        "sitemap": "tsx scripts/generateSitemaps.ts && next-sitemap --config next-sitemap.config.cjs",
         "data:github": "tsx scripts/getProjectsGithub.ts",
         "data:npm": "tsx scripts/getProjectsNPM.ts",
         "data:rss": "tsx scripts/generateRss.ts",

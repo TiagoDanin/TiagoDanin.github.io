@@ -215,6 +215,26 @@ const config: StudioConfig = {
         ],
       },
     },
+    sitemap: {
+      schema: {
+        collection: "sitemap",
+        label: "Sitemap Page",
+        fields: [
+          { name: "title", type: "text", required: true },
+          { name: "description", type: "long-text", required: true },
+          {
+            name: "sections",
+            type: "array",
+            required: true,
+            itemFields: [
+              { name: "file", type: "text", required: true },
+              { name: "title", type: "text", required: true },
+              { name: "description", type: "long-text", required: true },
+            ],
+          },
+        ],
+      },
+    },
     testimonials: {
       schema: {
         collection: "testimonials",

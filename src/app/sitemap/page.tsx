@@ -2,165 +2,129 @@ import fs from 'fs';
 import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
 import type { Metadata } from 'next';
+import { queryCollection } from 'nextjs-studio/server';
 
-export const metadata: Metadata = {
-  title: "Sitemap",
-  description: "Complete sitemap of TiagoDanin.com. Browse all pages including blog posts, talks, projects, timeline events, and services.",
-  keywords: ["sitemap", "site navigation", "all pages", "website structure"],
-  alternates: {
-    canonical: 'https://tiagodanin.com/sitemap',
-  },
-  openGraph: {
-    title: "Sitemap - Tiago Danin",
-    description: "Complete sitemap with all pages and content.",
-    url: "https://tiagodanin.com/sitemap",
-    type: "website",
-  },
-  twitter: {
-    card: 'summary',
-    title: "Sitemap - Tiago Danin",
-    description: "Complete sitemap with all pages and content.",
-  },
-};
-
-interface SitemapURL {
+interface SitemapUrl {
   loc: string;
   lastmod?: string;
   changefreq?: string;
-  priority?: string;
+  priority?: string | number;
 }
 
-interface SitemapData {
+interface SitemapSection {
+  file: string;
+  title: string;
+  description: string;
+}
+
+interface SitemapContent {
+  title: string;
+  description: string;
+  sections: SitemapSection[];
+}
+
+interface ParsedSitemap {
   urlset?: {
-    url: SitemapURL[] | SitemapURL;
+    url?: SitemapUrl[];
   };
   sitemapindex?: {
-    sitemap: {
-      loc: string;
-    }[] | { loc: string };
+    sitemap?: SitemapUrl[];
   };
 }
 
-function parseSitemapXML(filePath: string): any {
-  try {
-    if (!fs.existsSync(filePath)) {
-      console.error(`Sitemap file not found: ${filePath}`);
-      return {};
-    }
+function getContent(): SitemapContent {
+  return queryCollection('sitemap').one() as unknown as SitemapContent;
+}
 
-    const xmlData = fs.readFileSync(filePath, 'utf8');
-    const parser = new XMLParser({ 
-      ignoreAttributes: false, 
-      parseAttributeValue: true,
-      isArray: (name: string) => ['url', 'sitemap'].includes(name)
+/**
+ * Reads a sitemap from public/. The files are written by `yarn sitemap`, which runs
+ * after the first build, so an early build can legitimately find them missing.
+ */
+function readSitemapUrls(fileName: string): SitemapUrl[] {
+  const filePath = path.join(process.cwd(), 'public', fileName);
+
+  if (!fs.existsSync(filePath)) {
+    console.warn(`Sitemap file not found, section will render empty: ${filePath}`);
+    return [];
+  }
+
+  try {
+    const parser = new XMLParser({
+      ignoreAttributes: false,
+      isArray: (name: string) => name === 'url' || name === 'sitemap',
     });
-    return parser.parse(xmlData);
+    const parsed = parser.parse(fs.readFileSync(filePath, 'utf8')) as ParsedSitemap;
+    // A urlset lists pages, a sitemapindex lists the other sitemaps
+    return parsed.urlset?.url ?? parsed.sitemapindex?.sitemap ?? [];
   } catch (error) {
     console.error(`Error parsing sitemap XML at ${filePath}:`, error);
-    return {};
+    return [];
   }
 }
 
-function getAllSitemaps() {
-  const basePath = path.join(process.cwd(), 'public');
-  
-  const sitemapFiles = [
-    'sitemap.xml',
-    'sitemap-0.xml',
-    'github-sitemap.xml'
-  ];
-  
-  const sitemaps: {
-    name: string;
-    urls: any[];
-  }[] = [];
-  
-  for (const file of sitemapFiles) {
-    try {
-      const filePath = path.join(basePath, file);
-      if (!fs.existsSync(filePath)) {
-        console.warn(`Sitemap file not found: ${filePath}`);
-        continue;
-      }
-      
-      const data = parseSitemapXML(filePath);
-      
-      if (data.sitemapindex && data.sitemapindex.sitemap) {
-        const sitemap = Array.isArray(data.sitemapindex.sitemap) 
-          ? data.sitemapindex.sitemap 
-          : [data.sitemapindex.sitemap];
-        
-        sitemaps.push({
-          name: file,
-          urls: sitemap.map((s: any) => ({ loc: s.loc }))
-        });
-      } 
-      else if (data.urlset && data.urlset.url) {
-        const urls = Array.isArray(data.urlset.url) 
-          ? data.urlset.url 
-          : [data.urlset.url];
-        
-        sitemaps.push({
-          name: file,
-          urls: urls
-        });
-      }
-    } catch (error) {
-      console.error(`Error processing sitemap ${file}:`, error);
-    }
-  }
-  
-  return sitemaps;
+function sortUrls(urls: SitemapUrl[]): SitemapUrl[] {
+  return [...urls].sort((a, b) => {
+    const priorityDiff = Number(b.priority ?? 0) - Number(a.priority ?? 0);
+    return priorityDiff !== 0 ? priorityDiff : a.loc.localeCompare(b.loc);
+  });
 }
 
-function SitemapTable({ urls }: { urls: any[] }) {
-  const safeUrls = urls.map(url => ({
-    loc: url.loc || '',
-    changefreq: url.changefreq || '',
-    priority: url.priority || '',
-    lastmod: url.lastmod || ''
-  }));
+export async function generateMetadata(): Promise<Metadata> {
+  const { title, description } = getContent();
 
+  return {
+    title,
+    description,
+    keywords: ['sitemap', 'site navigation', 'all pages', 'website structure'],
+    alternates: {
+      canonical: 'https://tiagodanin.com/sitemap',
+    },
+    openGraph: {
+      title: `${title} - Tiago Danin`,
+      description,
+      url: 'https://tiagodanin.com/sitemap',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary',
+      title: `${title} - Tiago Danin`,
+      description,
+    },
+  };
+}
+
+function SitemapTable({ urls }: { urls: SitemapUrl[] }) {
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse">
+      <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="bg-gray-100">
-            <th className="p-2 text-left border">URL</th>
-            <th className="p-2 text-left border w-1/6">Frequency</th>
-            <th className="p-2 text-left border w-1/6">Priority</th>
-            <th className="p-2 text-left border w-1/5">Last Modified</th>
+          <tr className="bg-muted text-left">
+            <th className="border p-2 font-semibold">URL</th>
+            <th className="w-1/6 border p-2 font-semibold">Frequency</th>
+            <th className="w-1/6 border p-2 font-semibold">Priority</th>
+            <th className="w-1/5 border p-2 font-semibold">Last Modified</th>
           </tr>
         </thead>
         <tbody>
-          {safeUrls
-            .sort((a, b) => {
-              const priorityA = parseFloat(a.priority) || 0;
-              const priorityB = parseFloat(b.priority) || 0;
-              return priorityB - priorityA;
-            })
-            .map((url, index) => (
-              <tr key={index} className="hover:bg-gray-50">
-                <td className="p-2 border">
-                  <a 
-                    href={url.loc} 
-                    className="text-blue-600 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {url.loc.replace('https://tiagodanin.com/', '/')}
-                  </a>
-                </td>
-                <td className="p-2 border">{url.changefreq || '-'}</td>
-                <td className="p-2 border">{url.priority || '-'}</td>
-                <td className="p-2 border">
-                  {url.lastmod 
-                    ? new Date(url.lastmod).toLocaleDateString('en-US')
-                    : '-'
-                  }
-                </td>
-              </tr>
-            ))}
+          {sortUrls(urls).map((url) => (
+            <tr key={url.loc} className="hover:bg-muted/50">
+              <td className="border p-2">
+                <a
+                  href={url.loc}
+                  className="text-primary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {url.loc.replace('https://tiagodanin.com', '') || '/'}
+                </a>
+              </td>
+              <td className="border p-2 text-muted-foreground">{url.changefreq ?? '-'}</td>
+              <td className="border p-2 text-muted-foreground">{url.priority ?? '-'}</td>
+              <td className="border p-2 text-muted-foreground">
+                {url.lastmod ? new Date(url.lastmod).toLocaleDateString('en-US') : '-'}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
@@ -168,43 +132,45 @@ function SitemapTable({ urls }: { urls: any[] }) {
 }
 
 export default function SitemapPage() {
-  const sitemaps = getAllSitemaps();
-  
+  const { title, description, sections } = getContent();
+  const lists = sections.map((section) => ({
+    ...section,
+    urls: readSitemapUrls(section.file),
+  }));
+
   return (
     <div className="container mx-auto py-20">
-      <h1 className="text-3xl font-bold mb-6">Site Map</h1>
-      
-      <div className="mb-6">
-        <p className="text-lg">
-          This is the site map, listing all available pages.
-        </p>
-      </div>
-      
-      {sitemaps.length === 0 ? (
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6">
-          No sitemaps found.
-        </div>
-      ) : (
-        <div className="space-y-8">
-          {sitemaps.map((sitemap) => (
-            <div key={sitemap.name} className="border rounded-lg p-6 shadow-sm">
-              <h2 className="text-2xl font-semibold mb-4 flex items-center justify-between">
-                <span>{sitemap.name}</span>
-                <a 
-                  href={`/${sitemap.name}`} 
-                  className="text-sm text-blue-500 hover:underline px-3 py-1 border border-blue-300 rounded-md"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View XML
-                </a>
-              </h2>
-              
-              <SitemapTable urls={sitemap.urls} />
+      <h1 className="mb-3 text-3xl font-bold">{title}</h1>
+      <p className="mb-10 text-lg text-muted-foreground">{description}</p>
+
+      <div className="space-y-8">
+        {lists.map((list) => (
+          <section key={list.file} className="rounded-lg border p-6 shadow-sm">
+            <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h2 className="text-2xl font-semibold">{list.title}</h2>
+                <p className="mt-1 text-muted-foreground">{list.description}</p>
+              </div>
+              <a
+                href={`/${list.file}`}
+                className="shrink-0 rounded-md border px-3 py-1 text-sm text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {list.urls.length} URLs, view XML
+              </a>
             </div>
-          ))}
-        </div>
-      )}
+
+            {list.urls.length === 0 ? (
+              <p className="text-muted-foreground">
+                No URLs found. Run <code>yarn sitemap</code> to generate {list.file}.
+              </p>
+            ) : (
+              <SitemapTable urls={list.urls} />
+            )}
+          </section>
+        ))}
+      </div>
     </div>
   );
-} 
+}
