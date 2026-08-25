@@ -7,6 +7,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { Work } from "@/components/sections/Work";
 import { queryCollection } from 'nextjs-studio/server';
 import { withMarkdown } from '@/lib/markdown-alternate';
+import { getCallToActionData, getHeroData, getTestimonialsData } from '@/lib/sections';
 
 export const metadata = {
   title: "Tiago Danin - Mobile Developer | Flutter, React Native & iOS/Android",
@@ -130,16 +131,21 @@ const Index = () => {
   const volunteerData = queryCollection('volunteer');
   const skillsData = queryCollection('skills');
   const aboutData = queryCollection('about').one();
+  const expertiseData = queryCollection('expertise');
+
+  const hero = getHeroData();
+  const recognition = getTestimonialsData();
+  const contact = getCallToActionData();
 
   return (
     <>
-      <Hero />
-      <Services />
+      <Hero about={hero.about} stats={hero.stats} socialLinks={hero.socialLinks} />
+      <Services expertise={[...expertiseData]} />
       <Projects projects={[...projectsData]} />
-      <Testimonials />
+      <Testimonials testimonials={recognition.testimonials} tokens={recognition.tokens} />
       <RecentPosts posts={[...posts]} />
       <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />
-      <CallToAction />
+      <CallToAction email={contact.email} linkedInUrl={contact.linkedInUrl} />
     </>
   );
 };

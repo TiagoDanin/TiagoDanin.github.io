@@ -3,47 +3,47 @@ import { SocialLinks } from "@/components/ui/SocialLinks";
 import { ArrowRight, Newspaper } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { queryCollection } from 'nextjs-studio/server';
 
-const PROJECT_COLLECTIONS = [
-  'github', 'npm', 'googleplay', 'luarocks',
-  'pypi', 'atom', 'windows', 'aur', 'private', 'offline',
-] as const;
+export interface HeroAbout {
+  name: string;
+  /** Rendered as a single "role · role" line above the heading. */
+  roles: string[];
+  /** Blank-line separated. The first paragraph becomes the lede. */
+  bio: string;
+  /** Screen-reader-only continuation of the h1, which shows only the name. */
+  seoDescription: string;
+  avatar: string;
+}
 
-const formatProjects = (n: number) => `${Math.ceil(n / 50) * 50}+`;
-const formatDownloads = (n: number) => `${(Math.floor(n / 100_000) / 10).toFixed(1)}M+`;
+export interface HeroStat {
+  /** Pre-formatted for display, e.g. "2.4M+". */
+  value: string;
+  label: string;
+}
 
-interface HeroProps {
+export interface HeroSocialLink {
+  label: string;
+  url: string;
+  icon: "Github" | "Linkedin" | "Youtube" | "Instagram";
+}
+
+export interface HeroProps {
+  about: HeroAbout;
+  /** Counts derived from the collections at build time. Rendered as-is. */
+  stats: HeroStat[];
+  socialLinks: HeroSocialLink[];
   /** Only /about surfaces the press kit; the home page keeps the two primary CTAs. */
   showPressKit?: boolean;
 }
 
-export function Hero({ showPressKit = false }: HeroProps) {
-  const aboutData = queryCollection('about').one();
-  const socialLinksData = queryCollection('sociallinks');
-
-  const projectsTotal = PROJECT_COLLECTIONS.reduce(
-    (sum, key) => sum + [...queryCollection(key)].length,
-    0
-  );
-  const npmDownloadsTotal = [...queryCollection('npm')].reduce(
-    (sum, pkg) => sum + (typeof pkg.downloads === 'number' ? pkg.downloads : 0),
-    0
-  );
-  const posts = [...queryCollection('posts').where({ lang: 'en' })];
-  const talks = [...queryCollection('talks').where({ lang: 'en' })];
-  const videos = talks.filter(
-    t => t.youtubeUrl && String(t.youtubeUrl).trim().length > 0
-  );
-
-  const stats = [
-    { value: formatDownloads(npmDownloadsTotal), label: "npm downloads" },
-    { value: formatProjects(projectsTotal), label: "projects" },
-    { value: String(posts.length + videos.length), label: "posts & videos" },
-    { value: String(talks.length), label: "talks" },
-  ];
-
-  const bioParagraphs = aboutData.bio
+/**
+ * Opening block of the home and about pages: name, bio, derived counts, and
+ * the orbiting avatar.
+ *
+ * Data comes from the page via `getHeroData()` in `@/lib/sections`.
+ */
+export function Hero({ about, stats, socialLinks, showPressKit = false }: HeroProps) {
+  const bioParagraphs = about.bio
     .split(/\n\n+/)
     .map(p => p.trim())
     .filter(Boolean);
@@ -71,14 +71,14 @@ export function Hero({ showPressKit = false }: HeroProps) {
                   aria-hidden="true"
                   className="text-xs sm:text-sm font-medium uppercase tracking-[0.18em] text-slate-500"
                 >
-                  {aboutData.roles.join(" · ")}
+                  {about.roles.join(" · ")}
                 </p>
 
                 <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-[1.02] text-foreground">
                   <span className="sr-only">
-                    {aboutData.name} - {aboutData.seoDescription}
+                    {about.name} - {about.seoDescription}
                   </span>
-                  <span aria-hidden="true">{aboutData.name}</span>
+                  <span aria-hidden="true">{about.name}</span>
                 </h1>
               </div>
 
@@ -193,8 +193,8 @@ export function Hero({ showPressKit = false }: HeroProps) {
 
             <div className="absolute inset-[6%] rounded-full overflow-hidden bg-primary/10 ring-1 ring-slate-200/80 shadow-lg">
               <Image
-                src={aboutData.avatar}
-                alt={`${aboutData.name} profile photo`}
+                src={about.avatar}
+                alt={`${about.name} profile photo`}
                 width={400}
                 height={400}
                 className="h-full w-full object-cover"
@@ -203,7 +203,7 @@ export function Hero({ showPressKit = false }: HeroProps) {
             </div>
 
             <div className="absolute -bottom-14 left-1/2 -translate-x-1/2">
-              <SocialLinks socialLinks={[...socialLinksData]} />
+              <SocialLinks socialLinks={socialLinks} />
             </div>
           </div>
         </div>

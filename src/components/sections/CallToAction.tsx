@@ -1,11 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { queryCollection } from 'nextjs-studio/server';
 
-export function CallToAction() {
-  const aboutData = queryCollection('about').one();
-  const socialLinksData = queryCollection('sociallinks');
-  const linkedIn = socialLinksData.find((l) => l.label === "LinkedIn");
+export interface CallToActionProps {
+  /** Address behind the "Send me an email" action. */
+  email: string;
+  /** LinkedIn profile URL. The LinkedIn action is dropped when absent. */
+  linkedInUrl?: string;
+}
 
+/**
+ * Closing block of every page: two ways to start a conversation, on the
+ * inverted slate surface.
+ *
+ * Data comes from the page via `getCallToActionData()` in `@/lib/sections`.
+ */
+export function CallToAction({ email, linkedInUrl }: CallToActionProps) {
   return (
     <section id="contact" className="relative py-20 overflow-x-clip bg-primary text-primary-foreground">
       {/* Blur effect circles */}
@@ -20,10 +28,10 @@ export function CallToAction() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            {linkedIn && (
+            {linkedInUrl && (
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white" asChild>
                 <a
-                  href={linkedIn.url}
+                  href={linkedInUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -32,7 +40,7 @@ export function CallToAction() {
               </Button>
             )}
             <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
-              <a href={`mailto:${aboutData.email}`}>Send me an email</a>
+              <a href={`mailto:${email}`}>Send me an email</a>
             </Button>
           </div>
         </div>

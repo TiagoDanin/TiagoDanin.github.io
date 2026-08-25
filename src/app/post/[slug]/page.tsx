@@ -11,6 +11,7 @@ import { getPostBySlug, postHasLocale } from '@/lib/mdx';
 import { renderMdx } from '@/lib/render-mdx';
 import { toISODate, formatDate } from '@/utils/parse';
 import { withMarkdown } from '@/lib/markdown-alternate';
+import { getCallToActionData } from "@/lib/sections";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -211,7 +212,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         </div>
       </article>
 
-      <CallToAction />
+      <CallToAction {...getCallToActionData()} />
     </>
   );
 }

@@ -1,6 +1,5 @@
 import { Code, Smartphone, Shield, Zap } from "lucide-react";
 import Link from "next/link";
-import { queryCollection } from 'nextjs-studio/server';
 
 import type { LucideIcon } from "lucide-react";
 
@@ -11,8 +10,27 @@ const iconMap: Record<string, LucideIcon> = {
   Zap,
 };
 
-export function Services() {
-  const expertiseData = queryCollection('expertise');
+export interface ExpertiseItem {
+  /** Card heading, also the React key, so it must be unique in the list. */
+  title: string;
+  description: string;
+  /** Icon name resolved against the bundled set: Code, Smartphone, Shield, Zap. */
+  icon: string;
+  /** Internal route. Cards without one render as static, non-clickable panels. */
+  link?: string;
+}
+
+export interface ServicesProps {
+  expertise: ExpertiseItem[];
+}
+
+/**
+ * The four-up expertise grid on the home page. The symmetric grid is
+ * deliberate; see DESIGN.md.
+ *
+ * Data comes from the page via `getServicesData()` in `@/lib/sections`.
+ */
+export function Services({ expertise }: ServicesProps) {
   return (
     <section id="skills" className="relative py-16 sm:py-20 bg-secondary/30 overflow-x-clip">
       {/* Blur effect circles */}
@@ -28,7 +46,7 @@ export function Services() {
         </div>
 
         <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-          {expertiseData.map((item) => {
+          {expertise.map((item) => {
             const Icon = iconMap[item.icon];
             const content = (
               <>

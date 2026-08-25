@@ -11,6 +11,7 @@ import { getTalkBySlug, talkHasLocale, eventLabel } from '@/lib/talks';
 import { renderMdx } from '@/lib/render-mdx';
 import { toISODate, formatDate, getRandomColorWithDarkMode } from '@/utils/parse';
 import { withMarkdown } from '@/lib/markdown-alternate';
+import { getCallToActionData } from "@/lib/sections";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -208,7 +209,7 @@ export default async function TalkPtPage({ params }: { params: Promise<{ slug: s
         </div>
       </article>
 
-      <CallToAction />
+      <CallToAction {...getCallToActionData()} />
     </>
   );
 }

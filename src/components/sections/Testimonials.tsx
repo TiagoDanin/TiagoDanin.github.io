@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Github, Mic } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { queryCollection } from 'nextjs-studio/server';
 
 const iconMap: Record<string, LucideIcon> = {
   Trophy,
@@ -9,26 +8,38 @@ const iconMap: Record<string, LucideIcon> = {
   Mic,
 };
 
-const roundDown = (n: number, step: number) => `${Math.floor(n / step) * step}+`;
+export interface TestimonialItem {
+  /** Also the React key, so it must be unique in the list. */
+  name: string;
+  role: string;
+  company: string;
+  /**
+   * Body copy. May contain `{token}` placeholders replaced from `tokens` at
+   * render time, which is how counts stay accurate without being written into
+   * the CMS by hand.
+   */
+  quote: string;
+  /** Icon name resolved against the bundled set: Trophy, Github, Mic. */
+  icon?: string;
+}
 
-export function Testimonials() {
-  const testimonials = queryCollection('testimonials');
+export interface TestimonialsProps {
+  testimonials: TestimonialItem[];
+  /**
+   * Values substituted into `{token}` placeholders. An unknown token stays
+   * visible as `{name}` rather than being blanked, so a typo in the CMS shows
+   * on the page instead of producing a broken sentence.
+   */
+  tokens?: Record<string, string>;
+}
 
-  const npmCount = [...queryCollection('npm')].length;
-  const talksCount = [...queryCollection('talks')].length;
-  const polybar = [...queryCollection('github')].find(
-    (repo) => repo.name === 'Awesome-Polybar'
-  );
-  const polybarStars = typeof polybar?.stargazers_count === 'number'
-    ? polybar.stargazers_count
-    : 0;
-
-  const tokens: Record<string, string> = {
-    npm: roundDown(npmCount, 10),
-    talks: roundDown(talksCount, 5),
-    polybarStars: String(polybarStars),
-  };
-
+/**
+ * The three-up recognition grid on the home page.
+ *
+ * Data comes from the page via `getTestimonialsData()` in `@/lib/sections`,
+ * which computes the counts behind the `{token}` placeholders.
+ */
+export function Testimonials({ testimonials, tokens = {} }: TestimonialsProps) {
   const fillTokens = (text: string) =>
     text.replace(/\{(\w+)\}/g, (_, key) => tokens[key] ?? `{${key}}`);
 
