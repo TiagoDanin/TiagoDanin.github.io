@@ -477,6 +477,13 @@ interface FeaturedProject {
   href?: string;
 }
 
+/** A service on /services, each with a dedicated HTML page behind `link`. */
+interface ExpertiseItem {
+  title: string;
+  description: string;
+  link?: string;
+}
+
 interface PressItem {
   outlet: string;
   title: string;
@@ -526,7 +533,8 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
   const work = readJson<WorkItem[]>('work');
   const volunteer = readJson<WorkItem[]>('volunteer');
   const skills = readJson<SkillGroup[]>('skills');
-  const expertise = readJson<PageRef[] & Array<{ title: string; description: string }>>('expertise');
+  const expertise = readJson<ExpertiseItem[]>('expertise');
+  const featured = readJson<FeaturedProject[]>('projects');
   const press = readJson<PressItem[]>('press');
   const bios = readJson<BioItem[]>('bios');
   const presskit = readJson<Array<{ file: string; caption: string }>>('presskit');
@@ -559,8 +567,47 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
       )
     ),
 
+    // "Show, don't tell": what he does, then the skills behind it, then shipped
+    // work as evidence, then how to reach him. A list of adjectives would be
+    // useless to an agent asked "can this person build X?".
     '/services': block(
-      ...expertise.map((item) => block(`## ${item.title}`, item.description))
+      block(
+        '## What Tiago takes on',
+        ...expertise.map((item) =>
+          block(
+            `### ${item.title}`,
+            item.description,
+            // The last entry links back to /services itself; a page linking to
+            // itself as "details" is noise.
+            item.link && item.link !== '/services'
+              ? `- Details: ${absoluteUrl(item.link)}`
+              : undefined
+          )
+        )
+      ),
+      block(
+        '## Technical skills',
+        ...skills.map((group) =>
+          block(`### ${group.category}`, `- ${group.items.map((item) => item.name).join(', ')}`)
+        )
+      ),
+      block(
+        '## Selected work',
+        list(
+          featured.map(
+            (project) =>
+              `- ${project.href ? link(project.title, project.href) : project.title}: ${truncate(project.description)}`
+          )
+        )
+      ),
+      block(
+        '## Contact',
+        list([
+          `- Email: ${about.email}`,
+          `- CV: ${about.cvUrl}`,
+          `- Full project catalogue: ${absoluteUrl('/projects.md')}`,
+        ])
+      )
     ),
 
     '/press': block(
@@ -667,6 +714,21 @@ function generate(): void {
   const projectCount = PROJECT_TYPES.reduce((sum, type) => sum + projects[type].length, 0);
   const documents: Array<{ routePath: string; body: string }> = [];
 
+  const counts: SiteCounts = {
+    posts: posts.length,
+    talks: talks.length,
+    projects: projectCount,
+    timeline: timeline.length,
+  };
+  const recentPosts = posts.filter((post) => post.lang === 'en').slice(0, 10);
+  const recentTalks = talks.filter((talk) => talk.lang === 'en').slice(0, 5);
+  const profile: Profile = {
+    about: readJson<Profile['about']>('about'),
+    skills: readJson<SkillGroup[]>('skills'),
+    work: readJson<WorkItem[]>('work'),
+    featured: readJson<FeaturedProject[]>('projects'),
+  };
+
   // Markdown mirrors, one per HTML page that has content behind it
   for (const post of posts) {
     const routePath = entryRoute('post', post);
@@ -708,10 +770,20 @@ function generate(): void {
   const projectsIndex = renderProjectsIndex(projects);
   const timelineIndex = renderTimelineIndex(timeline);
 
-  writeFile('/posts.txt', postsIndex);
-  writeFile('/talks.txt', talksIndex);
-  writeFile('/projects.txt', projectsIndex);
-  writeFile('/timeline.txt', timelineIndex);
+  // Every listing exists twice at the root: .txt for the llms.txt convention and
+  // .md for anything that follows a Markdown link. Same bytes, two extensions, so
+  // neither audience has to guess which one this site happens to publish.
+  const listings: Array<[string, string]> = [
+    ['posts', postsIndex],
+    ['talks', talksIndex],
+    ['projects', projectsIndex],
+    ['timeline', timelineIndex],
+  ];
+
+  for (const [name, body] of listings) {
+    writeFile(`/${name}.txt`, body);
+    writeFile(`/${name}.md`, body);
+  }
 
   // Markdown mirror for every page announced in contents/llms
   const pageBodies = buildPageBodies({
@@ -734,51 +806,20 @@ function generate(): void {
     documents.push({ routePath: page.path, body });
   }
 
-  // The home mirror is the site map in prose: what exists and where
+  // The home mirror carries the same sections as llms.txt, so an agent that lands
+  // on /index.md gets the full picture without having to fetch the index too.
   const homePage = config.pages.find((page) => page.path === '/');
   if (homePage) {
     const homeBody = block(
       config.summary,
       config.note,
-      block(
-        '## Pages',
-        list(
-          config.pages
-            .filter((page) => page.path !== '/')
-            .map(
-              (page) =>
-                `- ${link(page.title, absoluteUrl(markdownPath(page.path)))}: ${page.description}`
-            )
-        )
-      )
+      siteSections(config, counts, recentPosts, recentTalks, profile)
     );
     writeFile('/index.md', renderPage(homePage, homeBody));
     documents.push({ routePath: '/', body: homeBody });
   }
 
-  const recentPosts = posts.filter((post) => post.lang === 'en').slice(0, 10);
-  const recentTalks = talks.filter((talk) => talk.lang === 'en').slice(0, 5);
-
-  writeFile(
-    '/llms.txt',
-    renderLlmsTxt(
-      config,
-      {
-        posts: posts.length,
-        talks: talks.length,
-        projects: projectCount,
-        timeline: timeline.length,
-      },
-      recentPosts,
-      recentTalks,
-      {
-        about: readJson<{ bio: string; bioExtra: string; email: string }>('about'),
-        skills: readJson<SkillGroup[]>('skills'),
-        work: readJson<WorkItem[]>('work'),
-        featured: readJson<FeaturedProject[]>('projects'),
-      }
-    )
-  );
+  writeFile('/llms.txt', renderLlmsTxt(config, counts, recentPosts, recentTalks, profile));
 
   writeFile('/llms-full.txt', renderLlmsFull(documents));
 
