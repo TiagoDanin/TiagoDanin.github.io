@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { queryCollection } from 'nextjs-studio/server';
 import GitHubRankingsClient from './GitHubRankingsClient';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata: Metadata = {
   title: "GitHub Stars Ranking - Most Starred Repos",
@@ -19,9 +20,7 @@ export const metadata: Metadata = {
     "top starred repositories",
     "GitHub project analytics"
   ],
-  alternates: {
-    canonical: 'https://tiagodanin.com/rankings/github',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/rankings/github'),
   openGraph: {
     title: "Most Starred GitHub Repositories - Rankings by Stars, Forks & Watchers",
     description: "Updated rankings of the most starred GitHub repositories. Compare stars, forks & watchers across top open source projects.",

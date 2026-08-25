@@ -5,6 +5,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import Link from 'next/link';
 import { Github, Package, Smartphone, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { markdownUrl } from '@/lib/markdown-alternate';
 
 export const metadata = {
   title: "Projects - 250+ Open Source & NPM Packages",
@@ -13,6 +14,7 @@ export const metadata = {
   alternates: {
     canonical: 'https://tiagodanin.com/projects',
     types: {
+      'text/markdown': markdownUrl('https://tiagodanin.com/projects'),
       'application/rss+xml': [
         { url: '/rss/projects.xml', title: 'Projects RSS Feed' }
       ],

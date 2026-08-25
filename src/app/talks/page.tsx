@@ -4,13 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Globe, Mic, Video } from "lucide-react";
 import { getRandomColor, toISODate } from '@/utils/parse';
 import { eventLabel } from '@/lib/talks';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata = {
   title: "Tech Talks - Flutter, React Native & Security",
   description: "Watch talks on mobile development, Flutter, React Native, and cybersecurity. Presentations at DevFest, DevOpsDays, and developer meetups. Slides and videos available.",
   keywords: ["tech talks", "developer presentations", "Flutter talk", "React Native presentation", "cybersecurity talk", "DevFest", "DevOpsDays", "mobile development talks", "feature flags", "fastlane match", "MCP protocol"],
   alternates: {
-    canonical: 'https://tiagodanin.com/talks',
+    ...withMarkdown('https://tiagodanin.com/talks'),
     languages: {
       'en-US': 'https://tiagodanin.com/talks',
       'pt-BR': 'https://tiagodanin.com/talks/pt',

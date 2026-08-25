@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
+import { markdownUrl } from '@/lib/markdown-alternate';
 
 export function generateMetadata() {
   const timelineData = queryCollection('timeline');
@@ -12,6 +13,7 @@ export function generateMetadata() {
     alternates: {
       canonical: 'https://tiagodanin.com/timeline',
       types: {
+        'text/markdown': markdownUrl('https://tiagodanin.com/timeline'),
         'application/rss+xml': [
           { url: '/rss/timeline.xml', title: 'Timeline RSS Feed' }
         ],

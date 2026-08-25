@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
 import { toISODate } from '@/utils/parse';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 const POSTS_PER_PAGE = 10;
 
@@ -18,7 +19,7 @@ export function generateMetadata() {
     description: "Technical articles on mobile development, AI agents, and cybersecurity. Tutorials on Flutter, React Native, Node.js, and more. Free, in-depth guides for developers.",
     keywords: ["blog", "software development", "mobile development", "Flutter tutorial", "React Native tutorial", "AI agents", "cybersecurity", "Node.js i18n", "zsh autocomplete", "nuxt seo", "programming articles"],
     alternates: {
-      canonical: 'https://tiagodanin.com/blog',
+      ...withMarkdown('https://tiagodanin.com/blog'),
       languages: {
         'en-US': 'https://tiagodanin.com/blog',
         'pt-BR': 'https://tiagodanin.com/blog/pt',

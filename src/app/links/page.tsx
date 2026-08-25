@@ -3,14 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Linkedin, Youtube, Presentation, MessageCircle, AlignJustify } from "lucide-react";
 import { queryCollection } from 'nextjs-studio/server';
 import type { Metadata } from "next";
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata: Metadata = {
   title: "Link in Bio - All Contacts & Profiles",
   description: "All my important links in one place - Social media, presentations, portfolio, and contact information for Tiago Danin.",
   keywords: ["links", "social media", "contact", "portfolio", "linktree", "bio", "Tiago Danin"],
-  alternates: {
-    canonical: 'https://tiagodanin.com/links',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/links'),
   openGraph: {
     title: "Links - Tiago Danin",
     description: "All my important links in one place - Social media, presentations, and contact information.",

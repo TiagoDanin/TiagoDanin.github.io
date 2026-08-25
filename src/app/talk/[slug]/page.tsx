@@ -10,6 +10,7 @@ import { CallToAction } from '@/components/sections/CallToAction';
 import { getTalkBySlug, talkHasLocale, eventLabel } from '@/lib/talks';
 import { renderMdx } from '@/lib/render-mdx';
 import { toISODate, formatDate, getRandomColorWithDarkMode } from '@/utils/parse';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -40,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: truncatedDescription,
     keywords,
     alternates: {
-      canonical: `https://tiagodanin.com/talk/${slug}`,
+      ...withMarkdown(`https://tiagodanin.com/talk/${slug}`),
       languages: {
         'en-US': `https://tiagodanin.com/talk/${slug}`,
         ...(hasPtVariant && { 'pt-BR': `https://tiagodanin.com/talk/${slug}/pt` }),

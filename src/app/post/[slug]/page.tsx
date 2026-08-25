@@ -10,6 +10,7 @@ import { CallToAction } from '@/components/sections/CallToAction';
 import { getPostBySlug, postHasLocale } from '@/lib/mdx';
 import { renderMdx } from '@/lib/render-mdx';
 import { toISODate, formatDate } from '@/utils/parse';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: truncatedDescription,
     keywords,
     alternates: {
-      canonical: `https://tiagodanin.com/post/${post.slug}`,
+      ...withMarkdown(`https://tiagodanin.com/post/${post.slug}`),
       languages: {
         'en-US': `https://tiagodanin.com/post/${post.slug}`,
         ...(hasPtVariant && { 'pt-BR': `https://tiagodanin.com/post/${post.slug}/pt` }),

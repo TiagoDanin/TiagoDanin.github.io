@@ -4,14 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getPressItems, pressDate, pressHost } from "@/lib/press";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata = {
   title: "Press Coverage - Articles & Interviews",
   description: "Articles, interviews and releases that mention Tiago Danin, from the TecBan open banking hackathon to game development in Pará.",
   keywords: ["Tiago Danin press", "media coverage", "imprensa", "TecBan Hackathon", "Bicos app", "open banking", "entrevista"],
-  alternates: {
-    canonical: 'https://tiagodanin.com/press',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/press'),
   openGraph: {
     title: "Press Coverage - Tiago Danin",
     description: "Articles, interviews and releases that mention Tiago Danin.",

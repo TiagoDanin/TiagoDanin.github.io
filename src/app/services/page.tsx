@@ -5,6 +5,7 @@ import { Smartphone, Code, Shield, GraduationCap, ArrowRight, CheckCircle, Brief
 import Link from "next/link";
 import { Metadata } from "next";
 import { queryCollection } from 'nextjs-studio/server';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata: Metadata = {
   title: "Services - Mobile, Cybersecurity & AI",
@@ -15,9 +16,7 @@ export const metadata: Metadata = {
     "hire Flutter developer", "app development services", "penetration testing",
     "desenvolvedor mobile freelancer", "contratar desenvolvedor mobile"
   ],
-  alternates: {
-    canonical: 'https://tiagodanin.com/services',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/services'),
   openGraph: {
     title: "Professional Services | Tiago Danin",
     description: "Mobile development, cybersecurity, and mentorship services. 250+ projects delivered with Flutter, React Native, iOS & Android.",

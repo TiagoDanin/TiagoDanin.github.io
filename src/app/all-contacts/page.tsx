@@ -18,14 +18,13 @@ import {
   LayoutTemplate,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata = {
   title: "All Contacts - GitHub, NPM, LinkedIn & More",
   description: "All contact methods and social media profiles for Tiago Danin. Connect on GitHub, LinkedIn, Twitter, and more professional platforms.",
   keywords: ["contacts", "social media", "GitHub", "LinkedIn", "Twitter", "email", "contact", "networking"],
-  alternates: {
-    canonical: 'https://tiagodanin.com/all-contacts',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/all-contacts'),
   openGraph: {
     title: "All Contacts - Tiago Danin",
     description: "All contact methods and social media profiles. Connect on GitHub, LinkedIn, Twitter, and more.",

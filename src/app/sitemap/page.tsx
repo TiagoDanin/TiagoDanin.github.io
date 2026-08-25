@@ -3,6 +3,7 @@ import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
 import type { Metadata } from 'next';
 import { queryCollection } from 'nextjs-studio/server';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 interface SitemapUrl {
   loc: string;
@@ -76,9 +77,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     keywords: ['sitemap', 'site navigation', 'all pages', 'website structure'],
-    alternates: {
-      canonical: 'https://tiagodanin.com/sitemap',
-    },
+    alternates: withMarkdown('https://tiagodanin.com/sitemap'),
     openGraph: {
       title: `${title} - Tiago Danin`,
       description,

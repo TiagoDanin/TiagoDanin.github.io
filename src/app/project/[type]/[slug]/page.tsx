@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from "@/utils/parse";
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 type LicenseInfo = {
   key?: string;
@@ -147,9 +148,7 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
       ...((project.topics as string[]) || []),
       ...((project.keywords as string[]) || []),
     ].filter(Boolean) as string[],
-    alternates: {
-      canonical: `https://tiagodanin.com/project/${type}/${slug}`,
-    },
+    alternates: withMarkdown(`https://tiagodanin.com/project/${type}/${slug}`),
     openGraph: {
       title: `${title} - ${(baseDescription || enrichedDescription).substring(0, 60)}`,
       description: truncatedDescription,

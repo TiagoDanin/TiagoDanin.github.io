@@ -6,6 +6,7 @@ import { Services } from "@/components/sections/Services";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Work } from "@/components/sections/Work";
 import { queryCollection } from 'nextjs-studio/server';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata = {
   title: "Tiago Danin - Mobile Developer | Flutter, React Native & iOS/Android",
@@ -17,9 +18,7 @@ export const metadata = {
     "Technical Mentorship", "Cross-Platform Development", "Native Mobile Apps",
     "npm packages", "GitHub projects", "bug hunter", "HackerOne"
   ],
-  alternates: {
-    canonical: 'https://tiagodanin.com',
-  },
+  alternates: withMarkdown('https://tiagodanin.com'),
   openGraph: {
     title: 'Tiago Danin - Mobile Developer | 250+ Projects & 70+ Open Source Packages',
     description: 'Flutter, React Native, iOS & Android developer. 250+ projects delivered, bug hunter on HackerOne, and open source contributor.',

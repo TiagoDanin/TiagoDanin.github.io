@@ -9,6 +9,7 @@ import { BioBrowser } from "./BioBrowser";
 import { buildBios } from "./bios";
 import { eventLabel } from "@/lib/talks";
 import { getPressItems } from "@/lib/press";
+import { withMarkdown } from '@/lib/markdown-alternate';
 import {
   ArrowRight,
   Bot,
@@ -25,9 +26,7 @@ export const metadata = {
   title: "Press Kit - Bios, Photos & Speaker Info",
   description: "Official press kit for Tiago Danin: ready to use bios in English and Portuguese, profile photo, logo, talk topics, and booking contact for events and media.",
   keywords: ["press kit", "media kit", "speaker bio", "Tiago Danin bio", "conference speaker", "mobile developer speaker", "palestrante mobile", "bio para eventos"],
-  alternates: {
-    canonical: 'https://tiagodanin.com/press-kit',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/press-kit'),
   openGraph: {
     title: "Press Kit - Tiago Danin",
     description: "Bios in English and Portuguese, photo, logo, talk topics and booking contact. Everything an event or publication needs.",

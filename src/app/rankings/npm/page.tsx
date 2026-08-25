@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { queryCollection } from 'nextjs-studio/server';
 import NPMRankingsClient from './NPMRankingsClient';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata: Metadata = {
   title: "NPM Rankings - Most Downloaded Packages",
@@ -19,9 +20,7 @@ export const metadata: Metadata = {
     "npm package comparison",
     "total packages npm registry"
   ],
-  alternates: {
-    canonical: 'https://tiagodanin.com/rankings/npm',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/rankings/npm'),
   openGraph: {
     title: "Most Downloaded NPM Packages - Rankings & Statistics",
     description: "Compare the most downloaded NPM packages with real-time stats. Downloads, versions & dependency insights for JavaScript developers.",

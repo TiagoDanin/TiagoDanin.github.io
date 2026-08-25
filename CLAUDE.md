@@ -20,7 +20,10 @@ yarn data:npm              # Fetch NPM packages into contents/npm/
 yarn data:rss              # Generate RSS feeds into public/rss/
 
 # Sitemap Generation
-yarn sitemap               # generateGithubSitemap.ts + next-sitemap
+yarn sitemap               # generateSitemaps.ts + next-sitemap
+
+# Machine-readable layer (no npm script — run by hand)
+tsx scripts/generateLlms.ts # llms.txt, the *.txt lists and the .md page mirrors
 
 # Full Deployment Pipeline
 yarn deploy                # data:github + data:rss + build + sitemap + build (second build picks up the generated sitemap)
@@ -49,7 +52,7 @@ Package manager is **Yarn 4** (`packageManager: yarn@4.6.0`, Corepack). Node ver
 - `src/utils/parse.ts`: `titleToSlug`, `formatDate`, `toISODate`, tag/color helpers. The slug function here defines every project/post URL.
 - `contents/`: all content collections
 - `studio.config.ts`: nextjs-studio collection schemas and sync scripts
-- `scripts/`: build-time data fetching, RSS and GitHub sitemap generation
+- `scripts/`: build-time generation. `getProjectsGithub.ts` / `getProjectsNPM.ts` fetch external data, `generateRss.ts` the feeds, `generateSitemaps.ts` the sitemap index and the two GitHub sitemaps, `generateLlms.ts` the machine-readable layer
 - `public/`: static assets and generated RSS/sitemap files
 
 `src/App.tsx` is an empty leftover from the pre-Next.js Vite/react-router version. `react-router-dom` and `@tanstack/react-query` are still in `package.json` for the same reason. Do not build on any of them.
@@ -57,7 +60,7 @@ Package manager is **Yarn 4** (`packageManager: yarn@4.6.0`, Corepack). Node ver
 ### Data Flow
 1. Scripts fetch external data (GitHub, NPM) and write to `contents/<collection>/index.json`
 2. Server components read data with `queryCollection()` from `nextjs-studio/server`
-3. RSS feeds (`blog`, `talks`, `timeline`, `projects`) and sitemaps are generated from `contents/`
+3. RSS feeds (`blog`, `talks`, `timeline`, `projects`), sitemaps and the machine-readable layer are generated from `contents/` into `public/`
 4. Static site is exported to `dist/`, uploaded by `.github/workflows/deploy.yml`, which runs `yarn deploy` on every push to `main`
 
 ### Routing Architecture
@@ -175,9 +178,12 @@ Use `/impeccable <command>` for design work. Each command reads `PRODUCT.md` and
 
 ## Project Skills
 
-`.claude/skills/` holds project skills (`create-post`, `create-talk`, `create-timeline`, `sync-projects`, `validate-data`, `generate-metadata`, `seo-audit`, `deploy-site`, `impeccable`).
+`.claude/skills/` holds project skills (`create-post`, `create-talk`, `create-timeline`, `sort-data`, `sync-projects`, `validate-data`, `generate-metadata`, `deploy-site`, `impeccable`), plus two that are not plain single-file skills:
 
-**Several of them, and `.claude/skills/README.md`, still describe the old `src/data/*.json` layout and predate the MDX migration.** Their intent (slug rules, date formats, ordering, validation checks) is still useful, but when a skill tells you to edit `src/data/posts.json` or `src/data/talks.json`, write to the `contents/` collection instead: posts and talks are `.mdx` files, everything else is `contents/<collection>/index.json`. Prefer the conventions in this file over the skill text where they disagree.
+- **`seo/`** is a router, not a skill in itself. It carries 22 sub-skills from [marketingskills](https://github.com/coreyhaines31/marketingskills) (MIT) in subfolders, each with its own `references/`, plus a shared `tools/`. They live nested so they cost one entry in the skill list instead of 22, and so several can be chained in one task. `seo/SKILL.md` holds the routing index, the task pipelines and the project-specific rules that override the upstream skills — those were written for B2B SaaS and need translating for a personal site. Do not edit the sub-skills: updating means re-copying from upstream, so project-specific tweaks belong in `seo/SKILL.md`.
+- **`skill-creator`** is a symlink to `.agents/skills/skill-creator` (untracked).
+
+**Several of the older skills, and `.claude/skills/README.md`, still describe the old `src/data/*.json` layout and predate the MDX migration.** Their intent (slug rules, date formats, ordering, validation checks) is still useful, but when a skill tells you to edit `src/data/posts.json` or `src/data/talks.json`, write to the `contents/` collection instead: posts and talks are `.mdx` files, everything else is `contents/<collection>/index.json`. Prefer the conventions in this file over the skill text where they disagree.
 
 ## SEO Conventions
 
@@ -189,6 +195,16 @@ Metadata is defined per page with `generateMetadata`, hardcoding `https://tiagod
 - The site has four sitemaps, all generated and git-ignored. `scripts/generateSitemaps.ts` writes `sitemap.xml` (the index), `sitemap-project-github.xml` (one entry per `/project/github/[slug]` landing page) and `sitemap-homepage-github.xml` (the GitHub Pages homepages served under the custom domain, normalized from each repo's `homepage` field). `next-sitemap` then writes `sitemap-site.xml` for the site pages; it has `generateIndexSitemap: false` so it never overwrites the index, and excludes `/project/github/*` so the three lists stay disjoint.
 - `/sitemap` renders all four as tables, reading the XML from `public/` at build time. That is why `yarn deploy` builds twice: the first build has no sitemaps to read.
 - Blog posts carry Giscus comments via the `GiscusComments` component.
+
+### Machine-readable layer
+
+`scripts/generateLlms.ts` writes a second, plain-text face of the site into `public/`: `llms.txt` (slim index, llmstxt.org), `llms-full.txt` (whole site in one file), the `posts.txt` / `talks.txt` / `projects.txt` / `timeline.txt` lists, and a `.md` mirror of every HTML page at the same path. The lists are separate files so `llms.txt` stays short enough to be read in full.
+
+Three things about it are easy to get wrong:
+
+- **No npm script calls it.** It is not in `prebuild`, `postbuild` or `deploy` — run `tsx scripts/generateLlms.ts` by hand (with permission) after content changes, or the text layer silently goes stale while the HTML is current.
+- **Its copy lives in `contents/llms/index.json`** (site title, summary, per-page descriptions), following the never-hardcode-content rule. That collection is not yet registered in `studio.config.ts`, so it has no schema and is not editable in the studio UI; add one there if you touch it.
+- **The output is not git-ignored.** `.gitignore` covers the sitemaps but not `llms*.txt`, the `*.txt` lists or the `.md` mirrors, so regenerating produces a few hundred files in `git status`. `llms.txt` and `llms-full.txt` are already tracked; the rest are currently untracked.
 
 ## Important Notes
 

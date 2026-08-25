@@ -3,14 +3,13 @@ import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { Work } from "@/components/sections/Work";
 import { queryCollection } from 'nextjs-studio/server';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata = {
   title: "About - Flutter, React Native & Bug Hunter",
   description: "Mobile developer with 8+ years of experience in Flutter, React Native & native iOS/Android. Bug hunter on HackerOne, 70+ npm packages, 18+ conference talks. Based in Brazil.",
   keywords: ["Mobile Developer", "Flutter Developer", "React Native Developer", "iOS Developer", "Android Developer", "Bug Hunter", "Open Source Contributor", "Security Researcher", "Technical Mentor"],
-  alternates: {
-    canonical: 'https://tiagodanin.com/about',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/about'),
   openGraph: {
     title: "Tiago Danin - Mobile Developer & Bug Hunter",
     description: "Mobile developer specializing in Flutter, React Native & native iOS/Android. Open source contributor, security researcher, and mentor. Let's build together.",

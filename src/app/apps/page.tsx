@@ -5,14 +5,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { queryCollection } from "nextjs-studio/server";
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata: Metadata = {
   title: "Android Apps - Google Play",
   description: "Android apps built by Tiago Danin and published on Google Play, games, productivity tools, and relaxation apps.",
   keywords: ["android apps", "google play", "tiago danin apps", "mobile games", "jetpack compose"],
-  alternates: {
-    canonical: "https://tiagodanin.com/apps",
-  },
+  alternates: withMarkdown("https://tiagodanin.com/apps"),
   openGraph: {
     title: "Android Apps | Tiago Danin",
     description: "Android apps built and published on Google Play, games, productivity tools, and relaxation apps.",

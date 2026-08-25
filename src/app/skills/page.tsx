@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from '@/utils/parse';
 import { Badge } from '@/components/ui/badge';
+import { withMarkdown } from '@/lib/markdown-alternate';
 
 interface SkillItem {
   name: string;
@@ -19,9 +20,7 @@ export const metadata: Metadata = {
   title: 'Technical Skills | Tiago Danin',
   description: 'Full overview of Tiago Danin\'s technical skills: Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, DevOps, and more. Hire for mobile development, web, and consulting.',
   keywords: ['skills', 'developer', 'Flutter', 'React Native', 'mobile developer', 'freelance', 'Tiago Danin'],
-  alternates: {
-    canonical: 'https://tiagodanin.com/skills',
-  },
+  alternates: withMarkdown('https://tiagodanin.com/skills'),
   openGraph: {
     title: 'Technical Skills, Tiago Danin',
     description: 'Expert mobile and full-stack developer. Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, and more.',
