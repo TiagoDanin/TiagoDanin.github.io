@@ -35,12 +35,14 @@ export function Footer({ socialLinks, menu }: FooterProps) {
             ))}
           </nav>
 
-          <div>
-            <h3 className="text-sm font-medium mb-4">Find me on</h3>
-            <div className="flex justify-center">
-              <SocialLinks socialLinks={socialLinks} />
+          {socialLinks.length > 0 && (
+            <div>
+              <h3 className="text-sm font-medium mb-4">Find me on</h3>
+              <div className="flex justify-center">
+                <SocialLinks socialLinks={socialLinks} />
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="text-sm text-muted-foreground text-center space-y-1">

@@ -26,7 +26,10 @@ export function GiscusComments({ term, category = 'Blog Comments', categoryId = 
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'bottom');
-    script.setAttribute('data-theme', 'preferred_color_scheme');
+    // The site ships a single light theme by brand decision (PRODUCT.md).
+    // 'preferred_color_scheme' would render the embed dark for a visitor whose
+    // OS is set to dark, putting a dark panel inside a white page.
+    script.setAttribute('data-theme', 'light');
     script.setAttribute('data-lang', 'en');
     script.setAttribute('data-loading', 'lazy');
     script.crossOrigin = 'anonymous';

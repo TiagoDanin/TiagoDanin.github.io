@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Linkedin, Menu } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -108,6 +108,9 @@ export function Navbar({ menu }: { menu: MenuItem[] }) {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[260px] p-4">
+                {/* A sheet is a dialog and needs a name; the design has no room
+                    for a visible one. */}
+                <SheetTitle className="sr-only">Navigation</SheetTitle>
                 <div className="flex flex-col gap-1 pt-8">
                   {navItems.map((item) => {
                     const active = isActive(pathname, item.href);
