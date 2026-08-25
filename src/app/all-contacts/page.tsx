@@ -60,10 +60,44 @@ const iconMap: Record<string, LucideIcon> = {
   'ti-layout-tab': LayoutTemplate,
 };
 
+interface ContactEntry {
+  url: string;
+  label: string;
+}
+
 export default function AllContactsPage() {
   const contacts = queryCollection('contacts');
 
+  // The page is a list of profiles elsewhere, so the graph says exactly that:
+  // one ProfilePage whose subject is the Person, listing every account as sameAs.
+  const entries = [...contacts] as unknown as ContactEntry[];
+  const profileSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": "All Contacts, Tiago Danin",
+    "url": "https://tiagodanin.com/all-contacts/",
+    "inLanguage": "en-US",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Tiago Danin",
+      "url": "https://tiagodanin.com/",
+      "sameAs": entries.map((c) => c.url).filter(Boolean),
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+      { "@type": "ListItem", "position": 2, "name": "All Contacts", "item": "https://tiagodanin.com/all-contacts/" },
+    ],
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <div className="relative py-32 px-4 container mx-auto overflow-hidden">
       {/* Blur background */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2 z-0"></div>
@@ -90,5 +124,6 @@ export default function AllContactsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 } 

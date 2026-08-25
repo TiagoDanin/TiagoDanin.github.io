@@ -98,7 +98,7 @@ Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/t
 
 `AnimatedCounter` was copied verbatim into both ranking pages before it was extracted. If you find yourself pasting a component into a second page, extract it instead.
 
-**31 of the 57 shadcn primitives have zero importers.** They ship with the install and no page renders them. They are documented in Storybook and labelled as unused, so reach for one that already exists before adding a dependency.
+**32 of the 62 files in `src/components/ui/` have no production consumer.** They ship with the shadcn install and no route renders them. Their stories do not count: measure importers excluding `*.stories.tsx`, or everything looks used. Deadness is also transitive, `dialog` and `tooltip` are imported only by `command` and `sidebar`, which are themselves unreachable. Each is documented in Storybook and labelled as unused, so check whether one already exists before adding a dependency.
 
 ### Styling
 - **Tailwind CSS** (v3), mobile-first.
@@ -287,5 +287,6 @@ Only the routes the generator actually writes carry the alternate: the pages in 
 - Images are unoptimized (`images.unoptimized`) for static export compatibility; `next/image` gets no server-side optimization.
 - All data must be pre-generated before building (`yarn build` chains `yarn data` for RSS and the llms layer; GitHub/NPM data is committed under `contents/`).
 - Site uses Google Analytics (`G-4M6BE19CKV`) and Google Tag Manager (`GTM-WT3T53NB`), wired in `src/app/layout.tsx`.
-- `.mcp.json` registers the `chrome-devtools` MCP server, useful for verifying UI changes in a real browser.
+- `.mcp.json` registers the `chrome-devtools` MCP server (verifying UI in a real browser) and the Storybook one (only answers while `yarn storybook` runs). It is tracked, but a `.gitignore` outside the repo also lists it, so re-adding it needs `git add -f`.
+- **Commits carry no `Co-Authored-By` trailer.** Owner's preference, and it overrides the default.
 - Never run `yarn build`, `yarn deploy`, or any data-fetching command without explicit user permission. Builds are slow and overwrite generated files (`dist/`, `public/rss/`, `public/*sitemap*`, `contents/github`, `contents/npm`).

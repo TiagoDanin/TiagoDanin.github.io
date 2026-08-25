@@ -91,7 +91,37 @@ export default function SitemapPage() {
     urls: readSitemapUrls(section.file),
   }));
 
+  // The page is a directory of the four sitemaps; the counts come from the XML
+  // actually read at build time, so the graph cannot overstate what is listed.
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": title,
+    "description": description,
+    "url": "https://tiagodanin.com/sitemap/",
+    "inLanguage": "en-US",
+    "isPartOf": { "@type": "WebSite", "name": "Tiago Danin", "url": "https://tiagodanin.com/" },
+    "hasPart": lists.map((l) => ({
+      "@type": "WebPageElement",
+      "name": l.title,
+      "description": l.description,
+      "url": `https://tiagodanin.com/${l.file}`,
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Sitemap", "item": "https://tiagodanin.com/sitemap/" },
+    ],
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <div className="container mx-auto py-20">
       <h1 className="mb-3 text-3xl font-bold">{title}</h1>
       <p className="mb-10 text-lg text-muted-foreground">{description}</p>
@@ -125,5 +155,6 @@ export default function SitemapPage() {
         ))}
       </div>
     </div>
+    </>
   );
 }

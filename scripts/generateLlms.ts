@@ -112,13 +112,21 @@ function truncate(text: string, max = 180): string {
 }
 
 /**
- * The site runs with trailingSlash: true, so /about is served as /about/.
+ * Two URL shapes live here and they take opposite rules. Checked against
+ * production: an HTML route without the trailing slash answers 301, and a
+ * static file with one answers 404.
+ *
  * Route paths are stored without the slash because markdownPath() derives the
  * mirror filename from them; the slash belongs on the HTML URL alone.
  */
-function absoluteUrl(routePath: string): string {
+function pageUrl(routePath: string): string {
   const path = routePath.endsWith('/') ? routePath : `${routePath}/`;
   return `${siteUrl}${path}`;
+}
+
+/** A file is a file: /llms.txt and /about.md must never carry a trailing slash. */
+function fileUrl(filePath: string): string {
+  return `${siteUrl}${filePath.replace(/\/+$/, '')}`;
 }
 
 /** `/post/foo` becomes `/post/foo.md`, and the home becomes `/index.md`. */
@@ -194,8 +202,8 @@ function header(title: string, description: string, routePath: string): string {
     `# ${title}`,
     description && `> ${description}`,
     list([
-      `- HTML version: ${absoluteUrl(routePath)}`,
-      `- Site index for AI assistants: ${absoluteUrl('/llms.txt')}`,
+      `- HTML version: ${pageUrl(routePath)}`,
+      `- Site index for AI assistants: ${fileUrl('/llms.txt')}`,
     ])
   );
 }
@@ -259,7 +267,7 @@ function renderPage(page: PageRef, body: string): string {
 function entryLine(prefix: string, entry: Entry): string {
   const routePath = entryRoute(prefix, entry);
   const date = entry.date ? `${entry.date}, ` : '';
-  return `- ${link(entry.title, absoluteUrl(markdownPath(routePath)))}: ${date}${truncate(entry.description)}`;
+  return `- ${link(entry.title, fileUrl(markdownPath(routePath)))}: ${date}${truncate(entry.description)}`;
 }
 
 function renderEntryIndex(
@@ -275,7 +283,7 @@ function renderEntryIndex(
     `# ${heading}`,
     `> ${intro}`,
     list([
-      `- Site index for AI assistants: ${absoluteUrl('/llms.txt')}`,
+      `- Site index for AI assistants: ${fileUrl('/llms.txt')}`,
       `- Every link below points at the Markdown mirror. Drop the .md for the HTML page.`,
     ]),
     block('## English', list(en.map((entry) => entryLine(prefix, entry)))),
@@ -291,7 +299,7 @@ function projectLine(type: ProjectType, project: Project): string {
       ? `${project.stargazers_count} stars, `
       : '';
   const description = project.description ?? 'No description.';
-  return `- ${link(name, absoluteUrl(markdownPath(projectRoute(type, project))))}: ${stars}${truncate(description)}`;
+  return `- ${link(name, fileUrl(markdownPath(projectRoute(type, project))))}: ${stars}${truncate(description)}`;
 }
 
 function renderProjectsIndex(projects: Record<ProjectType, Project[]>): string {
@@ -314,7 +322,7 @@ function renderProjectsIndex(projects: Record<ProjectType, Project[]>): string {
     '# Projects, Tiago Danin',
     `> All ${total} published projects, across ten distribution channels.`,
     list([
-      `- Site index for AI assistants: ${absoluteUrl('/llms.txt')}`,
+      `- Site index for AI assistants: ${fileUrl('/llms.txt')}`,
       `- Every link below points at the Markdown mirror. Drop the .md for the HTML page.`,
     ]),
     ...PROJECT_TYPES.filter((type) => projects[type].length > 0).map((type) =>
@@ -331,7 +339,7 @@ function renderTimelineIndex(timeline: TimelineItem[]): string {
   return block(
     '# Timeline, Tiago Danin',
     '> Career milestones, awards, certifications and events, most recent first.',
-    list([`- Site index for AI assistants: ${absoluteUrl('/llms.txt')}`]),
+    list([`- Site index for AI assistants: ${fileUrl('/llms.txt')}`]),
     list(
       timeline.map(
         (item) =>
@@ -394,17 +402,17 @@ function siteSections(
       list(
         config.pages.map(
           (page) =>
-            `- ${link(page.title, absoluteUrl(markdownPath(page.path)))}: ${page.description}`
+            `- ${link(page.title, fileUrl(markdownPath(page.path)))}: ${page.description}`
         )
       )
     ),
     block(
       '## Full listings',
       list([
-        `- ${link('Posts', absoluteUrl('/posts.txt'))}: all ${counts.posts} articles, English and Portuguese.`,
-        `- ${link('Talks', absoluteUrl('/talks.txt'))}: all ${counts.talks} talks, English and Portuguese.`,
-        `- ${link('Projects', absoluteUrl('/projects.txt'))}: all ${counts.projects} projects across ten channels.`,
-        `- ${link('Timeline', absoluteUrl('/timeline.txt'))}: all ${counts.timeline} career milestones.`,
+        `- ${link('Posts', fileUrl('/posts.txt'))}: all ${counts.posts} articles, English and Portuguese.`,
+        `- ${link('Talks', fileUrl('/talks.txt'))}: all ${counts.talks} talks, English and Portuguese.`,
+        `- ${link('Projects', fileUrl('/projects.txt'))}: all ${counts.projects} projects across ten channels.`,
+        `- ${link('Timeline', fileUrl('/timeline.txt'))}: all ${counts.timeline} career milestones.`,
       ])
     ),
     block(
@@ -418,9 +426,9 @@ function siteSections(
     block(
       '## Optional',
       list([
-        `- ${link('llms-full.txt', absoluteUrl('/llms-full.txt'))}: every page of this site in one file.`,
-        `- ${link('sitemap.xml', absoluteUrl('/sitemap.xml'))}: the XML sitemap index.`,
-        `- ${link('RSS feeds', absoluteUrl('/rss'))}: blog, talks, timeline and projects.`,
+        `- ${link('llms-full.txt', fileUrl('/llms-full.txt'))}: every page of this site in one file.`,
+        `- ${link('sitemap.xml', fileUrl('/sitemap.xml'))}: the XML sitemap index.`,
+        `- ${link('RSS feeds', pageUrl('/rss'))}: blog, talks, timeline and projects.`,
       ])
     )
   );
@@ -450,11 +458,11 @@ function renderLlmsFull(documents: Array<{ routePath: string; body: string }>): 
     '# Tiago Danin, complete site content',
     '> Every page of tiagodanin.com in one file, for ingestion in a single request.',
     list([
-      `- Slim index: ${absoluteUrl('/llms.txt')}`,
+      `- Slim index: ${fileUrl('/llms.txt')}`,
       `- Documents: ${documents.length}`,
     ]),
     ...documents.map((doc) =>
-      block(`<!-- ${absoluteUrl(doc.routePath)} -->`, doc.body)
+      block(`<!-- ${pageUrl(doc.routePath)} -->`, doc.body)
     )
   );
 }
@@ -586,7 +594,7 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
             // The last entry links back to /services itself; a page linking to
             // itself as "details" is noise.
             item.link && item.link !== '/services'
-              ? `- Details: ${absoluteUrl(item.link)}`
+              ? `- Details: ${pageUrl(item.link)}`
               : undefined
           )
         )
@@ -611,7 +619,7 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
         list([
           `- Email: ${about.email}`,
           `- CV: ${about.cvUrl}`,
-          `- Full project catalogue: ${absoluteUrl('/projects.md')}`,
+          `- Full project catalogue: ${fileUrl('/projects.md')}`,
         ])
       )
     ),
@@ -642,7 +650,7 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
         list(
           googleplay.map(
             (app) =>
-              `- ${link(app.name ?? app.title ?? '', absoluteUrl(markdownPath(projectRoute('googleplay', app))))}: ${truncate(app.description ?? '')}`
+              `- ${link(app.name ?? app.title ?? '', fileUrl(markdownPath(projectRoute('googleplay', app))))}: ${truncate(app.description ?? '')}`
           )
         )
       ),
@@ -651,7 +659,7 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
         list(
           windows.map(
             (app) =>
-              `- ${link(app.name ?? app.title ?? '', absoluteUrl(markdownPath(projectRoute('windows', app))))}: ${truncate(app.description ?? '')}`
+              `- ${link(app.name ?? app.title ?? '', fileUrl(markdownPath(projectRoute('windows', app))))}: ${truncate(app.description ?? '')}`
           )
         )
       )
@@ -676,7 +684,7 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
       list(
         topGithub.map(
           (repo, index) =>
-            `${index + 1}. ${link(repo.name ?? '', absoluteUrl(markdownPath(projectRoute('github', repo))))}: ${repo.stargazers_count ?? 0} stars, ${repo.forks_count ?? 0} forks${repo.language ? `, ${repo.language}` : ''}`
+            `${index + 1}. ${link(repo.name ?? '', fileUrl(markdownPath(projectRoute('github', repo))))}: ${repo.stargazers_count ?? 0} stars, ${repo.forks_count ?? 0} forks${repo.language ? `, ${repo.language}` : ''}`
         )
       )
     ),
@@ -686,7 +694,7 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
       list(
         topNpm.map(
           (pkg, index) =>
-            `${index + 1}. ${link(pkg.name ?? '', absoluteUrl(markdownPath(projectRoute('npm', pkg))))}: ${pkg.downloads ?? 0} downloads`
+            `${index + 1}. ${link(pkg.name ?? '', fileUrl(markdownPath(projectRoute('npm', pkg))))}: ${pkg.downloads ?? 0} downloads`
         )
       )
     ),
@@ -694,10 +702,10 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
     '/sitemap': block(
       '## XML sitemaps',
       list([
-        `- ${link('sitemap.xml', absoluteUrl('/sitemap.xml'))}: index of the three below.`,
-        `- ${link('sitemap-site.xml', absoluteUrl('/sitemap-site.xml'))}: site pages.`,
-        `- ${link('sitemap-project-github.xml', absoluteUrl('/sitemap-project-github.xml'))}: GitHub project pages.`,
-        `- ${link('sitemap-homepage-github.xml', absoluteUrl('/sitemap-homepage-github.xml'))}: GitHub Pages homepages.`,
+        `- ${link('sitemap.xml', fileUrl('/sitemap.xml'))}: index of the three below.`,
+        `- ${link('sitemap-site.xml', fileUrl('/sitemap-site.xml'))}: site pages.`,
+        `- ${link('sitemap-project-github.xml', fileUrl('/sitemap-project-github.xml'))}: GitHub project pages.`,
+        `- ${link('sitemap-homepage-github.xml', fileUrl('/sitemap-homepage-github.xml'))}: GitHub Pages homepages.`,
       ])
     ),
   };

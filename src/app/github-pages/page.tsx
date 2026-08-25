@@ -29,10 +29,39 @@ const Index = () => {
     html_url: p.html_url || '',
   }));
 
+  // The component only renders repos that carry a homepage, so the graph counts
+  // the same set the visitor sees.
+  const published = githubProjects.filter((p) => p.homepage && p.homepage.trim() !== '');
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "GitHub Pages sites by Tiago Danin",
+    "numberOfItems": published.length,
+    "itemListElement": published.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": p.name,
+      "url": p.homepage,
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+      { "@type": "ListItem", "position": 2, "name": "GitHub Pages", "item": "https://tiagodanin.com/github-pages/" },
+    ],
+  };
+
   return (
-    <div>
-      <GitHubPagesSection githubProjects={githubProjects} />
-    </div>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <div>
+        <GitHubPagesSection githubProjects={githubProjects} />
+      </div>
+    </>
   );
 };
 

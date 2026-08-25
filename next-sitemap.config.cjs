@@ -17,6 +17,14 @@ module.exports = {
       'https://tiagodanin.com/sitemap.xml',
       'https://tiagodanin.com/sitemap-project-github.xml',
       'https://tiagodanin.com/sitemap-homepage-github.xml',
+      // Google accepts RSS 2.0 as a sitemap format, and the feeds carry the
+      // pubDate freshness signal the XML sitemaps do not. They are listed here
+      // and not inside sitemap.xml because a <sitemapindex> may only reference
+      // XML sitemaps (sitemaps.org protocol).
+      'https://tiagodanin.com/rss/blog.xml',
+      'https://tiagodanin.com/rss/talks.xml',
+      'https://tiagodanin.com/rss/timeline.xml',
+      'https://tiagodanin.com/rss/projects.xml',
     ],
   },
   transform: async (config, urlPath) => {

@@ -32,10 +32,43 @@ const iconMap = {
   list: AlignJustify,
 };
 
+interface LinkEntry {
+  title: string;
+  url: string;
+  enabled?: unknown;
+}
+
 export default function Links() {
   const linksData = queryCollection('links');
 
+  // Only the links the page actually renders belong in the graph.
+  const active = ([...linksData] as unknown as LinkEntry[]).filter((l) => l.enabled);
+  const profileSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": "Link in Bio, Tiago Danin",
+    "url": "https://tiagodanin.com/links/",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Tiago Danin",
+      "url": "https://tiagodanin.com/",
+      "sameAs": active.map((l) => l.url).filter(Boolean),
+    },
+    "hasPart": {
+      "@type": "ItemList",
+      "numberOfItems": active.length,
+      "itemListElement": active.map((l, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": l.title,
+        "url": l.url,
+      })),
+    },
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }} />
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto py-32 px-4">
         <div className="max-w-3xl mx-auto">
@@ -119,5 +152,6 @@ export default function Links() {
         </div>
       </div>
     </div>
+    </>
   );
 }

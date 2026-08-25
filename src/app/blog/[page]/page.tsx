@@ -52,8 +52,41 @@ const BlogPage = async ({ params }: { params: Promise<{ page: string }> }) => {
     ? 'https://tiagodanin.com/blog/'
     : `https://tiagodanin.com/blog/${currentPage - 1}/`;
 
+  // Describes this page of the archive, not the archive as a whole: the item
+  // list carries only the posts actually rendered here.
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `Blog, page ${currentPage} of ${totalPages}`,
+    "url": `https://tiagodanin.com/blog/${currentPage}/`,
+    "inLanguage": "en-US",
+    "isPartOf": { "@type": "Blog", "name": "Tiago Danin", "url": "https://tiagodanin.com/blog/" },
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": currentPosts.length,
+      "itemListElement": currentPosts.map((post, i) => ({
+        "@type": "ListItem",
+        "position": startIndex + i + 1,
+        "name": post.title,
+        "url": `https://tiagodanin.com/post/${post.slug}/`,
+      })),
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": `Page ${currentPage}`, "item": `https://tiagodanin.com/blog/${currentPage}/` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {currentPage > 1 && <link rel="prev" href={prevUrl} />}
       {currentPage < totalPages && <link rel="next" href={`https://tiagodanin.com/blog/${currentPage + 1}/`} />}
     <div className="container mx-auto py-32">
