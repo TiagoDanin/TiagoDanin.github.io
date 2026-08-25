@@ -4,29 +4,35 @@ import { Code, Heart } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialLinks } from "@/components/ui/SocialLinks";
+import type { MenuItem } from "@/components/layout/Navbar";
 
 interface FooterProps {
   socialLinks: { label: string; url: string; icon: string }[];
+  menu: MenuItem[];
 }
 
-export function Footer({ socialLinks }: FooterProps) {
+export function Footer({ socialLinks, menu }: FooterProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const year = new Date().getFullYear();
+  const footerItems = menu.filter(
+    (item) => item.footer && !(isHome && item.hideOnHome)
+  );
 
   return (
     <footer className="border-t py-12">
       <div className="container mx-auto px-4 space-y-8">
         <div className="grid grid-cols-1 gap-8 text-center">
           <nav aria-label="Footer" className="flex flex-wrap justify-center gap-4 sm:gap-6">
-            <Link href="/" className="hover:text-primary min-h-[44px] flex items-center">Home</Link>
-            <Link href="/services" className="hover:text-primary min-h-[44px] flex items-center">Services</Link>
-            {!isHome && (
-              <Link href="/projects" className="hover:text-primary min-h-[44px] flex items-center">Projects</Link>
-            )}
-            <Link href="/blog" className="hover:text-primary min-h-[44px] flex items-center">Blog</Link>
-            <Link href="/talks" className="hover:text-primary min-h-[44px] flex items-center">Talks</Link>
-            <Link href="/sitemap" className="hover:text-primary min-h-[44px] flex items-center">Sitemap</Link>
+            {footerItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="hover:text-primary min-h-[44px] flex items-center"
+              >
+                {item.title}
+              </Link>
+            ))}
           </nav>
 
           <div>

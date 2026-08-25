@@ -1,13 +1,44 @@
-[{
-	"title": "Home",
-	"href": "/"
-}, {
-	"title": "Projects",
-	"href": "/projects"
-}, {
-	"title": "Blog",
-	"href": "https://dev.to/tiagodanin"
-}, {
-	"title": "Youtube",
-	"href": "https://www.youtube.com/channel/UCC2wpNWwPLPq0vjpOtGcajw"
-}]
+[
+  {
+    "title": "Home",
+    "href": "/",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": false
+  },
+  {
+    "title": "Services",
+    "href": "/services",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": false
+  },
+  {
+    "title": "Projects",
+    "href": "/projects",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": true
+  },
+  {
+    "title": "Blog",
+    "href": "/blog",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": false
+  },
+  {
+    "title": "Talks",
+    "href": "/talks",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": false
+  },
+  {
+    "title": "Sitemap",
+    "href": "/sitemap",
+    "navbar": false,
+    "footer": true,
+    "hideOnHome": false
+  }
+]

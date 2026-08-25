@@ -9,22 +9,23 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/talks", label: "Talks" },
-] as const;
+export interface MenuItem {
+  title: string;
+  href: string;
+  navbar?: boolean;
+  footer?: boolean;
+  hideOnHome?: boolean;
+}
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export function Navbar() {
+export function Navbar({ menu }: { menu: MenuItem[] }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const navItems = menu.filter((item) => item.navbar);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +57,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-7 lg:gap-9">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const active = isActive(pathname, item.href);
               return (
                 <Link
@@ -70,7 +71,7 @@ export function Navbar() {
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  {item.label}
+                  {item.title}
                   {active && (
                     <span
                       aria-hidden
@@ -108,7 +109,7 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[260px] p-4">
                 <div className="flex flex-col gap-1 pt-8">
-                  {NAV_ITEMS.map((item) => {
+                  {navItems.map((item) => {
                     const active = isActive(pathname, item.href);
                     return (
                       <Link
@@ -122,7 +123,7 @@ export function Navbar() {
                             : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
                         )}
                       >
-                        {item.label}
+                        {item.title}
                       </Link>
                     );
                   })}

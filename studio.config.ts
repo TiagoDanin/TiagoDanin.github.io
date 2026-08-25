@@ -65,6 +65,19 @@ const config: StudioConfig = {
         ],
       },
     },
+    menu: {
+      schema: {
+        collection: "menu",
+        label: "Navigation Menu",
+        fields: [
+          { name: "title", type: "text", required: true },
+          { name: "href", type: "text", required: true },
+          { name: "navbar", type: "boolean", required: true },
+          { name: "footer", type: "boolean", required: true },
+          { name: "hideOnHome", type: "boolean" },
+        ],
+      },
+    },
     sociallinks: {
       schema: {
         collection: "sociallinks",
