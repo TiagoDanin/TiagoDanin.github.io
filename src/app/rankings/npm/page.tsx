@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { queryCollection } from 'nextjs-studio/server';
-import NPMRankingsClient from './NPMRankingsClient';
+import NPMRankingsClient from '@/components/sections/NPMRankingsClient';
 import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata: Metadata = {

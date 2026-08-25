@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import WebViewClient from './WebViewClient';
+import WebViewClient from '@/components/sections/WebViewClient';
 
 export const metadata: Metadata = {
   title: "WebView Inspector",

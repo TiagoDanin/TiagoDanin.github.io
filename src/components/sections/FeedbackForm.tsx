@@ -6,23 +6,38 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Star, Gift, CheckCircle2, ExternalLink } from "lucide-react";
+import { Gift, CheckCircle2, ExternalLink } from "lucide-react";
+import { StepIndicator } from "@/components/ui/StepIndicator";
+import { RatingRow } from "@/components/ui/RatingRow";
 
 const API_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL ?? "";
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-type RatingKey = "slides" | "fala" | "conteudo" | "aplicabilidade";
+type RatingKey = "slides" | "delivery" | "content" | "applicability";
 
 const RATING_LABELS: Record<RatingKey, string> = {
   slides: "Slides",
-  fala: "Apresentação / Fala",
-  conteudo: "Conteúdo",
-  aplicabilidade: "Aplicabilidade",
+  delivery: "Apresentação / Fala",
+  content: "Conteúdo",
+  applicability: "Aplicabilidade",
 };
 
 const RATING_KEYS = Object.keys(RATING_LABELS) as RatingKey[];
+
+/**
+ * The feedback endpoint has stored these Portuguese keys since the form
+ * shipped. The code speaks English, but the wire must not: renaming the keys
+ * on the request body would orphan every record already saved under them.
+ * Keep the order in sync with RATING_LABELS so the posted JSON is unchanged.
+ */
+const RATING_WIRE_KEYS: Record<RatingKey, string> = {
+  slides: "slides",
+  delivery: "fala",
+  content: "conteudo",
+  applicability: "aplicabilidade",
+};
 
 declare global {
   interface Window {
@@ -46,9 +61,9 @@ export default function FeedbackForm() {
   const [emailError, setEmailError] = useState(false);
   const [ratings, setRatings] = useState<Record<RatingKey, number>>({
     slides: 0,
-    fala: 0,
-    conteudo: 0,
-    aplicabilidade: 0,
+    delivery: 0,
+    content: 0,
+    applicability: 0,
   });
   const [liked, setLiked] = useState("");
   const [improve, setImprove] = useState("");
@@ -62,9 +77,9 @@ export default function FeedbackForm() {
   const turnstileWidgetId = useRef<string | null>(null);
   const ratingRefs = useRef<Record<RatingKey, HTMLDivElement | null>>({
     slides: null,
-    fala: null,
-    conteudo: null,
-    aplicabilidade: null,
+    delivery: null,
+    content: null,
+    applicability: null,
   });
 
   useEffect(() => {
@@ -142,13 +157,19 @@ export default function FeedbackForm() {
     }
 
     setSubmitting(true);
+    // Translate the English rating keys back to the Portuguese ones the
+    // endpoint has always stored. See RATING_WIRE_KEYS.
+    const wireRatings = RATING_KEYS.reduce<Record<string, number>>((acc, key) => {
+      acc[RATING_WIRE_KEYS[key]] = ratings[key];
+      return acc;
+    }, {});
     try {
       const resp = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           talk,
-          ratings,
+          ratings: wireRatings,
           liked: liked.trim() || undefined,
           improve: improve.trim() || undefined,
           suggestions: suggestions.trim() || undefined,
@@ -341,63 +362,6 @@ export default function FeedbackForm() {
           )}
         </div>
       )}
-    </div>
-  );
-}
-
-function StepIndicator({ step }: { step: 1 | 2 | 3 }) {
-  return (
-    <div aria-label={`Passo ${step} de 3`}>
-      <div className="flex items-center gap-2">
-        {[1, 2, 3].map((n) => (
-          <div
-            key={n}
-            className={`h-1.5 flex-1 rounded-full transition-colors ${
-              n <= step ? "bg-primary" : "bg-muted"
-            }`}
-          />
-        ))}
-      </div>
-      <p className="text-xs text-muted-foreground mt-2">Passo {step} de 3</p>
-    </div>
-  );
-}
-
-function RatingRow({
-  label,
-  value,
-  onChange,
-  isError,
-}: {
-  label: string;
-  value: number;
-  onChange: (v: number) => void;
-  isError?: boolean;
-}) {
-  return (
-    <div className="flex items-center justify-between gap-4">
-      <span className={`text-sm font-medium ${isError ? "text-red-700" : ""}`}>{label}</span>
-      <div className="flex gap-1">
-        {[1, 2, 3, 4, 5].map((n) => (
-          <button
-            key={n}
-            type="button"
-            onClick={() => onChange(n)}
-            className="p-1 transition-transform hover:scale-110"
-            aria-label={`${label}: ${n} estrelas`}
-          >
-            <Star
-              className={`w-6 h-6 ${
-                n <= value
-                  ? "fill-yellow-400 text-yellow-400"
-                  : isError
-                  ? "text-red-400"
-                  : "text-gray-300"
-              }`}
-            />
-          </button>
-        ))}
-      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { queryCollection } from 'nextjs-studio/server';
-import GitHubRankingsClient from './GitHubRankingsClient';
+import GitHubRankingsClient from '@/components/sections/GitHubRankingsClient';
 import { withMarkdown } from '@/lib/markdown-alternate';
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import FeedbackForm from "./FeedbackForm";
+import FeedbackForm from "@/components/sections/FeedbackForm";
 
 export const metadata: Metadata = {
   title: "Feedback da Talk",

@@ -11,7 +11,7 @@ import {
   type BioFocus,
   type BioLang,
   type BioTable,
-} from "./bios";
+} from "@/lib/bios";
 
 interface BioBrowserProps {
   bios: BioTable;

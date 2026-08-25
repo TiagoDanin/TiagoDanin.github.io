@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Github, Star, GitFork, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
 interface GitHubRepo {
   id: number;
@@ -24,50 +24,6 @@ interface GitHubRankingsClientProps {
   githubData: GitHubRepo[];
 }
 
-interface AnimatedCounterProps {
-  target: number;
-  duration?: number;
-  formatNumber?: boolean;
-}
-
-function AnimatedCounter({ target, duration = 2000, formatNumber = true }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let startTime: number;
-    let animationId: number;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-
-      // Easing function for smooth animation
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      const currentCount = Math.floor(easeOut * target);
-
-      setCount(currentCount);
-
-      if (progress < 1) {
-        animationId = requestAnimationFrame(animate);
-      }
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [target, duration]);
-
-  return (
-    <span>
-      {formatNumber ? count.toLocaleString() : count}
-    </span>
-  );
-}
-
 export default function GitHubRankingsClient({ githubData }: GitHubRankingsClientProps) {
   // Sort repositories by stars in descending order and take top 10
   const sortedRepos = [...githubData]
@@ -77,6 +33,11 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
   // Calculate totals
   const totalStars = githubData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
   const totalForks = githubData.reduce((sum, repo) => sum + repo.forks_count, 0);
+
+  // A failed `yarn data:github` leaves an empty collection, and dividing by
+  // zero would print a literal NaN where a number belongs.
+  const average = (total: number) =>
+    githubData.length === 0 ? 0 : Math.round(total / githubData.length);
 
   const getRankIcon = (index: number) => {
     switch (index) {
@@ -293,7 +254,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                 <Star className="h-12 w-12 text-primary mx-auto" />
                 <div className="text-3xl font-bold">
                   <AnimatedCounter
-                    target={Math.round(totalStars / githubData.length)}
+                    target={average(totalStars)}
                     duration={2000}
                     formatNumber={false}
                   />
@@ -307,7 +268,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                 <GitFork className="h-12 w-12 text-primary mx-auto" />
                 <div className="text-3xl font-bold">
                   <AnimatedCounter
-                    target={Math.round(totalForks / githubData.length)}
+                    target={average(totalForks)}
                     duration={2200}
                     formatNumber={false}
                   />

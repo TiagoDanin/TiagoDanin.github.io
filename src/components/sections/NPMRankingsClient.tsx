@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Package, Download, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
 interface NpmPackage {
   name: string;
@@ -23,50 +23,6 @@ interface NPMRankingsClientProps {
   npmData: NpmPackage[];
 }
 
-interface AnimatedCounterProps {
-  target: number;
-  duration?: number;
-  formatNumber?: boolean;
-}
-
-function AnimatedCounter({ target, duration = 2000, formatNumber = true }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let startTime: number;
-    let animationId: number;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-
-      // Easing function for smooth animation
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      const currentCount = Math.floor(easeOut * target);
-
-      setCount(currentCount);
-
-      if (progress < 1) {
-        animationId = requestAnimationFrame(animate);
-      }
-    };
-
-    animationId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    };
-  }, [target, duration]);
-
-  return (
-    <span>
-      {formatNumber ? count.toLocaleString() : count}
-    </span>
-  );
-}
-
 export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
   // Sort packages by downloads in descending order and take top 10
   const sortedPackages = [...npmData]
@@ -75,6 +31,11 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
 
   // Calculate total downloads
   const totalDownloads = npmData.reduce((sum, pkg) => sum + pkg.downloads, 0);
+
+  // A failed `yarn data:npm` leaves an empty collection, and dividing by
+  // zero would print a literal NaN where a number belongs.
+  const averageDownloads =
+    npmData.length === 0 ? 0 : Math.round(totalDownloads / npmData.length);
 
   const getRankIcon = (index: number) => {
     switch (index) {
@@ -246,7 +207,7 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
                 <Download className="h-12 w-12 text-primary mx-auto" />
                 <div className="text-3xl font-bold">
                   <AnimatedCounter
-                    target={Math.round(totalDownloads / npmData.length)}
+                    target={averageDownloads}
                     duration={2000}
                   />
                 </div>
