@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: { params: Promise<{ network: 
     description: description,
     keywords: ['social media', 'contact', contact.label, 'profile', 'Tiago Danin'],
     alternates: {
-      canonical: `https://tiagodanin.com/social/${network}`,
+      canonical: `https://tiagodanin.com/social/${network}/`,
     },
     robots: {
       index: true,

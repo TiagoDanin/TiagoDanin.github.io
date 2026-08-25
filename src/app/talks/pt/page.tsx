@@ -10,11 +10,11 @@ export const metadata = {
   description: "Palestras sobre desenvolvimento mobile, Flutter, React Native e segurança. Apresentações em eventos tech, workshops e comunidades de desenvolvedores brasileiros.",
   keywords: ["palestras", "talks", "apresentações", "workshops", "mobile development", "Flutter", "React Native", "cybersecurity", "pt-br", "eventos tech", "DevFest", "DevOpsDays"],
   alternates: {
-    canonical: 'https://tiagodanin.com/talks/pt',
+    canonical: 'https://tiagodanin.com/talks/pt/',
     languages: {
-      'en-US': 'https://tiagodanin.com/talks',
-      'pt-BR': 'https://tiagodanin.com/talks/pt',
-      'x-default': 'https://tiagodanin.com/talks',
+      'en-US': 'https://tiagodanin.com/talks/',
+      'pt-BR': 'https://tiagodanin.com/talks/pt/',
+      'x-default': 'https://tiagodanin.com/talks/',
     },
     types: {
       'application/rss+xml': [
@@ -25,7 +25,7 @@ export const metadata = {
   openGraph: {
     title: "Palestras & Apresentações Tech PT-BR",
     description: "Palestras sobre mobile development, Flutter, React Native e cybersecurity. Apresentações em eventos tech brasileiros.",
-    url: "https://tiagodanin.com/talks/pt",
+    url: "https://tiagodanin.com/talks/pt/",
     type: "website",
     locale: "pt_BR",
   },
@@ -53,13 +53,13 @@ const TalksPtPage = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://tiagodanin.com"
+        "item": "https://tiagodanin.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Palestras",
-        "item": "https://tiagodanin.com/talks/pt"
+        "item": "https://tiagodanin.com/talks/pt/"
       }
     ]
   };
@@ -86,7 +86,7 @@ const TalksPtPage = () => {
         "@type": "Person",
         "name": "Tiago Danin"
       },
-      "url": `https://tiagodanin.com/talk/${talk.slug}/pt`,
+      "url": `https://tiagodanin.com/talk/${talk.slug}/pt/`,
       "inLanguage": "pt-BR"
     }))
   };

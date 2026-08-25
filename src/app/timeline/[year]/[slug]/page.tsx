@@ -40,13 +40,13 @@ export async function generateMetadata({ params }: { params: Promise<{ year: str
     description: truncatedDescription,
     keywords: ['timeline', 'career', 'professional journey', 'milestone', ...event.tags],
     alternates: {
-      canonical: `https://tiagodanin.com/timeline/${year}/${slug}`,
+      canonical: `https://tiagodanin.com/timeline/${year}/${slug}/`,
     },
     openGraph: {
       title: `${event.title} (${event.date})`,
       description: truncatedDescription,
       type: 'article',
-      url: `https://tiagodanin.com/timeline/${year}/${slug}`,
+      url: `https://tiagodanin.com/timeline/${year}/${slug}/`,
       publishedTime: toISODate(event.date),
     },
     twitter: {
@@ -107,7 +107,7 @@ export default async function TimelineEventPage({ params }: { params: Promise<{ 
       "@type": "Person",
       "name": "Tiago Danin"
     },
-    "url": `https://tiagodanin.com/timeline/${year}/${slug}`,
+    "url": `https://tiagodanin.com/timeline/${year}/${slug}/`,
     "inLanguage": "en-US"
   };
 

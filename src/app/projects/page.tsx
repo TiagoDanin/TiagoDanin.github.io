@@ -12,9 +12,9 @@ export const metadata = {
   description: "Browse 250+ projects: 70+ npm packages, Flutter & React Native apps, GitHub tools, and mobile games. Open source libraries used by thousands of developers worldwide.",
   keywords: ["projects", "portfolio", "open source", "GitHub", "NPM packages", "Flutter apps", "React Native", "mobile apps", "locale-codes", "telegraf-test", "polybar", "developer tools", "Node.js libraries"],
   alternates: {
-    canonical: 'https://tiagodanin.com/projects',
+    canonical: 'https://tiagodanin.com/projects/',
     types: {
-      'text/markdown': markdownUrl('https://tiagodanin.com/projects'),
+      'text/markdown': markdownUrl('https://tiagodanin.com/projects/'),
       'application/rss+xml': [
         { url: '/rss/projects.xml', title: 'Projects RSS Feed' }
       ],
@@ -23,7 +23,7 @@ export const metadata = {
   openGraph: {
     title: "250+ Open Source Projects - NPM Packages, Flutter Apps & Tools",
     description: "Browse 250+ projects including 70+ npm packages, Flutter apps, React Native projects, and developer tools. Open source libraries used worldwide.",
-    url: "https://tiagodanin.com/projects",
+    url: "https://tiagodanin.com/projects/",
     type: "website",
   },
   twitter: {
@@ -38,11 +38,11 @@ export const metadata = {
         "@type": "ProfilePage",
         "name": "Developer Portfolio - 300+ Projects",
         "description": "Comprehensive portfolio of open source projects and applications",
-        "url": "https://tiagodanin.com/projects",
+        "url": "https://tiagodanin.com/projects/",
         "mainEntity": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
           "hasOccupation": {
             "@type": "Occupation",
             "name": "Mobile Application Developer",
@@ -58,13 +58,13 @@ export const metadata = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tiagodanin.com"
+            "item": "https://tiagodanin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Projects",
-            "item": "https://tiagodanin.com/projects"
+            "item": "https://tiagodanin.com/projects/"
           }
         ]
       }

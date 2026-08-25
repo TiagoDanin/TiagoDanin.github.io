@@ -19,14 +19,14 @@ export function generateMetadata() {
     description: "Technical articles on mobile development, AI agents, and cybersecurity. Tutorials on Flutter, React Native, Node.js, and more. Free, in-depth guides for developers.",
     keywords: ["blog", "software development", "mobile development", "Flutter tutorial", "React Native tutorial", "AI agents", "cybersecurity", "Node.js i18n", "zsh autocomplete", "nuxt seo", "programming articles"],
     alternates: {
-      canonical: 'https://tiagodanin.com/blog',
+      canonical: 'https://tiagodanin.com/blog/',
       languages: {
-        'en-US': 'https://tiagodanin.com/blog',
-        'pt-BR': 'https://tiagodanin.com/blog/pt',
-        'x-default': 'https://tiagodanin.com/blog',
+        'en-US': 'https://tiagodanin.com/blog/',
+        'pt-BR': 'https://tiagodanin.com/blog/pt/',
+        'x-default': 'https://tiagodanin.com/blog/',
       },
       types: {
-        'text/markdown': markdownUrl('https://tiagodanin.com/blog'),
+        'text/markdown': markdownUrl('https://tiagodanin.com/blog/'),
         'application/rss+xml': [
           { url: '/rss/blog.xml', title: 'Blog RSS Feed' }
         ],
@@ -35,7 +35,7 @@ export function generateMetadata() {
     openGraph: {
       title: "Blog - Technical Articles on Flutter, AI & Cybersecurity",
       description: "In-depth tutorials and articles on mobile development, AI agents, cybersecurity, and open source. Free guides for developers.",
-      url: "https://tiagodanin.com/blog",
+      url: "https://tiagodanin.com/blog/",
       type: "website",
       siteName: "Tiago Danin",
       locale: "en_US",
@@ -53,19 +53,19 @@ export function generateMetadata() {
           "@type": "Blog",
           "name": "Blog: Articles on Development & AI",
           "description": "Blog about software development, mobile, AI and security",
-          "url": "https://tiagodanin.com/blog",
+          "url": "https://tiagodanin.com/blog/",
           "inLanguage": "en",
           "author": {
             "@type": "Person",
             "name": "Tiago Danin",
-            "url": "https://tiagodanin.com"
+            "url": "https://tiagodanin.com/"
           },
           "blogPost": posts.map((post) => ({
             "@type": "BlogPosting",
             "headline": post.title,
             "description": post.description,
             "datePublished": toISODate(post.date),
-            "url": `https://tiagodanin.com/post/${post.slug}`,
+            "url": `https://tiagodanin.com/post/${post.slug}/`,
             "inLanguage": "en",
             "isAccessibleForFree": true,
             "author": {
@@ -78,8 +78,8 @@ export function generateMetadata() {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog" }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog/" }
           ]
         }
       ])
@@ -97,7 +97,7 @@ const Blog = () => {
 
   return (
     <>
-      {hasNextPage && <link rel="next" href="https://tiagodanin.com/blog/2" />}
+      {hasNextPage && <link rel="next" href="https://tiagodanin.com/blog/2/" />}
     <div className="container mx-auto py-32">
       <div className="max-w-2xl mx-auto mb-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight">Blog</h1>

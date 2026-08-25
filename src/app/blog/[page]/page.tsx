@@ -12,12 +12,12 @@ export async function generateMetadata({ params }: { params: Promise<{ page: str
     title: `Blog - Page ${pageNumber} - Flutter, AI & Security`,
     description: `Page ${pageNumber} of technical articles on Flutter, React Native, AI agents, and cybersecurity. Free in-depth tutorials for developers.`,
     alternates: {
-      canonical: `https://tiagodanin.com/blog/${pageNumber}`,
+      canonical: `https://tiagodanin.com/blog/${pageNumber}/`,
     },
     openGraph: {
       title: `Blog - Page ${pageNumber} - Tiago Danin`,
       description: "Articles about software development, mobile apps, and technology.",
-      url: `https://tiagodanin.com/blog/${pageNumber}`,
+      url: `https://tiagodanin.com/blog/${pageNumber}/`,
       type: "website",
     },
   };
@@ -49,13 +49,13 @@ const BlogPage = async ({ params }: { params: Promise<{ page: string }> }) => {
   const currentPosts = posts.slice(startIndex, endIndex);
 
   const prevUrl = currentPage === 2
-    ? 'https://tiagodanin.com/blog'
-    : `https://tiagodanin.com/blog/${currentPage - 1}`;
+    ? 'https://tiagodanin.com/blog/'
+    : `https://tiagodanin.com/blog/${currentPage - 1}/`;
 
   return (
     <>
       {currentPage > 1 && <link rel="prev" href={prevUrl} />}
-      {currentPage < totalPages && <link rel="next" href={`https://tiagodanin.com/blog/${currentPage + 1}`} />}
+      {currentPage < totalPages && <link rel="next" href={`https://tiagodanin.com/blog/${currentPage + 1}/`} />}
     <div className="container mx-auto py-32">
       <div className="max-w-2xl mx-auto mb-12 text-center">
         <h1 className="text-3xl font-bold tracking-tight">Blog</h1>

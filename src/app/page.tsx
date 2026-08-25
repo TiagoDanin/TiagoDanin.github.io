@@ -18,11 +18,11 @@ export const metadata = {
     "Technical Mentorship", "Cross-Platform Development", "Native Mobile Apps",
     "npm packages", "GitHub projects", "bug hunter", "HackerOne"
   ],
-  alternates: withMarkdown('https://tiagodanin.com'),
+  alternates: withMarkdown('https://tiagodanin.com/'),
   openGraph: {
     title: 'Tiago Danin - Mobile Developer | 250+ Projects & 70+ Open Source Packages',
     description: 'Flutter, React Native, iOS & Android developer. 250+ projects delivered, bug hunter on HackerOne, and open source contributor.',
-    url: 'https://tiagodanin.com',
+    url: 'https://tiagodanin.com/',
     type: 'website',
   },
   twitter: {
@@ -37,7 +37,7 @@ export const metadata = {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Tiago Danin",
-        "url": "https://tiagodanin.com",
+        "url": "https://tiagodanin.com/",
         "image": "https://avatars.githubusercontent.com/u/5731176?v=4",
         "jobTitle": "Mobile Developer",
         "worksFor": {
@@ -64,7 +64,7 @@ export const metadata = {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Tiago Danin",
-        "url": "https://tiagodanin.com",
+        "url": "https://tiagodanin.com/",
         "description": "Personal website and portfolio of Tiago Danin, Mobile Developer",
         "author": {
           "@type": "Person",
@@ -115,7 +115,7 @@ export const metadata = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tiagodanin.com"
+            "item": "https://tiagodanin.com/"
           }
         ]
       }

@@ -54,12 +54,12 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     title: `${originalTagName} - Articles & Talks`,
     description: `All articles and talks about ${originalTagName} by Tiago Danin. Software development, mobile apps, and technology content.`,
     alternates: {
-      canonical: `https://tiagodanin.com/tags/${tagSlug}`,
+      canonical: `https://tiagodanin.com/tags/${tagSlug}/`,
     },
     openGraph: {
       title: `${originalTagName} - Articles & Talks | Tiago Danin`,
       description: `All articles and talks about ${originalTagName}`,
-      url: `https://tiagodanin.com/tags/${tagSlug}`,
+      url: `https://tiagodanin.com/tags/${tagSlug}/`,
       type: "website",
     },
   };
@@ -93,7 +93,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": `${originalTagName} - Articles & Talks`,
-    "url": `https://tiagodanin.com/tags/${tagSlug}`,
+    "url": `https://tiagodanin.com/tags/${tagSlug}/`,
     "description": `All articles and talks about ${originalTagName}`,
     "mainEntity": {
       "@type": "ItemList",
@@ -104,7 +104,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
           "headline": post.title,
           "description": post.description,
           "datePublished": toISODate(post.date),
-          "url": `https://tiagodanin.com/post/${post.slug}`,
+          "url": `https://tiagodanin.com/post/${post.slug}/`,
           "author": { "@type": "Person", "name": "Tiago Danin" },
         })),
         ...taggedTalks.map((talk, i) => ({
@@ -113,7 +113,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
           "name": talk.title,
           "description": talk.description,
           "startDate": toISODate(talk.date),
-          "url": `https://tiagodanin.com/talk/${talk.slug}`,
+          "url": `https://tiagodanin.com/talk/${talk.slug}/`,
           "performer": { "@type": "Person", "name": "Tiago Danin" },
         })),
       ],

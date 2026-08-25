@@ -42,20 +42,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: truncatedDescription,
     keywords,
     alternates: {
-      ...withMarkdown(`https://tiagodanin.com/post/${post.slug}`),
+      ...withMarkdown(`https://tiagodanin.com/post/${post.slug}/`),
       languages: {
-        'en-US': `https://tiagodanin.com/post/${post.slug}`,
-        ...(hasPtVariant && { 'pt-BR': `https://tiagodanin.com/post/${post.slug}/pt` }),
-        'x-default': `https://tiagodanin.com/post/${post.slug}`,
+        'en-US': `https://tiagodanin.com/post/${post.slug}/`,
+        ...(hasPtVariant && { 'pt-BR': `https://tiagodanin.com/post/${post.slug}/pt/` }),
+        'x-default': `https://tiagodanin.com/post/${post.slug}/`,
       },
     },
     openGraph: {
       title: post.title,
       description: truncatedDescription,
-      url: `https://tiagodanin.com/post/${post.slug}`,
+      url: `https://tiagodanin.com/post/${post.slug}/`,
       type: 'article',
       publishedTime: toISODate(post.date),
-      authors: ['https://tiagodanin.com/about'],
+      authors: ['https://tiagodanin.com/about/'],
       locale: 'en_US',
       siteName: 'Tiago Danin',
       ...(coverUrl && { images: [{ url: coverUrl, alt: post.title }] }),
@@ -93,9 +93,9 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog" },
-      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://tiagodanin.com/post/${post.slug}` },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://tiagodanin.com/post/${post.slug}/` },
     ],
   };
 
@@ -110,24 +110,24 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
     "description": post.description,
     "datePublished": toISODate(post.date),
     "dateModified": toISODate(post.date),
-    "url": `https://tiagodanin.com/post/${post.slug}`,
+    "url": `https://tiagodanin.com/post/${post.slug}/`,
     "inLanguage": "en",
     "isAccessibleForFree": true,
     ...(coverUrl && { "image": coverUrl }),
     "author": {
       "@type": "Person",
       "name": "Tiago Danin",
-      "url": "https://tiagodanin.com",
+      "url": "https://tiagodanin.com/",
       "image": "https://avatars.githubusercontent.com/u/5731176?v=4"
     },
     "publisher": {
       "@type": "Person",
       "name": "Tiago Danin",
-      "url": "https://tiagodanin.com"
+      "url": "https://tiagodanin.com/"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://tiagodanin.com/post/${post.slug}`
+      "@id": `https://tiagodanin.com/post/${post.slug}/`
     },
     ...(post.tags.length > 0 && { "keywords": post.tags.join(', ') }),
   };

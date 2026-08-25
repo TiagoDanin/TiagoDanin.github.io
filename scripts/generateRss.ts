@@ -53,8 +53,8 @@ posts.forEach((post) => {
   blogFeed.item({
     title: post.title,
     description: post.description,
-    url: `${siteUrl}/post/${post.slug}`,
-    guid: `${siteUrl}/post/${post.slug}`,
+    url: `${siteUrl}/post/${post.slug}/`,
+    guid: `${siteUrl}/post/${post.slug}/`,
     date: post.date,
   });
 });
@@ -73,8 +73,8 @@ talks.forEach((talk) => {
   talksFeed.item({
     title: talk.title,
     description: talk.description,
-    url: `${siteUrl}/talk/${talk.slug}`,
-    guid: `${siteUrl}/talk/${talk.slug}`,
+    url: `${siteUrl}/talk/${talk.slug}/`,
+    guid: `${siteUrl}/talk/${talk.slug}/`,
     date: talk.date,
   });
 });
@@ -94,8 +94,8 @@ timeline.forEach((event: any) => {
   timelineFeed.item({
     title: event.title,
     description: event.description,
-    url: `${siteUrl}/timeline/${event.date}/${slug}`,
-    guid: `${siteUrl}/timeline/${event.date}/${slug}`,
+    url: `${siteUrl}/timeline/${event.date}/${slug}/`,
+    guid: `${siteUrl}/timeline/${event.date}/${slug}/`,
     date: event.date,
   });
 });

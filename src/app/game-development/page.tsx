@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "desenvolvimento de jogos", "jogos indie", "jogos mobile",
   ],
   alternates: {
-    canonical: "https://tiagodanin.com/game-development",
+    canonical: "https://tiagodanin.com/game-development/",
   },
   openGraph: {
     title: "Game Development Services | Tiago Danin",
     description: "Indie and casual games for mobile and web. From prototype to Google Play, with idle, arcade, and survival mechanics.",
-    url: "https://tiagodanin.com/game-development",
+    url: "https://tiagodanin.com/game-development/",
     type: "website",
   },
   twitter: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
         },
         "areaServed": "Worldwide",
         "serviceType": "Game Development",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://tiagodanin.com/services" },
-          { "@type": "ListItem", "position": 3, "name": "Game Development", "item": "https://tiagodanin.com/game-development" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://tiagodanin.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "Game Development", "item": "https://tiagodanin.com/game-development/" },
         ],
       },
     ]),

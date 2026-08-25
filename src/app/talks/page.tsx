@@ -11,14 +11,14 @@ export const metadata = {
   description: "Watch talks on mobile development, Flutter, React Native, and cybersecurity. Presentations at DevFest, DevOpsDays, and developer meetups. Slides and videos available.",
   keywords: ["tech talks", "developer presentations", "Flutter talk", "React Native presentation", "cybersecurity talk", "DevFest", "DevOpsDays", "mobile development talks", "feature flags", "fastlane match", "MCP protocol"],
   alternates: {
-    canonical: 'https://tiagodanin.com/talks',
+    canonical: 'https://tiagodanin.com/talks/',
     languages: {
-      'en-US': 'https://tiagodanin.com/talks',
-      'pt-BR': 'https://tiagodanin.com/talks/pt',
-      'x-default': 'https://tiagodanin.com/talks',
+      'en-US': 'https://tiagodanin.com/talks/',
+      'pt-BR': 'https://tiagodanin.com/talks/pt/',
+      'x-default': 'https://tiagodanin.com/talks/',
     },
     types: {
-      'text/markdown': markdownUrl('https://tiagodanin.com/talks'),
+      'text/markdown': markdownUrl('https://tiagodanin.com/talks/'),
       'application/rss+xml': [
         { url: '/rss/talks.xml', title: 'Talks RSS Feed' }
       ],
@@ -27,7 +27,7 @@ export const metadata = {
   openGraph: {
     title: "Talks & Presentations",
     description: "Talks about mobile development, Flutter, React Native and cybersecurity. Presentations at tech events.",
-    url: "https://tiagodanin.com/talks",
+    url: "https://tiagodanin.com/talks/",
     type: "website",
     locale: "en_US",
   },
@@ -55,13 +55,13 @@ const TalksPage = () => {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://tiagodanin.com"
+        "item": "https://tiagodanin.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Talks",
-        "item": "https://tiagodanin.com/talks"
+        "item": "https://tiagodanin.com/talks/"
       }
     ]
   };
@@ -95,7 +95,7 @@ const TalksPage = () => {
         "price": 0,
         "priceCurrency": "BRL"
       } : undefined,
-      "url": `https://tiagodanin.com/talk/${talk.slug}`,
+      "url": `https://tiagodanin.com/talk/${talk.slug}/`,
       "inLanguage": "en"
     }))
   };

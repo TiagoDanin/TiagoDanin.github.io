@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   title: "Android Apps - Google Play",
   description: "Android apps built by Tiago Danin and published on Google Play, games, productivity tools, and relaxation apps.",
   keywords: ["android apps", "google play", "tiago danin apps", "mobile games", "jetpack compose"],
-  alternates: withMarkdown("https://tiagodanin.com/apps"),
+  alternates: withMarkdown("https://tiagodanin.com/apps/"),
   openGraph: {
     title: "Android Apps | Tiago Danin",
     description: "Android apps built and published on Google Play, games, productivity tools, and relaxation apps.",
-    url: "https://tiagodanin.com/apps",
+    url: "https://tiagodanin.com/apps/",
     type: "website",
   },
   twitter: {
@@ -30,19 +30,19 @@ export const metadata: Metadata = {
         "@type": "CollectionPage",
         "name": "Android Apps by Tiago Danin",
         "description": "Android apps published on Google Play by Tiago Danin",
-        "url": "https://tiagodanin.com/apps",
+        "url": "https://tiagodanin.com/apps/",
         "author": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
         },
       },
       {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-          { "@type": "ListItem", "position": 2, "name": "Apps", "item": "https://tiagodanin.com/apps" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Apps", "item": "https://tiagodanin.com/apps/" },
         ],
       },
     ]),

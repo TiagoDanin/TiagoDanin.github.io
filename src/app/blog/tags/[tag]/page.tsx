@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     title: `Posts tagged with "${originalTagName}"`,
     description: `All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles.`,
     alternates: {
-      canonical: `https://tiagodanin.com/blog/tags/${tagSlug}`,
+      canonical: `https://tiagodanin.com/blog/tags/${tagSlug}/`,
     },
     robots: {
       index: false,
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
     openGraph: {
       title: `Posts tagged with "${originalTagName}" - Tiago Danin`,
       description: `All blog posts tagged with "${originalTagName}"`,
-      url: `https://tiagodanin.com/blog/tags/${tagSlug}`,
+      url: `https://tiagodanin.com/blog/tags/${tagSlug}/`,
       type: "website",
     },
   };
@@ -79,13 +79,13 @@ const TagPage = async ({ params }: { params: Promise<{ tag: string }> }) => {
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": `Posts tagged with "${originalTagName}"`,
-    "url": `https://tiagodanin.com/blog/tags/${tagSlug}`,
+    "url": `https://tiagodanin.com/blog/tags/${tagSlug}/`,
     "blogPost": taggedPosts.map((post) => ({
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.description,
       "datePublished": toISODate(post.date),
-      "url": `https://tiagodanin.com/post/${post.slug}`,
+      "url": `https://tiagodanin.com/post/${post.slug}/`,
       "inLanguage": "en",
       "isAccessibleForFree": true,
       "author": { "@type": "Person", "name": "Tiago Danin" }

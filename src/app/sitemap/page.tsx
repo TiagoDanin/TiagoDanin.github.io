@@ -77,11 +77,11 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     keywords: ['sitemap', 'site navigation', 'all pages', 'website structure'],
-    alternates: withMarkdown('https://tiagodanin.com/sitemap'),
+    alternates: withMarkdown('https://tiagodanin.com/sitemap/'),
     openGraph: {
       title: `${title} - Tiago Danin`,
       description,
-      url: 'https://tiagodanin.com/sitemap',
+      url: 'https://tiagodanin.com/sitemap/',
       type: 'website',
     },
     twitter: {

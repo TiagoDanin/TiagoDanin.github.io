@@ -5,12 +5,12 @@ export const metadata = {
   description: 'Subscribe to RSS feeds for blog posts, talks, timeline, and projects. Stay updated with all content from Tiago Danin.',
   keywords: ['RSS', 'feed', 'subscribe', 'blog RSS', 'updates', 'syndication'],
   alternates: {
-    canonical: 'https://tiagodanin.com/rss',
+    canonical: 'https://tiagodanin.com/rss/',
   },
   openGraph: {
     title: 'RSS Feeds - Tiago Danin',
     description: 'Subscribe to RSS feeds for blog posts, talks, timeline, and projects.',
-    url: 'https://tiagodanin.com/rss',
+    url: 'https://tiagodanin.com/rss/',
     type: 'website',
   },
   twitter: {

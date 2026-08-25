@@ -6,12 +6,12 @@ export const metadata = {
   description: "Browse all GitHub Pages projects and live demos by Tiago Danin. Interactive demos, tools, and open source project showcases.",
   keywords: ["GitHub Pages", "live demos", "projects", "interactive demos", "open source"],
   alternates: {
-    canonical: 'https://tiagodanin.com/github-pages',
+    canonical: 'https://tiagodanin.com/github-pages/',
   },
   openGraph: {
     title: "GitHub Pages Projects - Tiago Danin",
     description: "Interactive demos, tools, and open source project showcases hosted on GitHub Pages.",
-    url: "https://tiagodanin.com/github-pages",
+    url: "https://tiagodanin.com/github-pages/",
     type: "website",
   },
   twitter: {

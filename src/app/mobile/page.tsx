@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     "ASO", "app store optimization", "mobile app consulting", "cross-platform development"
   ],
   alternates: {
-    canonical: 'https://tiagodanin.com/mobile',
+    canonical: 'https://tiagodanin.com/mobile/',
   },
   openGraph: {
     title: "Mobile Development Services | Tiago Danin",
     description: "Professional mobile app development with Flutter and React Native. Native integrations, testing, UI/UX, and ASO expertise.",
-    url: "https://tiagodanin.com/mobile",
+    url: "https://tiagodanin.com/mobile/",
     type: "website",
   },
   twitter: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com"
+          "url": "https://tiagodanin.com/"
         },
         "areaServed": "Worldwide",
         "serviceType": "Mobile Application Development",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
         ],
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://tiagodanin.com/mobile",
+          "serviceUrl": "https://tiagodanin.com/mobile/",
           "availableLanguage": ["en", "pt-BR"]
         }
       },
@@ -99,13 +99,13 @@ export const metadata: Metadata = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tiagodanin.com"
+            "item": "https://tiagodanin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Mobile Development Services",
-            "item": "https://tiagodanin.com/mobile"
+            "item": "https://tiagodanin.com/mobile/"
           }
         ]
       }

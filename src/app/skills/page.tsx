@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   title: 'Technical Skills | Tiago Danin',
   description: 'Full overview of Tiago Danin\'s technical skills: Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, DevOps, and more. Hire for mobile development, web, and consulting.',
   keywords: ['skills', 'developer', 'Flutter', 'React Native', 'mobile developer', 'freelance', 'Tiago Danin'],
-  alternates: withMarkdown('https://tiagodanin.com/skills'),
+  alternates: withMarkdown('https://tiagodanin.com/skills/'),
   openGraph: {
     title: 'Technical Skills, Tiago Danin',
     description: 'Expert mobile and full-stack developer. Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, and more.',
-    url: 'https://tiagodanin.com/skills',
+    url: 'https://tiagodanin.com/skills/',
     type: 'profile',
     siteName: 'Tiago Danin',
   },
@@ -49,7 +49,7 @@ export default function SkillsPage() {
         "@type": "ListItem",
         "position": ci * 100 + ii + 1,
         "name": item.name,
-        "url": `https://tiagodanin.com/skills/${titleToSlug(item.name)}`,
+        "url": `https://tiagodanin.com/skills/${titleToSlug(item.name)}/`,
       }))
     ),
   };
@@ -58,8 +58,8 @@ export default function SkillsPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-      { "@type": "ListItem", "position": 2, "name": "Skills", "item": "https://tiagodanin.com/skills" },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Skills", "item": "https://tiagodanin.com/skills/" },
     ],
   };
 

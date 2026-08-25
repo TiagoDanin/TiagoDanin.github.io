@@ -26,11 +26,11 @@ export const metadata = {
   title: "Press Kit - Bios, Photos & Speaker Info",
   description: "Official press kit for Tiago Danin: ready to use bios in English and Portuguese, profile photo, logo, talk topics, and booking contact for events and media.",
   keywords: ["press kit", "media kit", "speaker bio", "Tiago Danin bio", "conference speaker", "mobile developer speaker", "palestrante mobile", "bio para eventos"],
-  alternates: withMarkdown('https://tiagodanin.com/press-kit'),
+  alternates: withMarkdown('https://tiagodanin.com/press-kit/'),
   openGraph: {
     title: "Press Kit - Tiago Danin",
     description: "Bios in English and Portuguese, photo, logo, talk topics and booking contact. Everything an event or publication needs.",
-    url: "https://tiagodanin.com/press-kit",
+    url: "https://tiagodanin.com/press-kit/",
     type: "profile",
     profile: {
       firstName: "Tiago",
@@ -201,12 +201,12 @@ const PressKitPage = () => {
       {
         "@type": "ProfilePage",
         "name": "Press Kit - Tiago Danin",
-        "url": "https://tiagodanin.com/press-kit",
+        "url": "https://tiagodanin.com/press-kit/",
         "inLanguage": ["en", "pt-BR"],
         "mainEntity": {
           "@type": "Person",
           "name": about.name,
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
           "image": about.avatar,
           "email": `mailto:${about.email}`,
           "description": bios.en.general.medium,
@@ -236,13 +236,13 @@ const PressKitPage = () => {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tiagodanin.com"
+            "item": "https://tiagodanin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Press Kit",
-            "item": "https://tiagodanin.com/press-kit"
+            "item": "https://tiagodanin.com/press-kit/"
           }
         ]
       }

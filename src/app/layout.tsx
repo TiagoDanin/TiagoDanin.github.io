@@ -24,7 +24,7 @@ const siteSchema = {
       '@type': 'Person',
       '@id': PERSON_ID,
       name: 'Tiago Danin',
-      url: 'https://tiagodanin.com',
+      url: 'https://tiagodanin.com/',
       image: OG_IMAGE.url,
       jobTitle: 'Mobile Developer & Security Researcher',
       description: 'Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor and bug hunter on HackerOne.',
@@ -44,7 +44,7 @@ const siteSchema = {
     {
       '@type': 'WebSite',
       '@id': WEBSITE_ID,
-      url: 'https://tiagodanin.com',
+      url: 'https://tiagodanin.com/',
       name: 'Tiago Danin',
       description: 'Mobile Developer with 250+ projects. Flutter, React Native, iOS & Android specialist. Open source contributor with 70+ npm packages. Bug hunter on HackerOne.',
       inLanguage: ['en-US', 'pt-BR'],
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     "iOS", "Android", "Swift", "Kotlin", "TypeScript", "Cybersecurity",
     "Bug Hunter", "HackerOne", "Open Source", "Game Development", "Mentorship"
   ],
-  authors: [{ name: "Tiago Danin", url: "https://tiagodanin.com" }],
+  authors: [{ name: "Tiago Danin", url: "https://tiagodanin.com/" }],
   creator: "Tiago Danin",
   publisher: "Tiago Danin",
   robots: {
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     alternateLocale: ['pt_BR'],
-    url: 'https://tiagodanin.com',
+    url: 'https://tiagodanin.com/',
     title: 'Tiago Danin - Mobile Developer & Software Engineer',
     description: 'Mobile Developer specializing in Flutter, React Native, iOS & Android. Open source contributor and cybersecurity researcher.',
     siteName: 'Tiago Danin',
@@ -99,10 +99,10 @@ export const metadata: Metadata = {
     images: [OG_IMAGE.url],
   },
   alternates: {
-    canonical: 'https://tiagodanin.com',
+    canonical: 'https://tiagodanin.com/',
     languages: {
-      'en-US': 'https://tiagodanin.com',
-      'x-default': 'https://tiagodanin.com',
+      'en-US': 'https://tiagodanin.com/',
+      'x-default': 'https://tiagodanin.com/',
     },
   },
 };
@@ -113,6 +113,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const socialLinksData = queryCollection('sociallinks');
+  // Navbar and Footer are client components, so the menu is read here and
+  // passed down: queryCollection only runs on the server.
+  const menuData = queryCollection('menu');
   return (
     <html lang="en">
       <head>
@@ -128,11 +131,11 @@ export default function RootLayout({
           speed={340}
         />
         <div className="min-h-screen flex flex-col bg-background">
-          <Navbar />
+          <Navbar menu={[...menuData]} />
           <main className="flex-1">
             {children}
           </main>
-          <Footer socialLinks={[...socialLinksData]} />
+          <Footer socialLinks={[...socialLinksData]} menu={[...menuData]} />
         </div>
         <ToasterProvider />
       </body>

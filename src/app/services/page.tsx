@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     "hire Flutter developer", "app development services", "penetration testing",
     "desenvolvedor mobile freelancer", "contratar desenvolvedor mobile"
   ],
-  alternates: withMarkdown('https://tiagodanin.com/services'),
+  alternates: withMarkdown('https://tiagodanin.com/services/'),
   openGraph: {
     title: "Professional Services | Tiago Danin",
     description: "Mobile development, cybersecurity, and mentorship services. 250+ projects delivered with Flutter, React Native, iOS & Android.",
-    url: "https://tiagodanin.com/services",
+    url: "https://tiagodanin.com/services/",
     type: "website",
   },
   twitter: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com"
+          "url": "https://tiagodanin.com/"
         },
         "areaServed": "Worldwide",
         "hasOfferCatalog": {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Mobile App Development",
-                "url": "https://tiagodanin.com/mobile"
+                "url": "https://tiagodanin.com/mobile/"
               }
             },
             {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Cybersecurity Consulting",
-                "url": "https://tiagodanin.com/cybersecurity"
+                "url": "https://tiagodanin.com/cybersecurity/"
               }
             },
             {
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Technical Mentorship",
-                "url": "https://tiagodanin.com/mentorship"
+                "url": "https://tiagodanin.com/mentorship/"
               }
             }
           ]
@@ -80,13 +80,13 @@ export const metadata: Metadata = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tiagodanin.com"
+            "item": "https://tiagodanin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://tiagodanin.com/services"
+            "item": "https://tiagodanin.com/services/"
           }
         ]
       }

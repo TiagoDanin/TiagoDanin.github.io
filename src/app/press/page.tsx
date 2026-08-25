@@ -10,11 +10,11 @@ export const metadata = {
   title: "Press Coverage - Articles & Interviews",
   description: "Articles, interviews and releases that mention Tiago Danin, from the TecBan open banking hackathon to game development in Pará.",
   keywords: ["Tiago Danin press", "media coverage", "imprensa", "TecBan Hackathon", "Bicos app", "open banking", "entrevista"],
-  alternates: withMarkdown('https://tiagodanin.com/press'),
+  alternates: withMarkdown('https://tiagodanin.com/press/'),
   openGraph: {
     title: "Press Coverage - Tiago Danin",
     description: "Articles, interviews and releases that mention Tiago Danin.",
-    url: "https://tiagodanin.com/press",
+    url: "https://tiagodanin.com/press/",
     type: "website",
   },
   twitter: {
@@ -42,11 +42,11 @@ const PressPage = () => {
       {
         "@type": "CollectionPage",
         "name": "Press Coverage - Tiago Danin",
-        "url": "https://tiagodanin.com/press",
+        "url": "https://tiagodanin.com/press/",
         "about": {
           "@type": "Person",
           "name": about.name,
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
         },
         "hasPart": items.map(item => ({
           "@type": "NewsArticle",
@@ -65,19 +65,19 @@ const PressPage = () => {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tiagodanin.com"
+            "item": "https://tiagodanin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Press Kit",
-            "item": "https://tiagodanin.com/press-kit"
+            "item": "https://tiagodanin.com/press-kit/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Press",
-            "item": "https://tiagodanin.com/press"
+            "item": "https://tiagodanin.com/press/"
           }
         ]
       }

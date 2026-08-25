@@ -33,12 +33,12 @@ export async function generateMetadata({
     description: app.storeDescription,
     keywords: [...app.tags, "android", "google play", "tiago danin", app.name.toLowerCase()],
     alternates: {
-      canonical: `https://tiagodanin.com/app/${app.slug}`,
+      canonical: `https://tiagodanin.com/app/${app.slug}/`,
     },
     openGraph: {
       title: `${app.name} | Android App by Tiago Danin`,
       description: app.storeDescription,
-      url: `https://tiagodanin.com/app/${app.slug}`,
+      url: `https://tiagodanin.com/app/${app.slug}/`,
       type: "website",
     },
     twitter: {
@@ -55,11 +55,11 @@ export async function generateMetadata({
           "description": app.storeDescription,
           "operatingSystem": "Android",
           "applicationCategory": app.category,
-          "url": app.url ?? `https://tiagodanin.com/app/${app.slug}`,
+          "url": app.url ?? `https://tiagodanin.com/app/${app.slug}/`,
           "author": {
             "@type": "Person",
             "name": "Tiago Danin",
-            "url": "https://tiagodanin.com",
+            "url": "https://tiagodanin.com/",
           },
           "offers": {
             "@type": "Offer",
@@ -71,9 +71,9 @@ export async function generateMetadata({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-            { "@type": "ListItem", "position": 2, "name": "Apps", "item": "https://tiagodanin.com/apps" },
-            { "@type": "ListItem", "position": 3, "name": app.name, "item": `https://tiagodanin.com/app/${app.slug}` },
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Apps", "item": "https://tiagodanin.com/apps/" },
+            { "@type": "ListItem", "position": 3, "name": app.name, "item": `https://tiagodanin.com/app/${app.slug}/` },
           ],
         },
       ]),

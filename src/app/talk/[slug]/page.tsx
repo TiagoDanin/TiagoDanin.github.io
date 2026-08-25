@@ -41,18 +41,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: truncatedDescription,
     keywords,
     alternates: {
-      ...withMarkdown(`https://tiagodanin.com/talk/${slug}`),
+      ...withMarkdown(`https://tiagodanin.com/talk/${slug}/`),
       languages: {
-        'en-US': `https://tiagodanin.com/talk/${slug}`,
-        ...(hasPtVariant && { 'pt-BR': `https://tiagodanin.com/talk/${slug}/pt` }),
-        'x-default': `https://tiagodanin.com/talk/${slug}`,
+        'en-US': `https://tiagodanin.com/talk/${slug}/`,
+        ...(hasPtVariant && { 'pt-BR': `https://tiagodanin.com/talk/${slug}/pt/` }),
+        'x-default': `https://tiagodanin.com/talk/${slug}/`,
       },
     },
     openGraph: {
       title: `${talk.title} - ${eventLabel(talk)}`,
       description: truncatedDescription,
       type: talk.youtubeUrl ? 'video.other' : 'article',
-      url: `https://tiagodanin.com/talk/${slug}`,
+      url: `https://tiagodanin.com/talk/${slug}/`,
       locale: 'en_US',
       siteName: 'Tiago Danin',
       ...(talk.youtubeUrl && {
@@ -104,9 +104,9 @@ export default async function TalkPage({ params }: { params: Promise<{ slug: str
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-      { "@type": "ListItem", "position": 2, "name": "Talks", "item": "https://tiagodanin.com/talks" },
-      { "@type": "ListItem", "position": 3, "name": talk.title, "item": `https://tiagodanin.com/talk/${slug}` },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Talks", "item": "https://tiagodanin.com/talks/" },
+      { "@type": "ListItem", "position": 3, "name": talk.title, "item": `https://tiagodanin.com/talk/${slug}/` },
     ],
   };
 
@@ -127,8 +127,8 @@ export default async function TalkPage({ params }: { params: Promise<{ slug: str
       "address": { "@type": "PostalAddress", "addressCountry": "BR" }
     },
     "organizer": { "@type": "Organization", "name": talk.event },
-    "performer": { "@type": "Person", "name": "Tiago Danin", "url": "https://tiagodanin.com" },
-    "url": `https://tiagodanin.com/talk/${slug}`,
+    "performer": { "@type": "Person", "name": "Tiago Danin", "url": "https://tiagodanin.com/" },
+    "url": `https://tiagodanin.com/talk/${slug}/`,
     "inLanguage": "en",
     ...(talk.youtubeUrl && {
       "recordedIn": {

@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "automacao com ia", "consultoria ia", "agentes ia",
   ],
   alternates: {
-    canonical: "https://tiagodanin.com/ai-automation",
+    canonical: "https://tiagodanin.com/ai-automation/",
   },
   openGraph: {
     title: "AI Automation & Integration | Tiago Danin",
     description: "Agent workflows, LLM integration, RAG, MCP servers, and AI-powered automation, built to ship.",
-    url: "https://tiagodanin.com/ai-automation",
+    url: "https://tiagodanin.com/ai-automation/",
     type: "website",
   },
   twitter: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
         },
         "areaServed": "Worldwide",
         "serviceType": "AI Development & Consulting",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://tiagodanin.com/services" },
-          { "@type": "ListItem", "position": 3, "name": "AI Automation", "item": "https://tiagodanin.com/ai-automation" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://tiagodanin.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "AI Automation", "item": "https://tiagodanin.com/ai-automation/" },
         ],
       },
     ]),

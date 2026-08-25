@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "desenvolvimento de site", "criar site", "site profissional",
   ],
   alternates: {
-    canonical: "https://tiagodanin.com/web-development",
+    canonical: "https://tiagodanin.com/web-development/",
   },
   openGraph: {
     title: "Website Development | Tiago Danin",
     description: "Modern websites with Next.js, React, and TypeScript, fast, accessible, and SEO-ready.",
-    url: "https://tiagodanin.com/web-development",
+    url: "https://tiagodanin.com/web-development/",
     type: "website",
   },
   twitter: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
         },
         "areaServed": "Worldwide",
         "serviceType": "Web Development",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://tiagodanin.com/services" },
-          { "@type": "ListItem", "position": 3, "name": "Web Development", "item": "https://tiagodanin.com/web-development" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://tiagodanin.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "Web Development", "item": "https://tiagodanin.com/web-development/" },
         ],
       },
     ]),

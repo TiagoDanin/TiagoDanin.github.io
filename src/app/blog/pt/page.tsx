@@ -12,17 +12,17 @@ export function generateMetadata() {
     description: "Blog sobre desenvolvimento de software, mobile, IA e segurança. Artigos sobre Flutter, React Native, agentes IA e tecnologia.",
     keywords: ["blog", "desenvolvimento de software", "mobile", "Flutter", "React Native", "IA", "segurança", "programação", "artigos técnicos"],
     alternates: {
-      canonical: 'https://tiagodanin.com/blog/pt',
+      canonical: 'https://tiagodanin.com/blog/pt/',
       languages: {
-        'en-US': 'https://tiagodanin.com/blog',
-        'pt-BR': 'https://tiagodanin.com/blog/pt',
-        'x-default': 'https://tiagodanin.com/blog',
+        'en-US': 'https://tiagodanin.com/blog/',
+        'pt-BR': 'https://tiagodanin.com/blog/pt/',
+        'x-default': 'https://tiagodanin.com/blog/',
       },
     },
     openGraph: {
       title: "Blog: Desenvolvimento, Mobile & IA",
       description: "Artigos sobre desenvolvimento de software, apps mobile, agentes IA e segurança.",
-      url: "https://tiagodanin.com/blog/pt",
+      url: "https://tiagodanin.com/blog/pt/",
       type: "website",
       siteName: "Tiago Danin",
       locale: "pt_BR",
@@ -34,19 +34,19 @@ export function generateMetadata() {
           "@type": "Blog",
           "name": "Blog: Artigos sobre Desenvolvimento & IA",
           "description": "Blog sobre desenvolvimento de software, mobile, IA e segurança",
-          "url": "https://tiagodanin.com/blog/pt",
+          "url": "https://tiagodanin.com/blog/pt/",
           "inLanguage": "pt-BR",
           "author": {
             "@type": "Person",
             "name": "Tiago Danin",
-            "url": "https://tiagodanin.com"
+            "url": "https://tiagodanin.com/"
           },
           "blogPost": posts.map((post) => ({
             "@type": "BlogPosting",
             "headline": post.title,
             "description": post.description,
             "datePublished": toISODate(post.date),
-            "url": `https://tiagodanin.com/post/${post.slug}/pt`,
+            "url": `https://tiagodanin.com/post/${post.slug}/pt/`,
             "inLanguage": "pt-BR",
             "isAccessibleForFree": true,
             "author": {
@@ -59,9 +59,9 @@ export function generateMetadata() {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog" },
-            { "@type": "ListItem", "position": 3, "name": "PT", "item": "https://tiagodanin.com/blog/pt" }
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://tiagodanin.com/blog/" },
+            { "@type": "ListItem", "position": 3, "name": "PT", "item": "https://tiagodanin.com/blog/pt/" }
           ]
         }
       ])

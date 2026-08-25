@@ -148,12 +148,12 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
       ...((project.topics as string[]) || []),
       ...((project.keywords as string[]) || []),
     ].filter(Boolean) as string[],
-    alternates: withMarkdown(`https://tiagodanin.com/project/${type}/${slug}`),
+    alternates: withMarkdown(`https://tiagodanin.com/project/${type}/${slug}/`),
     openGraph: {
       title: `${title} - ${(baseDescription || enrichedDescription).substring(0, 60)}`,
       description: truncatedDescription,
       type: 'article',
-      url: `https://tiagodanin.com/project/${type}/${slug}`,
+      url: `https://tiagodanin.com/project/${type}/${slug}/`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -188,7 +188,7 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
           "author": {
             "@type": "Person",
             "name": "Tiago Danin",
-            "url": "https://tiagodanin.com"
+            "url": "https://tiagodanin.com/"
           }
         },
         {
@@ -199,13 +199,13 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://tiagodanin.com"
+              "item": "https://tiagodanin.com/"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Projects",
-              "item": "https://tiagodanin.com/projects"
+              "item": "https://tiagodanin.com/projects/"
             },
             {
               "@type": "ListItem",
@@ -217,7 +217,7 @@ export async function generateMetadata({ params }: { params: Promise<{ type: Pro
               "@type": "ListItem",
               "position": 4,
               "name": title,
-              "item": `https://tiagodanin.com/project/${type}/${slug}`
+              "item": `https://tiagodanin.com/project/${type}/${slug}/`
             }
           ]
         }

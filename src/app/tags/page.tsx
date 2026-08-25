@@ -9,12 +9,12 @@ export const metadata = {
   description: "Explore all articles and talks by Tiago Danin organized by technology tags. Find content about Flutter, React Native, Android, AI, DevOps, and more.",
   keywords: ["tags", "topics", "Flutter", "React Native", "Android", "AI", "DevOps", "JavaScript", "mobile development"],
   alternates: {
-    canonical: 'https://tiagodanin.com/tags',
+    canonical: 'https://tiagodanin.com/tags/',
   },
   openGraph: {
     title: "Browse by Tags - Tiago Danin",
     description: "Explore all articles and talks organized by technology tags.",
-    url: "https://tiagodanin.com/tags",
+    url: "https://tiagodanin.com/tags/",
     type: "website",
   },
 };
@@ -53,12 +53,12 @@ export default function TagsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Browse by Tags",
-    "url": "https://tiagodanin.com/tags",
+    "url": "https://tiagodanin.com/tags/",
     "description": "All articles and talks organized by technology tags",
     "author": {
       "@type": "Person",
       "name": "Tiago Danin",
-      "url": "https://tiagodanin.com",
+      "url": "https://tiagodanin.com/",
     },
   };
 

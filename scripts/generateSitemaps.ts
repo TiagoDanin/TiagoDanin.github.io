@@ -102,7 +102,7 @@ function generateSitemaps(): void {
   const projectEntries: SitemapEntry[] = [
     ...new Set(projectsData.map(project => titleToSlug(project.name)).filter(Boolean)),
   ].map(slug => ({
-    loc: `${siteUrl}/project/github/${slug}`,
+    loc: `${siteUrl}/project/github/${slug}/`,
     changefreq: 'monthly',
     priority: '0.5',
   }));

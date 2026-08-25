@@ -11,9 +11,9 @@ export function generateMetadata() {
     description: "Career timeline from education to senior mobile developer. Professional milestones, projects, and achievements in mobile development, cybersecurity, and open source.",
     keywords: ["timeline", "career", "professional journey", "work history", "experience", "mobile developer career", "career milestones", "professional background"],
     alternates: {
-      canonical: 'https://tiagodanin.com/timeline',
+      canonical: 'https://tiagodanin.com/timeline/',
       types: {
-        'text/markdown': markdownUrl('https://tiagodanin.com/timeline'),
+        'text/markdown': markdownUrl('https://tiagodanin.com/timeline/'),
         'application/rss+xml': [
           { url: '/rss/timeline.xml', title: 'Timeline RSS Feed' }
         ],
@@ -22,7 +22,7 @@ export function generateMetadata() {
     openGraph: {
       title: "Professional Timeline & Career Journey",
       description: "Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source.",
-      url: "https://tiagodanin.com/timeline",
+      url: "https://tiagodanin.com/timeline/",
       type: "profile",
     },
     twitter: {
@@ -67,13 +67,13 @@ export function generateMetadata() {
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://tiagodanin.com"
+              "item": "https://tiagodanin.com/"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Timeline",
-              "item": "https://tiagodanin.com/timeline"
+              "item": "https://tiagodanin.com/timeline/"
             }
           ]
         }

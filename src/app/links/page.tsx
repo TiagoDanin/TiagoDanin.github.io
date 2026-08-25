@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   title: "Link in Bio - All Contacts & Profiles",
   description: "All my important links in one place - Social media, presentations, portfolio, and contact information for Tiago Danin.",
   keywords: ["links", "social media", "contact", "portfolio", "linktree", "bio", "Tiago Danin"],
-  alternates: withMarkdown('https://tiagodanin.com/links'),
+  alternates: withMarkdown('https://tiagodanin.com/links/'),
   openGraph: {
     title: "Links - Tiago Danin",
     description: "All my important links in one place - Social media, presentations, and contact information.",
-    url: "https://tiagodanin.com/links",
+    url: "https://tiagodanin.com/links/",
     type: "profile",
   },
   twitter: {

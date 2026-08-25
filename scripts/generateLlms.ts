@@ -111,8 +111,14 @@ function truncate(text: string, max = 180): string {
   return clean.length <= max ? clean : `${clean.slice(0, max).replace(/[\s,;.]+\S*$/, '')}...`;
 }
 
+/**
+ * The site runs with trailingSlash: true, so /about is served as /about/.
+ * Route paths are stored without the slash because markdownPath() derives the
+ * mirror filename from them; the slash belongs on the HTML URL alone.
+ */
 function absoluteUrl(routePath: string): string {
-  return `${siteUrl}${routePath}`;
+  const path = routePath.endsWith('/') ? routePath : `${routePath}/`;
+  return `${siteUrl}${path}`;
 }
 
 /** `/post/foo` becomes `/post/foo.md`, and the home becomes `/index.md`. */

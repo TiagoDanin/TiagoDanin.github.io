@@ -3,6 +3,9 @@ module.exports = {
   siteUrl: 'https://tiagodanin.com',
   generateRobotsTxt: true,
   changefreq: 'weekly',
+  // next.config.ts has trailingSlash: true, so /blog is served as /blog/.
+  // A sitemap listing the version without the slash points every crawl at a 308.
+  trailingSlash: true,
   // The sitemap index is written by scripts/generateSitemaps.ts, which also lists
   // sitemap-project-github.xml and sitemap-homepage-github.xml alongside this file.
   sitemapBaseFileName: 'sitemap-site',
@@ -66,8 +69,12 @@ module.exports = {
       changefreq = 'monthly';
     }
 
+    // Normalized here too: the priority rules above match on the slash-less
+    // path, and a custom transform bypasses the config's own trailingSlash.
+    const loc = urlPath.endsWith('/') ? urlPath : `${urlPath}/`;
+
     return {
-      loc: urlPath,
+      loc,
       changefreq: changefreq,
       priority: priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,

@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "desenvolvedor chrome extension", "extensoes chrome",
   ],
   alternates: {
-    canonical: "https://tiagodanin.com/chrome-extensions",
+    canonical: "https://tiagodanin.com/chrome-extensions/",
   },
   openGraph: {
     title: "Chrome Extensions Developer | Tiago Danin",
     description: "Custom Chrome extensions with Manifest V3, TypeScript, and Chrome Web Store publishing.",
-    url: "https://tiagodanin.com/chrome-extensions",
+    url: "https://tiagodanin.com/chrome-extensions/",
     type: "website",
   },
   twitter: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
         },
         "areaServed": "Worldwide",
         "serviceType": "Browser Extension Development",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://tiagodanin.com/services" },
-          { "@type": "ListItem", "position": 3, "name": "Chrome Extensions", "item": "https://tiagodanin.com/chrome-extensions" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://tiagodanin.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "Chrome Extensions", "item": "https://tiagodanin.com/chrome-extensions/" },
         ],
       },
     ]),

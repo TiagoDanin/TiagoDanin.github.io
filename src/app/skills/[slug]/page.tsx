@@ -105,12 +105,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description,
     keywords: [skill.name, category, 'developer', 'freelance', 'Tiago Danin', 'mobile developer', 'hire'],
     alternates: {
-      canonical: `https://tiagodanin.com/skills/${slug}`,
+      canonical: `https://tiagodanin.com/skills/${slug}/`,
     },
     openGraph: {
       title: `${skill.name} Developer, Tiago Danin`,
       description,
-      url: `https://tiagodanin.com/skills/${slug}`,
+      url: `https://tiagodanin.com/skills/${slug}/`,
       type: 'profile',
       siteName: 'Tiago Danin',
     },
@@ -179,9 +179,9 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com" },
-      { "@type": "ListItem", "position": 2, "name": "Skills", "item": "https://tiagodanin.com/skills" },
-      { "@type": "ListItem", "position": 3, "name": skill.name, "item": `https://tiagodanin.com/skills/${slug}` },
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tiagodanin.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Skills", "item": "https://tiagodanin.com/skills/" },
+      { "@type": "ListItem", "position": 3, "name": skill.name, "item": `https://tiagodanin.com/skills/${slug}/` },
     ],
   };
 
@@ -189,7 +189,7 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Tiago Danin",
-    "url": "https://tiagodanin.com",
+    "url": "https://tiagodanin.com/",
     "jobTitle": "Mobile Developer",
     "knowsAbout": [skill.name, category],
     "sameAs": [
@@ -206,7 +206,7 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
     "provider": {
       "@type": "Person",
       "name": "Tiago Danin",
-      "url": "https://tiagodanin.com",
+      "url": "https://tiagodanin.com/",
     },
     "serviceType": `${category}, ${skill.name}`,
     "areaServed": "Worldwide",

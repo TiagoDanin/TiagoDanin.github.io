@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Browser environment exploration tool for bug bounty research. Inspect window properties, execute JavaScript, and test security POCs.",
   keywords: ["WebView inspector", "bug bounty", "security testing", "JavaScript debugging", "browser API", "POC testing"],
   alternates: {
-    canonical: 'https://tiagodanin.com/webview',
+    canonical: 'https://tiagodanin.com/webview/',
   },
   robots: {
     index: true,
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WebView Inspector - Bug Bounty Research Tool",
     description: "Explore browser environments and test security POCs. Property inspection and code execution.",
-    url: "https://tiagodanin.com/webview",
+    url: "https://tiagodanin.com/webview/",
     type: "website",
   },
   twitter: {

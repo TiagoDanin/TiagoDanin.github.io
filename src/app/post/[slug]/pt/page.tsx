@@ -31,17 +31,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: post.title,
     description: truncatedDescription,
     alternates: {
-      ...withMarkdown(`https://tiagodanin.com/post/${post.slug}/pt`),
+      ...withMarkdown(`https://tiagodanin.com/post/${post.slug}/pt/`),
       languages: {
-        'en-US': `https://tiagodanin.com/post/${post.slug}`,
-        'pt-BR': `https://tiagodanin.com/post/${post.slug}/pt`,
-        'x-default': `https://tiagodanin.com/post/${post.slug}`,
+        'en-US': `https://tiagodanin.com/post/${post.slug}/`,
+        'pt-BR': `https://tiagodanin.com/post/${post.slug}/pt/`,
+        'x-default': `https://tiagodanin.com/post/${post.slug}/`,
       },
     },
     openGraph: {
       title: post.title,
       description: truncatedDescription,
-      url: `https://tiagodanin.com/post/${post.slug}/pt`,
+      url: `https://tiagodanin.com/post/${post.slug}/pt/`,
       type: 'article',
       publishedTime: toISODate(post.date),
       locale: 'pt_BR',
@@ -75,10 +75,10 @@ export default async function PostPt({ params }: { params: Promise<{ slug: strin
     "headline": post.title,
     "description": post.description,
     "datePublished": toISODate(post.date),
-    "url": `https://tiagodanin.com/post/${post.slug}/pt`,
+    "url": `https://tiagodanin.com/post/${post.slug}/pt/`,
     "inLanguage": "pt-BR",
     "isAccessibleForFree": true,
-    "author": { "@type": "Person", "name": "Tiago Danin", "url": "https://tiagodanin.com" },
+    "author": { "@type": "Person", "name": "Tiago Danin", "url": "https://tiagodanin.com/" },
     "publisher": { "@type": "Person", "name": "Tiago Danin" },
   };
 

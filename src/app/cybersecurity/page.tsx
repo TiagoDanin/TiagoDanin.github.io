@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     "bug bounty", "security audit", "security consulting"
   ],
   alternates: {
-    canonical: 'https://tiagodanin.com/cybersecurity',
+    canonical: 'https://tiagodanin.com/cybersecurity/',
   },
   openGraph: {
     title: "Cybersecurity Services | Tiago Danin - Security Researcher",
     description: "Professional vulnerability assessment and security testing. HackerOne researcher with expertise in mobile and web security.",
-    url: "https://tiagodanin.com/cybersecurity",
+    url: "https://tiagodanin.com/cybersecurity/",
     type: "website",
   },
   twitter: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com",
+          "url": "https://tiagodanin.com/",
           "sameAs": "https://hackerone.com/tiago-danin"
         },
         "areaServed": "Worldwide",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
         ],
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://tiagodanin.com/cybersecurity",
+          "serviceUrl": "https://tiagodanin.com/cybersecurity/",
           "availableLanguage": ["en", "pt-BR"]
         }
       },
@@ -86,13 +86,13 @@ export const metadata: Metadata = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tiagodanin.com"
+            "item": "https://tiagodanin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Cybersecurity Services",
-            "item": "https://tiagodanin.com/cybersecurity"
+            "item": "https://tiagodanin.com/cybersecurity/"
           }
         ]
       }

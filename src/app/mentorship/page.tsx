@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     "weekly calls", "programming mentor", "1:1 mentorship", "tech mentor"
   ],
   alternates: {
-    canonical: 'https://tiagodanin.com/mentorship',
+    canonical: 'https://tiagodanin.com/mentorship/',
   },
   openGraph: {
     title: "Mentorship Services | Tiago Danin - Game Dev, AI & Mobile",
     description: "1:1 mentorship in game development, AI, and mobile development. Weekly video calls with personalized guidance.",
-    url: "https://tiagodanin.com/mentorship",
+    url: "https://tiagodanin.com/mentorship/",
     type: "website",
   },
   twitter: {
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
         "provider": {
           "@type": "Person",
           "name": "Tiago Danin",
-          "url": "https://tiagodanin.com"
+          "url": "https://tiagodanin.com/"
         },
         "areaServed": "Worldwide",
         "serviceType": "Technical Mentorship",
         "availableChannel": {
           "@type": "ServiceChannel",
-          "serviceUrl": "https://tiagodanin.com/mentorship",
+          "serviceUrl": "https://tiagodanin.com/mentorship/",
           "availableLanguage": ["en", "pt-BR"]
         }
       },
@@ -87,13 +87,13 @@ export const metadata: Metadata = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tiagodanin.com"
+            "item": "https://tiagodanin.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Mentorship Services",
-            "item": "https://tiagodanin.com/mentorship"
+            "item": "https://tiagodanin.com/mentorship/"
           }
         ]
       }
