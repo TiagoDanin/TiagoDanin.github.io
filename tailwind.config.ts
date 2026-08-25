@@ -6,6 +6,8 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    // Storybook decorators and docs pages use the same utilities.
+    "./.storybook/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
 	theme: {
