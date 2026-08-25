@@ -22,8 +22,8 @@ yarn data:rss              # Generate RSS feeds into public/rss/
 # Sitemap Generation
 yarn sitemap               # generateSitemaps.ts + next-sitemap
 
-# Machine-readable layer (no npm script — run by hand)
-tsx scripts/generateLlms.ts # llms.txt, the *.txt lists and the .md page mirrors
+# Machine-readable layer (also runs in prebuild)
+yarn data:llms             # llms.txt, the *.txt lists and the .md page mirrors
 
 # Full Deployment Pipeline
 yarn deploy                # data:github + data:rss + build + sitemap + build (second build picks up the generated sitemap)
@@ -200,11 +200,15 @@ Metadata is defined per page with `generateMetadata`, hardcoding `https://tiagod
 
 `scripts/generateLlms.ts` writes a second, plain-text face of the site into `public/`: `llms.txt` (slim index, llmstxt.org), `llms-full.txt` (whole site in one file), the `posts.txt` / `talks.txt` / `projects.txt` / `timeline.txt` lists, and a `.md` mirror of every HTML page at the same path. The lists are separate files so `llms.txt` stays short enough to be read in full.
 
-Three things about it are easy to get wrong:
+Three things about it are worth knowing:
 
-- **No npm script calls it.** It is not in `prebuild`, `postbuild` or `deploy` — run `tsx scripts/generateLlms.ts` by hand (with permission) after content changes, or the text layer silently goes stale while the HTML is current.
-- **Its copy lives in `contents/llms/index.json`** (site title, summary, per-page descriptions), following the never-hardcode-content rule. That collection is not yet registered in `studio.config.ts`, so it has no schema and is not editable in the studio UI; add one there if you touch it.
-- **The output is not git-ignored.** `.gitignore` covers the sitemaps but not `llms*.txt`, the `*.txt` lists or the `.md` mirrors, so regenerating produces a few hundred files in `git status`. `llms.txt` and `llms-full.txt` are already tracked; the rest are currently untracked.
+- **It runs as `yarn data:llms`, wired into `prebuild`** alongside `data:rss`, so every build regenerates it and the text layer cannot drift from the HTML.
+- **Its copy lives in `contents/llms/index.json`** (site title, summary, the note about bilingual routes, and the page list with descriptions), registered in `studio.config.ts` as "AI Index (llms.txt)". Adding a page there without a matching body in `buildPageBodies` throws at generation time on purpose: announcing a `.md` that was never written promises a 404 to whoever followed the link.
+- **The output is git-ignored**, like the sitemaps. Everything under the `/public/*.md`, `/public/post/`, `/public/talk/`, `/public/project/` and `/public/rankings/` patterns is generated, plus `llms.txt`, `llms-full.txt` and the four `*.txt` lists. `public/images/press/README.md` is *not* generated, which is why the ignore rule is `/public/*.md` and not a recursive glob.
+
+Pages announce their mirror with `<link rel="alternate" type="text/markdown">`, built by `withMarkdown()` / `markdownUrl()` in `src/lib/markdown-alternate.ts`. Use `withMarkdown(canonical)` when `alternates` has no `types` of its own; when the page already declares one (the RSS feeds on `/blog`, `/talks`, `/projects`, `/timeline`), add `'text/markdown': markdownUrl(canonical)` *inside* that existing `types` object. Spreading `withMarkdown` next to a later `types` key silently loses the Markdown link, since the explicit key wins.
+
+Only the routes the generator actually writes carry the alternate: the pages in `contents/llms`, plus `/post/[slug]`, `/talk/[slug]`, their `/pt` variants and `/project/[type]/[slug]`. Routes without a mirror (`/tags`, `/skills/[slug]`, `/social/[network]`, `/blog/[page]`, `/app/[appId]`, `/timeline/[year]/[slug]`) must not get one.
 
 ## Important Notes
 

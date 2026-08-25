@@ -336,26 +336,33 @@ function renderTimelineIndex(timeline: TimelineItem[]): string {
   );
 }
 
+interface SiteCounts {
+  posts: number;
+  talks: number;
+  projects: number;
+  timeline: number;
+}
+
+interface Profile {
+  about: { bio: string; bioExtra: string; email: string };
+  skills: SkillGroup[];
+  work: WorkItem[];
+  featured: FeaturedProject[];
+}
+
 /**
- * The entry point. Kept short on purpose: an assistant should be able to read it
- * whole and then follow one link, so the long lists live in their own files.
+ * The body shared by `/llms.txt` and its Markdown twin `/index.md`: who Tiago is,
+ * what he works with, and where everything else lives. Both files answer the same
+ * question, so they are built from one function instead of drifting apart.
  */
-function renderLlmsTxt(
+function siteSections(
   config: LlmsConfig,
-  counts: { posts: number; talks: number; projects: number; timeline: number },
+  counts: SiteCounts,
   recentPosts: Entry[],
   recentTalks: Entry[],
-  profile: {
-    about: { bio: string; bioExtra: string; email: string };
-    skills: SkillGroup[];
-    work: WorkItem[];
-    featured: FeaturedProject[];
-  }
+  profile: Profile
 ): string {
   return block(
-    `# ${config.title}`,
-    `> ${config.summary}`,
-    config.note,
     block('## About', profile.about.bio, profile.about.bioExtra),
     block(
       '## Technical skills',
@@ -410,6 +417,25 @@ function renderLlmsTxt(
         `- ${link('RSS feeds', absoluteUrl('/rss'))}: blog, talks, timeline and projects.`,
       ])
     )
+  );
+}
+
+/**
+ * The entry point. Kept short on purpose: an assistant should be able to read it
+ * whole and then follow one link, so the long lists live in their own files.
+ */
+function renderLlmsTxt(
+  config: LlmsConfig,
+  counts: SiteCounts,
+  recentPosts: Entry[],
+  recentTalks: Entry[],
+  profile: Profile
+): string {
+  return block(
+    `# ${config.title}`,
+    `> ${config.summary}`,
+    config.note,
+    siteSections(config, counts, recentPosts, recentTalks, profile)
   );
 }
 
