@@ -215,6 +215,27 @@ const config: StudioConfig = {
         ],
       },
     },
+    llms: {
+      schema: {
+        collection: "llms",
+        label: "AI Index (llms.txt)",
+        fields: [
+          { name: "title", type: "text", required: true },
+          { name: "summary", type: "long-text", required: true },
+          { name: "note", type: "long-text", required: true },
+          {
+            name: "pages",
+            type: "array",
+            required: true,
+            itemFields: [
+              { name: "path", type: "text", required: true },
+              { name: "title", type: "text", required: true },
+              { name: "description", type: "long-text", required: true },
+            ],
+          },
+        ],
+      },
+    },
     sitemap: {
       schema: {
         collection: "sitemap",

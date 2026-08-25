@@ -13,9 +13,10 @@
         "data:github": "tsx scripts/getProjectsGithub.ts",
         "data:npm": "tsx scripts/getProjectsNPM.ts",
         "data:rss": "tsx scripts/generateRss.ts",
+        "data:llms": "tsx scripts/generateLlms.ts",
         "deploy": "yarn data:github && yarn data:rss && yarn build && yarn sitemap && yarn build",
         "postbuild": "yarn sitemap",
-        "prebuild": "yarn data:rss"
+        "prebuild": "yarn data:rss && yarn data:llms"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.9.0",

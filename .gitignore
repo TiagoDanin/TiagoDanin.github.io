@@ -35,6 +35,18 @@
 /public/sitemap-site-*.xml
 /public/sitemap-project-github.xml
 /public/sitemap-homepage-github.xml
+/public/llms.txt
+/public/llms-full.txt
+/public/posts.txt
+/public/talks.txt
+/public/projects.txt
+/public/timeline.txt
+# Markdown mirrors written by scripts/generateLlms.ts
+/public/*.md
+/public/post/
+/public/talk/
+/public/project/
+/public/rankings/
 note.md
 
 # misc
