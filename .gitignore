@@ -75,4 +75,5 @@ next-env.d.ts
 PRODUCT.md
 DESIGN.md
 .impeccable/
-.mcp.json
+# Storybook static build
+/storybook-static
