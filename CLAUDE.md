@@ -22,8 +22,12 @@ yarn data:rss              # Generate RSS feeds into public/rss/
 # Sitemap Generation
 yarn sitemap               # generateSitemaps.ts + next-sitemap
 
-# Machine-readable layer (also runs in prebuild)
+# Machine-readable layer (also runs inside yarn build)
 yarn data:llms             # llms.txt, the *.txt lists and the .md page mirrors
+
+# Component catalog
+yarn storybook             # Storybook dev server on :6006, also serves the MCP endpoint at /mcp
+yarn build-storybook       # Static catalog into storybook-static/
 
 # Full Deployment Pipeline
 yarn deploy                # data:github + data:rss + build + sitemap + build (second build picks up the generated sitemap)
@@ -31,9 +35,11 @@ yarn deploy                # data:github + data:rss + build + sitemap + build (s
 
 Package manager is **Yarn 4** (`packageManager: yarn@4.6.0`, Corepack). Node version is pinned in `.nvmrc`.
 
-`prebuild` runs `yarn data:rss` and `postbuild` runs `yarn sitemap` automatically; `yarn build` alone is enough during local iteration. Run `yarn data:github` / `yarn data:npm` manually when you need fresh external data.
+`yarn build` runs `yarn data` first (`data:rss` + `data:llms`), so a plain build never ships a stale text layer. `yarn sitemap` is **not** part of `build`: only `yarn deploy` chains it. Run `yarn data:github` / `yarn data:npm` manually when you need fresh external data.
 
-**No test suite is configured** (no jest/vitest, no `test` script). Treat correctness claims for UI changes as unverified until exercised in the browser. Do not invent passing tests.
+**Do not add `pre`/`post` script hooks.** Yarn 4 does not execute them, unlike npm. The project shipped a `prebuild: yarn data:rss && yarn data:llms` that silently never ran, and the whole `llms.txt` layer 404'd in production for as long as it existed. Every generation step must be chained explicitly.
+
+**No headless test runner is configured** (no jest/vitest, no `test` script). Stories carry `play` functions with real assertions, but without `@storybook/addon-vitest` they only execute when a story is opened in the browser, where results show in the Interactions panel. Nothing runs them in CI. Treat correctness claims for UI changes as unverified until exercised in Storybook or the site, and do not report play functions as passing tests unless you actually watched them run.
 
 **`yarn lint` is currently broken.** The script still calls `next lint`, which Next 16 removed; it now parses `lint` as a directory and fails with `Invalid project directory provided`. There is also no `eslint.config.*` / `.eslintrc*` in the repo. Do not run it to validate a change and do not report it as passing. Verify types by reading them directly or with `npx tsc --noEmit`.
 
@@ -83,10 +89,16 @@ The locale of a post/talk comes from the **filename suffix**, not from frontmatt
 Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/tags/[tag]`, `/blog/tags/[tag]`, `/timeline/[year]/[slug]`.
 
 ### Component Architecture
-- **Layout**: `Navbar`, `Footer`, `RedirectClient`
-- **Sections**: page-level blocks (`Hero`, `Projects`, `RecentPosts`, `Services`, `Testimonials`, `Work`, `CallToAction`, ...)
-- **UI**: shadcn/ui primitives plus project components (`ArticleCard`, `ProjectCard`, `TagFilter`, `CopyButton`, `GiscusComments`, `SocialLinks`)
+- **Layout**: `Navbar`, `Footer`
+- **Sections**: page-level blocks (`Hero`, `Projects`, `RecentPosts`, `Services`, `Testimonials`, `Work`, `CallToAction`, `Milestones`, `PressMentions`, ...) plus the per-page client blocks (`BioBrowser`, `FeedbackForm`, `WebViewClient`, `GitHubRankingsClient`, `NPMRankingsClient`)
+- **UI**: shadcn/ui primitives plus project components (`ArticleCard`, `ProjectCard`, `TagFilter`, `CopyButton`, `GiscusComments`, `SocialLinks`, `AnimatedCounter`, `StepIndicator`, `RatingRow`, `FeedItem`, `SitemapTable`)
 - **Utilities**: `cn()` in `src/lib/utils.ts`
+
+**No component lives under `src/app/`.** Routes only compose. Anything with markup belongs in `src/components/`, which is what keeps the catalog complete and lets a block be reused by a second route without a move. Small helpers extracted from pages sit in `ui/`; whole page blocks sit in `sections/`.
+
+`AnimatedCounter` was copied verbatim into both ranking pages before it was extracted. If you find yourself pasting a component into a second page, extract it instead.
+
+**31 of the 57 shadcn primitives have zero importers.** They ship with the install and no page renders them. They are documented in Storybook and labelled as unused, so reach for one that already exists before adding a dependency.
 
 ### Styling
 - **Tailwind CSS** (v3), mobile-first.
@@ -140,7 +152,7 @@ Query API in use across the codebase: `.where({...})`, `.locale('pt')`, `.first(
 
 Do not create a `data.ts`, `copy.ts`, or `*.ts` file that exports strings of user-facing text, and do not inline long prose as JSX literals. Hardcoding content in code makes it invisible to the CMS and forces the user to ask for a code change to fix a sentence.
 
-**Values computed at build time are the exception.** Numbers derived from other collections (years of experience, counts, dates) stay in code. Write them into the content as `{placeholder}` tokens and interpolate at render time. Example: `contents/bios/index.json` stores `"com mais de {years} anos"` and `src/app/press-kit/bios.ts` fills `{years}` in `buildBios`.
+**Values computed at build time are the exception.** Numbers derived from other collections (years of experience, counts, dates) stay in code. Write them into the content as `{placeholder}` tokens and interpolate at render time. Example: `contents/bios/index.json` stores `"com mais de {years} anos"` and `src/lib/bios.ts` fills `{years}` in `buildBios`.
 
 Code in the same folder as a collection consumer should only hold types, UI chrome labels (button text, aria labels, tab names) and the interpolation helper.
 
@@ -176,6 +188,45 @@ Hard bans:
 
 Use `/impeccable <command>` for design work. Each command reads `PRODUCT.md` and `DESIGN.md` before acting.
 
+## Storybook
+
+Every component in `src/components/` has a story beside it. `yarn storybook` serves the catalog on `:6006`.
+
+**Storybook 10 with `@storybook/nextjs` on the webpack builder.** Not `nextjs-vite`: that framework does not support Next 16, and this project already requires webpack because of `withStudio()`. Import `Meta` and `StoryObj` from `@storybook/nextjs`, and test helpers from `storybook/test` (no `@` prefix; `@storybook/test` was removed in v9).
+
+### The rule that makes it work
+
+**A component takes props and never calls `queryCollection`.** That function reads the filesystem, so a component that queries its own data renders on the site and cannot render anywhere else. The page reads, the component draws:
+
+```tsx
+const hero = getHeroData();
+<Hero about={hero.about} stats={hero.stats} socialLinks={hero.socialLinks} />
+```
+
+`Hero`, `Services`, `Testimonials` and `CallToAction` used to query directly and were rewritten. Do not reintroduce the pattern in a component.
+
+Where the data prep goes depends on how heavy it is. A single `queryCollection` call stays inline in the page. Anything more, twenty lines of derived counts, or the same lookup repeated across six routes, goes in `src/lib/sections.ts` (the same split `src/lib/press.ts` already uses). Sections are the exception, not the rule: most components already received props.
+
+### Conventions
+
+- The story sits next to its component: `ui/ArticleCard.tsx` gets `ui/ArticleCard.stories.tsx`. shadcn files are lowercase but their stories are PascalCase (`badge.tsx` -> `Badge.stories.tsx`).
+- `title` mirrors the folder: `Layout/*`, `Sections/*`, `UI/*`.
+- **Documentation is written in English**, including every story's JSDoc, which becomes its description in the docs page.
+- `tags: ['autodocs']` is global in `preview.tsx`. Never repeat it per story.
+- Sections use `layout: 'fullscreen'`; small components use `'centered'` or `'padded'`.
+- Radix overlays render in a portal, outside the story canvas. Query them with `screen`, not `canvas`.
+- Fixtures use real portfolio content (Flutter, npm packages, HackerOne, talks), never Lorem ipsum.
+
+Standalone docs pages (`Introduction.mdx`, `DesignTokens.mdx`) live in `.storybook/` because they belong to no single component. The token page reads the live `globals.css`, so a swatch that looks wrong there is wrong in production.
+
+`a11y.test` is set to `'todo'`: violations are reported without failing the story. Move it to `'error'` once the catalog is audited.
+
+### The MCP server
+
+`@storybook/addon-mcp` exposes the catalog at `http://localhost:6006/mcp`, registered in `.mcp.json`. It only answers while `yarn storybook` is running.
+
+Query it instead of reading types out of `node_modules`: `list-all-documentation` to see what exists, `get-documentation` for a component's real props, `get-storybook-story-instructions` for conventions, `preview-stories` for rendered preview URLs after a visual change. **Never assume a prop from its name.** If the tools do not document it, it does not exist.
+
 ## Project Skills
 
 `.claude/skills/` holds project skills (`create-post`, `create-talk`, `create-timeline`, `sort-data`, `sync-projects`, `validate-data`, `generate-metadata`, `deploy-site`, `impeccable`), plus two that are not plain single-file skills:
@@ -188,6 +239,26 @@ Use `/impeccable <command>` for design work. Each command reads `PRODUCT.md` and
 ## SEO Conventions
 
 Metadata is defined per page with `generateMetadata`, hardcoding `https://tiagodanin.com` as the origin (static export has no request context).
+
+### Trailing slash: two rules, not one
+
+`next.config.ts` sets `trailingSlash: true`, and the two kinds of URL take **opposite** rules. Verified against production:
+
+| URL | Correct form | The other form |
+|---|---|---|
+| HTML route (`/about`, `/project/github/x`) | **with** `/` | 301 redirect |
+| Static file (`.md`, `.txt`, `.xml`) | **without** `/` | 404 |
+| Home `/` | either | same resource |
+
+**Next normalizes this for you inside `metadata`.** `alternates.canonical`, `openGraph.url` and `alternates.languages` all come out with the slash even when the source string lacks it, and Next correctly leaves `alternates.types` file URLs alone. Do not "fix" those by hand: the output was already right.
+
+**Next does not touch anything else.** Raw strings inside a JSON-LD `<script>`, and every URL built in `scripts/`, are emitted verbatim. Those are the only places where the slash has to be written correctly by hand:
+
+- JSON-LD `"url"` / `"item"` fields, which are page URLs and need the slash.
+- `scripts/generateSitemaps.ts`, `generateRss.ts`: page URLs, need the slash.
+- `scripts/generateLlms.ts`: use `pageUrl()` for routes and `fileUrl()` for `.md`/`.txt`/`.xml`. They exist precisely because one blanket helper cannot serve both.
+
+A regex sweep over the whole repo is the wrong tool here: it cannot tell a route from a file, and it will happily corrupt `${...}` interpolations and schema.org placeholders like `{search_term_string}`.
 
 - Always set `alternates.canonical`, and `alternates.languages` with `en-US`, `pt-BR` and `x-default` when a locale variant actually exists.
 - Descriptions are truncated to 160 chars before use.
@@ -202,7 +273,7 @@ Metadata is defined per page with `generateMetadata`, hardcoding `https://tiagod
 
 Three things about it are worth knowing:
 
-- **It runs as `yarn data:llms`, wired into `prebuild`** alongside `data:rss`, so every build regenerates it and the text layer cannot drift from the HTML.
+- **It runs as `yarn data:llms`, chained into `yarn data`** alongside `data:rss`, which `yarn build` calls before `next build`, so the text layer cannot drift from the HTML.
 - **Its copy lives in `contents/llms/index.json`** (site title, summary, the note about bilingual routes, and the page list with descriptions), registered in `studio.config.ts` as "AI Index (llms.txt)". Adding a page there without a matching body in `buildPageBodies` throws at generation time on purpose: announcing a `.md` that was never written promises a 404 to whoever followed the link.
 - **The output is git-ignored**, like the sitemaps. Everything under the `/public/*.md`, `/public/post/`, `/public/talk/`, `/public/project/` and `/public/rankings/` patterns is generated, plus `llms.txt`, `llms-full.txt` and the four `*.txt` lists. `public/images/press/README.md` is *not* generated, which is why the ignore rule is `/public/*.md` and not a recursive glob.
 
@@ -214,7 +285,7 @@ Only the routes the generator actually writes carry the alternate: the pages in 
 
 - TypeScript errors are ignored during builds (`typescript.ignoreBuildErrors: true`). The build will not surface type errors, and `yarn lint` is broken (see above), so type safety has to be checked by reading types or running `tsc` manually.
 - Images are unoptimized (`images.unoptimized`) for static export compatibility; `next/image` gets no server-side optimization.
-- All data must be pre-generated before building (the `prebuild` hook handles RSS; GitHub/NPM data is committed under `contents/`).
+- All data must be pre-generated before building (`yarn build` chains `yarn data` for RSS and the llms layer; GitHub/NPM data is committed under `contents/`).
 - Site uses Google Analytics (`G-4M6BE19CKV`) and Google Tag Manager (`GTM-WT3T53NB`), wired in `src/app/layout.tsx`.
 - `.mcp.json` registers the `chrome-devtools` MCP server, useful for verifying UI changes in a real browser.
 - Never run `yarn build`, `yarn deploy`, or any data-fetching command without explicit user permission. Builds are slow and overwrite generated files (`dist/`, `public/rss/`, `public/*sitemap*`, `contents/github`, `contents/npm`).

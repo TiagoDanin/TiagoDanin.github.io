@@ -1,0 +1,143 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Design Tokens" />
+
+# Design tokens
+
+The values below are the live ones. They are read from the same
+`src/app/globals.css` the site loads, so a swatch that looks wrong here is
+wrong in production too.
+
+Tailwind maps each token to a utility: `--primary` is `bg-primary` and
+`text-primary`. Use the utility, never a raw hex or a stock Tailwind color.
+`bg-blue-600` hardcoded outside the theme is a documented ban in `DESIGN.md`.
+
+## Surfaces and ink
+
+<div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-6 not-prose">
+  {[
+    ['background', 'Page surface', 'bg-background'],
+    ['foreground', 'Body text', 'bg-foreground'],
+    ['card', 'Raised surface', 'bg-card'],
+    ['muted', 'Chips, hover fills', 'bg-muted'],
+    ['muted-foreground', 'Secondary text', 'bg-muted-foreground'],
+    ['border', 'Dividers, card edges', 'bg-border'],
+  ].map(([token, use, cls]) => (
+    <div key={token} className="rounded-lg border overflow-hidden">
+      <div className={`h-16 ${cls}`} />
+      <div className="p-3">
+        <code className="text-xs font-semibold">--{token}</code>
+        <p className="text-xs text-muted-foreground mt-1">{use}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Actions
+
+<div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-6 not-prose">
+  {[
+    ['primary', 'Primary action, slate 900', 'bg-primary'],
+    ['secondary', 'Secondary surface', 'bg-secondary'],
+    ['accent', 'Hover fill on outline', 'bg-accent'],
+    ['destructive', 'Errors and removal', 'bg-destructive'],
+    ['ring', 'Focus ring', 'bg-ring'],
+  ].map(([token, use, cls]) => (
+    <div key={token} className="rounded-lg border overflow-hidden">
+      <div className={`h-16 ${cls}`} />
+      <div className="p-3">
+        <code className="text-xs font-semibold">--{token}</code>
+        <p className="text-xs text-muted-foreground mt-1">{use}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+`destructive` has no destructive action to attach to on a portfolio and is
+effectively unused. It is kept because form validation would need it.
+
+## Pastels: blur only
+
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-6 not-prose">
+  {[
+    ['green-100', 'Hero'],
+    ['blue-100', 'Services, RecentPosts'],
+    ['purple-100', 'Projects, Work'],
+    ['yellow-100', 'Recognition'],
+  ].map(([tone, where]) => (
+    <div key={tone} className="rounded-lg border overflow-hidden">
+      <div className={`h-16 bg-${tone}`} />
+      <div className="p-3">
+        <code className="text-xs font-semibold">{tone}</code>
+        <p className="text-xs text-muted-foreground mt-1">{where}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+**These four never touch text, a button, or a card fill.** They exist as
+`blur-3xl` orbs at 20 to 30 percent opacity, positioned at the corners of a
+section, marked `aria-hidden`. That diffuse wash is the site's signature; the
+same colors used as a flat background would read as a template.
+
+## Type scale
+
+Hierarchy comes from weight before size, which keeps density workable on a
+phone. One system stack, no web font, no loading cost.
+
+<div className="space-y-4 my-6 not-prose">
+  <div>
+    <p className="text-5xl sm:text-6xl font-bold tracking-tight leading-[1.02]">Tiago Danin</p>
+    <code className="text-xs text-muted-foreground">Display, 700, text-5xl sm:text-6xl, hero h1</code>
+  </div>
+  <div>
+    <p className="text-3xl sm:text-4xl font-bold tracking-tight">Selected work</p>
+    <code className="text-xs text-muted-foreground">Section heading, 700, text-3xl sm:text-4xl lg:text-5xl</code>
+  </div>
+  <div>
+    <p className="text-xl font-semibold">Awesome Polybar</p>
+    <code className="text-xs text-muted-foreground">Card title, 600, 1.25rem</code>
+  </div>
+  <div>
+    <p className="text-base">Body copy runs to about 70 characters per line so it stays readable.</p>
+    <code className="text-xs text-muted-foreground">Body, 400, 1rem, line-height 1.6</code>
+  </div>
+  <div>
+    <p className="text-sm font-medium text-muted-foreground">Mobile Developer · Bug Hunter</p>
+    <code className="text-xs text-muted-foreground">Label, 500, 0.875rem</code>
+  </div>
+</div>
+
+## Elevation
+
+Cards rest at `shadow-sm` and lift on hover, but only when they lead somewhere.
+
+<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6 not-prose">
+  {[
+    ['shadow-sm', 'Resting state'],
+    ['shadow-md', 'Hover on a linked card'],
+    ['shadow-lg', 'Hover on a feature card'],
+  ].map(([cls, use]) => (
+    <div key={cls} className={`rounded-xl border bg-card p-6 ${cls}`}>
+      <code className="text-xs font-semibold">{cls}</code>
+      <p className="text-xs text-muted-foreground mt-1">{use}</p>
+    </div>
+  ))}
+</div>
+
+A card lifts with shadow, never with `translateY` or `scale`. Scaling on hover
+is allowed on badges and icon links, where the movement is small enough to read
+as feedback rather than as the layout shifting.
+
+**Affordance has to be honest.** `cursor-pointer` and a hover lift mean the
+thing is clickable. A card with no destination stays flat and static; a
+pointer cursor over dead space is worse than no affordance at all.
+
+## Radius and spacing
+
+`--radius` is `0.5rem`. Cards use `rounded-xl` (12px) or `rounded-2xl` (16px),
+buttons `rounded-md` (8px), badges and avatars `rounded-full`.
+
+Card padding is `p-6`. Sections breathe at `py-16` to `py-24`, alternating
+white against `bg-secondary/30` so the page has rhythm rather than one
+uninterrupted column.

@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# tiagodanin.com design system
+
+Every component the site renders, documented and rendered in isolation.
+
+The site itself is a Next.js 16 App Router project exported to static HTML and
+served from GitHub Pages. This catalog is the same code, mounted outside the
+page so a component can be examined in states that are hard to reach by
+browsing: an empty list, a missing cover image, a title long enough to wrap
+three times.
+
+## How it is organised
+
+| Group | What lives there |
+| --- | --- |
+| **Layout** | The shell that wraps every route: `Navbar`, `Footer`. |
+| **Sections** | Full-width page blocks. `Hero`, `Services`, `Milestones`, the ranking tables. |
+| **UI** | Everything a section is built from: cards, badges, form controls, the shadcn/ui primitives. |
+
+## The rule that shapes this codebase
+
+**A component takes props. It never reads the filesystem.**
+
+Content lives in `contents/` and is read through `queryCollection()` from
+`nextjs-studio/server`, which uses `fs` and therefore cannot run in a browser.
+So the read happens in the page, and the result is passed down:
+
+```tsx
+// src/app/page.tsx
+const hero = getHeroData();          // reads the collections
+<Hero about={hero.about} stats={hero.stats} socialLinks={hero.socialLinks} />
+```
+
+That split is the reason every section in this catalog renders at all. A
+component that queries its own data would work on the site and be invisible
+here. When a section's data prep is more than a single query, it lives in
+`src/lib/sections.ts`; when it is one line, the page does it inline.
+
+## Light theme only
+
+There is no theme switcher, and adding one would be a regression. A single
+calibrated light theme is a brand decision recorded in `PRODUCT.md`, not an
+oversight. The background switcher is disabled in `.storybook/preview.tsx` for
+the same reason: it would offer surfaces that do not exist in production.
+
+## Accessibility
+
+WCAG AA is the quality baseline, not a feature. The a11y addon runs against
+every story and reports findings in its panel. Icon-only controls carry an
+`aria-label`, interactive elements are keyboard reachable, and progress is
+never communicated by color alone.
+
+Violations are currently reported without failing the story. Once the catalog
+is audited, `a11y.test` in `.storybook/preview.tsx` moves from `'todo'` to
+`'error'`.
+
+## For AI agents
+
+This Storybook exposes an MCP server at `/mcp`, registered in `.mcp.json`.
+Before building or changing any UI, query it rather than reading types out of
+`node_modules`:
+
+- `list-all-documentation` to see what already exists
+- `get-documentation` for a component's real props and usage
+- `get-storybook-story-instructions` for the story conventions
+- `preview-stories` for rendered preview URLs after a visual change
+
+Never assume a prop from its name. If a prop is not documented here, it does
+not exist.
