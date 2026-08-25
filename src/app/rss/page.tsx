@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FeedItem } from "@/components/ui/FeedItem";
 
 export const metadata = {
   title: 'RSS Feeds',
@@ -54,17 +55,3 @@ export default function RSSLandingPage() {
     </div>
   );
 }
-
-function FeedItem({ title, url, description }: { title: string; url: string; description: string }) {
-  return (
-    <div className="p-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm flex flex-col gap-2">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">{title}</h2>
-        <Link href={url} className="text-blue-600 hover:underline text-sm" target="_blank" rel="noopener noreferrer">
-          {url}
-        </Link>
-      </div>
-      <p className="text-gray-500 dark:text-gray-400 text-sm">{description}</p>
-    </div>
-  );
-} 
