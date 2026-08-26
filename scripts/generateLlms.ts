@@ -15,9 +15,13 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from '../src/utils/parse';
 
 const siteUrl = 'https://tiagodanin.com';
+
+/** Newline, as a constant so generated patches cannot mangle the escape. */
+const NL = String.fromCharCode(10);
 const publicDir = path.join(process.cwd(), 'public');
 const contentsDir = path.join(process.cwd(), 'contents');
 
@@ -558,19 +562,27 @@ interface FaqDoc {
 }
 
 /**
- * The FAQ, in English, with the two locale files checked against each other.
+ * The FAQ, in English, with the two locales checked against each other.
  *
- * `/faq/` is registered in LOCALIZED_PREFIXES, which promises that every child
- * exists in both languages. Nothing in the build enforces that: a slug present
- * in only one file still compiles, and the only symptom is an hreflang pointing
- * at a page that was never generated. So it is enforced here, where the two
- * files are already open.
+ * Read through `queryCollection`, like a page does, instead of parsing the JSON
+ * here. A second reader of the same content is free to disagree with the one the
+ * site renders, and this one would: it would miss the locale suffix convention
+ * that decides which file is which.
+ *
+ * English only, because the mirrors are. `scripts/generateLlms.ts` publishes one
+ * plain text face of the site, not one per language, and every page announces
+ * that English document as its `text/markdown` alternate regardless of the
+ * language it is written in.
+ *
+ * The Portuguese rows are read only to compare slugs. `/faq/` is registered in
+ * LOCALIZED_PREFIXES, which promises every child exists in both languages, and
+ * nothing in the build enforces that: a slug present in one file alone still
+ * compiles, and the only symptom is an hreflang pointing at a page that was
+ * never generated.
  */
 function readFaq(): FaqDoc[] {
-  const en = readJson<FaqDoc[]>('faq');
-  const br = JSON.parse(
-    fs.readFileSync(path.join(contentsDir, 'faq', 'index.br.json'), 'utf8')
-  ) as FaqDoc[];
+  const en = [...queryCollection('faq').locale('en')] as unknown as FaqDoc[];
+  const br = [...queryCollection('faq').locale('br')] as unknown as FaqDoc[];
 
   const enSlugs = new Set(en.map(entry => entry.slug));
   const brSlugs = new Set(br.map(entry => entry.slug));
@@ -579,12 +591,9 @@ function readFaq(): FaqDoc[] {
 
   if (onlyEn.length || onlyBr.length) {
     throw new Error(
-      'contents/faq: the two locale files disagree on which questions exist.
-' +
-        (onlyEn.length ? `  Only in index.json:    ${onlyEn.join(', ')}
-` : '') +
-        (onlyBr.length ? `  Only in index.br.json: ${onlyBr.join(', ')}
-` : '') +
+      'contents/faq: the two locale files disagree on which questions exist.' + NL +
+        (onlyEn.length ? `  Only in index.json:    ${onlyEn.join(', ')}` + NL : '') +
+        (onlyBr.length ? `  Only in index.br.json: ${onlyBr.join(', ')}` + NL : '') +
         '/faq/ is a localized prefix, so every slug must exist in both or its hreflang points at a 404.'
     );
   }
@@ -716,9 +725,7 @@ function renderFaqIndex(entries: FaqDoc[], counts: FaqCounts): string {
                 : undefined
             )
           )
-          .join('
-
-')
+          .join('\n\n')
       )
     )
   );

@@ -104,6 +104,9 @@ export const LOCALIZED_ROUTES = [
   '/tags',
   '/web-development',
   '/faq',
+  '/press-kit',
+  '/timeline',
+  '/webview',
 ] as const;
 
 const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
@@ -118,7 +121,7 @@ const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
 // written side by side in contents/faq. If a slug ever exists in only one of the
 // two files the promise breaks silently, so scripts/generateLlms.ts compares the
 // two and throws.
-export const LOCALIZED_PREFIXES = ['/post/', '/talk/', '/app/', '/skills/', '/social/', '/tags/', '/faq/'] as const;
+export const LOCALIZED_PREFIXES = ['/post/', '/talk/', '/app/', '/skills/', '/social/', '/tags/', '/faq/', '/blog/', '/project/', '/timeline/'] as const;
 
 function isLocalized(path: string): boolean {
   return LOCALIZED_ROUTE_SET.has(path) || LOCALIZED_PREFIXES.some((p) => path.startsWith(p));

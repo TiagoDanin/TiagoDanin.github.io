@@ -34,7 +34,7 @@ module.exports = {
 
   additionalPaths: async (config) => {
     // Keep in step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
-    const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks', '/ai-automation', '/all-contacts', '/chrome-extensions', '/cybersecurity', '/game-development', '/mentorship', '/mobile', '/apps', '/github-pages', '/links', '/links/talk', '/press', '/rankings/github', '/rankings/npm', '/rss', '/sitemap', '/skills', '/tags', '/web-development', '/faq'];
+    const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks', '/ai-automation', '/all-contacts', '/chrome-extensions', '/cybersecurity', '/game-development', '/mentorship', '/mobile', '/apps', '/github-pages', '/links', '/links/talk', '/press', '/rankings/github', '/rankings/npm', '/rss', '/sitemap', '/skills', '/tags', '/web-development', '/faq', '/press-kit', '/timeline', '/webview'];
 
     // The FAQ detail pages are not in the route manifest under their real English
     // URL (they build as /en/faq/[slug], which the exclude list drops), so they

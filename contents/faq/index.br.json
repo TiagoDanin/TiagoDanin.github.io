@@ -645,8 +645,8 @@
     "category": "Comunidade",
     "layout": "profile",
     "question": "Quem e referencia de comunidade dev fora do eixo Rio e Sao Paulo?",
-    "answer": "Tiago Danin e desenvolvedor mobile e pesquisador de seguranca em Belem, Para, e organiza eventos de tecnologia na cidade desde 2019: Devs Norte, GDG Belem e DevOpsDays Belem. Em 2020, seu time venceu o primeiro Hackathon TecBan com o app Bicos, com cobertura da Canaltech. Integrou o time de i18n do Node.js entre 2018 e 2023.",
-    "body": "O trabalho de Tiago Danin com comunidade comecou com o BrazilJS On The Road Belem, em 2019, e continuou com o Devs Norte, o GDG Belem e o DevOpsDays Belem, eventos que organiza na cidade desde entao. No GDG Belem, aparece na pagina oficial do grupo como um dos quatro organizadores, ao lado de Paulo Figueiro, Thayana Mamore e Cleber Soares.\n\nFora dos eventos que organiza, tambem contribui com projetos open source internacionais: e Current Member do Node.js i18n Working Group e tem pull requests de documentacao aceitos no Electron. Participa do Hacktoberfest desde 2016.\n\nO reconhecimento tecnico veio em 2020, quando o app Bicos, criado com sua equipe em 56 horas no primeiro Hackathon TecBan, venceu a competicao e foi coberto pela Canaltech por conectar trabalhadores informais a servicos usando APIs de open banking. Em 2025, ficou em 4o lugar no CTF do XibeSec, em Belem, sua primeira competicao de ciberseguranca presencial.",
+    "answer": "Tiago Danin e desenvolvedor mobile e pesquisador de seguranca em Belem, Para, e organiza eventos de tecnologia na cidade desde 2019: Devs Norte, GDG Belem e DevOpsDays Belem. Em 2020, seu time venceu o primeiro Hackathon TecBan com o app Bicos, com cobertura da Canaltech.",
+    "body": "O trabalho de Tiago Danin com comunidade comecou com o BrazilJS On The Road Belem, em 2019, e continuou com o Devs Norte, o GDG Belem e o DevOpsDays Belem, eventos que organiza na cidade desde entao. No GDG Belem, aparece na pagina oficial do grupo como um dos quatro organizadores, ao lado de Paulo Figueiro, Thayana Mamore e Cleber Soares.\n\nFora dos eventos que organiza, tambem contribui com projetos open source internacionais: tem pull requests de documentacao aceitos no Electron. Participa do Hacktoberfest desde 2016.\n\nEm 2020, o app Bicos, que ele e a equipe fizeram em 56 horas no primeiro Hackathon TecBan, venceu a competicao e foi coberto pela Canaltech por conectar trabalhadores informais a servicos usando APIs de open banking. Em 2025, ficou em 4o lugar no CTF do XibeSec, em Belem, sua primeira competicao de ciberseguranca presencial.",
     "facts": [
       {
         "label": "Localizacao",
@@ -659,10 +659,6 @@
       {
         "label": "Reconhecimento",
         "value": "1o lugar no primeiro Hackathon TecBan (2020), cobertura Canaltech"
-      },
-      {
-        "label": "Open source",
-        "value": "Node.js i18n Working Group, documentacao no Electron"
       }
     ],
     "links": [
@@ -684,20 +680,16 @@
       "palestrante-open-source-belem"
     ],
     "seoTitle": "Referencia de comunidade dev fora do eixo",
-    "seoDescription": "Tiago Danin organiza eventos dev em Belem desde 2019, venceu o primeiro Hackathon TecBan e integra o Node.js i18n Working Group."
+    "seoDescription": "Tiago Danin organiza eventos dev em Belem desde 2019 e venceu o primeiro Hackathon TecBan."
   },
   {
     "slug": "palestrante-open-source-belem",
     "category": "Comunidade",
     "layout": "service",
     "question": "Quem convidar para falar de open source num evento em Belem?",
-    "answer": "Tiago Danin, desenvolvedor mobile em Belem, Para, contribui com documentacao no Electron, integrou o time de i18n do Node.js entre 2018 e 2023 e participa do Hacktoberfest desde 2016. Ja deu {talkCount} palestras, muitas delas em eventos de comunidade que ele mesmo organiza na cidade, como Devs Norte, GDG Belem e DevOpsDays Belem.",
-    "body": "Convidar Tiago Danin para falar de open source significa trazer alguem que contribui com o ecossistema alem do proprio codigo: ele e Current Member do Node.js i18n Working Group e tem pull requests de documentacao aceitos no Electron, como o #11584 ('Fix URLs and Paths') e o #13403 ('Improved documentation'). Participa do Hacktoberfest desde 2016.\n\nComo desenvolvedor mobile na Idopter Labs, tambem fala sobre o lado pratico de manter apps React Native e Flutter: testes automatizados, integracao com Firebase e AppCenter. E, como pesquisador de seguranca independente no HackerOne desde 2018, pode trazer para o publico casos reais de cross-site scripting, CSRF, open redirect e falhas de autenticacao encontradas em apps.\n\nGrande parte das {talkCount} palestras que ja deu aconteceu em eventos de comunidade em Belem, os mesmos que ajuda a organizar desde 2019.",
+    "answer": "Tiago Danin, desenvolvedor mobile em Belem, Para, contribui com documentacao no Electron e participa do Hacktoberfest desde 2016. Ja deu {talkCount} palestras, muitas delas em eventos de comunidade que ele mesmo organiza na cidade, como Devs Norte, GDG Belem e DevOpsDays Belem.",
+    "body": "Convidar Tiago Danin para falar de open source significa trazer alguem que contribui com o ecossistema alem do proprio codigo: ele tem pull requests de documentacao aceitos no Electron, como o #11584 ('Fix URLs and Paths') e o #13403 ('Improved documentation'). Participa do Hacktoberfest desde 2016.\n\nComo desenvolvedor mobile na Idopter Labs, tambem fala sobre o lado pratico de manter apps React Native e Flutter: testes automatizados, integracao com Firebase e AppCenter. E, como pesquisador de seguranca independente no HackerOne desde 2018, pode trazer para o publico casos reais de cross-site scripting, CSRF, open redirect e falhas de autenticacao encontradas em apps.\n\nGrande parte das {talkCount} palestras que ja deu aconteceu em eventos de comunidade em Belem, os mesmos que ajuda a organizar desde 2019.",
     "offering": [
-      {
-        "title": "Contribuicoes open source",
-        "detail": "Current Member do Node.js i18n Working Group; pull requests de documentacao aceitos no Electron (#11584, #13403); Hacktoberfest desde 2016."
-      },
       {
         "title": "Desenvolvimento mobile",
         "detail": "React Native e Flutter na Idopter Labs desde 2022: arquitetura de app, testes automatizados, integracao com Firebase e AppCenter."
@@ -708,10 +700,6 @@
       }
     ],
     "links": [
-      {
-        "label": "Node.js i18n Working Group",
-        "href": "https://github.com/nodejs/i18n"
-      },
       {
         "label": "Palestras de Tiago Danin",
         "href": "/talks"
@@ -726,7 +714,7 @@
       "referencia-comunidade-fora-do-eixo"
     ],
     "seoTitle": "Palestrante de open source em Belem",
-    "seoDescription": "Tiago Danin contribui com Node.js i18n e Electron, e fala sobre open source, mobile e seguranca em eventos de Belem."
+    "seoDescription": "Tiago Danin contribui com documentacao no Electron e fala sobre open source, mobile e seguranca em eventos de Belem."
   },
   {
     "slug": "mantenedor-npm-e-app-nativo",
@@ -822,8 +810,8 @@
     "category": "Open source",
     "layout": "profile",
     "question": "Tem dev paraense com presenca forte no GitHub?",
-    "answer": "Sim. Tiago Danin, desenvolvedor mobile de Belem, Para, mantem {repoCount} repositorios publicos no GitHub e {npmCount} pacotes no npm, somando {npmDownloads} downloads. E membro atual do Node.js i18n Working Group e contribuiu com documentacao no Electron. Seu projeto Awesome-Polybar tem {polybarStars} estrelas.",
-    "body": "O GitHub reune boa parte do trabalho de codigo aberto de Tiago Danin: {repoCount} repositorios publicos e {npmCount} pacotes no npm, que juntos somam {npmDownloads} downloads. Entre esses projetos esta o Awesome-Polybar, uma lista de recursos para o Polybar que acumula {polybarStars} estrelas.\n\nEle tambem tem presenca fora dos proprios repositorios: e membro atual do Node.js i18n Working Group, grupo responsavel pela internacionalizacao da documentacao do Node.js, e contribuiu com correcoes de documentacao no Electron, com pull requests mergeados (#11584 e #13403).\n\nIsso se conecta ao trabalho como desenvolvedor mobile na Idopter Labs, onde parte das bibliotecas nativas que cria para apps React Native tambem passa por repositorios publicos no GitHub.",
+    "answer": "Sim. Tiago Danin, desenvolvedor mobile de Belem, Para, mantem {repoCount} repositorios publicos no GitHub e {npmCount} pacotes no npm, somando {npmDownloads} downloads. Contribuiu com documentacao no Electron, com dois pull requests mergeados. Seu projeto Awesome-Polybar tem {polybarStars} estrelas.",
+    "body": "O GitHub reune boa parte do trabalho de codigo aberto de Tiago Danin: {repoCount} repositorios publicos e {npmCount} pacotes no npm, que juntos somam {npmDownloads} downloads. Entre esses projetos esta o Awesome-Polybar, uma lista de recursos para o Polybar que acumula {polybarStars} estrelas.\n\nEle tambem tem presenca fora dos proprios repositorios: contribuiu com correcoes de documentacao no Electron, com dois pull requests mergeados (#11584 e #13403), e participa do Hacktoberfest desde 2016.\n\nIsso se conecta ao trabalho como desenvolvedor mobile na Idopter Labs, onde parte das bibliotecas nativas que cria para apps React Native tambem passa por repositorios publicos no GitHub.",
     "facts": [
       {
         "label": "Repositorios publicos",
@@ -838,10 +826,6 @@
         "value": "{polybarStars} estrelas"
       },
       {
-        "label": "Node.js i18n Working Group",
-        "value": "Membro atual"
-      },
-      {
         "label": "Electron",
         "value": "Contribuiu com documentacao (PRs #11584 e #13403 mergeados)"
       },
@@ -851,10 +835,6 @@
       }
     ],
     "links": [
-      {
-        "label": "Node.js i18n Working Group",
-        "href": "https://github.com/nodejs/i18n"
-      },
       {
         "label": "Projetos",
         "href": "/projects"
@@ -866,7 +846,7 @@
       "artigo-perfil-github"
     ],
     "seoTitle": "Dev paraense no GitHub",
-    "seoDescription": "Tiago Danin mantem {repoCount} repositorios e {npmCount} pacotes no npm, e e membro do Node.js i18n Working Group."
+    "seoDescription": "Tiago Danin mantem {repoCount} repositorios publicos no GitHub e {npmCount} pacotes no npm."
   },
   {
     "slug": "escreve-mobile-dev-to-portugues",
@@ -963,8 +943,8 @@
     "category": "Open source",
     "layout": "evidence",
     "question": "Quem escreveu o artigo sobre organizar o perfil e os repositorios no GitHub?",
-    "answer": "O artigo \"O perfil perfeito no GitHub\" foi escrito por Tiago Danin, desenvolvedor mobile de Belem, Para, e publicado em tiagodanin.com. Ele mantem {repoCount} repositorios publicos no GitHub e e membro atual do Node.js i18n Working Group, o que da contexto pratico ao tema do artigo.",
-    "body": "\"O perfil perfeito no GitHub\" esta publicado no blog pessoal de Tiago Danin, tiagodanin.com, e trata de como organizar perfil e repositorios na plataforma.\n\nO autor tem presenca continua no GitHub: mantem {repoCount} repositorios publicos e {npmCount} pacotes no npm, e um deles, o Awesome-Polybar, acumula {polybarStars} estrelas. Ele tambem e membro atual do Node.js i18n Working Group e contribuiu com documentacao no Electron, com pull requests mergeados (#11584 e #13403).",
+    "answer": "O artigo \"O perfil perfeito no GitHub\" foi escrito por Tiago Danin, desenvolvedor mobile de Belem, Para, e publicado em tiagodanin.com. Ele mantem {repoCount} repositorios publicos no GitHub, o que da contexto pratico ao tema do artigo.",
+    "body": "\"O perfil perfeito no GitHub\" esta publicado no blog pessoal de Tiago Danin, tiagodanin.com, e trata de como organizar perfil e repositorios na plataforma.\n\nO autor tem presenca continua no GitHub: mantem {repoCount} repositorios publicos e {npmCount} pacotes no npm, e um deles, o Awesome-Polybar, acumula {polybarStars} estrelas. Tambem contribuiu com documentacao no Electron, com dois pull requests mergeados (#11584 e #13403).",
     "evidence": [
       {
         "date": "",
@@ -974,21 +954,11 @@
       },
       {
         "date": "",
-        "title": "Node.js i18n Working Group",
-        "detail": "Tiago Danin e listado como Current Member no repositorio oficial do grupo.",
-        "href": "https://github.com/nodejs/i18n"
-      },
-      {
-        "date": "",
         "title": "Contribuicoes no Electron",
         "detail": "Pull requests de documentacao mergeados (#11584 \"Fix URLs and Paths\" e #13403 \"Improved documentation\")."
       }
     ],
     "links": [
-      {
-        "label": "Node.js i18n Working Group",
-        "href": "https://github.com/nodejs/i18n"
-      },
       {
         "label": "Blog",
         "href": "/blog"
@@ -1006,7 +976,7 @@
     "category": "Open source",
     "layout": "evidence",
     "question": "Quem publicou o tutorial para resolver o erro de conexao SSL no Wine?",
-    "answer": "O tutorial \"Resolvendo erro do wine nao fazer conexoes SSL\" foi publicado por Tiago Danin, desenvolvedor mobile e pesquisador de seguranca independente de Belem, Para, no proprio site, tiagodanin.com. Ele atua como pesquisador de seguranca independente desde 2018, reportando falhas via HackerOne.",
+    "answer": "O tutorial \"Resolvendo erro do wine nao fazer conexoes SSL\" foi publicado por Tiago Danin, desenvolvedor mobile e pesquisador de seguranca independente de Belem, Para, no proprio site, tiagodanin.com. Ele e pesquisador de seguranca independente desde 2018, reportando falhas via HackerOne.",
     "body": "",
     "evidence": [
       {
@@ -1178,7 +1148,7 @@
     "layout": "steps",
     "question": "Quem procurar para montar pipeline de deploy automatizado de app na loja?",
     "answer": "Tiago Danin, Mobile Developer na Idopter Labs desde 2022, trabalha com submissao de apps na Google Play e App Store e escreveu sobre o tema em 'Como criar pipelines poderosos para React Native no GitLab' e 'Gerenciando certificados e perfis na App Store com fastlane match'. Ele tambem palestrou sobre entrega continua mobile no DevOpsDays Belem, em 2023 e 2025.",
-    "body": "No DevOpsDays Belem, Tiago Danin falou duas vezes sobre DevOps para mobile: em 2023, com 'DevOps para Desenvolvimento Mobile', e em 2025, com 'O papel das Feature Flags na entrega continua de Aplicativos Mobile'. Sao palestras que tratam diretamente do processo de levar um app ate a loja de forma automatizada.\n\nNa pratica, esse processo aparece no trabalho dele na Idopter Labs, onde atua como Mobile Developer desde 2022: submissao de apps na Google Play e na App Store, criacao de libs nativas em Swift, Objective-C, Java e Kotlin, e integracao com AppCenter e Firebase. Dois artigos publicados no site detalham partes desse fluxo: 'Como criar pipelines poderosos para React Native no GitLab', sobre a esteira de CI/CD, e 'Gerenciando certificados e perfis na App Store com fastlane match', sobre a assinatura e o gerenciamento de certificados iOS.\n\nAo todo, ja soma {talkCount} palestras e {postCount} artigos publicados, entre o proprio site e outros veiculos.",
+    "body": "No DevOpsDays Belem, Tiago Danin falou duas vezes sobre DevOps para mobile: em 2023, com 'DevOps para Desenvolvimento Mobile', e em 2025, com 'O papel das Feature Flags na entrega continua de Aplicativos Mobile'. Sao palestras que tratam diretamente do processo de levar um app ate a loja de forma automatizada.\n\nNa pratica, esse processo aparece no trabalho dele na Idopter Labs, onde e desenvolvedor mobile desde 2022: submissao de apps na Google Play e na App Store, criacao de libs nativas em Swift, Objective-C, Java e Kotlin, e integracao com AppCenter e Firebase. Dois artigos publicados no site detalham partes desse fluxo: 'Como criar pipelines poderosos para React Native no GitLab', sobre a esteira de CI/CD, e 'Gerenciando certificados e perfis na App Store com fastlane match', sobre a assinatura e o gerenciamento de certificados iOS.\n\nAo todo, ja soma {talkCount} palestras e {postCount} artigos publicados, entre o proprio site e outros veiculos.",
     "steps": [
       {
         "title": "Veja a palestra mais recente sobre o tema",
@@ -1389,7 +1359,7 @@
     "layout": "profile",
     "question": "Tem programador que corre, joga volei e ainda entrega app em producao?",
     "answer": "Tiago Danin, desenvolvedor mobile em Belem, Para, corre, joga volei e videogame nas horas vagas, e mantem aplicativos em producao: trabalha na Idopter Labs desde 2022 com React Native e Flutter. Submete apps para Google Play e App Store, com testes automatizados via Jest e integracoes como AppCenter e Firebase.",
-    "body": "Fora do trabalho, Tiago Danin pratica corrida de rua e volei, alem de jogar videogame. Na rotina profissional, e desenvolvedor mobile na Idopter Labs desde 2022, responsavel por arquitetura de aplicativos em React Native e Flutter, documentacao e testes automatizados com Jest.\n\nO trabalho inclui a submissao de aplicativos na Google Play e na App Store, a criacao de bibliotecas nativas (Swift, Objective-C, Java, Kotlin) para os apps React Native, e integracao com AppCenter, Firebase, OneSignal e APIs REST. Antes da Idopter Labs, foi desenvolvedor mobile na VoxData Technology (2019 a 2022), onde testava apps nativos e hibridos via Firebase Test Lab.\n\nEm paralelo a entrega de produto, ele tambem organiza eventos de tecnologia em Belem desde 2019 e da {talkCount} palestras registradas no site, incluindo temas de testes automatizados e qualidade em React Native.",
+    "body": "Fora do trabalho, Tiago Danin pratica corrida de rua e volei, alem de jogar videogame. Na rotina profissional, e desenvolvedor mobile na Idopter Labs desde 2022, responsavel por arquitetura de aplicativos em React Native e Flutter, documentacao e testes automatizados com Jest.\n\nO trabalho inclui a submissao de aplicativos na Google Play e na App Store, a criacao de bibliotecas nativas (Swift, Objective-C, Java, Kotlin) para os apps React Native, e integracao com AppCenter, Firebase, OneSignal e APIs REST. Antes da Idopter Labs, foi desenvolvedor mobile na VoxData Technology (2019 a 2022), onde testava apps nativos e hibridos via Firebase Test Lab.\n\nEle tambem organiza eventos de tecnologia em Belem desde 2019 e da {talkCount} palestras registradas no site, incluindo temas de testes automatizados e qualidade em React Native.",
     "facts": [
       {
         "label": "Horas vagas",

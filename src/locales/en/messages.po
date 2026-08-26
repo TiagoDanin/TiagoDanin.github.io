@@ -13,6 +13,30 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: Number(project.downloads).toLocaleString('en-US')
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid " {0} downloads."
+msgstr " {0} downloads."
+
+#. placeholder {0}: project.stargazers_count
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid " {0} stars on GitHub."
+msgstr " {0} stars on GitHub."
+
+#. placeholder {0}: project.language
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid " Built with {0}."
+msgstr " Built with {0}."
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid " Licensed under {licenseName}."
+msgstr " Licensed under {licenseName}."
+
+#. placeholder {0}: tags.join(', ')
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid " Topics: {0}."
+msgstr " Topics: {0}."
+
 #. placeholder {0}: app.name
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
 msgid "{0} - Android App"
@@ -45,10 +69,16 @@ msgstr "{0} article"
 
 #. placeholder {0}: posts.length
 #. placeholder {0}: taggedPosts.length
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
 #: src/app/(i18n)/[lang]/blog/page.tsx
 #: src/app/(i18n)/[lang]/tags/[tag]/page.tsx
 msgid "{0} articles"
 msgstr "{0} articles"
+
+#. placeholder {0}: pressItems.length
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "{0} articles and releases published by others, all in Portuguese."
+msgstr "{0} articles and releases published by others, all in Portuguese."
 
 #. placeholder {0}: skill.name
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
@@ -65,10 +95,40 @@ msgstr "{0} Developer, Tiago Danin"
 msgid "{0} Development"
 msgstr "{0} Development"
 
+#. placeholder {0}: Number(project.downloads).toLocaleString('en-US')
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "{0} downloads."
+msgstr "{0} downloads."
+
 #. placeholder {0}: githubPages.length
 #: src/components/sections/GitHubPages.tsx
 msgid "{0} Pages"
 msgstr "{0} Pages"
+
+#. placeholder {0}: galleryPhotos.length
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "{0} photos to use in announcement posts, banners and event pages. Cropping and color grading to match your art direction is fine."
+msgstr "{0} photos to use in announcement posts, banners and event pages. Cropping and color grading to match your art direction is fine."
+
+#. placeholder {0}: taggedPosts.length
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "{0} post found"
+msgstr "{0} post found"
+
+#. placeholder {0}: taggedPosts.length
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "{0} posts found"
+msgstr "{0} posts found"
+
+#. placeholder {0}: about.name
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "{0} profile photo"
+msgstr "{0} profile photo"
+
+#. placeholder {0}: project.stargazers_count
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "{0} stars on GitHub."
+msgstr "{0} stars on GitHub."
 
 #. placeholder {0}: taggedTalks.length
 #: src/app/(i18n)/[lang]/tags/[tag]/page.tsx
@@ -80,10 +140,23 @@ msgstr "{0} talk"
 msgid "{0} talks"
 msgstr "{0} talks"
 
+#. placeholder {0}: talks.length
+#. placeholder {1}: firstTalkYear ? <> since {firstTalkYear}</> : null
+#. placeholder {2}: events.length
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "{0} talks{1}, at {2} different events."
+msgstr "{0} talks{1}, at {2} different events."
+
 #. placeholder {0}: list.urls.length
 #: src/app/(i18n)/[lang]/sitemap/page.tsx
 msgid "{0} URLs, view XML"
 msgstr "{0} URLs, view XML"
+
+#. placeholder {0}: about.name
+#. placeholder {1}: photo.label.toLowerCase()
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "{0}, {1}"
+msgstr "{0}, {1}"
 
 #: src/app/(i18n)/[lang]/tags/[tag]/page.tsx
 msgid "{originalTagName} - Articles & Talks"
@@ -97,6 +170,11 @@ msgstr "{originalTagName} - Articles & Talks | Tiago Danin"
 msgid "{otherProjectsPrivateCount} secret projects"
 msgstr "{otherProjectsPrivateCount} secret projects"
 
+#. placeholder {0}: (baseDescription || enrichedDescription).substring(0, 60)
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "{title} - {0}"
+msgstr "{title} - {0}"
+
 #: src/app/(i18n)/[lang]/sitemap/page.tsx
 msgid "{title} - Tiago Danin"
 msgstr "{title} - Tiago Danin"
@@ -104,6 +182,19 @@ msgstr "{title} - Tiago Danin"
 #: src/components/ui/ProjectCard.tsx
 msgid "{title} (opens in a new tab)"
 msgstr "{title} (opens in a new tab)"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "{title} | {platformContext}"
+msgstr "{title} | {platformContext}"
+
+#. placeholder {0}: platformLabel.toLowerCase()
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "{title} is a {0} by Tiago Danin."
+msgstr "{title} is a {0} by Tiago Danin."
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "{title}: {platformContext} by Tiago Danin."
+msgstr "{title}: {platformContext} by Tiago Danin."
 
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "{totalPosts, plural, one {# article} other {# articles}}"
@@ -149,6 +240,10 @@ msgstr "12 weekly 1-hour video calls"
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "12 weeks"
 msgstr "12 weeks"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "1st place, TecBan Hackathon 2020"
+msgstr "1st place, TecBan Hackathon 2020"
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "2018 - Present"
@@ -286,6 +381,10 @@ msgstr "Agents, RAG, MCP servers, and AI-powered automation, built with evals, c
 msgid "AI Agents & Workflows"
 msgstr "AI Agents & Workflows"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "AI agents and MCP"
+msgstr "AI agents and MCP"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "AI Automation"
 msgstr "AI Automation"
@@ -362,6 +461,14 @@ msgstr "All articles and talks organized by technology tags"
 msgid "All articles and thoughts about development, technology and more."
 msgstr "All articles and thoughts about development, technology and more."
 
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "All blog posts tagged with \"{originalTagName}\""
+msgstr "All blog posts tagged with \"{originalTagName}\""
+
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "All blog posts tagged with \"{originalTagName}\" - Software development, mobile apps, and technology articles."
+msgstr "All blog posts tagged with \"{originalTagName}\" - Software development, mobile apps, and technology articles."
+
 #: src/app/(i18n)/[lang]/all-contacts/page.tsx
 msgid "All contact methods and social media profiles for Tiago Danin. Connect on GitHub, LinkedIn, Twitter, and more professional platforms."
 msgstr "All contact methods and social media profiles for Tiago Danin. Connect on GitHub, LinkedIn, Twitter, and more professional platforms."
@@ -422,6 +529,14 @@ msgstr "All Tags"
 msgid "Already have AI in production? I review prompts, costs, evals, and architecture, and tell you what to fix."
 msgstr "Already have AI in production? I review prompts, costs, evals, and architecture, and tell you what to fix."
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Also"
+msgstr "Also"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Also available as:"
+msgstr "Also available as:"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Also available:"
 msgstr "Also available:"
@@ -441,6 +556,10 @@ msgstr "Analytics & conversion tracking"
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
 msgid "Android"
 msgstr "Android"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Android App"
+msgstr "Android App"
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Android App Analysis"
@@ -536,6 +655,7 @@ msgstr "Apps"
 msgid "Arcade & Survival"
 msgstr "Arcade & Survival"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 #: src/components/ui/ProjectCard.tsx
 msgid "Archived"
 msgstr "Archived"
@@ -547,6 +667,10 @@ msgstr "Areas where I excel and can help bring your ideas to life."
 #: src/app/(i18n)/[lang]/tags/page.tsx
 msgid "article"
 msgstr "article"
+
+#: src/components/ui/ArticleCard.tsx
+msgid "Article"
+msgstr "Article"
 
 #: src/app/(i18n)/[lang]/tags/page.tsx
 msgid "articles"
@@ -560,6 +684,10 @@ msgstr "Articles"
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Articles about {0}"
 msgstr "Articles about {0}"
+
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+msgid "Articles about software development, mobile apps, and technology."
+msgstr "Articles about software development, mobile apps, and technology."
 
 #: src/app/(i18n)/[lang]/press/page.tsx
 msgid "Articles, interviews and releases published by others. Everything here is in Portuguese, and every link goes to the original source."
@@ -581,6 +709,14 @@ msgstr "As a HackerOne security researcher since 2018, I build apps with securit
 msgid "ASO & App Marketing"
 msgstr "ASO & App Marketing"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Atom Package"
+msgstr "Atom Package"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "AUR Package"
+msgstr "AUR Package"
+
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Auth (NextAuth, Clerk, custom)"
 msgstr "Auth (NextAuth, Clerk, custom)"
@@ -600,6 +736,10 @@ msgstr "Authentication Testing"
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Automated CI/CD"
 msgstr "Automated CI/CD"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Automated tests for mobile, fastlane match and certificates, feature flags, A/B testing with Firebase, and continuous delivery to both stores."
+msgstr "Automated tests for mobile, fastlane match and certificates, feature flags, A/B testing with Firebase, and continuous delivery to both stores."
 
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Automating workflows with GitHub Actions. Building CI/CD pipelines for testing, building, and deploying applications. Experienced with custom actions, matrix builds, and release automation."
@@ -625,10 +765,15 @@ msgstr "Average Forks"
 msgid "Average Stars"
 msgstr "Average Stars"
 
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "Back to All Posts"
+msgstr "Back to All Posts"
+
 #: src/app/(i18n)/[lang]/tags/[tag]/page.tsx
 msgid "Back to All Tags"
 msgstr "Back to All Tags"
 
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
 #: src/app/(i18n)/[lang]/post/[slug]/page.tsx
 msgid "Back to Blog"
 msgstr "Back to Blog"
@@ -641,6 +786,10 @@ msgstr "Back to Talks"
 msgid "Back to the press kit"
 msgstr "Back to the press kit"
 
+#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/page.tsx
+msgid "Back to Timeline"
+msgstr "Back to Timeline"
+
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Background sync"
 msgstr "Background sync"
@@ -649,17 +798,53 @@ msgstr "Background sync"
 msgid "Banking Security Product Development"
 msgstr "Banking Security Product Development"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Based in"
+msgstr "Based in"
+
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
 msgid "Behind the Build"
 msgstr "Behind the Build"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Belém, Pará, Brazil"
+msgstr "Belém, Pará, Brazil"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Bicos, an open banking app for informal workers"
+msgstr "Bicos, an open banking app for informal workers"
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Binary Analysis"
 msgstr "Binary Analysis"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Bios"
+msgstr "Bios"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Bios in English and Portuguese, photo, logo and talk topics and booking contact. Everything an event or publication needs."
+msgstr "Bios in English and Portuguese, photo, logo and talk topics and booking contact. Everything an event or publication needs."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Bios in English and Portuguese, photo, logo and talk topics, ready to copy. No approval needed: use what is on this page as it is, or trim it to fit."
+msgstr "Bios in English and Portuguese, photo, logo and talk topics, ready to copy. No approval needed: use what is on this page as it is, or trim it to fit."
+
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+msgid "Blog"
+msgstr "Blog"
+
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Blog - Flutter, AI & Cybersecurity"
 msgstr "Blog - Flutter, AI & Cybersecurity"
+
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+msgid "Blog - Page {pageNumber} - Flutter, AI & Security"
+msgstr "Blog - Page {pageNumber} - Flutter, AI & Security"
+
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+msgid "Blog - Page {pageNumber} - Tiago Danin"
+msgstr "Blog - Page {pageNumber} - Tiago Danin"
 
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Blog - Technical Articles on Flutter, AI & Cybersecurity"
@@ -672,6 +857,10 @@ msgstr "Blog about software development, mobile, AI and security"
 #: src/app/(i18n)/[lang]/rss/page.tsx
 msgid "Blog Posts"
 msgstr "Blog Posts"
+
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+msgid "Blog, page {currentPage} of {totalPages}"
+msgstr "Blog, page {currentPage} of {totalPages}"
 
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Blog: Articles on Development & AI"
@@ -688,6 +877,10 @@ msgstr "Bonfire Engine Mastery"
 #: src/app/(i18n)/[lang]/game-development/page.tsx
 msgid "Bonfire game engine"
 msgstr "Bonfire game engine"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Booking and press"
+msgstr "Booking and press"
 
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Bridge browser sessions with external APIs, dashboards, and internal tools, securely and at scale."
@@ -721,6 +914,10 @@ msgstr "Browse all GitHub Pages projects and live demos by Tiago Danin. Interact
 msgid "Browse all my GitHub Pages projects with live demos and documentation"
 msgstr "Browse all my GitHub Pages projects with live demos and documentation"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/not-found.tsx
+msgid "Browse All Projects"
+msgstr "Browse All Projects"
+
 #: src/app/(i18n)/[lang]/tags/page.tsx
 msgid "Browse by Tags"
 msgstr "Browse by Tags"
@@ -733,6 +930,14 @@ msgstr "Browse by Tags - Articles & Talks"
 msgid "Browse by Tags - Tiago Danin"
 msgstr "Browse by Tags - Tiago Danin"
 
+#: src/app/(i18n)/[lang]/webview/page.tsx
+msgid "Browser environment exploration for security research."
+msgstr "Browser environment exploration for security research."
+
+#: src/app/(i18n)/[lang]/webview/page.tsx
+msgid "Browser environment exploration tool for bug bounty research. Inspect window properties, execute JavaScript, and test security POCs."
+msgstr "Browser environment exploration tool for bug bounty research. Inspect window properties, execute JavaScript, and test security POCs."
+
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Browser Extension Development"
 msgstr "Browser Extension Development"
@@ -740,6 +945,10 @@ msgstr "Browser Extension Development"
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Browser Extensions, Done Right."
 msgstr "Browser Extensions, Done Right."
+
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "bug bounty Brazil"
+msgstr "bug bounty Brazil"
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Bug Bounty Consultation"
@@ -789,6 +998,11 @@ msgstr "Building scalable backend services and APIs with Node.js. Experienced wi
 msgid "Built for Speed"
 msgstr "Built for Speed"
 
+#. placeholder {0}: project.language
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Built with {0}."
+msgstr "Built with {0}."
+
 #: src/components/layout/Footer.tsx
 msgid "Built with <0>Next.js</0> and <1>Tailwind</1>, hosted on <2>GitHub Pages</2>."
 msgstr "Built with <0>Next.js</0> and <1>Tailwind</1>, hosted on <2>GitHub Pages</2>."
@@ -804,6 +1018,22 @@ msgstr "by"
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Career advice and industry insights"
 msgstr "Career advice and industry insights"
+
+#: src/app/(i18n)/[lang]/timeline/page.tsx
+msgid "Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source."
+msgstr "Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source."
+
+#: src/app/(i18n)/[lang]/timeline/page.tsx
+msgid "Career Timeline | Tiago Danin"
+msgstr "Career Timeline | Tiago Danin"
+
+#: src/app/(i18n)/[lang]/timeline/page.tsx
+msgid "Career timeline from education to senior mobile developer. Professional milestones, projects, and achievements in mobile development, cybersecurity, and open source."
+msgstr "Career timeline from education to senior mobile developer. Professional milestones, projects, and achievements in mobile development, cybersecurity, and open source."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Career, open source and community"
+msgstr "Career, open source and community"
 
 #: src/app/(i18n)/[lang]/links/talk/page.tsx
 msgid "Carregando..."
@@ -902,6 +1132,10 @@ msgstr "Coming Soon to Google Play"
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Common Use Cases"
 msgstr "Common Use Cases"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Community"
+msgstr "Community"
 
 #: src/components/ui/experience-item.tsx
 msgid "Company"
@@ -1014,6 +1248,10 @@ msgstr "Core Web Vitals, structured data, sitemaps, and OG tags, built in, not b
 msgid "Cost optimization, prompt caching, fallbacks, observability, and guardrails for the real world."
 msgstr "Cost optimization, prompt caching, fallbacks, observability, and guardrails for the real world."
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Created"
+msgstr "Created"
+
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Creating modern Android UIs with Jetpack Compose. Experienced with Material Design 3, navigation, state management, and building responsive layouts for phones, tablets, and Wear OS."
 msgstr "Creating modern Android UIs with Jetpack Compose. Experienced with Material Design 3, navigation, state management, and building responsive layouts for phones, tablets, and Wear OS."
@@ -1021,6 +1259,10 @@ msgstr "Creating modern Android UIs with Jetpack Compose. Experienced with Mater
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Creating pixel art assets for games and digital media. Experienced with sprite design, animation frames, tileset creation, color palette management, and tools like Aseprite for production-quality game art."
 msgstr "Creating pixel art assets for games and digital media. Experienced with sprite design, animation frames, tileset creation, color palette management, and tools like Aseprite for production-quality game art."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Crop the photo into shapes other than a square or a circle."
+msgstr "Crop the photo into shapes other than a square or a circle."
 
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Cross-Browser"
@@ -1057,6 +1299,10 @@ msgstr "CSRF Analysis"
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "CTF Competition - 4th Place"
 msgstr "CTF Competition - 4th Place"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Current role"
+msgstr "Current role"
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Custom AI solutions: agent workflows, LLM integration, RAG, MCP servers, and prompt engineering for products and internal automation."
@@ -1198,6 +1444,10 @@ msgstr "Dev Blog - Flutter, AI & Security | Tiago Danin"
 msgid "Develop once, deploy everywhere. Flutter and React Native allow cost-effective development for both iOS and Android."
 msgstr "Develop once, deploy everywhere. Flutter and React Native allow cost-effective development for both iOS and Android."
 
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "developer community Norte"
+msgstr "developer community Norte"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Developer Portfolio - 300+ Projects"
 msgstr "Developer Portfolio - 300+ Projects"
@@ -1217,6 +1467,10 @@ msgstr "Development Mentorship"
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Development Services"
 msgstr "Development Services"
+
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "Direct answers about Tiago Danin: mobile development in Belém, Flutter, Kotlin, Swift and React Native, independent security research, talks and community work."
+msgstr "Direct answers about Tiago Danin: mobile development in Belém, Flutter, Kotlin, Swift and React Native, independent security research, talks and community work."
 
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Direct interaction for better understanding and immediate feedback on your progress."
@@ -1238,13 +1492,30 @@ msgstr "Document & email processing"
 msgid "Document ingestion pipelines"
 msgstr "Document ingestion pipelines"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Download"
+msgstr "Download"
+
+#. placeholder {0}: photo.label
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Download {0}"
+msgstr "Download {0}"
+
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
 msgid "Download on Google Play"
 msgstr "Download on Google Play"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Download SVG"
+msgstr "Download SVG"
+
 #: src/components/sections/NPMRankingsClient.tsx
 msgid "downloads"
 msgstr "downloads"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Downloads"
+msgstr "Downloads"
 
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "E-commerce & SaaS"
@@ -1258,9 +1529,33 @@ msgstr "Each session focuses on specific objectives to maximize your learning pr
 msgid "Edge Hosting"
 msgstr "Edge Hosting"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Education"
+msgstr "Education"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Email"
+msgstr "Email"
+
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "End-to-end AI services: agent workflows, LLM integration, RAG systems, MCP servers, prompt engineering, and AI-powered automation for products and internal tools."
 msgstr "End-to-end AI services: agent workflows, LLM integration, RAG systems, MCP servers, prompt engineering, and AI-powered automation for products and internal tools."
+
+#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/page.tsx
+msgid "Event Not Found"
+msgstr "Event Not Found"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Events"
+msgstr "Events"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Everything you need to introduce me"
+msgstr "Everything you need to introduce me"
+
+#: src/components/sections/faq/FaqMatrix.tsx
+msgid "Evidence"
+msgstr "Evidence"
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Experience & Achievements"
@@ -1305,6 +1600,10 @@ msgstr "Explore all articles and talks organized by technology tags."
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Explore Areas"
 msgstr "Explore Areas"
+
+#: src/app/(i18n)/[lang]/webview/page.tsx
+msgid "Explore browser environments and test security POCs. Property inspection and code execution."
+msgstr "Explore browser environments and test security POCs. Property inspection and code execution."
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
@@ -1383,6 +1682,10 @@ msgstr "Flutter & React Native"
 msgid "Flutter & React Native Development"
 msgstr "Flutter & React Native Development"
 
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "Flutter developer Brazil"
+msgstr "Flutter developer Brazil"
+
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Flutter Development"
 msgstr "Flutter Development"
@@ -1411,6 +1714,10 @@ msgstr "Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, see all skill
 msgid "Footer"
 msgstr "Footer"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Forks"
+msgstr "Forks"
+
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Free or paid extensions published on the Chrome Web Store, with onboarding and analytics built in."
 msgstr "Free or paid extensions published on the Chrome Web Store, with onboarding and analytics built in."
@@ -1418,6 +1725,10 @@ msgstr "Free or paid extensions published on the Chrome Web Store, with onboardi
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Free technical articles on mobile development, AI agents, and cybersecurity. Tutorials and in-depth guides."
 msgstr "Free technical articles on mobile development, AI agents, and cybersecurity. Tutorials and in-depth guides."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Free to use in event pages, articles and slides announcing a talk."
+msgstr "Free to use in event pages, articles and slides announcing a talk."
 
 #: src/components/ui/SitemapTable.tsx
 msgid "Frequency"
@@ -1458,6 +1769,10 @@ msgstr "From idle clickers to arcade survival, I design and ship casual games fo
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "From Prompt to Production"
 msgstr "From Prompt to Production"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Full name"
+msgstr "Full name"
 
 #: src/app/(i18n)/[lang]/skills/page.tsx
 msgid "Full overview of Tiago Danin's technical skills: Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, DevOps, and more. Hire for mobile development, web, and consulting."
@@ -1530,6 +1845,10 @@ msgstr "Get it on Google Play — Free"
 msgid "Get Security Assessment"
 msgstr "Get Security Assessment"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Getting started in mobile, maintaining open source packages, and preparing a profile that recruiters actually read."
+msgstr "Getting started in mobile, maintaining open source packages, and preparing a profile that recruiters actually read."
+
 #: src/app/(i18n)/[lang]/github-pages/page.tsx
 msgid "GitHub Pages"
 msgstr "GitHub Pages"
@@ -1560,6 +1879,10 @@ msgstr "GitHub Star Rankings"
 msgid "GitHub Stars Ranking - Most Starred Repos"
 msgstr "GitHub Stars Ranking - Most Starred Repos"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "GitHub, LinkedIn and Instagram"
+msgstr "GitHub, LinkedIn and Instagram"
+
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Goal-Oriented Sessions"
 msgstr "Goal-Oriented Sessions"
@@ -1579,6 +1902,10 @@ msgstr "Google Play submission, store listing optimization, and post-launch upda
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "HackerOne Security Researcher"
 msgstr "HackerOne Security Researcher"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Handle"
+msgstr "Handle"
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Harden"
@@ -1626,21 +1953,31 @@ msgstr "Hit detection & tuning"
 
 #: src/app/(i18n)/[lang]/all-contacts/page.tsx
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+#: src/app/(i18n)/[lang]/faq/[slug]/page.tsx
+#: src/app/(i18n)/[lang]/faq/page.tsx
 #: src/app/(i18n)/[lang]/github-pages/page.tsx
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 #: src/app/(i18n)/[lang]/mobile/page.tsx
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
 #: src/app/(i18n)/[lang]/press/page.tsx
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 #: src/app/(i18n)/[lang]/rankings/github/page.tsx
 #: src/app/(i18n)/[lang]/rankings/npm/page.tsx
 #: src/app/(i18n)/[lang]/rss/page.tsx
 #: src/app/(i18n)/[lang]/sitemap/page.tsx
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 #: src/app/(i18n)/[lang]/skills/page.tsx
+#: src/app/(i18n)/[lang]/timeline/page.tsx
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Home"
 msgstr "Home"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Homepage"
+msgstr "Homepage"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "How I Can Help"
@@ -1670,6 +2007,7 @@ msgstr "Idle & Clicker Games"
 msgid "Idle clicker with prestige and offline earnings"
 msgstr "Idle clicker with prestige and offline earnings"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
 #: src/components/sections/PressMentions.tsx
 msgid "In the press"
 msgstr "In the press"
@@ -1683,6 +2021,7 @@ msgid "In-depth tutorials and articles on mobile development, AI agents, cyberse
 msgstr "In-depth tutorials and articles on mobile development, AI agents, cybersecurity, and open source. Free guides for developers."
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
 msgid "Independent Security Researcher"
 msgstr "Independent Security Researcher"
 
@@ -1714,6 +2053,10 @@ msgstr "Indie Games, Shipped."
 msgid "Initial Assessment"
 msgstr "Initial Assessment"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Installation"
+msgstr "Installation"
+
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Integrating Firebase services including Authentication, Firestore, Cloud Functions, Remote Config, Analytics, and Crashlytics into mobile and web applications."
 msgstr "Integrating Firebase services including Authentication, Firestore, Cloud Functions, Remote Config, Analytics, and Crashlytics into mobile and web applications."
@@ -1741,6 +2084,10 @@ msgstr "Internal Automation"
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Internal Tools"
 msgstr "Internal Tools"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Invite me to speak"
+msgstr "Invite me to speak"
 
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "iOS Development"
@@ -1786,6 +2133,10 @@ msgstr "Language"
 msgid "Last Modified"
 msgstr "Last Modified"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Last Push"
+msgstr "Last Push"
+
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Launch & Iterate"
 msgstr "Launch & Iterate"
@@ -1827,6 +2178,14 @@ msgstr "Let's discuss your idea and find the best approach. No commitment requir
 msgid "Let's discuss your mobile app idea and how I can help bring it to life. From financial apps to government solutions, I have the expertise you need."
 msgstr "Let's discuss your mobile app idea and how I can help bring it to life. From financial apps to government solutions, I have the expertise you need."
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "License"
+msgstr "License"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Licensed under {licenseDisplay}."
+msgstr "Licensed under {licenseDisplay}."
+
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Lighthouse 90+ targets, image optimization, edge caching, and lazy loading, fast on real devices, not just in the lab."
 msgstr "Lighthouse 90+ targets, image optimization, edge caching, and lazy loading, fast on real devices, not just in the lab."
@@ -1835,6 +2194,10 @@ msgstr "Lighthouse 90+ targets, image optimization, edge caching, and lazy loadi
 msgid "Lightweight database development with SQLite. Experienced with embedded databases for mobile apps, local-first architectures, migrations, query optimization, and integration with Android, iOS, and Electron apps."
 msgstr "Lightweight database development with SQLite. Experienced with embedded databases for mobile apps, local-first architectures, migrations, query optimization, and integration with Android, iOS, and Electron apps."
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Link back to tiagodanin.com when you publish."
+msgstr "Link back to tiagodanin.com when you publish."
+
 #: src/app/(i18n)/[lang]/links/page.tsx
 msgid "Link in Bio - All Contacts & Profiles"
 msgstr "Link in Bio - All Contacts & Profiles"
@@ -1842,6 +2205,18 @@ msgstr "Link in Bio - All Contacts & Profiles"
 #: src/app/(i18n)/[lang]/links/page.tsx
 msgid "Link in Bio, Tiago Danin"
 msgstr "Link in Bio, Tiago Danin"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "LinkedIn is where I answer fastest. Email works as a second option. Either way, in Portuguese or English."
+msgstr "LinkedIn is where I answer fastest. Email works as a second option. Either way, in Portuguese or English."
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Links"
+msgstr "Links"
 
 #: src/app/(i18n)/[lang]/links/page.tsx
 msgid "Links - Tiago Danin"
@@ -1859,6 +2234,10 @@ msgstr "LLM Integration"
 msgid "Local & remote deployment"
 msgstr "Local & remote deployment"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Logo"
+msgstr "Logo"
+
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Long-running workflows"
 msgstr "Long-running workflows"
@@ -1866,6 +2245,10 @@ msgstr "Long-running workflows"
 #: src/app/(i18n)/[lang]/game-development/page.tsx
 msgid "Long-session games built around prestige loops, offline progression, and addictive upgrade trees."
 msgstr "Long-session games built around prestige loops, offline progression, and addictive upgrade trees."
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "LuaRocks Module"
+msgstr "LuaRocks Module"
 
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Managing cross-functional development teams. Experienced with agile methodologies, sprint planning, task delegation, conflict resolution, and fostering a collaborative engineering culture."
@@ -1972,13 +2355,22 @@ msgstr "Mobile apps are essential for modern businesses. I help you succeed in t
 msgid "Mobile dev with Flutter & React Native"
 msgstr "Mobile dev with Flutter & React Native"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Mobile Developer"
 msgstr "Mobile Developer"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Mobile Developer & Security Researcher"
+msgstr "Mobile Developer & Security Researcher"
+
 #: src/app/(i18n)/[lang]/links/page.tsx
 msgid "Mobile Developer • Bug Hunter"
 msgstr "Mobile Developer • Bug Hunter"
+
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "mobile developer Belém"
+msgstr "mobile developer Belém"
 
 #: src/app/(i18n)/[lang]/about/page.tsx
 msgid "Mobile developer specializing in Flutter, React Native & native iOS/Android. Open source contributor, security researcher, and mentor."
@@ -2003,6 +2395,10 @@ msgstr "Mobile Development"
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Mobile Development Expert"
 msgstr "Mobile Development Expert"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Mobile development in practice"
+msgstr "Mobile development in practice"
 
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "mobile development mentorship"
@@ -2033,9 +2429,17 @@ msgstr "Mobile Security"
 msgid "Mobile Security Consulting"
 msgstr "Mobile Security Consulting"
 
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "mobile security researcher"
+msgstr "mobile security researcher"
+
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Mobile Security Testing"
 msgstr "Mobile Security Testing"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Model Context Protocol from scratch and how to take a product built with coding agents from idea to shipped code, without the hype."
+msgstr "Model Context Protocol from scratch and how to take a product built with coding agents from idea to shipped code, without the hype."
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Model Context Protocol servers and Claude Agent SDK for production-grade autonomous systems."
@@ -2171,6 +2575,7 @@ msgstr "Need a {0} developer?"
 msgid "Network introduction opportunities"
 msgstr "Network introduction opportunities"
 
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Next"
 msgstr "Next"
@@ -2198,6 +2603,10 @@ msgstr "No description"
 #: src/components/sections/GitHubRankingsClient.tsx
 msgid "No description available"
 msgstr "No description available"
+
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "No posts found with this tag."
+msgstr "No posts found with this tag."
 
 #: src/components/sections/GitHubPages.tsx
 msgid "No projects found matching \"{searchQuery}\""
@@ -2228,6 +2637,14 @@ msgstr "NPM Download Rankings"
 msgid "npm downloads"
 msgstr "npm downloads"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "npm Package"
+msgstr "npm Package"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "NPM Package"
+msgstr "NPM Package"
+
 #: src/components/sections/NPMRankingsClient.tsx
 msgid "NPM Package Rankings"
 msgstr "NPM Package Rankings"
@@ -2235,6 +2652,10 @@ msgstr "NPM Package Rankings"
 #: src/app/(i18n)/[lang]/rankings/npm/page.tsx
 msgid "NPM Package Rankings - Downloads & Statistics"
 msgstr "NPM Package Rankings - Downloads & Statistics"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "npm packages"
+msgstr "npm packages"
 
 #: src/app/(i18n)/[lang]/rankings/npm/page.tsx
 msgid "NPM packages published by Tiago Danin, ranked by total downloads."
@@ -2262,6 +2683,10 @@ msgstr "OAuth & API auth"
 msgid "Objective-C developer with experience in legacy iOS and macOS codebases. Proficient in UIKit, Foundation, memory management, and bridging with Swift for modernization projects."
 msgstr "Objective-C developer with experience in legacy iOS and macOS codebases. Proficient in UIKit, Foundation, memory management, and bridging with Swift for modernization projects."
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Official press kit for Tiago Danin: ready to use bios in English and Portuguese, profile photo, logo, talk topics, and booking contact for events and media."
+msgstr "Official press kit for Tiago Danin: ready to use bios in English and Portuguese, profile photo, logo, talk topics, and booking contact for events and media."
+
 #: src/app/(i18n)/[lang]/game-development/page.tsx
 msgid "Offline earnings"
 msgstr "Offline earnings"
@@ -2278,6 +2703,14 @@ msgstr "Ongoing support and mentorship"
 msgid "Open CV"
 msgstr "Open CV"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Open full size"
+msgstr "Open full size"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Open Issues"
+msgstr "Open Issues"
+
 #: src/components/layout/Navbar.tsx
 msgid "Open menu"
 msgstr "Open menu"
@@ -2290,6 +2723,10 @@ msgstr "Open Source Contributor"
 msgid "Open Source Packages"
 msgstr "Open Source Packages"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Open Source Project"
+msgstr "Open Source Project"
+
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Open Source Projects"
 msgstr "Open Source Projects"
@@ -2297,6 +2734,14 @@ msgstr "Open Source Projects"
 #: src/app/(i18n)/[lang]/rankings/github/page.tsx
 msgid "Open source repositories by Tiago Danin, ranked by GitHub stars."
 msgstr "Open source repositories by Tiago Danin, ranked by GitHub stars."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Organizer at Devs Norte, GDG Belém and DevOpsDays Belém"
+msgstr "Organizer at Devs Norte, GDG Belém and DevOpsDays Belém"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Organizing events in Belém since 2019"
+msgstr "Organizing events in Belém since 2019"
 
 #: src/components/sections/FullProjects.tsx
 msgid "Other"
@@ -2318,9 +2763,25 @@ msgstr "Output schema enforcement"
 msgid "Package Statistics"
 msgstr "Package Statistics"
 
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+msgid "Page {currentPage}"
+msgstr "Page {currentPage}"
+
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Page {currentPage} of {totalPages}"
+
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+msgid "Page {pageNumber} of technical articles on Flutter, React Native, AI agents, and cybersecurity. Free in-depth tutorials for developers."
+msgstr "Page {pageNumber} of technical articles on Flutter, React Native, AI agents, and cybersecurity. Free in-depth tutorials for developers."
+
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Page 1 of {totalPages}"
 msgstr "Page 1 of {totalPages}"
+
+#: src/app/(i18n)/[lang]/not-found.tsx
+msgid "Page Not Found"
+msgstr "Page Not Found"
 
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Performance Analytics"
@@ -2342,6 +2803,18 @@ msgstr "Personalized 1:1 mentorship in game development, AI, and mobile developm
 msgid "Personalized Learning Path"
 msgstr "Personalized Learning Path"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Photo and logo"
+msgstr "Photo and logo"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Photos for promo art"
+msgstr "Photos for promo art"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Pick a language and the angle that fits your event, then copy. Numbers come from the site data, so they stay current."
+msgstr "Pick a language and the angle that fits your event, then copy. Numbers come from the site data, so they stay current."
+
 #: src/app/(i18n)/[lang]/press/page.tsx
 msgid "pieces"
 msgstr "pieces"
@@ -2354,6 +2827,14 @@ msgstr "Pinecone, Qdrant, pgvector, chosen based on scale, latency, and ops requ
 msgid "Platform-specific Features"
 msgstr "Platform-specific Features"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Please do"
+msgstr "Please do"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Please don’t"
+msgstr "Please don’t"
+
 #: src/app/(i18n)/[lang]/game-development/page.tsx
 msgid "Polished casual experiences designed for retention, with onboarding and accessibility built in."
 msgstr "Polished casual experiences designed for retention, with onboarding and accessibility built in."
@@ -2361,6 +2842,10 @@ msgstr "Polished casual experiences designed for retention, with onboarding and 
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Portfolio building guidance"
 msgstr "Portfolio building guidance"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Portuguese (native) and English"
+msgstr "Portuguese (native) and English"
 
 #: src/app/(i18n)/[lang]/post/[slug]/page.tsx
 msgid "Post not found"
@@ -2374,9 +2859,25 @@ msgstr "Postgres, SQLite, Cloudflare D1"
 msgid "posts & videos"
 msgstr "posts & videos"
 
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "Posts tagged with \"{originalTagName}\""
+msgstr "Posts tagged with \"{originalTagName}\""
+
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "Posts tagged with “{originalTagName}”"
+msgstr "Posts tagged with “{originalTagName}”"
+
+#: src/app/(i18n)/[lang]/blog/tags/[tag]/page.tsx
+msgid "Posts tagged with \"{originalTagName}\" - Tiago Danin"
+msgstr "Posts tagged with \"{originalTagName}\" - Tiago Danin"
+
 #: src/app/(i18n)/[lang]/game-development/page.tsx
 msgid "Pragmatic tools chosen to ship, not to impress on a CV."
 msgstr "Pragmatic tools chosen to ship, not to impress on a CV."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Present a talk as an endorsement from any company he works with."
+msgstr "Present a talk as an endorsement from any company he works with."
 
 #: src/app/(i18n)/[lang]/press/page.tsx
 msgid "Press"
@@ -2390,18 +2891,29 @@ msgstr "Press Coverage - Articles & Interviews"
 msgid "Press Coverage - Tiago Danin"
 msgstr "Press Coverage - Tiago Danin"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
 #: src/components/sections/Hero.tsx
 msgid "Press kit"
 msgstr "Press kit"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
 #: src/app/(i18n)/[lang]/press/page.tsx
 msgid "Press Kit"
 msgstr "Press Kit"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Press Kit - Bios, Photos & Speaker Info"
+msgstr "Press Kit - Bios, Photos & Speaker Info"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Press Kit - Tiago Danin"
+msgstr "Press Kit - Tiago Danin"
 
 #: src/app/(i18n)/[lang]/game-development/page.tsx
 msgid "Prestige systems"
 msgstr "Prestige systems"
 
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Previous"
 msgstr "Previous"
@@ -2477,6 +2989,10 @@ msgstr "Professional Experience"
 msgid "Professional journey and career milestones."
 msgstr "Professional journey and career milestones."
 
+#: src/app/(i18n)/[lang]/timeline/page.tsx
+msgid "Professional journey: education, projects, and career milestones in mobile development."
+msgstr "Professional journey: education, projects, and career milestones in mobile development."
+
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Professional Mentorship"
 msgstr "Professional Mentorship"
@@ -2517,6 +3033,10 @@ msgstr "Professional Services | Tiago Danin"
 msgid "Professional services by Tiago Danin: mobile app development with Flutter & React Native, cybersecurity consulting, and technical mentorship. 250+ projects delivered."
 msgstr "Professional services by Tiago Danin: mobile app development with Flutter & React Native, cybersecurity consulting, and technical mentorship. 250+ projects delivered."
 
+#: src/app/(i18n)/[lang]/timeline/page.tsx
+msgid "Professional Timeline & Career Journey"
+msgstr "Professional Timeline & Career Journey"
+
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Professional vulnerability assessment and security testing services. Protecting your digital assets with extensive security research experience."
 msgstr "Professional vulnerability assessment and security testing services. Protecting your digital assets with extensive security research experience."
@@ -2537,6 +3057,10 @@ msgstr "Professional vulnerability assessment, penetration testing, and security
 msgid "Proficient Swift developer building native iOS and macOS applications. Experienced with UIKit, SwiftUI, Combine, and Apple's ecosystem including Core Data, CloudKit, and App Store deployment."
 msgstr "Proficient Swift developer building native iOS and macOS applications. Experienced with UIKit, SwiftUI, Combine, and Apple's ecosystem including Core Data, CloudKit, and App Store deployment."
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Profile photo"
+msgstr "Profile photo"
+
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Program Setup"
 msgstr "Program Setup"
@@ -2545,9 +3069,22 @@ msgstr "Program Setup"
 msgid "programming mentor"
 msgstr "programming mentor"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Project"
+msgstr "Project"
+
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Project guidance and code reviews"
 msgstr "Project guidance and code reviews"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/not-found.tsx
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Project Not Found"
+msgstr "Project Not Found"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Project Page"
+msgstr "Project Page"
 
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Project-Based Learning"
@@ -2558,6 +3095,7 @@ msgstr "Project-Based Learning"
 msgid "projects"
 msgstr "projects"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 #: src/app/(i18n)/[lang]/rss/page.tsx
 msgid "Projects"
 msgstr "Projects"
@@ -2599,6 +3137,10 @@ msgstr "Proven Track Record"
 msgid "Public Products"
 msgstr "Public Products"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "public projects"
+msgstr "public projects"
+
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Publish & Iterate"
 msgstr "Publish & Iterate"
@@ -2622,6 +3164,23 @@ msgstr "Publishing"
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Publishing Strategy"
 msgstr "Publishing Strategy"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "PyPI Package"
+msgstr "PyPI Package"
+
+#: src/app/(i18n)/[lang]/faq/[slug]/page.tsx
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "Questions and answers"
+msgstr "Questions and answers"
+
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "Questions and answers | Tiago Danin"
+msgstr "Questions and answers | Tiago Danin"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Quick facts"
+msgstr "Quick facts"
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "RAG & Knowledge Systems"
@@ -2655,6 +3214,10 @@ msgstr "Rankings of the most downloaded NPM packages. Real-time stats, versions 
 msgid "Rapid UI development with Tailwind CSS utility-first framework. Building responsive, consistent interfaces with custom design tokens, component patterns, and integrating with React and Vue projects."
 msgstr "Rapid UI development with Tailwind CSS utility-first framework. Building responsive, consistent interfaces with custom design tokens, component patterns, and integrating with React and Vue projects."
 
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "React Native developer"
+msgstr "React Native developer"
+
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "React Native Development"
 msgstr "React Native Development"
@@ -2663,7 +3226,17 @@ msgstr "React Native Development"
 msgid "React Native mentor"
 msgstr "React Native mentor"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "React Native, Flutter and native modules in Kotlin, Swift and Objective-C. What breaks in production and how to keep a codebase shippable."
+msgstr "React Native, Flutter and native modules in Kotlin, Swift and Objective-C. What breaks in production and how to keep a codebase shippable."
+
+#. placeholder {0}: post.title
+#: src/components/ui/ArticleCard.tsx
+msgid "Read {0}"
+msgstr "Read {0}"
+
 #: src/components/sections/RecentPosts.tsx
+#: src/components/ui/ArticleCard.tsx
 msgid "Read article"
 msgstr "Read article"
 
@@ -2675,6 +3248,10 @@ msgstr "Read article about {0}"
 #: src/app/(i18n)/[lang]/post/[slug]/page.tsx
 msgid "Read original article"
 msgstr "Read original article"
+
+#: src/components/sections/faq/FaqIndex.tsx
+msgid "Read the full answer"
+msgstr "Read the full answer"
 
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Ready to Build Your Mobile App?"
@@ -2692,6 +3269,10 @@ msgstr "Ready to Start Your Learning Journey?"
 msgid "Ready to Start Your Project?"
 msgstr "Ready to Start Your Project?"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Ready to use bios, photo, logo and talk topics for events and media."
+msgstr "Ready to use bios, photo, logo and talk topics for events and media."
+
 #: src/app/(i18n)/[lang]/game-development/page.tsx
 msgid "Real games published on Google Play, not just demos."
 msgstr "Real games published on Google Play, not just demos."
@@ -2704,9 +3285,14 @@ msgstr "Real-time messaging"
 msgid "Real-time with WebSockets"
 msgstr "Real-time with WebSockets"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
 #: src/components/sections/Testimonials.tsx
 msgid "Recognition"
 msgstr "Recognition"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Recolor the logo, add effects, or stretch it out of proportion."
+msgstr "Recolor the logo, add effects, or stretch it out of proportion."
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Regression testing"
@@ -2724,6 +3310,14 @@ msgstr "Regular video calls to review progress, solve challenges, and plan next 
 msgid "Regular, scheduled video calls are the cornerstone of effective mentorship. Get personalized guidance, code reviews, and career advice tailored to your goals."
 msgstr "Regular, scheduled video calls are the cornerstone of effective mentorship. Get personalized guidance, code reviews, and career advice tailored to your goals."
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Related Projects"
+msgstr "Related Projects"
+
+#: src/components/sections/faq/FaqRelated.tsx
+msgid "Related questions"
+msgstr "Related questions"
+
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Replace manual workflows: triage support tickets, process documents, draft responses, sync across tools."
 msgstr "Replace manual workflows: triage support tickets, process documents, draft responses, sync across tools."
@@ -2731,6 +3325,14 @@ msgstr "Replace manual workflows: triage support tickets, process documents, dra
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Replace repetitive workflows with AI, document processing, classification, summarization, and human-in-the-loop pipelines."
 msgstr "Replace repetitive workflows with AI, document processing, classification, summarization, and human-in-the-loop pipelines."
+
+#: src/app/(i18n)/[lang]/not-found.tsx
+msgid "Report Issue"
+msgstr "Report Issue"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Repository"
+msgstr "Repository"
 
 #: src/components/sections/GitHubRankingsClient.tsx
 msgid "Repository Statistics"
@@ -2747,6 +3349,10 @@ msgstr "Responsive Design"
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Retrieval-augmented generation built on your data, embeddings, vector stores, and grounded answers with citations."
 msgstr "Retrieval-augmented generation built on your data, embeddings, vector stores, and grounded answers with citations."
+
+#: src/app/(i18n)/[lang]/not-found.tsx
+msgid "Return Home"
+msgstr "Return Home"
 
 #: src/components/ui/experience-item.tsx
 msgid "Role"
@@ -2831,6 +3437,16 @@ msgstr "Security-First Approach"
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Security-first development approach with vulnerability assessment and security best practices implementation."
 msgstr "Security-first development approach with vulnerability assessment and security best practices implementation."
+
+#. placeholder {0}: pressItems.length
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "See all {0} mentions"
+msgstr "See all {0} mentions"
+
+#. placeholder {0}: talks.length
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "See all {0} talks"
+msgstr "See all {0} talks"
 
 #: src/components/sections/RecentPosts.tsx
 msgid "See all {totalPosts} posts"
@@ -2950,9 +3566,25 @@ msgstr "Skills"
 msgid "Slack/Notion integrations"
 msgstr "Slack/Notion integrations"
 
+#: src/app/(i18n)/[lang]/not-found.tsx
+msgid "Sorry, we couldn't find the page you're looking for. Please check the URL or return to the homepage."
+msgstr "Sorry, we couldn't find the page you're looking for. Please check the URL or return to the homepage."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Speaking history"
+msgstr "Speaking history"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Speaks"
+msgstr "Speaks"
+
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Specialized security testing for Android and iOS applications, including reverse engineering and static analysis."
 msgstr "Specialized security testing for Android and iOS applications, including reverse engineering and static analysis."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Square crop, works as a circle."
+msgstr "Square crop, works as a circle."
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
@@ -2964,6 +3596,10 @@ msgstr "Stack & Tooling"
 #: src/components/sections/GitHubRankingsClient.tsx
 msgid "stars"
 msgstr "stars"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Stars"
+msgstr "Stars"
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
@@ -2991,6 +3627,10 @@ msgstr "State Management"
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Static export & edge hosting"
 msgstr "Static export & edge hosting"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Statistics"
+msgstr "Statistics"
 
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Store Listing Optimization"
@@ -3048,6 +3688,10 @@ msgstr "Subscribe to updates from Tiago Danin. Below are all available RSS feeds
 msgid "Survival arcade built with Flutter + Bonfire"
 msgstr "Survival arcade built with Flutter + Bonfire"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "SVG, 1024 × 1024, black on transparent background."
+msgstr "SVG, 1024 × 1024, black on transparent background."
+
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Systematic approach to debugging and solving complex technical challenges. Experienced in root cause analysis, performance profiling, architectural trade-off evaluation, and breaking down ambiguous problems into actionable solutions."
 msgstr "Systematic approach to debugging and solving complex technical challenges. Experienced in root cause analysis, performance profiling, architectural trade-off evaluation, and breaking down ambiguous problems into actionable solutions."
@@ -3055,6 +3699,10 @@ msgstr "Systematic approach to debugging and solving complex technical challenge
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Systematic prompt design with evals, A/B testing, and version control, not vibes-based prompting."
 msgstr "Systematic prompt design with evals, A/B testing, and version control, not vibes-based prompting."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Systems Analysis and Development, IFPA"
+msgstr "Systems Analysis and Development, IFPA"
 
 #: src/app/(i18n)/[lang]/tags/page.tsx
 msgid "Tags"
@@ -3068,6 +3716,11 @@ msgstr "talk"
 msgid "Talk Not Found"
 msgstr "Talk Not Found"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Talk topics"
+msgstr "Talk topics"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
 #: src/app/(i18n)/[lang]/tags/page.tsx
 #: src/lib/sections.ts
 msgid "talks"
@@ -3099,6 +3752,10 @@ msgstr "Talks about mobile, Flutter, React Native and security at tech events."
 #: src/app/(i18n)/[lang]/rss/page.tsx
 msgid "Talks and presentations about development, technology and more."
 msgstr "Talks and presentations about development, technology and more."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "talks since {firstTalkYear}"
+msgstr "talks since {firstTalkYear}"
 
 #: src/app/(i18n)/[lang]/talks/page.tsx
 msgid "Talks, presentations and workshops about technology and development"
@@ -3146,13 +3803,29 @@ msgstr "Technologies & Expertise"
 msgid "Technologies and tools I work with across mobile, web, backend, and design."
 msgstr "Technologies and tools I work with across mobile, web, backend, and design."
 
+#: src/components/sections/faq/FaqMatrix.tsx
+msgid "Technology"
+msgstr "Technology"
+
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Testing & Quality Assurance"
 msgstr "Testing & Quality Assurance"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Testing and release automation"
+msgstr "Testing and release automation"
+
 #: src/app/(i18n)/[lang]/app/[appId]/not-found.tsx
 msgid "The app you're looking for doesn't exist or may have been moved."
 msgstr "The app you're looking for doesn't exist or may have been moved."
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "The details that usually end up wrong in event programs."
+msgstr "The details that usually end up wrong in event programs."
+
+#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/not-found.tsx
+msgid "The event you're looking for doesn't exist or may have been moved."
+msgstr "The event you're looking for doesn't exist or may have been moved."
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "The full stack of AI work, from a single LLM call to multi-agent systems."
@@ -3162,9 +3835,21 @@ msgstr "The full stack of AI work, from a single LLM call to multi-agent systems
 msgid "The Problem"
 msgstr "The Problem"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/not-found.tsx
+msgid "The project you're looking for doesn't exist or may have been moved."
+msgstr "The project you're looking for doesn't exist or may have been moved."
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "The requested project could not be found."
+msgstr "The requested project could not be found."
+
 #: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
 msgid "The requested talk could not be found."
 msgstr "The requested talk could not be found."
+
+#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/page.tsx
+msgid "The requested timeline event could not be found."
+msgstr "The requested timeline event could not be found."
 
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "The same tools I use to ship my own products, battle-tested, not trendy."
@@ -3190,6 +3875,7 @@ msgstr "This social/contact network does not exist."
 msgid "This talk content was translated from Portuguese with the help of an LLM. The original version may contain nuances not fully captured in this translation."
 msgstr "This talk content was translated from Portuguese with the help of an LLM. The original version may contain nuances not fully captured in this translation."
 
+#: src/app/(i18n)/[lang]/blog/[page]/page.tsx
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Thoughts, insights, and ideas about technology and development"
 msgstr "Thoughts, insights, and ideas about technology and development"
@@ -3222,14 +3908,32 @@ msgstr "Tiago Danin - Mobile Developer | Flutter, React Native & iOS/Android"
 msgid "Tiago Danin home"
 msgstr "Tiago Danin home"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Tiago Danin logo"
+msgstr "Tiago Danin logo"
+
 #. placeholder {0}: skill.name
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 msgid "Tiago Danin, {0} developer with expertise in {category}. Hire for freelance projects, consulting, and mentorship."
 msgstr "Tiago Danin, {0} developer with expertise in {category}. Hire for freelance projects, consulting, and mentorship."
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Tiago without an h, Danin without an accent"
+msgstr "Tiago without an h, Danin without an accent"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 #: src/app/(i18n)/[lang]/rss/page.tsx
+#: src/app/(i18n)/[lang]/timeline/page.tsx
 msgid "Timeline"
 msgstr "Timeline"
+
+#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/not-found.tsx
+msgid "Timeline Event Not Found"
+msgstr "Timeline Event Not Found"
+
+#: src/app/(i18n)/[lang]/timeline/page.tsx
+msgid "Timeline RSS Feed"
+msgstr "Timeline RSS Feed"
 
 #. placeholder {0}: section.title
 #: src/components/sections/FullProjects.tsx
@@ -3275,6 +3979,11 @@ msgstr "Top Repo Stars"
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Top repos by stars & forks"
 msgstr "Top repos by stars & forks"
+
+#. placeholder {0}: allTags.slice(0, 6).join(', ')
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Topics: {0}."
+msgstr "Topics: {0}."
 
 #: src/components/sections/NPMRankingsClient.tsx
 msgid "Total Downloads"
@@ -3361,6 +4070,10 @@ msgstr "Unit Testing"
 msgid "Up to 2 focus areas"
 msgstr "Up to 2 focus areas"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Updated"
+msgstr "Updated"
+
 #: src/app/(i18n)/[lang]/rankings/github/page.tsx
 msgid "Updated rankings of the most starred GitHub repositories. Compare stars, forks & watchers across top open source projects."
 msgstr "Updated rankings of the most starred GitHub repositories. Compare stars, forks & watchers across top open source projects."
@@ -3373,6 +4086,10 @@ msgstr "Upgrade economies"
 msgid "URL"
 msgstr "URL"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Use any bio above as it is, or cut it down to fit your layout."
+msgstr "Use any bio above as it is, or cut it down to fit your layout."
+
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Vector databases"
 msgstr "Vector databases"
@@ -3380,6 +4097,10 @@ msgstr "Vector databases"
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Vector Stores"
 msgstr "Vector Stores"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Version"
+msgstr "Version"
 
 #: src/app/(i18n)/[lang]/game-development/page.tsx
 msgid "Vertical & landscape"
@@ -3404,6 +4125,10 @@ msgstr "View All Projects"
 #: src/app/(i18n)/[lang]/talks/page.tsx
 msgid "View details"
 msgstr "View details"
+
+#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/not-found.tsx
+msgid "View Full Timeline"
+msgstr "View Full Timeline"
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "View HackerOne Profile"
@@ -3439,6 +4164,10 @@ msgstr "View Project"
 msgid "View Services"
 msgstr "View Services"
 
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "View the full app page with features, screenshots and build story"
+msgstr "View the full app page with features, screenshots and build story"
+
 #: src/components/sections/Work.tsx
 msgid "Volunteering"
 msgstr "Volunteering"
@@ -3466,6 +4195,10 @@ msgstr "Watch on YouTube"
 #: src/app/(i18n)/[lang]/talks/page.tsx
 msgid "Watch talks on mobile development, Flutter, React Native, and cybersecurity. Presentations at DevFest, DevOpsDays, and developer meetups. Slides and videos available."
 msgstr "Watch talks on mobile development, Flutter, React Native, and cybersecurity. Presentations at DevFest, DevOpsDays, and developer meetups. Slides and videos available."
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Watchers"
+msgstr "Watchers"
 
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "WCAG-conscious markup, keyboard navigation, and multi-language support when you need to reach global users."
@@ -3504,6 +4237,10 @@ msgstr "Web Security Audit"
 msgid "Webhooks & order management"
 msgstr "Webhooks & order management"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Website"
+msgstr "Website"
+
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Website Development"
 msgstr "Website Development"
@@ -3519,6 +4256,18 @@ msgstr "Website Development Services"
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Websites That Perform."
 msgstr "Websites That Perform."
+
+#: src/app/(i18n)/[lang]/webview/page.tsx
+msgid "WebView Inspector"
+msgstr "WebView Inspector"
+
+#: src/app/(i18n)/[lang]/webview/page.tsx
+msgid "WebView Inspector - Bug Bounty Research Tool"
+msgstr "WebView Inspector - Bug Bounty Research Tool"
+
+#: src/app/(i18n)/[lang]/webview/page.tsx
+msgid "WebView Inspector - Bug Bounty Tool"
+msgstr "WebView Inspector - Bug Bounty Tool"
 
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Weekly 1:1 Calls"
@@ -3549,9 +4298,17 @@ msgstr "What I Built"
 msgid "What I Learned"
 msgstr "What I Learned"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "What I usually present. Each one can run as a talk, a workshop, or a panel."
+msgstr "What I usually present. Each one can run as a talk, a workshop, or a panel."
+
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
 msgid "What it does"
 msgstr "What it does"
+
+#: src/app/(i18n)/[lang]/faq/page.tsx
+msgid "What people ask before getting in touch, answered in one place. Every answer links to the talk, article or repository behind it."
+msgstr "What people ask before getting in touch, answered in one place. Every answer links to the talk, article or repository behind it."
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Where AI actually pays off, and where I've seen it work."
@@ -3569,6 +4326,14 @@ msgstr "Where I have been mentioned"
 #: src/components/sections/Work.tsx
 msgid "Where I've worked, and what I work with day to day."
 msgstr "Where I've worked, and what I work with day to day."
+
+#: src/components/sections/faq/FaqMatrix.tsx
+msgid "Where it was used"
+msgstr "Where it was used"
+
+#: src/app/(i18n)/[lang]/faq/[slug]/page.tsx
+msgid "Where to check this"
+msgstr "Where to check this"
 
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 msgid "Whether internal or public, the engineering bar is the same."
@@ -3593,6 +4358,10 @@ msgstr "Why Mobile Development?"
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Why Work With Me"
 msgstr "Why Work With Me"
+
+#: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+msgid "Windows App"
+msgstr "Windows App"
 
 #: src/components/sections/Testimonials.tsx
 msgid "Wins, open source, and stages."
@@ -3622,6 +4391,10 @@ msgstr "Workflow automation"
 msgid "Worldwide"
 msgstr "Worldwide"
 
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "Write the name as “Tiago Danin”, without an h and without accents."
+msgstr "Write the name as “Tiago Danin”, without an h and without accents."
+
 #: src/components/sections/RecentPosts.tsx
 msgid "Writing"
 msgstr "Writing"
@@ -3633,6 +4406,10 @@ msgstr "Writing type-safe, maintainable code with TypeScript across frontend and
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "XSS Testing"
 msgstr "XSS Testing"
+
+#: src/app/(i18n)/[lang]/press-kit/page.tsx
+msgid "years in mobile"
+msgstr "years in mobile"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Years of Experience"

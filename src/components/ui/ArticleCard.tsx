@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { useLingui } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Video, Text } from "lucide-react";
 import { formatDate, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
-import { intlLocale } from '@/lib/i18n/locales';
+import { DEFAULT_LOCALE, entryPath, intlLocale, type Locale } from '@/lib/i18n/locales';
 
 interface ArticleCardProps {
   post: {
@@ -16,16 +16,17 @@ interface ArticleCardProps {
     tags: string[];
     cover: string;
   };
-  locale?: 'en' | 'pt';
+  /** Locale of the page rendering the card, not the content language. */
+  locale?: Locale;
 }
 
-export function ArticleCard({ post, locale = 'en' }: ArticleCardProps) {
-  // Labels come from the page's catalog; `locale` only decides the URL suffix,
-  // because posts still carry their language as a trailing segment.
-  const { i18n } = useLingui();
-  const postUrl = locale === 'pt' ? `/post/${post.slug}/pt` : `/post/${post.slug}`;
-  const ariaLabel = locale === 'pt' ? `Ler ${post.title}` : `Read ${post.title}`;
-  const readLabel = locale === 'pt' ? 'Ler artigo' : 'Read article';
+export function ArticleCard({ post, locale = DEFAULT_LOCALE }: ArticleCardProps) {
+  // Everything visible comes from the catalog now. The hand-rolled pt/en
+  // ternaries this replaced also built the old trailing-segment URL, which is a
+  // redirect page since posts moved under the locale prefix.
+  const { t, i18n } = useLingui();
+  const postUrl = entryPath(locale, 'post', post.slug);
+  const ariaLabel = t`Read ${post.title}`;
   const isVideo = post.originalUrl.includes("youtube.com");
 
   return (
@@ -60,7 +61,7 @@ export function ArticleCard({ post, locale = 'en' }: ArticleCardProps) {
         ) : (
           <Badge variant="secondary" className="flex items-center gap-1">
             <Text className="h-3 w-3" />
-            {locale === 'pt' ? 'Artigo' : 'Article'}
+            <Trans>Article</Trans>
           </Badge>
         )}
       </div>
@@ -87,7 +88,7 @@ export function ArticleCard({ post, locale = 'en' }: ArticleCardProps) {
       </div>
 
       <div className="relative pointer-events-none mt-4 flex items-center text-sm font-medium text-primary">
-        {readLabel}
+        <Trans>Read article</Trans>
         <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
           <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>

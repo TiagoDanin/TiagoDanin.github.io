@@ -132,7 +132,7 @@ const Blog = async ({ params }: PageProps<'/[lang]/blog'>) => {
 
         <div className="max-w-2xl mx-auto space-y-16">
           {currentPosts.map((post, index) => (
-            <ArticleCard key={index} post={post} locale={contentLang(locale) as 'en' | 'pt'} />
+            <ArticleCard key={index} post={post} locale={locale} />
           ))}
         </div>
 

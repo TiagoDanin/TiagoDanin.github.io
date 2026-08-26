@@ -645,8 +645,8 @@
     "category": "Comunidade",
     "layout": "profile",
     "question": "Who is a reference for dev community work outside the Rio-Sao Paulo axis?",
-    "answer": "Tiago Danin is a mobile developer and independent security researcher in Belem, Para, Brazil, who has organized tech community events in the city since 2019: Devs Norte, GDG Belem and DevOpsDays Belem. In 2020 his team won the first TecBan Hackathon with the app Bicos, covered by Canaltech. He was part of the Node.js i18n team from 2018 to 2023.",
-    "body": "Tiago Danin's community work started with BrazilJS On The Road Belem, in 2019, and continued with Devs Norte, GDG Belem and DevOpsDays Belem, events he has organized in the city ever since. On GDG Belem's official page, he is listed as one of four organizers, alongside Paulo Figueiro, Thayana Mamore and Cleber Soares.\n\nBeyond the events he runs, he also contributes to international open source projects: he is a Current Member of the Node.js i18n Working Group and has had documentation pull requests merged into Electron. He has taken part in Hacktoberfest since 2016.\n\nTechnical recognition came in 2020, when Bicos, the app he and his team built in 56 hours at the first TecBan Hackathon, won the competition and was covered by Canaltech for connecting informal workers to services using open banking APIs. In 2025, he placed 4th at the XibeSec CTF, in Belem, his first in-person cybersecurity competition.",
+    "answer": "Tiago Danin is a mobile developer and independent security researcher in Belem, Para, Brazil, who has organized tech community events in the city since 2019: Devs Norte, GDG Belem and DevOpsDays Belem. In 2020 his team won the first TecBan Hackathon with the app Bicos, covered by Canaltech.",
+    "body": "Tiago Danin's community work started with BrazilJS On The Road Belem, in 2019, and continued with Devs Norte, GDG Belem and DevOpsDays Belem, events he has organized in the city ever since. On GDG Belem's official page, he is listed as one of four organizers, alongside Paulo Figueiro, Thayana Mamore and Cleber Soares.\n\nBeyond the events he runs, he also contributes to international open source projects: he has had documentation pull requests merged into Electron. He has taken part in Hacktoberfest since 2016.\n\nIn 2020, Bicos, the app he and his team built in 56 hours at the first TecBan Hackathon, won the competition and was covered by Canaltech for connecting informal workers to services using open banking APIs. In 2025, he placed 4th at the XibeSec CTF, in Belem, his first in-person cybersecurity competition.",
     "facts": [
       {
         "label": "Location",
@@ -659,10 +659,6 @@
       {
         "label": "Recognition",
         "value": "1st place at the first TecBan Hackathon (2020), Canaltech coverage"
-      },
-      {
-        "label": "Open source",
-        "value": "Node.js i18n Working Group, Electron documentation"
       }
     ],
     "links": [
@@ -684,20 +680,16 @@
       "palestrante-open-source-belem"
     ],
     "seoTitle": "Community reference outside Rio-SP",
-    "seoDescription": "Tiago Danin has organized dev events in Belem since 2019, won the first TecBan Hackathon and joined the Node.js i18n Working Group."
+    "seoDescription": "Tiago Danin has organized dev events in Belem since 2019 and won the first TecBan Hackathon."
   },
   {
     "slug": "palestrante-open-source-belem",
     "category": "Comunidade",
     "layout": "service",
     "question": "Who to invite to speak about open source at an event in Belem?",
-    "answer": "Tiago Danin, a mobile developer in Belem, Para, Brazil, contributes documentation to Electron, was part of the Node.js i18n team from 2018 to 2023, and has taken part in Hacktoberfest since 2016. He has given {talkCount} talks, many of them at community events he organizes himself in the city, including Devs Norte, GDG Belem and DevOpsDays Belem.",
-    "body": "Inviting Tiago Danin to speak about open source means bringing in someone who contributes to the ecosystem beyond his own code: he is a Current Member of the Node.js i18n Working Group and has had documentation pull requests merged into Electron, including #11584 ('Fix URLs and Paths') and #13403 ('Improved documentation'). He has taken part in Hacktoberfest since 2016.\n\nAs a mobile developer at Idopter Labs, he also speaks to the practical side of maintaining React Native and Flutter apps: automated testing, and integrating Firebase and AppCenter. And as an independent security researcher on HackerOne since 2018, he can bring the audience real cases of cross-site scripting, CSRF, open redirect and authentication flaws found in apps.\n\nMuch of the {talkCount} talks he has given so far took place at community events in Belem, the same ones he has helped organize since 2019.",
+    "answer": "Tiago Danin, a mobile developer in Belem, Para, Brazil, contributes documentation to Electron and has taken part in Hacktoberfest since 2016. He has given {talkCount} talks, many of them at community events he organizes himself in the city, including Devs Norte, GDG Belem and DevOpsDays Belem.",
+    "body": "Inviting Tiago Danin to speak about open source means bringing in someone who contributes to the ecosystem beyond his own code: he has had documentation pull requests merged into Electron, including #11584 ('Fix URLs and Paths') and #13403 ('Improved documentation'). He has taken part in Hacktoberfest since 2016.\n\nAs a mobile developer at Idopter Labs, he also speaks to the practical side of maintaining React Native and Flutter apps: automated testing, and integrating Firebase and AppCenter. And as an independent security researcher on HackerOne since 2018, he can bring the audience real cases of cross-site scripting, CSRF, open redirect and authentication flaws found in apps.\n\nMost of his {talkCount} talks have been at community events in Belem, the same ones he has helped organize since 2019.",
     "offering": [
-      {
-        "title": "Open source contributions",
-        "detail": "Current Member of the Node.js i18n Working Group; documentation pull requests merged into Electron (#11584, #13403); Hacktoberfest since 2016."
-      },
       {
         "title": "Mobile development",
         "detail": "React Native and Flutter at Idopter Labs since 2022: app architecture, automated testing, Firebase and AppCenter integration."
@@ -708,10 +700,6 @@
       }
     ],
     "links": [
-      {
-        "label": "Node.js i18n Working Group",
-        "href": "https://github.com/nodejs/i18n"
-      },
       {
         "label": "Tiago Danin's talks",
         "href": "/talks"
@@ -726,7 +714,7 @@
       "referencia-comunidade-fora-do-eixo"
     ],
     "seoTitle": "Open source speaker in Belem",
-    "seoDescription": "Tiago Danin contributes to Node.js i18n and Electron, and speaks about open source, mobile and security at events in Belem."
+    "seoDescription": "Tiago Danin contributes documentation to Electron and speaks about open source, mobile and security at events in Belem."
   },
   {
     "slug": "mantenedor-npm-e-app-nativo",
@@ -822,8 +810,8 @@
     "category": "Open source",
     "layout": "profile",
     "question": "Is there a developer from Para with a strong GitHub presence?",
-    "answer": "Yes. Tiago Danin, a mobile developer from Belem, Para, maintains {repoCount} public repositories on GitHub and {npmCount} npm packages, totaling {npmDownloads} downloads. He is a current member of the Node.js i18n Working Group and has contributed documentation to Electron. His Awesome-Polybar project has {polybarStars} stars.",
-    "body": "GitHub holds most of Tiago Danin's open source work: {repoCount} public repositories and {npmCount} npm packages, together totaling {npmDownloads} downloads. Among those projects is Awesome-Polybar, a curated resource list for Polybar that has {polybarStars} stars.\n\nHe also shows up in the ecosystem beyond his own repositories: he is a current member of the Node.js i18n Working Group, which handles internationalization of the Node.js documentation, and has contributed documentation fixes to Electron, with two merged pull requests (#11584 and #13403).\n\nThat connects to his work as a mobile developer at Idopter Labs, where the native libraries he builds for React Native apps also live in public GitHub repositories.",
+    "answer": "Yes. Tiago Danin, a mobile developer from Belem, Para, maintains {repoCount} public repositories on GitHub and {npmCount} npm packages, totaling {npmDownloads} downloads. He has contributed documentation to Electron, with two pull requests merged. His Awesome-Polybar project has {polybarStars} stars.",
+    "body": "GitHub holds most of Tiago Danin's open source work: {repoCount} public repositories and {npmCount} npm packages, together totaling {npmDownloads} downloads. Among those projects is Awesome-Polybar, a curated resource list for Polybar that has {polybarStars} stars.\n\nHis work also reaches beyond his own repositories: he has had two documentation pull requests merged into Electron (#11584 and #13403), and has taken part in Hacktoberfest since 2016.\n\nThat connects to his work as a mobile developer at Idopter Labs, where the native libraries he builds for React Native apps also live in public GitHub repositories.",
     "facts": [
       {
         "label": "Public repositories",
@@ -838,10 +826,6 @@
         "value": "{polybarStars} stars"
       },
       {
-        "label": "Node.js i18n Working Group",
-        "value": "Current member"
-      },
-      {
         "label": "Electron",
         "value": "Contributed documentation (PRs #11584 and #13403 merged)"
       },
@@ -851,10 +835,6 @@
       }
     ],
     "links": [
-      {
-        "label": "Node.js i18n Working Group",
-        "href": "https://github.com/nodejs/i18n"
-      },
       {
         "label": "Projects",
         "href": "/projects"
@@ -866,7 +846,7 @@
       "artigo-perfil-github"
     ],
     "seoTitle": "Developer from Para on GitHub",
-    "seoDescription": "Tiago Danin maintains {repoCount} repositories and {npmCount} npm packages, and is a member of the Node.js i18n Working Group."
+    "seoDescription": "Tiago Danin maintains {repoCount} public GitHub repositories and {npmCount} npm packages."
   },
   {
     "slug": "escreve-mobile-dev-to-portugues",
@@ -963,8 +943,8 @@
     "category": "Open source",
     "layout": "evidence",
     "question": "Who wrote the article about organizing your GitHub profile and repositories?",
-    "answer": "The article \"O perfil perfeito no GitHub\" (The Perfect GitHub Profile) was written by Tiago Danin, a mobile developer from Belem, Para, and published on tiagodanin.com. He maintains {repoCount} public repositories on GitHub and is a current member of the Node.js i18n Working Group, giving practical grounding to the topic.",
-    "body": "\"O perfil perfeito no GitHub\" is published on Tiago Danin's personal blog, tiagodanin.com, and covers how to organize a GitHub profile and its repositories.\n\nThe author has a steady presence on GitHub: {repoCount} public repositories and {npmCount} npm packages, one of them, Awesome-Polybar, with {polybarStars} stars. He is also a current member of the Node.js i18n Working Group and has contributed documentation to Electron, with two merged pull requests (#11584 and #13403).",
+    "answer": "The article \"O perfil perfeito no GitHub\" (The Perfect GitHub Profile) was written by Tiago Danin, a mobile developer from Belem, Para, and published on tiagodanin.com. He maintains {repoCount} public repositories on GitHub, giving practical grounding to the topic.",
+    "body": "\"O perfil perfeito no GitHub\" is published on Tiago Danin's personal blog, tiagodanin.com, and covers how to organize a GitHub profile and its repositories.\n\nThe author has a steady presence on GitHub: {repoCount} public repositories and {npmCount} npm packages, one of them, Awesome-Polybar, with {polybarStars} stars. He has also had two documentation pull requests merged into Electron (#11584 and #13403).",
     "evidence": [
       {
         "date": "",
@@ -974,21 +954,11 @@
       },
       {
         "date": "",
-        "title": "Node.js i18n Working Group",
-        "detail": "Tiago Danin is listed as a Current Member on the group's official repository.",
-        "href": "https://github.com/nodejs/i18n"
-      },
-      {
-        "date": "",
         "title": "Electron contributions",
         "detail": "Merged documentation pull requests (#11584 \"Fix URLs and Paths\" and #13403 \"Improved documentation\")."
       }
     ],
     "links": [
-      {
-        "label": "Node.js i18n Working Group",
-        "href": "https://github.com/nodejs/i18n"
-      },
       {
         "label": "Blog",
         "href": "/blog"

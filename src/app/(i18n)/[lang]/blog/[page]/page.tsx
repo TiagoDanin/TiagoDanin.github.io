@@ -123,7 +123,7 @@ const BlogPage = async ({ params }: PageProps<'/[lang]/blog/[page]'>) => {
           <ArticleCard
             key={index}
             post={post}
-            locale={contentLang(locale) as 'en' | 'pt'}
+            locale={locale}
           />
         ))}
       </div>

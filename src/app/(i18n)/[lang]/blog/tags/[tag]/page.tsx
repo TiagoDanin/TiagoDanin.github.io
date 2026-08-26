@@ -150,7 +150,7 @@ export default async function TagPage({ params }: PageProps<'/[lang]/blog/tags/[
               <ArticleCard
                 key={index}
                 post={post}
-                locale={contentLang(locale) as 'en' | 'pt'}
+                locale={locale}
               />
             ))}
           </div>

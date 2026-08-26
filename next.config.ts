@@ -23,11 +23,13 @@ const defaultLocaleRewrites = [
     source: route,
     destination: route === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${route}`,
   })),
-  // One segment only, so `/post/:slug/pt` still reaches the redirect page in
-  // (legacy) rather than being rewritten to a page that does not exist.
+  // Catch-all under each prefix: /project/[type]/[slug], /blog/tags/[tag] and
+  // /timeline/[year]/[slug] sit two segments deep. This matched a single segment
+  // while the retired /post/:slug/pt redirects still needed to win, and those
+  // routes no longer exist.
   ...LOCALIZED_PREFIXES.map((prefix) => ({
-    source: `${prefix}:slug`,
-    destination: `/${DEFAULT_LOCALE}${prefix}:slug`,
+    source: `${prefix}:path*`,
+    destination: `/${DEFAULT_LOCALE}${prefix}:path*`,
   })),
 ];
 
