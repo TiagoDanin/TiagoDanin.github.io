@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Trans, useLingui } from "@lingui/react/macro";
-import { DEFAULT_LOCALE, localePath, type Locale } from "@/lib/i18n/locales";
+import { DEFAULT_LOCALE, localePath, splitLocale, type Locale } from "@/lib/i18n/locales";
 
 export interface MenuItem {
   title: string;
@@ -19,9 +19,20 @@ export interface MenuItem {
   hideOnHome?: boolean;
 }
 
+/**
+ * Compared with the locale stripped off both sides.
+ *
+ * The naive version tested `href === "/"` for the home item, which stopped
+ * being true once the href gained a locale prefix: `/br` is not `/`, so it fell
+ * through to the `startsWith` branch and matched every page under `/br/`. Home
+ * was highlighted everywhere.
+ */
 function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(`${href}/`);
+  const current = splitLocale(pathname).base;
+  const target = splitLocale(href).base;
+
+  if (target === "/") return current === "/";
+  return current === target || current.startsWith(`${target}/`);
 }
 
 export function Navbar({ menu, locale = DEFAULT_LOCALE }: { menu: MenuItem[]; locale?: Locale }) {
