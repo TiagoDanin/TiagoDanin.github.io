@@ -77,3 +77,6 @@ DESIGN.md
 .impeccable/
 # Storybook static build
 /storybook-static
+
+# Lingui: the .po catalogs are the source, the compiled .ts are build output
+src/locales/*/messages.ts

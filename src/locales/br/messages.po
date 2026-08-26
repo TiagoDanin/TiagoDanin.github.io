@@ -1,0 +1,291 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2026-08-25 15:32-0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: br\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/components/ui/ProjectCard.tsx
+msgid "{title} (opens in a new tab)"
+msgstr "{title} (abre em uma nova aba)"
+
+#: src/app/(i18n)/[lang]/page.tsx
+msgid "250+ projects, 70+ open source packages. Flutter, React Native, iOS & Android. Bug hunter on HackerOne."
+msgstr "250+ projetos, 70+ pacotes open source. Flutter, React Native, iOS e Android. Bug hunter no HackerOne."
+
+#: src/components/sections/Projects.tsx
+msgid "A handful of projects across mobile, web, and games. The full archive lives below."
+msgstr "Alguns projetos em mobile, web e jogos. O arquivo completo fica logo abaixo."
+
+#: src/app/(i18n)/[lang]/about/page.tsx
+msgid "About - Flutter, React Native & Bug Hunter"
+msgstr "Sobre - Flutter, React Native e Bug Hunter"
+
+#: src/app/(i18n)/[lang]/about/page.tsx
+msgid "About Tiago Danin - Mobile Developer"
+msgstr "Sobre Tiago Danin - Desenvolvedor Mobile"
+
+#: src/components/sections/PressMentions.tsx
+msgid "All press mentions"
+msgstr "Todas as menções na imprensa"
+
+#: src/components/ui/ProjectCard.tsx
+msgid "Archived"
+msgstr "Arquivado"
+
+#: src/components/sections/Services.tsx
+msgid "Areas where I excel and can help bring your ideas to life."
+msgstr "Áreas em que trabalho e onde posso ajudar a tirar sua ideia do papel."
+
+#: src/components/layout/Footer.tsx
+msgid "Built with <0>Next.js</0> and <1>Tailwind</1>, hosted on <2>GitHub Pages</2>."
+msgstr "Feito com <0>Next.js</0> e <1>Tailwind</1>, hospedado no <2>GitHub Pages</2>."
+
+#: src/components/layout/Footer.tsx
+msgid "by"
+msgstr "por"
+
+#: src/components/ui/experience-item.tsx
+msgid "Company"
+msgstr "Empresa"
+
+#: src/components/sections/CallToAction.tsx
+msgid "Connect on LinkedIn"
+msgstr "Conectar no LinkedIn"
+
+#: src/components/ui/experience-item.tsx
+msgid "Date"
+msgstr "Período"
+
+#: src/components/sections/Work.tsx
+msgid "Experience and skills"
+msgstr "Experiência e habilidades"
+
+#: src/components/layout/Footer.tsx
+msgid "Find me on"
+msgstr "Me encontre em"
+
+#: src/app/(i18n)/[lang]/about/page.tsx
+msgid "Flutter expert, React Native developer, security researcher & bug hunter. Open source advocate."
+msgstr "Especialista em Flutter, desenvolvedor React Native, pesquisador de segurança e bug hunter. Defensor do open source."
+
+#: src/app/(i18n)/[lang]/page.tsx
+msgid "Flutter, React Native, iOS & Android developer. 250+ projects delivered, bug hunter on HackerOne, and open source contributor."
+msgstr "Desenvolvedor Flutter, React Native, iOS e Android. 250+ projetos entregues, bug hunter no HackerOne e contribuidor open source."
+
+#: src/components/layout/Footer.tsx
+msgid "Footer"
+msgstr "Rodapé"
+
+#: src/components/sections/Milestones.tsx
+msgid "Full timeline"
+msgstr "Linha do tempo completa"
+
+#: src/components/sections/Hero.tsx
+msgid "Get in touch"
+msgstr "Fale comigo"
+
+#: src/components/sections/CallToAction.tsx
+msgid "Hire me, or just say hi"
+msgstr "Bora construir algo, ou só dar um oi"
+
+#: src/components/sections/PressMentions.tsx
+msgid "In the press"
+msgstr "Na imprensa"
+
+#: src/components/ui/LanguageSelect.tsx
+msgid "Language"
+msgstr "Idioma"
+
+#: src/components/sections/Milestones.tsx
+msgid "Milestones"
+msgstr "Marcos"
+
+#: src/app/(i18n)/[lang]/about/page.tsx
+msgid "Mobile developer specializing in Flutter, React Native & native iOS/Android. Open source contributor, security researcher, and mentor."
+msgstr "Desenvolvedor mobile especializado em Flutter, React Native e iOS/Android nativo. Contribuidor open source, pesquisador de segurança e mentor."
+
+#: src/app/(i18n)/[lang]/page.tsx
+msgid "Mobile developer with 250+ projects and 70+ open source packages. Specializing in Flutter, React Native, iOS & Android. Bug hunter on HackerOne."
+msgstr "Desenvolvedor mobile com 250+ projetos e 70+ pacotes open source. Especializado em Flutter, React Native, iOS e Android. Bug hunter no HackerOne."
+
+#: src/app/(i18n)/[lang]/layout.tsx
+msgid "Mobile Developer with 250+ projects. Flutter, React Native, iOS & Android specialist. Open source contributor with 70+ npm packages. Bug hunter on HackerOne."
+msgstr "Desenvolvedor mobile com 250+ projetos. Especialista em Flutter, React Native, iOS e Android. Contribuidor open source com 70+ pacotes npm. Bug hunter no HackerOne."
+
+#: src/app/(i18n)/[lang]/about/page.tsx
+msgid "Mobile developer with 8+ years of experience in Flutter, React Native & native iOS/Android. Bug hunter on HackerOne, 70+ npm packages, 18+ conference talks. Based in Brazil."
+msgstr "Desenvolvedor mobile com 8+ anos de experiência em Flutter, React Native e iOS/Android nativo. Bug hunter no HackerOne, 70+ pacotes npm, 18+ palestras. Baseado no Brasil."
+
+#: src/components/sections/Services.tsx
+msgid "My Expertise"
+msgstr "Minhas especialidades"
+
+#: src/components/layout/Navbar.tsx
+msgid "Navigation"
+msgstr "Navegação"
+
+#: src/components/sections/RecentPosts.tsx
+msgid "Next posts"
+msgstr "Próximos posts"
+
+#: src/components/ui/carousel.tsx
+msgid "Next slide"
+msgstr "Próximo slide"
+
+#: src/components/sections/RecentPosts.tsx
+msgid "Notes from building, breaking, and shipping things."
+msgstr "Anotações de quem constrói, quebra e entrega coisas."
+
+#: src/components/ui/toaster.tsx
+msgid "Notification"
+msgstr "Notificação"
+
+#: src/components/ui/toaster.tsx
+msgid "Notifications ('{'hotkey'}')"
+msgstr "Notificações ('{'hotkey'}')"
+
+#: src/lib/sections.ts
+msgid "npm downloads"
+msgstr "downloads no npm"
+
+#: src/components/sections/Work.tsx
+msgid "Open CV"
+msgstr "Abrir currículo"
+
+#: src/components/layout/Navbar.tsx
+msgid "Open menu"
+msgstr "Abrir menu"
+
+#: src/lib/sections.ts
+msgid "posts & videos"
+msgstr "posts e vídeos"
+
+#: src/components/sections/Hero.tsx
+msgid "Press kit"
+msgstr "Press kit"
+
+#: src/components/sections/RecentPosts.tsx
+msgid "Previous posts"
+msgstr "Posts anteriores"
+
+#: src/components/ui/carousel.tsx
+msgid "Previous slide"
+msgstr "Slide anterior"
+
+#: src/components/sections/Work.tsx
+msgid "Professional Experience"
+msgstr "Experiência profissional"
+
+#: src/lib/sections.ts
+msgid "projects"
+msgstr "projetos"
+
+#: src/components/sections/RecentPosts.tsx
+msgid "Read article"
+msgstr "Ler artigo"
+
+#. placeholder {0}: post.title
+#: src/components/sections/RecentPosts.tsx
+msgid "Read article about {0}"
+msgstr "Ler artigo sobre {0}"
+
+#: src/components/sections/Testimonials.tsx
+msgid "Recognition"
+msgstr "Reconhecimento"
+
+#: src/components/ui/experience-item.tsx
+msgid "Role"
+msgstr "Cargo"
+
+#: src/components/sections/RecentPosts.tsx
+msgid "See all {totalPosts} posts"
+msgstr "Ver todos os {totalPosts} posts"
+
+#: src/components/sections/Projects.tsx
+msgid "See all 250+ projects"
+msgstr "Ver todos os 250+ projetos"
+
+#: src/components/sections/Projects.tsx
+msgid "Selected work"
+msgstr "Trabalhos selecionados"
+
+#: src/components/sections/CallToAction.tsx
+msgid "Send me an email"
+msgstr "Me mandar um e-mail"
+
+#: src/components/sections/Work.tsx
+msgid "Show more"
+msgstr "Ver mais"
+
+#: src/lib/sections.ts
+msgid "talks"
+msgstr "palestras"
+
+#: src/components/sections/Work.tsx
+msgid "Technical Skills"
+msgstr "Habilidades técnicas"
+
+#: src/components/ui/LanguageSelect.tsx
+msgid "This page has no version in this language yet"
+msgstr "Esta página ainda não tem versão neste idioma"
+
+#: src/app/(i18n)/[lang]/about/page.tsx
+msgid "Tiago Danin - Mobile Developer & Bug Hunter"
+msgstr "Tiago Danin - Desenvolvedor Mobile e Bug Hunter"
+
+#: src/app/(i18n)/[lang]/layout.tsx
+msgid "Tiago Danin - Mobile Developer & Software Engineer"
+msgstr "Tiago Danin - Desenvolvedor Mobile e Engenheiro de Software"
+
+#: src/app/(i18n)/[lang]/page.tsx
+msgid "Tiago Danin - Mobile Developer | 250+ Projects & 70+ Open Source Packages"
+msgstr "Tiago Danin - Desenvolvedor Mobile | 250+ Projetos e 70+ Pacotes Open Source"
+
+#: src/app/(i18n)/[lang]/page.tsx
+msgid "Tiago Danin - Mobile Developer | Flutter & React Native"
+msgstr "Tiago Danin - Desenvolvedor Mobile | Flutter e React Native"
+
+#: src/app/(i18n)/[lang]/page.tsx
+msgid "Tiago Danin - Mobile Developer | Flutter, React Native & iOS/Android"
+msgstr "Tiago Danin - Desenvolvedor Mobile | Flutter, React Native e iOS/Android"
+
+#: src/components/layout/Navbar.tsx
+msgid "Tiago Danin home"
+msgstr "Tiago Danin, página inicial"
+
+#: src/components/sections/Hero.tsx
+msgid "View my projects"
+msgstr "Ver meus projetos"
+
+#: src/components/sections/Work.tsx
+msgid "Volunteering"
+msgstr "Voluntariado"
+
+#: src/components/sections/Work.tsx
+msgid "Where I've worked, and what I work with day to day."
+msgstr "Onde trabalhei e com o que trabalho no dia a dia."
+
+#: src/components/sections/CallToAction.tsx
+msgid "Whether you have a project in mind, want to talk tech, or just want to say hi, I read everything that lands in the inbox."
+msgstr "Se você tem um projeto em mente, quer falar sobre tecnologia ou só dar um oi, eu leio tudo que chega na caixa de entrada."
+
+#: src/components/sections/Testimonials.tsx
+msgid "Wins, open source, and stages."
+msgstr "Prêmios, open source e palcos."
+
+#: src/components/layout/Footer.tsx
+msgid "with"
+msgstr "com"
+
+#: src/components/sections/RecentPosts.tsx
+msgid "Writing"
+msgstr "Escrita"
