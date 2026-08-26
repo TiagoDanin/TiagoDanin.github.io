@@ -110,6 +110,12 @@ function buildLocalizedEntries(): SitemapEntry[] {
   const detailRoutes = [
     ...readSlugs('posts').map(slug => `/post/${slug}`),
     ...readSlugs('talks').map(slug => `/talk/${slug}`),
+    // Only the FAQ entries that have a body: the others never get a page, and
+    // listing a URL the build did not generate submits a 404.
+    ...queryCollection('faq')
+      .locale('br')
+      .filter((entry: { slug?: string; body?: string }) => entry.slug && (entry.body ?? '').trim())
+      .map((entry: { slug: string }) => `/faq/${entry.slug}`),
   ];
 
   return [...LOCALIZED_ROUTES, ...detailRoutes].map(route => {
@@ -122,7 +128,7 @@ function buildLocalizedEntries(): SitemapEntry[] {
     return {
       loc: `${siteUrl}${withSlash(localePath('br', route))}`,
       changefreq: 'weekly',
-      priority: route === '/' ? '1.0' : route.startsWith('/post/') || route.startsWith('/talk/') ? '0.4' : '0.5',
+      priority: route === '/' ? '1.0' : route.startsWith('/post/') || route.startsWith('/talk/') || route.startsWith('/faq/') ? '0.4' : '0.5',
       alternates,
     };
   });

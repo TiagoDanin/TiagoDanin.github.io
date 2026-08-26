@@ -3,21 +3,90 @@
   "summary": "Mobile developer and bug hunter from Belem, Brazil. Native and cross-platform apps (Kotlin, Swift, Flutter, React Native), open source maintenance, and security research.",
   "note": "Content is published in English and Portuguese. A Portuguese page lives under the /pt suffix of its English route, and every HTML page has a Markdown mirror at the same path with a .md extension.",
   "pages": [
-    { "path": "/", "title": "Home", "description": "Overview of what Tiago builds, with featured projects and recent writing." },
-    { "path": "/about", "title": "About", "description": "Background, work history, volunteering and how to get in touch." },
-    { "path": "/projects", "title": "Projects", "description": "Every published project across GitHub, NPM, PyPI, LuaRocks, Google Play and the Microsoft Store." },
-    { "path": "/blog", "title": "Blog", "description": "Articles on mobile development, security and open source." },
-    { "path": "/talks", "title": "Talks", "description": "Conference and meetup talks, most with a recording." },
-    { "path": "/timeline", "title": "Timeline", "description": "Career milestones, awards and certifications in chronological order." },
-    { "path": "/skills", "title": "Skills", "description": "Technical skills by category, each with its own page." },
-    { "path": "/services", "title": "Services", "description": "What Tiago takes on as a freelancer and consultant." },
-    { "path": "/press", "title": "Press", "description": "Interviews, podcasts and articles that cover Tiago's work." },
-    { "path": "/press-kit", "title": "Press kit", "description": "Bios of different lengths, photos and brand assets for reuse." },
-    { "path": "/apps", "title": "Apps", "description": "Published mobile apps and games." },
-    { "path": "/links", "title": "Links", "description": "Link in bio, the short list of what to open first." },
-    { "path": "/all-contacts", "title": "Contacts", "description": "Every social profile and contact channel." },
-    { "path": "/rankings/github", "title": "GitHub rankings", "description": "Repositories ranked by stars, forks and activity." },
-    { "path": "/rankings/npm", "title": "NPM rankings", "description": "Packages ranked by download volume." },
-    { "path": "/sitemap", "title": "Sitemap", "description": "Every page on the site, grouped by the XML sitemap that lists it." }
+    {
+      "path": "/",
+      "title": "Home",
+      "description": "Overview of what Tiago builds, with featured projects and recent writing."
+    },
+    {
+      "path": "/about",
+      "title": "About",
+      "description": "Background, work history, volunteering and how to get in touch."
+    },
+    {
+      "path": "/projects",
+      "title": "Projects",
+      "description": "Every published project across GitHub, NPM, PyPI, LuaRocks, Google Play and the Microsoft Store."
+    },
+    {
+      "path": "/blog",
+      "title": "Blog",
+      "description": "Articles on mobile development, security and open source."
+    },
+    {
+      "path": "/talks",
+      "title": "Talks",
+      "description": "Conference and meetup talks, most with a recording."
+    },
+    {
+      "path": "/timeline",
+      "title": "Timeline",
+      "description": "Career milestones, awards and certifications in chronological order."
+    },
+    {
+      "path": "/skills",
+      "title": "Skills",
+      "description": "Technical skills by category, each with its own page."
+    },
+    {
+      "path": "/services",
+      "title": "Services",
+      "description": "What Tiago takes on as a freelancer and consultant."
+    },
+    {
+      "path": "/press",
+      "title": "Press",
+      "description": "Interviews, podcasts and articles that cover Tiago's work."
+    },
+    {
+      "path": "/press-kit",
+      "title": "Press kit",
+      "description": "Bios of different lengths, photos and brand assets for reuse."
+    },
+    {
+      "path": "/apps",
+      "title": "Apps",
+      "description": "Published mobile apps and games."
+    },
+    {
+      "path": "/links",
+      "title": "Links",
+      "description": "Link in bio, the short list of what to open first."
+    },
+    {
+      "path": "/all-contacts",
+      "title": "Contacts",
+      "description": "Every social profile and contact channel."
+    },
+    {
+      "path": "/rankings/github",
+      "title": "GitHub rankings",
+      "description": "Repositories ranked by stars, forks and activity."
+    },
+    {
+      "path": "/rankings/npm",
+      "title": "NPM rankings",
+      "description": "Packages ranked by download volume."
+    },
+    {
+      "path": "/faq",
+      "title": "FAQ",
+      "description": "Direct answers to what people ask about Tiago Danin: mobile development in Belem, security research, talks and community work."
+    },
+    {
+      "path": "/sitemap",
+      "title": "Sitemap",
+      "description": "Every page on the site, grouped by the XML sitemap that lists it."
+    }
   ]
 }
