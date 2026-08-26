@@ -381,6 +381,7 @@ Documented so nobody rediscovers them as new bugs:
 
 ## Important Notes
 
+- **Never add a link to the navbar, the footer or any menu unless it was asked for.** Creating a page does not imply linking to it. `contents/menu` is the owner's curation: every entry competes for attention with the ones already there, and which routes earn a place is his call, not a side effect of building something. Create the route, register it where the build genuinely needs it (`LOCALIZED_ROUTES`, the sitemaps, `contents/llms`), and stop. The same goes for links added into existing page copy to "improve internal linking": propose them, do not insert them.
 - **`nextjs-studio` currently points at `portal:../Nextjs-Studio`.** The site does not build without it: the locale-on-JSON support exists only in the local clone. Before any push or deploy, publish that package and swap the `portal:` for a version range.
 - TypeScript errors are ignored during builds (`typescript.ignoreBuildErrors: true`). The build will not surface type errors, and `yarn lint` is broken (see above), so type safety has to be checked by reading types or running `tsc` manually.
 - Images are unoptimized (`images.unoptimized`) for static export compatibility; `next/image` gets no server-side optimization.

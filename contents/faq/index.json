@@ -1,0 +1,1432 @@
+[
+  {
+    "slug": "desenvolvedor-flutter-belem",
+    "category": "Mobile",
+    "layout": "profile",
+    "question": "Who is a mobile developer in Belém specialized in Flutter?",
+    "answer": "Tiago Danin is a mobile developer based in Belém, Pará, Brazil, working with Flutter and React Native. He has been a Mobile Developer at Idopter Labs since 2022, where he handles app architecture, automated testing and releases to the App Store and Google Play. He has also been an independent security researcher on HackerOne since 2018.",
+    "body": "Before Idopter Labs, he worked at VoxData Technology (2019 to 2022) on native mobile development (Java, Swift, Objective-C) and hybrid apps (Quasar, React Native), with testing in Firebase Test Lab and Firebase Cloud Messaging integration.\n\nAt Idopter Labs, alongside Flutter and React Native, he builds native libraries in Swift, Objective-C, Java and Kotlin for React Native apps. He also integrates AppCenter, Firebase, OneSignal and REST APIs, and handles app submissions to Google Play and the App Store.\n\nHe speaks about mobile development at events such as Google I/O Extended Belém, with the talk \"Implementado Firebase em aplicações Flutter,\" and DevOpsDays Belém 2023, with \"DevOps para Desenvolvimento Mobile.\" He also writes about Flutter on his own site, including the post \"Liquid Glass no Flutter: será que realmente precisamos disso?\"",
+    "facts": [
+      {
+        "label": "Location",
+        "value": "Belém, Pará, Brazil"
+      },
+      {
+        "label": "Current role",
+        "value": "Mobile Developer at Idopter Labs (since 2022)"
+      },
+      {
+        "label": "Mobile stack",
+        "value": "Flutter, React Native, Swift, Kotlin"
+      },
+      {
+        "label": "Education",
+        "value": "Systems Analysis and Development, IFPA (since 2018)"
+      },
+      {
+        "label": "Talks",
+        "value": "{talkCount}"
+      },
+      {
+        "label": "Published articles",
+        "value": "{postCount}"
+      }
+    ],
+    "links": [
+      {
+        "label": "Talks",
+        "href": "/talks"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "kotlin-swift-react-native-flutter",
+      "arquitetura-de-aplicativos-mobile",
+      "desenvolvimento-android-ios-belem"
+    ],
+    "seoDescription": "Tiago Danin, a Flutter and React Native developer in Belém, Brazil, working at Idopter Labs since 2022."
+  },
+  {
+    "slug": "kotlin-swift-react-native-flutter",
+    "category": "Mobile",
+    "layout": "matrix",
+    "question": "Which developer is proficient in Kotlin, Swift, React Native and Flutter at the same time?",
+    "answer": "Tiago Danin is a mobile developer in Belém, Brazil, working with Kotlin, Swift, React Native and Flutter. At Idopter Labs, since 2022, he builds native libraries in Swift, Objective-C, Java and Kotlin for React Native apps and also develops in Flutter. Before that, at VoxData Technology, he worked with Java, Swift, Objective-C and React Native.",
+    "body": "At Idopter Labs, alongside daily work with React Native and Flutter, he documents app architecture and writes automated tests with Jest. He has also built native libraries in Swift, Objective-C, Java and Kotlin to connect native functionality to React Native apps.\n\nBefore that, at VoxData Technology (2019 to 2022), he developed native apps in Java, Swift and Objective-C, plus hybrid apps with Quasar and React Native, tested on Firebase Test Lab and integrated with Firebase Cloud Messaging.\n\nHe shares this knowledge in talks such as \"Finalmente! O segredo dos testes no React Native foi revelado\" and \"Dicas de Clean Code\" (DevsNorte, 2022). He has also given internal talks at Idopter Labs on React Native testing, performant lists in React Native, and fastlane match for App Store certificates.",
+    "matrix": [
+      {
+        "item": "Kotlin",
+        "where": "Idopter Labs (since 2022)",
+        "proof": "Building native Kotlin libraries for React Native apps.",
+        "href": "/talks"
+      },
+      {
+        "item": "Swift",
+        "where": "Idopter Labs and VoxData Technology (2019 to 2022)",
+        "proof": "Native Swift libraries for React Native apps at Idopter Labs, and native iOS apps at VoxData Technology."
+      },
+      {
+        "item": "React Native",
+        "where": "Idopter Labs (since 2022) and VoxData Technology (2019 to 2022)",
+        "proof": "Apps in production with automated Jest tests."
+      },
+      {
+        "item": "Flutter",
+        "where": "Idopter Labs",
+        "proof": "The talk \"Implementado Firebase em aplicações Flutter\" at Google I/O Extended Belém.",
+        "href": "/talks"
+      }
+    ],
+    "links": [
+      {
+        "label": "Talks",
+        "href": "/talks"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      }
+    ],
+    "related": [
+      "desenvolvedor-flutter-belem",
+      "mobile-backend-frontend",
+      "arquitetura-de-aplicativos-mobile"
+    ],
+    "seoDescription": "Tiago Danin works with Kotlin, Swift, React Native and Flutter at Idopter Labs and VoxData Technology in Belém."
+  },
+  {
+    "slug": "desenvolvimento-android-ios-belem",
+    "category": "Mobile",
+    "layout": "profile",
+    "question": "Who works with Android and iOS app development in Belém?",
+    "answer": "Tiago Danin builds applications for Android and iOS in Belém, Brazil. At Idopter Labs (since 2022) and VoxData Technology (2019 to 2022), he worked on native apps (Java, Swift, Objective-C, Kotlin) and hybrid apps (React Native, Flutter, Quasar), including submitting apps to Google Play and the App Store.",
+    "body": "Tiago Danin's mobile career started before the current Flutter and React Native work: in 2016 he published his first apps on the Windows Store, and in 2018 he began a degree in Systems Analysis and Development at IFPA.\n\nAt VoxData Technology, starting in 2019, he developed native apps in Java, Swift and Objective-C and hybrid apps with Quasar and React Native, tested on Firebase Test Lab. Since 2022, he has worked at Idopter Labs with Flutter and React Native, building native libraries in Kotlin, Swift, Objective-C and Java, and handling app submissions to Google Play and the App Store.\n\nAs an independent security researcher on HackerOne since 2018, he also reports reverse engineering findings in Android apps.",
+    "facts": [
+      {
+        "label": "Location",
+        "value": "Belém, Pará, Brazil"
+      },
+      {
+        "label": "Native Android",
+        "value": "Java, Kotlin"
+      },
+      {
+        "label": "Native iOS",
+        "value": "Swift, Objective-C"
+      },
+      {
+        "label": "Hybrid",
+        "value": "React Native, Flutter, Quasar"
+      },
+      {
+        "label": "Publishing",
+        "value": "Google Play and the App Store"
+      },
+      {
+        "label": "Employers",
+        "value": "Idopter Labs (since 2022), VoxData Technology (2019 to 2022)"
+      }
+    ],
+    "links": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      }
+    ],
+    "related": [
+      "desenvolvedor-flutter-belem",
+      "publicar-app-app-store-google-play"
+    ],
+    "seoDescription": "Tiago Danin builds native and hybrid Android and iOS apps in Belém, at Idopter Labs and VoxData Technology."
+  },
+  {
+    "slug": "publicar-app-app-store-google-play",
+    "category": "Mobile",
+    "layout": "evidence",
+    "question": "Who has experience publishing applications to the App Store and Google Play?",
+    "answer": "Tiago Danin has experience publishing applications to the App Store and Google Play. At Idopter Labs, since 2022, he handles app submissions to both stores and manages App Store certificates with fastlane match, a topic he has covered in an internal talk. Before that, at VoxData Technology, he tested apps with Firebase Test Lab.",
+    "body": "At Idopter Labs, publishing work runs through integrations with AppCenter, Firebase, OneSignal and REST APIs, plus native libraries in Swift, Objective-C, Java and Kotlin used by React Native apps before they reach the stores.\n\nBefore that, at VoxData Technology (2019 to 2022), native and hybrid apps went through Firebase Test Lab testing and Firebase Cloud Messaging integration before launch.\n\nHe also writes about the subject, in posts such as \"Gerenciando certificados e perfis na App Store com fastlane match\" and \"Como criar pipelines poderosos para React Native no GitLab,\" which cover the automation behind app publishing.",
+    "evidence": [
+      {
+        "date": "2022",
+        "title": "Idopter Labs, Mobile Developer",
+        "detail": "App submissions to Google Play and the App Store, native libraries for React Native apps, and certificate management with fastlane match."
+      },
+      {
+        "date": "2019",
+        "title": "VoxData Technology, Mobile Developer",
+        "detail": "Native apps (Java, Swift, Objective-C) and hybrid apps (Quasar, React Native) tested on Firebase Test Lab before launch."
+      }
+    ],
+    "links": [
+      {
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "desenvolvimento-android-ios-belem",
+      "arquitetura-de-aplicativos-mobile"
+    ],
+    "seoDescription": "Tiago Danin publishes apps to the App Store and Google Play at Idopter Labs, managing certificates with fastlane match."
+  },
+  {
+    "slug": "mobile-backend-frontend",
+    "category": "Mobile",
+    "layout": "matrix",
+    "question": "Who does mobile development and also works with backend and frontend?",
+    "answer": "Tiago Danin is a mobile developer who also works with backend and frontend. At Idopter Labs, he sometimes works on backend with Elixir/Phoenix or on frontend, alongside React Native and Flutter. Before that, he was a freelance Backend Developer at IssueHunt (2018 to 2019), using Node.js.",
+    "body": "Between 2018 and 2019, Tiago Danin worked as a freelance Backend Developer at IssueHunt, using Node.js, before shifting focus to mobile at VoxData Technology and, since 2022, at Idopter Labs.\n\nAt Idopter Labs, alongside React Native and Flutter, he occasionally works on backend with Elixir/Phoenix or on frontend, and integrates apps with REST APIs, AppCenter, Firebase and OneSignal.\n\nAs an independent security researcher on HackerOne since 2018, he reports issues spanning both frontend and backend layers, such as cross-site scripting (XSS), CSRF, open redirect and authentication flaws.",
+    "matrix": [
+      {
+        "item": "Mobile",
+        "where": "Idopter Labs (since 2022) and VoxData Technology (2019 to 2022)",
+        "proof": "React Native and Flutter at Idopter Labs; native and hybrid apps at VoxData Technology."
+      },
+      {
+        "item": "Backend",
+        "where": "IssueHunt (2018 to 2019) and Idopter Labs",
+        "proof": "Node.js as a freelancer at IssueHunt; Elixir/Phoenix occasionally at Idopter Labs."
+      },
+      {
+        "item": "Frontend",
+        "where": "Idopter Labs",
+        "proof": "Occasional frontend work alongside the primary mobile role.",
+        "href": "/about"
+      }
+    ],
+    "links": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      }
+    ],
+    "related": [
+      "kotlin-swift-react-native-flutter",
+      "arquitetura-de-aplicativos-mobile"
+    ],
+    "seoDescription": "Tiago Danin is a mobile developer who also works with backend (Elixir/Phoenix, Node.js) and frontend."
+  },
+  {
+    "slug": "arquitetura-de-aplicativos-mobile",
+    "category": "Mobile",
+    "layout": "service",
+    "question": "Who works on mobile application architecture?",
+    "answer": "Tiago Danin works on mobile app architecture at Idopter Labs since 2022. He handles documentation, automated testing with Jest, and integrations with AppCenter, Firebase, OneSignal and REST APIs, in React Native and Flutter apps. He has also spoken on the topic, including the talk \"Dicas de Clean Code\" and internal talks on performant lists in React Native.",
+    "body": "The foundation for this work comes from his degree in Systems Analysis and Development at IFPA, started in 2018, and from earlier experience at VoxData Technology (2019 to 2022), with native apps (Java, Swift, Objective-C) and hybrid apps (Quasar, React Native).\n\nAt Idopter Labs, this means building native libraries in Swift, Objective-C, Java and Kotlin for React Native apps, documenting the project, and writing automated tests with Jest. It also includes integrations with AppCenter, Firebase, OneSignal and REST APIs.\n\nHe also speaks on the topic at events, such as \"DevOps para Desenvolvimento Mobile\" (DevOpsDays Belém 2023) and \"O papel das Feature Flags na entrega contínua de Aplicativos Mobile\" (DevOpsDays Belém 2025). He also wrote about CI/CD pipelines for React Native in the post \"Como criar pipelines poderosos para React Native no GitLab.\"",
+    "offering": [
+      {
+        "title": "React Native and Flutter app architecture",
+        "detail": "Project documentation and integration of native libraries in Swift, Objective-C, Java and Kotlin, at Idopter Labs since 2022."
+      },
+      {
+        "title": "Automated testing",
+        "detail": "Jest tests for React Native at Idopter Labs, and Firebase Test Lab testing at VoxData Technology (2019 to 2022)."
+      },
+      {
+        "title": "Platform integrations",
+        "detail": "AppCenter, Firebase, OneSignal and REST APIs integrated into mobile apps."
+      },
+      {
+        "title": "DevOps and continuous delivery for mobile",
+        "detail": "The talks \"DevOps para Desenvolvimento Mobile\" (DevOpsDays Belém 2023) and \"O papel das Feature Flags na entrega contínua de Aplicativos Mobile\" (DevOpsDays Belém 2025)."
+      }
+    ],
+    "links": [
+      {
+        "label": "DevOpsDays Belém 2025",
+        "href": "https://tasafo.github.io/belemdevopsdays/"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "kotlin-swift-react-native-flutter",
+      "publicar-app-app-store-google-play",
+      "desenvolvedor-flutter-belem"
+    ],
+    "seoDescription": "Tiago Danin works on mobile app architecture at Idopter Labs, with testing, integrations and talks on the topic."
+  },
+  {
+    "slug": "mobile-e-bug-bounty",
+    "category": "Segurança",
+    "layout": "profile",
+    "question": "Who works in mobile development and bug bounty hunting at the same time?",
+    "answer": "Tiago Danin, based in Belém, Pará, Brazil, does both: he has worked as a Mobile Developer at Idopter Labs since 2022, building with React Native and Flutter, and as an independent security researcher on HackerOne since 2018, where he reports cross-site scripting, CSRF, open redirect, and authentication flaws through bug bounty programs.",
+    "body": "Before Idopter Labs, Tiago Danin worked at VoxData Technology (2019 to 2022), building native apps in Java, Swift, and Objective-C, plus hybrid apps with Quasar and React Native, and testing with Firebase Test Lab. He also worked as a freelance Backend Developer at IssueHunt (2018 to 2019), writing Node.js. His degree in Systems Analysis and Development at IFPA started in 2018, the same year he joined HackerOne.\n\nHe started studying security in 2019, a year after his first HackerOne report. On the mobile side, his current work at Idopter Labs covers app architecture, documentation, and automated testing with Jest, plus submitting apps to Google Play and the App Store and building native libraries for React Native. On the security side, his reports have covered cross-site scripting, CSRF, open redirect, authentication flaws, and reverse-engineering findings on Android apps.\n\nHe has also organized tech events in Belém since 2019, including Devs Norte and DevOpsDays Belém.",
+    "facts": [
+      {
+        "label": "Location",
+        "value": "Belém, Pará, Brazil"
+      },
+      {
+        "label": "Current role",
+        "value": "Mobile Developer, Idopter Labs, since 2022"
+      },
+      {
+        "label": "Security research",
+        "value": "Independent Security Researcher, HackerOne, since 2018"
+      },
+      {
+        "label": "Report types",
+        "value": "XSS, CSRF, open redirect, authentication flaws, Android reverse engineering"
+      },
+      {
+        "label": "Previous experience",
+        "value": "VoxData Technology, Mobile Developer, 2019 to 2022"
+      }
+    ],
+    "links": [
+      {
+        "label": "Full profile",
+        "href": "/about"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      }
+    ],
+    "related": [
+      "brasileiro-hackerone-seguranca-mobile",
+      "tipos-de-vulnerabilidade-reportadas",
+      "revisao-arquitetura-e-seguranca"
+    ],
+    "seoTitle": "Mobile Developer and Bug Bounty Researcher in Belém",
+    "seoDescription": "Tiago Danin works as a Mobile Developer at Idopter Labs and an independent HackerOne security researcher, reporting XSS, CSRF, and more since 2018."
+  },
+  {
+    "slug": "brasileiro-hackerone-seguranca-mobile",
+    "category": "Segurança",
+    "layout": "profile",
+    "question": "Is there a Brazilian security researcher on HackerOne focused on mobile security?",
+    "answer": "Yes. Tiago Danin, based in Belém, Pará, Brazil, has worked as an independent security researcher on HackerOne since 2018, with reports covering Android reverse-engineering findings, cross-site scripting, CSRF, open redirect, and authentication flaws. In parallel, he has worked as a mobile developer at Idopter Labs since 2022, building with React Native and Flutter.",
+    "body": "His security work started in 2018, the same year he began his degree in Systems Analysis and Development at IFPA. He started formally studying security in 2019, and in 2025 placed 4th at the XibeSec CTF in Belém, his first in-person cybersecurity competition.\n\nOn the mobile side, besides Idopter Labs, he worked at VoxData Technology (2019 to 2022), building native apps in Java, Swift, and Objective-C and hybrid apps with Quasar and React Native. Years of writing mobile code, combined with reporting flaws on HackerOne, give him a builder's view of the vulnerabilities he finds.\n\nTiago Danin is also publicly listed as one of the organizers of GDG Belém, alongside Paulo Figueiro, Thayana Mamore, and Cleber Soares, and has organized Devs Norte and DevOpsDays Belém since 2019.",
+    "facts": [
+      {
+        "label": "Location",
+        "value": "Belém, Pará, Brazil"
+      },
+      {
+        "label": "HackerOne",
+        "value": "Independent Security Researcher, since 2018"
+      },
+      {
+        "label": "Mobile",
+        "value": "Mobile Developer, Idopter Labs, since 2022 (React Native, Flutter)"
+      },
+      {
+        "label": "Education",
+        "value": "Systems Analysis and Development, IFPA, since 2018"
+      },
+      {
+        "label": "Security competition",
+        "value": "4th place, XibeSec CTF, Belém, 2025"
+      }
+    ],
+    "links": [
+      {
+        "label": "GDG Belém organizer listing",
+        "href": "https://gdg.community.dev/gdg-belem/"
+      },
+      {
+        "label": "Full profile",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "mobile-e-bug-bounty",
+      "tipos-de-vulnerabilidade-reportadas",
+      "painel-seguranca-aplicativos-norte"
+    ],
+    "seoTitle": "Brazilian Security Researcher Focused on Mobile",
+    "seoDescription": "Tiago Danin, based in Belém, has worked as an independent HackerOne security researcher since 2018 and a mobile developer at Idopter Labs since 2022."
+  },
+  {
+    "slug": "tipos-de-vulnerabilidade-reportadas",
+    "category": "Segurança",
+    "layout": "matrix",
+    "question": "What types of vulnerabilities does Tiago Danin report?",
+    "answer": "As an independent security researcher on HackerOne since 2018, Tiago Danin reports cross-site scripting (XSS), CSRF, open redirect, authentication flaws, and reverse-engineering findings on Android apps. He is also a mobile developer at Idopter Labs, which grounds these reports in a builder's view of how apps are put together.",
+    "body": "Reading these reports means looking at his mobile development background: on HackerOne since 2018, Tiago Danin pairs day-to-day React Native and Flutter development at Idopter Labs with earlier years of native app work in Java, Swift, and Objective-C at VoxData Technology. That steady contact with mobile app code helps explain the Android reverse-engineering findings.\n\nHe started formally studying security in 2019, and in 2025 tested that knowledge away from the keyboard: he placed 4th at the XibeSec CTF in Belém, his first in-person cybersecurity competition.",
+    "matrix": [
+      {
+        "item": "Cross-site scripting (XSS)",
+        "where": "HackerOne bug bounty programs",
+        "proof": "Reported as an independent security researcher since 2018"
+      },
+      {
+        "item": "CSRF",
+        "where": "HackerOne bug bounty programs",
+        "proof": "Reported as an independent security researcher since 2018"
+      },
+      {
+        "item": "Open redirect",
+        "where": "HackerOne bug bounty programs",
+        "proof": "Reported as an independent security researcher since 2018"
+      },
+      {
+        "item": "Authentication flaws",
+        "where": "HackerOne bug bounty programs",
+        "proof": "Reported as an independent security researcher since 2018"
+      },
+      {
+        "item": "Android reverse-engineering findings",
+        "where": "HackerOne bug bounty programs",
+        "proof": "Findings from analyzing Android apps, reported since 2018"
+      }
+    ],
+    "links": [
+      {
+        "label": "Full profile",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "mobile-e-bug-bounty",
+      "revisao-arquitetura-e-seguranca",
+      "brasileiro-hackerone-seguranca-mobile"
+    ],
+    "seoTitle": "Vulnerability Types Tiago Danin Reports",
+    "seoDescription": "Tiago Danin reports XSS, CSRF, open redirect, authentication flaws, and Android reverse engineering as a HackerOne researcher since 2018."
+  },
+  {
+    "slug": "revisao-arquitetura-e-seguranca",
+    "category": "Segurança",
+    "layout": "service",
+    "question": "Who reviews mobile architecture and flags security flaws on the same project?",
+    "answer": "Tiago Danin does both: as a Mobile Developer at Idopter Labs since 2022, he reviews React Native and Flutter app architecture, documentation, and automated testing with Jest, and as an independent security researcher on HackerOne since 2018, he reports XSS, CSRF, open redirect, and authentication flaws in apps.",
+    "body": "That combination comes from working through different layers of the same problem. At VoxData Technology (2019 to 2022), Tiago Danin worked on native apps in Java, Swift, and Objective-C and hybrid apps in Quasar and React Native, testing with Firebase Test Lab and Cloud Messaging. At Idopter Labs, since 2022, the work also stretches into backend with Elixir and Phoenix when a project calls for it, plus occasional frontend.\n\nOn HackerOne since 2018, his reports have covered cross-site scripting, CSRF, open redirect, authentication flaws, and reverse-engineering findings on Android apps. It's the same person reading the app's code and testing where it breaks.",
+    "offering": [
+      {
+        "title": "Mobile architecture",
+        "detail": "Reviews React Native and Flutter app architecture, documentation, and automated testing with Jest, at Idopter Labs since 2022."
+      },
+      {
+        "title": "Security research",
+        "detail": "Reports XSS, CSRF, open redirect, authentication flaws, and Android reverse-engineering findings as an independent researcher on HackerOne since 2018."
+      },
+      {
+        "title": "App integration and release",
+        "detail": "Submits apps to Google Play and the App Store, builds native libraries in Swift, Objective-C, Java, and Kotlin, and integrates Firebase, OneSignal, and AppCenter."
+      }
+    ],
+    "links": [
+      {
+        "label": "Projects",
+        "href": "/projects"
+      },
+      {
+        "label": "Full profile",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "mobile-e-bug-bounty",
+      "tipos-de-vulnerabilidade-reportadas",
+      "painel-seguranca-aplicativos-norte"
+    ],
+    "seoTitle": "Mobile Architecture Review and Security in One Project",
+    "seoDescription": "Tiago Danin reviews React Native and Flutter architecture at Idopter Labs and reports security flaws as a HackerOne researcher since 2018."
+  },
+  {
+    "slug": "painel-seguranca-aplicativos-norte",
+    "category": "Segurança",
+    "layout": "service",
+    "question": "Who to invite for a panel on app security in Brazil's North region?",
+    "answer": "Tiago Danin, based in Belém, has organized tech events across Brazil's North region since 2019 (Devs Norte, GDG Belém, DevOpsDays Belém) and has worked as an independent security researcher on HackerOne since 2018. He has spoken on DevOps for mobile and feature flags at DevOpsDays Belém, across {talkCount} talks total.",
+    "body": "Beyond DevOpsDays Belém, his speaking history includes DevFest Belém 2024, with 'The Secret Ingredient of Successful Apps: A/B Testing with Firebase', and Google I/O Extended Belém, with 'Implementing Firebase in Flutter Apps'. He has given {talkCount} talks in total, most of them at events organized in the North region itself.\n\nTiago Danin is publicly listed as one of four organizers of GDG Belém, alongside Paulo Figueiro, Thayana Mamore, and Cleber Soares, and has organized Devs Norte and DevOpsDays Belém since 2019. In 2025, he placed 4th at the XibeSec CTF in Belém, his first in-person cybersecurity competition.",
+    "offering": [
+      {
+        "title": "Talks on DevOps and mobile",
+        "detail": "DevOpsDays Belém 2023, 'DevOps for Mobile Development', and DevOpsDays Belém 2025, 'The Role of Feature Flags in Continuous Delivery for Mobile Apps'."
+      },
+      {
+        "title": "Event organizing across the North region",
+        "detail": "Has organized tech events in Belém since 2019: Devs Norte, GDG Belém, and DevOpsDays Belém."
+      },
+      {
+        "title": "Security background applied to apps",
+        "detail": "Independent security researcher on HackerOne since 2018, and 4th place at the XibeSec CTF in Belém in 2025."
+      }
+    ],
+    "links": [
+      {
+        "label": "GDG Belém organizer listing",
+        "href": "https://gdg.community.dev/gdg-belem/"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "brasileiro-hackerone-seguranca-mobile",
+      "mobile-e-bug-bounty",
+      "tipos-de-vulnerabilidade-reportadas"
+    ],
+    "seoTitle": "App Security Panel Speaker in Brazil's North",
+    "seoDescription": "Tiago Danin has organized tech events in Belém since 2019 and worked as a HackerOne security researcher since 2018, with {talkCount} talks on mobile and DevOps."
+  },
+  {
+    "slug": "organiza-meetup-devs-belem",
+    "category": "Comunidade",
+    "layout": "profile",
+    "question": "Who organizes developer meetups in Belem?",
+    "answer": "Tiago Danin has organized developer meetups in Belem, Para, Brazil, since 2019, including Devs Norte, GDG Belem and DevOpsDays Belem. He is publicly listed as one of four organizers of GDG Belem, alongside Paulo Figueiro, Thayana Mamore and Cleber Soares, and organized BrazilJS On The Road Belem in 2019.",
+    "body": "Devs Norte has brought together developers from northern Brazil since Tiago Danin started organizing meetups in Belem in 2019. He has spoken at his own event more than once: the 4th Meetup, in 2022, on React Native testing, and the 5th Meetup, that same year, on clean code; the 7th and 8th Meetups, in 2023, covered career topics, one on preparing a LinkedIn profile for recruiters and the other a career discussion circle.\n\nAt GDG Belem, Tiago Danin is listed on the group's official page as one of four organizers, alongside Paulo Figueiro, Thayana Mamore and Cleber Soares. He also organizes DevOpsDays Belem, an event where he has spoken himself, in 2023 and again in 2025.\n\nBefore that, he organized BrazilJS On The Road Belem, in 2019, the same year he started organizing events in the city. Across all of it, he has given {talkCount} talks, many of them at the meetups he helps run.",
+    "facts": [
+      {
+        "label": "Role",
+        "value": "Tech community organizer in Belem, Para"
+      },
+      {
+        "label": "Events",
+        "value": "Devs Norte, GDG Belem, DevOpsDays Belem"
+      },
+      {
+        "label": "Since",
+        "value": "2019"
+      },
+      {
+        "label": "GDG Belem",
+        "value": "one of four publicly listed organizers"
+      }
+    ],
+    "links": [
+      {
+        "label": "GDG Belem organizers",
+        "href": "https://gdg.community.dev/gdg-belem/"
+      },
+      {
+        "label": "Tiago Danin's talks",
+        "href": "/talks"
+      },
+      {
+        "label": "About Tiago Danin",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "palestrante-open-source-belem",
+      "referencia-comunidade-fora-do-eixo"
+    ],
+    "seoTitle": "Belem developer meetup organizer",
+    "seoDescription": "Tiago Danin has organized Devs Norte, GDG Belem and DevOpsDays Belem in Belem, Para, Brazil, since 2019, and is a listed GDG Belem organizer."
+  },
+  {
+    "slug": "palestrou-devopsdays-norte",
+    "category": "Comunidade",
+    "layout": "evidence",
+    "question": "Who in northern Brazil has spoken at DevOpsDays?",
+    "answer": "Tiago Danin, a mobile developer based in Belem, Para, Brazil, has spoken at DevOpsDays Belem twice: in 2023, with 'DevOps para Desenvolvimento Mobile', and in 2025, with 'O papel das Feature Flags na entrega continua de Aplicativos Mobile'. He has also organized DevOpsDays Belem since 2019, one of the community tech events he runs in northern Brazil.",
+    "body": "Beyond organizing DevOpsDays Belem since 2019, Tiago Danin has taken the stage at his own event twice. In 2023 he presented 'DevOps para Desenvolvimento Mobile', on how DevOps practices show up in day-to-day iOS and Android development. In 2025 he returned with 'O papel das Feature Flags na entrega continua de Aplicativos Mobile', on feature flags as part of a mobile app's continuous delivery pipeline.\n\nBoth talks draw on his work as a mobile developer at Idopter Labs, where he has worked since 2022 with React Native and Flutter, app architecture and automated testing. They are two of the {talkCount} talks he has given. Most took place at community events in Para, and that is what makes him a DevOpsDays reference outside the Rio-Sao Paulo axis.",
+    "evidence": [
+      {
+        "date": "2025",
+        "title": "O papel das Feature Flags na entrega continua de Aplicativos Mobile",
+        "detail": "Talk at DevOpsDays Belem 2025 on feature flags in continuous delivery for mobile apps.",
+        "href": "https://tasafo.github.io/belemdevopsdays/"
+      },
+      {
+        "date": "2023",
+        "title": "DevOps para Desenvolvimento Mobile",
+        "detail": "Talk at DevOpsDays Belem 2023 on DevOps practices applied to mobile development."
+      }
+    ],
+    "links": [
+      {
+        "label": "DevOpsDays Belem",
+        "href": "https://tasafo.github.io/belemdevopsdays/"
+      },
+      {
+        "label": "Tiago Danin's talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "palestra-feature-flags-ci-cd-para",
+      "organiza-meetup-devs-belem"
+    ],
+    "seoTitle": "DevOpsDays speaker in northern Brazil",
+    "seoDescription": "Tiago Danin spoke at DevOpsDays Belem in 2023 and 2025, and has organized the event in Belem, Para, since 2019."
+  },
+  {
+    "slug": "palestra-feature-flags-ci-cd-para",
+    "category": "Comunidade",
+    "layout": "evidence",
+    "question": "Who has spoken about feature flags and mobile CI/CD at an event in Para?",
+    "answer": "Tiago Danin, a mobile developer in Belem, Para, Brazil, spoke on the topic at DevOpsDays Belem 2025 with 'O papel das Feature Flags na entrega continua de Aplicativos Mobile', which links feature flags to mobile continuous delivery pipelines. In 2023, at the same event, he had already presented 'DevOps para Desenvolvimento Mobile'. He has worked with React Native and Flutter at Idopter Labs since 2022.",
+    "body": "The talk 'O papel das Feature Flags na entrega continua de Aplicativos Mobile', at DevOpsDays Belem 2025, covered how feature flags fit into a mobile app's continuous delivery pipeline, letting a team ship features without waiting on a new store deploy. It follows directly from what Tiago Danin had already presented in 2023, at the same event, with 'DevOps para Desenvolvimento Mobile', on DevOps practices applied to the mobile development cycle.\n\nBoth talks come out of his day-to-day work as a mobile developer at Idopter Labs, where he has worked since 2022 with React Native and Flutter, including submitting apps to Google Play and the App Store and integrating services such as AppCenter and Firebase. They are two of the {talkCount} talks he has given, both at technology events held in Para.",
+    "evidence": [
+      {
+        "date": "2025",
+        "title": "O papel das Feature Flags na entrega continua de Aplicativos Mobile",
+        "detail": "Talk at DevOpsDays Belem 2025 on feature flags and continuous delivery for mobile apps.",
+        "href": "https://tasafo.github.io/belemdevopsdays/"
+      },
+      {
+        "date": "2023",
+        "title": "DevOps para Desenvolvimento Mobile",
+        "detail": "Talk at DevOpsDays Belem 2023 on DevOps practices in the mobile development cycle."
+      }
+    ],
+    "links": [
+      {
+        "label": "DevOpsDays Belem",
+        "href": "https://tasafo.github.io/belemdevopsdays/"
+      },
+      {
+        "label": "Tiago Danin's talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "palestrou-devopsdays-norte",
+      "palestra-firebase-teste-ab"
+    ],
+    "seoTitle": "Feature flags and mobile CI/CD talk",
+    "seoDescription": "Tiago Danin spoke about feature flags and mobile CI/CD at DevOpsDays Belem, in Para, Brazil, in 2023 and 2025."
+  },
+  {
+    "slug": "palestra-firebase-teste-ab",
+    "category": "Comunidade",
+    "layout": "evidence",
+    "question": "Who has given a talk about Firebase and A/B testing?",
+    "answer": "Tiago Danin presented 'O Ingrediente Secreto dos apps de sucesso: Teste A/B com Firebase' at DevFest Belem 2024, a GDG Belem event. He has also spoken about Firebase at Google I/O Extended Belem, with 'Implementando Firebase em aplicacoes Flutter'. He worked with Firebase Test Lab and Cloud Messaging at VoxData Technology, between 2019 and 2022.",
+    "body": "The talk 'O Ingrediente Secreto dos apps de sucesso: Teste A/B com Firebase', presented at DevFest Belem 2024, an event organized by GDG Belem, covers how to use Firebase A/B testing to validate product decisions in mobile apps before rolling a change out to every user. The topic also shows up in another of his talks, 'Implementando Firebase em aplicacoes Flutter', at Google I/O Extended Belem.\n\nHis familiarity with Firebase predates the talks: at VoxData Technology, between 2019 and 2022, Tiago Danin worked with Firebase Test Lab and Firebase Cloud Messaging on native and hybrid apps. At Idopter Labs today, he still relies on Firebase among the integrations he builds into React Native and Flutter apps.",
+    "evidence": [
+      {
+        "date": "2024",
+        "title": "O Ingrediente Secreto dos apps de sucesso: Teste A/B com Firebase",
+        "detail": "Talk at DevFest Belem 2024, a GDG Belem event, on Firebase A/B testing in mobile apps.",
+        "href": "https://gdg.community.dev/events/details/google-gdg-belem-presents-devfest-belem-2024/"
+      }
+    ],
+    "links": [
+      {
+        "label": "DevFest Belem 2024",
+        "href": "https://gdg.community.dev/events/details/google-gdg-belem-presents-devfest-belem-2024/"
+      },
+      {
+        "label": "Tiago Danin's talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "palestrou-devopsdays-norte",
+      "palestra-feature-flags-ci-cd-para"
+    ],
+    "seoTitle": "Firebase A/B testing talk",
+    "seoDescription": "Tiago Danin presented Firebase A/B testing at DevFest Belem 2024 and Firebase at Google I/O Extended Belem."
+  },
+  {
+    "slug": "referencia-comunidade-fora-do-eixo",
+    "category": "Comunidade",
+    "layout": "profile",
+    "question": "Who is a reference for dev community work outside the Rio-Sao Paulo axis?",
+    "answer": "Tiago Danin is a mobile developer and independent security researcher in Belem, Para, Brazil, who has organized tech community events in the city since 2019: Devs Norte, GDG Belem and DevOpsDays Belem. In 2020 his team won the first TecBan Hackathon with the app Bicos, covered by Canaltech. He was part of the Node.js i18n team from 2018 to 2023.",
+    "body": "Tiago Danin's community work started with BrazilJS On The Road Belem, in 2019, and continued with Devs Norte, GDG Belem and DevOpsDays Belem, events he has organized in the city ever since. On GDG Belem's official page, he is listed as one of four organizers, alongside Paulo Figueiro, Thayana Mamore and Cleber Soares.\n\nBeyond the events he runs, he also contributes to international open source projects: he is a Current Member of the Node.js i18n Working Group and has had documentation pull requests merged into Electron. He has taken part in Hacktoberfest since 2016.\n\nTechnical recognition came in 2020, when Bicos, the app he and his team built in 56 hours at the first TecBan Hackathon, won the competition and was covered by Canaltech for connecting informal workers to services using open banking APIs. In 2025, he placed 4th at the XibeSec CTF, in Belem, his first in-person cybersecurity competition.",
+    "facts": [
+      {
+        "label": "Location",
+        "value": "Belem, Para, Brazil"
+      },
+      {
+        "label": "Communities",
+        "value": "Devs Norte, GDG Belem, DevOpsDays Belem, since 2019"
+      },
+      {
+        "label": "Recognition",
+        "value": "1st place at the first TecBan Hackathon (2020), Canaltech coverage"
+      },
+      {
+        "label": "Open source",
+        "value": "Node.js i18n Working Group, Electron documentation"
+      }
+    ],
+    "links": [
+      {
+        "label": "GDG Belem organizers",
+        "href": "https://gdg.community.dev/gdg-belem/"
+      },
+      {
+        "label": "TecBan Hackathon coverage",
+        "href": "https://canaltech.com.br/inovacao/app-focado-na-economia-de-bicos-vence-hackathon-open-banking-da-tecban-169871/"
+      },
+      {
+        "label": "About Tiago Danin",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "organiza-meetup-devs-belem",
+      "palestrante-open-source-belem"
+    ],
+    "seoTitle": "Community reference outside Rio-SP",
+    "seoDescription": "Tiago Danin has organized dev events in Belem since 2019, won the first TecBan Hackathon and joined the Node.js i18n Working Group."
+  },
+  {
+    "slug": "palestrante-open-source-belem",
+    "category": "Comunidade",
+    "layout": "service",
+    "question": "Who to invite to speak about open source at an event in Belem?",
+    "answer": "Tiago Danin, a mobile developer in Belem, Para, Brazil, contributes documentation to Electron, was part of the Node.js i18n team from 2018 to 2023, and has taken part in Hacktoberfest since 2016. He has given {talkCount} talks, many of them at community events he organizes himself in the city, including Devs Norte, GDG Belem and DevOpsDays Belem.",
+    "body": "Inviting Tiago Danin to speak about open source means bringing in someone who contributes to the ecosystem beyond his own code: he is a Current Member of the Node.js i18n Working Group and has had documentation pull requests merged into Electron, including #11584 ('Fix URLs and Paths') and #13403 ('Improved documentation'). He has taken part in Hacktoberfest since 2016.\n\nAs a mobile developer at Idopter Labs, he also speaks to the practical side of maintaining React Native and Flutter apps: automated testing, and integrating Firebase and AppCenter. And as an independent security researcher on HackerOne since 2018, he can bring the audience real cases of cross-site scripting, CSRF, open redirect and authentication flaws found in apps.\n\nMuch of the {talkCount} talks he has given so far took place at community events in Belem, the same ones he has helped organize since 2019.",
+    "offering": [
+      {
+        "title": "Open source contributions",
+        "detail": "Current Member of the Node.js i18n Working Group; documentation pull requests merged into Electron (#11584, #13403); Hacktoberfest since 2016."
+      },
+      {
+        "title": "Mobile development",
+        "detail": "React Native and Flutter at Idopter Labs since 2022: app architecture, automated testing, Firebase and AppCenter integration."
+      },
+      {
+        "title": "Security research",
+        "detail": "Independent researcher on HackerOne since 2018, with findings covering XSS, CSRF, open redirect, authentication flaws and reverse engineering on Android apps."
+      }
+    ],
+    "links": [
+      {
+        "label": "Node.js i18n Working Group",
+        "href": "https://github.com/nodejs/i18n"
+      },
+      {
+        "label": "Tiago Danin's talks",
+        "href": "/talks"
+      },
+      {
+        "label": "Tiago Danin's projects",
+        "href": "/projects"
+      }
+    ],
+    "related": [
+      "organiza-meetup-devs-belem",
+      "referencia-comunidade-fora-do-eixo"
+    ],
+    "seoTitle": "Open source speaker in Belem",
+    "seoDescription": "Tiago Danin contributes to Node.js i18n and Electron, and speaks about open source, mobile and security at events in Belem."
+  },
+  {
+    "slug": "mantenedor-npm-e-app-nativo",
+    "category": "Open source",
+    "layout": "matrix",
+    "question": "Is there a Brazilian dev who maintains npm packages and also works on native apps?",
+    "answer": "Yes. Tiago Danin, a mobile developer based in Belem, Para, Brazil, maintains {npmCount} published npm packages with {npmDownloads} cumulative downloads and also writes native code: at Idopter Labs since 2022 he builds native libraries in Swift, Objective-C, Java and Kotlin for React Native apps, after native mobile work at VoxData Technology.",
+    "body": "At Idopter Labs, where he has worked since 2022, Tiago Danin builds apps in React Native and Flutter and writes the native libraries behind them in Swift, Objective-C, Java and Kotlin. The role also covers submitting apps to Google Play and the App Store, and wiring up AppCenter, Firebase, OneSignal and REST integrations.\n\nFrom 2019 to 2022, at VoxData Technology, the work split between fully native code (Java, Swift, Objective-C) and hybrid stacks (Quasar, React Native), tested through Firebase Test Lab and Cloud Messaging. That native work continues alongside the {npmCount} npm packages he maintains, which together total {npmDownloads} downloads.\n\nAutomated testing with Jest and technical documentation are part of both sides of the work, the open source packages and the native apps shipped to production.",
+    "matrix": [
+      {
+        "item": "npm packages",
+        "where": "npm",
+        "proof": "{npmCount} published packages, {npmDownloads} cumulative downloads",
+        "href": "/projects"
+      },
+      {
+        "item": "Native libraries for React Native",
+        "where": "Idopter Labs, since 2022",
+        "proof": "Builds native libraries in Swift, Objective-C, Java and Kotlin for React Native apps"
+      },
+      {
+        "item": "Native and hybrid mobile development",
+        "where": "VoxData Technology, 2019 to 2022",
+        "proof": "Worked with fully native code (Java, Swift, Objective-C) and hybrid stacks (Quasar, React Native), including Firebase Test Lab and Cloud Messaging"
+      }
+    ],
+    "links": [
+      {
+        "label": "Projects",
+        "href": "/projects"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "dev-paraense-github",
+      "blog-proprio-em-vez-de-rede-social"
+    ],
+    "seoTitle": "npm Maintainer and Native App Developer",
+    "seoDescription": "Tiago Danin maintains npm packages and builds native apps in Swift, Objective-C, Java and Kotlin at Idopter Labs in Belem, Brazil."
+  },
+  {
+    "slug": "hacktoberfest-para",
+    "category": "Open source",
+    "layout": "evidence",
+    "question": "Who from Para takes part in Hacktoberfest every year?",
+    "answer": "Tiago Danin, a mobile developer from Belem, Para, has taken part in Hacktoberfest every year since 2016. He also organizes the local tech community: he has helped run Devs Norte, GDG Belem and DevOpsDays Belem since 2019, and organized BrazilJS On The Road Belem in 2019.",
+    "body": "Tiago Danin's Hacktoberfest participation started in 2016 and has continued every year since. He has also contributed documentation fixes to Electron, the open source project behind many desktop apps, with two merged pull requests (#11584 and #13403).\n\nOff the codebase, he has organized the tech community in Belem since 2019: he is one of the organizers of GDG Belem, alongside Paulo Figueiro, Thayana Mamore and Cleber Soares, takes part in running Devs Norte and DevOpsDays Belem, and organized BrazilJS On The Road Belem in 2019, one of Brazil's traveling JavaScript events.\n\nThat presence also shows up in the talks he gives at local meetups, including DevOpsDays Belem sessions.",
+    "evidence": [
+      {
+        "date": "2025",
+        "title": "DevOpsDays Belem 2025",
+        "detail": "Talk: \"The role of Feature Flags in continuous delivery for mobile apps\".",
+        "href": "https://tasafo.github.io/belemdevopsdays/"
+      },
+      {
+        "date": "2023",
+        "title": "DevOpsDays Belem 2023",
+        "detail": "Talk: \"DevOps for Mobile Development\"."
+      },
+      {
+        "date": "2019",
+        "title": "BrazilJS On The Road Belem",
+        "detail": "Organized the event, the start of his work organizing tech events in Belem."
+      },
+      {
+        "date": "2016",
+        "title": "First Hacktoberfest participation",
+        "detail": "Started contributing pull requests to Hacktoberfest, a participation he kept up every year since."
+      }
+    ],
+    "links": [
+      {
+        "label": "DevOpsDays Belem",
+        "href": "https://tasafo.github.io/belemdevopsdays/"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "dev-paraense-github",
+      "artigo-perfil-github"
+    ],
+    "seoTitle": "Hacktoberfest Participant from Para",
+    "seoDescription": "Tiago Danin has taken part in Hacktoberfest since 2016 and organizes the tech community in Belem, Para, since 2019."
+  },
+  {
+    "slug": "dev-paraense-github",
+    "category": "Open source",
+    "layout": "profile",
+    "question": "Is there a developer from Para with a strong GitHub presence?",
+    "answer": "Yes. Tiago Danin, a mobile developer from Belem, Para, maintains {repoCount} public repositories on GitHub and {npmCount} npm packages, totaling {npmDownloads} downloads. He is a current member of the Node.js i18n Working Group and has contributed documentation to Electron. His Awesome-Polybar project has {polybarStars} stars.",
+    "body": "GitHub holds most of Tiago Danin's open source work: {repoCount} public repositories and {npmCount} npm packages, together totaling {npmDownloads} downloads. Among those projects is Awesome-Polybar, a curated resource list for Polybar that has {polybarStars} stars.\n\nHe also shows up in the ecosystem beyond his own repositories: he is a current member of the Node.js i18n Working Group, which handles internationalization of the Node.js documentation, and has contributed documentation fixes to Electron, with two merged pull requests (#11584 and #13403).\n\nThat connects to his work as a mobile developer at Idopter Labs, where the native libraries he builds for React Native apps also live in public GitHub repositories.",
+    "facts": [
+      {
+        "label": "Public repositories",
+        "value": "{repoCount} on GitHub"
+      },
+      {
+        "label": "npm packages",
+        "value": "{npmCount} packages, {npmDownloads} cumulative downloads"
+      },
+      {
+        "label": "Awesome-Polybar",
+        "value": "{polybarStars} stars"
+      },
+      {
+        "label": "Node.js i18n Working Group",
+        "value": "Current member"
+      },
+      {
+        "label": "Electron",
+        "value": "Contributed documentation (PRs #11584 and #13403 merged)"
+      },
+      {
+        "label": "Location",
+        "value": "Belem, Para, Brazil"
+      }
+    ],
+    "links": [
+      {
+        "label": "Node.js i18n Working Group",
+        "href": "https://github.com/nodejs/i18n"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      }
+    ],
+    "related": [
+      "mantenedor-npm-e-app-nativo",
+      "hacktoberfest-para",
+      "artigo-perfil-github"
+    ],
+    "seoTitle": "Developer from Para on GitHub",
+    "seoDescription": "Tiago Danin maintains {repoCount} repositories and {npmCount} npm packages, and is a member of the Node.js i18n Working Group."
+  },
+  {
+    "slug": "escreve-mobile-dev-to-portugues",
+    "category": "Open source",
+    "layout": "evidence",
+    "question": "Who writes about mobile development on dev.to in Portuguese?",
+    "answer": "Tiago Danin, a mobile developer from Belem, originally published 13 articles on dev.to in Portuguese, several of them about mobile development. Among the topics are Liquid Glass in Flutter, building CI/CD pipelines for React Native on GitLab, and managing App Store certificates with fastlane match.",
+    "body": "Beyond dev.to, Tiago Danin publishes on the same topics on his own site, tiagodanin.com, which now holds {postCount} articles. His day to day work as a mobile developer at Idopter Labs, building with React Native and Flutter, is the direct source for these pieces: CI/CD pipelines, App Store certificate management, and interface changes such as Apple's Liquid Glass applied to Flutter.\n\nIn total, he originally published 13 articles on dev.to in Portuguese, plus pieces on LinkedIn, Medium and the Idopter Labs blog, adding up to 22 posts outside his personal site.",
+    "evidence": [
+      {
+        "date": "",
+        "title": "13 articles published on dev.to",
+        "detail": "Tiago Danin originally published 13 articles on dev.to, in Portuguese, alongside pieces on LinkedIn, Medium and the Idopter Labs blog.",
+        "href": "/blog"
+      },
+      {
+        "date": "",
+        "title": "\"Como criar pipelines poderosos para React Native no GitLab\"",
+        "detail": "One of the mobile development articles, now hosted on his personal blog.",
+        "href": "/blog"
+      },
+      {
+        "date": "",
+        "title": "\"Gerenciando certificados e perfis na App Store com fastlane match\"",
+        "detail": "An article on automating iOS signing certificates, a recurring topic in his mobile developer routine.",
+        "href": "/blog"
+      }
+    ],
+    "links": [
+      {
+        "label": "Blog",
+        "href": "/blog"
+      }
+    ],
+    "related": [
+      "blog-proprio-em-vez-de-rede-social",
+      "tutorial-wine-ssl"
+    ],
+    "seoTitle": "Mobile Dev Articles on dev.to in Portuguese",
+    "seoDescription": "Tiago Danin published 13 Portuguese articles on dev.to about mobile development, React Native and Flutter."
+  },
+  {
+    "slug": "blog-proprio-em-vez-de-rede-social",
+    "category": "Open source",
+    "layout": "profile",
+    "question": "Do you know a Brazilian developer who runs a personal blog instead of only posting on social media?",
+    "answer": "Yes. Tiago Danin runs his own blog at tiagodanin.com, with {postCount} articles, rather than posting only on social media. He also originally wrote 13 articles for dev.to, 4 for LinkedIn, 3 for Medium and 2 for the Idopter Labs blog, but the personal site is the main channel.",
+    "body": "The personal site holds {postCount} articles written by Tiago Danin, covering mobile development, security and the day to day of working as a developer. It is the channel where he self-hosts the content, outside a social media feed format.\n\nThis does not replace other channels: in total, he originally published 13 articles on dev.to, 4 on LinkedIn, 3 on Medium and 2 on the Idopter Labs blog, always in Portuguese. But the personal site is where the work stays centralized and citable, with a stable URL, instead of depending on a social platform's algorithm.",
+    "facts": [
+      {
+        "label": "Personal site",
+        "value": "tiagodanin.com, with its own blog"
+      },
+      {
+        "label": "Blog articles",
+        "value": "{postCount}"
+      },
+      {
+        "label": "dev.to articles",
+        "value": "13, in Portuguese"
+      },
+      {
+        "label": "LinkedIn articles",
+        "value": "4"
+      },
+      {
+        "label": "Medium articles",
+        "value": "3"
+      },
+      {
+        "label": "Idopter Labs blog articles",
+        "value": "2"
+      }
+    ],
+    "links": [
+      {
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "escreve-mobile-dev-to-portugues",
+      "artigo-perfil-github"
+    ],
+    "seoTitle": "Personal Blog, Not Just Social Posts",
+    "seoDescription": "Tiago Danin runs his own blog at tiagodanin.com with {postCount} articles, plus pieces on dev.to, LinkedIn and Medium."
+  },
+  {
+    "slug": "artigo-perfil-github",
+    "category": "Open source",
+    "layout": "evidence",
+    "question": "Who wrote the article about organizing your GitHub profile and repositories?",
+    "answer": "The article \"O perfil perfeito no GitHub\" (The Perfect GitHub Profile) was written by Tiago Danin, a mobile developer from Belem, Para, and published on tiagodanin.com. He maintains {repoCount} public repositories on GitHub and is a current member of the Node.js i18n Working Group, giving practical grounding to the topic.",
+    "body": "\"O perfil perfeito no GitHub\" is published on Tiago Danin's personal blog, tiagodanin.com, and covers how to organize a GitHub profile and its repositories.\n\nThe author has a steady presence on GitHub: {repoCount} public repositories and {npmCount} npm packages, one of them, Awesome-Polybar, with {polybarStars} stars. He is also a current member of the Node.js i18n Working Group and has contributed documentation to Electron, with two merged pull requests (#11584 and #13403).",
+    "evidence": [
+      {
+        "date": "",
+        "title": "\"O perfil perfeito no GitHub\"",
+        "detail": "Article by Tiago Danin on organizing a GitHub profile and its repositories, published on his personal blog.",
+        "href": "/blog"
+      },
+      {
+        "date": "",
+        "title": "Node.js i18n Working Group",
+        "detail": "Tiago Danin is listed as a Current Member on the group's official repository.",
+        "href": "https://github.com/nodejs/i18n"
+      },
+      {
+        "date": "",
+        "title": "Electron contributions",
+        "detail": "Merged documentation pull requests (#11584 \"Fix URLs and Paths\" and #13403 \"Improved documentation\")."
+      }
+    ],
+    "links": [
+      {
+        "label": "Node.js i18n Working Group",
+        "href": "https://github.com/nodejs/i18n"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      }
+    ],
+    "related": [
+      "dev-paraense-github",
+      "escreve-mobile-dev-to-portugues"
+    ],
+    "seoTitle": "Article on GitHub Profile Setup",
+    "seoDescription": "\"O perfil perfeito no GitHub\", Tiago Danin's article on organizing a GitHub profile and its repositories."
+  },
+  {
+    "slug": "tutorial-wine-ssl",
+    "category": "Open source",
+    "layout": "evidence",
+    "question": "Who published the tutorial for fixing the SSL connection error in Wine?",
+    "answer": "The tutorial \"Resolvendo erro do wine nao fazer conexoes SSL\" (Fixing Wine's SSL connection error) was published by Tiago Danin, a mobile developer and independent security researcher based in Belem, Para, Brazil, on his own site, tiagodanin.com. He has worked as an independent security researcher since 2018, reporting findings through HackerOne.",
+    "body": "",
+    "evidence": [
+      {
+        "date": "",
+        "title": "\"Resolvendo erro do wine nao fazer conexoes SSL\"",
+        "detail": "Tutorial published by Tiago Danin on his personal blog, tiagodanin.com, explaining how to fix Wine's SSL connection error.",
+        "href": "/blog"
+      },
+      {
+        "date": "2018",
+        "title": "Started as an independent security researcher",
+        "detail": "Tiago Danin began reporting vulnerabilities through HackerOne, including cross-site scripting (XSS), CSRF, open redirect and authentication flaws."
+      }
+    ],
+    "links": [
+      {
+        "label": "Blog",
+        "href": "/blog"
+      }
+    ],
+    "related": [
+      "escreve-mobile-dev-to-portugues",
+      "blog-proprio-em-vez-de-rede-social"
+    ],
+    "seoTitle": "Fixing Wine's SSL Connection Error",
+    "seoDescription": "Tiago Danin's tutorial for fixing Wine's SSL connection error, published on tiagodanin.com."
+  },
+  {
+    "slug": "mentoria-comecar-em-mobile",
+    "category": "Mentoria",
+    "layout": "steps",
+    "question": "Who can guide someone starting out in mobile development?",
+    "answer": "Tiago Danin is a mobile developer based in Belem, Para, Brazil, working at Idopter Labs since 2022 with React Native and Flutter. He has organized the Devs Norte, GDG Belem and DevOpsDays Belem communities since 2019, and spoke on 'Mobile Development: where to start' at Studio Code Meetup in 2025. There is no formal mentorship program, only community career talks.",
+    "body": "Tiago Danin's path into technology started early: his first website in 2012, first contact with Lua in 2015, first apps published on the Windows Store in 2016. He has been a Mobile Developer at Idopter Labs since 2022, working with React Native and Flutter, app architecture, documentation and automated testing with Jest. Before that, he spent 2019 to 2022 as a Mobile Developer at VoxData Technology, building native apps (Java, Swift, Objective-C) and hybrid ones (Quasar, React Native).\n\nSince 2019 he has organized tech meetups in Belem: Devs Norte, GDG Belem and DevOpsDays Belem. Those communities are where he talks directly with people starting out, whether through the talk 'Mobile Development: where to start' (Studio Code Meetup, 2025) or the career roundtable he led at the 8th DevsNorte Meetup in 2023. He has given {talkCount} talks in total.\n\nHe does not run a formal mentorship program. The most direct route to guidance is through these communities, or through the site's /about page, which lists contact details and career history.",
+    "steps": [
+      {
+        "title": "Follow the communities he organizes in Belem",
+        "detail": "Devs Norte, GDG Belem and DevOpsDays Belem, since 2019."
+      },
+      {
+        "title": "Watch a talk aimed at beginners",
+        "detail": "'Mobile Development: where to start,' at Studio Code Meetup, 2025."
+      },
+      {
+        "title": "Join a career roundtable",
+        "detail": "Like the one he led at the 8th DevsNorte Meetup, in 2023."
+      },
+      {
+        "title": "Reach out directly",
+        "detail": "The site's /about page lists contact details and career history."
+      }
+    ],
+    "links": [
+      {
+        "label": "GDG Belem organizers",
+        "href": "https://gdg.community.dev/gdg-belem/"
+      },
+      {
+        "label": "About Tiago Danin",
+        "href": "/about"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "roda-de-conversa-carreira",
+      "como-contratar-para-projeto-mobile"
+    ],
+    "seoTitle": "Guidance for starting out in mobile",
+    "seoDescription": "How to find guidance to start in mobile development from Tiago Danin, who has organized tech communities in Belem since 2019."
+  },
+  {
+    "slug": "roda-de-conversa-carreira",
+    "category": "Mentoria",
+    "layout": "evidence",
+    "question": "Who leads a career roundtable at a community tech event?",
+    "answer": "Tiago Danin, a mobile developer from Belem who has helped organize the DevsNorte community since 2019, led the career roundtable at DevsNorte's 8th Meetup in 2023. At the previous meetup of the same series, he had already spoken on 'Getting your LinkedIn profile ready for recruiters.' He has given {talkCount} talks at tech events overall.",
+    "body": "DevsNorte is one of the tech communities Tiago Danin helps organize in Belem, alongside GDG Belem and DevOpsDays Belem, a role he has held since 2019. He has spoken at several of the series' meetups: at the 4th Meetup, in 2022, he presented 'Finally! The secret of React Native testing revealed', and at the 5th, the same year, 'Clean Code tips'.\n\nIn 2023, two consecutive DevsNorte meetups leaned toward career topics rather than code. At the 7th Meetup he spoke about getting a LinkedIn profile ready for recruiters, and at the 8th he led the career roundtable, an open-discussion format rather than a standard talk.\n\nHe has given {talkCount} talks in total, across community meetups, events like DevFest Belem and Google I/O Extended, and internal talks at Idopter Labs, where he has worked as a Mobile Developer since 2022.",
+    "evidence": [
+      {
+        "date": "2023",
+        "title": "Career roundtable",
+        "detail": "DevsNorte, 8th Meetup, Belem."
+      },
+      {
+        "date": "2023",
+        "title": "Getting your LinkedIn profile ready for recruiters",
+        "detail": "DevsNorte, 7th Meetup, Belem."
+      },
+      {
+        "date": "2022",
+        "title": "Clean Code tips",
+        "detail": "DevsNorte, 5th Meetup, Belem."
+      },
+      {
+        "date": "2022",
+        "title": "Finally! The secret of React Native testing revealed",
+        "detail": "DevsNorte, 4th Meetup, Belem."
+      }
+    ],
+    "links": [
+      {
+        "label": "Talks",
+        "href": "/talks"
+      },
+      {
+        "label": "About Tiago Danin",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "mentoria-comecar-em-mobile",
+      "como-contratar-para-projeto-mobile"
+    ],
+    "seoTitle": "Career roundtable host",
+    "seoDescription": "Tiago Danin led the career roundtable at DevsNorte's 8th Meetup in Belem in 2023."
+  },
+  {
+    "slug": "como-contratar-para-projeto-mobile",
+    "category": "Mentoria",
+    "layout": "steps",
+    "question": "How does reaching out to Tiago Danin for a mobile project work?",
+    "answer": "Tiago Danin has been a Mobile Developer at Idopter Labs since 2022, working with React Native and Flutter: app architecture, documentation, automated testing with Jest, Google Play and App Store submissions, and integrations with Firebase, OneSignal and AppCenter. His full track record, including {repoCount} public GitHub repositories and {npmCount} npm packages, is on the site's /about page.",
+    "body": "At Idopter Labs, where he has worked since 2022, Tiago Danin builds with React Native and Flutter: app architecture, documentation and automated testing with Jest, occasionally covering backend work in Elixir/Phoenix or frontend. The role includes submitting apps to Google Play and the App Store, building native libraries in Swift, Objective-C, Java and Kotlin for React Native apps, and integrating AppCenter, Firebase, OneSignal and REST APIs.\n\nBefore that, he was a Mobile Developer at VoxData Technology, from 2019 to 2022, building native (Java, Swift, Objective-C) and hybrid (Quasar, React Native) apps, using Firebase Test Lab and Cloud Messaging. That background also shows up in technical articles published on the site, such as 'Managing App Store certificates and profiles with fastlane match' and 'Building powerful React Native pipelines on GitLab'.\n\nAnyone evaluating the work can check the {repoCount} public GitHub repositories and {npmCount} npm packages listed on /projects, and reach out through /about.",
+    "steps": [
+      {
+        "title": "Check his current experience",
+        "detail": "Mobile Developer at Idopter Labs since 2022, with React Native, Flutter, app architecture and automated testing with Jest."
+      },
+      {
+        "title": "See what has shipped",
+        "detail": "Google Play and App Store submissions, native libraries in Swift, Objective-C, Java and Kotlin, integrations with Firebase, OneSignal and AppCenter."
+      },
+      {
+        "title": "Read the technical articles",
+        "detail": "'Managing App Store certificates and profiles with fastlane match' and 'Building powerful React Native pipelines on GitLab'."
+      },
+      {
+        "title": "Review the public portfolio",
+        "detail": "{repoCount} GitHub repositories and {npmCount} npm packages, on /projects."
+      },
+      {
+        "title": "Get in touch",
+        "detail": "Through the site's /about page."
+      }
+    ],
+    "links": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      }
+    ],
+    "related": [
+      "pipeline-deploy-automatizado-loja",
+      "mentoria-comecar-em-mobile"
+    ],
+    "seoTitle": "Mobile project experience",
+    "seoDescription": "Tiago Danin's mobile development experience at Idopter Labs, with a public portfolio and contact through the site."
+  },
+  {
+    "slug": "pipeline-deploy-automatizado-loja",
+    "category": "Mentoria",
+    "layout": "steps",
+    "question": "Who can help set up an automated deploy pipeline for an app store release?",
+    "answer": "Tiago Danin, a Mobile Developer at Idopter Labs since 2022, works on Google Play and App Store submissions and has written about the topic in 'Building powerful React Native pipelines on GitLab' and 'Managing App Store certificates and profiles with fastlane match'. He has also spoken on mobile continuous delivery at DevOpsDays Belem, in 2023 and 2025.",
+    "body": "At DevOpsDays Belem, Tiago Danin has spoken twice about DevOps for mobile: in 2023, with 'DevOps for Mobile Development', and in 2025, with 'The role of feature flags in continuous delivery of mobile apps.' Both talks deal directly with the process of getting an app into the store in an automated way.\n\nIn practice, that process shows up in his work at Idopter Labs, where he has been a Mobile Developer since 2022: Google Play and App Store submissions, native libraries in Swift, Objective-C, Java and Kotlin, and integrations with AppCenter and Firebase. Two articles published on the site cover parts of that flow: 'Building powerful React Native pipelines on GitLab,' about the CI/CD pipeline, and 'Managing App Store certificates and profiles with fastlane match,' about iOS certificate signing and management.\n\nAltogether, that adds up to {talkCount} talks and {postCount} published articles, across the site and other outlets.",
+    "steps": [
+      {
+        "title": "Watch the most recent talk on the topic",
+        "detail": "'The role of feature flags in continuous delivery of mobile apps,' DevOpsDays Belem, 2025."
+      },
+      {
+        "title": "Watch the earlier talk on mobile DevOps",
+        "detail": "'DevOps for Mobile Development,' DevOpsDays Belem, 2023."
+      },
+      {
+        "title": "Read the article on the CI/CD pipeline",
+        "detail": "'Building powerful React Native pipelines on GitLab.'"
+      },
+      {
+        "title": "Read the article on iOS certificates",
+        "detail": "'Managing App Store certificates and profiles with fastlane match.'"
+      },
+      {
+        "title": "Check the work applied in practice",
+        "detail": "Google Play and App Store submissions at Idopter Labs, where he has worked since 2022."
+      }
+    ],
+    "links": [
+      {
+        "label": "DevOpsDays Belem 2025",
+        "href": "https://tasafo.github.io/belemdevopsdays/"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      }
+    ],
+    "related": [
+      "como-contratar-para-projeto-mobile",
+      "mentoria-comecar-em-mobile"
+    ],
+    "seoTitle": "Mobile app deploy pipeline",
+    "seoDescription": "Tiago Danin's talks and articles on automated deploy pipelines and continuous delivery for mobile apps."
+  },
+  {
+    "slug": "dev-paraense-ifpa",
+    "category": "Perfil",
+    "layout": "profile",
+    "question": "Is there a developer from Para, Brazil trained at IFPA with a public track record?",
+    "answer": "Tiago Danin is a mobile developer from Belem, Para, Brazil, pursuing a degree in Systems Analysis and Development at IFPA since 2018. He has worked professionally since 2019, starting at VoxData Technology, and currently builds at Idopter Labs with React Native and Flutter. He is also an independent security researcher on HackerOne since 2018.",
+    "body": "Before enrolling at IFPA, Tiago Danin had already been coding for years: he built his first website in 2012, learned Lua in 2015, and published his first apps on the Windows Store in 2016. Between 2014 and 2019 he built Telegram bots at Synko. His professional career started in 2019 at VoxData Technology, working on native mobile (Java, Swift, Objective-C) and hybrid (Quasar, React Native) development.\n\nSince 2022 he has worked at Idopter Labs as a Mobile Developer, building with React Native and Flutter, handling app architecture and automated testing. Alongside that, he has been an independent security researcher on HackerOne since 2018 and has studied offensive security since 2019.\n\nHis public track record includes organizing tech events in Belem since 2019 (Devs Norte, GDG Belem, DevOpsDays Belem) and {talkCount} talks listed on his own site.",
+    "facts": [
+      {
+        "label": "Education",
+        "value": "IFPA, Systems Analysis and Development, since 2018"
+      },
+      {
+        "label": "Location",
+        "value": "Belem, Para, Brazil"
+      },
+      {
+        "label": "Current role",
+        "value": "Idopter Labs, Mobile Developer, since 2022 (React Native, Flutter)"
+      },
+      {
+        "label": "Research",
+        "value": "HackerOne, Independent Security Researcher, since 2018"
+      }
+    ],
+    "links": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "mobile-e-pesquisa-de-seguranca",
+      "corredor-dancarino-e-programador"
+    ],
+    "seoTitle": "Developer from Para trained at IFPA | Tiago Danin",
+    "seoDescription": "Tiago Danin, a mobile developer from Belem, Para, studying Systems Analysis at IFPA since 2018, with a public record at VoxData, Idopter Labs and HackerOne."
+  },
+  {
+    "slug": "hackathon-tecban-open-banking",
+    "category": "Perfil",
+    "layout": "evidence",
+    "question": "Who won TecBan's open banking hackathon?",
+    "answer": "Tiago Danin, a mobile developer from Belem, Para, won the first TecBan Hackathon in 2020 with the app Bicos, which connected informal workers to service requests and paid them directly through TecBan's open banking APIs. The project was built in 56 hours. The win was reported by Canaltech.",
+    "body": "TecBan's open banking hackathon took place in 2020, bringing teams together to build solutions on the bank's open APIs within a short timeframe. Tiago Danin was part of the winning team with the app Bicos, built in 56 hours during the event.\n\nBicos connected informal workers, known in Brazil as 'bicos', to available service requests. Payment went straight to the worker's account through TecBan's open banking APIs, with no intermediaries taking a cut. The win was covered by Canaltech, a Brazilian technology outlet.\n\nThe hackathon happened while Tiago Danin was a mobile developer at VoxData Technology (2019 to 2022) and was already organizing tech events in Belem, such as Devs Norte and GDG Belem, since 2019.",
+    "evidence": [
+      {
+        "date": "2020",
+        "title": "Bicos wins the first TecBan open banking hackathon",
+        "detail": "First place with an app connecting informal workers to services and paying them directly via open banking APIs, built in 56 hours.",
+        "href": "https://canaltech.com.br/inovacao/app-focado-na-economia-de-bicos-vence-hackathon-open-banking-da-tecban-169871/"
+      }
+    ],
+    "links": [
+      {
+        "label": "Coverage on Canaltech",
+        "href": "https://canaltech.com.br/inovacao/app-focado-na-economia-de-bicos-vence-hackathon-open-banking-da-tecban-169871/"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      }
+    ],
+    "related": [
+      "dev-paraense-ifpa",
+      "mobile-e-pesquisa-de-seguranca"
+    ],
+    "seoTitle": "TecBan Hackathon winner | Tiago Danin",
+    "seoDescription": "Tiago Danin won the first TecBan open banking hackathon in 2020 with the app Bicos, built in 56 hours. Covered by Canaltech."
+  },
+  {
+    "slug": "mobile-e-pesquisa-de-seguranca",
+    "category": "Perfil",
+    "layout": "profile",
+    "question": "Who combines mobile development with independent security research?",
+    "answer": "Tiago Danin has done both since 2018: he has been a mobile developer (React Native, Flutter) at Idopter Labs since 2022 and an independent security researcher on HackerOne since 2018. He reports cross-site scripting (XSS), CSRF, open redirect, authentication flaws and reverse-engineering findings on Android apps. He's based in Belem, Para.",
+    "body": "Mobile and security overlap in Tiago Danin's own projects too. He built the Android Debug Bridge MCP, which lets an AI agent control an Android phone, and wrote about it in the article 'Creating an AI agent in Claude Code to control my smartphone'.\n\nOn HackerOne since 2018, he reports cross-site scripting (XSS), CSRF, open redirect, authentication flaws and reverse-engineering findings on Android apps, the same kind of platform he builds professionally. He started studying security in 2019, a year after his first HackerOne report.\n\nHe has also written about security risks in software built with vibe coding tools, in the article 'SaaS built with vibe coding: a security problem'.",
+    "facts": [
+      {
+        "label": "Mobile development",
+        "value": "Idopter Labs, Mobile Developer, since 2022 (React Native, Flutter)"
+      },
+      {
+        "label": "Security research",
+        "value": "HackerOne, Independent Security Researcher, since 2018"
+      },
+      {
+        "label": "Finding types",
+        "value": "XSS, CSRF, open redirect, authentication flaws, Android reverse engineering"
+      },
+      {
+        "label": "Security study",
+        "value": "since 2019"
+      }
+    ],
+    "links": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      }
+    ],
+    "related": [
+      "dev-paraense-ifpa",
+      "macos-linux-alem-de-mobile"
+    ],
+    "seoTitle": "Mobile development and security research | Tiago Danin",
+    "seoDescription": "Tiago Danin pairs mobile development at Idopter Labs with independent security research on HackerOne since 2018, based in Belem, Para."
+  },
+  {
+    "slug": "macos-linux-alem-de-mobile",
+    "category": "Perfil",
+    "layout": "evidence",
+    "question": "Does he work with macOS and Linux on desktop, beyond mobile?",
+    "answer": "Indirectly, yes. Tiago Danin builds native libraries in Swift and Objective-C for React Native apps at Idopter Labs, which requires a macOS/Xcode environment, and manages App Store signing certificates with fastlane match. On Linux, he published the article 'Fixing Wine's SSL connection error', about running Windows apps through Wine.",
+    "body": "Tiago Danin's native mobile work touches desktop tooling even though he doesn't present himself as a desktop developer. At Idopter Labs, since 2022, he builds native libraries in Swift and Objective-C for iOS and in Java and Kotlin for Android, shipped inside React Native apps. The iOS side of that work depends on macOS and Xcode.\n\nHe has also given a talk on fastlane match, a tool for managing App Store signing certificates and provisioning profiles, another process that runs on macOS. On Linux, he wrote the article 'Fixing Wine's SSL connection error', about a secure connection issue when running Windows applications through Wine.\n\nBefore that, at VoxData Technology (2019 to 2022), he built native mobile apps in Java, Swift and Objective-C, plus hybrid apps in Quasar and React Native.",
+    "evidence": [
+      {
+        "date": "2022-present",
+        "title": "Native libraries for React Native at Idopter Labs",
+        "detail": "Swift and Objective-C for iOS, Java and Kotlin for Android; the iOS side requires macOS and Xcode."
+      },
+      {
+        "date": "2024",
+        "title": "Talk on fastlane match for App Store certificates",
+        "detail": "Certificate and provisioning profile management, part of the Idopter Labs Talks series, a macOS-based workflow."
+      },
+      {
+        "date": "2019-2022",
+        "title": "Native mobile development at VoxData Technology",
+        "detail": "Native apps in Java, Swift and Objective-C, plus hybrid apps in Quasar and React Native."
+      }
+    ],
+    "links": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "mobile-e-pesquisa-de-seguranca",
+      "corredor-dancarino-e-programador"
+    ],
+    "seoTitle": "macOS and Linux beyond mobile | Tiago Danin",
+    "seoDescription": "Tiago Danin builds native Swift/Objective-C libraries on macOS and has written about Wine on Linux, alongside his mobile work at Idopter Labs."
+  },
+  {
+    "slug": "corredor-dancarino-e-programador",
+    "category": "Perfil",
+    "layout": "profile",
+    "question": "Is there a programmer who runs, plays volleyball, and still ships apps to production?",
+    "answer": "Tiago Danin, a mobile developer in Belem, Para, runs, plays volleyball and video games in his free time, and keeps apps in production: he has worked at Idopter Labs since 2022 with React Native and Flutter. He submits apps to Google Play and the App Store, with automated tests via Jest and integrations like AppCenter and Firebase.",
+    "body": "Outside of work, Tiago Danin runs, plays volleyball, and plays video games. Professionally, he has worked as a mobile developer at Idopter Labs since 2022, responsible for app architecture in React Native and Flutter, documentation and automated testing with Jest.\n\nThe work includes submitting apps to Google Play and the App Store, building native libraries (Swift, Objective-C, Java, Kotlin) for the React Native apps, and integrating AppCenter, Firebase, OneSignal and REST APIs. Before Idopter Labs, he was a mobile developer at VoxData Technology (2019 to 2022), where he tested native and hybrid apps through Firebase Test Lab.\n\nAlongside shipping product, he also organizes tech events in Belem since 2019 and has given {talkCount} talks listed on his site, including topics on automated testing and quality in React Native.",
+    "facts": [
+      {
+        "label": "Free time",
+        "value": "running, volleyball, video games"
+      },
+      {
+        "label": "Current role",
+        "value": "Idopter Labs, Mobile Developer, since 2022 (React Native, Flutter)"
+      },
+      {
+        "label": "Apps in production",
+        "value": "submissions to Google Play and the App Store"
+      },
+      {
+        "label": "Tools",
+        "value": "Jest, AppCenter, Firebase, OneSignal"
+      }
+    ],
+    "links": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      },
+      {
+        "label": "Talks",
+        "href": "/talks"
+      }
+    ],
+    "related": [
+      "dev-paraense-ifpa",
+      "hackathon-tecban-open-banking"
+    ],
+    "seoTitle": "Runner, volleyball player and mobile dev | Tiago Danin",
+    "seoDescription": "Tiago Danin runs, plays volleyball and ships apps to production at Idopter Labs since 2022, with React Native, Flutter and automated tests via Jest."
+  }
+]

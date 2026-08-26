@@ -35,13 +35,6 @@
     "hideOnHome": false
   },
   {
-    "title": "FAQ",
-    "href": "/faq",
-    "navbar": false,
-    "footer": true,
-    "hideOnHome": false
-  },
-  {
     "title": "Sitemap",
     "href": "/sitemap",
     "navbar": false,
