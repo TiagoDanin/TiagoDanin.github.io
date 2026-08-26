@@ -103,6 +103,7 @@ export const LOCALIZED_ROUTES = [
   '/skills',
   '/tags',
   '/web-development',
+  '/faq',
 ] as const;
 
 const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
@@ -113,7 +114,11 @@ const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
  * Posts and talks cannot be listed one by one, and they do not need to be: the
  * MDX filename suffix guarantees both languages exist for each slug.
  */
-export const LOCALIZED_PREFIXES = ['/post/', '/talk/', '/app/', '/skills/', '/social/', '/tags/'] as const;
+// `/faq/` belongs here for the same reason: both languages share one slug list,
+// written side by side in contents/faq. If a slug ever exists in only one of the
+// two files the promise breaks silently, so scripts/generateLlms.ts compares the
+// two and throws.
+export const LOCALIZED_PREFIXES = ['/post/', '/talk/', '/app/', '/skills/', '/social/', '/tags/', '/faq/'] as const;
 
 function isLocalized(path: string): boolean {
   return LOCALIZED_ROUTE_SET.has(path) || LOCALIZED_PREFIXES.some((p) => path.startsWith(p));

@@ -9,6 +9,9 @@ import type { CallToActionProps } from '@/components/sections/CallToAction';
 import type { HeroAbout, HeroSocialLink, HeroStat } from '@/components/sections/Hero';
 import type { TestimonialItem } from '@/components/sections/Testimonials';
 
+import { buildFaq, type FaqEntry, type FaqRow, type FaqStats } from '@/lib/faq';
+import { personSchema } from '@/lib/faq-jsonld';
+
 /**
  * Data loaders for the home and about sections whose inputs are derived rather
  * than read straight off a collection.
@@ -115,4 +118,78 @@ export function getTestimonialsData(locale: Locale = DEFAULT_LOCALE): Testimonia
       polybarStars: String(polybarStars),
     },
   };
+}
+
+/**
+ * The FAQ entries for one locale, with every `{token}` already filled.
+ *
+ * Both routes under `/faq` need the same list: the index renders all of it, and
+ * the detail page needs the whole set anyway to resolve `related` slugs into
+ * questions. Counting the six numbers twice per request would be the only other
+ * option.
+ *
+ * The counts are read here rather than written into the copy because a number
+ * typed into prose is wrong the day the 67th package ships, and because the
+ * research pass that fed this FAQ inflated 19 talks into "35+". A number that is
+ * counted cannot drift.
+ */
+export function getFaqData(locale: Locale = DEFAULT_LOCALE): FaqEntry[] {
+  const rows = [...queryCollection('faq').locale(locale)] as unknown as FaqRow[];
+
+  const polybar = [...queryCollection('github')].find((repo) => repo.name === 'Awesome-Polybar');
+
+  const stats: FaqStats = {
+    // Talks and posts exist twice, once per language, so the English rows are
+    // counted rather than the file total.
+    talkCount: [...queryCollection('talks').where({ lang: 'en' })].length,
+    postCount: [...queryCollection('posts').where({ lang: 'en' })].length,
+    repoCount: [...queryCollection('github')].length,
+    npmCount: [...queryCollection('npm')].length,
+    npmDownloads: [...queryCollection('npm')].reduce(
+      (sum, pkg) => sum + (typeof pkg.downloads === 'number' ? pkg.downloads : 0),
+      0
+    ),
+    polybarStars: typeof polybar?.stargazers_count === 'number' ? polybar.stargazers_count : 0,
+  };
+
+  return buildFaq(rows, stats, locale);
+}
+
+/**
+ * The identity block every FAQ page shares.
+ *
+ * Read from the collections rather than written into the schema module, so the
+ * name, bio, avatar and links stay editable in the studio instead of frozen in
+ * a `.ts` file. `knowsAbout` is derived from the skills collection for the same
+ * reason: a hand written list would drift from what the rest of the site says.
+ */
+export function getFaqPerson(locale: Locale = DEFAULT_LOCALE) {
+  const about = queryCollection('about').locale(locale).one() as unknown as {
+    name?: string;
+    bio?: string;
+    avatar?: string;
+    email?: string;
+    roles?: string[];
+  };
+
+  const sameAs = [...queryCollection('sociallinks')]
+    .map((link) => (typeof link.url === 'string' ? link.url : ''))
+    .filter(Boolean);
+
+  const knowsAbout = [...queryCollection('skills')].flatMap((group) => {
+    const items = Array.isArray(group.items) ? group.items : [];
+    return items
+      .map((item: { name?: unknown }) => (typeof item?.name === 'string' ? item.name : ''))
+      .filter(Boolean);
+  });
+
+  return personSchema(locale, {
+    name: about?.name ?? 'Tiago Danin',
+    jobTitle: (about?.roles ?? []).join(', ') || 'Mobile Developer',
+    description: about?.bio ?? '',
+    avatar: about?.avatar ?? '',
+    email: about?.email ?? '',
+    sameAs,
+    knowsAbout,
+  });
 }
