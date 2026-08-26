@@ -1,3 +1,7 @@
+'use client'
+
+import { Trans, useLingui } from "@lingui/react/macro";
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 
@@ -10,6 +14,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ title, description, imageUrl, href, archived }: ProjectCardProps) {
+  const { t } = useLingui();
   const interactive = Boolean(href);
 
   return (
@@ -23,7 +28,7 @@ export function ProjectCard({ title, description, imageUrl, href, archived }: Pr
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${title} (opens in a new tab)`}
+          aria-label={t`${title} (opens in a new tab)`}
           className="absolute inset-0 z-10 focus:outline-none"
         />
       )}
@@ -43,7 +48,7 @@ export function ProjectCard({ title, description, imageUrl, href, archived }: Pr
           {href && <ExternalLink className="h-4 w-4 text-muted-foreground" aria-hidden="true" />}
           {archived && (
             <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-              Archived
+              <Trans>Archived</Trans>
             </span>
           )}
         </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Trans } from "@lingui/react/macro";
 import { ArrowRight } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -38,7 +39,7 @@ export function Milestones({ milestones, href = "/timeline" }: MilestonesProps) 
 
       <div className="container mx-auto px-4 relative z-10">
         <h2 id="milestones-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-          Milestones
+          <Trans>Milestones</Trans>
         </h2>
 
         <ol className="mt-8 space-y-6">
@@ -70,7 +71,7 @@ export function Milestones({ milestones, href = "/timeline" }: MilestonesProps) 
           href={href}
           className="mt-8 inline-flex items-center text-sm font-medium text-primary hover:underline underline-offset-4 min-h-[44px]"
         >
-          Full timeline
+          <Trans>Full timeline</Trans>
           <ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
         </Link>
       </div>

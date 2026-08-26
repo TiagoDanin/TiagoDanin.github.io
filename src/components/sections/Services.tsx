@@ -1,5 +1,6 @@
 import { Code, Smartphone, Shield, Zap } from "lucide-react";
 import Link from "next/link";
+import { Trans } from "@lingui/react/macro";
 
 import type { LucideIcon } from "lucide-react";
 
@@ -39,9 +40,9 @@ export function Services({ expertise }: ServicesProps) {
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-2xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">My Expertise</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"><Trans>My Expertise</Trans></h2>
           <p className="mt-4 text-sm sm:text-base text-muted-foreground">
-            Areas where I excel and can help bring your ideas to life.
+            <Trans>Areas where I excel and can help bring your ideas to life.</Trans>
           </p>
         </div>
 

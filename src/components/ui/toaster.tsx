@@ -1,3 +1,5 @@
+import { useLingui } from "@lingui/react/macro"
+
 import { useToast } from "@/hooks/use-toast"
 import {
   Toast,
@@ -9,10 +11,11 @@ import {
 } from "@/components/ui/toast"
 
 export function Toaster() {
+  const { t } = useLingui()
   const { toasts } = useToast()
 
   return (
-    <ToastProvider>
+    <ToastProvider label={t`Notification`}>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
           <Toast key={id} {...props}>
@@ -27,7 +30,12 @@ export function Toaster() {
           </Toast>
         )
       })}
-      <ToastViewport />
+      <ToastViewport
+        // Braces are escaped ICU-style: Lingui parses the message as
+        // MessageFormat, so a bare {hotkey} would be read as a placeholder it
+        // has no value for and render empty. Radix substitutes the real key.
+        label={t`Notifications ('{'hotkey'}')`}
+      />
     </ToastProvider>
   )
 }

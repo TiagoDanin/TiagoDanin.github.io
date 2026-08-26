@@ -1,5 +1,10 @@
 import { queryCollection } from 'nextjs-studio/server';
 
+import { t } from '@lingui/core/macro';
+
+import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/locales';
+import { getI18nInstance } from '@/lib/i18n/server';
+
 import type { CallToActionProps } from '@/components/sections/CallToAction';
 import type { HeroAbout, HeroSocialLink, HeroStat } from '@/components/sections/Hero';
 import type { TestimonialItem } from '@/components/sections/Testimonials';
@@ -40,8 +45,8 @@ export interface HeroData {
  *
  * Used by the home page and /about.
  */
-export function getHeroData(): HeroData {
-  const about = queryCollection('about').one() as unknown as HeroAbout;
+export function getHeroData(locale: Locale = DEFAULT_LOCALE): HeroData {
+  const about = queryCollection('about').locale(locale).one() as unknown as HeroAbout;
   const socialLinks = [...queryCollection('sociallinks')] as unknown as HeroSocialLink[];
 
   const projectsTotal = PROJECT_COLLECTIONS.reduce(
@@ -58,11 +63,12 @@ export function getHeroData(): HeroData {
     (t) => t.youtubeUrl && String(t.youtubeUrl).trim().length > 0
   );
 
+  const i18n = getI18nInstance(locale);
   const stats: HeroStat[] = [
-    { value: formatDownloads(npmDownloadsTotal), label: 'npm downloads' },
-    { value: formatProjects(projectsTotal), label: 'projects' },
-    { value: String(posts.length + videos.length), label: 'posts & videos' },
-    { value: String(talks.length), label: 'talks' },
+    { value: formatDownloads(npmDownloadsTotal), label: t(i18n)`npm downloads` },
+    { value: formatProjects(projectsTotal), label: t(i18n)`projects` },
+    { value: String(posts.length + videos.length), label: t(i18n)`posts & videos` },
+    { value: String(talks.length), label: t(i18n)`talks` },
   ];
 
   return { about, stats, socialLinks };
@@ -74,8 +80,8 @@ export function getHeroData(): HeroData {
  * Trivial on its own, but the closing section runs on six routes: the home
  * page, /about, and every post and talk in both languages.
  */
-export function getCallToActionData(): CallToActionProps {
-  const about = queryCollection('about').one();
+export function getCallToActionData(locale: Locale = DEFAULT_LOCALE): CallToActionProps {
+  const about = queryCollection('about').locale(locale).one();
   const linkedIn = queryCollection('sociallinks').find((l) => l.label === 'LinkedIn');
 
   return { email: about.email, linkedInUrl: linkedIn?.url };
@@ -91,8 +97,8 @@ export interface TestimonialsData {
  * `{talks}` and `{polybarStars}`. Package and talk totals are rounded down, so
  * the number shown is never a promise the collections cannot back.
  */
-export function getTestimonialsData(): TestimonialsData {
-  const testimonials = [...queryCollection('testimonials')] as unknown as TestimonialItem[];
+export function getTestimonialsData(locale: Locale = DEFAULT_LOCALE): TestimonialsData {
+  const testimonials = [...queryCollection('testimonials').locale(locale)] as unknown as TestimonialItem[];
 
   const polybar = [...queryCollection('github')].find(
     (repo) => repo.name === 'Awesome-Polybar'

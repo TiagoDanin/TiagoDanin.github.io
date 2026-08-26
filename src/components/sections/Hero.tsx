@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { ArrowRight, Newspaper } from "lucide-react";
 import Link from "next/link";
+import { Trans } from "@lingui/react/macro";
 import Image from "next/image";
 
 export interface HeroAbout {
@@ -113,17 +114,17 @@ export function Hero({ about, stats, socialLinks, showPressKit = false }: HeroPr
             <div className="flex flex-col sm:flex-row gap-3">
               <Button size="lg" asChild className="min-h-[44px] bg-blue-600 hover:bg-blue-700 text-white">
                 <Link href="#contact">
-                  Get in touch <ArrowRight className="ml-2 h-4 w-4" />
+                  <Trans>Get in touch</Trans> <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="min-h-[44px]">
-                <Link href="/projects">View my projects</Link>
+                <Link href="/projects"><Trans>View my projects</Trans></Link>
               </Button>
               {showPressKit && (
                 <Button size="lg" variant="outline" asChild className="min-h-[44px]">
                   <Link href="/press-kit">
                     <Newspaper className="mr-2 h-4 w-4" aria-hidden="true" />
-                    Press kit
+                    <Trans>Press kit</Trans>
                   </Link>
                 </Button>
               )}

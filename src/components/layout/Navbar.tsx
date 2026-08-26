@@ -8,6 +8,8 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { DEFAULT_LOCALE, localePath, type Locale } from "@/lib/i18n/locales";
 
 export interface MenuItem {
   title: string;
@@ -22,7 +24,8 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export function Navbar({ menu }: { menu: MenuItem[] }) {
+export function Navbar({ menu, locale = DEFAULT_LOCALE }: { menu: MenuItem[]; locale?: Locale }) {
+  const { t } = useLingui();
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const navItems = menu.filter((item) => item.navbar);
@@ -47,8 +50,8 @@ export function Navbar({ menu }: { menu: MenuItem[] }) {
     >
       <div className="container mx-auto px-4 flex items-center justify-between gap-4">
         <Link
-          href="/"
-          aria-label="Tiago Danin home"
+          href={localePath(locale, "/")}
+          aria-label={t`Tiago Danin home`}
           className="flex items-center gap-2 text-lg sm:text-xl font-semibold shrink-0"
         >
           <Image src="/images/logo.svg" alt="" width={24} height={24} aria-hidden />
@@ -58,11 +61,12 @@ export function Navbar({ menu }: { menu: MenuItem[] }) {
         <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-7 lg:gap-9">
             {navItems.map((item) => {
-              const active = isActive(pathname, item.href);
+              const href = localePath(locale, item.href);
+              const active = isActive(pathname, href);
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "relative font-medium transition-colors duration-200",
@@ -102,7 +106,7 @@ export function Navbar({ menu }: { menu: MenuItem[] }) {
                   variant="ghost"
                   size="icon"
                   className="h-10 w-10 min-h-[44px] min-w-[44px]"
-                  aria-label="Open menu"
+                  aria-label={t`Open menu`}
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
@@ -110,14 +114,15 @@ export function Navbar({ menu }: { menu: MenuItem[] }) {
               <SheetContent side="right" className="w-[260px] p-4">
                 {/* A sheet is a dialog and needs a name; the design has no room
                     for a visible one. */}
-                <SheetTitle className="sr-only">Navigation</SheetTitle>
+                <SheetTitle className="sr-only"><Trans>Navigation</Trans></SheetTitle>
                 <div className="flex flex-col gap-1 pt-8">
                   {navItems.map((item) => {
-                    const active = isActive(pathname, item.href);
+                    const href = localePath(locale, item.href);
+                    const active = isActive(pathname, href);
                     return (
                       <Link
                         key={item.href}
-                        href={item.href}
+                        href={href}
                         aria-current={active ? "page" : undefined}
                         className={cn(
                           "font-medium min-h-[44px] flex items-center px-3 rounded-md transition-colors",

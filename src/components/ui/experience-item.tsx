@@ -1,4 +1,5 @@
 'use client'
+import { Trans } from "@lingui/react/macro";
 
 import { useState } from "react";
 import Image from 'next/image'
@@ -44,7 +45,7 @@ export function ExperienceItem({ company, role, startDate, endDate, logo, descri
         </div>
         <dl className="flex flex-auto flex-wrap gap-x-2">
 
-          <dt className="sr-only">Company</dt>
+          <dt className="sr-only"><Trans>Company</Trans></dt>
           <dd className="w-full flex-none text-sm font-medium flex items-center justify-between">
             {company}
             <svg
@@ -63,11 +64,11 @@ export function ExperienceItem({ company, role, startDate, endDate, logo, descri
               />
             </svg>
           </dd>
-          <dt className="sr-only">Role</dt>
+          <dt className="sr-only"><Trans>Role</Trans></dt>
           <dd className="text-xs text-muted-foreground">
             {role}
           </dd>
-          <dt className="sr-only">Date</dt>
+          <dt className="sr-only"><Trans>Date</Trans></dt>
           <dd className="ml-auto text-xs text-muted-foreground">
             {isDateLike(startDate) ? <time dateTime={startDate}>{startDate}</time> : <span>{startDate}</span>}
             <span aria-hidden="true"> – </span>

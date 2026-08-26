@@ -1,3 +1,5 @@
+import { Trans } from "@lingui/react/macro";
+
 import { Button } from "@/components/ui/button";
 
 export interface CallToActionProps {
@@ -22,9 +24,9 @@ export function CallToAction({ email, linkedInUrl }: CallToActionProps) {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Hire me, or just say hi</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"><Trans>Hire me, or just say hi</Trans></h2>
           <p className="text-base sm:text-lg text-primary-foreground/80 leading-relaxed max-w-2xl mx-auto">
-            Whether you have a project in mind, want to talk tech, or just want to say hi, I read everything that lands in the inbox.
+            <Trans>Whether you have a project in mind, want to talk tech, or just want to say hi, I read everything that lands in the inbox.</Trans>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
@@ -35,12 +37,12 @@ export function CallToAction({ email, linkedInUrl }: CallToActionProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Connect on LinkedIn
+                  <Trans>Connect on LinkedIn</Trans>
                 </a>
               </Button>
             )}
             <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
-              <a href={`mailto:${email}`}>Send me an email</a>
+              <a href={`mailto:${email}`}><Trans>Send me an email</Trans></a>
             </Button>
           </div>
         </div>

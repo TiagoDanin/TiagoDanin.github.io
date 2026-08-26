@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Trans } from "@lingui/react/macro";
 
 interface ProjectsEntry {
   title: string;
@@ -36,9 +37,9 @@ export function Projects({ projects }: ProjectsProps) {
       <div className="container mx-auto relative px-4">
         <div className="space-y-16">
           <div className="max-w-2xl mx-auto mb-12 text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Selected work</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"><Trans>Selected work</Trans></h2>
             <p className="mt-4 text-sm sm:text-base text-muted-foreground">
-              A handful of projects across mobile, web, and games. The full archive lives below.
+              <Trans>A handful of projects across mobile, web, and games. The full archive lives below.</Trans>
             </p>
           </div>
 
@@ -53,7 +54,7 @@ export function Projects({ projects }: ProjectsProps) {
               <div className="mt-12 flex justify-center">
                 <Button size="lg" variant="outline" asChild>
                   <Link href="/projects">
-                    See all 250+ projects
+                    <Trans>See all 250+ projects</Trans>
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>

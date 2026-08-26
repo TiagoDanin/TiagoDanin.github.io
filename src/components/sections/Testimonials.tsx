@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Trans } from "@lingui/react/macro";
 import { Trophy, Github, Mic } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -50,9 +51,9 @@ export function Testimonials({ testimonials, tokens = {} }: TestimonialsProps) {
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-2xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Recognition</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"><Trans>Recognition</Trans></h2>
           <p className="mt-4 text-sm sm:text-base text-muted-foreground">
-            Wins, open source, and stages.
+            <Trans>Wins, open source, and stages.</Trans>
           </p>
         </div>
 

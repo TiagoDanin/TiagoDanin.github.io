@@ -21,6 +21,7 @@ import {
 import { FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { ExperienceItem } from "@/components/ui/experience-item";
+import { Trans } from "@lingui/react/macro";
 
 interface WorkEntry {
   company: string;
@@ -110,9 +111,9 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
       <div className="container mx-auto relative px-4">
         {/* Title and description */}
         <div className="max-w-2xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Experience and skills</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight"><Trans>Experience and skills</Trans></h2>
           <p className="mt-4 text-muted-foreground">
-            Where I've worked, and what I work with day to day.
+            <Trans>Where I&apos;ve worked, and what I work with day to day.</Trans>
           </p>
         </div>
 
@@ -123,7 +124,7 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
             <div className={`${isExpanded ? '' : 'h-[660px] overflow-hidden'} relative`}>
               <h3 className="flex text-sm font-semibold items-center">
                 <Briefcase className="h-5 w-5 flex-none" />
-                <span className="ml-3">Professional Experience</span>
+                <span className="ml-3"><Trans>Professional Experience</Trans></span>
               </h3>
 
               <ol className="mt-6 space-y-6">
@@ -142,7 +143,7 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
 
               {/* Volunteering */}
               <div className="mt-8 space-y-6">
-                <h4 className="text-sm font-medium">Volunteering</h4>
+                <h4 className="text-sm font-medium"><Trans>Volunteering</Trans></h4>
 
                 <ol className="space-y-6">
                   {volunteer.map((job, index) => (
@@ -172,13 +173,13 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
                   className="w-full"
                 >
                   <span className="flex items-center gap-2">
-                    Show more <ChevronDown className="h-4 w-4" />
+                    <Trans>Show more</Trans> <ChevronDown className="h-4 w-4" />
                   </span>
                 </Button>
               )}
               <Button className="w-full group" variant="outline" asChild>
                 <a href={about.cvUrl} className="inline-flex items-center gap-2">
-                  Open CV
+                  <Trans>Open CV</Trans>
                   <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-4 w-4 stroke-muted-foreground transition group-hover:stroke-primary">
                     <path d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -192,7 +193,7 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
           <div className="bg-card/50 backdrop-blur-xl p-6 rounded-2xl">
             <h3 className="flex text-sm font-semibold items-center">
               <CodeIcon className="h-5 w-5 flex-none" />
-              <span className="ml-3">Technical Skills</span>
+              <span className="ml-3"><Trans>Technical Skills</Trans></span>
             </h3>
 
             <div className="mt-6 space-y-4">

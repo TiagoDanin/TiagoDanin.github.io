@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Trans } from "@lingui/react/macro";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 export interface PressMention {
@@ -37,7 +38,7 @@ export function PressMentions({ items, href = "/press" }: PressMentionsProps) {
     <section className="py-20 bg-muted/30" aria-labelledby="press-heading">
       <div className="container mx-auto px-4">
         <h2 id="press-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-          In the press
+          <Trans>In the press</Trans>
         </h2>
 
         <ul className="mt-8 grid gap-6">
@@ -75,7 +76,7 @@ export function PressMentions({ items, href = "/press" }: PressMentionsProps) {
           href={href}
           className="mt-8 inline-flex items-center text-sm font-medium text-primary hover:underline underline-offset-4 min-h-[44px]"
         >
-          All press mentions
+          <Trans>All press mentions</Trans>
           <ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
