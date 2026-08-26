@@ -1,0 +1,31 @@
+{
+  "title": "Mapa do site",
+  "description": "Todas as páginas de tiagodanin.com, agrupadas pelo sitemap XML que as lista.",
+  "sections": [
+    {
+      "file": "sitemap.xml",
+      "title": "Índice de sitemaps",
+      "description": "O sitemap raiz enviado aos buscadores, apontando para os quatro abaixo."
+    },
+    {
+      "file": "sitemap-site.xml",
+      "title": "Páginas do site",
+      "description": "Posts, palestras, linha do tempo, imprensa e tudo que está na navegação principal, em inglês."
+    },
+    {
+      "file": "sitemap-site-br.xml",
+      "title": "Páginas em português",
+      "description": "As páginas servidas em /br, cada uma anunciando a versão em inglês como alternativa."
+    },
+    {
+      "file": "sitemap-project-github.xml",
+      "title": "Páginas de projetos no GitHub",
+      "description": "Uma página por repositório público, com descrição, linguagem, licença e estatísticas."
+    },
+    {
+      "file": "sitemap-homepage-github.xml",
+      "title": "Homepages do GitHub Pages",
+      "description": "Demos e documentação publicados a partir de um repositório, servidos neste domínio."
+    }
+  ]
+}
