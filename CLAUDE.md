@@ -85,22 +85,23 @@ All dynamic routes are statically pre-rendered via `generateStaticParams()`. Add
 src/app/
   (i18n)/[lang]/     root layout + the migrated routes. One page.tsx per route,
                      rendered once per locale.
-  (legacy)/          root layout + the 40 routes that have not migrated. English only.
+  (legacy)/          root layout + the 23 English-only routes that have not migrated,
+                     plus 4 redirect pages preserving retired Portuguese URLs.
   globals.css  favicon.ico
 ```
 
 There is no `app/layout.tsx`. Two root layouts is the only way for `<html lang>` to differ per locale in a static export, and route groups are how Next.js allows two. **`(legacy)` is scaffolding and both groups disappear once every route lives under `[lang]`.**
 
-Migrating a route means moving it into `(i18n)/[lang]/`, making it take `params`, and adding its path to `LOCALIZED_ROUTES` in `src/lib/i18n/locales.ts`. That array is read by `localePath()`, by the sitemap generator, and by the dev rewrites in `next.config.ts`, so a route becomes reachable in all three at once or in none.
+Migrating a route means moving it into `(i18n)/[lang]/`, making it take `params`, and registering it in `src/lib/i18n/locales.ts`. Two registries, and picking the wrong one is a silent failure:
 
-**Two bilingual URL schemes coexist**, and this is deliberate:
+- **`LOCALIZED_ROUTES`** is an exact-match list, for a fixed path such as `/about` or `/mobile`.
+- **`LOCALIZED_PREFIXES`** covers a whole subtree, for `/post/` and `/talk/`. Fifty-odd detail pages cannot be enumerated, and they do not need to be: the MDX filename suffix guarantees both languages exist for every slug.
 
-| Scheme | English | Portuguese | Used by |
-|---|---|---|---|
-| Prefix (new) | `/`, `/about` | `/br/`, `/br/about` | routes under `(i18n)/[lang]` |
-| Suffix (legacy) | `/blog`, `/post/[slug]` | `/blog/pt`, `/post/[slug]/pt` | routes under `(legacy)` |
+Both are read by `localePath()`, by `scripts/generateSitemaps.ts` and by the dev rewrites in `next.config.ts`, so a route becomes reachable in all three at once or in none. **A route under `(i18n)/[lang]` that is missing from both registries still builds.** It renders at `/br/x/`, but `localePath()` refuses to prefix links to it, the dev rewrite does not cover its English URL, and its hreflang set collapses onto one URL. Symptom: the Portuguese page exists but everything links to the English one, and the English one 404s in dev.
 
-The suffix scheme stays on `pt` while the prefix is `br`, because those Portuguese URLs are already indexed and renaming them buys nothing. `CONTENT_SUFFIX` in `locales.ts` is the single place that knows this, and `entryPath()` / `LEGACY_LOCALE_PATHS` build links from it. Do not hardcode either marker anywhere else.
+**Portuguese URLs are all prefix now.** The old trailing-segment form is retired, and the four `(legacy)` routes that still answer at it (`/blog/pt`, `/talks/pt`, `/post/[slug]/pt`, `/talk/[slug]/pt`, 54 URLs) render `LegacyRedirect` and nothing else.
+
+**`CONTENT_SUFFIX` in `locales.ts` is the only thing that still knows about `pt`.** The MDX files are `.pt.mdx`, their frontmatter says `lang: "pt"`, and Giscus comment threads are keyed `slug-pt`. Renaming any of that would migrate indexed URLs and orphan every existing comment thread for nothing. Read it through `contentLang(locale)`; never hardcode either marker.
 
 The locale of a post/talk comes from the **filename suffix**, not from frontmatter alone: `my-post.mdx` is EN, `my-post.pt.mdx` is PT. `src/lib/mdx.ts` and `src/lib/talks.ts` wrap this: `getPostBySlug(slug, lang)` / `getTalkBySlug(slug, lang)` and `postHasLocale` / `talkHasLocale`. Use the `*HasLocale` helpers before emitting `alternates.languages` in metadata so hreflang never points at a page that was not generated.
 
@@ -137,6 +138,10 @@ That move has three consequences worth knowing before debugging them:
 - `export const metadata = {...}` at module level cannot be translated: it evaluates once, in one locale. Use `generateMetadata`.
 - A message containing literal braces needs ICU escaping (`'{'hotkey'}'`), or Lingui reads them as a placeholder and renders nothing.
 
+**Never hand a raw locale code to `Intl`.** Use `intlLocale(code)`. The site's code is `br`, which is also a real language subtag (Breton), so `Intl.DateTimeFormat("br")` does not throw. It formats the wrong language, silently, and the only symptom is a date that looks slightly off.
+
+**Sweep components, not just pages.** Twice in this codebase a page read as fully Portuguese while a component it mounts stayed English: `FullProjects` on `/br/projects`, and every accessible name on the shell. A page-level check misses them because the string lives one file away. Check `aria-label`, `alt`, `title`, `placeholder` and `sr-only` text alongside visible copy.
+
 **Project routes** are `/project/[type]/[slug]`, where `type` is one of ten collections mapped in `src/app/project/[type]/[slug]/page.tsx`: `github`, `private`, `npm`, `luarocks`, `pypi`, `atom`, `googleplay`, `windows`, `aur`, `offline`. Slugs come from `titleToSlug(project.name ?? project.title)`. Adding a new project source means adding the collection *and* registering it in `getProjectsMap()` plus `urlPrefixMap`.
 
 Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/tags/[tag]`, `/blog/tags/[tag]`, `/timeline/[year]/[slug]`.
@@ -153,7 +158,7 @@ Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/t
 
 **32 of the 64 files in `src/components/ui/` have no production consumer.** They ship with the shadcn install and no route renders them. Their stories do not count: measure importers excluding `*.stories.tsx`, or everything looks used. Deadness is also transitive, `dialog` and `tooltip` are imported only by `command` and `sidebar`, which are themselves unreachable. Each is documented in Storybook and labelled as unused, so check whether one already exists before adding a dependency.
 
-**83 components, 82 stories.** The one without a story is `LinguiClientProvider`, which renders no markup of its own and whose job the Storybook decorator does instead.
+**84 components, 82 stories.** The two without one are `LinguiClientProvider` and `LegacyRedirect`: neither has a visual surface worth cataloguing, and the first one's job is done by the Storybook decorator instead.
 
 ### Styling
 - **Tailwind CSS** (v3), mobile-first.
@@ -364,6 +369,15 @@ Pages announce their mirror with `<link rel="alternate" type="text/markdown">`. 
 - **`(i18n)/[lang]` routes** use `markdownAlternate(path)` from `src/lib/i18n/seo.ts`, which always resolves to the English mirror regardless of the page's locale.
 
 Only the routes the generator actually writes carry the alternate: the pages in `contents/llms`, plus `/post/[slug]`, `/talk/[slug]`, their `/pt` variants and `/project/[type]/[slug]`. Routes without a mirror (`/tags`, `/skills/[slug]`, `/social/[network]`, `/blog/[page]`, `/app/[appId]`, `/timeline/[year]/[slug]`) must not get one.
+
+## Known broken, deliberately not fixed
+
+Documented so nobody rediscovers them as new bugs:
+
+- **`generateRss.ts` reads `contents/` with `fs` 15 times, `generateLlms.ts` 3.** They predate the rule above and were left for a change of their own. Do not copy the pattern.
+- **`npx nextjs-studio` fails on its first run on Windows.** It shells out to `tar -xzf "E:/..."`, and GNU tar reads a drive letter as a remote host spec, so it tries to connect to a machine called `E`. `tar --force-local` extracts the cache by hand as a workaround. The fix belongs in the `nextjs-studio` package.
+- **Client-side navigation from the copied root pages is unverified.** `/` and `/about/` are moved into place after the build, so they are not in the client route manifest and a `<Link>` may fall back to a full page load. Functionally fine either way.
+- **A stale `next dev` will lie to you.** It keeps port 3000 and serves old code while a new one silently starts on 3001, which has twice looked like a routing bug. Check the port in the dev log before believing a 404.
 
 ## Important Notes
 
