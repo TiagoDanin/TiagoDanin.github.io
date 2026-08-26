@@ -10,11 +10,24 @@ module.exports = {
   // sitemap-project-github.xml and sitemap-homepage-github.xml alongside this file.
   sitemapBaseFileName: 'sitemap-site',
   generateIndexSitemap: false,
-  // Listed by sitemap-project-github.xml instead, so the three sitemaps stay disjoint.
-  exclude: ['/project/github/*'],
+  // Listed elsewhere, so every sitemap in the family stays disjoint:
+  // /project/github/* in sitemap-project-github.xml, /br/* in sitemap-site-br.xml.
+  //
+  // /en/* is excluded because it does not survive the build: next-sitemap reads
+  // the route manifest, which still says the English pages live under /en,
+  // while scripts/flattenDefaultLocale.ts has already moved them to the root.
+  // Listing them would submit 404s. additionalPaths puts the real URLs back.
+  exclude: ['/project/github/*', '/br', '/br/*', '/en', '/en/*'],
+
+  additionalPaths: async (config) => {
+    // Keep in step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
+    const localized = ['/', '/about'];
+    return Promise.all(localized.map((route) => config.transform(config, route)));
+  },
   robotsTxtOptions: {
     additionalSitemaps: [
       'https://tiagodanin.com/sitemap.xml',
+      'https://tiagodanin.com/sitemap-site-br.xml',
       'https://tiagodanin.com/sitemap-project-github.xml',
       'https://tiagodanin.com/sitemap-homepage-github.xml',
       // Google accepts RSS 2.0 as a sitemap format, and the feeds carry the
@@ -81,10 +94,29 @@ module.exports = {
     // path, and a custom transform bypasses the config's own trailingSlash.
     const loc = urlPath.endsWith('/') ? urlPath : `${urlPath}/`;
 
+    // Routes that also exist under /br announce the pair, so the two languages
+    // read as one page in two versions instead of two competing URLs. Keep in
+    // step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
+    const localized = ['/', '/about'];
+    const alternateRefs = localized.includes(urlPath)
+      ? [
+          // hrefIsAbsolute, or next-sitemap treats href as that language's root
+          // and appends the path again: /about/ would come out /about/about/.
+          { href: `https://tiagodanin.com${loc}`, hreflang: 'en', hrefIsAbsolute: true },
+          {
+            href: `https://tiagodanin.com/br${urlPath === '/' ? '/' : `${urlPath}/`}`,
+            hreflang: 'pt-BR',
+            hrefIsAbsolute: true,
+          },
+          { href: `https://tiagodanin.com${loc}`, hreflang: 'x-default', hrefIsAbsolute: true },
+        ]
+      : undefined;
+
     return {
       loc,
       changefreq: changefreq,
       priority: priority,
+      alternateRefs,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
     };
   },

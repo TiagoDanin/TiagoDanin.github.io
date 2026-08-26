@@ -5,12 +5,17 @@
     {
       "file": "sitemap.xml",
       "title": "Sitemap index",
-      "description": "The root sitemap submitted to search engines, pointing at the three sitemaps below."
+      "description": "The root sitemap submitted to search engines, pointing at the four sitemaps below."
     },
     {
       "file": "sitemap-site.xml",
       "title": "Site pages",
-      "description": "Blog posts, talks, timeline, press and everything under the main navigation."
+      "description": "Blog posts, talks, timeline, press and everything under the main navigation, in English."
+    },
+    {
+      "file": "sitemap-site-br.xml",
+      "title": "Portuguese pages",
+      "description": "The pages served under /br, each announcing the English version as its alternate."
     },
     {
       "file": "sitemap-project-github.xml",
