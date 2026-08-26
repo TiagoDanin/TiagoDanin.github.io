@@ -106,6 +106,14 @@ msgstr "Áreas em que trabalho e onde posso ajudar a tirar sua ideia do papel."
 msgid "As a HackerOne security researcher since 2018, I build apps with security baked in from day one, not bolted on after."
 msgstr "Pesquisador de segurança no HackerOne desde 2018, construo apps com segurança desde o primeiro dia, não remendada depois."
 
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
+msgid "Back to Blog"
+msgstr "Voltar para o blog"
+
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+msgid "Back to Talks"
+msgstr "Voltar para as palestras"
+
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Blog - Flutter, AI & Cybersecurity"
 msgstr "Blog - Flutter, IA e Segurança"
@@ -411,6 +419,10 @@ msgstr "Página 1 de {totalPages}"
 msgid "Personalized 1:1 mentorship in game development, AI, and mobile development. Weekly video calls with hands-on project guidance."
 msgstr "Mentoria individual em desenvolvimento de jogos, IA e mobile. Chamadas semanais com acompanhamento de projeto na prática."
 
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
+msgid "Post not found"
+msgstr "Post não encontrado"
+
 #: src/lib/sections.ts
 msgid "posts & videos"
 msgstr "posts e vídeos"
@@ -485,6 +497,10 @@ msgstr "Ler artigo"
 msgid "Read article about {0}"
 msgstr "Ler artigo sobre {0}"
 
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
+msgid "Read original article"
+msgstr "Ler o artigo original"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Ready to Start Your Project?"
 msgstr "Pronto para começar seu projeto?"
@@ -537,6 +553,10 @@ msgstr "Serviços - Mobile, Segurança e IA"
 msgid "Show more"
 msgstr "Ver mais"
 
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+msgid "Talk Not Found"
+msgstr "Palestra não encontrada"
+
 #: src/lib/sections.ts
 msgid "talks"
 msgstr "palestras"
@@ -581,9 +601,21 @@ msgstr "Mentoria técnica"
 msgid "Technical Skills"
 msgstr "Habilidades técnicas"
 
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+msgid "The requested talk could not be found."
+msgstr "A palestra pedida não foi encontrada."
+
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
+msgid "This article was translated from Portuguese with the help of an LLM. The original version may contain nuances not fully captured in this translation."
+msgstr "Este artigo foi traduzido do português com ajuda de um LLM. A versão original pode conter nuances que a tradução não capturou por completo."
+
 #: src/components/ui/LanguageSelect.tsx
 msgid "This page has no version in this language yet"
 msgstr "Esta página ainda não tem versão neste idioma"
+
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+msgid "This talk content was translated from Portuguese with the help of an LLM. The original version may contain nuances not fully captured in this translation."
+msgstr "O conteúdo desta palestra foi traduzido do português com ajuda de um LLM. A versão original pode conter nuances que a tradução não capturou por completo."
 
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Thoughts, insights, and ideas about technology and development"

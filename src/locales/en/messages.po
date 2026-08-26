@@ -106,6 +106,14 @@ msgstr "Areas where I excel and can help bring your ideas to life."
 msgid "As a HackerOne security researcher since 2018, I build apps with security baked in from day one, not bolted on after."
 msgstr "As a HackerOne security researcher since 2018, I build apps with security baked in from day one, not bolted on after."
 
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
+msgid "Back to Blog"
+msgstr "Back to Blog"
+
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+msgid "Back to Talks"
+msgstr "Back to Talks"
+
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Blog - Flutter, AI & Cybersecurity"
 msgstr "Blog - Flutter, AI & Cybersecurity"
@@ -411,6 +419,10 @@ msgstr "Page 1 of {totalPages}"
 msgid "Personalized 1:1 mentorship in game development, AI, and mobile development. Weekly video calls with hands-on project guidance."
 msgstr "Personalized 1:1 mentorship in game development, AI, and mobile development. Weekly video calls with hands-on project guidance."
 
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
+msgid "Post not found"
+msgstr "Post not found"
+
 #: src/lib/sections.ts
 msgid "posts & videos"
 msgstr "posts & videos"
@@ -485,6 +497,10 @@ msgstr "Read article"
 msgid "Read article about {0}"
 msgstr "Read article about {0}"
 
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
+msgid "Read original article"
+msgstr "Read original article"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Ready to Start Your Project?"
 msgstr "Ready to Start Your Project?"
@@ -537,6 +553,10 @@ msgstr "Services - Mobile, Cybersecurity & AI"
 msgid "Show more"
 msgstr "Show more"
 
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+msgid "Talk Not Found"
+msgstr "Talk Not Found"
+
 #: src/lib/sections.ts
 msgid "talks"
 msgstr "talks"
@@ -581,9 +601,21 @@ msgstr "Technical Mentorship"
 msgid "Technical Skills"
 msgstr "Technical Skills"
 
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+msgid "The requested talk could not be found."
+msgstr "The requested talk could not be found."
+
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
+msgid "This article was translated from Portuguese with the help of an LLM. The original version may contain nuances not fully captured in this translation."
+msgstr "This article was translated from Portuguese with the help of an LLM. The original version may contain nuances not fully captured in this translation."
+
 #: src/components/ui/LanguageSelect.tsx
 msgid "This page has no version in this language yet"
 msgstr "This page has no version in this language yet"
+
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+msgid "This talk content was translated from Portuguese with the help of an LLM. The original version may contain nuances not fully captured in this translation."
+msgstr "This talk content was translated from Portuguese with the help of an LLM. The original version may contain nuances not fully captured in this translation."
 
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Thoughts, insights, and ideas about technology and development"

@@ -28,11 +28,14 @@ module.exports = {
     // index something it has been told not to.
     '/blog/pt',
     '/talks/pt',
+    '/post/*/pt',
+    '/talk/*/pt',
   ],
 
   additionalPaths: async (config) => {
     // Keep in step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
     const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks'];
+    const localizedPrefix = ['/post/', '/talk/'].some((p) => urlPath.startsWith(p));
     return Promise.all(localized.map((route) => config.transform(config, route)));
   },
   robotsTxtOptions: {
@@ -109,7 +112,7 @@ module.exports = {
     // read as one page in two versions instead of two competing URLs. Keep in
     // step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
     const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks'];
-    const alternateRefs = localized.includes(urlPath)
+    const alternateRefs = localized.includes(urlPath) || localizedPrefix
       ? [
           // hrefIsAbsolute, or next-sitemap treats href as that language's root
           // and appends the path again: /about/ would come out /about/about/.

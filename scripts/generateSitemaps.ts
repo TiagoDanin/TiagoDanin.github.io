@@ -9,6 +9,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import { queryCollection } from 'nextjs-studio/server';
+
 import { HTML_LANG, LOCALIZED_ROUTES, localePath } from '../src/lib/i18n/locales.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -103,7 +105,14 @@ function buildUrlset(entries: SitemapEntry[]): string {
  * included, which is what keeps `/` and `/br/` from reading as duplicates.
  */
 function buildLocalizedEntries(): SitemapEntry[] {
-  return LOCALIZED_ROUTES.map(route => {
+  // Posts and talks are localised by prefix too, but there are 52 of them and
+  // they are not in LOCALIZED_ROUTES. Read from the same place the pages do.
+  const detailRoutes = [
+    ...readSlugs('posts').map(slug => `/post/${slug}`),
+    ...readSlugs('talks').map(slug => `/talk/${slug}`),
+  ];
+
+  return [...LOCALIZED_ROUTES, ...detailRoutes].map(route => {
     const alternates: AlternateRef[] = [
       { hreflang: HTML_LANG.en, href: `${siteUrl}${withSlash(localePath('en', route))}` },
       { hreflang: HTML_LANG.br, href: `${siteUrl}${withSlash(localePath('br', route))}` },
@@ -113,7 +122,7 @@ function buildLocalizedEntries(): SitemapEntry[] {
     return {
       loc: `${siteUrl}${withSlash(localePath('br', route))}`,
       changefreq: 'weekly',
-      priority: route === '/' ? '1.0' : '0.5',
+      priority: route === '/' ? '1.0' : route.startsWith('/post/') || route.startsWith('/talk/') ? '0.4' : '0.5',
       alternates,
     };
   });
@@ -121,6 +130,23 @@ function buildLocalizedEntries(): SitemapEntry[] {
 
 function withSlash(route: string): string {
   return route.endsWith('/') ? route : `${route}/`;
+}
+
+/**
+ * Slugs of the Portuguese entries in an MDX collection.
+ *
+ * Through the content API, not the filesystem: `nextjs-studio/server`
+ * auto-initializes from `process.cwd()` and works in a script the same way it
+ * works in a page. Parsing frontmatter here would be a second, worse reader of
+ * the same files, free to disagree with the one the site uses.
+ *
+ * Both languages share a slug, so either side answers the question.
+ */
+function readSlugs(collection: 'posts' | 'talks'): string[] {
+  return queryCollection(collection)
+    .where({ lang: 'pt' })
+    .map((entry: { slug: string }) => entry.slug)
+    .filter(Boolean);
 }
 
 function buildSitemapIndex(fileNames: string[]): string {
@@ -140,11 +166,10 @@ function writeSitemap(fileName: string, xml: string, count: number): void {
 function generateSitemaps(): void {
   console.log('Generating sitemaps...');
 
-  const projectsPath = path.join(__dirname, '..', 'contents', 'github', 'index.json');
-  const projectsData: GithubProject[] = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
+  const projectsData = [...queryCollection('github')] as unknown as GithubProject[];
 
-  if (!projectsData || projectsData.length === 0) {
-    throw new Error(`No GitHub projects found in ${projectsPath}`);
+  if (projectsData.length === 0) {
+    throw new Error('No GitHub projects found. Run `yarn data:github` first.');
   }
 
   // Every repo in contents/github has a landing page at /project/github/[slug]

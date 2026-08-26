@@ -1,27 +1,35 @@
 import type { NextConfig } from "next";
 import { withStudio } from "nextjs-studio/next";
 import { linguiMacroSwcPlugin } from "@lingui/swc-plugin/options";
-import { DEFAULT_LOCALE, LOCALIZED_ROUTES } from "./src/lib/i18n/locales";
+import { DEFAULT_LOCALE, LOCALIZED_PREFIXES, LOCALIZED_ROUTES } from "./src/lib/i18n/locales";
 
 const isDev = process.env.NODE_ENV === "development";
 
 /**
  * The default locale is served from the site root as well as from `/en`.
  *
- * In production `scripts/copyDefaultLocale.ts` does it, copying `dist/en/**`
- * over the root after the build. There is no build in `next dev`, so without
+ * In production `scripts/flattenDefaultLocale.ts` does it, moving `dist/en/**`
+ * to the root after the build. There is no build in `next dev`, so without
  * these rewrites `/` 404s and `/about/` errors on a `[lang]` param that does
  * not exist, and the English site is only reachable at URLs it will never be
  * served from.
  *
- * Derived from the same list `localePath()` reads, so a route cannot be
+ * Derived from the same lists `localePath()` reads, so a route cannot be
  * reachable in one and missing in the other. Rewrites and `output: "export"`
  * are mutually exclusive, which is why the export only applies to builds.
  */
-const defaultLocaleRewrites = LOCALIZED_ROUTES.map((route) => ({
-  source: route,
-  destination: route === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${route}`,
-}));
+const defaultLocaleRewrites = [
+  ...LOCALIZED_ROUTES.map((route) => ({
+    source: route,
+    destination: route === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${route}`,
+  })),
+  // One segment only, so `/post/:slug/pt` still reaches the redirect page in
+  // (legacy) rather than being rewritten to a page that does not exist.
+  ...LOCALIZED_PREFIXES.map((prefix) => ({
+    source: `${prefix}:slug`,
+    destination: `/${DEFAULT_LOCALE}${prefix}:slug`,
+  })),
+];
 
 const nextConfig: NextConfig = {
   /**

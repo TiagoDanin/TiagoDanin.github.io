@@ -82,6 +82,18 @@ export const LOCALIZED_ROUTES = ['/', '/about', '/services', '/projects', '/blog
 const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
 
 /**
+ * Route prefixes whose every child exists in every locale.
+ *
+ * Posts and talks cannot be listed one by one, and they do not need to be: the
+ * MDX filename suffix guarantees both languages exist for each slug.
+ */
+export const LOCALIZED_PREFIXES = ['/post/', '/talk/'] as const;
+
+function isLocalized(path: string): boolean {
+  return LOCALIZED_ROUTE_SET.has(path) || LOCALIZED_PREFIXES.some((p) => path.startsWith(p));
+}
+
+/**
  * Routes whose translation lives at the old suffix path rather than under the
  * prefix. Disappears with `(legacy)`.
  */
@@ -104,17 +116,19 @@ export function localePath(locale: Locale, path: string): string {
   const legacy = LEGACY_LOCALE_PATHS[path]?.[locale];
   if (legacy) return legacy;
 
-  if (!LOCALIZED_ROUTE_SET.has(path)) return clean || '/';
+  if (!isLocalized(path)) return clean || '/';
   return `/${locale}${clean}`;
 }
 
 /**
- * A post or talk detail page. Both languages share one slug; the locale is a
- * trailing segment, which is the convention `src/lib/mdx.ts` already reads.
+ * A post or talk detail page. Both languages share one slug, and both now live
+ * under the locale prefix like every other migrated route.
+ *
+ * The old trailing-segment form (`/post/x/pt`) still resolves, as an alias that
+ * canonicalises here.
  */
 export function entryPath(locale: Locale, kind: 'post' | 'talk', slug: string): string {
-  const suffix = CONTENT_SUFFIX[locale];
-  return suffix ? `/${kind}/${slug}/${suffix}` : `/${kind}/${slug}`;
+  return localePath(locale, `/${kind}/${slug}`);
 }
 
 const SECONDARY = LOCALES.filter((l) => l !== DEFAULT_LOCALE);
@@ -155,12 +169,7 @@ export function switchLocalePath(pathname: string, target: Locale): string | nul
 
   if (target === DEFAULT_LOCALE) return base;
   if (LEGACY_LOCALE_PATHS[base]?.[target]) return LEGACY_LOCALE_PATHS[base][target]!;
-  if (LOCALIZED_ROUTE_SET.has(base)) return base === '/' ? `/${target}` : `/${target}${base}`;
-
-  // Posts and talks carry their locale as a trailing segment and always exist
-  // in both languages: the filename suffix is what creates them.
-  const match = /^\/(post|talk)\/[^/]+$/.exec(base);
-  if (match) return entryPath(target, match[1] as 'post' | 'talk', base.split('/')[2]);
+  if (isLocalized(base)) return base === '/' ? `/${target}` : `/${target}${base}`;
 
   return null;
 }
