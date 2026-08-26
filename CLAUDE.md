@@ -25,17 +25,23 @@ yarn sitemap               # generateSitemaps.ts + next-sitemap
 # Machine-readable layer (also runs inside yarn build)
 yarn data:llms             # llms.txt, the *.txt lists and the .md page mirrors
 
+# Translation catalogs
+yarn i18n:extract          # scan src/ for marked strings, rewrite the .po files (--clean drops obsolete)
+yarn i18n:compile          # .po -> src/locales/<locale>/messages.ts (git-ignored, required to run anything)
+
 # Component catalog
 yarn storybook             # Storybook dev server on :6006, also serves the MCP endpoint at /mcp
 yarn build-storybook       # Static catalog into storybook-static/
 
 # Full Deployment Pipeline
-yarn deploy                # data:github + data:rss + build + sitemap + build (second build picks up the generated sitemap)
+yarn deploy                # data:github + build + sitemap + build (second build picks up the generated sitemap)
 ```
 
 Package manager is **Yarn 4** (`packageManager: yarn@4.6.0`, Corepack). Node version is pinned in `.nvmrc`.
 
-`yarn build` runs `yarn data` first (`data:rss` + `data:llms`), so a plain build never ships a stale text layer. `yarn sitemap` is **not** part of `build`: only `yarn deploy` chains it. Run `yarn data:github` / `yarn data:npm` manually when you need fresh external data.
+`yarn build` runs `yarn data` first (`data:rss` + `data:llms` + `i18n:compile`), so a plain build never ships a stale text layer or a stale catalog, then finishes with `scripts/flattenDefaultLocale.ts`. `yarn sitemap` is **not** part of `build`: only `yarn deploy` chains it. Run `yarn data:github` / `yarn data:npm` manually when you need fresh external data.
+
+**A missing `i18n:compile` fails silently.** The compiled catalog is git-ignored, and Lingui renders the English source when it cannot find a translation, so a forgotten compile looks like "the translation did not work" rather than an error. That is why it is chained into `data` and into both `storybook` scripts.
 
 **Do not add `pre`/`post` script hooks.** Yarn 4 does not execute them, unlike npm. The project shipped a `prebuild: yarn data:rss && yarn data:llms` that silently never ran, and the whole `llms.txt` layer 404'd in production for as long as it existed. Every generation step must be chained explicitly.
 
@@ -73,16 +79,63 @@ Package manager is **Yarn 4** (`packageManager: yarn@4.6.0`, Corepack). Node ver
 
 All dynamic routes are statically pre-rendered via `generateStaticParams()`. Adding content to a collection is enough for a page to exist; there is no runtime fallback.
 
-**Bilingual routing is duplicated route segments, not i18n middleware.** English lives at the base path and Portuguese at a `/pt` child segment:
+**`src/app/` holds two route groups and nothing else.** They are the two halves of a migration in progress:
 
-| English | Portuguese |
-|---|---|
-| `/blog`, `/blog/[page]` | `/blog/pt` |
-| `/post/[slug]` | `/post/[slug]/pt` |
-| `/talks` | `/talks/pt` |
-| `/talk/[slug]` | `/talk/[slug]/pt` |
+```
+src/app/
+  (i18n)/[lang]/     root layout + the migrated routes. One page.tsx per route,
+                     rendered once per locale.
+  (legacy)/          root layout + the 40 routes that have not migrated. English only.
+  globals.css  favicon.ico
+```
+
+There is no `app/layout.tsx`. Two root layouts is the only way for `<html lang>` to differ per locale in a static export, and route groups are how Next.js allows two. **`(legacy)` is scaffolding and both groups disappear once every route lives under `[lang]`.**
+
+Migrating a route means moving it into `(i18n)/[lang]/`, making it take `params`, and adding its path to `LOCALIZED_ROUTES` in `src/lib/i18n/locales.ts`. That array is read by `localePath()`, by the sitemap generator, and by the dev rewrites in `next.config.ts`, so a route becomes reachable in all three at once or in none.
+
+**Two bilingual URL schemes coexist**, and this is deliberate:
+
+| Scheme | English | Portuguese | Used by |
+|---|---|---|---|
+| Prefix (new) | `/`, `/about` | `/br/`, `/br/about` | routes under `(i18n)/[lang]` |
+| Suffix (legacy) | `/blog`, `/post/[slug]` | `/blog/pt`, `/post/[slug]/pt` | routes under `(legacy)` |
+
+The suffix scheme stays on `pt` while the prefix is `br`, because those Portuguese URLs are already indexed and renaming them buys nothing. `CONTENT_SUFFIX` in `locales.ts` is the single place that knows this, and `entryPath()` / `LEGACY_LOCALE_PATHS` build links from it. Do not hardcode either marker anywhere else.
 
 The locale of a post/talk comes from the **filename suffix**, not from frontmatter alone: `my-post.mdx` is EN, `my-post.pt.mdx` is PT. `src/lib/mdx.ts` and `src/lib/talks.ts` wrap this: `getPostBySlug(slug, lang)` / `getTalkBySlug(slug, lang)` and `postHasLocale` / `talkHasLocale`. Use the `*HasLocale` helpers before emitting `alternates.languages` in metadata so hreflang never points at a page that was not generated.
+
+### Internationalization
+
+Two layers, and putting a string in the wrong one is the mistake to avoid:
+
+- **Prose** lives in `contents/`, one `index.<locale>.json` per language. Editable in the studio.
+- **Chrome** (button labels, aria labels, headings, the strings inside `generateMetadata`) lives in `src/locales/<locale>/messages.po`, marked in the code with Lingui macros.
+
+If a sentence is something the owner could plausibly want to reword later, it is prose and belongs in a collection.
+
+**`/en/` does not exist.** English is served from `/` and only from there. `generateStaticParams` emits `/en/**` and `/br/**`, then `scripts/flattenDefaultLocale.ts` *moves* `dist/en/**` to the root and deletes it. Copying instead would publish two byte-identical URLs, and a canonical tag is a hint a crawler may ignore. That move is also what creates `dist/index.html`: no route generates `/` any more.
+
+That move has three consequences worth knowing before debugging them:
+
+1. **`next dev` has no build**, so `/` would 404 and `/about/` would error on a `[lang]` param that does not exist. `next.config.ts` swaps `output: "export"` for `rewrites` in development. The two are mutually exclusive, so **dev no longer enforces export compatibility**; `yarn build` is the gate.
+2. **`next-sitemap` reads the route manifest, not `dist/`**, so it still thinks English lives under `/en`. Its config excludes `/en/*` and puts the real URLs back with `additionalPaths`.
+3. **The root pages are not in the client route manifest.** Client-side navigation from `/` may fall back to a full page load. Unverified either way.
+
+**Locale codes do not line up, on purpose.** `src/lib/i18n/locales.ts` holds all four mappings:
+
+| Concept | English | Portuguese | Why |
+|---|---|---|---|
+| URL segment | (none) | `br` | `/br/` is an address, not a language tag |
+| `HTML_LANG` (`<html lang>`, hreflang) | `en` | `pt-BR` | English is region-neutral; the Portuguese is Brazilian specifically |
+| `OG_LOCALE` | `en_US` | `pt_BR` | Open Graph wants `language_TERRITORY`, which has no neutral form |
+| `CONTENT_SUFFIX` (MDX files, legacy routes) | (none) | `pt` | those URLs are already indexed |
+
+**Lingui rules.** Macros are transformed by `@lingui/swc-plugin` on the webpack builder; the known Next 16 incompatibility is Turbopack-only. Two config values are load-bearing and were both found the hard way: `format` must be `@lingui/format-po` (a bare `"po"` string is no longer accepted), and `compileNamespace` must be `"ts"`, because the default `cjs` namespace writes `module.exports`, which webpack hands back as an **empty object** to a Server Component, so every string falls back to English with no error.
+
+- Server components publish the catalog with `initI18n(locale)`, which writes into React's per-request cache. **Call it in every page and every layout**, not just the root: that is how the App Router scopes it.
+- Client components are a separate bundle with their own module state, so they read from `LinguiClientProvider`. It serialises the whole catalog into each page, roughly 18 bytes gzip per message per page.
+- `export const metadata = {...}` at module level cannot be translated: it evaluates once, in one locale. Use `generateMetadata`.
+- A message containing literal braces needs ICU escaping (`'{'hotkey'}'`), or Lingui reads them as a placeholder and renders nothing.
 
 **Project routes** are `/project/[type]/[slug]`, where `type` is one of ten collections mapped in `src/app/project/[type]/[slug]/page.tsx`: `github`, `private`, `npm`, `luarocks`, `pypi`, `atom`, `googleplay`, `windows`, `aur`, `offline`. Slugs come from `titleToSlug(project.name ?? project.title)`. Adding a new project source means adding the collection *and* registering it in `getProjectsMap()` plus `urlPrefixMap`.
 
@@ -98,7 +151,9 @@ Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/t
 
 `AnimatedCounter` was copied verbatim into both ranking pages before it was extracted. If you find yourself pasting a component into a second page, extract it instead.
 
-**32 of the 62 files in `src/components/ui/` have no production consumer.** They ship with the shadcn install and no route renders them. Their stories do not count: measure importers excluding `*.stories.tsx`, or everything looks used. Deadness is also transitive, `dialog` and `tooltip` are imported only by `command` and `sidebar`, which are themselves unreachable. Each is documented in Storybook and labelled as unused, so check whether one already exists before adding a dependency.
+**32 of the 64 files in `src/components/ui/` have no production consumer.** They ship with the shadcn install and no route renders them. Their stories do not count: measure importers excluding `*.stories.tsx`, or everything looks used. Deadness is also transitive, `dialog` and `tooltip` are imported only by `command` and `sidebar`, which are themselves unreachable. Each is documented in Storybook and labelled as unused, so check whether one already exists before adding a dependency.
+
+**83 components, 82 stories.** The one without a story is `LinguiClientProvider`, which renders no markup of its own and whose job the Storybook decorator does instead.
 
 ### Styling
 - **Tailwind CSS** (v3), mobile-first.
@@ -136,7 +191,20 @@ return <ClientComponent posts={[...posts]} />;
 // Spread into an array to serialize QueryResult for the client
 ```
 
-Query API in use across the codebase: `.where({...})`, `.locale('pt')`, `.first()`, `.count()`, and `.one()` for singleton collections (e.g. `queryCollection('about').one()`).
+Query API in use across the codebase: `.where({...})`, `.locale('br')`, `.first()`, `.count()`, and `.one()` for singleton collections (e.g. `queryCollection('about').one()`).
+
+#### Locale on a collection
+
+A JSON collection carries a translation the way MDX does, by filename: `contents/about/index.br.json` next to `index.json`. **Never add parallel fields** (`title` + `titlePt`); the language belongs in the filename, where the studio can see it.
+
+`studio.config.ts` sets `defaultLocale: "en"`, which stamps the unsuffixed files so `.locale("en")` selects them the same way `.locale("br")` selects the variant. Two consequences:
+
+- **`.all()` returns every language.** The moment a collection gains a variant, a query without `.locale()` returns both, and a `.map()` over it renders the list twice. This is why the `(legacy)` routes that read `menu`, `projects`, `skills` and `work` pass `.locale(DEFAULT_LOCALE)` explicitly.
+- **`.one()` prefers the default locale**, so the singleton reads in `(legacy)` did not need changing. It is the only method that guesses.
+
+There is **no fallback**: `.locale("es")` on a collection with no Spanish returns empty, exactly like MDX. A partially translated collection renders a partially empty page, by design.
+
+This requires the `nextjs-studio` change that reads locale from JSON collections (`parseLocaleFromFilename` accepts `.json`, `detectCollectionType` counts distinct slugs, `defaultLocale` stamping, locale-aware `reindexFile`). The studio UI has a locale switcher for MDX but **not for JSON**, so `index.br.json` is edited by hand for now.
 
 **Do NOT** import JSON directly from `contents/` - always use the `queryCollection` API. The only exception is build-time scripts in `scripts/`, which run outside Next and read the JSON with `fs`.
 
@@ -260,10 +328,19 @@ Metadata is defined per page with `generateMetadata`, hardcoding `https://tiagod
 
 A regex sweep over the whole repo is the wrong tool here: it cannot tell a route from a file, and it will happily corrupt `${...}` interpolations and schema.org placeholders like `{search_term_string}`.
 
-- Always set `alternates.canonical`, and `alternates.languages` with `en-US`, `pt-BR` and `x-default` when a locale variant actually exists.
+- Always set `alternates.canonical`. On a route under `[lang]`, use `localeAlternates(locale, path)` from `src/lib/i18n/seo.ts` rather than writing the `languages` map by hand.
 - Descriptions are truncated to 160 chars before use.
 - Page priorities and changefreq are centralized in the `transform` function of `next-sitemap.config.cjs`; add new route prefixes there rather than leaving them at the 0.7 default.
-- The site has four sitemaps, all generated and git-ignored. `scripts/generateSitemaps.ts` writes `sitemap.xml` (the index), `sitemap-project-github.xml` (one entry per `/project/github/[slug]` landing page) and `sitemap-homepage-github.xml` (the GitHub Pages homepages served under the custom domain, normalized from each repo's `homepage` field). `next-sitemap` then writes `sitemap-site.xml` for the site pages; it has `generateIndexSitemap: false` so it never overwrites the index, and excludes `/project/github/*` so the three lists stay disjoint.
+- The site has **five** sitemaps, all generated and git-ignored. `scripts/generateSitemaps.ts` writes `sitemap.xml` (the index), `sitemap-site-br.xml` (the `/br/**` pages), `sitemap-project-github.xml` (one entry per `/project/github/[slug]` landing page) and `sitemap-homepage-github.xml` (the GitHub Pages homepages served under the custom domain, normalized from each repo's `homepage` field). `next-sitemap` then writes `sitemap-site.xml` for the English pages; it has `generateIndexSitemap: false` so it never overwrites the index, and excludes `/project/github/*`, `/br/*` and `/en/*` so the lists stay disjoint.
+
+**Every page announces four alternates**, in its `<head>` and in the sitemap that lists it: `hreflang="en"`, `hreflang="pt-BR"`, `x-default`, and `type="text/markdown"`. The two sources must agree; disagreeing is worse than either being wrong alone.
+
+`scripts/annotateSitemapMarkdown.ts` is a separate pass that adds the Markdown link after `next-sitemap` runs, because `alternateRefs` carries only an `hreflang` with no way to express a `type`. It checks the `.md` exists on disk before announcing it. The mirror is English-only, so a `/br/` entry points at the English document.
+
+Two `next-sitemap` behaviours that produced wrong output and will again if reverted:
+
+- **It reads the route manifest, not `dist/`.** After `flattenDefaultLocale.ts` moves English to the root, the manifest still says `/en`, so without the `/en/*` exclusion plus `additionalPaths` the sitemap lists 404s and omits the real URLs.
+- **`alternateRefs.href` is treated as that language's root** and the path is appended again, turning `/about/` into `/about/about/`. `hrefIsAbsolute: true` on each ref stops it.
 - `/sitemap` renders all four as tables, reading the XML from `public/` at build time. That is why `yarn deploy` builds twice: the first build has no sitemaps to read.
 - Blog posts carry Giscus comments via the `GiscusComments` component.
 
@@ -277,12 +354,16 @@ Three things about it are worth knowing:
 - **Its copy lives in `contents/llms/index.json`** (site title, summary, the note about bilingual routes, and the page list with descriptions), registered in `studio.config.ts` as "AI Index (llms.txt)". Adding a page there without a matching body in `buildPageBodies` throws at generation time on purpose: announcing a `.md` that was never written promises a 404 to whoever followed the link.
 - **The output is git-ignored**, like the sitemaps. Everything under the `/public/*.md`, `/public/post/`, `/public/talk/`, `/public/project/` and `/public/rankings/` patterns is generated, plus `llms.txt`, `llms-full.txt` and the four `*.txt` lists. `public/images/press/README.md` is *not* generated, which is why the ignore rule is `/public/*.md` and not a recursive glob.
 
-Pages announce their mirror with `<link rel="alternate" type="text/markdown">`, built by `withMarkdown()` / `markdownUrl()` in `src/lib/markdown-alternate.ts`. Use `withMarkdown(canonical)` when `alternates` has no `types` of its own; when the page already declares one (the RSS feeds on `/blog`, `/talks`, `/projects`, `/timeline`), add `'text/markdown': markdownUrl(canonical)` *inside* that existing `types` object. Spreading `withMarkdown` next to a later `types` key silently loses the Markdown link, since the explicit key wins.
+Pages announce their mirror with `<link rel="alternate" type="text/markdown">`. Which helper depends on the group:
+
+- **`(legacy)` routes** use `withMarkdown()` / `markdownUrl()` from `src/lib/markdown-alternate.ts`. Use `withMarkdown(canonical)` when `alternates` has no `types` of its own; when the page already declares one (the RSS feeds on `/blog`, `/talks`, `/projects`, `/timeline`), add `'text/markdown': markdownUrl(canonical)` *inside* that existing `types` object. Spreading `withMarkdown` next to a later `types` key silently loses the Markdown link, since the explicit key wins.
+- **`(i18n)/[lang]` routes** use `markdownAlternate(path)` from `src/lib/i18n/seo.ts`, which always resolves to the English mirror regardless of the page's locale.
 
 Only the routes the generator actually writes carry the alternate: the pages in `contents/llms`, plus `/post/[slug]`, `/talk/[slug]`, their `/pt` variants and `/project/[type]/[slug]`. Routes without a mirror (`/tags`, `/skills/[slug]`, `/social/[network]`, `/blog/[page]`, `/app/[appId]`, `/timeline/[year]/[slug]`) must not get one.
 
 ## Important Notes
 
+- **`nextjs-studio` currently points at `portal:../Nextjs-Studio`.** The site does not build without it: the locale-on-JSON support exists only in the local clone. Before any push or deploy, publish that package and swap the `portal:` for a version range.
 - TypeScript errors are ignored during builds (`typescript.ignoreBuildErrors: true`). The build will not surface type errors, and `yarn lint` is broken (see above), so type safety has to be checked by reading types or running `tsc` manually.
 - Images are unoptimized (`images.unoptimized`) for static export compatibility; `next/image` gets no server-side optimization.
 - All data must be pre-generated before building (`yarn build` chains `yarn data` for RSS and the llms layer; GitHub/NPM data is committed under `contents/`).
