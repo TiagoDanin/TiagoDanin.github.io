@@ -164,7 +164,7 @@ export default function WebViewPage() {
               <Bug className="h-4 w-4 mr-2" />
               Bug Bounty POC Environment
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
               WebView Inspector
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">

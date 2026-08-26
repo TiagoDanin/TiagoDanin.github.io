@@ -120,16 +120,43 @@ export const NestedRouteActive: Story = {
 };
 
 /**
- * A Portuguese route resolves the same way, because `/talks/pt` starts with
- * `/talks`. The bilingual segments are child routes, not a separate menu.
+ * Portuguese routes live under a `/br` prefix, and the menu hrefs carry it too.
+ * Matching strips the locale from both sides, so a section is current in either
+ * language without the menu knowing which one it is in.
  */
 export const PortugueseRouteActive: Story = {
-  parameters: { nextjs: { navigation: { pathname: '/talks/pt' } } },
+  args: { locale: 'br' },
+  parameters: { nextjs: { navigation: { pathname: '/br/talks' } } },
   play: async ({ canvas }) => {
-    await expect(canvas.getByRole('link', { name: 'Talks' })).toHaveAttribute(
+    const talks = canvas.getByRole('link', { name: 'Talks' });
+    await expect(talks).toHaveAttribute('aria-current', 'page');
+    await expect(talks).toHaveAttribute('href', '/br/talks');
+  },
+};
+
+/**
+ * Regression: home must not be current on a Portuguese inner page.
+ *
+ * The home entry used to be special-cased with `href === "/"`, which stopped
+ * being true the moment the href gained a locale prefix. `/br` then fell
+ * through to the prefix branch and matched every page under `/br/`, so Home was
+ * underlined everywhere in Portuguese.
+ */
+export const LocalePrefixDoesNotMatchEverything: Story = {
+  args: { locale: 'br' },
+  parameters: { nextjs: { navigation: { pathname: '/br/projects' } } },
+  play: async ({ canvas }) => {
+    await expect(canvas.getByRole('link', { name: 'Projects' })).toHaveAttribute(
       'aria-current',
       'page'
     );
+    await expect(canvas.getByRole('link', { name: 'Home' })).not.toHaveAttribute('aria-current');
+
+    // Exactly one entry, not two.
+    const marked = canvas
+      .getAllByRole('link')
+      .filter((link) => link.getAttribute('aria-current') === 'page');
+    await expect(marked).toHaveLength(1);
   },
 };
 

@@ -30,6 +30,38 @@ msgstr "{title} (abre em uma nova aba)"
 msgid "{totalProjects} Projects"
 msgstr "{totalProjects} projetos"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "1:1 mentorship"
+msgstr "Mentoria 1:1"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "1:1 mentorship in game development, AI, and mobile development."
+msgstr "Mentoria 1:1 em game development, IA e desenvolvimento mobile."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "1:1 mentorship in game development, AI, and mobile development. Weekly video calls with personalized guidance."
+msgstr "Mentoria 1:1 em game development, IA e desenvolvimento mobile. Calls semanais em vídeo com orientação personalizada."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "12 weekly 1-hour video calls"
+msgstr "12 calls semanais de 1 hora"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "12 weeks"
+msgstr "12 semanas"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "2018 - Present"
+msgstr "2018 - Atual"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "2019 - 2022, 2025 - Present"
+msgstr "2019 - 2022, 2025 - Atual"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "2024 - Present"
+msgstr "2024 - Atual"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "250+ Open Source Projects - NPM Packages, Flutter Apps & Tools"
 msgstr "250+ projetos open source - pacotes npm, apps Flutter e ferramentas"
@@ -46,13 +78,45 @@ msgstr "250+ projetos entregues, 70+ pacotes open source publicados e vencedor d
 msgid "250+ projects, 70+ open source packages. Flutter, React Native, iOS & Android. Bug hunter on HackerOne."
 msgstr "250+ projetos, 70+ pacotes open source. Flutter, React Native, iOS e Android. Bug hunter no HackerOne."
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "4 weekly 1-hour video calls"
+msgstr "4 calls semanais de 1 hora"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "4 weeks"
+msgstr "4 semanas"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "70+ npm packages, Flutter apps, React Native projects, and developer tools. Browse the full portfolio."
 msgstr "70+ pacotes npm, apps Flutter, projetos React Native e ferramentas. Veja o portfólio completo."
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "8 weekly 1-hour video calls"
+msgstr "8 calls semanais de 1 hora"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "8 weeks"
+msgstr "8 semanas"
+
 #: src/components/sections/Projects.tsx
 msgid "A handful of projects across mobile, web, and games. The full archive lives below."
 msgstr "Alguns projetos em mobile, web e jogos. O arquivo completo fica logo abaixo."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "A playable prototype within weeks, proves the loop works before investing in art and content."
+msgstr "Um protótipo jogável em semanas, que prova que o loop funciona antes de investir em arte e conteúdo."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "A short, opinionated process focused on validating the loop early."
+msgstr "Um processo curto e direto, focado em validar o loop cedo."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "A working extension loaded unpacked within days. Validate the UX before polishing."
+msgstr "Uma extensão funcional carregada em modo unpacked em poucos dias. Valide a UX antes de refinar."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "A working prototype plus a small eval set, measure quality from day one, not after launch."
+msgstr "Um protótipo funcional e um conjunto pequeno de evals, para medir qualidade desde o primeiro dia, não depois do lançamento."
 
 #: src/app/(i18n)/[lang]/about/page.tsx
 msgid "About - Flutter, React Native & Bug Hunter"
@@ -62,17 +126,121 @@ msgstr "Sobre - Flutter, React Native e Bug Hunter"
 msgid "About Tiago Danin - Mobile Developer"
 msgstr "Sobre Tiago Danin - Desenvolvedor Mobile"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Accelerate your development journey with personalized 1:1 mentorship. Game development, AI integration, and mobile development with weekly calls."
+msgstr "Acelere sua evolução com mentoria 1:1 personalizada. Game development, integração de IA e desenvolvimento mobile, com calls semanais."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Achieved 4th place in Cybersecurity CTF at Hack In Cariri - XibéSec event"
+msgstr "4º lugar no CTF de cibersegurança do Hack In Cariri, evento XibéSec"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Active contributor to Node.js, ElectronJS, and organizer of Devs Norte community. Deep roots in the developer ecosystem."
 msgstr "Contribuidor ativo do Node.js e do ElectronJS, e organizador da comunidade Devs Norte. Raízes fundas no ecossistema."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Ads, in-app purchases, double-or-nothing rewards, and prestige economies tuned to the game."
+msgstr "Anúncios, compras no app, recompensas de dobrar ou perder e economias de prestígio ajustadas ao jogo."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Agent workflows, LLM integration, RAG, MCP servers, and AI-powered automation, built to ship."
+msgstr "Workflows de agentes, integração com LLM, RAG, servidores MCP e automação com IA, feitos para ir para produção."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Agent workflows, LLM integration, RAG, MCP servers, and AI-powered automation."
+msgstr "Workflows de agentes, integração com LLM, RAG, servidores MCP e automação com IA."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Agents, RAG, MCP servers, and AI-powered automation, built with evals, cost control, and production reliability from day one."
+msgstr "Agentes, RAG, servidores MCP e automação com IA, com evals, controle de custo e confiabilidade de produção desde o primeiro dia."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "AI Agents & Workflows"
+msgstr "Agentes de IA e workflows"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "AI Automation"
 msgstr "Automação com IA"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "AI Automation & Integration"
+msgstr "Automação e integração com IA"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "AI Automation & Integration | Tiago Danin"
+msgstr "Automação e integração com IA | Tiago Danin"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "AI Automation & Integration Services"
+msgstr "Serviços de automação e integração com IA"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "AI Development"
+msgstr "Desenvolvimento com IA"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "AI development & integration"
 msgstr "Desenvolvimento e integração de IA"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "AI development mentorship"
+msgstr "mentoria em desenvolvimento com IA"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "AI Integration"
+msgstr "Integração de IA"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "AI Strategy & Audit"
+msgstr "Estratégia e auditoria de IA"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "AI That Actually Ships."
+msgstr "IA que chega em produção."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "AI-Powered Apps"
+msgstr "Apps com IA"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "AI-Powered Automation"
+msgstr "Automação com IA"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "AI-powered features inside your existing product, chat, summarization, classification, generation."
+msgstr "Funcionalidades com IA dentro do seu produto atual: chat, resumo, classificação, geração."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "All 3 focus areas available"
+msgstr "As 3 áreas de foco disponíveis"
+
+#: src/app/(i18n)/[lang]/all-contacts/page.tsx
+msgid "All contact methods and social media profiles for Tiago Danin. Connect on GitHub, LinkedIn, Twitter, and more professional platforms."
+msgstr "Todos os contatos e perfis em redes sociais do Tiago Danin. Fale comigo no GitHub, LinkedIn, Twitter e em outras plataformas profissionais."
+
+#: src/app/(i18n)/[lang]/all-contacts/page.tsx
+msgid "All contact methods and social media profiles."
+msgstr "Todos os contatos e perfis em redes sociais."
+
+#: src/app/(i18n)/[lang]/all-contacts/page.tsx
+msgid "All contact methods and social media profiles. Connect on GitHub, LinkedIn, Twitter, and more."
+msgstr "Todos os contatos e perfis em redes sociais. Fale comigo no GitHub, LinkedIn, Twitter e em outros canais."
+
+#: src/app/(i18n)/[lang]/all-contacts/page.tsx
+msgid "All Contacts"
+msgstr "Todos os contatos"
+
+#: src/app/(i18n)/[lang]/all-contacts/page.tsx
+msgid "All Contacts - GitHub, NPM, LinkedIn & More"
+msgstr "Todos os contatos: GitHub, NPM, LinkedIn e mais"
+
+#: src/app/(i18n)/[lang]/all-contacts/page.tsx
+msgid "All Contacts - Tiago Danin"
+msgstr "Todos os contatos, Tiago Danin"
+
+#: src/app/(i18n)/[lang]/all-contacts/page.tsx
+msgid "All Contacts, Tiago Danin"
+msgstr "Todos os contatos, Tiago Danin"
 
 #: src/components/sections/PressMentions.tsx
 msgid "All press mentions"
@@ -82,17 +250,74 @@ msgstr "Todas as menções na imprensa"
 msgid "All Projects"
 msgstr "Todos os projetos"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Already have AI in production? I review prompts, costs, evals, and architecture, and tell you what to fix."
+msgstr "Já tem IA em produção? Reviso prompts, custos, evals e arquitetura, e digo o que precisa ser corrigido."
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Also available:"
 msgstr "Também disponível:"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "An opinionated process built around evals, because AI without measurement is theatre."
+msgstr "Um processo com opinião, construído em torno de evals, porque IA sem medição é teatro."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "An opinionated process focused on getting through review the first time."
+msgstr "Um processo com opinião, pensado para passar na revisão de primeira."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Android App Analysis"
+msgstr "Análise de apps Android"
 
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Android Apps"
 msgstr "Apps Android"
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Android Development"
+msgstr "Desenvolvimento Android"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Android Native Modules"
+msgstr "Módulos nativos Android"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Anthropic & OpenAI SDKs"
+msgstr "SDKs da Anthropic e da OpenAI"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "API & SaaS Integrations"
+msgstr "Integrações com APIs e SaaS"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "API Security Analysis"
+msgstr "Análise de segurança de APIs"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "App Store & Google Play publishing"
 msgstr "Publicação na App Store e na Google Play"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "App Store Optimization"
+msgstr "App Store Optimization"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "App Store Optimization strategies to improve visibility and downloads on Google Play and App Store."
+msgstr "Estratégias de App Store Optimization para aumentar visibilidade e downloads na Google Play e na App Store."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "App Store Success"
+msgstr "Publicação na App Store"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Approval workflows"
+msgstr "Fluxos de aprovação"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Arcade & Survival"
+msgstr "Arcade e Survival"
 
 #: src/components/ui/ProjectCard.tsx
 msgid "Archived"
@@ -106,6 +331,30 @@ msgstr "Áreas em que trabalho e onde posso ajudar a tirar sua ideia do papel."
 msgid "As a HackerOne security researcher since 2018, I build apps with security baked in from day one, not bolted on after."
 msgstr "Pesquisador de segurança no HackerOne desde 2018, construo apps com segurança desde o primeiro dia, não remendada depois."
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "ASO & App Marketing"
+msgstr "ASO e marketing de app"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Auth & access control"
+msgstr "Auth e controle de acesso"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Authentication Systems"
+msgstr "Sistemas de autenticação"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Authentication Testing"
+msgstr "Testes de autenticação"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Automated CI/CD"
+msgstr "CI/CD automatizado"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Automation Tools"
+msgstr "Ferramentas de automação"
+
 #: src/app/(i18n)/[lang]/post/[slug]/page.tsx
 msgid "Back to Blog"
 msgstr "Voltar para o blog"
@@ -113,6 +362,18 @@ msgstr "Voltar para o blog"
 #: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
 msgid "Back to Talks"
 msgstr "Voltar para as palestras"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Background sync"
+msgstr "Sincronização em background"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Banking Security Product Development"
+msgstr "Desenvolvimento de produtos de segurança bancária"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Binary Analysis"
+msgstr "Análise de binários"
 
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Blog - Flutter, AI & Cybersecurity"
@@ -130,6 +391,26 @@ msgstr "Blog sobre desenvolvimento de software, mobile, IA e segurança"
 msgid "Blog: Articles on Development & AI"
 msgstr "Blog: artigos sobre desenvolvimento e IA"
 
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Bonfire Engine"
+msgstr "Bonfire Engine"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Bonfire Engine Mastery"
+msgstr "Domínio da Bonfire Engine"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Bonfire game engine"
+msgstr "Bonfire game engine"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Bridge browser sessions with external APIs, dashboards, and internal tools, securely and at scale."
+msgstr "Conecte a sessão do navegador a APIs externas, dashboards e ferramentas internas, com segurança e escala."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Bring legacy MV2 extensions into compliance before Chrome removes them entirely."
+msgstr "Adeque extensões MV2 legadas antes que o Chrome as remova de vez."
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Browse 250+ projects including 70+ npm packages, Flutter apps, React Native projects, and developer tools. Open source libraries used worldwide."
 msgstr "Navegue por 250+ projetos, entre eles 70+ pacotes npm, apps Flutter, projetos React Native e ferramentas. Bibliotecas open source usadas no mundo todo."
@@ -138,66 +419,430 @@ msgstr "Navegue por 250+ projetos, entre eles 70+ pacotes npm, apps Flutter, pro
 msgid "Browse 250+ projects: 70+ npm packages, Flutter & React Native apps, GitHub tools, and mobile games. Open source libraries used by thousands of developers worldwide."
 msgstr "Navegue por 250+ projetos: 70+ pacotes npm, apps em Flutter e React Native, ferramentas no GitHub e jogos mobile. Bibliotecas open source usadas por milhares de pessoas."
 
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Browser Extension Development"
+msgstr "Desenvolvimento de extensões de navegador"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Browser Extensions, Done Right."
+msgstr "Extensões de navegador, bem feitas."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Bug Bounty Consultation"
+msgstr "Consultoria em bug bounty"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Build real projects that you can showcase in your portfolio, from games to mobile apps"
+msgstr "Construa projetos reais para o seu portfólio, de games a apps mobile"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Build real projects that you can showcase in your portfolio, from games to mobile apps."
+msgstr "Construa projetos reais para o seu portfólio, de games a apps mobile."
+
 #: src/components/layout/Footer.tsx
 msgid "Built with <0>Next.js</0> and <1>Tailwind</1>, hosted on <2>GitHub Pages</2>."
 msgstr "Feito com <0>Next.js</0> e <1>Tailwind</1>, hospedado no <2>GitHub Pages</2>."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Business Logic Review"
+msgstr "Revisão de lógica de negócio"
 
 #: src/components/layout/Footer.tsx
 msgid "by"
 msgstr "por"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Career advice and industry insights"
+msgstr "Conselhos de carreira e leitura do mercado"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Casual Mobile Games"
+msgstr "Jogos casuais para mobile"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Choose 1 focus area (Game Dev, AI, or Mobile)"
+msgstr "Escolha 1 área de foco (Game Dev, IA ou Mobile)"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Choose the service that fits your needs, or let's discuss a custom solution."
 msgstr "Escolha o serviço que se encaixa no que você precisa, ou vamos conversar sobre algo sob medida."
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Choose your focus area or combine multiple disciplines for comprehensive learning"
+msgstr "Escolha sua área de foco ou combine mais de uma disciplina"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Chrome Extensions"
 msgstr "Extensões para Chrome"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Chrome Extensions Developer"
+msgstr "Desenvolvedor de extensões Chrome"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Chrome Extensions Developer | Tiago Danin"
+msgstr "Desenvolvedor de extensões Chrome | Tiago Danin"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Chrome Extensions Development"
+msgstr "Desenvolvimento de extensões Chrome"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Chrome Web Store"
+msgstr "Chrome Web Store"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Chrome Web Store submission, listing optimization, and updates based on real install feedback."
+msgstr "Submissão na Chrome Web Store, otimização da listagem e atualizações a partir do feedback real de quem instala."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Citation & grounding"
+msgstr "Citação e grounding"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Classification & extraction"
+msgstr "Classificação e extração"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Claude (Anthropic)"
+msgstr "Claude (Anthropic)"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Claude Agent SDK"
+msgstr "Claude Agent SDK"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Claude Code & MCP"
+msgstr "Claude Code e MCP"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Combo & boost mechanics"
+msgstr "Mecânicas de combo e boost"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Common Use Cases"
+msgstr "Casos de uso comuns"
 
 #: src/components/ui/experience-item.tsx
 msgid "Company"
 msgstr "Empresa"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Complete project portfolio"
+msgstr "Portfólio de projetos completo"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Compliance Standards"
+msgstr "Normas de compliance"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Comprehensive cybersecurity solutions tailored to protect your applications and data"
+msgstr "Segurança sob medida para proteger suas aplicações e seus dados"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Comprehensive mobile solutions from development to deployment and optimization"
+msgstr "Trabalho mobile de ponta a ponta: desenvolvimento, publicação e otimização"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Comprehensive portfolio of open source projects and applications"
 msgstr "Portfólio completo de projetos open source e aplicações"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Comprehensive security analysis to identify potential vulnerabilities in your web applications, APIs, and mobile apps."
+msgstr "Análise de segurança completa para encontrar vulnerabilidades em aplicações web, APIs e apps mobile."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Comprehensive testing strategies including unit tests, integration tests, and automated testing pipelines."
+msgstr "Estratégias de teste completas: testes unitários, testes de integração e pipelines automatizados."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Concept & Loop Design"
+msgstr "Conceito e design do loop"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Conference Talks"
 msgstr "Palestras"
 
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Configuration Review"
+msgstr "Revisão de configuração"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 #: src/components/sections/CallToAction.tsx
 msgid "Connect on LinkedIn"
 msgstr "Conectar no LinkedIn"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Contact for Mentorship"
+msgstr "Falar sobre mentoria"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Contact for Pricing"
+msgstr "Consultar valores"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Contact on LinkedIn"
+msgstr "Falar comigo no LinkedIn"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Content blockers, header rewriting, and security-focused extensions built with least-privilege permissions."
+msgstr "Content blockers, reescrita de headers e extensões focadas em segurança, com permissões mínimas."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Cost optimization, prompt caching, fallbacks, observability, and guardrails for the real world."
+msgstr "Otimização de custo, prompt caching, fallbacks, observabilidade e guardrails para o mundo real."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Cross-Browser"
+msgstr "Multi-navegador"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Cross-device support"
+msgstr "Suporte a vários dispositivos"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Cross-origin requests"
+msgstr "Requisições cross-origin"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Cross-platform Development"
+msgstr "Desenvolvimento cross-platform"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Cross-Platform Efficiency"
+msgstr "Eficiência cross-platform"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Cross-platform mobile apps with native performance. Expertise in both Flutter and React Native for efficient development."
+msgstr "Apps cross-platform com performance nativa. Experiência em Flutter e React Native."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "CSRF Analysis"
+msgstr "Análise de CSRF"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "CTF Competition - 4th Place"
+msgstr "Competição de CTF: 4º lugar"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Custom AI solutions: agent workflows, LLM integration, RAG, MCP servers, and prompt engineering for products and internal automation."
+msgstr "Soluções de IA sob medida: workflows de agentes, integração com LLM, RAG, servidores MCP e prompt engineering para produtos e automação interna."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Custom Animations"
+msgstr "Animações sob medida"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Custom browser extensions for Chrome, Edge and Firefox using Manifest V3, TypeScript, and modern web frameworks."
+msgstr "Extensões de navegador sob medida para Chrome, Edge e Firefox com Manifest V3, TypeScript e frameworks web modernos."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Custom Chrome extensions built with Manifest V3, TypeScript, and a clean permission story, from productivity tools to enterprise integrations."
+msgstr "Extensões Chrome sob medida com Manifest V3, TypeScript e um conjunto de permissões enxuto, de ferramentas de produtividade a integrações corporativas."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Custom Chrome extensions built with Manifest V3, TypeScript, and modern web tech. From productivity tools to enterprise integrations, published on the Chrome Web Store."
+msgstr "Extensões Chrome sob medida com Manifest V3, TypeScript e tecnologia web moderna. De ferramentas de produtividade a integrações corporativas, publicadas na Chrome Web Store."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Custom Chrome extensions with Manifest V3, TypeScript, and Chrome Web Store publishing."
+msgstr "Extensões Chrome sob medida com Manifest V3, TypeScript e publicação na Chrome Web Store."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Custom Claude Code workflows, MCP servers, and agent setups that make your engineering team faster."
+msgstr "Workflows de Claude Code sob medida, servidores MCP e setups de agentes que deixam seu time de engenharia mais rápido."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Custom curriculum designed specifically for your goals, whether it's game dev, AI, or mobile development"
+msgstr "Plano de estudo montado para os seus objetivos, seja game dev, IA ou desenvolvimento mobile"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Custom curriculum designed specifically for your goals, whether it's game dev, AI, or mobile development."
+msgstr "Plano de estudo montado para os seus objetivos, seja game dev, IA ou desenvolvimento mobile."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Custom Model Context Protocol servers that expose your tools and data to Claude and other MCP-compatible clients."
+msgstr "Servidores Model Context Protocol sob medida, expondo suas ferramentas e seus dados ao Claude e a outros clientes compatíveis com MCP."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Custom native modules and integrations for Android (Java/Kotlin) and iOS (Swift/Obj-C) to extend app capabilities."
+msgstr "Módulos nativos e integrações sob medida para Android (Java/Kotlin) e iOS (Swift/Obj-C), para ampliar o que o app consegue fazer."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Custom UI Components"
+msgstr "Componentes de UI sob medida"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Custom UI overlays"
+msgstr "Overlays de UI sob medida"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Cybersecurity & Penetration Testing"
+msgstr "Cibersegurança e pentest"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Cybersecurity Consulting"
 msgstr "Consultoria em segurança"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Cybersecurity Services"
+msgstr "Serviços de cibersegurança"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Cybersecurity Services | Tiago Danin"
+msgstr "Serviços de cibersegurança | Tiago Danin"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Cybersecurity Services | Tiago Danin - Security Researcher"
+msgstr "Serviços de cibersegurança | Tiago Danin, security researcher"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Data Protection"
+msgstr "Proteção de dados"
 
 #: src/components/ui/experience-item.tsx
 msgid "Date"
 msgstr "Período"
 
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Decide what the extension actually needs, minimal permissions reduce review friction and earn user trust."
+msgstr "Definir o que a extensão realmente precisa. Permissões mínimas reduzem atrito na revisão e ganham a confiança do usuário."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "DeclarativeNetRequest"
+msgstr "DeclarativeNetRequest"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Define the core gameplay loop, target session length, and what keeps players coming back."
+msgstr "Definir o loop principal de gameplay, a duração ideal da sessão e o que faz o jogador voltar."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Deploy with monitoring, then iterate based on real usage, not synthetic test cases."
+msgstr "Deploy com monitoramento e iteração baseada no uso real, não em casos de teste sintéticos."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Detailed Reporting"
+msgstr "Relatórios detalhados"
+
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Dev Blog - Flutter, AI & Security | Tiago Danin"
 msgstr "Blog dev - Flutter, IA e Segurança | Tiago Danin"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Develop once, deploy everywhere. Flutter and React Native allow cost-effective development for both iOS and Android."
+msgstr "Escreve uma vez, publica nas duas lojas. Flutter e React Native reduzem o custo de manter iOS e Android."
 
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Developer Portfolio - 300+ Projects"
 msgstr "Portfólio de desenvolvimento - 300+ projetos"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Developer Tooling"
+msgstr "Ferramentas para devs"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Development Mentorship"
+msgstr "Mentoria em desenvolvimento"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Development Services"
 msgstr "Serviços de desenvolvimento"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Direct interaction for better understanding and immediate feedback on your progress."
+msgstr "Conversa direta, com feedback imediato sobre o seu progresso."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Direct messaging support"
+msgstr "Suporte por mensagem direta"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Discovery"
+msgstr "Discovery"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Document & email processing"
+msgstr "Processamento de documentos e e-mails"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Document ingestion pipelines"
+msgstr "Pipelines de ingestão de documentos"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Each session focuses on specific objectives to maximize your learning progress."
+msgstr "Cada sessão tem objetivos definidos para você avançar mais rápido."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "End-to-end AI services: agent workflows, LLM integration, RAG systems, MCP servers, prompt engineering, and AI-powered automation for products and internal tools."
+msgstr "Serviços de IA de ponta a ponta: workflows de agentes, integração com LLM, sistemas RAG, servidores MCP, prompt engineering e automação com IA para produtos e ferramentas internas."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Experience & Achievements"
+msgstr "Experiência e resultados"
 
 #: src/components/sections/Work.tsx
 msgid "Experience and skills"
 msgstr "Experiência e habilidades"
 
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Expert guidance for organizations looking to implement or improve their bug bounty programs."
+msgstr "Orientação para empresas que querem criar ou melhorar seu programa de bug bounty."
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Explore"
 msgstr "Explorar"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Explore AI integration in applications, automation tools, and intelligent systems development."
+msgstr "Explore integração de IA em aplicações, ferramentas de automação e sistemas inteligentes."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Explore Areas"
+msgstr "Ver as áreas"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Explore Expertise"
+msgstr "Ver especialidades"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Extended Mentorship"
+msgstr "Mentoria estendida"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Extensions distributed via enterprise policy or private listing, no Web Store dance required."
+msgstr "Extensões distribuídas por política corporativa ou listagem privada, sem passar pela burocracia da Web Store."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Extensions that automate repetitive workflows, augment existing web apps, and save hours per week."
+msgstr "Extensões que automatizam fluxos repetitivos, ampliam web apps existentes e economizam horas por semana."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Extensions that solve real workflow problems, not just toy demos."
+msgstr "Extensões que resolvem problemas reais de fluxo de trabalho, não demos de brinquedo."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Face-to-Face Learning"
+msgstr "Aprendizado ao vivo"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Fast, replayable sessions with tight controls and progressive difficulty curves."
+msgstr "Sessões rápidas e rejogáveis, com controles precisos e curvas de dificuldade progressivas."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Few-shot & CoT patterns"
+msgstr "Padrões few-shot e CoT"
 
 #: src/components/layout/Footer.tsx
 msgid "Find me on"
@@ -207,13 +852,42 @@ msgstr "Me encontre em"
 msgid "Firebase, CI/CD & automated testing"
 msgstr "Firebase, CI/CD e testes automatizados"
 
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "First-minute UX"
+msgstr "UX do primeiro minuto"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Flexible Scheduling"
+msgstr "Horários flexíveis"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Flutter"
+msgstr "Flutter"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Flutter & React Native"
 msgstr "Flutter e React Native"
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Flutter & React Native Development"
+msgstr "Desenvolvimento em Flutter e React Native"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Flutter Development"
+msgstr "Desenvolvimento Flutter"
+
 #: src/app/(i18n)/[lang]/about/page.tsx
 msgid "Flutter expert, React Native developer, security researcher & bug hunter. Open source advocate."
 msgstr "Especialista em Flutter, desenvolvedor React Native, pesquisador de segurança e bug hunter. Defensor do open source."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Flutter Game Development"
+msgstr "Game development com Flutter"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Flutter mentor"
+msgstr "mentor Flutter"
 
 #: src/app/(i18n)/[lang]/page.tsx
 msgid "Flutter, React Native, iOS & Android developer. 250+ projects delivered, bug hunter on HackerOne, and open source contributor."
@@ -223,21 +897,75 @@ msgstr "Desenvolvedor Flutter, React Native, iOS e Android. 250+ projetos entreg
 msgid "Footer"
 msgstr "Rodapé"
 
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Free or paid extensions published on the Chrome Web Store, with onboarding and analytics built in."
+msgstr "Extensões gratuitas ou pagas publicadas na Chrome Web Store, com onboarding e analytics desde o início."
+
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Free technical articles on mobile development, AI agents, and cybersecurity. Tutorials and in-depth guides."
 msgstr "Artigos técnicos gratuitos sobre desenvolvimento mobile, agentes de IA e segurança. Tutoriais e guias aprofundados."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "From a one-off automation to a full agent system, let's talk about the right approach for your use case."
+msgstr "De uma automação pontual a um sistema completo de agentes, vamos conversar sobre a abordagem certa para o seu caso."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "From a one-off internal tool to a public Chrome Web Store launch, let's talk about how to ship it."
+msgstr "De uma ferramenta interna pontual a um lançamento público na Chrome Web Store, vamos conversar sobre como colocar no ar."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "From development to ASO optimization, I help your app succeed in competitive app stores."
+msgstr "Do desenvolvimento ao ASO, ajudo seu app a se destacar em lojas competitivas."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "From Idea to Google Play"
+msgstr "Da ideia ao Google Play"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "From Idea to Web Store"
+msgstr "Da ideia à Web Store"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "From idle clickers to arcade survival, I design and ship casual games for mobile and web, with the loops, monetization, and polish that make players stay."
+msgstr "De idle clickers a arcade survival, eu desenho e publico jogos casuais para mobile e web, com os loops, a monetização e o polimento que seguram o jogador."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "From Prompt to Production"
+msgstr "Do prompt à produção"
 
 #: src/components/sections/Milestones.tsx
 msgid "Full timeline"
 msgstr "Linha do tempo completa"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Game Design Principles"
+msgstr "Princípios de game design"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Game dev with Flutter & Unity"
 msgstr "Jogos com Flutter e Unity"
 
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Game Development"
 msgstr "Desenvolvimento de jogos"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "game development mentorship"
+msgstr "mentoria em game development"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Game Development Services"
+msgstr "Serviços de desenvolvimento de jogos"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Game Development Services | Tiago Danin"
+msgstr "Serviços de desenvolvimento de jogos | Tiago Danin"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Genres where small teams can ship something polished, fast."
+msgstr "Gêneros em que times pequenos conseguem entregar algo polido, rápido."
 
 #: src/components/sections/Hero.tsx
 msgid "Get in touch"
@@ -247,9 +975,53 @@ msgstr "Fale comigo"
 msgid "Get in Touch"
 msgstr "Falar comigo"
 
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Get Security Assessment"
+msgstr "Solicitar uma avaliação de segurança"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "GitHub Rankings"
 msgstr "Rankings do GitHub"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Goal-Oriented Sessions"
+msgstr "Sessões com objetivo claro"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Google Play release, analytics setup, and iteration based on player behavior."
+msgstr "Lançamento no Google Play, configuração de analytics e iteração com base no comportamento do jogador."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Google Play submission, store listing optimization, and post-launch updates."
+msgstr "Envio para o Google Play, otimização da página na loja e atualizações pós-lançamento."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "HackerOne Security Researcher"
+msgstr "Security researcher na HackerOne"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Harden"
+msgstr "Endurecer"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Hardening"
+msgstr "Hardening"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Hardware Integration"
+msgstr "Integração com hardware"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Have a Game Idea?"
+msgstr "Tem uma ideia de jogo?"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Have an AI Project?"
+msgstr "Tem um projeto de IA?"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Have an Extension Idea?"
+msgstr "Tem uma ideia de extensão?"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "High-performance cross-platform and native apps for iOS and Android. From concept to App Store launch, including UI/UX, testing, and ASO."
@@ -259,37 +1031,261 @@ msgstr "Apps nativos e multiplataforma de alta performance para iOS e Android. D
 msgid "Hire me, or just say hi"
 msgstr "Bora construir algo, ou só dar um oi"
 
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Hit detection & tuning"
+msgstr "Detecção de acerto e ajuste fino"
+
+#: src/app/(i18n)/[lang]/all-contacts/page.tsx
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Home"
+msgstr "Início"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "How I Can Help"
 msgstr "Como eu posso ajudar"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "How Mentorship Works"
+msgstr "Como funciona a mentoria"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Hybrid search"
+msgstr "Busca híbrida"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "I help startups and companies launch high-performance mobile apps, secure their applications, and grow their teams through mentorship."
 msgstr "Ajudo startups e empresas a lançar apps mobile de alta performance, proteger suas aplicações e desenvolver seus times por mentoria."
 
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Idle & Clicker Games"
+msgstr "Jogos idle e clicker"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Idle clicker with prestige and offline earnings"
+msgstr "Idle clicker com prestígio e ganhos offline"
+
 #: src/components/sections/PressMentions.tsx
 msgid "In the press"
 msgstr "Na imprensa"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "In-depth security evaluation of web applications focusing on OWASP Top 10 and beyond."
+msgstr "Avaliação profunda de aplicações web, com foco no OWASP Top 10 e no que vai além dele."
 
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "In-depth tutorials and articles on mobile development, AI agents, cybersecurity, and open source. Free guides for developers."
 msgstr "Tutoriais e artigos aprofundados sobre desenvolvimento mobile, agentes de IA, segurança e open source. Guias gratuitos para quem programa."
 
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Independent Security Researcher"
+msgstr "Security researcher independente"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Independent security researcher with proven track record of finding and reporting vulnerabilities"
+msgstr "Security researcher independente, com histórico de vulnerabilidades encontradas e reportadas"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Indie and casual game development for mobile and web with Flutter, Bonfire engine, monetization and live ops."
+msgstr "Desenvolvimento de jogos indie e casuais para mobile e web com Flutter, Bonfire engine, monetização e live ops."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Indie and casual game development for mobile and web. Flutter + Bonfire engine, idle and arcade mechanics, monetization, and Google Play publishing."
+msgstr "Desenvolvimento de jogos indie e casuais para mobile e web. Flutter + Bonfire engine, mecânicas idle e arcade, monetização e publicação no Google Play."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Indie and casual games for mobile and web. From prototype to Google Play, with idle, arcade, and survival mechanics."
+msgstr "Jogos indie e casuais para mobile e web. Do protótipo ao Google Play, com mecânicas idle, arcade e survival."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Indie and casual games for mobile and web. From prototype to Google Play."
+msgstr "Jogos indie e casuais para mobile e web. Do protótipo ao Google Play."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Indie Games, Shipped."
+msgstr "Jogos indie, publicados."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Initial Assessment"
+msgstr "Diagnóstico inicial"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Integration Testing"
+msgstr "Testes de integração"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Intensive Mentorship"
+msgstr "Mentoria intensiva"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Internal Automation"
+msgstr "Automação interna"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Internal Tools"
+msgstr "Ferramentas internas"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "iOS Development"
+msgstr "Desenvolvimento iOS"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "iOS Human Interface"
+msgstr "iOS Human Interface"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "iOS Native Libraries"
+msgstr "Bibliotecas nativas iOS"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "iOS Security Review"
+msgstr "Revisão de segurança iOS"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Job preparation and interview guidance"
+msgstr "Preparação para vagas e entrevistas"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Join personalized mentorship program and accelerate your development skills. Let's discuss your goals and create a custom learning path together."
+msgstr "Entre na mentoria personalizada e acelere sua evolução técnica. Vamos conversar sobre seus objetivos e montar um plano de estudo junto."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Keyboard shortcuts"
+msgstr "Atalhos de teclado"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Keyword Optimization"
+msgstr "Otimização de palavras-chave"
+
 #: src/components/ui/LanguageSelect.tsx
 msgid "Language"
 msgstr "Idioma"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Launch & Live Ops"
+msgstr "Lançamento e live ops"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Learn game development with Flutter and Bonfire engine, from concept to publishing your first game."
+msgstr "Aprenda game development com Flutter e Bonfire, do conceito à publicação do seu primeiro jogo."
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Learn More"
 msgstr "Saiba mais"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Learning resources and roadmap"
+msgstr "Materiais de estudo e roadmap"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Let's Build Something Amazing"
 msgstr "Vamos construir algo juntos"
 
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Let's discuss how I can help identify and fix security vulnerabilities in your applications. Professional, thorough, and actionable security assessments."
+msgstr "Vamos conversar sobre como encontrar e corrigir vulnerabilidades nas suas aplicações. Avaliações minuciosas, com recomendações que dá para aplicar."
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Let's discuss your idea and find the best approach. No commitment required."
 msgstr "Vamos conversar sobre sua ideia e achar o melhor caminho. Sem compromisso."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Let's discuss your mobile app idea and how I can help bring it to life. From financial apps to government solutions, I have the expertise you need."
+msgstr "Me conta a ideia do seu app e como posso ajudar a tirar do papel. Já entreguei de apps financeiros a soluções para o setor público."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Listing, screenshots, review prep, and post-launch updates, including handling Google review pushback."
+msgstr "Listagem, screenshots, preparação para a revisão e atualizações pós-lançamento, incluindo lidar com recusas da revisão do Google."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "LLM Integration"
+msgstr "Integração com LLM"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Local & remote deployment"
+msgstr "Deploy local e remoto"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Long-running workflows"
+msgstr "Workflows de longa duração"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Long-session games built around prestige loops, offline progression, and addictive upgrade trees."
+msgstr "Jogos de sessão longa construídos em torno de loops de prestígio, progressão offline e árvores de upgrade viciantes."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Manifest V3"
+msgstr "Manifest V3"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Manifest V3 best practices"
+msgstr "Boas práticas de Manifest V3"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Manifest V3 compliance, CSP, sandboxed iframes, and a clean permission story for review."
+msgstr "Conformidade com Manifest V3, CSP, iframes em sandbox e permissões enxutas para a revisão."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Map the actual problem. Most 'AI projects' are really data, workflow, or UX problems wearing an AI hat."
+msgstr "Mapear o problema real. A maioria dos 'projetos de IA' é, na verdade, problema de dado, de workflow ou de UX com roupa de IA."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Marketing Strategy"
+msgstr "Estratégia de marketing"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Master Flutter and React Native development, from basics to advanced native integrations."
+msgstr "Domine Flutter e React Native, do básico às integrações nativas avançadas."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Material Design"
+msgstr "Material Design"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "MCP & Agent SDK"
+msgstr "MCP e Agent SDK"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "MCP server design"
+msgstr "Design de servidor MCP"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "MCP Servers"
+msgstr "Servidores MCP"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Memory game with Jetpack Compose, open source"
+msgstr "Jogo da memória com Jetpack Compose, open source"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Mentees have built AI-powered automation tools and intelligent applications"
+msgstr "Mentorados construíram ferramentas de automação e aplicações com IA"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "mentorship"
+msgstr "mentoria"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Mentorship Areas"
+msgstr "Áreas de mentoria"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Mentorship Services"
+msgstr "Serviços de mentoria"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Mentorship Services | Tiago Danin"
+msgstr "Serviços de mentoria | Tiago Danin"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Mentorship Services | Tiago Danin - Game Dev, AI & Mobile"
+msgstr "Serviços de mentoria | Tiago Danin - Game Dev, IA e Mobile"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Migration to Manifest V3"
+msgstr "Migração para Manifest V3"
 
 #: src/components/sections/Milestones.tsx
 msgid "Milestones"
@@ -299,6 +1295,7 @@ msgstr "Marcos"
 msgid "Mobile & web application security"
 msgstr "Segurança de aplicações mobile e web"
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Mobile App Development"
 msgstr "Desenvolvimento de apps mobile"
@@ -306,6 +1303,14 @@ msgstr "Desenvolvimento de apps mobile"
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Mobile app development, cybersecurity consulting, and technical mentorship"
 msgstr "Desenvolvimento de apps mobile, consultoria em segurança e mentoria técnica"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Mobile Application Development"
+msgstr "Desenvolvimento de aplicativos mobile"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Mobile apps are essential for modern businesses. I help you succeed in the mobile-first world with comprehensive solutions."
+msgstr "Hoje o app é o principal canal de muitos negócios. Cuido do ciclo inteiro, do código à loja."
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Mobile dev with Flutter & React Native"
@@ -327,6 +1332,26 @@ msgstr "Desenvolvedor mobile com 250+ projetos. Especialista em Flutter, React N
 msgid "Mobile developer with 8+ years of experience in Flutter, React Native & native iOS/Android. Bug hunter on HackerOne, 70+ npm packages, 18+ conference talks. Based in Brazil."
 msgstr "Desenvolvedor mobile com 8+ anos de experiência em Flutter, React Native e iOS/Android nativo. Bug hunter no HackerOne, 70+ pacotes npm, 18+ palestras. Baseado no Brasil."
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Mobile Development"
+msgstr "Desenvolvimento mobile"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Mobile Development Expert"
+msgstr "Especialista em desenvolvimento mobile"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "mobile development mentorship"
+msgstr "mentoria em desenvolvimento mobile"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Mobile Development Services"
+msgstr "Serviços de desenvolvimento mobile"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Mobile Development Services | Tiago Danin"
+msgstr "Serviços de desenvolvimento mobile | Tiago Danin"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Mobile development, cybersecurity, and mentorship services. 250+ projects delivered with Flutter, React Native, iOS & Android."
 msgstr "Desenvolvimento mobile, segurança e mentoria. 250+ projetos entregues com Flutter, React Native, iOS e Android."
@@ -334,6 +1359,43 @@ msgstr "Desenvolvimento mobile, segurança e mentoria. 250+ projetos entregues c
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Mobile development, cybersecurity, and mentorship services. 250+ projects delivered."
 msgstr "Desenvolvimento mobile, segurança e mentoria. 250+ projetos entregues."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Mobile Security"
+msgstr "Segurança mobile"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Mobile Security Consulting"
+msgstr "Consultoria em segurança mobile"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Mobile Security Testing"
+msgstr "Testes de segurança mobile"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Model Context Protocol servers and Claude Agent SDK for production-grade autonomous systems."
+msgstr "Servidores Model Context Protocol e Claude Agent SDK para sistemas autônomos em nível de produção."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Modern AI tooling, picked based on the problem, not the hype cycle."
+msgstr "Ferramentas modernas de IA, escolhidas pelo problema, não pelo ciclo de hype."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Modern mobile development stack with focus on performance and user experience"
+msgstr "Stack mobile moderna, com foco em performance e experiência de uso"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Modern, intuitive mobile interfaces with focus on user experience and platform-specific design guidelines."
+msgstr "Interfaces mobile modernas e intuitivas, seguindo as diretrizes de design de cada plataforma."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Modern, maintainable, and aligned with Google's direction."
+msgstr "Moderno, fácil de manter e alinhado com a direção do Google."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Monetization"
+msgstr "Monetização"
 
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Most downloaded packages"
@@ -343,17 +1405,58 @@ msgstr "Pacotes mais baixados"
 msgid "Most Popular"
 msgstr "Mais procurado"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Multi-agent orchestration"
+msgstr "Orquestração multi-agente"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Multi-step agents that act on real systems, Claude Code, custom SDK agents, and autonomous workflows tuned for reliability."
+msgstr "Agentes de múltiplos passos que agem em sistemas reais: Claude Code, agentes sob medida com SDK e workflows autônomos ajustados para confiabilidade."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Multiple project development"
+msgstr "Desenvolvimento de vários projetos"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Multiple students landed mobile developer positions after completing mentorship"
+msgstr "Vários mentorados conseguiram vaga de mobile developer depois da mentoria"
+
 #: src/components/sections/Services.tsx
 msgid "My Expertise"
 msgstr "Minhas especialidades"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Native Android Development"
+msgstr "Desenvolvimento Android nativo"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Native Integrations"
+msgstr "Integrações nativas"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Native iOS (Swift) & Android (Kotlin)"
 msgstr "iOS nativo (Swift) e Android nativo (Kotlin)"
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Native iOS Development"
+msgstr "Desenvolvimento iOS nativo"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Native Modules"
+msgstr "Módulos nativos"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Native Performance"
+msgstr "Performance nativa"
+
 #: src/components/layout/Navbar.tsx
 msgid "Navigation"
 msgstr "Navegação"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Network introduction opportunities"
+msgstr "Apresentações na minha rede de contatos"
 
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Next"
@@ -387,9 +1490,25 @@ msgstr "downloads no npm"
 msgid "NPM Rankings"
 msgstr "Rankings do npm"
 
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Number tuning, game feel, animations, and onboarding. The difference between shipped and abandoned."
+msgstr "Ajuste de números, game feel, animações e onboarding. A diferença entre publicar e abandonar."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "OAuth & API auth"
+msgstr "OAuth e autenticação de API"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Offline earnings"
+msgstr "Ganhos offline"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Offline/Old Websites"
 msgstr "Sites antigos e fora do ar"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Ongoing support and mentorship"
+msgstr "Suporte e mentoria contínuos"
 
 #: src/components/sections/Work.tsx
 msgid "Open CV"
@@ -411,13 +1530,45 @@ msgstr "Pacotes open source"
 msgid "Other"
 msgstr "Outros"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Output schema enforcement"
+msgstr "Validação de schema de saída"
+
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Page 1 of {totalPages}"
 msgstr "Página 1 de {totalPages}"
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Performance Analytics"
+msgstr "Analytics de performance"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Permission auditing"
+msgstr "Auditoria de permissões"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Personalized 1:1 mentorship in game development, AI, and mobile development. Weekly video calls with hands-on project guidance."
 msgstr "Mentoria individual em desenvolvimento de jogos, IA e mobile. Chamadas semanais com acompanhamento de projeto na prática."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Personalized Learning Path"
+msgstr "Plano de estudo personalizado"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Pinecone, Qdrant, pgvector, chosen based on scale, latency, and ops requirements."
+msgstr "Pinecone, Qdrant, pgvector, escolhidos por escala, latência e requisitos de operação."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Platform-specific Features"
+msgstr "Recursos específicos de cada plataforma"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Polished casual experiences designed for retention, with onboarding and accessibility built in."
+msgstr "Experiências casuais polidas, pensadas para retenção, com onboarding e acessibilidade desde o início."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Portfolio building guidance"
+msgstr "Orientação para montar o portfólio"
 
 #: src/app/(i18n)/[lang]/post/[slug]/page.tsx
 msgid "Post not found"
@@ -427,9 +1578,17 @@ msgstr "Post não encontrado"
 msgid "posts & videos"
 msgstr "posts e vídeos"
 
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Pragmatic tools chosen to ship, not to impress on a CV."
+msgstr "Ferramentas pragmáticas, escolhidas para entregar, não para impressionar no currículo."
+
 #: src/components/sections/Hero.tsx
 msgid "Press kit"
 msgstr "Press kit"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Prestige systems"
+msgstr "Sistemas de prestígio"
 
 #: src/app/(i18n)/[lang]/blog/page.tsx
 msgid "Previous"
@@ -443,9 +1602,41 @@ msgstr "Posts anteriores"
 msgid "Previous slide"
 msgstr "Slide anterior"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Primary LLM for agents and reasoning, Opus, Sonnet, Haiku, with prompt caching and extended thinking."
+msgstr "LLM principal para agentes e raciocínio: Opus, Sonnet, Haiku, com prompt caching e extended thinking."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Privacy & Security"
+msgstr "Privacidade e segurança"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Private"
 msgstr "Privados"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Procedural difficulty"
+msgstr "Dificuldade procedural"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Product Features"
+msgstr "Funcionalidades de produto"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Production-grade integration with Claude, GPT, and open-source models, including caching, streaming, and cost control."
+msgstr "Integração em nível de produção com Claude, GPT e modelos open source, incluindo caching, streaming e controle de custo."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Productivity Tools"
+msgstr "Ferramentas de produtividade"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Professional 1:1 mentorship in game development, AI, and mobile development"
+msgstr "Mentoria 1:1 profissional em game development, IA e desenvolvimento mobile"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Professional cybersecurity services by Tiago Danin. Vulnerability assessments, penetration testing, mobile security, and security consulting since 2018."
+msgstr "Serviços de cibersegurança com Tiago Danin. Avaliação de vulnerabilidades, pentest, segurança mobile e consultoria desde 2018."
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Professional Development Services"
@@ -454,6 +1645,34 @@ msgstr "Serviços de desenvolvimento"
 #: src/components/sections/Work.tsx
 msgid "Professional Experience"
 msgstr "Experiência profissional"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Professional Mentorship"
+msgstr "Mentoria profissional"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Professional mentorship in game development, AI, and mobile development with weekly 1:1 calls. Personalized guidance from concept to deployment."
+msgstr "Mentoria profissional em game development, IA e desenvolvimento mobile, com calls 1:1 semanais. Orientação personalizada do conceito ao deploy."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Professional mobile app development services with Flutter and React Native. Financial, government solutions, native integrations, testing, UI/UX, and ASO expertise."
+msgstr "Desenvolvimento de apps com Flutter e React Native. Soluções financeiras e para o setor público, integrações nativas, testes, UI/UX e ASO."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Professional mobile app development with Flutter and React Native."
+msgstr "Desenvolvimento de apps com Flutter e React Native."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Professional mobile app development with Flutter and React Native. From concept to App Store success, including security, testing, and ASO."
+msgstr "Desenvolvimento de apps com Flutter e React Native. Do conceito à publicação na loja, incluindo segurança, testes e ASO."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Professional mobile app development with Flutter and React Native. Native integrations, testing, UI/UX, and ASO expertise."
+msgstr "Desenvolvimento de apps com Flutter e React Native. Integrações nativas, testes, UI/UX e ASO."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Professional mobile development with Flutter, React Native, and native platforms for iOS and Android"
+msgstr "Desenvolvimento mobile com Flutter, React Native e código nativo para iOS e Android"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Professional Services"
@@ -466,6 +1685,38 @@ msgstr "Serviços | Tiago Danin"
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Professional services by Tiago Danin: mobile app development with Flutter & React Native, cybersecurity consulting, and technical mentorship. 250+ projects delivered."
 msgstr "Serviços de Tiago Danin: desenvolvimento de apps com Flutter e React Native, consultoria em segurança e mentoria técnica. 250+ projetos entregues."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Professional vulnerability assessment and security testing services. Protecting your digital assets with extensive security research experience."
+msgstr "Avaliação de vulnerabilidades e testes de segurança. Anos de pesquisa em segurança aplicados à proteção dos seus sistemas."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Professional vulnerability assessment and security testing."
+msgstr "Avaliação de vulnerabilidades e testes de segurança."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Professional vulnerability assessment and security testing. HackerOne researcher with expertise in mobile and web security."
+msgstr "Avaliação de vulnerabilidades e testes de segurança. Researcher na HackerOne, com foco em segurança mobile e web."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Professional vulnerability assessment, penetration testing, and security consulting services"
+msgstr "Avaliação de vulnerabilidades, pentest e consultoria em segurança"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Program Setup"
+msgstr "Montagem do programa"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "programming mentor"
+msgstr "mentor de programação"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Project guidance and code reviews"
+msgstr "Orientação nos projetos e code reviews"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Project-Based Learning"
+msgstr "Aprendizado por projetos"
 
 #: src/components/sections/FullProjects.tsx
 #: src/lib/sections.ts
@@ -480,13 +1731,66 @@ msgstr "Projetos - 250+ open source e pacotes npm"
 msgid "Projects Delivered"
 msgstr "Projetos entregues"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Prompt caching"
+msgstr "Prompt caching"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Prompt Engineering"
+msgstr "Prompt engineering"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Prompt evaluation suites"
+msgstr "Suítes de avaliação de prompt"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Prototype"
+msgstr "Protótipo"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Prototype with Evals"
+msgstr "Protótipo com evals"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Proven Track Record"
 msgstr "Histórico comprovado"
 
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Public Products"
+msgstr "Produtos públicos"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Publish & Iterate"
+msgstr "Publicar e iterar"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Published on Google Play"
 msgstr "Publicados na Google Play"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Published research on SaaS security vulnerabilities and database exposures"
+msgstr "Pesquisa publicada sobre vulnerabilidades em SaaS e exposição de bancos de dados"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Publishing"
+msgstr "Publicação"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Publishing Strategy"
+msgstr "Estratégia de publicação"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "RAG & Knowledge Systems"
+msgstr "RAG e sistemas de conhecimento"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "React Native Development"
+msgstr "Desenvolvimento React Native"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "React Native mentor"
+msgstr "mentor React Native"
 
 #: src/components/sections/RecentPosts.tsx
 msgid "Read article"
@@ -501,17 +1805,101 @@ msgstr "Ler artigo sobre {0}"
 msgid "Read original article"
 msgstr "Ler o artigo original"
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Ready to Build Your Mobile App?"
+msgstr "Pronto para tirar seu app do papel?"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Ready to Secure Your Applications?"
+msgstr "Vamos deixar suas aplicações mais seguras?"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Ready to Start Your Learning Journey?"
+msgstr "Pronto para começar?"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Ready to Start Your Project?"
 msgstr "Pronto para começar seu projeto?"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Real games published on Google Play, not just demos."
+msgstr "Jogos de verdade publicados no Google Play, não só demos."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Real-time messaging"
+msgstr "Mensageria em tempo real"
 
 #: src/components/sections/Testimonials.tsx
 msgid "Recognition"
 msgstr "Reconhecimento"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Regression testing"
+msgstr "Testes de regressão"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Regular video calls to review progress, solve challenges, and plan next steps in your learning journey"
+msgstr "Calls em vídeo regulares para revisar o progresso, resolver travas e planejar os próximos passos"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Regular video calls to review progress, solve challenges, and plan next steps in your learning journey."
+msgstr "Calls em vídeo regulares para revisar o progresso, resolver travas e planejar os próximos passos."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Regular, scheduled video calls are the cornerstone of effective mentorship. Get personalized guidance, code reviews, and career advice tailored to your goals."
+msgstr "Calls em vídeo com horário fixo são a base de uma mentoria que funciona. Orientação personalizada, code reviews e conselhos de carreira alinhados aos seus objetivos."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Replace manual workflows: triage support tickets, process documents, draft responses, sync across tools."
+msgstr "Substituir processos manuais: triagem de tickets de suporte, processamento de documentos, rascunho de respostas, sincronização entre ferramentas."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Replace repetitive workflows with AI, document processing, classification, summarization, and human-in-the-loop pipelines."
+msgstr "Substituir processos repetitivos por IA: processamento de documentos, classificação, resumo e pipelines com human-in-the-loop."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Researcher Coordination"
+msgstr "Coordenação de researchers"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Responsive Design"
+msgstr "Design responsivo"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Retrieval-augmented generation built on your data, embeddings, vector stores, and grounded answers with citations."
+msgstr "Retrieval-augmented generation sobre os seus dados: embeddings, vector stores e respostas fundamentadas com citações."
+
 #: src/components/ui/experience-item.tsx
 msgid "Role"
 msgstr "Cargo"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "RPG-style mechanics on top of Flutter, movement, collisions, AI without writing an engine from scratch."
+msgstr "Mecânicas de RPG sobre Flutter: movimento, colisões e IA sem escrever uma engine do zero."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Runtime Testing"
+msgstr "Testes em runtime"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Same codebase shipping to Chrome, Edge, Brave, and (with polyfills) Firefox."
+msgstr "O mesmo código publicado no Chrome, Edge, Brave e (com polyfills) Firefox."
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Schedule calls at times that work best for your timezone and availability."
+msgstr "Marque as calls no horário que funciona para o seu fuso e a sua agenda."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Scope & Permissions"
+msgstr "Escopo e permissões"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Scope Definition"
+msgstr "Definição de escopo"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Security Audits"
+msgstr "Auditorias de segurança"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Security best practices & compliance"
@@ -521,9 +1909,25 @@ msgstr "Boas práticas de segurança e conformidade"
 msgid "Security code review"
 msgstr "Revisão de código seguro"
 
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Security Content Creator"
+msgstr "Criador de conteúdo sobre segurança"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Security First"
+msgstr "Segurança em primeiro lugar"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Security Services"
+msgstr "Serviços de segurança"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Security-First Approach"
 msgstr "Segurança desde o início"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Security-first development approach with vulnerability assessment and security best practices implementation."
+msgstr "Desenvolvimento com segurança em primeiro lugar: análise de vulnerabilidades e boas práticas aplicadas no código."
 
 #: src/components/sections/RecentPosts.tsx
 msgid "See all {totalPosts} posts"
@@ -537,6 +1941,9 @@ msgstr "Ver todos os 250+ projetos"
 msgid "Selected work"
 msgstr "Trabalhos selecionados"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Send an Email"
 msgstr "Mandar um e-mail"
@@ -545,13 +1952,101 @@ msgstr "Mandar um e-mail"
 msgid "Send me an email"
 msgstr "Me mandar um e-mail"
 
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Service workers, declarativeNetRequest, and modern background scripts, built the way Chrome wants."
+msgstr "Service workers, declarativeNetRequest e background scripts modernos, do jeito que o Chrome espera."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Services"
+msgstr "Serviços"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Services - Mobile, Cybersecurity & AI"
 msgstr "Serviços - Mobile, Segurança e IA"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Ship & Iterate"
+msgstr "Publicar e iterar"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Shipped Games"
+msgstr "Jogos publicados"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Short-session loops"
+msgstr "Loops de sessão curta"
+
 #: src/components/sections/Work.tsx
 msgid "Show more"
 msgstr "Ver mais"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Single codebase shipping to Android, iOS, and web with native performance."
+msgstr "Uma única base de código para Android, iOS e web, com performance nativa."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Slack/Notion integrations"
+msgstr "Integrações com Slack e Notion"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Specialized security testing for Android and iOS applications, including reverse engineering and static analysis."
+msgstr "Testes de segurança para apps Android e iOS, incluindo engenharia reversa e análise estática."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Stack & Tooling"
+msgstr "Stack e ferramentas"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Start a Project"
+msgstr "Começar um projeto"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Start Your Journey"
+msgstr "Começar agora"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Start Your Mobile Project"
+msgstr "Começar seu projeto mobile"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Starter Mentorship"
+msgstr "Mentoria inicial"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "State Management"
+msgstr "Gerenciamento de estado"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Store Listing Optimization"
+msgstr "Otimização da página na loja"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Streaming responses"
+msgstr "Respostas em streaming"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Structured learning approach with personalized guidance"
+msgstr "Aprendizado estruturado com orientação personalizada"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Structured learning approach with personalized guidance and regular check-ins"
+msgstr "Aprendizado estruturado, com orientação personalizada e check-ins regulares"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Students have successfully published games using Flutter and Bonfire engine"
+msgstr "Mentorados publicaram jogos feitos com Flutter e Bonfire"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Survival arcade built with Flutter + Bonfire"
+msgstr "Arcade survival feito com Flutter + Bonfire"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Systematic prompt design with evals, A/B testing, and version control, not vibes-based prompting."
+msgstr "Design sistemático de prompt com evals, testes A/B e controle de versão, em vez de prompt no feeling."
 
 #: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
 msgid "Talk Not Found"
@@ -581,6 +2076,10 @@ msgstr "Palestras sobre mobile, Flutter, React Native e segurança em eventos de
 msgid "Talks, presentations and workshops about technology and development"
 msgstr "Palestras, apresentações e workshops sobre tecnologia e desenvolvimento"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "tech mentor"
+msgstr "mentor de tecnologia"
+
 #: src/app/(i18n)/[lang]/talks/page.tsx
 msgid "Tech Talks - Flutter, React Native & Security"
 msgstr "Palestras - Flutter, React Native e Segurança"
@@ -593,6 +2092,7 @@ msgstr "Palestras | Tiago Danin"
 msgid "Technical articles on mobile development, AI agents, and cybersecurity. Tutorials on Flutter, React Native, Node.js, and more. Free, in-depth guides for developers."
 msgstr "Artigos técnicos sobre desenvolvimento mobile, agentes de IA e segurança. Tutoriais de Flutter, React Native, Node.js e mais. Guias gratuitos e aprofundados para quem programa."
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Technical Mentorship"
 msgstr "Mentoria técnica"
@@ -600,6 +2100,18 @@ msgstr "Mentoria técnica"
 #: src/components/sections/Work.tsx
 msgid "Technical Skills"
 msgstr "Habilidades técnicas"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Technologies & Expertise"
+msgstr "Tecnologias e experiência"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Testing & Quality Assurance"
+msgstr "Testes e qualidade"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "The full stack of AI work, from a single LLM call to multi-agent systems."
+msgstr "Todo o espectro de trabalho com IA, de uma única chamada de LLM a sistemas multi-agente."
 
 #: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
 msgid "The requested talk could not be found."
@@ -650,6 +2162,18 @@ msgstr "Tiago Danin, página inicial"
 msgid "Toggle {0} projects section"
 msgstr "Abrir ou fechar a seção {0}"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Token & cost optimization"
+msgstr "Otimização de tokens e custo"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Tool & resource APIs"
+msgstr "APIs de tools e resources"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Tool use & function calling"
+msgstr "Tool use e function calling"
+
 #: src/app/(i18n)/[lang]/projects/page.tsx
 msgid "Top repos by stars & forks"
 msgstr "Repositórios com mais estrelas e forks"
@@ -658,6 +2182,74 @@ msgstr "Repositórios com mais estrelas e forks"
 #: src/app/(i18n)/[lang]/talks/page.tsx
 msgid "Total talks: {0}"
 msgstr "Total de palestras: {0}"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Track record of successful security research and community involvement"
+msgstr "Histórico de pesquisa em segurança e participação na comunidade"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Triaging Support"
+msgstr "Apoio na triagem"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Tuning & Polish"
+msgstr "Ajuste e polimento"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Tutorial design"
+msgstr "Design de tutorial"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Type-safe extensions with React-based popups and options pages, bundled with Vite or Webpack."
+msgstr "Extensões type-safe com popups e páginas de opções em React, empacotadas com Vite ou Webpack."
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "TypeScript & Python"
+msgstr "TypeScript e Python"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "TypeScript + React"
+msgstr "TypeScript + React"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "TypeScript for product integration, Python for data pipelines and ML-adjacent work."
+msgstr "TypeScript para integração no produto, Python para pipelines de dados e trabalho próximo de ML."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "UI Testing"
+msgstr "Testes de UI"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "UI/UX Design"
+msgstr "Design de UI/UX"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "UI/UX Design & Implementation"
+msgstr "Design e implementação de UI/UX"
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Unit Testing"
+msgstr "Testes unitários"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Up to 2 focus areas"
+msgstr "Até 2 áreas de foco"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Upgrade economies"
+msgstr "Economias de upgrade"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Vector databases"
+msgstr "Bancos de dados vetoriais"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Vector Stores"
+msgstr "Vector stores"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Vertical & landscape"
+msgstr "Retrato e paisagem"
 
 #. placeholder {0}: talk.title
 #: src/app/(i18n)/[lang]/talks/page.tsx
@@ -668,10 +2260,28 @@ msgstr "Ver {0}"
 msgid "View details"
 msgstr "Ver detalhes"
 
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "View HackerOne Profile"
+msgstr "Ver perfil no HackerOne"
+
 #: src/components/sections/Hero.tsx
 msgid "View my projects"
 msgstr "Ver meus projetos"
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "View My Projects"
+msgstr "Ver meus projetos"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "View My Work"
+msgstr "Ver meu trabalho"
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "View Project"
+msgstr "Ver projeto"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+#: src/app/(i18n)/[lang]/mobile/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "View Services"
 msgstr "Ver serviços"
@@ -679,6 +2289,10 @@ msgstr "Ver serviços"
 #: src/components/sections/Work.tsx
 msgid "Volunteering"
 msgstr "Voluntariado"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Vulnerability Assessment"
+msgstr "Avaliação de vulnerabilidades"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Vulnerability assessment & pen testing"
@@ -696,21 +2310,78 @@ msgstr "Assistir no YouTube"
 msgid "Watch talks on mobile development, Flutter, React Native, and cybersecurity. Presentations at DevFest, DevOpsDays, and developer meetups. Slides and videos available."
 msgstr "Assista a palestras sobre desenvolvimento mobile, Flutter, React Native e segurança. Apresentações no DevFest, DevOpsDays e meetups. Slides e vídeos disponíveis."
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "We start with a comprehensive assessment of your current skills and define clear learning objectives"
+msgstr "Começamos com um diagnóstico completo do seu nível atual e definimos objetivos claros"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "We start with a comprehensive assessment of your current skills and define clear learning objectives."
+msgstr "Começamos com um diagnóstico completo do seu nível atual e definimos objetivos claros."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Web app augmentation"
+msgstr "Ampliação de web apps"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Web Application Testing"
+msgstr "Testes em aplicações web"
+
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Web Development"
 msgstr "Desenvolvimento web"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Web Security Audit"
+msgstr "Auditoria de segurança web"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Weekly 1:1 Calls"
+msgstr "Calls 1:1 semanais"
+
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "Weekly 1:1 Video Calls"
+msgstr "Calls 1:1 semanais em vídeo"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Weekly 1:1 video sessions"
 msgstr "Sessões individuais semanais por vídeo"
 
+#: src/app/(i18n)/[lang]/mentorship/page.tsx
+msgid "weekly calls"
+msgstr "calls semanais"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "What I Build"
+msgstr "O que eu construo"
+
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
+msgid "Where AI actually pays off, and where I've seen it work."
+msgstr "Onde IA realmente compensa, e onde eu já vi funcionar."
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Where I Focus"
+msgstr "Onde eu foco"
+
 #: src/components/sections/Work.tsx
 msgid "Where I've worked, and what I work with day to day."
 msgstr "Onde trabalhei e com o que trabalho no dia a dia."
 
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Whether internal or public, the engineering bar is the same."
+msgstr "Interna ou pública, o nível de engenharia é o mesmo."
+
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+msgid "Whether you have a full concept or just a loop in your head, let's talk about how to ship it."
+msgstr "Se você tem um conceito completo ou só um loop na cabeça, vamos conversar sobre como colocar isso no ar."
+
 #: src/components/sections/CallToAction.tsx
 msgid "Whether you have a project in mind, want to talk tech, or just want to say hi, I read everything that lands in the inbox."
 msgstr "Se você tem um projeto em mente, quer falar sobre tecnologia ou só dar um oi, eu leio tudo que chega na caixa de entrada."
+
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "Why Mobile Development?"
+msgstr "Por que desenvolvimento mobile?"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Why Work With Me"
@@ -724,9 +2395,25 @@ msgstr "Prêmios, open source e palcos."
 msgid "with"
 msgstr "com"
 
+#: src/app/(i18n)/[lang]/mobile/page.tsx
+msgid "With my cybersecurity background, your mobile apps are built with security best practices from day one."
+msgstr "Com minha vivência em cibersegurança, seu app nasce com boas práticas de segurança desde o primeiro commit."
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "Worked on security-focused products for banking systems, implementing security measures and protocols in Mobile Apps"
+msgstr "Trabalhei em produtos de segurança para sistemas bancários, implementando controles e protocolos de segurança em apps mobile"
+
+#: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+msgid "Workflow automation"
+msgstr "Automação de fluxos de trabalho"
+
 #: src/components/sections/RecentPosts.tsx
 msgid "Writing"
 msgstr "Escrita"
+
+#: src/app/(i18n)/[lang]/cybersecurity/page.tsx
+msgid "XSS Testing"
+msgstr "Testes de XSS"
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Years of Experience"

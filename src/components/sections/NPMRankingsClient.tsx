@@ -74,7 +74,7 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
               <Package className="h-4 w-4 mr-2" />
               NPM Package Rankings
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
               NPM Download Rankings
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">

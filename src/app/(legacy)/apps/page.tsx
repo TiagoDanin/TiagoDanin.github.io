@@ -63,7 +63,7 @@ export default function AppsPage() {
               <Smartphone className="h-4 w-4 mr-2" />
               Google Play
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
               My Android Apps
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

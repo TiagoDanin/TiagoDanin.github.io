@@ -77,7 +77,21 @@ export function isLocale(value: string): value is Locale {
  * never generated. Grow this set as routes move, and delete it once they all
  * have.
  */
-export const LOCALIZED_ROUTES = ['/', '/about', '/services', '/projects', '/blog', '/talks'] as const;
+export const LOCALIZED_ROUTES = [
+  '/',
+  '/about',
+  '/services',
+  '/projects',
+  '/blog',
+  '/talks',
+  '/ai-automation',
+  '/all-contacts',
+  '/chrome-extensions',
+  '/cybersecurity',
+  '/game-development',
+  '/mentorship',
+  '/mobile',
+] as const;
 
 const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
 

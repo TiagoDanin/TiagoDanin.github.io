@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
 
@@ -184,7 +185,7 @@ export default async function ServicesPage({ params }: PageProps<'/[lang]/servic
               <Briefcase className="h-4 w-4 mr-2" />
               <Trans>Professional Services</Trans>
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
               <Trans>Let&apos;s Build Something Amazing</Trans>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
@@ -253,7 +254,7 @@ export default async function ServicesPage({ params }: PageProps<'/[lang]/servic
                     ))}
                   </ul>
                   <Button asChild className="w-full">
-                    <Link href={service.href}>
+                    <Link href={localePath(locale, service.href)}>
                       <Trans>Learn More</Trans> <ArrowRight className="h-4 w-4 ml-2" />
                     </Link>
                   </Button>
@@ -266,7 +267,7 @@ export default async function ServicesPage({ params }: PageProps<'/[lang]/servic
             <span><Trans>Also available:</Trans></span>
             {additionalServices.map((service, idx) => (
               <span key={service.title} className="inline-flex items-center gap-x-2">
-                <Link href={service.href} className="text-foreground hover:text-primary underline-offset-4 hover:underline inline-flex items-center gap-1">
+                <Link href={localePath(locale, service.href)} className="text-foreground hover:text-primary underline-offset-4 hover:underline inline-flex items-center gap-1">
                   {service.icon}
                   {service.title}
                 </Link>
