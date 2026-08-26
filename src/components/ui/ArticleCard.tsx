@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { useLingui } from "@lingui/react/macro";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Video, Text } from "lucide-react";
 import { formatDate, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
+import { intlLocale } from '@/lib/i18n/locales';
 
 interface ArticleCardProps {
   post: {
@@ -18,6 +20,9 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ post, locale = 'en' }: ArticleCardProps) {
+  // Labels come from the page's catalog; `locale` only decides the URL suffix,
+  // because posts still carry their language as a trailing segment.
+  const { i18n } = useLingui();
   const postUrl = locale === 'pt' ? `/post/${post.slug}/pt` : `/post/${post.slug}`;
   const ariaLabel = locale === 'pt' ? `Ler ${post.title}` : `Read ${post.title}`;
   const readLabel = locale === 'pt' ? 'Ler artigo' : 'Read article';
@@ -45,7 +50,7 @@ export function ArticleCard({ post, locale = 'en' }: ArticleCardProps) {
           <span className="absolute inset-y-0 left-0 flex items-center">
             <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
           </span>
-          {formatDate(post.date)}
+          {formatDate(post.date, intlLocale(i18n.locale))}
         </time>
         {isVideo ? (
           <Badge variant="secondary" className="flex items-center gap-1">

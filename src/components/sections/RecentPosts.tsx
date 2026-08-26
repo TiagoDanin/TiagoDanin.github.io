@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Link from "next/link";
 import { formatDate } from "@/utils/parse";
-import { entryPath, localePath, type Locale } from "@/lib/i18n/locales";
+import { entryPath, intlLocale, localePath, type Locale } from "@/lib/i18n/locales";
 import { Trans, useLingui } from "@lingui/react/macro";
 
 interface PostsEntry {
@@ -61,7 +61,7 @@ export function RecentPosts({ posts }: RecentPostsProps) {
                         </Link>
                       </CardTitle>
                       <CardDescription>
-                        <Link href={entryPath(locale, "post", post.slug)}>{formatDate(post.date, i18n.locale)}</Link>
+                        <Link href={entryPath(locale, "post", post.slug)}>{formatDate(post.date, intlLocale(i18n.locale))}</Link>
                       </CardDescription>
                     </CardHeader>
                     <CardContent>

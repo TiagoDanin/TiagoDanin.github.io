@@ -17,11 +17,22 @@ module.exports = {
   // the route manifest, which still says the English pages live under /en,
   // while scripts/flattenDefaultLocale.ts has already moved them to the root.
   // Listing them would submit 404s. additionalPaths puts the real URLs back.
-  exclude: ['/project/github/*', '/br', '/br/*', '/en', '/en/*'],
+  exclude: [
+    '/project/github/*',
+    '/br',
+    '/br/*',
+    '/en',
+    '/en/*',
+    // Transitional aliases: they canonicalise to /br/blog/ and /br/talks/, and
+    // listing a URL that points its canonical elsewhere asks a crawler to
+    // index something it has been told not to.
+    '/blog/pt',
+    '/talks/pt',
+  ],
 
   additionalPaths: async (config) => {
     // Keep in step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
-    const localized = ['/', '/about'];
+    const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks'];
     return Promise.all(localized.map((route) => config.transform(config, route)));
   },
   robotsTxtOptions: {
@@ -97,7 +108,7 @@ module.exports = {
     // Routes that also exist under /br announce the pair, so the two languages
     // read as one page in two versions instead of two competing URLs. Keep in
     // step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
-    const localized = ['/', '/about'];
+    const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks'];
     const alternateRefs = localized.includes(urlPath)
       ? [
           // hrefIsAbsolute, or next-sitemap treats href as that language's root

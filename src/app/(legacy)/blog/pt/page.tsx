@@ -12,12 +12,11 @@ export function generateMetadata() {
     description: "Blog sobre desenvolvimento de software, mobile, IA e segurança. Artigos sobre Flutter, React Native, agentes IA e tecnologia.",
     keywords: ["blog", "desenvolvimento de software", "mobile", "Flutter", "React Native", "IA", "segurança", "programação", "artigos técnicos"],
     alternates: {
-      canonical: 'https://tiagodanin.com/blog/pt/',
-      languages: {
-        'en-US': 'https://tiagodanin.com/blog/',
-        'pt-BR': 'https://tiagodanin.com/blog/pt/',
-        'x-default': 'https://tiagodanin.com/blog/',
-      },
+    // Transitional alias. This page moved to /br/blog/; the old address stays
+    // reachable so existing links do not break, and points its canonical at the
+    // new one so search engines consolidate there. It is deliberately absent
+    // from the sitemaps and from every hreflang set.
+      canonical: 'https://tiagodanin.com/br/blog/',
     },
     openGraph: {
       title: "Blog: Desenvolvimento, Mobile & IA",

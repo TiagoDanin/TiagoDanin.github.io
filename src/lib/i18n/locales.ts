@@ -54,6 +54,17 @@ export function contentLang(locale: Locale): string {
   return CONTENT_SUFFIX[locale] || 'en';
 }
 
+/**
+ * BCP 47 tag for a locale code, for anything that formats: Intl, `lang`, hreflang.
+ *
+ * Never hand a raw locale code to Intl. `br` is the site's URL segment, but it
+ * is also a real language subtag (Breton), so `Intl.DateTimeFormat("br")` does
+ * not throw. It formats the wrong language, silently.
+ */
+export function intlLocale(code: string): string {
+  return HTML_LANG[code as Locale] ?? code;
+}
+
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
 }
@@ -66,7 +77,7 @@ export function isLocale(value: string): value is Locale {
  * never generated. Grow this set as routes move, and delete it once they all
  * have.
  */
-export const LOCALIZED_ROUTES = ['/', '/about'] as const;
+export const LOCALIZED_ROUTES = ['/', '/about', '/services', '/projects', '/blog', '/talks'] as const;
 
 const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
 
@@ -75,8 +86,8 @@ const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
  * prefix. Disappears with `(legacy)`.
  */
 const LEGACY_LOCALE_PATHS: Record<string, Partial<Record<Locale, string>>> = {
-  '/blog': { br: '/blog/pt' },
-  '/talks': { br: '/talks/pt' },
+  // /blog and /talks moved to the prefix; their old suffix URLs survive as
+  // aliases that canonicalise to the new address, so nothing links at them.
 };
 
 /**

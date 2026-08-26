@@ -2,6 +2,7 @@
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { useState } from "react";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 export interface ProjectForCard {
   title: string;
@@ -11,6 +12,12 @@ export interface ProjectForCard {
 }
 
 export interface ProjectSection {
+  /**
+   * Stable identifier, independent of language. The private section renders
+   * differently from the rest, and matching that on the visible title broke the
+   * moment the title could be translated.
+   */
+  id?: string;
   title: string;
   projects: ProjectForCard[];
 }
@@ -22,6 +29,7 @@ interface FullProjectsProps {
 const otherProjectsPrivateCount = 55;
 
 export function FullProjects({ projectSections }: FullProjectsProps) {
+  const { t } = useLingui();
   const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
 
   const toggleSection = (title: string) => {
@@ -31,7 +39,9 @@ export function FullProjects({ projectSections }: FullProjectsProps) {
     }));
   };
 
-  const privateProjects = projectSections.find(s => s.title === "Private")?.projects ?? [];
+  const isPrivate = (section: ProjectSection) => (section.id ?? section.title) === "private";
+
+  const privateProjects = projectSections.find(isPrivate)?.projects ?? [];
   const totalProjects = projectSections.reduce((sum, section) => sum + section.projects.length, otherProjectsPrivateCount);
 
   return (
@@ -43,9 +53,9 @@ export function FullProjects({ projectSections }: FullProjectsProps) {
       <div className="container mx-auto relative mb-2 pb-2 px-4">
         {/* Add title and counter */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">All Projects</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900"><Trans>All Projects</Trans></h1>
           <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 rounded-full font-semibold text-sm sm:text-base">
-            {totalProjects} Projects
+            <Trans>{totalProjects} Projects</Trans>
           </span>
         </div>
 
@@ -66,15 +76,16 @@ export function FullProjects({ projectSections }: FullProjectsProps) {
                     }`}
                   aria-expanded={expandedSections[section.title]}
                   aria-controls={`accordion-color-body-${index}`}
-                  aria-label={`Toggle ${section.title} projects section`}
+                  aria-label={t`Toggle ${section.title} projects section`}
                 >
                   <span className="text-base sm:text-lg lg:text-xl">{section.title}</span>
                   <div className="flex items-center gap-2 sm:gap-3 ml-auto">
                     <span className="px-2 py-1 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded text-xs sm:text-sm">
-                      {section.title === "Private" ?
+                      {isPrivate(section) ?
                         privateProjects.length + otherProjectsPrivateCount :
                         section.projects.length
-                      } projects
+                      }{' '}
+                      <Trans>projects</Trans>
                     </span>
                     <svg
                       className={`w-3 h-3 shrink-0 transition-transform ${expandedSections[section.title] ? 'rotate-180' : ''}`}
@@ -100,7 +111,7 @@ export function FullProjects({ projectSections }: FullProjectsProps) {
                 aria-labelledby={`accordion-color-heading-${index}`}
               >
                 <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                  {section.title === "Private" ? (
+                  {isPrivate(section) ? (
                     <div className="space-y-8">
                       {/* Regular Private Projects */}
                       <div>
@@ -123,10 +134,10 @@ export function FullProjects({ projectSections }: FullProjectsProps) {
                       <div>
                         <div className="flex items-center gap-2 mb-4">
                           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                            Other 🥚
+                            <Trans>Other</Trans> 🥚
                           </h3>
                           <span className="px-2 py-1 bg-purple-200 dark:bg-purple-800 text-purple-800 dark:text-purple-200 rounded text-sm font-bold">
-                            {otherProjectsPrivateCount} secret projects
+                            <Trans>{otherProjectsPrivateCount} secret projects</Trans>
                           </span>
                         </div>
                       </div>
