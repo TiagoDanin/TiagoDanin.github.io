@@ -103,18 +103,15 @@ export function extractTagsFromPost(title: string, description: string): string[
  * Formats a "YYYY-MM" date string to "Month Name, Year" for display
  * Also handles full "YYYY-MM-DD" dates (ignores day)
  */
-export function formatDate(dateString: string): string {
-  const monthNames = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
-  ];
+export function formatDate(dateString: string, locale: string = 'en'): string {
   const match = dateString.match(/^(\d{4})-(\d{2})/);
-  if (match) {
-    const year = match[1];
-    const month = parseInt(match[2], 10);
-    return `${monthNames[month - 1]}, ${year}`;
-  }
-  return dateString;
+  if (!match) return dateString;
+
+  // UTC throughout: a local-time date built from a YYYY-MM string lands on the
+  // 1st at midnight, which is the previous month for anyone west of Greenwich.
+  const date = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, 1));
+  const month = new Intl.DateTimeFormat(locale, { month: 'long', timeZone: 'UTC' }).format(date);
+  return `${month.charAt(0).toUpperCase()}${month.slice(1)} ${match[1]}`;
 }
 
 /**
