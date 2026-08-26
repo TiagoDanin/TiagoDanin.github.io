@@ -34,8 +34,8 @@ module.exports = {
 
   additionalPaths: async (config) => {
     // Keep in step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
-    const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks', '/ai-automation', '/all-contacts', '/chrome-extensions', '/cybersecurity', '/game-development', '/mentorship', '/mobile'];
-    const localizedPrefix = ['/post/', '/talk/'].some((p) => urlPath.startsWith(p));
+    const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks', '/ai-automation', '/all-contacts', '/chrome-extensions', '/cybersecurity', '/game-development', '/mentorship', '/mobile', '/apps', '/github-pages', '/links', '/links/talk', '/press', '/rankings/github', '/rankings/npm', '/rss', '/sitemap', '/skills', '/tags', '/web-development'];
+    const localizedPrefix = ['/post/', '/talk/', '/app/', '/skills/', '/social/', '/tags/'].some((p) => urlPath.startsWith(p));
     return Promise.all(localized.map((route) => config.transform(config, route)));
   },
   robotsTxtOptions: {

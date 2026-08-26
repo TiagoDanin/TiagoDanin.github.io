@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Star, GitFork, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 interface GitHubRepo {
   id: number;
@@ -25,6 +26,8 @@ interface GitHubRankingsClientProps {
 }
 
 export default function GitHubRankingsClient({ githubData }: GitHubRankingsClientProps) {
+  const { t } = useLingui();
+
   // Sort repositories by stars in descending order and take top 10
   const sortedRepos = [...githubData]
     .sort((a, b) => b.stargazers_count - a.stargazers_count)
@@ -94,14 +97,16 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
           <div className="text-center space-y-6">
             <Badge variant="secondary" className="mb-4">
               <Github className="h-4 w-4 mr-2" />
-              GitHub Repository Rankings
+              <Trans>GitHub Repository Rankings</Trans>
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-              GitHub Star Rankings
+              <Trans>GitHub Star Rankings</Trans>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Top 10 most starred GitHub repositories by Tiago Danin.
-              Real-time statistics from the GitHub API.
+              <Trans>
+                Top 10 most starred GitHub repositories by Tiago Danin.
+                Real-time statistics from the GitHub API.
+              </Trans>
             </p>
 
             {/* Total Stats Counters */}
@@ -110,7 +115,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                 <div className="space-y-2">
                   <div className="flex items-center justify-center gap-2">
                     <Star className="h-5 w-5 text-yellow-500" />
-                    <span className="font-semibold">Total Stars</span>
+                    <span className="font-semibold"><Trans>Total Stars</Trans></span>
                   </div>
                   <div className="text-3xl font-bold text-primary">
                     <AnimatedCounter target={totalStars} duration={2500} />
@@ -122,7 +127,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                 <div className="space-y-2">
                   <div className="flex items-center justify-center gap-2">
                     <GitFork className="h-5 w-5 text-blue-500" />
-                    <span className="font-semibold">Total Forks</span>
+                    <span className="font-semibold"><Trans>Total Forks</Trans></span>
                   </div>
                   <div className="text-3xl font-bold text-primary">
                     <AnimatedCounter target={totalForks} duration={3000} />
@@ -138,9 +143,9 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">Top 10 GitHub Repositories</h2>
+            <h2 className="text-3xl md:text-4xl font-bold"><Trans>Top 10 GitHub Repositories</Trans></h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ranked by star count from the GitHub API
+              <Trans>Ranked by star count from the GitHub API</Trans>
             </p>
           </div>
 
@@ -163,12 +168,12 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                           </Badge>
                           {repo.private && (
                             <Badge variant="outline" className="text-xs">
-                              Private
+                              <Trans>Private</Trans>
                             </Badge>
                           )}
                         </div>
                         <CardDescription className="text-base">
-                          {repo.description || "No description available"}
+                          {repo.description || t`No description available`}
                         </CardDescription>
                       </div>
                     </div>
@@ -179,7 +184,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                           duration={2000 + (index * 100)}
                         />
                       </div>
-                      <div className="text-sm text-muted-foreground">stars</div>
+                      <div className="text-sm text-muted-foreground"><Trans>stars</Trans></div>
                     </div>
                   </div>
                 </CardHeader>
@@ -218,7 +223,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                         <Button size="sm" variant="outline" asChild>
                           <a href={repo.homepage} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4 mr-1" />
-                            Demo
+                            <Trans>Demo</Trans>
                           </a>
                         </Button>
                       )}
@@ -235,7 +240,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
       <section className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">Repository Statistics</h2>
+            <h2 className="text-3xl md:text-4xl font-bold"><Trans>Repository Statistics</Trans></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
@@ -245,7 +250,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                 <div className="text-3xl font-bold">
                   <AnimatedCounter target={githubData.length} duration={1500} formatNumber={false} />
                 </div>
-                <div className="text-muted-foreground">Total Repositories</div>
+                <div className="text-muted-foreground"><Trans>Total Repositories</Trans></div>
               </CardContent>
             </Card>
 
@@ -259,7 +264,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                     formatNumber={false}
                   />
                 </div>
-                <div className="text-muted-foreground">Average Stars</div>
+                <div className="text-muted-foreground"><Trans>Average Stars</Trans></div>
               </CardContent>
             </Card>
 
@@ -273,7 +278,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                     formatNumber={false}
                   />
                 </div>
-                <div className="text-muted-foreground">Average Forks</div>
+                <div className="text-muted-foreground"><Trans>Average Forks</Trans></div>
               </CardContent>
             </Card>
 
@@ -283,7 +288,7 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
                 <div className="text-3xl font-bold">
                   <AnimatedCounter target={sortedRepos[0]?.stargazers_count || 0} duration={2500} formatNumber={false} />
                 </div>
-                <div className="text-muted-foreground">Top Repo Stars</div>
+                <div className="text-muted-foreground"><Trans>Top Repo Stars</Trans></div>
               </CardContent>
             </Card>
           </div>
@@ -294,20 +299,20 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold">Explore More Rankings</h2>
+            <h2 className="text-3xl md:text-4xl font-bold"><Trans>Explore More Rankings</Trans></h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Check out NPM package rankings and discover more open source projects.
+              <Trans>Check out NPM package rankings and discover more open source projects.</Trans>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
                 <Link href="/rankings/npm">
                   <Trophy className="h-5 w-5 mr-2" />
-                  NPM Rankings
+                  <Trans>NPM Rankings</Trans>
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="/projects">
-                  View All Projects
+                  <Trans>View All Projects</Trans>
                 </Link>
               </Button>
             </div>

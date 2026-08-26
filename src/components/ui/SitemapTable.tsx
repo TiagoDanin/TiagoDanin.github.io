@@ -1,3 +1,5 @@
+import { Trans } from '@lingui/react/macro';
+
 export interface SitemapUrl {
   /** Absolute URL as written in the sitemap XML. */
   loc: string;
@@ -36,10 +38,18 @@ export function SitemapTable({ urls }: SitemapTableProps) {
       <table className="w-full border-collapse text-sm">
         <thead>
           <tr className="bg-muted text-left">
-            <th className="border p-2 font-semibold">URL</th>
-            <th className="w-1/6 border p-2 font-semibold">Frequency</th>
-            <th className="w-1/6 border p-2 font-semibold">Priority</th>
-            <th className="w-1/5 border p-2 font-semibold">Last Modified</th>
+            <th className="border p-2 font-semibold">
+              <Trans>URL</Trans>
+            </th>
+            <th className="w-1/6 border p-2 font-semibold">
+              <Trans>Frequency</Trans>
+            </th>
+            <th className="w-1/6 border p-2 font-semibold">
+              <Trans>Priority</Trans>
+            </th>
+            <th className="w-1/5 border p-2 font-semibold">
+              <Trans>Last Modified</Trans>
+            </th>
           </tr>
         </thead>
         <tbody>

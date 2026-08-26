@@ -91,6 +91,18 @@ export const LOCALIZED_ROUTES = [
   '/game-development',
   '/mentorship',
   '/mobile',
+  '/apps',
+  '/github-pages',
+  '/links',
+  '/links/talk',
+  '/press',
+  '/rankings/github',
+  '/rankings/npm',
+  '/rss',
+  '/sitemap',
+  '/skills',
+  '/tags',
+  '/web-development',
 ] as const;
 
 const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
@@ -101,7 +113,7 @@ const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
  * Posts and talks cannot be listed one by one, and they do not need to be: the
  * MDX filename suffix guarantees both languages exist for each slug.
  */
-export const LOCALIZED_PREFIXES = ['/post/', '/talk/'] as const;
+export const LOCALIZED_PREFIXES = ['/post/', '/talk/', '/app/', '/skills/', '/social/', '/tags/'] as const;
 
 function isLocalized(path: string): boolean {
   return LOCALIZED_ROUTE_SET.has(path) || LOCALIZED_PREFIXES.some((p) => path.startsWith(p));

@@ -1,5 +1,6 @@
 'use client'
 
+import { Trans } from "@lingui/react/macro";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -72,14 +73,14 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
           <div className="text-center space-y-6">
             <Badge variant="secondary" className="mb-4">
               <Package className="h-4 w-4 mr-2" />
-              NPM Package Rankings
+              <Trans>NPM Package Rankings</Trans>
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-              NPM Download Rankings
+              <Trans>NPM Download Rankings</Trans>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Top 10 most downloaded NPM packages by Tiago Danin.
-              Real-time download statistics from the NPM registry.
+              <Trans>Top 10 most downloaded NPM packages by Tiago Danin.
+              Real-time download statistics from the NPM registry.</Trans>
             </p>
 
             {/* Total Downloads Counter */}
@@ -87,12 +88,12 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
               <div className="space-y-2">
                 <div className="flex items-center justify-center gap-2">
                   <Download className="h-6 w-6 text-primary" />
-                  <span className="text-lg font-semibold">Total Downloads</span>
+                  <span className="text-lg font-semibold"><Trans>Total Downloads</Trans></span>
                 </div>
                 <div className="text-4xl md:text-5xl font-bold text-primary">
                   <AnimatedCounter target={totalDownloads} duration={3000} />
                 </div>
-                <p className="text-muted-foreground">Across all packages</p>
+                <p className="text-muted-foreground"><Trans>Across all packages</Trans></p>
               </div>
             </div>
           </div>
@@ -103,9 +104,9 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">Top 10 NPM Packages</h2>
+            <h2 className="text-3xl md:text-4xl font-bold"><Trans>Top 10 NPM Packages</Trans></h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ranked by total download count from the NPM registry
+              <Trans>Ranked by total download count from the NPM registry</Trans>
             </p>
           </div>
 
@@ -139,7 +140,7 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
                           duration={2000 + (index * 100)}
                         />
                       </div>
-                      <div className="text-sm text-muted-foreground">downloads</div>
+                      <div className="text-sm text-muted-foreground"><Trans>downloads</Trans></div>
                     </div>
                   </div>
                 </CardHeader>
@@ -157,7 +158,7 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
                         ))}
                         {pkg.keywords.length > 3 && (
                           <Badge variant="secondary" className="text-xs">
-                            +{pkg.keywords.length - 3} more
+                            <Trans>+{pkg.keywords.length - 3} more</Trans>
                           </Badge>
                         )}
                       </div>
@@ -188,7 +189,7 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
       <section className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">Package Statistics</h2>
+            <h2 className="text-3xl md:text-4xl font-bold"><Trans>Package Statistics</Trans></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -198,7 +199,7 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
                 <div className="text-3xl font-bold">
                   <AnimatedCounter target={npmData.length} duration={1500} formatNumber={false} />
                 </div>
-                <div className="text-muted-foreground">Total Packages</div>
+                <div className="text-muted-foreground"><Trans>Total Packages</Trans></div>
               </CardContent>
             </Card>
 
@@ -211,7 +212,7 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
                     duration={2000}
                   />
                 </div>
-                <div className="text-muted-foreground">Average Downloads</div>
+                <div className="text-muted-foreground"><Trans>Average Downloads</Trans></div>
               </CardContent>
             </Card>
 
@@ -221,7 +222,7 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
                 <div className="text-3xl font-bold">
                   <AnimatedCounter target={sortedPackages[0]?.downloads || 0} duration={2500} />
                 </div>
-                <div className="text-muted-foreground">Top Package Downloads</div>
+                <div className="text-muted-foreground"><Trans>Top Package Downloads</Trans></div>
               </CardContent>
             </Card>
           </div>
@@ -232,20 +233,20 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold">Explore More Rankings</h2>
+            <h2 className="text-3xl md:text-4xl font-bold"><Trans>Explore More Rankings</Trans></h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Check out GitHub repository rankings and discover more open source projects.
+              <Trans>Check out GitHub repository rankings and discover more open source projects.</Trans>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
                 <Link href="/rankings/github">
                   <Trophy className="h-5 w-5 mr-2" />
-                  GitHub Rankings
+                  <Trans>GitHub Rankings</Trans>
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="/projects">
-                  View All Projects
+                  <Trans>View All Projects</Trans>
                 </Link>
               </Button>
             </div>

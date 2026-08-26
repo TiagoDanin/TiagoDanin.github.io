@@ -2,6 +2,7 @@
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { useState, useMemo } from "react";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 interface GitHubPageProject {
   name: string;
@@ -15,6 +16,7 @@ interface GitHubPagesSectionProps {
 }
 
 export default function GitHubPagesSection({ githubProjects }: GitHubPagesSectionProps) {
+  const { t } = useLingui();
   const [searchQuery, setSearchQuery] = useState("");
 
   // Filter projects that have homepage field and match search
@@ -45,12 +47,12 @@ export default function GitHubPagesSection({ githubProjects }: GitHubPagesSectio
               GitHub Pages
             </h1>
             <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 rounded-full font-semibold text-sm sm:text-base">
-              {githubPages.length} Pages
+              <Trans>{githubPages.length} Pages</Trans>
             </span>
           </div>
 
           <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 mb-6">
-            Browse all my GitHub Pages projects with live demos and documentation
+            <Trans>Browse all my GitHub Pages projects with live demos and documentation</Trans>
           </p>
 
           {/* Search bar */}
@@ -73,11 +75,11 @@ export default function GitHubPagesSection({ githubProjects }: GitHubPagesSectio
             </div>
             <input
               type="text"
-              placeholder="Search projects..."
+              placeholder={t`Search projects...`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 min-h-[44px]"
-              aria-label="Search GitHub Pages projects"
+              aria-label={t`Search GitHub Pages projects`}
             />
           </div>
         </div>
@@ -98,7 +100,7 @@ export default function GitHubPagesSection({ githubProjects }: GitHubPagesSectio
         ) : (
           <div className="text-center py-12">
             <p className="text-gray-500 dark:text-gray-400 text-lg">
-              No projects found matching "{searchQuery}"
+              <Trans>No projects found matching "{searchQuery}"</Trans>
             </p>
           </div>
         )}
