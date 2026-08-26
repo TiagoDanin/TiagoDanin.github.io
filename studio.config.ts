@@ -235,6 +235,92 @@ const config: StudioConfig = {
         ],
       },
     },
+    /**
+     * One question per entry, answered so the answer survives being lifted out
+     * of the page. `layout` picks which block sustains it; the others stay empty.
+     * Numbers are written as {talkCount}, {npmDownloads} and friends, and filled
+     * from the other collections at build time by src/lib/faq.ts.
+     */
+    faq: {
+      schema: {
+        collection: "faq",
+        label: "FAQ",
+        fields: [
+          { name: "slug", type: "text", required: true },
+          { name: "category", type: "text", required: true },
+          {
+            name: "layout",
+            type: "select",
+            required: true,
+            options: [
+              opt("profile"),
+              opt("evidence"),
+              opt("matrix"),
+              opt("steps"),
+              opt("service"),
+            ],
+          },
+          { name: "question", type: "text", required: true },
+          { name: "answer", type: "long-text", required: true },
+          { name: "body", type: "long-text" },
+          {
+            name: "facts",
+            type: "array",
+            itemFields: [
+              { name: "label", type: "text", required: true },
+              { name: "value", type: "text", required: true },
+            ],
+          },
+          {
+            name: "evidence",
+            type: "array",
+            itemFields: [
+              { name: "date", type: "text", required: true },
+              { name: "title", type: "text", required: true },
+              { name: "detail", type: "long-text", required: true },
+              { name: "href", type: "text" },
+            ],
+          },
+          {
+            name: "matrix",
+            type: "array",
+            itemFields: [
+              { name: "item", type: "text", required: true },
+              { name: "where", type: "text", required: true },
+              { name: "proof", type: "text", required: true },
+              { name: "href", type: "text" },
+            ],
+          },
+          {
+            name: "steps",
+            type: "array",
+            itemFields: [
+              { name: "title", type: "text", required: true },
+              { name: "detail", type: "long-text", required: true },
+            ],
+          },
+          {
+            name: "offering",
+            type: "array",
+            itemFields: [
+              { name: "title", type: "text", required: true },
+              { name: "detail", type: "long-text", required: true },
+            ],
+          },
+          {
+            name: "links",
+            type: "array",
+            itemFields: [
+              { name: "label", type: "text", required: true },
+              { name: "href", type: "text", required: true },
+            ],
+          },
+          { name: "related", type: "array", itemFields: [{ name: "slug", type: "text", required: true }] },
+          { name: "seoTitle", type: "text" },
+          { name: "seoDescription", type: "text" },
+        ],
+      },
+    },
     llms: {
       schema: {
         collection: "llms",

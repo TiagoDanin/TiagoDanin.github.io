@@ -41,6 +41,7 @@
 /public/talks.txt
 /public/projects.txt
 /public/timeline.txt
+
 # Markdown mirrors written by scripts/generateLlms.ts
 /public/*.md
 /public/post/
@@ -76,6 +77,7 @@ next-env.d.ts
 PRODUCT.md
 DESIGN.md
 .impeccable/
+
 # Storybook static build
 /storybook-static
 

@@ -542,6 +542,188 @@ function roleLine(item: WorkItem, { full = false } = {}): string {
  * A body for every page listed in contents/llms. Announcing a mirror that was
  * never written is promising a 404 to whoever followed the link.
  */
+interface FaqDoc {
+  slug: string;
+  category: string;
+  layout: string;
+  question: string;
+  answer: string;
+  body?: string;
+  facts?: Array<{ label: string; value: string }>;
+  evidence?: Array<{ date: string; title: string; detail: string; href?: string }>;
+  matrix?: Array<{ item: string; where: string; proof: string; href?: string }>;
+  steps?: Array<{ title: string; detail: string }>;
+  offering?: Array<{ title: string; detail: string }>;
+  links?: Array<{ label: string; href: string }>;
+}
+
+/**
+ * The FAQ, in English, with the two locale files checked against each other.
+ *
+ * `/faq/` is registered in LOCALIZED_PREFIXES, which promises that every child
+ * exists in both languages. Nothing in the build enforces that: a slug present
+ * in only one file still compiles, and the only symptom is an hreflang pointing
+ * at a page that was never generated. So it is enforced here, where the two
+ * files are already open.
+ */
+function readFaq(): FaqDoc[] {
+  const en = readJson<FaqDoc[]>('faq');
+  const br = JSON.parse(
+    fs.readFileSync(path.join(contentsDir, 'faq', 'index.br.json'), 'utf8')
+  ) as FaqDoc[];
+
+  const enSlugs = new Set(en.map(entry => entry.slug));
+  const brSlugs = new Set(br.map(entry => entry.slug));
+  const onlyEn = [...enSlugs].filter(slug => !brSlugs.has(slug));
+  const onlyBr = [...brSlugs].filter(slug => !enSlugs.has(slug));
+
+  if (onlyEn.length || onlyBr.length) {
+    throw new Error(
+      'contents/faq: the two locale files disagree on which questions exist.
+' +
+        (onlyEn.length ? `  Only in index.json:    ${onlyEn.join(', ')}
+` : '') +
+        (onlyBr.length ? `  Only in index.br.json: ${onlyBr.join(', ')}
+` : '') +
+        '/faq/ is a localized prefix, so every slug must exist in both or its hreflang points at a 404.'
+    );
+  }
+
+  return en;
+}
+
+/**
+ * Fills the {token} placeholders the FAQ copy uses for moving numbers.
+ *
+ * Same substitution src/lib/faq.ts does for the HTML. The two have to agree:
+ * a mirror claiming a different number than the page it mirrors is worse than
+ * either being wrong alone.
+ */
+function fillFaqTokens(text: string, counts: FaqCounts): string {
+  return text
+    .replaceAll('{talkCount}', String(counts.talks))
+    .replaceAll('{postCount}', String(counts.posts))
+    .replaceAll('{repoCount}', String(counts.repos))
+    .replaceAll('{npmCount}', String(counts.npm))
+    .replaceAll('{npmDownloads}', new Intl.NumberFormat('en', {
+      notation: 'compact',
+      maximumFractionDigits: 1,
+    }).format(counts.npmDownloads))
+    .replaceAll('{polybarStars}', String(counts.polybarStars));
+}
+
+interface FaqCounts {
+  talks: number;
+  posts: number;
+  repos: number;
+  npm: number;
+  npmDownloads: number;
+  polybarStars: number;
+}
+
+function faqRoute(entry: FaqDoc): string {
+  return `/faq/${entry.slug}`;
+}
+
+/** One question as its own document. */
+function renderFaqEntry(entry: FaqDoc, counts: FaqCounts): string {
+  const t = (text: string) => fillFaqTokens(text, counts);
+
+  const blocks: string[] = [];
+
+  if (entry.facts?.length) {
+    blocks.push(block('## Facts', list(entry.facts.map(f => `- ${t(f.label)}: ${t(f.value)}`))));
+  }
+  if (entry.evidence?.length) {
+    blocks.push(
+      block(
+        '## Record',
+        list(entry.evidence.map(e => `- ${e.date}, ${t(e.title)}: ${t(e.detail)}`))
+      )
+    );
+  }
+  if (entry.matrix?.length) {
+    blocks.push(
+      block(
+        '## Coverage',
+        list(entry.matrix.map(m => `- ${t(m.item)}, used in ${t(m.where)}: ${t(m.proof)}`))
+      )
+    );
+  }
+  if (entry.steps?.length) {
+    blocks.push(
+      block(
+        '## Steps',
+        list(entry.steps.map((step, i) => `${i + 1}. ${t(step.title)}: ${t(step.detail)}`))
+      )
+    );
+  }
+  if (entry.offering?.length) {
+    blocks.push(
+      block('## Scope', list(entry.offering.map(o => `- ${t(o.title)}: ${t(o.detail)}`)))
+    );
+  }
+  if (entry.links?.length) {
+    blocks.push(
+      block(
+        '## Sources',
+        list(
+          entry.links.map(l =>
+            `- ${link(t(l.label), l.href.startsWith('http') ? l.href : pageUrl(l.href))}`
+          )
+        )
+      )
+    );
+  }
+
+  return block(
+    header(t(entry.question), t(entry.answer), faqRoute(entry)),
+    t(entry.body ?? ''),
+    ...blocks,
+    footer()
+  );
+}
+
+/**
+ * The index: every question with its answer inline.
+ *
+ * The answers are in full rather than truncated, unlike the post and talk
+ * indexes. A 50 word answer is the whole unit here, so cutting it at 180
+ * characters would leave the reader with a question and half a sentence.
+ */
+function renderFaqIndex(entries: FaqDoc[], counts: FaqCounts): string {
+  const t = (text: string) => fillFaqTokens(text, counts);
+
+  const byCategory = new Map<string, FaqDoc[]>();
+  for (const entry of entries) {
+    const key = entry.category || 'General';
+    const bucket = byCategory.get(key);
+    if (bucket) bucket.push(entry);
+    else byCategory.set(key, [entry]);
+  }
+
+  return block(
+    ...[...byCategory].map(([category, group]) =>
+      block(
+        `## ${category}`,
+        group
+          .map(entry =>
+            block(
+              `### ${t(entry.question)}`,
+              t(entry.answer),
+              (entry.body ?? '').trim()
+                ? `Full answer: ${fileUrl(markdownPath(faqRoute(entry)))}`
+                : undefined
+            )
+          )
+          .join('
+
+')
+      )
+    )
+  );
+}
+
 function buildPageBodies(indexes: Record<string, string>): Record<string, string> {
   const about = readJson<{ bio: string; bioExtra: string; email: string; cvUrl: string }>('about');
   const work = readJson<WorkItem[]>('work');
@@ -784,6 +966,32 @@ function generate(): void {
   const projectsIndex = renderProjectsIndex(projects);
   const timelineIndex = renderTimelineIndex(timeline);
 
+  // The FAQ. readFaq() throws when the two locale files disagree on which
+  // questions exist, which is the one way /faq/ can break silently.
+  const faqEntries = readFaq();
+  const polybar = projects.github.find(repo => repo.name === 'Awesome-Polybar');
+  const faqCounts: FaqCounts = {
+    talks: talks.filter(talk => talk.lang === 'en').length,
+    posts: posts.filter(post => post.lang === 'en').length,
+    repos: projects.github.length,
+    npm: projects.npm.length,
+    npmDownloads: projects.npm.reduce((sum, pkg) => sum + (pkg.downloads ?? 0), 0),
+    polybarStars: polybar?.stargazers_count ?? 0,
+  };
+
+  for (const entry of faqEntries) {
+    // Only the questions with a body exist as pages, so only they get a mirror.
+    // Announcing a .md for a question that has no page promises a 404.
+    if (!(entry.body ?? '').trim()) continue;
+    const routePath = faqRoute(entry);
+    const body = renderFaqEntry(entry, faqCounts);
+    writeFile(markdownPath(routePath), body);
+    documents.push({ routePath, body });
+  }
+
+  const faqIndex = renderFaqIndex(faqEntries, faqCounts);
+  writeFile('/faq.txt', faqIndex);
+
   // Every listing exists twice at the root: .txt for the llms.txt convention and
   // .md for anything that follows a Markdown link. Same bytes, two extensions, so
   // neither audience has to guess which one this site happens to publish.
@@ -805,6 +1013,7 @@ function generate(): void {
     '/talks': talksIndex,
     '/projects': projectsIndex,
     '/timeline': timelineIndex,
+    '/faq': faqIndex,
   });
 
   for (const page of config.pages) {
@@ -839,7 +1048,8 @@ function generate(): void {
 
   console.log(`  ${posts.length} posts, ${talks.length} talks, ${projectCount} projects`);
   console.log(`  ${documents.length} Markdown mirrors`);
-  console.log('  llms.txt, posts.txt, talks.txt, projects.txt, timeline.txt, llms-full.txt');
+  console.log(`  ${faqEntries.length} FAQ questions, ${faqEntries.filter(e => (e.body ?? '').trim()).length} with a page`);
+  console.log('  llms.txt, posts.txt, talks.txt, projects.txt, timeline.txt, faq.txt, llms-full.txt');
   console.log('Machine-readable files generated successfully');
 }
 

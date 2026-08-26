@@ -34,9 +34,16 @@ module.exports = {
 
   additionalPaths: async (config) => {
     // Keep in step with LOCALIZED_ROUTES in src/lib/i18n/locales.ts.
-    const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks', '/ai-automation', '/all-contacts', '/chrome-extensions', '/cybersecurity', '/game-development', '/mentorship', '/mobile', '/apps', '/github-pages', '/links', '/links/talk', '/press', '/rankings/github', '/rankings/npm', '/rss', '/sitemap', '/skills', '/tags', '/web-development'];
-    const localizedPrefix = ['/post/', '/talk/', '/app/', '/skills/', '/social/', '/tags/'].some((p) => urlPath.startsWith(p));
-    return Promise.all(localized.map((route) => config.transform(config, route)));
+    const localized = ['/', '/about', '/services', '/projects', '/blog', '/talks', '/ai-automation', '/all-contacts', '/chrome-extensions', '/cybersecurity', '/game-development', '/mentorship', '/mobile', '/apps', '/github-pages', '/links', '/links/talk', '/press', '/rankings/github', '/rankings/npm', '/rss', '/sitemap', '/skills', '/tags', '/web-development', '/faq'];
+
+    // The FAQ detail pages are not in the route manifest under their real English
+    // URL (they build as /en/faq/[slug], which the exclude list drops), so they
+    // go back in here. Requiring the JSON is safe: it is a plain data file and
+    // this config is CommonJS. Only entries with a body exist as pages.
+    const faq = require('./contents/faq/index.json')
+      .filter((entry) => entry.slug && String(entry.body || '').trim())
+      .map((entry) => `/faq/${entry.slug}`);
+    return Promise.all([...localized, ...faq].map((route) => config.transform(config, route)));
   },
   robotsTxtOptions: {
     additionalSitemaps: [
@@ -70,6 +77,11 @@ module.exports = {
       changefreq = 'monthly';
     } else if (urlPath === '/llms-full.txt' || urlPath === '/llms.txt') {
       priority = 0.1;
+      changefreq = 'monthly';
+    } else if (urlPath === '/faq') {
+      priority = 0.8;
+    } else if (urlPath.startsWith('/faq/')) {
+      priority = 0.6;
       changefreq = 'monthly';
     } else if (urlPath === '/skills') {
       priority = 0.8;

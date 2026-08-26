@@ -7,7 +7,7 @@ import { t } from '@lingui/core/macro';
 
 import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from "@/utils/parse";
-import { localePath } from '@/lib/i18n/locales';
+import { HTML_LANG, intlLocale, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
 
@@ -204,7 +204,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/project/[t
           "description": project.description || truncatedDescription,
           "applicationCategory": isSoftware ? type : undefined,
           "url": url,
-          "inLanguage": "en-US",
+          "inLanguage": HTML_LANG[locale],
           "isAccessibleForFree": true,
           ...(project.language && { "programmingLanguage": project.language }),
           ...(project.created_at && { "dateCreated": project.created_at }),
@@ -574,19 +574,19 @@ export default async function ProjectPage({ params }: PageProps<'/[lang]/project
                 {project.created_at && (
                   <div className="mb-2">
                     <p className="text-sm text-gray-500 dark:text-gray-400"><Trans>Created</Trans></p>
-                    <p>{new Date(project.created_at).toLocaleDateString()}</p>
+                    <p>{new Date(project.created_at).toLocaleDateString(intlLocale(locale))}</p>
                   </div>
                 )}
                 {project.updated_at && (
                   <div className="mb-2">
                     <p className="text-sm text-gray-500 dark:text-gray-400"><Trans>Updated</Trans></p>
-                    <p>{new Date(project.updated_at).toLocaleDateString()}</p>
+                    <p>{new Date(project.updated_at).toLocaleDateString(intlLocale(locale))}</p>
                   </div>
                 )}
                 {project.pushed_at && (
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-400"><Trans>Last Push</Trans></p>
-                    <p>{new Date(project.pushed_at).toLocaleDateString()}</p>
+                    <p>{new Date(project.pushed_at).toLocaleDateString(intlLocale(locale))}</p>
                   </div>
                 )}
               </div>
