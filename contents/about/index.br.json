@@ -1,0 +1,14 @@
+{
+  "name": "Tiago Danin",
+  "greeting": "Olá, eu sou",
+  "roles": [
+    "Desenvolvedor Mobile",
+    "Bug Hunter"
+  ],
+  "avatar": "https://avatars.githubusercontent.com/u/5731176?v=4",
+  "bio": "Construo apps mobile, mantenho open source e reporto falhas de segurança. Nativo (Java, Kotlin, Swift) e multiplataforma (React Native, Flutter).",
+  "bioExtra": "Fora do trabalho sou corredor, dançarino e apaixonado por música, sempre atrás de jeitos novos de crescer e me desafiar. Vamos construir algo juntos! 🚀",
+  "seoDescription": "Desenvolvedor Mobile e Full Stack, Bug Hunter",
+  "cvUrl": "https://linkedin.com/in/tiagodanin",
+  "email": "TiagoDanin@outlook.com"
+}

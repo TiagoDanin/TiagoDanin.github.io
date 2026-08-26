@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Início",
+    "href": "/",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": false
+  },
+  {
+    "title": "Serviços",
+    "href": "/services",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": false
+  },
+  {
+    "title": "Projetos",
+    "href": "/projects",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": true
+  },
+  {
+    "title": "Blog",
+    "href": "/blog",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": false
+  },
+  {
+    "title": "Palestras",
+    "href": "/talks",
+    "navbar": true,
+    "footer": true,
+    "hideOnHome": false
+  },
+  {
+    "title": "Mapa do site",
+    "href": "/sitemap",
+    "navbar": false,
+    "footer": true,
+    "hideOnHome": false
+  }
+]

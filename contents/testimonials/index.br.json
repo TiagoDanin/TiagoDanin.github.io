@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Hackathon TecBan",
+    "role": "1º lugar",
+    "company": "TecBan",
+    "quote": "Primeiro lugar no Hackathon de Open Banking da TecBan. Construí o BICOS para que as pessoas aproveitem o Open Banking sem precisar aprender o que ele é.",
+    "avatar": null,
+    "icon": "Trophy"
+  },
+  {
+    "name": "Open source",
+    "role": "Arctic Code Vault Contributor",
+    "company": "GitHub",
+    "quote": "{npm} pacotes npm publicados, {polybarStars} estrelas no Awesome-Polybar e contribuições para Node.js e ElectronJS. Contribuidor do GitHub Arctic Code Vault.",
+    "avatar": null,
+    "icon": "Github"
+  },
+  {
+    "name": "Palestras",
+    "role": "Palestrante",
+    "company": "Conferências",
+    "quote": "Palestrante em {talks} eventos, entre eles DevOpsDays Belém, Google DevFest e BrazilJS. Palestras sobre mobile, DevOps e segurança.",
+    "avatar": null,
+    "icon": "Mic"
+  }
+]

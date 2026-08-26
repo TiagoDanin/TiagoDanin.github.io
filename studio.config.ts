@@ -3,6 +3,13 @@ import type { StudioConfig } from "nextjs-studio";
 const opt = (value: string) => ({ label: value, value });
 
 const config: StudioConfig = {
+  /**
+   * Files without a locale suffix are English. Stamping them means `.locale("en")`
+   * selects them the same way `.locale("pt")` selects `index.pt.json`, instead of
+   * the default language needing a `lang` field to be reachable.
+   */
+  defaultLocale: "en",
+
   collections: {
     about: {
       schema: {

@@ -1,0 +1,51 @@
+[
+    {
+        "organization": "Devs Norte",
+        "role": "Organizador",
+        "startDate": "2019",
+        "endDate": "Atual",
+        "logo": "/business/devs_norte.png",
+        "description": "A ideia é aproximar a comunidade de desenvolvedores, conversando sobre desenvolvimento, carreira, ferramentas e o que mais aparecer."
+    },
+    {
+        "organization": "Node.js",
+        "role": "Tradutor da documentação",
+        "startDate": "2023",
+        "endDate": "Atual",
+        "logo": "/business/nodejs.png",
+        "description": "Contribuição na tradução da documentação do Node.js, deixando a tecnologia mais acessível para quem não fala inglês."
+    },
+    {
+        "organization": "ElectronJS",
+        "role": "Tradutor da documentação",
+        "startDate": "2017",
+        "endDate": "Atual",
+        "logo": "/business/electron_js.png",
+        "description": "Contribuição na tradução da documentação do ElectronJS, ajudando a tornar o framework mais acessível no mundo todo."
+    },
+    {
+        "organization": "BrazilJS",
+        "role": "Organizador de evento - On The Road Belém",
+        "startDate": "2019",
+        "endDate": "2019",
+        "logo": "/business/braziljs.png",
+        "description": "Organização do BrazilJS On The Road em Belém, reunindo a comunidade JavaScript para troca de conhecimento e networking.",
+        "category": "Ciência e Tecnologia"
+    },
+    {
+        "organization": "Node.js",
+        "role": "Membro do time de i18n",
+        "startDate": "2018",
+        "endDate": "2023",
+        "logo": "/business/nodejs.png",
+        "description": "Parte do time de internacionalização, trabalhando para deixar a documentação e os recursos do Node.js disponíveis em vários idiomas."
+    },
+    {
+        "organization": "Synko",
+        "role": "Desenvolvedor de Software",
+        "startDate": "2014",
+        "endDate": "2019",
+        "logo": "/business/synko.png",
+        "description": "Responsável por desenvolver e manter bots de Telegram com propósitos variados, como busca de conteúdo (Spotify, Youtube, Google e outros), gestão de grupos e chatbot.\n\nGitHub: https://github.com/SynkoDevelopers"
+    }
+]

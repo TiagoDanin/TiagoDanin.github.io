@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Desenvolvimento Mobile",
+    "description": "Android e iOS nativos (Kotlin, Swift) e multiplataforma (Flutter, React Native), entregues em produção.",
+    "icon": "Smartphone",
+    "link": "/mobile"
+  },
+  {
+    "title": "Desenvolvimento Full Stack",
+    "description": "Web de ponta a ponta em React e Node.js, junto com a camada de banco que sustenta tudo.",
+    "icon": "Code",
+    "link": "/web-development"
+  },
+  {
+    "title": "Segurança da Informação",
+    "description": "Bug hunting, teste de intrusão e revisão de código seguro em sistemas em produção.",
+    "icon": "Shield",
+    "link": "/cybersecurity"
+  },
+  {
+    "title": "DevOps e CI/CD",
+    "description": "Pipelines, infraestrutura em nuvem e o ciclo build/teste/deploy que deixa release sem graça.",
+    "icon": "Zap",
+    "link": "/services"
+  }
+]

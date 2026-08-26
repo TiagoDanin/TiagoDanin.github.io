@@ -1,0 +1,37 @@
+[
+  {
+    "title": "BICOS",
+    "description": "Aplicativo de Open Banking feito num hackathon da TecBan (empresa por trás dos caixas Banco24Horas). O projeto venceu a competição ao mostrar que o usuário não precisa entender Open Banking para se beneficiar dele.",
+    "imageUrl": "/projects/bicos-app.png",
+    "href": "https://www.tecmundo.com.br/mercado/155846-ninguem-precisa-entender-open-banking-lucrar.htm"
+  },
+  {
+    "title": "CAM Covers",
+    "description": "Aplicativo que transforma fotos comuns em capas de álbum com cara de profissional, inspiradas em players de música reais.",
+    "imageUrl": "/projects/cam-covers-app.png",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers"
+  },
+  {
+    "title": "React Native - Zendesk SDK",
+    "description": "Wrapper do SDK do Zendesk para React Native, que simplifica integrar atendimento ao cliente em apps mobile.",
+    "imageUrl": "/projects/zendesk-sdk.png",
+    "href": "https://idopterlabs.github.io/rn-zendesk/"
+  },
+  {
+    "title": "Stone World",
+    "description": "Jogo de puzzle ambientado num mundo de pedra, feito com Unity 3D. Em breve!",
+    "imageUrl": "/projects/stone-game.png"
+  },
+  {
+    "title": "The Slime Dungeon",
+    "description": "Sobreviva numa masmorra de slimes! Você está preso com criaturas adoráveis. Quanto tempo aguenta? Feito com Flutter e a engine Bonfire.",
+    "imageUrl": "/projects/slime-game.png",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.the_slime_dungeon"
+  },
+  {
+    "title": "Ar-condicionado Virtual de Bolso",
+    "description": "Tenha um ar-condicionado virtual no bolso! Um app de som relaxante para dormir melhor. Criado como projeto para estudar animações em Flutter.",
+    "imageUrl": "/projects/air-conditionin.png",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning"
+  }
+]
