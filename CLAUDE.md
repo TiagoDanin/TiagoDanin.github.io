@@ -206,7 +206,11 @@ There is **no fallback**: `.locale("es")` on a collection with no Spanish return
 
 This requires the `nextjs-studio` change that reads locale from JSON collections (`parseLocaleFromFilename` accepts `.json`, `detectCollectionType` counts distinct slugs, `defaultLocale` stamping, locale-aware `reindexFile`). The studio UI has a locale switcher for MDX but **not for JSON**, so `index.br.json` is edited by hand for now.
 
-**Do NOT** import JSON directly from `contents/` - always use the `queryCollection` API. The only exception is build-time scripts in `scripts/`, which run outside Next and read the JSON with `fs`.
+**Do NOT read `contents/` with `fs`, anywhere.** Always go through `queryCollection`, including in `scripts/`.
+
+`nextjs-studio/server` auto-initializes from `process.cwd()`, so a script run with `tsx` queries content exactly the way a page does. Reading the files directly means a second, worse parser of the same content, free to disagree with the one the site renders: it re-implements frontmatter parsing, the locale-suffix convention and the slug rules, and it silently goes stale when any of them change.
+
+`fs` in `scripts/` is for **output** (writing to `public/`, moving `dist/`) and for reading build artifacts. Never for `contents/`.
 
 `next.config.ts` wraps the config with `withStudio()` from `nextjs-studio/next`. That is what makes saving a file in `contents/` refresh the browser in dev; without it the dev server serves fresh content only on a full page load. It only works on webpack, which is why `yarn dev` and `yarn build` both pass `--webpack` explicitly. Next 16 defaults to Turbopack and aborts the build when a `webpack` config is present without a `turbopack` config, so the flag is required, not optional.
 
