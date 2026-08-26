@@ -2,6 +2,7 @@ import { Projects } from "@/components/sections/Projects";
 import { FullProjects } from "@/components/sections/FullProjects";
 import type { ProjectForCard } from "@/components/sections/FullProjects";
 import { queryCollection } from 'nextjs-studio/server';
+import { DEFAULT_LOCALE } from '@/lib/i18n/locales';
 import Link from 'next/link';
 import { Github, Package, Smartphone, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -84,7 +85,7 @@ function toCards(
 }
 
 const Index = () => {
-  const projectsData = queryCollection('projects');
+  const projectsData = queryCollection('projects').locale(DEFAULT_LOCALE);
 
   const projectSections = [
     {

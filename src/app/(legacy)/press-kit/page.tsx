@@ -3,6 +3,7 @@ import path from 'path';
 import Image from "next/image";
 import Link from "next/link";
 import { queryCollection } from 'nextjs-studio/server';
+import { DEFAULT_LOCALE } from '@/lib/i18n/locales';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BioBrowser } from "@/components/sections/BioBrowser";
@@ -134,7 +135,7 @@ const TOPICS = [
 const PressKitPage = () => {
   const about = queryCollection('about').one();
   const talks = [...queryCollection('talks').where({ lang: 'en' })];
-  const work = [...queryCollection('work')];
+  const work = [...queryCollection('work').locale(DEFAULT_LOCALE)];
   const npmPackages = [...queryCollection('npm')];
   const bioEntries = [...queryCollection('bios')];
   const pressItems = getPressItems();

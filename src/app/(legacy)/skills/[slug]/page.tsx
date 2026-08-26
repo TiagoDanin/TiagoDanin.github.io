@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { queryCollection } from 'nextjs-studio/server';
+import { DEFAULT_LOCALE } from '@/lib/i18n/locales';
 import { ArrowRight, Briefcase, BookOpen, Mic } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -21,7 +22,7 @@ interface SkillsEntry {
 }
 
 function getAllSkills(): Array<{ skill: SkillItem; category: string; slug: string }> {
-  const skills = [...queryCollection('skills')] as SkillsEntry[];
+  const skills = [...queryCollection('skills').locale(DEFAULT_LOCALE)] as SkillsEntry[];
   const result: Array<{ skill: SkillItem; category: string; slug: string }> = [];
 
   for (const category of skills) {

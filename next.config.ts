@@ -1,13 +1,36 @@
 import type { NextConfig } from "next";
 import { withStudio } from "nextjs-studio/next";
+import { linguiMacroSwcPlugin } from "@lingui/swc-plugin/options";
+import { DEFAULT_LOCALE, LOCALIZED_ROUTES } from "./src/lib/i18n/locales";
+
+const isDev = process.env.NODE_ENV === "development";
+
+/**
+ * The default locale is served from the site root as well as from `/en`.
+ *
+ * In production `scripts/copyDefaultLocale.ts` does it, copying `dist/en/**`
+ * over the root after the build. There is no build in `next dev`, so without
+ * these rewrites `/` 404s and `/about/` errors on a `[lang]` param that does
+ * not exist, and the English site is only reachable at URLs it will never be
+ * served from.
+ *
+ * Derived from the same list `localePath()` reads, so a route cannot be
+ * reachable in one and missing in the other. Rewrites and `output: "export"`
+ * are mutually exclusive, which is why the export only applies to builds.
+ */
+const defaultLocaleRewrites = LOCALIZED_ROUTES.map((route) => ({
+  source: route,
+  destination: route === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${route}`,
+}));
 
 const nextConfig: NextConfig = {
   /**
-   * Enable static exports for the App Router.
+   * Enable static exports for the App Router. Dev skips it so the rewrites
+   * above can run; `yarn build` is what enforces export compatibility.
    *
    * @see https://nextjs.org/docs/app/building-your-application/deploying/static-exports
    */
-  output: "export",
+  ...(isDev ? { rewrites: async () => defaultLocaleRewrites } : { output: "export" as const }),
 
   /**
    * Generate /page/index.html instead of /page.html to align with GitHub Pages
@@ -39,6 +62,15 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   reactStrictMode: true,
+
+  /**
+   * Transforms the Lingui macros (`<Trans>`, `t`) at build time. Reads
+   * lingui.config.ts for the locale list, so the two never drift.
+   */
+  experimental: {
+    swcPlugins: [linguiMacroSwcPlugin()],
+  },
+
 typescript: {
     ignoreBuildErrors: true,
   },

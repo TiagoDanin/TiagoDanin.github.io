@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { queryCollection } from 'nextjs-studio/server';
+import { DEFAULT_LOCALE } from '@/lib/i18n/locales';
 import { titleToSlug } from '@/utils/parse';
 import { Badge } from '@/components/ui/badge';
 import { withMarkdown } from '@/lib/markdown-alternate';
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
 };
 
 export default function SkillsPage() {
-  const skills = [...queryCollection('skills')] as SkillsEntry[];
+  const skills = [...queryCollection('skills').locale(DEFAULT_LOCALE)] as SkillsEntry[];
 
   const itemListSchema = {
     "@context": "https://schema.org",
