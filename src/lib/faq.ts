@@ -255,7 +255,13 @@ export function groupFaqByCategory(entries: readonly FaqEntry[]): Array<{
   return [...groups].map(([category, list]) => ({ category, entries: list }));
 }
 
-/** Resolves `related` slugs to entries, dropping the ones that do not exist. */
+/**
+ * Resolves `related` slugs to entries.
+ *
+ * Only entries that have a page of their own survive. A question with no body is
+ * never generated as a route, so linking to it from a sibling would be a link to
+ * a 404: the index is where those questions live, under their anchor.
+ */
 export function relatedFaqEntries(
   entries: readonly FaqEntry[],
   entry: FaqEntry,
@@ -263,6 +269,9 @@ export function relatedFaqEntries(
 ): FaqEntry[] {
   return (entry.related ?? [])
     .map((slug) => findFaqEntry(entries, slug))
-    .filter((found): found is FaqEntry => Boolean(found) && found!.slug !== entry.slug)
+    .filter(
+      (found): found is FaqEntry =>
+        Boolean(found) && found!.slug !== entry.slug && (found!.body ?? '').trim().length > 0
+    )
     .slice(0, limit);
 }

@@ -1,5 +1,5 @@
 import { setupI18n, type I18n } from '@lingui/core';
-import { setI18n } from '@lingui/react/server';
+import { getI18n, setI18n } from '@lingui/react/server';
 
 import { messages as en } from '@/locales/en/messages';
 import { messages as br } from '@/locales/br/messages';
@@ -41,4 +41,19 @@ export function initI18n(locale: Locale): I18n {
 /** Narrows a raw route param. Falls back rather than 404s: the param comes from `generateStaticParams`, so an unknown value means a bug, not a bad URL. */
 export function resolveLocale(value: string): Locale {
   return isLocale(value) ? value : DEFAULT_LOCALE;
+}
+
+/**
+ * The instance for this render, creating a default-locale one if none exists.
+ *
+ * `not-found.tsx` receives no params, so it cannot resolve a locale, and Next
+ * renders it in a scope where the layout's `initI18n` has not necessarily run.
+ * A `<Trans>` there would otherwise throw during export, which is how it was
+ * found: the build failed on a project slug that hits `notFound()`.
+ *
+ * English is the honest fallback. A 404 body is chrome, and getting it in the
+ * wrong language is better than failing the build.
+ */
+export function ensureI18n(): I18n {
+  return getI18n() ?? initI18n(DEFAULT_LOCALE);
 }

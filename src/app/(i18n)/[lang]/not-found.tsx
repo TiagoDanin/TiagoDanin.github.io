@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ensureI18n } from '@/lib/i18n/server';
 import { Trans } from "@lingui/react/macro";
 
 export const metadata = {
@@ -6,6 +7,9 @@ export const metadata = {
 };
 
 const NotFound = () => {
+  // not-found receives no params, so it cannot resolve a locale itself.
+  ensureI18n();
+
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center">

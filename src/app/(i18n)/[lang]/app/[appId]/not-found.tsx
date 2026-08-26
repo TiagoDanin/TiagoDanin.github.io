@@ -1,7 +1,11 @@
 import Link from "next/link";
+import { ensureI18n } from '@/lib/i18n/server';
 import { Trans } from "@lingui/react/macro";
 
 export default function AppNotFound() {
+  // not-found receives no params, so it cannot resolve a locale itself.
+  ensureI18n();
+
   return (
     <div className="container mx-auto py-20 px-4 text-center">
       <h1 className="text-4xl font-bold mb-4">
