@@ -10,13 +10,13 @@ const DIST_DIR = path.join(__dirname, 'dist');
 // couple of megabytes rather than the ~70 MB a full read of every page costs.
 const HEAD_BYTES = 32 * 1024;
 
-// Directories under dist/ that hold no page: the client bundle, the RSC payload
-// dumps, the Portuguese half (sitemap-site-br.xml lists those), and the two
-// error pages, which are noindex anyway.
+// Directories that hold no page: the client bundle, the RSC payload dumps and
+// the two error pages, which are noindex anyway. `br` is skipped at the English
+// root because sitemap-site-br.xml lists that half.
 const SKIP_DIRS = new Set(['_next', 'br', '404', '_not-found']);
 
 /**
- * Every English page, read off the build output.
+ * Every page under a locale prefix, read off the build output.
  *
  * next-sitemap reads the route manifest instead, and since the `[lang]`
  * migration that manifest says every English page lives under `/en`. They do
@@ -32,38 +32,50 @@ const SKIP_DIRS = new Set(['_next', 'br', '404', '_not-found']);
  * `contents/` here would mean a second, worse copy of ten `generateStaticParams`
  * functions plus the slug rules, free to disagree with the pages that exist.
  * A directory holding an index.html is a page; nothing else in dist/ has one.
+ *
+ * Exported because `scripts/generateSitemaps.ts` builds the Portuguese and
+ * GitHub sitemaps from the same walk. It listed pages from `contents/` and
+ * arrived at a different answer: posts and talks and nothing else, no project,
+ * app, timeline or social page in either language. next-sitemap ignores keys it
+ * does not know, so riding along on the config object costs nothing and keeps
+ * the two files reading one list.
+ *
+ * @param {string} prefix `''` for English, `'/br'` for Portuguese.
  */
-function builtRoutes() {
-  if (!fs.existsSync(DIST_DIR)) {
+function builtRoutes(prefix = '') {
+  const root = path.join(DIST_DIR, prefix);
+
+  if (!fs.existsSync(root)) {
     throw new Error(
-      'dist/ not found. next-sitemap reads the exported pages, so the build has to run first: `yarn deploy` chains build -> sitemap -> build.'
+      `${root} not found. The sitemaps are read off the exported pages, so the build has to run first: \`yarn deploy\` chains build -> sitemap -> build.`
     );
   }
 
   const routes = [];
 
-  const walk = (dir, prefix) => {
+  const walk = (dir, route) => {
     if (fs.existsSync(path.join(dir, 'index.html'))) {
-      routes.push(prefix === '' ? '/' : prefix);
+      routes.push(route === '' ? '/' : route);
     }
 
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       if (!entry.isDirectory()) continue;
       // `__next.$d$lang/` and friends are build metadata, not routes.
       if (entry.name.startsWith('__next.')) continue;
-      if (prefix === '' && SKIP_DIRS.has(entry.name)) continue;
+      if (dir === root && SKIP_DIRS.has(entry.name)) continue;
 
-      walk(path.join(dir, entry.name), `${prefix}/${entry.name}`);
+      walk(path.join(dir, entry.name), `${route}/${entry.name}`);
     }
   };
 
-  walk(DIST_DIR, '');
+  walk(root, prefix);
 
-  return routes
-    // Listed in sitemap-project-github.xml, so the family stays disjoint.
-    .filter((route) => !route.startsWith('/project/github/'))
-    .filter((route) => !isNoindex(route))
-    .sort();
+  return routes.filter((route) => !isNoindex(route)).sort();
+}
+
+/** The GitHub project landing pages have a sitemap of their own, in both languages. */
+function isGithubProject(route) {
+  return route.startsWith('/project/github/') || route.startsWith('/br/project/github/');
 }
 
 /** Whether the page tells crawlers not to index it, read from the page itself. */
@@ -113,7 +125,11 @@ module.exports = {
   ],
 
   additionalPaths: async (config) =>
-    Promise.all(builtRoutes().map((route) => config.transform(config, route))),
+    Promise.all(
+      builtRoutes()
+        .filter((route) => !isGithubProject(route))
+        .map((route) => config.transform(config, route))
+    ),
 
   robotsTxtOptions: {
     additionalSitemaps: [
@@ -226,3 +242,9 @@ module.exports = {
     };
   },
 };
+
+// For scripts/generateSitemaps.ts, which writes the other three files in the
+// family. It reuses `transform` too, so the priority ladder and the hreflang
+// set are written once and both sitemaps say the same thing about a page.
+module.exports.builtRoutes = builtRoutes;
+module.exports.isGithubProject = isGithubProject;
