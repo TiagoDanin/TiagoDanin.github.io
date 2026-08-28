@@ -13,6 +13,7 @@ import {
   type LicenseInfo,
 } from '@/lib/projects';
 import { HTML_LANG, intlLocale, localePath } from '@/lib/i18n/locales';
+import { canonicalHomepage } from '@/lib/homepage';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
@@ -223,6 +224,9 @@ export default async function ProjectPage({ params }: PageProps<'/[lang]/project
   const url = urlPrefixMap[type]
     ? `${urlPrefixMap[type]}${project.name}`
     : project.html_url || project.url || '';
+  // GitHub stores the homepage as it was typed, which for most repos is the
+  // .github.io host that 301s to this domain.
+  const homepage = canonicalHomepage(project.homepage);
 
   const isSoftware = ["npm", "pypi", "luarocks", "atom", "github", "aur"].includes(type);
 
@@ -406,7 +410,7 @@ export default async function ProjectPage({ params }: PageProps<'/[lang]/project
           {/* Project details - single column layout */}
           <div className="space-y-6 mb-10">
             {/* Project links */}
-            {(url || project.homepage) && (
+            {(url || homepage) && (
               <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
                 <h2 className="text-xl font-semibold mb-3"><Trans>Links</Trans></h2>
                 <div className="space-y-2">
@@ -421,9 +425,9 @@ export default async function ProjectPage({ params }: PageProps<'/[lang]/project
                       {type === 'github' ? t(i18n)`Repository` : type === 'npm' ? t(i18n)`npm Package` : t(i18n)`Project Page`}
                     </a>
                   )}
-                  {project.homepage && project.homepage !== url && (
+                  {homepage && homepage !== url && (
                     <a
-                      href={project.homepage as string}
+                      href={homepage}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"

@@ -11,7 +11,3 @@ Sitemap: https://tiagodanin.com/sitemap.xml
 Sitemap: https://tiagodanin.com/sitemap-site-br.xml
 Sitemap: https://tiagodanin.com/sitemap-project-github.xml
 Sitemap: https://tiagodanin.com/sitemap-homepage-github.xml
-Sitemap: https://tiagodanin.com/rss/blog.xml
-Sitemap: https://tiagodanin.com/rss/talks.xml
-Sitemap: https://tiagodanin.com/rss/timeline.xml
-Sitemap: https://tiagodanin.com/rss/projects.xml

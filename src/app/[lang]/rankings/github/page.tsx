@@ -3,6 +3,7 @@ import { t } from '@lingui/core/macro';
 import { queryCollection } from 'nextjs-studio/server';
 import GitHubRankingsClient from '@/components/sections/GitHubRankingsClient';
 import { HTML_LANG } from '@/lib/i18n/locales';
+import { canonicalHomepage } from '@/lib/homepage';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
@@ -69,6 +70,13 @@ export default async function GitHubRankingsPage({ params }: PageProps<'/[lang]/
   const githubData = queryCollection('github');
   const repos = [...githubData] as unknown as GithubRepoEntry[];
 
+  // The "Demo" button links this field, so it is normalized before the client
+  // component ever sees it: most repos store the .github.io host, which 301s.
+  const rankingData = [...githubData].map((repo) => ({
+    ...repo,
+    homepage: canonicalHomepage(repo.homepage as string | undefined),
+  }));
+
   // Same ordering the client renders, so the structured data describes the
   // list a crawler actually sees on the page.
   const topRepos = [...repos]
@@ -130,7 +138,7 @@ export default async function GitHubRankingsPage({ params }: PageProps<'/[lang]/
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <GitHubRankingsClient githubData={[...githubData]} locale={locale} />
+      <GitHubRankingsClient githubData={rankingData} locale={locale} />
     </>
   );
 }
