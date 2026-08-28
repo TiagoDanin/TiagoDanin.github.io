@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#. placeholder {0}: Number(project.downloads).toLocaleString('en-US')
+#. placeholder {0}: Number(project.downloads).toLocaleString(intlLocale(locale))
 #: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 msgid " {0} downloads."
 msgstr " {0} downloads."
@@ -95,7 +95,7 @@ msgstr "Desenvolvedor {0}, Tiago Danin"
 msgid "{0} Development"
 msgstr "Desenvolvimento {0}"
 
-#. placeholder {0}: Number(project.downloads).toLocaleString('en-US')
+#. placeholder {0}: Number(project.downloads).toLocaleString(intlLocale(locale))
 #: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 msgid "{0} downloads."
 msgstr "{0} downloads."
@@ -385,6 +385,7 @@ msgstr "Agentes de IA e workflows"
 msgid "AI agents and MCP"
 msgstr "Agentes de IA e MCP"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "AI Automation"
 msgstr "Automação com IA"
@@ -648,6 +649,7 @@ msgid "Approval workflows"
 msgstr "Fluxos de aprovação"
 
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
+#: src/app/(i18n)/[lang]/apps/page.tsx
 msgid "Apps"
 msgstr "Apps"
 
@@ -831,6 +833,8 @@ msgid "Bios in English and Portuguese, photo, logo and talk topics, ready to cop
 msgstr "Bios em inglês e português, foto, logo e temas de palestra, prontos para copiar. Não precisa de aprovação: use o que está nesta página do jeito que está, ou corte para caber."
 
 #: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+#: src/app/(i18n)/[lang]/blog/page.tsx
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
 msgid "Blog"
 msgstr "Blog"
 
@@ -1137,6 +1141,7 @@ msgstr "Casos de uso comuns"
 msgid "Community"
 msgstr "Comunidade"
 
+#: src/app/(i18n)/[lang]/business/page.tsx
 #: src/components/ui/experience-item.tsx
 msgid "Company"
 msgstr "Empresa"
@@ -1951,25 +1956,36 @@ msgstr "Bora construir algo, ou só dar um oi"
 msgid "Hit detection & tuning"
 msgstr "Detecção de acerto e ajuste fino"
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
 #: src/app/(i18n)/[lang]/all-contacts/page.tsx
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
+#: src/app/(i18n)/[lang]/apps/page.tsx
 #: src/app/(i18n)/[lang]/blog/[page]/page.tsx
+#: src/app/(i18n)/[lang]/blog/page.tsx
+#: src/app/(i18n)/[lang]/business/page.tsx
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 #: src/app/(i18n)/[lang]/faq/[slug]/page.tsx
 #: src/app/(i18n)/[lang]/faq/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
 #: src/app/(i18n)/[lang]/github-pages/page.tsx
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 #: src/app/(i18n)/[lang]/mobile/page.tsx
+#: src/app/(i18n)/[lang]/page.tsx
+#: src/app/(i18n)/[lang]/post/[slug]/page.tsx
 #: src/app/(i18n)/[lang]/press-kit/page.tsx
 #: src/app/(i18n)/[lang]/press/page.tsx
 #: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+#: src/app/(i18n)/[lang]/projects/page.tsx
 #: src/app/(i18n)/[lang]/rankings/github/page.tsx
 #: src/app/(i18n)/[lang]/rankings/npm/page.tsx
 #: src/app/(i18n)/[lang]/rss/page.tsx
+#: src/app/(i18n)/[lang]/services/page.tsx
 #: src/app/(i18n)/[lang]/sitemap/page.tsx
 #: src/app/(i18n)/[lang]/skills/[slug]/page.tsx
 #: src/app/(i18n)/[lang]/skills/page.tsx
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
+#: src/app/(i18n)/[lang]/talks/page.tsx
 #: src/app/(i18n)/[lang]/timeline/page.tsx
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Home"
@@ -1990,10 +2006,6 @@ msgstr "Como funciona a mentoria"
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Hybrid search"
 msgstr "Busca híbrida"
-
-#: src/app/(i18n)/[lang]/services/page.tsx
-msgid "I help startups and companies launch high-performance mobile apps, secure their applications, and grow their teams through mentorship."
-msgstr "Ajudo startups e empresas a lançar apps mobile de alta performance, proteger suas aplicações e desenvolver seus times por mentoria."
 
 #: src/app/(i18n)/[lang]/apps/page.tsx
 msgid "I take on mobile development projects, from idea to App Store launch."
@@ -2161,10 +2173,6 @@ msgstr "Saiba mais"
 #: src/app/(i18n)/[lang]/mentorship/page.tsx
 msgid "Learning resources and roadmap"
 msgstr "Materiais de estudo e roadmap"
-
-#: src/app/(i18n)/[lang]/services/page.tsx
-msgid "Let's Build Something Amazing"
-msgstr "Vamos construir algo juntos"
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "Let's discuss how I can help identify and fix security vulnerabilities in your applications. Professional, thorough, and actionable security assessments."
@@ -2350,6 +2358,10 @@ msgstr "Desenvolvimento de aplicativos mobile"
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Mobile apps are essential for modern businesses. I help you succeed in the mobile-first world with comprehensive solutions."
 msgstr "Hoje o app é o principal canal de muitos negócios. Cuido do ciclo inteiro, do código à loja."
+
+#: src/app/(i18n)/[lang]/services/page.tsx
+msgid "Mobile apps in Flutter and React Native, application security, and mentorship for engineering teams."
+msgstr "Apps mobile em Flutter e React Native, segurança de aplicações e mentoria para times de engenharia."
 
 #: src/app/(i18n)/[lang]/services/page.tsx
 msgid "Mobile dev with Flutter & React Native"
@@ -3096,6 +3108,7 @@ msgid "projects"
 msgstr "projetos"
 
 #: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
+#: src/app/(i18n)/[lang]/projects/page.tsx
 #: src/app/(i18n)/[lang]/rss/page.tsx
 msgid "Projects"
 msgstr "Projetos"
@@ -3500,7 +3513,10 @@ msgstr "Server components e actions"
 msgid "Service workers, declarativeNetRequest, and modern background scripts, built the way Chrome wants."
 msgstr "Service workers, declarativeNetRequest e background scripts modernos, do jeito que o Chrome espera."
 
+#: src/app/(i18n)/[lang]/ai-automation/page.tsx
 #: src/app/(i18n)/[lang]/chrome-extensions/page.tsx
+#: src/app/(i18n)/[lang]/game-development/page.tsx
+#: src/app/(i18n)/[lang]/services/page.tsx
 #: src/app/(i18n)/[lang]/web-development/page.tsx
 msgid "Services"
 msgstr "Serviços"
@@ -3728,6 +3744,7 @@ msgstr "palestras"
 
 #: src/app/(i18n)/[lang]/rss/page.tsx
 #: src/app/(i18n)/[lang]/tags/[tag]/page.tsx
+#: src/app/(i18n)/[lang]/talk/[slug]/page.tsx
 #: src/app/(i18n)/[lang]/talks/page.tsx
 msgid "Talks"
 msgstr "Palestras"
@@ -4301,6 +4318,10 @@ msgstr "O que eu aprendi"
 #: src/app/(i18n)/[lang]/press-kit/page.tsx
 msgid "What I usually present. Each one can run as a talk, a workshop, or a panel."
 msgstr "O que costumo apresentar. Cada tema funciona como palestra, workshop ou painel."
+
+#: src/app/(i18n)/[lang]/services/page.tsx
+msgid "What I work on"
+msgstr "No que eu trabalho"
 
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
 msgid "What it does"
