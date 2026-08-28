@@ -27,9 +27,13 @@
 # production
 /build
 /public/rss/blog.xml
+/public/rss/blog-*.xml
 /public/rss/projects.xml
+/public/rss/projects-*.xml
 /public/rss/talks.xml
+/public/rss/talks-*.xml
 /public/rss/timeline.xml
+/public/rss/timeline-*.xml
 /public/sitemap.xml
 /public/sitemap-site.xml
 /public/sitemap-site-*.xml
@@ -41,11 +45,13 @@
 /public/talks.txt
 /public/projects.txt
 /public/timeline.txt
+/public/faq.txt
 
 # Markdown mirrors written by scripts/generateLlms.ts
 /public/*.md
 /public/post/
 /public/talk/
+/public/br/
 /public/project/
 /public/rankings/
 /public/faq/

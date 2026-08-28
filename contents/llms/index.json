@@ -44,6 +44,11 @@
       "description": "What Tiago takes on as a freelancer and consultant."
     },
     {
+      "path": "/business",
+      "title": "Company",
+      "description": "Hiring Tiago through his registered company: what he takes on, who the work suits and who it does not, how a contract runs, and the public CNPJ record for supplier onboarding."
+    },
+    {
       "path": "/press",
       "title": "Press",
       "description": "Interviews, podcasts and articles that cover Tiago's work."

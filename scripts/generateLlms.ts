@@ -14,16 +14,15 @@
 
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
 import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from '../src/utils/parse';
+import { entryPath, type Locale } from '../src/lib/i18n/locales.js';
 
 const siteUrl = 'https://tiagodanin.com';
 
 /** Newline, as a constant so generated patches cannot mangle the escape. */
 const NL = String.fromCharCode(10);
 const publicDir = path.join(process.cwd(), 'public');
-const contentsDir = path.join(process.cwd(), 'contents');
 
 const PROJECT_TYPES = [
   'github',
@@ -93,8 +92,20 @@ interface LlmsConfig {
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
-function readJson<T>(collection: string): T {
-  return JSON.parse(fs.readFileSync(path.join(contentsDir, collection, 'index.json'), 'utf8')) as T;
+/**
+ * Every row of a list collection, in English.
+ *
+ * `.locale()` is explicit even though the mirrors are English-only: without it
+ * a collection that gains an `index.br.json` starts returning both languages,
+ * and the list silently renders twice.
+ */
+function readAll<T>(collection: string): T[] {
+  return [...queryCollection(collection as 'links').locale('en')] as unknown as T[];
+}
+
+/** The single row of a singleton collection. `.one()` already prefers English. */
+function readOne<T>(collection: string): T {
+  return queryCollection(collection as 'about').one() as unknown as T;
 }
 
 function block(...parts: Array<string | false | null | undefined>): string {
@@ -165,27 +176,31 @@ function mdxToMarkdown(body: string): string {
     .trim();
 }
 
+/**
+ * Both languages of a post/talk collection, newest first.
+ *
+ * The studio already resolved the locale from the filename suffix and split the
+ * frontmatter from the body, so `lang` and `body` come straight off the entry.
+ */
 function readEntries(collection: 'posts' | 'talks'): Entry[] {
-  const dir = path.join(contentsDir, collection);
-
-  return fs
-    .readdirSync(dir)
-    .filter((file) => file.endsWith('.mdx'))
-    .map((file) => {
-      const parsed = matter(fs.readFileSync(path.join(dir, file), 'utf8'));
-      const data = parsed.data as Omit<Entry, 'body'>;
-      return {
-        ...data,
-        lang: file.includes('.pt.') ? 'pt' : 'en',
-        body: mdxToMarkdown(parsed.content),
-      };
+  return [...queryCollection(collection)]
+    .map((entry) => {
+      const data = entry as unknown as Omit<Entry, 'body'> & { body?: string };
+      return { ...data, body: mdxToMarkdown(data.body ?? '') };
     })
     .sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
 }
 
-/** `/post/slug` in English, `/post/slug/pt` in Portuguese. */
-function entryRoute(prefix: string, entry: Entry): string {
-  return entry.lang === 'pt' ? `/${prefix}/${entry.slug}/pt` : `/${prefix}/${entry.slug}`;
+/**
+ * `/post/slug` in English, `/br/post/slug` in Portuguese.
+ *
+ * The trailing-segment form this used to build (`/post/slug/pt`) was retired
+ * with the `(legacy)` group, so every Portuguese URL in the text layer pointed
+ * at a page that no longer exists.
+ */
+function entryRoute(prefix: 'post' | 'talk', entry: Entry): string {
+  const locale: Locale = entry.lang === 'pt' ? 'br' : 'en';
+  return entryPath(locale, prefix, entry.slug);
 }
 
 function licenseOf(project: Project): string {
@@ -219,7 +234,7 @@ function footer(): string {
   );
 }
 
-function renderEntry(prefix: string, entry: Entry): string {
+function renderEntry(prefix: 'post' | 'talk', entry: Entry): string {
   const routePath = entryRoute(prefix, entry);
   const facts = [
     entry.date && `- Date: ${entry.date}`,
@@ -268,7 +283,7 @@ function renderPage(page: PageRef, body: string): string {
 
 // ── Index files ──────────────────────────────────────────────────────────────
 
-function entryLine(prefix: string, entry: Entry): string {
+function entryLine(prefix: 'post' | 'talk', entry: Entry): string {
   const routePath = entryRoute(prefix, entry);
   const date = entry.date ? `${entry.date}, ` : '';
   return `- ${link(entry.title, fileUrl(markdownPath(routePath)))}: ${date}${truncate(entry.description)}`;
@@ -277,7 +292,7 @@ function entryLine(prefix: string, entry: Entry): string {
 function renderEntryIndex(
   heading: string,
   intro: string,
-  prefix: string,
+  prefix: 'post' | 'talk',
   entries: Entry[]
 ): string {
   const en = entries.filter((entry) => entry.lang === 'en');
@@ -432,7 +447,7 @@ function siteSections(
       list([
         `- ${link('llms-full.txt', fileUrl('/llms-full.txt'))}: every page of this site in one file.`,
         `- ${link('sitemap.xml', fileUrl('/sitemap.xml'))}: the XML sitemap index.`,
-        `- ${link('RSS feeds', pageUrl('/rss'))}: blog, talks, timeline and projects.`,
+        `- ${link('RSS feeds', pageUrl('/rss'))}: blog, talks, timeline and projects, in English and Portuguese.`,
       ])
     )
   );
@@ -470,7 +485,6 @@ function renderLlmsFull(documents: Array<{ routePath: string; body: string }>): 
     )
   );
 }
-
 
 // ── Page bodies, built from the collections each page renders ────────────────
 
@@ -561,25 +575,6 @@ interface FaqDoc {
   links?: Array<{ label: string; href: string }>;
 }
 
-/**
- * The FAQ, in English, with the two locales checked against each other.
- *
- * Read through `queryCollection`, like a page does, instead of parsing the JSON
- * here. A second reader of the same content is free to disagree with the one the
- * site renders, and this one would: it would miss the locale suffix convention
- * that decides which file is which.
- *
- * English only, because the mirrors are. `scripts/generateLlms.ts` publishes one
- * plain text face of the site, not one per language, and every page announces
- * that English document as its `text/markdown` alternate regardless of the
- * language it is written in.
- *
- * The Portuguese rows are read only to compare slugs. `/faq/` is registered in
- * LOCALIZED_PREFIXES, which promises every child exists in both languages, and
- * nothing in the build enforces that: a slug present in one file alone still
- * compiles, and the only symptom is an hreflang pointing at a page that was
- * never generated.
- */
 function readFaq(): FaqDoc[] {
   const en = [...queryCollection('faq').locale('en')] as unknown as FaqDoc[];
   const br = [...queryCollection('faq').locale('br')] as unknown as FaqDoc[];
@@ -601,13 +596,6 @@ function readFaq(): FaqDoc[] {
   return en;
 }
 
-/**
- * Fills the {token} placeholders the FAQ copy uses for moving numbers.
- *
- * Same substitution src/lib/faq.ts does for the HTML. The two have to agree:
- * a mirror claiming a different number than the page it mirrors is worse than
- * either being wrong alone.
- */
 function fillFaqTokens(text: string, counts: FaqCounts): string {
   return text
     .replaceAll('{talkCount}', String(counts.talks))
@@ -634,7 +622,6 @@ function faqRoute(entry: FaqDoc): string {
   return `/faq/${entry.slug}`;
 }
 
-/** One question as its own document. */
 function renderFaqEntry(entry: FaqDoc, counts: FaqCounts): string {
   const t = (text: string) => fillFaqTokens(text, counts);
 
@@ -693,13 +680,6 @@ function renderFaqEntry(entry: FaqDoc, counts: FaqCounts): string {
   );
 }
 
-/**
- * The index: every question with its answer inline.
- *
- * The answers are in full rather than truncated, unlike the post and talk
- * indexes. A 50 word answer is the whole unit here, so cutting it at 180
- * characters would leave the reader with a question and half a sentence.
- */
 function renderFaqIndex(entries: FaqDoc[], counts: FaqCounts): string {
   const t = (text: string) => fillFaqTokens(text, counts);
 
@@ -731,22 +711,121 @@ function renderFaqIndex(entries: FaqDoc[], counts: FaqCounts): string {
   );
 }
 
+interface BusinessRecordRow {
+  label: string;
+  value: string;
+}
+
+interface BusinessOfferingRow {
+  code: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  href: string;
+}
+
+interface BusinessRow {
+  stackTitle: string;
+  stackNote: string;
+  trackTitle: string;
+  track: string;
+  audienceTitle: string;
+  audienceNote: string;
+  audience: Array<{ title: string; detail: string }>;
+  registrySummaryLabel: string;
+  legalName: string;
+  tradeName: string;
+  cnpj: string;
+  lede: string;
+  offeringsTitle: string;
+  offerings: BusinessOfferingRow[];
+  processTitle: string;
+  process: Array<{ title: string; detail: string }>;
+  registryTitle: string;
+  registry: BusinessRecordRow[];
+  registryLinkLabel: string;
+  registryLinkHref: string;
+  contactTitle: string;
+  contactDetail: string;
+  contactNote: string;
+}
+
+function businessYears(): number {
+  const starts = readAll<WorkItem>('work')
+    .map((entry) => Number(String(entry.startDate ?? '').slice(0, 4)))
+    .filter((year) => Number.isFinite(year) && year > 1900);
+  return starts.length ? new Date().getFullYear() - Math.min(...starts) : 0;
+}
+
+function renderBusiness(
+  business: BusinessRow,
+  counts: FaqCounts,
+  email: string,
+  skills: SkillGroup[],
+  years: number
+): string {
+  const t = (text: string) =>
+    fillFaqTokens(text, counts).replaceAll('{years}', String(years));
+
+  return block(
+    t(business.lede),
+    block(`## ${t(business.trackTitle)}`, t(business.track)),
+    block(
+      `## ${t(business.offeringsTitle)}`,
+      ...business.offerings.map((offering) =>
+        block(
+          offering.code ? `### ${t(offering.title)} (CNAE ${offering.code})` : `### ${t(offering.title)}`,
+          t(offering.description),
+          list(offering.bullets.map((bullet) => `- ${t(bullet)}`)),
+          offering.href ? `- Details: ${pageUrl(offering.href)}` : undefined
+        )
+      )
+    ),
+    block(
+      `## ${t(business.audienceTitle)}`,
+      t(business.audienceNote),
+      list(business.audience.map((item) => `- ${t(item.title)}: ${t(item.detail)}`))
+    ),
+    block(
+      `## ${t(business.stackTitle)}`,
+      t(business.stackNote),
+      list(
+        skills.map((group) => `- ${group.category}: ${group.items.map((item) => item.name).join(', ')}`)
+      )
+    ),
+    block(
+      `## ${t(business.processTitle)}`,
+      list(business.process.map((step, index) => `${index + 1}. ${t(step.title)}: ${t(step.detail)}`))
+    ),
+    block(
+      `## ${t(business.registryTitle)}`,
+      list(business.registry.map((record) => `- ${record.label}: ${record.value}`)),
+      link(t(business.registryLinkLabel), business.registryLinkHref)
+    ),
+    block(
+      `## ${t(business.contactTitle)}`,
+      t(business.contactDetail),
+      list([`- Email: ${email}`, `- ${t(business.contactNote)}`])
+    )
+  );
+}
+
 function buildPageBodies(indexes: Record<string, string>): Record<string, string> {
-  const about = readJson<{ bio: string; bioExtra: string; email: string; cvUrl: string }>('about');
-  const work = readJson<WorkItem[]>('work');
-  const volunteer = readJson<WorkItem[]>('volunteer');
-  const skills = readJson<SkillGroup[]>('skills');
-  const expertise = readJson<ExpertiseItem[]>('expertise');
-  const featured = readJson<FeaturedProject[]>('projects');
-  const press = readJson<PressItem[]>('press');
-  const bios = readJson<BioItem[]>('bios');
-  const presskit = readJson<Array<{ file: string; caption: string }>>('presskit');
-  const links = readJson<LabelledLink[]>('links');
-  const contacts = readJson<LabelledLink[]>('contacts');
-  const googleplay = readJson<Project[]>('googleplay');
-  const windows = readJson<Project[]>('windows');
-  const github = readJson<Project[]>('github');
-  const npm = readJson<Project[]>('npm');
+  const about = readOne<{ bio: string; bioExtra: string; email: string; cvUrl: string }>('about');
+  const work = readAll<WorkItem>('work');
+  const volunteer = readAll<WorkItem>('volunteer');
+  const skills = readAll<SkillGroup>('skills');
+  const expertise = readAll<ExpertiseItem>('expertise');
+  const featured = readAll<FeaturedProject>('projects');
+  const press = readAll<PressItem>('press');
+  const bios = readAll<BioItem>('bios');
+  const presskit = readAll<{ file: string; caption: string }>('presskit');
+  const links = readAll<LabelledLink>('links');
+  const contacts = readAll<LabelledLink>('contacts');
+  const googleplay = readAll<Project>('googleplay');
+  const windows = readAll<Project>('windows');
+  const github = readAll<Project>('github');
+  const npm = readAll<Project>('npm');
 
   const topGithub = [...github]
     .sort((a, b) => (b.stargazers_count ?? 0) - (a.stargazers_count ?? 0))
@@ -905,13 +984,13 @@ function buildPageBodies(indexes: Record<string, string>): Record<string, string
 function generate(): void {
   console.log('Generating llms.txt and Markdown mirrors...');
 
-  const config = readJson<LlmsConfig>('llms');
+  const config = readOne<LlmsConfig>('llms');
   const posts = readEntries('posts');
   const talks = readEntries('talks');
-  const timeline = readJson<TimelineItem[]>('timeline');
+  const timeline = readAll<TimelineItem>('timeline');
 
   const projects = Object.fromEntries(
-    PROJECT_TYPES.map((type) => [type, readJson<Project[]>(type)])
+    PROJECT_TYPES.map((type) => [type, readAll<Project>(type)])
   ) as Record<ProjectType, Project[]>;
 
   const projectCount = PROJECT_TYPES.reduce((sum, type) => sum + projects[type].length, 0);
@@ -926,10 +1005,10 @@ function generate(): void {
   const recentPosts = posts.filter((post) => post.lang === 'en').slice(0, 10);
   const recentTalks = talks.filter((talk) => talk.lang === 'en').slice(0, 5);
   const profile: Profile = {
-    about: readJson<Profile['about']>('about'),
-    skills: readJson<SkillGroup[]>('skills'),
-    work: readJson<WorkItem[]>('work'),
-    featured: readJson<FeaturedProject[]>('projects'),
+    about: readOne<Profile['about']>('about'),
+    skills: readAll<SkillGroup>('skills'),
+    work: readAll<WorkItem>('work'),
+    featured: readAll<FeaturedProject>('projects'),
   };
 
   // Markdown mirrors, one per HTML page that has content behind it
@@ -999,6 +1078,14 @@ function generate(): void {
   const faqIndex = renderFaqIndex(faqEntries, faqCounts);
   writeFile('/faq.txt', faqIndex);
 
+  const businessBody = renderBusiness(
+    readOne<BusinessRow>('business'),
+    faqCounts,
+    readOne<{ email: string }>('about').email,
+    readAll<SkillGroup>('skills'),
+    businessYears()
+  );
+
   // Every listing exists twice at the root: .txt for the llms.txt convention and
   // .md for anything that follows a Markdown link. Same bytes, two extensions, so
   // neither audience has to guess which one this site happens to publish.
@@ -1021,6 +1108,7 @@ function generate(): void {
     '/projects': projectsIndex,
     '/timeline': timelineIndex,
     '/faq': faqIndex,
+    '/business': businessBody,
   });
 
   for (const page of config.pages) {
