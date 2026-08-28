@@ -115,8 +115,7 @@ function buildLocalizedEntries(): SitemapEntry[] {
     ...readSlugs('talks').map(slug => `/talk/${slug}`),
     // Both were missing entirely: sitemap-site-br.xml listed /br/tags/ and
     // /br/skills/ and not one page under either, so every Portuguese tag and
-    // skill page was reachable only by crawling a link. Only the ones that ask
-    // to be indexed, matching the noindex the pages themselves emit.
+    // skill page was reachable only by crawling a link.
     ...indexableTagSlugs().map(slug => `/tags/${slug}`),
     ...indexableSkillSlugs().map(slug => `/skills/${slug}`),
     ...queryCollection('faq')

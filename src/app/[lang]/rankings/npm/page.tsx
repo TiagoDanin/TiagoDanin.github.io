@@ -91,6 +91,18 @@ export default async function NPMRankingsPage({ params }: PageProps<'/[lang]/ran
         "operatingSystem": "Node.js",
         "url": pkg.links?.npm ?? `https://www.npmjs.com/package/${pkg.name}`,
         "author": { "@type": "Person", "name": "Tiago Danin", "url": pageUrl(locale, '/') },
+        // Google will not validate a SoftwareApplication that offers no price,
+        // rating or review, and this page had none of the three. The packages
+        // are free on the public registry, so the free offer is the honest one
+        // of the three to state; the GitHub ranking needs no equivalent because
+        // SoftwareSourceCode is not a rich result type.
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": pkg.links?.npm ?? `https://www.npmjs.com/package/${pkg.name}`,
+        },
       },
     })),
   };

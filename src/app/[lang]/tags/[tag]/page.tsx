@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagEntryList } from "@/components/ui/TagEntryList";
-import { titleToSlug, toISODate, getRandomColorWithDarkMode } from '@/utils/parse';
+import { titleToSlug, getRandomColorWithDarkMode } from '@/utils/parse';
 import { allTagSlugs, buildTagIndex, prettifyTagSlug, type TagEntry, type TaggedItem } from '@/lib/tags';
 import { contentLang, localePath, type Locale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
@@ -110,6 +110,23 @@ export default async function TagPage({ params }: PageProps<'/[lang]/tags/[tag]'
 
   const total = taggedPosts.length + taggedTalks.length + taggedProjects.length + taggedTimeline.length;
 
+  /**
+   * The four sections as one `ItemList` of plain `ListItem`s.
+   *
+   * They used to be `BlogPosting` / `Event` / `SoftwareSourceCode` objects with
+   * a `position` bolted on and no `ListItem` wrapper, which Google reads as
+   * whole entities rather than list entries: every tag carrying a talk failed
+   * validation on an Event with no location. A tag page is a summary of pages
+   * that each carry their own markup, so the list entry only has to name the
+   * item and point at it.
+   */
+  const listItems = [
+    ...taggedPosts.map((post) => ({ name: post.title, url: pageUrl(locale, `/post/${post.slug}`) })),
+    ...taggedTalks.map((talk) => ({ name: talk.title, url: pageUrl(locale, talk.path) })),
+    ...taggedProjects.map((project) => ({ name: project.title, url: pageUrl(locale, project.path) })),
+    ...taggedTimeline.map((event) => ({ name: event.title, url: pageUrl(locale, event.path) })),
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -118,35 +135,13 @@ export default async function TagPage({ params }: PageProps<'/[lang]/tags/[tag]'
     "description": t(i18n)`Everything about ${name}: articles, talks, projects and milestones.`,
     "mainEntity": {
       "@type": "ItemList",
-      "numberOfItems": total,
-      "itemListElement": [
-        ...taggedPosts.map((post, i) => ({
-          "@type": "BlogPosting",
-          "position": i + 1,
-          "headline": post.title,
-          "description": post.description,
-          "datePublished": toISODate(post.date),
-          "url": pageUrl(locale, `/post/${post.slug}`),
-          "author": { "@type": "Person", "name": "Tiago Danin" },
-        })),
-        ...taggedTalks.map((talk, i) => ({
-          "@type": "Event",
-          "position": taggedPosts.length + i + 1,
-          "name": talk.title,
-          "description": talk.description,
-          "startDate": toISODate(talk.date),
-          "url": pageUrl(locale, talk.path),
-          "performer": { "@type": "Person", "name": "Tiago Danin" },
-        })),
-        ...taggedProjects.map((project, i) => ({
-          "@type": "SoftwareSourceCode",
-          "position": taggedPosts.length + taggedTalks.length + i + 1,
-          "name": project.title,
-          "description": project.description,
-          "url": pageUrl(locale, project.path),
-          "author": { "@type": "Person", "name": "Tiago Danin" },
-        })),
-      ],
+      "numberOfItems": listItems.length,
+      "itemListElement": listItems.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.name,
+        "url": item.url,
+      })),
     },
   };
 

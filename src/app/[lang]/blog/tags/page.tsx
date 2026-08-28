@@ -87,8 +87,8 @@ export default async function BlogTagsPage({ params }: PageProps<'/[lang]/blog/t
             <p className="text-muted-foreground">
               <Trans>Browse the blog by topic</Trans>
             </p>
-            {/* The blog tag pages are noindex; the cross-site index is the one
-                worth sending a reader to when a topic spans more than posts. */}
+            {/* A topic that spans more than articles has more waiting for it on
+                the cross-site index. */}
             <p className="mt-2 text-sm text-muted-foreground">
               <Trans>
                 Looking for talks and projects too?{' '}

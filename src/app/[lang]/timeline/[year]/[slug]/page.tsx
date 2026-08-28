@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/timeline/[
 export default async function TimelineEventPage({ params }: PageProps<'/[lang]/timeline/[year]/[slug]'>) {
   const { lang, year, slug } = await params;
   const locale = resolveLocale(lang);
-  initI18n(locale);
+  const i18n = initI18n(locale);
 
   const event = findTimelineEvent(locale, year, slug);
 
@@ -75,32 +75,49 @@ export default async function TimelineEventPage({ params }: PageProps<'/[lang]/t
     notFound();
   }
 
+  const url = pageUrl(locale, `/timeline/${year}/${slug}`);
+
+  /**
+   * A milestone, not an `Event`.
+   *
+   * These pages carried `Event` markup built out of nothing: the collection
+   * holds a year, a title, a description and tags, so `location` was a `Place`
+   * named after the entry ("😍 Birth") and `organizer` an `Organization` with
+   * the same name. Google rejected all of them for a `Place` with no address,
+   * and half the rows are not attendable events in the first place. `WebPage`
+   * describes what the page actually is and invents no fields; `temporalCoverage`
+   * is where a year-only date belongs, since `startDate` wants a full one.
+   */
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Event",
+    "@type": "WebPage",
     "name": event.title,
     "description": event.description,
-    "startDate": toISODate(event.date),
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
-      "@type": "Place",
-      "name": event.title
+    "url": url,
+    "inLanguage": HTML_LANG[locale],
+    "temporalCoverage": event.date,
+    "keywords": event.tags.join(', '),
+    "about": { "@type": "Person", "name": "Tiago Danin", "url": pageUrl(locale, '/') },
+    "isPartOf": {
+      "@type": "CollectionPage",
+      "name": t(i18n)`Timeline`,
+      "url": pageUrl(locale, '/timeline'),
     },
-    "organizer": {
-      "@type": "Organization",
-      "name": event.title
-    },
-    "performer": {
-      "@type": "Person",
-      "name": "Tiago Danin"
-    },
-    "url": pageUrl(locale, `/timeline/${year}/${slug}`),
-    "inLanguage": HTML_LANG[locale]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+      { "@type": "ListItem", "position": 2, "name": t(i18n)`Timeline`, "item": pageUrl(locale, '/timeline') },
+      { "@type": "ListItem", "position": 3, "name": event.title, "item": url },
+    ],
   };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="container mx-auto py-32 px-4">
         <div className="max-w-3xl mx-auto">

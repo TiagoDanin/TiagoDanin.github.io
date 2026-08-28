@@ -100,6 +100,12 @@ msgstr "{0} Development"
 msgid "{0} downloads."
 msgstr "{0} downloads."
 
+#. placeholder {0}: skill.name
+#. placeholder {1}: category.toLowerCase()
+#: src/app/[lang]/skills/[slug]/page.tsx
+msgid "{0} in Tiago Danin's toolkit, part of his {1} work."
+msgstr "{0} in Tiago Danin's toolkit, part of his {1} work."
+
 #. placeholder {0}: taggedTimeline.length
 #: src/app/[lang]/tags/[tag]/page.tsx
 msgid "{0} milestone"
@@ -181,6 +187,14 @@ msgstr "{0} talks{1}, at {2} different events."
 #: src/app/[lang]/sitemap/page.tsx
 msgid "{0} URLs, view XML"
 msgstr "{0} URLs, view XML"
+
+#. placeholder {0}: skill.name
+#. placeholder {1}: content.projects.length
+#. placeholder {2}: content.posts.length
+#. placeholder {3}: content.talks.length
+#: src/app/[lang]/skills/[slug]/page.tsx
+msgid "{0} work by Tiago Danin: {1} open source repositories, {2} articles and {3} talks."
+msgstr "{0} work by Tiago Danin: {1} open source repositories, {2} articles and {3} talks."
 
 #. placeholder {0}: about.name
 #. placeholder {1}: photo.label.toLowerCase()
@@ -1068,6 +1082,10 @@ msgstr "Career Timeline | Tiago Danin"
 #: src/app/[lang]/timeline/page.tsx
 msgid "Career timeline from education to senior mobile developer. Professional milestones, projects, and achievements in mobile development, cybersecurity, and open source."
 msgstr "Career timeline from education to senior mobile developer. Professional milestones, projects, and achievements in mobile development, cybersecurity, and open source."
+
+#: src/app/[lang]/timeline/page.tsx
+msgid "Career timeline of Tiago Danin"
+msgstr "Career timeline of Tiago Danin"
 
 #: src/app/[lang]/press-kit/page.tsx
 msgid "Career, open source and community"
@@ -2044,6 +2062,7 @@ msgstr "Hit detection & tuning"
 #: src/app/[lang]/skills/page.tsx
 #: src/app/[lang]/talk/[slug]/page.tsx
 #: src/app/[lang]/talks/page.tsx
+#: src/app/[lang]/timeline/[year]/[slug]/page.tsx
 #: src/app/[lang]/timeline/page.tsx
 #: src/app/[lang]/web-development/page.tsx
 msgid "Home"
@@ -3843,6 +3862,10 @@ msgstr "Talks about mobile, Flutter, React Native and security at tech events."
 msgid "Talks and presentations about development, technology and more."
 msgstr "Talks and presentations about development, technology and more."
 
+#: src/app/[lang]/talks/page.tsx
+msgid "Talks by Tiago Danin"
+msgstr "Talks by Tiago Danin"
+
 #: src/app/[lang]/press-kit/page.tsx
 msgid "talks since {firstTalkYear}"
 msgstr "talks since {firstTalkYear}"
@@ -3994,17 +4017,13 @@ msgstr "Tiago Danin home"
 msgid "Tiago Danin logo"
 msgstr "Tiago Danin logo"
 
-#. placeholder {0}: skill.name
-#: src/app/[lang]/skills/[slug]/page.tsx
-msgid "Tiago Danin, {0} developer with expertise in {category}. Hire for freelance projects, consulting, and mentorship."
-msgstr "Tiago Danin, {0} developer with expertise in {category}. Hire for freelance projects, consulting, and mentorship."
-
 #: src/app/[lang]/press-kit/page.tsx
 msgid "Tiago without an h, Danin without an accent"
 msgstr "Tiago without an h, Danin without an accent"
 
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
 #: src/app/[lang]/rss/page.tsx
+#: src/app/[lang]/timeline/[year]/[slug]/page.tsx
 #: src/app/[lang]/timeline/page.tsx
 #: src/components/ui/TagCloud.tsx
 msgid "Timeline"

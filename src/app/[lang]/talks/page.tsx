@@ -6,9 +6,10 @@ import { queryCollection } from 'nextjs-studio/server';
 import { Mic, Video } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
-import { formatDate, getRandomColor, toISODate } from '@/utils/parse';
+import { formatDate, getRandomColor } from '@/utils/parse';
 import { eventLabel } from '@/lib/talks';
-import { contentLang, entryPath, feedPath, HTML_LANG, intlLocale } from "@/lib/i18n/locales";
+import { talkEventSchema } from '@/lib/talk-jsonld';
+import { contentLang, entryPath, feedPath, intlLocale } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
@@ -68,31 +69,29 @@ const TalksPage = async ({ params }: PageProps<'/[lang]/talks'>) => {
     ]
   };
 
+  /**
+   * The list as an `ItemList` of `ListItem`s.
+   *
+   * The elements used to be bare `Event` objects with no `position` and no
+   * wrapper, which is not what Google reads `itemListElement` as, and each of
+   * those Events named a `Place` with no address on top of that. One shared
+   * builder now produces the same Event the detail page emits.
+   */
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "itemListElement": sortedTalks.map((talk) => ({
-      "@type": "Event",
-      "name": talk.title,
-      "description": talk.description,
-      "startDate": toISODate(talk.date),
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": talk.youtubeUrl
-        ? "https://schema.org/OnlineEventAttendanceMode"
-        : "https://schema.org/OfflineEventAttendanceMode",
-      "location": { "@type": "Place", "name": eventLabel(talk) },
-      "organizer": { "@type": "Organization", "name": talk.event },
-      "performer": { "@type": "Person", "name": "Tiago Danin" },
-      "offers": talk.youtubeUrl ? {
-        "@type": "Offer",
-        "url": talk.youtubeUrl,
-        "availability": "https://schema.org/InStock",
-        "price": 0,
-        "priceCurrency": "BRL"
-      } : undefined,
-      "url": `${ORIGIN}${talkUrl(String(talk.slug))}/`,
-      "inLanguage": HTML_LANG[locale]
-    }))
+    "name": t(i18n)`Talks by Tiago Danin`,
+    "numberOfItems": sortedTalks.length,
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "itemListElement": sortedTalks.map((talk, index) => {
+      const url = `${ORIGIN}${talkUrl(String(talk.slug))}/`;
+      return {
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": url,
+        "item": talkEventSchema(talk, locale, url),
+      };
+    }),
   };
 
   return (

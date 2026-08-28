@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from "next/link";
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
-import { getRandomColor, toISODate } from '@/utils/parse';
+import { getRandomColor } from '@/utils/parse';
 import { getTimelineEvents } from '@/lib/timeline';
-import { feedPath, localePath, intlLocale, HTML_LANG } from '@/lib/i18n/locales';
+import { feedPath, localePath, intlLocale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
@@ -41,30 +41,22 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/timeline'>
     },
     other: {
       'application/ld+json': JSON.stringify([
+        // A milestone list, not an event list. Each row used to be an `Event`
+        // whose `location` was a `Place` named after the entry itself and whose
+        // `organizer` was an `Organization` with the same name, because the
+        // collection carries a year, a title, a description and tags and
+        // nothing else. The detail pages were rejected by Google for exactly
+        // that; a `ListItem` pointing at each page states only what is true.
         {
           "@context": "https://schema.org",
           "@type": "ItemList",
-          "itemListElement": timelineData.map((item) => ({
-            "@type": "Event",
+          "name": t(i18n)`Career timeline of Tiago Danin`,
+          "numberOfItems": timelineData.length,
+          "itemListElement": timelineData.map((item, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
             "name": item.title,
-            "description": item.description,
-            "startDate": toISODate(item.date),
-            "eventStatus": "https://schema.org/EventScheduled",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "location": {
-              "@type": "Place",
-              "name": item.title
-            },
-            "organizer": {
-              "@type": "Organization",
-              "name": item.title
-            },
-            "performer": {
-              "@type": "Person",
-              "name": "Tiago Danin"
-            },
-            "url": `${ORIGIN}${localePath(locale, `/timeline/${item.date}/${item.slug}`)}`,
-            "inLanguage": HTML_LANG[locale]
+            "url": `${ORIGIN}${localePath(locale, `/timeline/${item.date}/${item.slug}`)}/`
           }))
         },
         {

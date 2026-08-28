@@ -8,7 +8,7 @@ const EMAIL = 'ana.souza@exemplo.com.br';
 
 /**
  * The talk feedback flow at `/links/talk/`, the QR code destination shown on the
- * last slide of a talk. The page is `noindex`, and the form is the whole page.
+ * last slide of a talk, where the form is the whole page.
  */
 const meta = {
   title: 'Sections/FeedbackForm',

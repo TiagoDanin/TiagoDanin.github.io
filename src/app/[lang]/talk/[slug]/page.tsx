@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { GiscusComments } from '@/components/ui/GiscusComments';
 import { CallToAction } from '@/components/sections/CallToAction';
 import { getTalkBySlug, eventLabel } from '@/lib/talks';
+import { talkEventSchema, talkVideoSchema } from '@/lib/talk-jsonld';
 import { renderMdx } from '@/lib/render-mdx';
 import { toISODate, formatDate, getRandomColorWithDarkMode } from '@/utils/parse';
 import { getCallToActionData } from '@/lib/sections';
@@ -91,37 +92,11 @@ export default async function Talk({ params }: PageProps<'/[lang]/talk/[slug]'>)
     ],
   };
 
+  const video = talkVideoSchema(talk);
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Event",
-    "name": talk.title,
-    "description": talk.description,
-    "startDate": toISODate(talk.date),
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": talk.youtubeUrl
-      ? "https://schema.org/OnlineEventAttendanceMode"
-      : "https://schema.org/OfflineEventAttendanceMode",
-    "location": talk.youtubeUrl
-      ? { "@type": "VirtualLocation", "url": talk.youtubeUrl }
-      : {
-          "@type": "Place",
-          "name": eventLabel(talk),
-          "address": { "@type": "PostalAddress", "addressCountry": "BR" }
-        },
-    "organizer": { "@type": "Organization", "name": talk.event },
-    "performer": { "@type": "Person", "name": "Tiago Danin", "url": pageUrl(locale, '/') },
-    "url": url,
-    "inLanguage": HTML_LANG[locale],
-    ...(talk.youtubeUrl && {
-      "recordedIn": {
-        "@type": "VideoObject",
-        "url": talk.youtubeUrl,
-        "name": talk.title,
-        "description": talk.description,
-        "uploadDate": toISODate(talk.date),
-        "author": { "@type": "Person", "name": "Tiago Danin" }
-      }
-    })
+    ...talkEventSchema(talk, locale, url),
+    ...(video && { recordedIn: video }),
   };
 
   return (

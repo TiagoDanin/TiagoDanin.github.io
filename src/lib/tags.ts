@@ -243,10 +243,8 @@ export function buildBlogTagIndex(locale: Locale): TagIndex {
  * Every tag slug, for the sitemaps.
  *
  * There is no quality threshold here, by the owner's call: every tag page is
- * indexable and submitted, including the 240 that carry a single item. The
- * alternative considered was `noindex, follow` below three items, which is the
- * usual guard against a few hundred one-link pages reading as doorway content.
- * It is not in place, so the thin pages are competing on their own merits.
+ * indexable and submitted, including the 240 that carry a single item. Nothing
+ * on this site withholds indexing, so a thin tag competes on its own merits.
  */
 export function indexableTagSlugs(): string[] {
   return allTagSlugs('all');
