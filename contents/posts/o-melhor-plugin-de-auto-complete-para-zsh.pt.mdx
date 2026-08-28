@@ -1,16 +1,58 @@
 ---
 title: "O melhor plugin de Auto Complete para ZSH"
 date: "2018-12"
-description: "Descubra como melhorar sua experiência no terminal com o melhor plugin de autocompletar para ZSH."
+description: "O zsh-autosuggestions completa comandos do seu histórico enquanto você digita. Como instalar no Oh My Zsh ou Homebrew, e por que a tecla de aceite não é o Tab."
 slug: "the-best-autocomplete-plugin-for-zsh"
 originalUrl: "https://dev.to/tiagodanin/o-melhor-plugin-de-auto-complete-para-zsh-2g8m"
 lang: "pt"
 cover: ""
-tags: ["UI/UX", "Linux", "Article"]
+tags: ["UI/UX", "Linux", "Tools", "Tutorial", "Article"]
 ---
 
-Uma das maiores maravilhas de usar o ZSH é sua flexibilidade de customização, tendo uma grande quantidade de plugins desenvolvido por usuários.
+Uma das maiores maravilhas de usar o ZSH é sua flexibilidade de customização, tendo uma grande quantidade de plugins desenvolvido por usuários. Em torno de um ano atrás (em 2017) eu achei o melhor plugin, o zsh-autosuggestions.
 
-Em torno de um ano atrás (em 2017) eu achei o melhor plugin, o zsh-autosuggestions, sua principal característica é a exibição de comandos digitados anteriormente em forma de uma cor "cinzenta silenciada".
+## O que ele faz
 
-Assim como os editores de código como Atom e Sublime, usando a tecla "tab" você consegue completa a sequencia de caracteres, já existente no histórico do arquivo, em nosso caso séria do "zhistory". O aumento de produtividade é perceptivo nos primeiros dias.
+Conforme você digita, o plugin procura no seu histórico e mostra o resto do comando mais recente que bate com o que você escreveu, em uma cor "cinzenta silenciada", logo depois do cursor. Nada é executado e nada entra na linha até você pedir, então ele não atrapalha quando você está escrevendo um comando novo.
+
+O histórico que ele lê é o que estiver em `$HISTFILE`, que é o `~/.zsh_history` no Oh My Zsh e o `~/.zhistory` no Prezto. Comando que você nunca rodou não vira sugestão, e essa é a graça: ele repete você, não adivinha.
+
+## Instalando
+
+No Oh My Zsh, clone dentro da pasta de plugins customizados e adicione na lista de plugins:
+
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions \
+  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
+```sh
+# ~/.zshrc
+plugins=(
+  # outros plugins...
+  zsh-autosuggestions
+)
+```
+
+Com o Homebrew, instale o pacote e dê source no seu `.zshrc`:
+
+```sh
+brew install zsh-autosuggestions
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+```
+
+Se você também usa o zsh-syntax-highlighting, deixe o source dele por último. Ele embrulha os widgets que os outros plugins definem e precisa encontrar todos já no lugar.
+
+## Aceitando a sugestão
+
+Aperte `→` para pegar a sugestão inteira, ou `End`, que faz o mesmo de qualquer ponto da linha. `Ctrl` + `→` aceita uma palavra por vez, e é o que eu mais uso: o começo do comando costuma estar certo e o último argumento costuma não estar.
+
+O `Tab` não aceita sugestão. O Tab é o sistema de completion do ZSH, um mecanismo separado que expande caminhos, flags e argumentos. Os dois rodam lado a lado e se completam, que é justamente por que as pessoas confundem.
+
+Se o cinza ficar escuro demais no tema do seu terminal, resolve em uma linha:
+
+```sh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
+```
+
+O aumento de produtividade é perceptível nos primeiros dias. Comando longo que você já rodou uma vez, com as flags certas, volta com uma tecla só.
