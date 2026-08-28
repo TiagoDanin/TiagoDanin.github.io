@@ -3,6 +3,7 @@ import { SocialLinks } from "@/components/ui/SocialLinks";
 import { ArrowRight, Newspaper } from "lucide-react";
 import Link from "next/link";
 import { Trans } from "@lingui/react/macro";
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/lib/i18n/locales';
 import Image from "next/image";
 
 export interface HeroAbout {
@@ -29,6 +30,15 @@ export interface HeroSocialLink {
 }
 
 export interface HeroProps {
+  /**
+   * Language the internal links are built for. Defaults to English.
+   *
+   * Without it the card links here pointed at the English pages from `/br/`:
+   * a hardcoded `href` never passes through `localePath`, so a page-level check
+   * misses it entirely.
+   */
+  locale?: Locale;
+
   about: HeroAbout;
   /** Counts derived from the collections at build time. Rendered as-is. */
   stats: HeroStat[];
@@ -43,7 +53,7 @@ export interface HeroProps {
  *
  * Data comes from the page via `getHeroData()` in `@/lib/sections`.
  */
-export function Hero({ about, stats, socialLinks, showPressKit = false }: HeroProps) {
+export function Hero({ about, stats, socialLinks, showPressKit = false, locale = DEFAULT_LOCALE }: HeroProps) {
   const bioParagraphs = about.bio
     .split(/\n\n+/)
     .map(p => p.trim())
@@ -118,11 +128,11 @@ export function Hero({ about, stats, socialLinks, showPressKit = false }: HeroPr
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="min-h-[44px]">
-                <Link href="/projects"><Trans>View my projects</Trans></Link>
+                <Link href={localePath(locale, "/projects")}><Trans>View my projects</Trans></Link>
               </Button>
               {showPressKit && (
                 <Button size="lg" variant="outline" asChild className="min-h-[44px]">
-                  <Link href="/press-kit">
+                  <Link href={localePath(locale, "/press-kit")}>
                     <Newspaper className="mr-2 h-4 w-4" aria-hidden="true" />
                     <Trans>Press kit</Trans>
                   </Link>

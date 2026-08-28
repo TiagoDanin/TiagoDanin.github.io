@@ -1,9 +1,11 @@
 import { Trans } from '@lingui/react/macro';
 
+import { DEFAULT_LOCALE, intlLocale, type Locale } from '@/lib/i18n/locales';
+
 export interface SitemapUrl {
   /** Absolute URL as written in the sitemap XML. */
   loc: string;
-  /** ISO timestamp. Rendered as a US-format date. */
+  /** ISO timestamp. Rendered in the reader's language. */
   lastmod?: string;
   changefreq?: string;
   priority?: string | number;
@@ -11,6 +13,19 @@ export interface SitemapUrl {
 
 export interface SitemapTableProps {
   urls: SitemapUrl[];
+  /** Language the dates are formatted in. Defaults to English. */
+  locale?: Locale;
+}
+
+/**
+ * The `lastmod` cell.
+ *
+ * UTC, not the build machine's zone: sitemaps carry a UTC timestamp, and
+ * rendering it locally moves a midnight date to the previous day anywhere west
+ * of Greenwich. The same trap `formatDate` and `pressDate` document.
+ */
+function formatLastmod(lastmod: string, locale: Locale): string {
+  return new Date(lastmod).toLocaleDateString(intlLocale(locale), { timeZone: 'UTC' });
 }
 
 /**
@@ -32,7 +47,7 @@ function sortUrls(urls: SitemapUrl[]): SitemapUrl[] {
  * and repeating it would push the useful part off screen. The table scrolls
  * inside its own container so a long URL never makes the page scroll sideways.
  */
-export function SitemapTable({ urls }: SitemapTableProps) {
+export function SitemapTable({ urls, locale = DEFAULT_LOCALE }: SitemapTableProps) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full border-collapse text-sm">
@@ -68,7 +83,7 @@ export function SitemapTable({ urls }: SitemapTableProps) {
               <td className="border p-2 text-muted-foreground">{url.changefreq ?? '-'}</td>
               <td className="border p-2 text-muted-foreground">{url.priority ?? '-'}</td>
               <td className="border p-2 text-muted-foreground">
-                {url.lastmod ? new Date(url.lastmod).toLocaleDateString('en-US') : '-'}
+                {url.lastmod ? formatLastmod(url.lastmod, locale) : '-'}
               </td>
             </tr>
           ))}

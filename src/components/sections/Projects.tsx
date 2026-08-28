@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/lib/i18n/locales';
 import { Trans } from "@lingui/react/macro";
 
 interface ProjectsEntry {
@@ -17,10 +18,19 @@ interface ProjectsEntry {
 }
 
 interface ProjectsProps {
+  /**
+   * Language the internal links are built for. Defaults to English.
+   *
+   * Without it the card links here pointed at the English pages from `/br/`:
+   * a hardcoded `href` never passes through `localePath`, so a page-level check
+   * misses it entirely.
+   */
+  locale?: Locale;
+
   projects: ProjectsEntry[];
 }
 
-export function Projects({ projects }: ProjectsProps) {
+export function Projects({ projects, locale = DEFAULT_LOCALE }: ProjectsProps) {
   const projectsData = projects;
   const pathname = usePathname();
   const isFullProjects = pathname === "/projects";
@@ -53,7 +63,7 @@ export function Projects({ projects }: ProjectsProps) {
             {!isFullProjects && (
               <div className="mt-12 flex justify-center">
                 <Button size="lg" variant="outline" asChild>
-                  <Link href="/projects">
+                  <Link href={localePath(locale, "/projects")}>
                     <Trans>See all 250+ projects</Trans>
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>

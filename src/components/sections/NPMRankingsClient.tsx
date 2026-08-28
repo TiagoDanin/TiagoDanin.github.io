@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Package, Download, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/lib/i18n/locales';
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
 interface NpmPackage {
@@ -21,10 +22,19 @@ interface NpmPackage {
 }
 
 interface NPMRankingsClientProps {
+  /**
+   * Language the internal links are built for. Defaults to English.
+   *
+   * Without it the card links here pointed at the English pages from `/br/`:
+   * a hardcoded `href` never passes through `localePath`, so a page-level check
+   * misses it entirely.
+   */
+  locale?: Locale;
+
   npmData: NpmPackage[];
 }
 
-export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
+export default function NPMRankingsClient({ npmData, locale = DEFAULT_LOCALE }: NPMRankingsClientProps) {
   // Sort packages by downloads in descending order and take top 10
   const sortedPackages = [...npmData]
     .sort((a, b) => b.downloads - a.downloads)
@@ -239,13 +249,13 @@ export default function NPMRankingsClient({ npmData }: NPMRankingsClientProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <Link href="/rankings/github">
+                <Link href={localePath(locale, "/rankings/github")}>
                   <Trophy className="h-5 w-5 mr-2" />
                   <Trans>GitHub Rankings</Trans>
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/projects">
+                <Link href={localePath(locale, "/projects")}>
                   <Trans>View All Projects</Trans>
                 </Link>
               </Button>

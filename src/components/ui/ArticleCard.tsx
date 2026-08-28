@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Video, Text } from "lucide-react";
 import { formatDate, getRandomColorWithDarkMode, titleToSlug } from '@/utils/parse';
-import { DEFAULT_LOCALE, entryPath, intlLocale, type Locale } from '@/lib/i18n/locales';
+import { DEFAULT_LOCALE, entryPath, intlLocale, localePath, type Locale } from '@/lib/i18n/locales';
 
 interface ArticleCardProps {
   post: {
@@ -76,7 +76,7 @@ export function ArticleCard({ post, locale = DEFAULT_LOCALE }: ArticleCardProps)
 
       <div className="relative z-10 mt-3 flex flex-wrap gap-2 pointer-events-auto">
         {(post.tags || []).map((tag: string) => (
-          <Link key={tag} href={`/tags/${titleToSlug(tag)}`}>
+          <Link key={tag} href={localePath(locale, `/tags/${titleToSlug(tag)}`)}>
             <Badge
               variant="outline"
               className={`text-xs ${getRandomColorWithDarkMode(tag)}`}

@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Gift, CheckCircle2, ExternalLink } from "lucide-react";
 import { StepIndicator } from "@/components/ui/StepIndicator";
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/lib/i18n/locales';
 import { RatingRow } from "@/components/ui/RatingRow";
 
 const API_URL = process.env.NEXT_PUBLIC_FEEDBACK_API_URL ?? "";
@@ -51,7 +52,18 @@ declare global {
   }
 }
 
-export default function FeedbackForm() {
+export interface FeedbackFormProps {
+  /**
+   * Language the links out of the form are built for. Defaults to English.
+   *
+   * The copy here is Portuguese on purpose, the way LanguageSuggestion's is:
+   * the form is handed to people in the room at a talk. The links still follow
+   * the page's locale rather than the copy's.
+   */
+  locale?: Locale;
+}
+
+export default function FeedbackForm({ locale = DEFAULT_LOCALE }: FeedbackFormProps) {
   const searchParams = useSearchParams();
   const talk = searchParams.get("talk") ?? "Talk";
   const bonus = searchParams.get("bonus") ?? "";
@@ -352,12 +364,12 @@ export default function FeedbackForm() {
               </Button>
               <p className="text-xs text-muted-foreground">
                 O bônus abre em uma nova aba. Você também pode ver{" "}
-                <a href="/links/" className="underline hover:text-primary">meus outros links</a>.
+                <a href={localePath(locale, "/links")} className="underline hover:text-primary">meus outros links</a>.
               </p>
             </div>
           ) : (
             <Button asChild className="w-full h-12">
-              <a href="/links/">Ver meus links</a>
+              <a href={localePath(locale, "/links")}>Ver meus links</a>
             </Button>
           )}
         </div>

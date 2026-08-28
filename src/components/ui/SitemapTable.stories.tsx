@@ -230,3 +230,26 @@ export const Empty: Story = {
     await expect(canvas.queryAllByRole('link')).toHaveLength(0);
   },
 };
+
+/**
+ * Portuguese. `lastmod` is the only locale-dependent cell, and it used to be
+ * hardcoded to `en-US`, so `/br/sitemap/` printed American dates in a
+ * Portuguese table.
+ *
+ * The locale reaches the component as the site's own code (`br`), which
+ * `intlLocale()` maps to `pt-BR` before Intl sees it. Handing `br` straight to
+ * Intl does not throw: it is Breton, and it formats the wrong language in
+ * silence.
+ */
+export const Portuguese: Story = {
+  args: {
+    locale: 'br',
+    urls: [
+      { loc: 'https://tiagodanin.com/br/', priority: '1.0', changefreq: 'weekly', lastmod: '2026-03-09T00:00:00.000Z' },
+      { loc: 'https://tiagodanin.com/br/blog/', priority: '0.9', changefreq: 'daily', lastmod: '2026-03-09T00:00:00.000Z' },
+    ],
+  },
+  play: async ({ canvas }) => {
+    await expect(canvas.getByText('09/03/2026')).toBeVisible();
+  },
+};

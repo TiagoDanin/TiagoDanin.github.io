@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Star, GitFork, Trophy, TrendingUp, ExternalLink, Medal } from "lucide-react";
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/lib/i18n/locales';
 import { Trans, useLingui } from "@lingui/react/macro";
 
 interface GitHubRepo {
@@ -22,10 +23,19 @@ interface GitHubRepo {
 }
 
 interface GitHubRankingsClientProps {
+  /**
+   * Language the internal links are built for. Defaults to English.
+   *
+   * Without it the card links here pointed at the English pages from `/br/`:
+   * a hardcoded `href` never passes through `localePath`, so a page-level check
+   * misses it entirely.
+   */
+  locale?: Locale;
+
   githubData: GitHubRepo[];
 }
 
-export default function GitHubRankingsClient({ githubData }: GitHubRankingsClientProps) {
+export default function GitHubRankingsClient({ githubData, locale = DEFAULT_LOCALE }: GitHubRankingsClientProps) {
   const { t } = useLingui();
 
   // Sort repositories by stars in descending order and take top 10
@@ -305,13 +315,13 @@ export default function GitHubRankingsClient({ githubData }: GitHubRankingsClien
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <Link href="/rankings/npm">
+                <Link href={localePath(locale, "/rankings/npm")}>
                   <Trophy className="h-5 w-5 mr-2" />
                   <Trans>NPM Rankings</Trans>
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/projects">
+                <Link href={localePath(locale, "/projects")}>
                   <Trans>View All Projects</Trans>
                 </Link>
               </Button>
