@@ -6,7 +6,7 @@ import { FaqIndex } from '@/components/sections/faq/FaqIndex';
 import { getFaqData, getFaqPerson } from '@/lib/sections';
 import { faqPageSchema } from '@/lib/faq-jsonld';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/faq'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -39,10 +39,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/faq'>): Pr
       description,
       url: pageUrl(locale, '/faq'),
       type: 'website',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Questions and answers | Tiago Danin`,
       description,
     },
@@ -65,14 +65,14 @@ export default async function FaqPage({ params }: PageProps<'/[lang]/faq'>) {
 
   return (
     <div className="min-h-screen">
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative container mx-auto py-32 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-        <div className="container mx-auto max-w-4xl relative z-10">
+        <div className="max-w-2xl mx-auto relative z-10">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground text-balance">
               <Trans>Questions and answers</Trans>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl">
+            <p className="text-xl text-muted-foreground">
               <Trans>
                 What people ask before getting in touch, answered in one place. Every answer links
                 to the talk, article or repository behind it.
@@ -82,8 +82,8 @@ export default async function FaqPage({ params }: PageProps<'/[lang]/faq'>) {
         </div>
       </section>
 
-      <section className="pb-24 px-4">
-        <div className="container mx-auto max-w-4xl">
+      <section className="container mx-auto pb-24 px-4">
+        <div className="max-w-2xl mx-auto">
           <FaqIndex entries={entries} locale={locale} />
         </div>
       </section>

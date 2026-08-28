@@ -18,16 +18,8 @@ import { getFaqData, getFaqPerson } from '@/lib/sections';
 import { qaPageSchema } from '@/lib/faq-jsonld';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localePath, type Locale } from '@/lib/i18n/locales';
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
-/**
- * Only the questions with a body of their own get a page.
- *
- * The rest stay on the index as anchors. Thirty near identical short pages
- * answering variations of one question is the shape Google calls a doorway set,
- * and the defence is refusing to generate a page that has nothing behind it
- * rather than padding it out.
- */
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   const locale = resolveLocale(params.lang);
   return faqWithPages(getFaqData(locale)).map((entry) => ({ slug: entry.slug }));
@@ -60,10 +52,10 @@ export async function generateMetadata({
       description,
       url: pageUrl(locale, path),
       type: 'article',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: `${title} | Tiago Danin`,
       description,
     },
@@ -78,7 +70,6 @@ export async function generateMetadata({
   };
 }
 
-/** The block that backs the answer up. Which one is the whole job of `layout`. */
 function FaqBody({ entry, locale }: { entry: FaqEntry; locale: Locale }) {
   switch (entry.layout) {
     case 'profile':
@@ -109,16 +100,18 @@ export default async function FaqEntryPage({ params }: PageProps<'/[lang]/faq/[s
 
   return (
     <div className="min-h-screen">
-      <article className="py-16 px-4">
-        <div className="container mx-auto max-w-3xl space-y-12">
+      <article className="container mx-auto py-32 px-4">
+        <div className="max-w-2xl mx-auto space-y-12">
           <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
-            <ol className="flex flex-wrap items-center gap-1">
+            <ol className="flex flex-wrap items-center gap-1.5">
               <li>
                 <Link href={localePath(locale, '/')} className="hover:underline underline-offset-4">
                   <Trans>Home</Trans>
                 </Link>
               </li>
-              <ChevronRight className="h-3 w-3" aria-hidden="true" />
+              <li aria-hidden="true" className="flex items-center">
+                <ChevronRight className="h-3 w-3 shrink-0" />
+              </li>
               <li>
                 <Link href={localePath(locale, '/faq')} className="hover:underline underline-offset-4">
                   <Trans>Questions and answers</Trans>
