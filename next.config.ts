@@ -75,6 +75,14 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   /**
+   * Shiki highlights the MDX code blocks at build time. Left in the bundle,
+   * webpack pulls its ~200 grammar files and the Oniguruma wasm through the
+   * server compilation for no gain: nothing ships to the client, and the
+   * package is plain Node ESM that can be required from node_modules as is.
+   */
+  serverExternalPackages: ["shiki"],
+
+  /**
    * Transforms the Lingui macros (`<Trans>`, `t`) at build time. Reads
    * lingui.config.ts for the locale list, so the two never drift.
    */

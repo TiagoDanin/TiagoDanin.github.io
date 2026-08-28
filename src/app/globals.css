@@ -335,6 +335,26 @@
   padding: 0;
 }
 
+/*
+ * Syntax highlighting. Shiki (src/lib/render-mdx.tsx) colours every token at
+ * build time with an inline style, so there is nothing to theme here: the
+ * remaining job is the frame around it. The border is what separates the block
+ * from the page, since the code surface and the page are both near-white.
+ */
+.prose pre.shiki {
+  border: 1px solid hsl(var(--border));
+  font-size: 0.875em;
+  line-height: 1.6;
+  tab-size: 2;
+}
+
+.prose pre.shiki code {
+  display: block;
+  width: fit-content;
+  min-width: 100%;
+  font-size: inherit;
+}
+
 .prose img {
   max-width: 100%;
   border-radius: 0.5em;
