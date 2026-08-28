@@ -5,8 +5,8 @@ import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
 import { Calendar } from 'lucide-react';
 
-import { queryCollection } from 'nextjs-studio/server';
-import { titleToSlug, getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
+import { getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
+import { findTimelineEvent, getTimelineEvents } from '@/lib/timeline';
 import { localePath, HTML_LANG } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
@@ -14,35 +14,22 @@ import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from '@
 export const dynamicParams = false;
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  // Timeline has no Portuguese variant in contents/ (no index.br.json), so the
-  // same events are listed under every locale prefix.
-  resolveLocale(params.lang);
-  const timelineData = queryCollection('timeline');
-  const staticParams: { year: string, slug: string }[] = [];
+  // The slug is the English one in every language, so the two locales list the
+  // same pairs. The locale still drives the read, because the Portuguese file
+  // is what the Portuguese page renders.
+  const locale = resolveLocale(params.lang);
 
-  timelineData.forEach((event) => {
-    const year = event.date.toString();
-    const slug = titleToSlug(event.title);
-
-    if (year && slug) {
-      staticParams.push({ year, slug });
-    }
-  });
-
-  return staticParams;
+  return getTimelineEvents(locale)
+    .filter((event) => event.date && event.slug)
+    .map((event) => ({ year: event.date, slug: event.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/timeline/[year]/[slug]'>): Promise<Metadata> {
   const { lang, year, slug } = await params;
   const locale = resolveLocale(lang);
   const i18n = getI18nInstance(locale);
-  const timelineData = queryCollection('timeline');
 
-  const event = timelineData.find((item) => {
-    const itemYear = item.date.toString();
-    const itemSlug = titleToSlug(item.title);
-    return itemYear === year && itemSlug === slug;
-  });
+  const event = findTimelineEvent(locale, year, slug);
 
   if (!event) {
     return {
@@ -82,13 +69,7 @@ export default async function TimelineEventPage({ params }: PageProps<'/[lang]/t
   const locale = resolveLocale(lang);
   initI18n(locale);
 
-  const timelineData = queryCollection('timeline');
-
-  const event = timelineData.find((item) => {
-    const itemYear = item.date.toString();
-    const itemSlug = titleToSlug(item.title);
-    return itemYear === year && itemSlug === slug;
-  });
+  const event = findTimelineEvent(locale, year, slug);
 
   if (!event) {
     notFound();

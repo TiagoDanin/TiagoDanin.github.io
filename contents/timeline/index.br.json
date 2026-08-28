@@ -1,0 +1,306 @@
+[
+  {
+    "date": "2025",
+    "title": "🏆 4º Lugar no CTF do Hack In Cariri - XibéSec",
+    "description": "Participou da primeira competição de cibersegurança presencial (CTF) no evento XibéSec em Belém, conquistando o 4º lugar na competição.",
+    "tags": [
+      "ctf",
+      "cybersecurity",
+      "xibesec",
+      "competition",
+      "events"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🤖 Agente de IA para Controlar Smartphone com Claude Code",
+    "description": "Criou um agente de IA usando Claude Code conectado ao Android-Debug-Bridge-MCP para automação de testes e documentação de apps Android.",
+    "tags": [
+      "ai",
+      "android",
+      "claudecode",
+      "automation",
+      "mcp",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🗣️ Palestra sobre Carreira Mobile",
+    "description": "Compartilhou jornada e aprendizados sobre carreira mobile em evento do Studio Code e OWASP Belém, abordando dicas práticas para iniciantes na área tech.",
+    "tags": [
+      "career",
+      "mobile",
+      "owasp",
+      "talks",
+      "events"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🗣️ Talk sobre Feature Flags no DevOpsDays Belém",
+    "description": "Palestrou no DevOpsDays Belém sobre 'O papel das Feature Flags na entrega contínua de Aplicativos Mobile', unindo estratégia e tecnologia.",
+    "tags": [
+      "devops",
+      "mobile",
+      "featureflags",
+      "talks",
+      "devopsdays",
+      "events"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "📝 Artigo sobre Segurança de SaaS",
+    "description": "Publicou artigo e vídeo demonstrando problemas de segurança em SaaS criados com ferramentas de VibeCoding, alertando sobre bancos de dados expostos.",
+    "tags": [
+      "security",
+      "saas",
+      "backend",
+      "infosec",
+      "content"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🤖 Agentes de IA com Cursor e MCP",
+    "description": "Desenvolveu agente de IA usando Cursor + MCP GitLab e Shortcut para automatizar criação de Merge Requests diretamente do editor.",
+    "tags": [
+      "ai",
+      "cursor",
+      "mcp",
+      "gitlab",
+      "automation",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "📱 Artigo sobre CAM Covers",
+    "description": "Compartilhou experiência criando editor de imagem com Flutter para transformar fotos em capas de álbuns, incluindo monetização e uso de IA.",
+    "tags": [
+      "flutter",
+      "mobile",
+      "produto",
+      "ia",
+      "editor",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2024",
+    "title": "🗣️ Palestra no Google DevFest Belém",
+    "description": "Apresentou talk 'O Ingrediente Secreto dos Apps de Sucesso: Teste A/B com Firebase' no DevFest Belém, organizado pelo GDG Belém.",
+    "tags": [
+      "googledevfest",
+      "firebase",
+      "testesab",
+      "talks",
+      "gdg",
+      "events"
+    ]
+  },
+  {
+    "date": "2023",
+    "title": "🗣️ Palestra no Google I/O Extended Belém",
+    "description": "Apresentou 'Implementado Firebase em aplicações Flutter: Tudo o que você precisa saber' no Google I/O Extended Belém na UNAMA.",
+    "tags": [
+      "googleio",
+      "firebase",
+      "flutter",
+      "talks",
+      "gdg",
+      "events"
+    ]
+  },
+  {
+    "date": "2023",
+    "title": "🗣️ Palestra sobre Clean Code no Meetup Devs Norte",
+    "description": "Apresentou uma compilação de '11 boas práticas para legibilidade de código' (Clean Code) em uma edição do Meetup Devs Norte.",
+    "tags": [
+      "cleancode",
+      "talks",
+      "devsnorte",
+      "events"
+    ]
+  },
+  {
+    "date": "2023",
+    "title": "🗣️ Palestra no DevOpsDays Belém",
+    "description": "Palestra sobre 'DevOps para Desenvolvimento Mobile' no evento DevOpsDays Belém (novembro de 2023).",
+    "tags": [
+      "devops",
+      "mobile",
+      "talks",
+      "devopsdays",
+      "events"
+    ]
+  },
+  {
+    "date": "2023",
+    "title": "📚 Estudos em Marketing Digital",
+    "description": "Começou a estudar Marketing Digital para ampliar o conhecimento para além da programação.",
+    "tags": [
+      "estudo",
+      "marketingdigital",
+      "desenvolvimentopessoal"
+    ]
+  },
+  {
+    "date": "2022",
+    "title": "💻 Projeto: React Native - Zendesk SDK",
+    "description": "Desenvolveu um wrapper do SDK do Zendesk para React Native, facilitando a integração de suporte ao cliente em apps mobile.",
+    "tags": [
+      "reactnative",
+      "sdk",
+      "mobile",
+      "opensource",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2022",
+    "title": "💻 Hacktoberfest",
+    "description": "Participou do Hacktoberfest 2022.",
+    "tags": [
+      "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2022",
+    "title": "🎮 Projeto: Slime Dungeon Survival Game",
+    "description": "Criou o jogo 'Slime Dungeon Survival Game' usando Flutter e a engine Bonfire.",
+    "tags": [
+      "flutter",
+      "gamedev",
+      "bonfireengine",
+      "mobile",
+      "projeto"
+    ]
+  },
+  {
+    "date": "2021",
+    "title": "📱 Projeto: Virtual Pocket Air Conditioning",
+    "description": "Desenvolveu o app 'Virtual Pocket Air Conditioning' como projeto de estudo de animações em Flutter, focado em sons relaxantes.",
+    "tags": [
+      "flutter",
+      "mobile"
+    ]
+  },
+  {
+    "date": "2021",
+    "title": "💻 Open Source",
+    "description": "Participou do Hacktoberfest 2021.",
+    "tags": [
+      "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2020",
+    "title": "🏆 Conquistas",
+    "description": "Venceu o 1º Hackathon TecBan 2020. Palestrou sobre redes neurais no BrazilJS.",
+    "tags": [
+      "hackathon",
+      "braziljs"
+    ]
+  },
+  {
+    "date": "2019",
+    "title": "🗣 Eventos e Segurança",
+    "description": "Participou do VueJs Norte, Flisol e DataTechDay. Começou a estudar segurança na Hackerone.",
+    "tags": [
+      "events",
+      "security"
+    ]
+  },
+  {
+    "date": "2018",
+    "title": "🎓 IFPA",
+    "description": "Entrou no IFPA - Tecnólogo em Análise e Desenvolvimento de Sistemas. Estudou Probot, Telegraf e Arduino.",
+    "tags": [
+      "ifpa",
+      "arduino"
+    ]
+  },
+  {
+    "date": "2017",
+    "title": "🎓 Formatura e Conquistas",
+    "description": "Concluiu o Ensino Médio. Venceu várias competições esportivas. Participou do Hacktoberfest 2017.",
+    "tags": [
+      "highschool",
+      "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2016",
+    "title": "🏐 Esporte e Desenvolvimento",
+    "description": "Criou um time de vôlei. Publicou os primeiros apps na Windows Store (SamRobot e GX Password). Participou do Hacktoberfest 2016.",
+    "tags": [
+      "volleyball",
+      "windowsstore",
+      "hacktoberfest"
+    ]
+  },
+  {
+    "date": "2015",
+    "title": "Lua e os Primeiros Programas ❤️",
+    "description": "Aprendeu a programar em Lua. Criou o primeiro programa: um plugin para buscar música no Spotify via Bot do Telegram.",
+    "tags": [
+      "lua",
+      "firstprogram",
+      "telegrambot"
+    ]
+  },
+  {
+    "date": "2014",
+    "title": "🏆 Prêmios e Educação",
+    "description": "3º lugar - Corrida - 100M\n2º lugar - Salto em distância - Melhor salto 2,56\n3º lugar - Dia dos Namorados do forumeiros.com\n🎓 Concluiu o Ensino Fundamental",
+    "tags": [
+      "awards",
+      "education"
+    ]
+  },
+  {
+    "date": "2013",
+    "title": "🗣 Palestra sobre Criação de Blogs",
+    "description": "Contribuiu com uma palestra contando a própria experiência.",
+    "tags": [
+      "lecture",
+      "blogging"
+    ]
+  },
+  {
+    "date": "2012",
+    "title": "🖥 Meu primeiro site",
+    "description": "O nome era WapSiteMobile. Depois veio o fórum (WapSiteBr) e, em 2013, o blog (WSBrasil).",
+    "tags": [
+      "website",
+      "forum",
+      "blog"
+    ]
+  },
+  {
+    "date": "2008",
+    "title": "Circuito Eletrônico 🔬",
+    "description": "Fascinado por circuitos eletrônicos.",
+    "tags": [
+      "electroniccircuit"
+    ]
+  },
+  {
+    "date": "2006",
+    "title": "Matemática 🔬",
+    "description": "Fascinado por matemática.",
+    "tags": [
+      "mathematics"
+    ]
+  },
+  {
+    "date": "1998",
+    "title": "😍 Nascimento",
+    "description": "printf(\"Hello World!\");",
+    "tags": [
+      "birth"
+    ]
+  }
+]

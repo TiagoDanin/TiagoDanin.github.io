@@ -199,7 +199,7 @@ export default async function PressKitPage({ params }: PageProps<'/[lang]/press-
   const work = [...queryCollection('work').locale(locale)];
   const npmPackages = [...queryCollection('npm')];
   const bioEntries = [...queryCollection('bios')];
-  const pressItems = getPressItems();
+  const pressItems = getPressItems(locale);
 
   const projectsTotal = PROJECT_COLLECTIONS.reduce(
     (sum, key) => sum + [...queryCollection(key)].length,
@@ -228,7 +228,7 @@ export default async function PressKitPage({ params }: PageProps<'/[lang]/press-
     firstTalkYear,
   });
 
-  const photoCaptions = [...queryCollection('presskit')].map(entry => ({
+  const photoCaptions = [...queryCollection('presskit').locale(locale)].map(entry => ({
     file: String(entry.file),
     caption: String(entry.caption),
   }));

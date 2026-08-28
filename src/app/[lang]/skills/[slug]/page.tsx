@@ -10,47 +10,10 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { titleToSlug, formatDate } from '@/utils/parse';
 import { eventLabel } from '@/lib/talks';
-import { contentLang, entryPath, intlLocale, localePath, type Locale } from '@/lib/i18n/locales';
+import { contentLang, entryPath, intlLocale, localePath } from '@/lib/i18n/locales';
+import { getAllSkills, getSkillBySlug } from '@/lib/skills';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
-
-interface SkillItem {
-  name: string;
-  icon: string;
-  color: string;
-}
-
-interface SkillsEntry {
-  category: string;
-  items: SkillItem[];
-}
-
-function getAllSkills(locale: Locale): Array<{ skill: SkillItem; category: string; slug: string; englishName: string }> {
-  const skills = [...queryCollection('skills').locale(locale)] as SkillsEntry[];
-  const enSkills = [...queryCollection('skills')] as SkillsEntry[];
-  const result: Array<{ skill: SkillItem; category: string; slug: string; englishName: string }> = [];
-
-  skills.forEach((category, ci) => {
-    category.items.forEach((item, ii) => {
-      result.push({
-        skill: item,
-        category: category.category,
-        slug: titleToSlug(item.name),
-        // The description dictionary is keyed by the English name: soft-skill
-        // names are translated ("Leadership" -> "Liderança"), so the localized
-        // name cannot be the lookup key. Both files share the same category
-        // and item order, so position is a stable cross-locale key.
-        englishName: enSkills[ci]?.items[ii]?.name ?? item.name,
-      });
-    });
-  });
-
-  return result;
-}
-
-function getSkillBySlug(locale: Locale, slug: string) {
-  return getAllSkills(locale).find((s) => s.slug === slug) ?? null;
-}
 
 /**
  * Built per render, not at module level. A locale-dependent string evaluated

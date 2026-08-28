@@ -2,23 +2,11 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { t } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { queryCollection } from 'nextjs-studio/server';
-import { titleToSlug } from '@/utils/parse';
 import { Badge } from '@/components/ui/badge';
+import { getSkillCategories } from '@/lib/skills';
 import { localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
-
-interface SkillItem {
-  name: string;
-  icon: string;
-  color: string;
-}
-
-interface SkillsEntry {
-  category: string;
-  items: SkillItem[];
-}
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/skills'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -53,7 +41,7 @@ export default async function SkillsPage({ params }: PageProps<'/[lang]/skills'>
   const locale = resolveLocale((await params).lang);
   const i18n = initI18n(locale);
 
-  const skills = [...queryCollection('skills').locale(locale)] as SkillsEntry[];
+  const skills = getSkillCategories(locale);
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -61,11 +49,11 @@ export default async function SkillsPage({ params }: PageProps<'/[lang]/skills'>
     "name": t(i18n)`Technical Skills, Tiago Danin`,
     "numberOfItems": skills.reduce((acc, cat) => acc + cat.items.length, 0),
     "itemListElement": skills.flatMap((cat, ci) =>
-      cat.items.map((item, ii) => ({
+      cat.items.map((entry, ii) => ({
         "@type": "ListItem",
         "position": ci * 100 + ii + 1,
-        "name": item.name,
-        "url": `${pageUrl(locale, '/skills')}${titleToSlug(item.name)}/`,
+        "name": entry.skill.name,
+        "url": `${pageUrl(locale, '/skills')}${entry.slug}/`,
       }))
     ),
   };
@@ -98,13 +86,13 @@ export default async function SkillsPage({ params }: PageProps<'/[lang]/skills'>
               <section key={category.category}>
                 <h2 className="text-lg font-semibold mb-3">{category.category}</h2>
                 <div className="flex flex-wrap gap-2">
-                  {category.items.map((item) => (
-                    <Link key={item.name} href={localePath(locale, `/skills/${titleToSlug(item.name)}`)}>
+                  {category.items.map((entry) => (
+                    <Link key={entry.slug} href={localePath(locale, `/skills/${entry.slug}`)}>
                       <Badge
                         variant="outline"
                         className="px-3 py-1.5 text-sm hover:bg-secondary transition-colors"
                       >
-                        {item.name}
+                        {entry.skill.name}
                       </Badge>
                     </Link>
                   ))}

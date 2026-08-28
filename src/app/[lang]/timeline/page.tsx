@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from "next/link";
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
-import { queryCollection } from 'nextjs-studio/server';
-import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
+import { getRandomColor, toISODate } from '@/utils/parse';
+import { getTimelineEvents } from '@/lib/timeline';
 import { feedPath, localePath, intlLocale, HTML_LANG } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
@@ -11,7 +11,7 @@ import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl
 export async function generateMetadata({ params }: PageProps<'/[lang]/timeline'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
   const i18n = getI18nInstance(locale);
-  const timelineData = queryCollection('timeline');
+  const timelineData = getTimelineEvents(locale);
 
   return {
     title: t(i18n)`Professional Timeline & Career Journey`,
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/timeline'>
               "@type": "Person",
               "name": "Tiago Danin"
             },
-            "url": `${ORIGIN}${localePath(locale, `/timeline/${item.date.toString()}/${titleToSlug(item.title)}`)}`,
+            "url": `${ORIGIN}${localePath(locale, `/timeline/${item.date}/${item.slug}`)}`,
             "inLanguage": HTML_LANG[locale]
           }))
         },
@@ -93,7 +93,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/timeline'>
 export default async function Timeline({ params }: PageProps<'/[lang]/timeline'>) {
   const locale = resolveLocale((await params).lang);
   initI18n(locale);
-  const timelineData = queryCollection('timeline');
+  const timelineData = getTimelineEvents(locale);
 
   return (
     <>
@@ -110,8 +110,7 @@ export default async function Timeline({ params }: PageProps<'/[lang]/timeline'>
 
         <ol className="relative border-s border-gray-200 dark:border-gray-700 max-w-3xl w-full mx-auto">
           {timelineData.map((item, index) => {
-            const year = item.date.toString();
-            const slug = titleToSlug(item.title);
+            const { date: year, slug } = item;
 
             return (
               <li key={index} className="mb-10 ms-4">
@@ -121,7 +120,7 @@ export default async function Timeline({ params }: PageProps<'/[lang]/timeline'>
                 <div className="mb-2">
                   {/* Year tag */}
                   <span className="bg-gray-100 text-gray-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                    {item.date.toString().includes('-')
+                    {item.date.includes('-')
                       ? new Date(item.date).toLocaleDateString(intlLocale(locale), {
                         month: 'long',
                         day: 'numeric',

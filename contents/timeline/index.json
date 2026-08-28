@@ -1,8 +1,8 @@
 [
   {
     "date": "2025",
-    "title": "🏆 4º Lugar no CTF do Hack In Cariri - XibéSec",
-    "description": "Participou da primeira competição de cibersegurança presencial (CTF) no evento XibéSec em Belém, conquistando o 4º lugar na competição.",
+    "title": "🏆 4th Place at the Hack In Cariri CTF - XibéSec",
+    "description": "Took part in his first in-person cybersecurity competition (CTF), at the XibéSec event in Belém, finishing 4th.",
     "tags": [
       "ctf",
       "cybersecurity",
@@ -13,8 +13,8 @@
   },
   {
     "date": "2024",
-    "title": "🤖 Agente de IA para Controlar Smartphone com Claude Code",
-    "description": "Criou um agente de IA usando Claude Code conectado ao Android-Debug-Bridge-MCP para automação de testes e documentação de apps Android.",
+    "title": "🤖 AI Agent to Control a Smartphone with Claude Code",
+    "description": "Built an AI agent with Claude Code wired to Android-Debug-Bridge-MCP, for test automation and documentation of Android apps.",
     "tags": [
       "ai",
       "android",
@@ -26,8 +26,8 @@
   },
   {
     "date": "2024",
-    "title": "🗣️ Palestra sobre Carreira Mobile",
-    "description": "Compartilhou jornada e aprendizados sobre carreira mobile em evento do Studio Code e OWASP Belém, abordando dicas práticas para iniciantes na área tech.",
+    "title": "🗣️ Talk on a Career in Mobile",
+    "description": "Shared his path and what he learned about a mobile career at an event by Studio Code and OWASP Belém, with practical advice for people starting out in tech.",
     "tags": [
       "career",
       "mobile",
@@ -38,8 +38,8 @@
   },
   {
     "date": "2024",
-    "title": "🗣️ Talk sobre Feature Flags no DevOpsDays Belém",
-    "description": "Palestrou no DevOpsDays Belém sobre 'O papel das Feature Flags na entrega contínua de Aplicativos Mobile', unindo estratégia e tecnologia.",
+    "title": "🗣️ Talk on Feature Flags at DevOpsDays Belém",
+    "description": "Spoke at DevOpsDays Belém on 'The role of feature flags in continuous delivery of mobile apps', joining strategy and technology.",
     "tags": [
       "devops",
       "mobile",
@@ -51,8 +51,8 @@
   },
   {
     "date": "2024",
-    "title": "📝 Artigo sobre Segurança de SaaS",
-    "description": "Publicou artigo e vídeo demonstrando problemas de segurança em SaaS criados com ferramentas de VibeCoding, alertando sobre bancos de dados expostos.",
+    "title": "📝 Article on SaaS Security",
+    "description": "Published an article and a video showing security problems in SaaS products built with vibe coding tools, warning about exposed databases.",
     "tags": [
       "security",
       "saas",
@@ -63,8 +63,8 @@
   },
   {
     "date": "2024",
-    "title": "🤖 Agentes de IA com Cursor e MCP",
-    "description": "Desenvolveu agente de IA usando Cursor + MCP GitLab e Shortcut para automatizar criação de Merge Requests diretamente do editor.",
+    "title": "🤖 AI Agents with Cursor and MCP",
+    "description": "Built an AI agent with Cursor plus the GitLab and Shortcut MCPs, to open merge requests straight from the editor.",
     "tags": [
       "ai",
       "cursor",
@@ -76,8 +76,8 @@
   },
   {
     "date": "2024",
-    "title": "📱 Artigo sobre CAM Covers",
-    "description": "Compartilhou experiência criando editor de imagem com Flutter para transformar fotos em capas de álbuns, incluindo monetização e uso de IA.",
+    "title": "📱 Article on CAM Covers",
+    "description": "Wrote about building an image editor in Flutter that turns photos into album covers, including how it is monetized and where AI fits.",
     "tags": [
       "flutter",
       "mobile",
@@ -89,8 +89,8 @@
   },
   {
     "date": "2024",
-    "title": "🗣️ Palestra no Google DevFest Belém",
-    "description": "Apresentou talk 'O Ingrediente Secreto dos Apps de Sucesso: Teste A/B com Firebase' no DevFest Belém, organizado pelo GDG Belém.",
+    "title": "🗣️ Talk at Google DevFest Belém",
+    "description": "Presented 'The secret ingredient of successful apps: A/B testing with Firebase' at DevFest Belém, organized by GDG Belém.",
     "tags": [
       "googledevfest",
       "firebase",
@@ -102,8 +102,8 @@
   },
   {
     "date": "2023",
-    "title": "🗣️ Palestra no Google I/O Extended Belém",
-    "description": "Apresentou 'Implementado Firebase em aplicações Flutter: Tudo o que você precisa saber' no Google I/O Extended Belém na UNAMA.",
+    "title": "🗣️ Talk at Google I/O Extended Belém",
+    "description": "Presented 'Firebase in Flutter apps: everything you need to know' at Google I/O Extended Belém, hosted at UNAMA.",
     "tags": [
       "googleio",
       "firebase",

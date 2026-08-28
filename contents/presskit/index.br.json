@@ -1,0 +1,42 @@
+[
+  {
+    "file": "01-retrato-camisa-preta.jpg",
+    "caption": "Retrato, camisa preta"
+  },
+  {
+    "file": "02-terno-sem-fundo.png",
+    "caption": "Terno, fundo transparente"
+  },
+  {
+    "file": "03-programando-sem-fundo.png",
+    "caption": "No notebook, fundo transparente"
+  },
+  {
+    "file": "04-terno-completo.jpg",
+    "caption": "Terno, corpo inteiro"
+  },
+  {
+    "file": "05-retrato-camisa-xadrez.jpg",
+    "caption": "Retrato, camisa xadrez"
+  },
+  {
+    "file": "06-retrato-moletom.jpg",
+    "caption": "Retrato, moletom"
+  },
+  {
+    "file": "07-corpo-inteiro-mural.jpg",
+    "caption": "Corpo inteiro, em frente a um mural"
+  },
+  {
+    "file": "08-neon-verde.jpg",
+    "caption": "Neon verde"
+  },
+  {
+    "file": "09-neon-noite.jpg",
+    "caption": "Neon à noite"
+  },
+  {
+    "file": "10-corrida-utinga.jpg",
+    "caption": "Corrida no Parque do Utinga"
+  }
+]
