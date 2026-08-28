@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { t } from "@lingui/core/macro";
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import NextTopLoader from 'nextjs-toploader';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { LinguiClientProvider } from "@/components/layout/LinguiClientProvider";
@@ -9,6 +11,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import { LOCALES, HTML_LANG } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { localeAlternates, OG_IMAGE, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
+import "../globals.css";
 
 /**
  * Root layout for every locale.
@@ -117,21 +120,28 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[la
   };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
-      />
-      <LinguiClientProvider locale={locale} messages={i18n.messages}>
-        <div className="min-h-screen flex flex-col bg-background">
-          <Navbar menu={[...menuData]} locale={locale} />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer socialLinks={socialLinksData} menu={[...menuData]} locale={locale} />
-        </div>
-        <ToasterProvider />
-      </LinguiClientProvider>
-    </>
+    <html lang={HTML_LANG[locale]}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+        />
+      </head>
+      <body>
+        <GoogleTagManager gtmId="GTM-WT3T53NB" />
+        <NextTopLoader color="#1e56f0" speed={340} />
+        <LinguiClientProvider locale={locale} messages={i18n.messages}>
+          <div className="min-h-screen flex flex-col bg-background">
+            <Navbar menu={[...menuData]} locale={locale} />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer socialLinks={socialLinksData} menu={[...menuData]} locale={locale} />
+          </div>
+          <ToasterProvider />
+        </LinguiClientProvider>
+      </body>
+      <GoogleAnalytics gaId="G-4M6BE19CKV" />
+    </html>
   );
 }

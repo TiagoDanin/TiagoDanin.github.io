@@ -1,10 +1,12 @@
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { LinguiClientProvider } from "@/components/layout/LinguiClientProvider";
 import { NotFoundPage } from "@/components/sections/NotFoundPage";
 import type { SocialLink } from "@/components/ui/SocialLinks";
 import { queryCollection } from 'nextjs-studio/server';
-import { DEFAULT_LOCALE } from "@/lib/i18n/locales";
+import { DEFAULT_LOCALE, HTML_LANG } from "@/lib/i18n/locales";
 import { initI18n } from "@/lib/i18n/server";
 import "./globals.css";
 
@@ -13,12 +15,12 @@ export const metadata = {
 };
 
 /**
- * The site-wide 404: the file Next builds `dist/404.html` from, which GitHub
- * Pages serves for every URL matching no route, in either language.
+ * The site-wide 404: the file Next builds `dist/404.html` from, which is what
+ * GitHub Pages serves for every URL matching no route, in either language.
  *
- * Next renders the root not-found outside every layout, so this brings its own
- * frame: the stylesheet is imported here and the shell is composed here rather
- * than inherited. It must not render `<html>` or `<body>`, which Next supplies.
+ * It opens its own document because the root layout is a passthrough, for the
+ * reason spelled out there. English, since a URL that matched nothing carries
+ * no locale to read.
  */
 export default function RootNotFound() {
   const i18n = initI18n(DEFAULT_LOCALE);
@@ -27,14 +29,20 @@ export default function RootNotFound() {
   const menuData = queryCollection('menu').locale(DEFAULT_LOCALE);
 
   return (
-    <LinguiClientProvider locale={DEFAULT_LOCALE} messages={i18n.messages}>
-      <div className="min-h-screen flex flex-col bg-background">
-        <Navbar menu={[...menuData]} locale={DEFAULT_LOCALE} />
-        <main className="flex-1">
-          <NotFoundPage />
-        </main>
-        <Footer socialLinks={socialLinksData} menu={[...menuData]} locale={DEFAULT_LOCALE} />
-      </div>
-    </LinguiClientProvider>
+    <html lang={HTML_LANG[DEFAULT_LOCALE]}>
+      <body>
+        <GoogleTagManager gtmId="GTM-WT3T53NB" />
+        <LinguiClientProvider locale={DEFAULT_LOCALE} messages={i18n.messages}>
+          <div className="min-h-screen flex flex-col bg-background">
+            <Navbar menu={[...menuData]} locale={DEFAULT_LOCALE} />
+            <main className="flex-1">
+              <NotFoundPage />
+            </main>
+            <Footer socialLinks={socialLinksData} menu={[...menuData]} locale={DEFAULT_LOCALE} />
+          </div>
+        </LinguiClientProvider>
+      </body>
+      <GoogleAnalytics gaId="G-4M6BE19CKV" />
+    </html>
   );
 }
