@@ -70,87 +70,25 @@ export function isLocale(value: string): value is Locale {
 }
 
 /**
- * Routes that render from `src/app/(i18n)/[lang]` and therefore exist under a
- * locale prefix. Everything else is still served only from `(legacy)`.
- *
- * Prefixing a path that has not migrated produces a link to a page the build
- * never generated. Grow this set as routes move, and delete it once they all
- * have.
- */
-export const LOCALIZED_ROUTES = [
-  '/',
-  '/about',
-  '/services',
-  '/projects',
-  '/blog',
-  '/talks',
-  '/ai-automation',
-  '/all-contacts',
-  '/chrome-extensions',
-  '/cybersecurity',
-  '/game-development',
-  '/mentorship',
-  '/mobile',
-  '/apps',
-  '/github-pages',
-  '/links',
-  '/links/talk',
-  '/press',
-  '/rankings/github',
-  '/rankings/npm',
-  '/rss',
-  '/sitemap',
-  '/skills',
-  '/tags',
-  '/web-development',
-  '/faq',
-  '/press-kit',
-  '/timeline',
-  '/webview',
-] as const;
-
-const LOCALIZED_ROUTE_SET = new Set<string>(LOCALIZED_ROUTES);
-
-/**
- * Route prefixes whose every child exists in every locale.
- *
- * Posts and talks cannot be listed one by one, and they do not need to be: the
- * MDX filename suffix guarantees both languages exist for each slug.
- */
-// `/faq/` belongs here for the same reason: both languages share one slug list,
-// written side by side in contents/faq. If a slug ever exists in only one of the
-// two files the promise breaks silently, so scripts/generateLlms.ts compares the
-// two and throws.
-export const LOCALIZED_PREFIXES = ['/post/', '/talk/', '/app/', '/skills/', '/social/', '/tags/', '/faq/', '/blog/', '/project/', '/timeline/'] as const;
-
-function isLocalized(path: string): boolean {
-  return LOCALIZED_ROUTE_SET.has(path) || LOCALIZED_PREFIXES.some((p) => path.startsWith(p));
-}
-
-/**
- * Routes whose translation lives at the old suffix path rather than under the
- * prefix. Disappears with `(legacy)`.
- */
-const LEGACY_LOCALE_PATHS: Record<string, Partial<Record<Locale, string>>> = {
-  // /blog and /talks moved to the prefix; their old suffix URLs survive as
-  // aliases that canonicalise to the new address, so nothing links at them.
-};
-
-/**
  * Path a link should point at. The default locale uses the bare path, because
  * that is the URL the canonical tag and every existing backlink use.
  *
- * A route with no version in this locale keeps its bare path: sending a reader
- * to a 404 is worse than sending them to a page in the other language.
+ * Every route lives under `(i18n)/[lang]` and is rendered in every language, so
+ * there is nothing to look up: the prefix applies to any in-site path. This
+ * used to consult two hand-kept registries of migrated routes, and a route
+ * missing from both still built, rendered at `/br/x/`, and got linked to in
+ * English from everywhere. Adding a page is now enough.
+ *
+ * A path that is not ours to rewrite comes back untouched: an absolute URL, a
+ * `mailto:`, a bare anchor. Menu and card hrefs come from `contents/`, where an
+ * external link sits next to an internal one, and `/br/https://github.com/...`
+ * is the shape that mistake takes.
  */
 export function localePath(locale: Locale, path: string): string {
   const clean = path === '/' ? '' : path;
   if (locale === DEFAULT_LOCALE) return clean || '/';
+  if (!path.startsWith('/')) return path;
 
-  const legacy = LEGACY_LOCALE_PATHS[path]?.[locale];
-  if (legacy) return legacy;
-
-  if (!isLocalized(path)) return clean || '/';
   return `/${locale}${clean}`;
 }
 
@@ -163,6 +101,23 @@ export function localePath(locale: Locale, path: string): string {
  */
 export function entryPath(locale: Locale, kind: 'post' | 'talk', slug: string): string {
   return localePath(locale, `/${kind}/${slug}`);
+}
+
+/** The four RSS feeds, each generated once per locale. */
+export const FEED_NAMES = ['blog', 'talks', 'timeline', 'projects'] as const;
+
+export type FeedName = (typeof FEED_NAMES)[number];
+
+/**
+ * The feed file for a locale: `/rss/blog.xml` for the default, `/rss/blog-br.xml`
+ * for the others.
+ *
+ * Feeds are static files, so they take the no-trailing-slash rule, not the
+ * route one. `scripts/generateRss.ts` writes exactly these names; a page that
+ * built the URL by hand would be free to advertise a feed nobody generated.
+ */
+export function feedPath(name: FeedName, locale: Locale): string {
+  return `/rss/${name}${locale === DEFAULT_LOCALE ? '' : `-${locale}`}.xml`;
 }
 
 const SECONDARY = LOCALES.filter((l) => l !== DEFAULT_LOCALE);
@@ -193,17 +148,16 @@ export function splitLocale(pathname: string): { locale: Locale; base: string } 
 }
 
 /**
- * The same page in another language, or null when it does not exist.
+ * The same page in another language.
  *
- * Null is the useful answer: a language switcher that silently drops the reader
- * on the home page is worse than one that shows the language as unavailable.
+ * Always a path now. It returned `null` for a route that existed in one
+ * language only, which was the honest answer while the migration was running
+ * and no route is in that state any more. `LanguageSelect` still has a null
+ * branch, for the language already being read.
  */
-export function switchLocalePath(pathname: string, target: Locale): string | null {
+export function switchLocalePath(pathname: string, target: Locale): string {
   const { base } = splitLocale(pathname);
 
   if (target === DEFAULT_LOCALE) return base;
-  if (LEGACY_LOCALE_PATHS[base]?.[target]) return LEGACY_LOCALE_PATHS[base][target]!;
-  if (isLocalized(base)) return base === '/' ? `/${target}` : `/${target}${base}`;
-
-  return null;
+  return base === '/' ? `/${target}` : `/${target}${base}`;
 }

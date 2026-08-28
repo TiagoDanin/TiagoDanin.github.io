@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 import { withStudio } from "nextjs-studio/next";
 import { linguiMacroSwcPlugin } from "@lingui/swc-plugin/options";
-import { DEFAULT_LOCALE, LOCALIZED_PREFIXES, LOCALIZED_ROUTES } from "./src/lib/i18n/locales";
+import { DEFAULT_LOCALE, LOCALES } from "./src/lib/i18n/locales";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -9,28 +9,29 @@ const isDev = process.env.NODE_ENV === "development";
  * The default locale is served from the site root as well as from `/en`.
  *
  * In production `scripts/flattenDefaultLocale.ts` does it, moving `dist/en/**`
- * to the root after the build. There is no build in `next dev`, so without
- * these rewrites `/` 404s and `/about/` errors on a `[lang]` param that does
- * not exist, and the English site is only reachable at URLs it will never be
- * served from.
+ * to the root after the build. There is no build in `next dev`, so without this
+ * rewrite `/` 404s and `/about/` errors on a `[lang]` param that does not
+ * exist, and the English site is only reachable at URLs it will never be served
+ * from.
  *
- * Derived from the same lists `localePath()` reads, so a route cannot be
- * reachable in one and missing in the other. Rewrites and `output: "export"`
- * are mutually exclusive, which is why the export only applies to builds.
+ * One catch-all, not a route list. Every route lives under `(i18n)/[lang]`, so
+ * anything that is not already addressed by locale belongs to the default one.
+ * The lookahead is what keeps `/br/about` and `/en/about` from being rewritten
+ * into `/en/br/about`; it is built from LOCALES, so a new language needs no
+ * edit here. `public/` and `/_next` are matched by the filesystem before these
+ * rewrites run, so the feeds, the mirrors and the assets are untouched.
+ *
+ * Rewrites and `output: "export"` are mutually exclusive, which is why the
+ * export only applies to builds.
  */
 const defaultLocaleRewrites = [
-  ...LOCALIZED_ROUTES.map((route) => ({
-    source: route,
-    destination: route === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${route}`,
-  })),
-  // Catch-all under each prefix: /project/[type]/[slug], /blog/tags/[tag] and
-  // /timeline/[year]/[slug] sit two segments deep. This matched a single segment
-  // while the retired /post/:slug/pt redirects still needed to win, and those
-  // routes no longer exist.
-  ...LOCALIZED_PREFIXES.map((prefix) => ({
-    source: `${prefix}:path*`,
-    destination: `/${DEFAULT_LOCALE}${prefix}:path*`,
-  })),
+  // The home first: the catch-all's parameter needs at least one character, so
+  // `/` would fall through it.
+  { source: "/", destination: `/${DEFAULT_LOCALE}` },
+  {
+    source: `/:path((?!${LOCALES.join("|")}(?:/|$)).*)`,
+    destination: `/${DEFAULT_LOCALE}/:path`,
+  },
 ];
 
 const nextConfig: NextConfig = {
