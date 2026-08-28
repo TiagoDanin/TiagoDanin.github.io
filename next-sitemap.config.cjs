@@ -82,6 +82,9 @@ module.exports = {
     } else if (urlPath === '/business') {
       priority = 0.9;
       changefreq = 'monthly';
+    } else if (urlPath === '/legal') {
+      priority = 0.3;
+      changefreq = 'yearly';
     } else if (urlPath === '/faq') {
       priority = 0.8;
     } else if (urlPath.startsWith('/faq/')) {
