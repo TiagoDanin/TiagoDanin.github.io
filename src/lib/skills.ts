@@ -1,6 +1,6 @@
 import { queryCollection } from 'nextjs-studio/server';
 
-import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/locales';
+import { DEFAULT_LOCALE, contentLang, type Locale } from '@/lib/i18n/locales';
 import { titleToSlug } from '@/utils/parse';
 
 export interface SkillItem {
@@ -83,4 +83,61 @@ export function getSkillCategories(locale: Locale): Array<{ category: string; it
   }
 
   return [...groups].map(([category, items]) => ({ category, items }));
+}
+
+/**
+ * What a skill page actually has to show: the posts, talks and repositories
+ * that carry it.
+ *
+ * Extracted from the page because `generateMetadata` needs the same answer.
+ * Computing it twice from two copies of the matching rules is how a page ends
+ * up claiming three articles in its description and rendering none.
+ */
+export function getSkillContent(locale: Locale, englishName: string) {
+  const needle = englishName.toLowerCase();
+  const slug = titleToSlug(englishName);
+  const hasTag = (tags: unknown) => ((tags as string[]) || []).some((tag) => tag.toLowerCase() === needle);
+
+  const posts = [...queryCollection('posts').where({ lang: contentLang(locale) })]
+    .filter((post) => hasTag(post.tags))
+    .sort((a, b) => b.date.localeCompare(a.date));
+
+  const talks = [...queryCollection('talks').where({ lang: contentLang(locale) })]
+    .filter((talk) => hasTag(talk.tags))
+    .sort((a, b) => b.date.localeCompare(a.date));
+
+  const projects = [...queryCollection('github')]
+    .filter(
+      (project) =>
+        titleToSlug((project.language as string) || '') === slug ||
+        ((project.topics as string[]) || []).some((topic) => titleToSlug(topic) === slug)
+    )
+    .sort((a, b) => (b.stargazers_count as number) - (a.stargazers_count as number));
+
+  return {
+    posts,
+    talks,
+    projects,
+    stars: projects.reduce((sum, p) => sum + ((p.stargazers_count as number) || 0), 0),
+    total: posts.length + talks.length + projects.length,
+  };
+}
+
+/** Inferred rather than declared: the collection row types are the query's. */
+export type SkillContent = ReturnType<typeof getSkillContent>;
+
+/**
+ * Whether `/skills/<slug>` should be indexed and submitted in a sitemap.
+ *
+ * 23 of the 40 skills match no post, no talk and no repository. What renders
+ * for those is one paragraph from a dictionary in the page file plus a Service
+ * schema, forty times over with the name swapped, which is a doorway page by
+ * every definition Google publishes. They keep their page, keep being linked
+ * from `/skills`, and stop asking to be indexed.
+ *
+ * The bar is one real item, not a subjective quality call: a skill with a
+ * repository behind it has something on the page that exists nowhere else.
+ */
+export function isSkillIndexable(content: SkillContent): boolean {
+  return content.total > 0;
 }

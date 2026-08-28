@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { titleToSlug, formatDate } from '@/utils/parse';
 import { eventLabel } from '@/lib/talks';
 import { contentLang, entryPath, intlLocale, localePath } from '@/lib/i18n/locales';
-import { getAllSkills, getSkillBySlug } from '@/lib/skills';
+import { getAllSkills, getSkillBySlug, getSkillContent, isSkillIndexable } from '@/lib/skills';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
@@ -85,14 +85,27 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/skills/[sl
     return { title: t(i18n)`Skill not found`, robots: { index: false, follow: true } };
   }
 
-  const { skill, category } = entry;
-  const description = t(i18n)`Tiago Danin, ${skill.name} developer with expertise in ${category}. Hire for freelance projects, consulting, and mentorship.`;
+  const { skill, category, englishName } = entry;
+  const content = getSkillContent(locale, englishName);
+
+  // Was one sentence with the name swapped in, identical across forty pages
+  // down to "Hire for freelance projects, consulting, and mentorship". A
+  // description that repeats verbatim site-wide gives a crawler nothing to tell
+  // the pages apart by; these counts are different on every one of them.
+  const description = isSkillIndexable(content)
+    ? t(
+        i18n
+      )`${skill.name} work by Tiago Danin: ${content.projects.length} open source repositories, ${content.posts.length} articles and ${content.talks.length} talks.`
+    : t(i18n)`${skill.name} in Tiago Danin's toolkit, part of his ${category.toLowerCase()} work.`;
 
   return {
     title: t(i18n)`${skill.name} Developer | Tiago Danin`,
     description,
-    keywords: [skill.name, category, 'developer', 'freelance', 'Tiago Danin', 'mobile developer', 'hire'],
     alternates: localeAlternates(locale, `/skills/${slug}`),
+    // A skill matching no post, talk or repository renders one dictionary
+    // paragraph and nothing else. Forty of those from one template is a doorway
+    // set; it keeps its page and its links, and stops asking to be indexed.
+    robots: isSkillIndexable(content) ? undefined : { index: false, follow: true },
     openGraph: {
       title: t(i18n)`${skill.name} Developer, Tiago Danin`,
       description,
@@ -122,40 +135,17 @@ export default async function SkillPage({ params }: PageProps<'/[lang]/skills/[s
   const { skill, category, englishName } = entry;
   const description = getDescription(i18n, skill.name, englishName, category);
 
-  // Related posts
-  const allPosts = [...queryCollection('posts').where({ lang: contentLang(locale) })].sort((a, b) => b.date.localeCompare(a.date));
-  const allRelatedPosts = allPosts.filter((post) =>
-    (post.tags as string[])?.some((tag: string) =>
-      tag.toLowerCase() === englishName.toLowerCase()
-    )
-  );
-  const relatedPosts = allRelatedPosts.slice(0, 5);
+  // One source for what this skill has behind it: generateMetadata reads the
+  // same helper, so the description cannot claim a count the page contradicts.
+  const content = getSkillContent(locale, englishName);
+  const relatedPosts = content.posts.slice(0, 5);
+  const relatedTalks = content.talks.slice(0, 5);
+  const relatedProjects = content.projects.slice(0, 6);
 
-  // Related talks
-  const allTalks = [...queryCollection('talks').where({ lang: contentLang(locale) })].sort((a, b) => b.date.localeCompare(a.date));
-  const allRelatedTalks = allTalks.filter((talk) =>
-    (talk.tags as string[])?.some((tag: string) =>
-      tag.toLowerCase() === englishName.toLowerCase()
-    )
-  );
-  const relatedTalks = allRelatedTalks.slice(0, 5);
-
-  // Related GitHub projects
-  const allProjects = [...queryCollection('github')];
-  const skillSlug = titleToSlug(englishName);
-  const allRelatedProjects = allProjects
-    .filter((p) => {
-      const projectLang = titleToSlug(p.language as string || '');
-      return projectLang === skillSlug || (p.topics as string[])?.some((topic: string) => titleToSlug(topic) === skillSlug);
-    })
-    .sort((a, b) => (b.stargazers_count as number) - (a.stargazers_count as number));
-  const relatedProjects = allRelatedProjects.slice(0, 6);
-
-  // Metrics
-  const totalPosts = allRelatedPosts.length;
-  const totalTalks = allRelatedTalks.length;
-  const totalProjects = allRelatedProjects.length;
-  const totalStars = allRelatedProjects.reduce((sum, p) => sum + ((p.stargazers_count as number) || 0), 0);
+  const totalPosts = content.posts.length;
+  const totalTalks = content.talks.length;
+  const totalProjects = content.projects.length;
+  const totalStars = content.stars;
 
   // Other skills in same category
   const allSkills = getAllSkills(locale);

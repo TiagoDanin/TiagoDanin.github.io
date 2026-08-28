@@ -239,6 +239,47 @@ export function buildBlogTagIndex(locale: Locale): TagIndex {
   return cached(`blog:${locale}`, () => build(locale, ['post'], true));
 }
 
+/**
+ * How much a tag page needs before it asks to be indexed.
+ *
+ * The index runs to 495 tags, and 240 of them carry exactly one item: a GitHub
+ * topic used by a single repository. A page listing one link is thin content,
+ * and several hundred of them generated from one template is the shape Google
+ * reads as doorway pages, which costs the pages that *do* deserve to rank.
+ *
+ * Below the line a tag still gets a page, still renders and is still linked and
+ * crawled: `noindex, follow` keeps the navigation and the link equity while
+ * withdrawing the request to index. It is only excluded from the sitemaps.
+ *
+ * 3 rather than 2 because a two-item page is one item plus a "related tags"
+ * row, which is still not a page worth landing on from a search result.
+ */
+export const TAG_MIN_ITEMS_TO_INDEX = 3;
+
+/** Whether `/tags/<slug>` should be indexed and submitted in a sitemap. */
+export function isTagIndexable(entry: TagEntry | undefined): boolean {
+  return (entry?.total ?? 0) >= TAG_MIN_ITEMS_TO_INDEX;
+}
+
+/**
+ * The tag slugs worth submitting, unioned across locales like `allTagSlugs`.
+ *
+ * A tag indexable in one language and not the other would put a URL in one
+ * sitemap whose `hreflang` twin is noindex, so the threshold is applied to the
+ * richest reading of the tag rather than per language.
+ */
+export function indexableTagSlugs(): string[] {
+  const slugs = new Set<string>();
+
+  for (const locale of LOCALES) {
+    buildTagIndex(locale).forEach((entry, slug) => {
+      if (isTagIndexable(entry)) slugs.add(slug);
+    });
+  }
+
+  return [...slugs];
+}
+
 /** Tags sorted the way both index pages list them: most content first. */
 export function sortedTags(index: TagIndex): TagEntry[] {
   return [...index.values()].sort((a, b) => b.total - a.total || a.name.localeCompare(b.name));

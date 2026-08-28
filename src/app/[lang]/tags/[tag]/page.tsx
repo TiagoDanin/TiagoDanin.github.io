@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagEntryList } from "@/components/ui/TagEntryList";
 import { titleToSlug, toISODate, getRandomColorWithDarkMode } from '@/utils/parse';
-import { allTagSlugs, buildTagIndex, prettifyTagSlug, type TagEntry, type TaggedItem } from '@/lib/tags';
+import { allTagSlugs, buildTagIndex, isTagIndexable, prettifyTagSlug, type TagEntry, type TaggedItem } from '@/lib/tags';
 import { contentLang, localePath, type Locale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl } from '@/lib/i18n/seo';
@@ -61,12 +61,15 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/tags/[tag]
   const { lang, tag: tagSlug } = await params;
   const locale = resolveLocale(lang);
   const i18n = getI18nInstance(locale);
-  const { name } = entryFor(locale, tagSlug);
+  const { entry, name } = entryFor(locale, tagSlug);
 
   return {
     title: t(i18n)`${name} - Articles, Talks & Projects`,
     description: t(i18n)`Everything about ${name} by Tiago Danin: articles, talks, open source projects and career milestones.`,
     alternates: localeAlternates(locale, `/tags/${tagSlug}`),
+    // A tag with one or two items is a page with one or two links on it.
+    // `follow` keeps it crawlable and keeps passing equity to what it lists.
+    robots: isTagIndexable(entry) ? undefined : { index: false, follow: true },
     openGraph: {
       title: t(i18n)`${name} - Articles, Talks & Projects | Tiago Danin`,
       description: t(i18n)`Everything about ${name}: articles, talks, projects and milestones.`,
