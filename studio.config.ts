@@ -107,6 +107,7 @@ const config: StudioConfig = {
         label: "Blog Posts",
         fields: [
           { name: "title", type: "text", required: true },
+          { name: "seoTitle", type: "text" },
           { name: "date", type: "date", includeDay: false, required: true },
           { name: "description", type: "long-text", required: true },
           { name: "slug", type: "text", required: true },
@@ -139,6 +140,7 @@ const config: StudioConfig = {
         label: "Talks",
         fields: [
           { name: "title", type: "text", required: true },
+          { name: "seoTitle", type: "text" },
           { name: "date", type: "date", includeDay: false, required: true },
           { name: "description", type: "long-text", required: true },
           { name: "slug", type: "text", required: true },

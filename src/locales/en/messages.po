@@ -13,30 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#. placeholder {0}: Number(project.downloads).toLocaleString(intlLocale(locale))
-#: src/app/[lang]/project/[type]/[slug]/page.tsx
-msgid " {0} downloads."
-msgstr " {0} downloads."
-
-#. placeholder {0}: project.stargazers_count
-#: src/app/[lang]/project/[type]/[slug]/page.tsx
-msgid " {0} stars on GitHub."
-msgstr " {0} stars on GitHub."
-
-#. placeholder {0}: project.language
-#: src/app/[lang]/project/[type]/[slug]/page.tsx
-msgid " Built with {0}."
-msgstr " Built with {0}."
-
-#: src/app/[lang]/project/[type]/[slug]/page.tsx
-msgid " Licensed under {licenseName}."
-msgstr " Licensed under {licenseName}."
-
-#. placeholder {0}: tags.join(', ')
-#: src/app/[lang]/project/[type]/[slug]/page.tsx
-msgid " Topics: {0}."
-msgstr " Topics: {0}."
-
 #. placeholder {0}: app.name
 #: src/app/[lang]/app/[appId]/page.tsx
 msgid "{0} - Android App"
@@ -214,7 +190,11 @@ msgstr "{name} - Articles, Talks & Projects | Tiago Danin"
 msgid "{otherProjectsPrivateCount} secret projects"
 msgstr "{otherProjectsPrivateCount} secret projects"
 
-#. placeholder {0}: (baseDescription || enrichedDescription).substring(0, 60)
+#: src/app/[lang]/project/[type]/[slug]/page.tsx
+msgid "{platformContext} by Tiago Danin, mobile developer based in Belém, Pará."
+msgstr "{platformContext} by Tiago Danin, mobile developer based in Belém, Pará."
+
+#. placeholder {0}: (baseDescription || truncatedDescription).substring(0, 60)
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
 msgid "{title} - {0}"
 msgstr "{title} - {0}"
@@ -1851,6 +1831,10 @@ msgstr "From idle clickers to arcade survival, I design and ship casual games fo
 msgid "From Prompt to Production"
 msgstr "From Prompt to Production"
 
+#: src/app/[lang]/project/[type]/[slug]/page.tsx
+msgid "Full details on tiagodanin.com."
+msgstr "Full details on tiagodanin.com."
+
 #: src/app/[lang]/press-kit/page.tsx
 msgid "Full name"
 msgstr "Full name"
@@ -2229,6 +2213,10 @@ msgstr "Last Push"
 #: src/app/[lang]/legal/page.tsx
 msgid "Last updated"
 msgstr "Last updated"
+
+#: src/app/[lang]/project/[type]/[slug]/page.tsx
+msgid "Last updated in {updatedYear}."
+msgstr "Last updated in {updatedYear}."
 
 #: src/app/[lang]/web-development/page.tsx
 msgid "Launch & Iterate"
@@ -3682,6 +3670,10 @@ msgstr "Skills"
 msgid "Slack/Notion integrations"
 msgstr "Slack/Notion integrations"
 
+#: src/app/[lang]/project/[type]/[slug]/page.tsx
+msgid "Source code, install command and stats on tiagodanin.com."
+msgstr "Source code, install command and stats on tiagodanin.com."
+
 #: src/app/[lang]/press-kit/page.tsx
 msgid "Speaking history"
 msgstr "Speaking history"
@@ -4005,10 +3997,6 @@ msgstr "Tiago Danin - Mobile Developer | 250+ Projects & 70+ Open Source Package
 msgid "Tiago Danin - Mobile Developer | Flutter & React Native"
 msgstr "Tiago Danin - Mobile Developer | Flutter & React Native"
 
-#: src/app/[lang]/page.tsx
-msgid "Tiago Danin - Mobile Developer | Flutter, React Native & iOS/Android"
-msgstr "Tiago Danin - Mobile Developer | Flutter, React Native & iOS/Android"
-
 #: src/components/layout/Navbar.tsx
 msgid "Tiago Danin home"
 msgstr "Tiago Danin home"
@@ -4079,6 +4067,7 @@ msgid "Top repos by stars & forks"
 msgstr "Top repos by stars & forks"
 
 #. placeholder {0}: allTags.slice(0, 6).join(', ')
+#. placeholder {0}: tags.join(', ')
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
 msgid "Topics: {0}."
 msgstr "Topics: {0}."
