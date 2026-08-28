@@ -12,11 +12,6 @@ export interface PressItem {
   quote: string;
 }
 
-const MONTHS = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December',
-];
-
 /**
  * Formats an ISO date without going through the Date constructor, which would
  * shift the day depending on the build machine's timezone.
@@ -28,12 +23,17 @@ export function pressDate(iso: string, locale: string = 'en'): string {
   // UTC, so a day-precision date does not slip to the previous day west of
   // Greenwich. Without a day the month and year are all there is to show.
   const date = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day ?? 1)));
-  return new Intl.DateTimeFormat(locale, {
+  const formatted = new Intl.DateTimeFormat(locale, {
     year: 'numeric',
     month: 'long',
     ...(day ? { day: 'numeric' } : {}),
     timeZone: 'UTC',
   }).format(date);
+
+  // Portuguese writes month names lowercase, so a date that starts with one
+  // reads as a typo next to "Maio 2026" from formatDate. Capitalized here for
+  // the same reason it is there: it opens a line, not a sentence.
+  return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
 
 export function pressHost(url: string): string {

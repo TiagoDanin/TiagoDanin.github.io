@@ -6,10 +6,11 @@ import { LinguiClientProvider } from "@/components/layout/LinguiClientProvider";
 import NextTopLoader from 'nextjs-toploader';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { ToasterProvider } from "@/components/ui/toaster-provider";
+import type { SocialLink } from "@/components/ui/SocialLinks";
 import { queryCollection } from 'nextjs-studio/server';
 import { LOCALES, HTML_LANG } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, OG_IMAGE, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 import "../../globals.css";
 
 /**
@@ -25,13 +26,6 @@ export const dynamicParams = false;
 export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
 }
-
-const OG_IMAGE = {
-  url: 'https://avatars.githubusercontent.com/u/5731176?v=4',
-  width: 400,
-  height: 400,
-  alt: 'Tiago Danin - Mobile Developer & Software Engineer',
-};
 
 const PERSON_ID = `${ORIGIN}/#person`;
 const WEBSITE_ID = `${ORIGIN}/#website`;
@@ -65,20 +59,15 @@ export async function generateMetadata({ params }: LayoutProps<'/[lang]'>): Prom
     },
     openGraph: {
       type: 'website',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
       url: pageUrl(locale, '/'),
       title,
       description,
-      siteName: 'Tiago Danin',
-      images: [OG_IMAGE],
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title,
       description,
-      creator: '@tiagodanin',
-      site: '@tiagodanin',
-      images: [OG_IMAGE.url],
     },
     alternates: localeAlternates(locale, '/'),
   };
@@ -88,7 +77,7 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[la
   const locale = resolveLocale((await params).lang);
   const i18n = initI18n(locale);
 
-  const socialLinksData = queryCollection('sociallinks');
+  const socialLinksData = [...queryCollection('sociallinks')] as unknown as SocialLink[];
   // Navbar and Footer are client components, so the menu is read here and
   // passed down: queryCollection only runs on the server.
   const menuData = queryCollection('menu').locale(locale);
@@ -150,7 +139,7 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[la
             <main className="flex-1">
               {children}
             </main>
-            <Footer socialLinks={[...socialLinksData]} menu={[...menuData]} locale={locale} />
+            <Footer socialLinks={socialLinksData} menu={[...menuData]} locale={locale} />
           </div>
           <ToasterProvider />
         </LinguiClientProvider>
