@@ -3,6 +3,7 @@ import { expect } from 'storybook/test';
 
 import { Footer } from './Footer';
 import type { MenuItem } from './Navbar';
+import type { SocialLink } from '../ui/SocialLinks';
 
 /**
  * The other half of the site shell. Rendered once in the root layout, below
@@ -17,7 +18,7 @@ const menu: MenuItem[] = [
   { title: 'Sitemap', href: '/sitemap', navbar: false, footer: true, hideOnHome: false },
 ];
 
-const socialLinks = [
+const socialLinks: SocialLink[] = [
   { label: 'LinkedIn', url: 'https://linkedin.com/in/tiagodanin', icon: 'Linkedin' },
   { label: 'Instagram', url: 'https://instagram.com/tiagodanin', icon: 'Instagram' },
   {

@@ -1,25 +1,9 @@
 'use client'
 
 import { useState } from "react";
-import {
-  Briefcase,
-  Code as CodeIcon,
-  ChevronDown,
-  Users,
-  Brain,
-  MessageCircle,
-  Target,
-  Calendar
-} from "lucide-react";
-import {
-  SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
-  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
-  SiNodedotjs, SiPostgresql, SiSqlite,
-  SiFigma, SiCanva, SiUnity, SiBlender, SiAdobexd,
-  SiFirebase, SiGitlab, SiGithub, SiGooglecloud, SiDocker
-} from "react-icons/si";
-import { FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette } from "react-icons/fa";
+import { Briefcase, Code as CodeIcon, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TechBadge } from "@/components/ui/TechBadge";
 import { ExperienceItem } from "@/components/ui/experience-item";
 import { Trans } from "@lingui/react/macro";
 
@@ -71,27 +55,6 @@ interface WorkProps {
   skills: SkillsEntry[];
   about: AboutEntry;
 }
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
-  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
-  SiNodedotjs, SiPostgresql, SiSqlite,
-  SiFigma, SiCanva, SiUnity, SiBlender, SiAdobexd,
-  SiFirebase, SiGitlab, SiGithub, SiGooglecloud, SiDocker,
-  FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette,
-  Users, Brain, MessageCircle, Target, Calendar,
-};
-
-const TechIcon = ({ icon: iconName, name, color }: { icon: string, name: string, color: string }) => {
-  const Icon = iconMap[iconName];
-  if (!Icon) return null;
-  return (
-    <div className="tech-badge" style={{ backgroundColor: color, color: '#fff' }}>
-      <Icon className="w-4 h-4" />
-      <span className="text-xs font-medium">{name}</span>
-    </div>
-  );
-};
 
 export function Work({ work, volunteer, skills, about }: WorkProps) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -202,7 +165,7 @@ export function Work({ work, volunteer, skills, about }: WorkProps) {
                   <h4 className="text-sm font-medium">{category.category}</h4>
                   <div className="flex flex-wrap gap-2">
                     {category.items.map((item) => (
-                      <TechIcon
+                      <TechBadge
                         key={item.name}
                         icon={item.icon}
                         name={item.name}

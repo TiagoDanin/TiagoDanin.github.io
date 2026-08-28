@@ -72,34 +72,37 @@ Package manager is **Yarn 4** (`packageManager: yarn@4.6.0`, Corepack). Node ver
 ### Data Flow
 1. Scripts fetch external data (GitHub, NPM) and write to `contents/<collection>/index.json`
 2. Server components read data with `queryCollection()` from `nextjs-studio/server`
-3. RSS feeds (`blog`, `talks`, `timeline`, `projects`), sitemaps and the machine-readable layer are generated from `contents/` into `public/`
+3. RSS feeds, sitemaps and the machine-readable layer are generated from `contents/` into `public/`
 4. Static site is exported to `dist/`, uploaded by `.github/workflows/deploy.yml`, which runs `yarn deploy` on every push to `main`
 
 ### Routing Architecture
 
 All dynamic routes are statically pre-rendered via `generateStaticParams()`. Adding content to a collection is enough for a page to exist; there is no runtime fallback.
 
-**`src/app/` holds two route groups and nothing else.** They are the two halves of a migration in progress:
+**`src/app/` holds one route group and nothing else.** The migration is finished; `(legacy)` was deleted once its last route moved:
 
 ```
 src/app/
-  (i18n)/[lang]/     root layout + the migrated routes. One page.tsx per route,
+  (i18n)/[lang]/     root layout + every route. One page.tsx per route,
                      rendered once per locale.
-  (legacy)/          root layout + the 23 English-only routes that have not migrated,
-                     plus 4 redirect pages preserving retired Portuguese URLs.
   globals.css  favicon.ico
 ```
 
-There is no `app/layout.tsx`. Two root layouts is the only way for `<html lang>` to differ per locale in a static export, and route groups are how Next.js allows two. **`(legacy)` is scaffolding and both groups disappear once every route lives under `[lang]`.**
+There is no `app/layout.tsx`. A route group is the only way to give the tree a root layout that takes `[lang]`, which is in turn the only way for `<html lang>` to differ per locale in a static export. The group is now a single one, kept because collapsing it would mean an `app/[lang]/layout.tsx` and a rewrite of every import path for nothing.
 
-Migrating a route means moving it into `(i18n)/[lang]/`, making it take `params`, and registering it in `src/lib/i18n/locales.ts`. Two registries, and picking the wrong one is a silent failure:
+**Adding a route is creating the file.** Put it under `(i18n)/[lang]/`, make it take `params`, and stop. There is nothing to register.
 
-- **`LOCALIZED_ROUTES`** is an exact-match list, for a fixed path such as `/about` or `/mobile`.
-- **`LOCALIZED_PREFIXES`** covers a whole subtree, for `/post/` and `/talk/`. Fifty-odd detail pages cannot be enumerated, and they do not need to be: the MDX filename suffix guarantees both languages exist for every slug.
+This used to take two hand-kept registries in `locales.ts`, `LOCALIZED_ROUTES` for exact paths and `LOCALIZED_PREFIXES` for subtrees, read by `localePath()`, by the sitemap generator and by the dev rewrites. A route missing from both still built, so the failure was silent: the Portuguese page existed, everything linked to the English one, and the English URL 404'd in dev. Four copies of the list accumulated and drifted, one of them deciding which English URLs announce an `hreflang` pair with six entries in it while the Portuguese sitemap announced the pair for all thirty.
 
-Both are read by `localePath()`, by `scripts/generateSitemaps.ts` and by the dev rewrites in `next.config.ts`, so a route becomes reachable in all three at once or in none. **A route under `(i18n)/[lang]` that is missing from both registries still builds.** It renders at `/br/x/`, but `localePath()` refuses to prefix links to it, the dev rewrite does not cover its English URL, and its hreflang set collapses onto one URL. Symptom: the Portuguese page exists but everything links to the English one, and the English one 404s in dev.
+What replaced each of them:
 
-**Portuguese URLs are all prefix now.** The old trailing-segment form is retired, and the four `(legacy)` routes that still answer at it (`/blog/pt`, `/talks/pt`, `/post/[slug]/pt`, `/talk/[slug]/pt`, 54 URLs) render `LegacyRedirect` and nothing else.
+- **`localePath()`** prefixes any in-site path, with no list to consult. It leaves a path that is not ours to rewrite alone: an absolute URL, a `mailto:`, an anchor. Menu and card hrefs come from `contents/`, where an external link sits beside an internal one.
+- **The dev rewrites** are one catch-all whose lookahead is built from `LOCALES`, so a new language needs no edit and a new route needs none either.
+- **`scripts/appRoutes.cjs`** derives the static route list from the App Router tree, for the two places that genuinely need to enumerate pages: `scripts/generateSitemaps.ts` and `next-sitemap.config.cjs`. CommonJS because the latter can only `require`.
+
+**A hardcoded `href` still bypasses all of it.** `localePath()` cannot fix a link that never calls it, and a page-level check misses one that lives in a component. Nine of them survived the migration this way, in `Services`, `Hero`, `Projects`, `ArticleCard`, `TagFilter`, both ranking pages and `FeedbackForm`, every one sending a Portuguese reader to the English page. Components take a `locale` prop and resolve their own internal links; the page passes it.
+
+**Portuguese URLs are all prefix now.** The old trailing-segment form (`/blog/pt`, `/post/[slug]/pt`) is retired and no longer answers: the redirect pages that bridged it went with `(legacy)`. `splitLocale()` still recognises the suffix, so an inbound link is understood wherever a pathname is parsed, but nothing generates one.
 
 **`CONTENT_SUFFIX` in `locales.ts` is the only thing that still knows about `pt`.** The MDX files are `.pt.mdx`, their frontmatter says `lang: "pt"`, and Giscus comment threads are keyed `slug-pt`. Renaming any of that would migrate indexed URLs and orphan every existing comment thread for nothing. Read it through `contentLang(locale)`; never hardcode either marker.
 
@@ -134,6 +137,7 @@ That move has three consequences worth knowing before debugging them:
 **Lingui rules.** Macros are transformed by `@lingui/swc-plugin` on the webpack builder; the known Next 16 incompatibility is Turbopack-only. Two config values are load-bearing and were both found the hard way: `format` must be `@lingui/format-po` (a bare `"po"` string is no longer accepted), and `compileNamespace` must be `"ts"`, because the default `cjs` namespace writes `module.exports`, which webpack hands back as an **empty object** to a Server Component, so every string falls back to English with no error.
 
 - Server components publish the catalog with `initI18n(locale)`, which writes into React's per-request cache. **Call it in every page and every layout**, not just the root: that is how the App Router scopes it.
+- **`not-found.tsx` is English, in every locale.** It receives no params, and the URL that missed carries no locale to read, so there is nothing to resolve and nothing worth translating. Keep them plain: no Lingui macros, no `localePath`. A `<Trans>` there also breaks the export, because Next renders a not-found outside the scope where the layout published the catalog.
 - Client components are a separate bundle with their own module state, so they read from `LinguiClientProvider`. It serialises the whole catalog into each page, roughly 18 bytes gzip per message per page.
 - `export const metadata = {...}` at module level cannot be translated: it evaluates once, in one locale. Use `generateMetadata`.
 - A message containing literal braces needs ICU escaping (`'{'hotkey'}'`), or Lingui reads them as a placeholder and renders nothing.
@@ -158,7 +162,7 @@ Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/t
 
 **32 of the 64 files in `src/components/ui/` have no production consumer.** They ship with the shadcn install and no route renders them. Their stories do not count: measure importers excluding `*.stories.tsx`, or everything looks used. Deadness is also transitive, `dialog` and `tooltip` are imported only by `command` and `sidebar`, which are themselves unreachable. Each is documented in Storybook and labelled as unused, so check whether one already exists before adding a dependency.
 
-**84 components, 82 stories.** The two without one are `LinguiClientProvider` and `LegacyRedirect`: neither has a visual surface worth cataloguing, and the first one's job is done by the Storybook decorator instead.
+**91 components, 90 stories.** The only one without is `LinguiClientProvider`: it has no visual surface worth cataloguing, and its job is done by the Storybook decorator instead.
 
 ### Styling
 - **Tailwind CSS** (v3), mobile-first.
@@ -204,8 +208,8 @@ A JSON collection carries a translation the way MDX does, by filename: `contents
 
 `studio.config.ts` sets `defaultLocale: "en"`, which stamps the unsuffixed files so `.locale("en")` selects them the same way `.locale("br")` selects the variant. Two consequences:
 
-- **`.all()` returns every language.** The moment a collection gains a variant, a query without `.locale()` returns both, and a `.map()` over it renders the list twice. This is why the `(legacy)` routes that read `menu`, `projects`, `skills` and `work` pass `.locale(DEFAULT_LOCALE)` explicitly.
-- **`.one()` prefers the default locale**, so the singleton reads in `(legacy)` did not need changing. It is the only method that guesses.
+- **`.all()` returns every language.** The moment a collection gains a variant, a query without `.locale()` returns both, and a `.map()` over it renders the list twice. Always pass `.locale()` on a list read, including in `scripts/` (`readAll()` in `generateLlms.ts` exists to make that the default).
+- **`.one()` prefers the default locale.** It is the only method that guesses, which is why singleton reads survived the migration untouched.
 
 There is **no fallback**: `.locale("es")` on a collection with no Spanish returns empty, exactly like MDX. A partially translated collection renders a partially empty page, by design.
 
@@ -337,7 +341,9 @@ Metadata is defined per page with `generateMetadata`, hardcoding `https://tiagod
 
 A regex sweep over the whole repo is the wrong tool here: it cannot tell a route from a file, and it will happily corrupt `${...}` interpolations and schema.org placeholders like `{search_term_string}`.
 
-- Always set `alternates.canonical`. On a route under `[lang]`, use `localeAlternates(locale, path)` from `src/lib/i18n/seo.ts` rather than writing the `languages` map by hand.
+- Always set `alternates.canonical`. Use `localeAlternates(locale, path)` from `src/lib/i18n/seo.ts` rather than writing the `languages` map by hand.
+- **A page's `openGraph` replaces the layout's, it does not merge into it.** Every page that declared a title of its own silently dropped the layout's `og:image` and `og:site_name`, and the whole site shared without a thumbnail until this was found in the built HTML. Spread `openGraphDefaults(locale)` inside every `openGraph` block and `twitterDefaults()` inside every `twitter` block; page-specific keys placed after the spread still win, which is how `/post/[slug]` keeps its cover image.
+- **Open Graph profile tags are `profile:first_name`, not `og:profile:first_name`.** They are a separate namespace in the spec and Next emits them that way. Grepping the output for `og:profile` finds nothing and looks like the tags were dropped; they were not.
 - Descriptions are truncated to 160 chars before use.
 - Page priorities and changefreq are centralized in the `transform` function of `next-sitemap.config.cjs`; add new route prefixes there rather than leaving them at the 0.7 default.
 - The site has **five** sitemaps, all generated and git-ignored. `scripts/generateSitemaps.ts` writes `sitemap.xml` (the index), `sitemap-site-br.xml` (the `/br/**` pages), `sitemap-project-github.xml` (one entry per `/project/github/[slug]` landing page) and `sitemap-homepage-github.xml` (the GitHub Pages homepages served under the custom domain, normalized from each repo's `homepage` field). `next-sitemap` then writes `sitemap-site.xml` for the English pages; it has `generateIndexSitemap: false` so it never overwrites the index, and excludes `/project/github/*`, `/br/*` and `/en/*` so the lists stay disjoint.
@@ -353,35 +359,41 @@ Two `next-sitemap` behaviours that produced wrong output and will again if rever
 - `/sitemap` renders all four as tables, reading the XML from `public/` at build time. That is why `yarn deploy` builds twice: the first build has no sitemaps to read.
 - Blog posts carry Giscus comments via the `GiscusComments` component.
 
+### RSS
+
+**Eight feeds, four kinds times two languages.** `blog.xml` / `talks.xml` / `timeline.xml` / `projects.xml` for English, and the same names with a `-br` suffix for Portuguese. Never build a feed URL by hand: `feedPath(name, locale)` in `src/lib/i18n/locales.ts` is what `scripts/generateRss.ts` names the files with *and* what the pages link to, so the file written and the URL advertised cannot drift.
+
+The Portuguese posts and talks used to reach no feed at all: the generator filtered `.pt.` out of the directory listing, and `/br/rss/` linked to the four English files. Feed chrome (titles, descriptions) is the one place a translation cannot come from the Lingui catalog, because the strings are produced outside React with no i18n instance in scope; it lives in the `COPY` table at the top of the script.
+
 ### Machine-readable layer
 
-`scripts/generateLlms.ts` writes a second, plain-text face of the site into `public/`: `llms.txt` (slim index, llmstxt.org), `llms-full.txt` (whole site in one file), the `posts.txt` / `talks.txt` / `projects.txt` / `timeline.txt` lists, and a `.md` mirror of every HTML page at the same path. The lists are separate files so `llms.txt` stays short enough to be read in full.
+`scripts/generateLlms.ts` writes a second, plain-text face of the site into `public/`: `llms.txt` (slim index, llmstxt.org), `llms-full.txt` (whole site in one file), the `posts.txt` / `talks.txt` / `projects.txt` / `timeline.txt` / `faq.txt` lists, and a `.md` mirror of every HTML page at the same path. The lists are separate files so `llms.txt` stays short enough to be read in full.
 
 Three things about it are worth knowing:
 
 - **It runs as `yarn data:llms`, chained into `yarn data`** alongside `data:rss`, which `yarn build` calls before `next build`, so the text layer cannot drift from the HTML.
 - **Its copy lives in `contents/llms/index.json`** (site title, summary, the note about bilingual routes, and the page list with descriptions), registered in `studio.config.ts` as "AI Index (llms.txt)". Adding a page there without a matching body in `buildPageBodies` throws at generation time on purpose: announcing a `.md` that was never written promises a 404 to whoever followed the link.
-- **The output is git-ignored**, like the sitemaps. Everything under the `/public/*.md`, `/public/post/`, `/public/talk/`, `/public/project/` and `/public/rankings/` patterns is generated, plus `llms.txt`, `llms-full.txt` and the four `*.txt` lists. `public/images/press/README.md` is *not* generated, which is why the ignore rule is `/public/*.md` and not a recursive glob.
+- **Do not implement `.txt` files with App Router `route.ts`.** This repo builds with `output: "export"` for GitHub Pages, so route handlers are the wrong abstraction. Text files in the site root are generated artifacts under `public/`, produced before `next build`.
+- **`public/faq.txt` is generated, never hand-written.** It must be built from `contents/faq` through `queryCollection('faq').locale('en')`, with the same token-counting logic as `/faq`, and must stay English-only like the Markdown mirrors. Do not create a Portuguese `faq.txt`, and do not parse `contents/faq/*.json` with `fs` for this path.
+- **The output is git-ignored**, like the sitemaps and the feeds. Everything under the `/public/*.md`, `/public/post/`, `/public/talk/`, `/public/project/`, `/public/rankings/`, `/public/faq/` and `/public/br/` patterns is generated, plus `llms.txt`, `llms-full.txt` and the five `*.txt` lists. `public/images/press/README.md` is *not* generated, which is why the ignore rule is `/public/*.md` and not a recursive glob.
 
-Pages announce their mirror with `<link rel="alternate" type="text/markdown">`. Which helper depends on the group:
+Pages announce their mirror with `<link rel="alternate" type="text/markdown">`, via `markdownAlternate(path)` from `src/lib/i18n/seo.ts`. It resolves to the English mirror by default; **posts and talks pass their own locale** (`markdownAlternate(path, locale)`) because the generator mirrors both languages of every entry, and a Portuguese article should not announce the English text. `markdownUrl()` in `src/lib/markdown-alternate.ts` does the URL derivation underneath; `withMarkdown()` next to it went with `(legacy)`, which was its only caller.
 
-- **`(legacy)` routes** use `withMarkdown()` / `markdownUrl()` from `src/lib/markdown-alternate.ts`. Use `withMarkdown(canonical)` when `alternates` has no `types` of its own; when the page already declares one (the RSS feeds on `/blog`, `/talks`, `/projects`, `/timeline`), add `'text/markdown': markdownUrl(canonical)` *inside* that existing `types` object. Spreading `withMarkdown` next to a later `types` key silently loses the Markdown link, since the explicit key wins.
-- **`(i18n)/[lang]` routes** use `markdownAlternate(path)` from `src/lib/i18n/seo.ts`, which always resolves to the English mirror regardless of the page's locale.
+When a page already declares a `types` object of its own (the RSS feeds on `/blog`, `/talks`, `/projects`, `/timeline`), spread `markdownAlternate` *inside* it. Spreading it next to a later `types` key silently loses the Markdown link, since the explicit key wins.
 
-Only the routes the generator actually writes carry the alternate: the pages in `contents/llms`, plus `/post/[slug]`, `/talk/[slug]`, their `/pt` variants and `/project/[type]/[slug]`. Routes without a mirror (`/tags`, `/skills/[slug]`, `/social/[network]`, `/blog/[page]`, `/app/[appId]`, `/timeline/[year]/[slug]`) must not get one.
+Only the routes the generator actually writes carry the alternate: the pages in `contents/llms`, plus `/post/[slug]`, `/talk/[slug]`, their `/br` variants and `/project/[type]/[slug]`. Routes without a mirror (`/tags`, `/skills/[slug]`, `/social/[network]`, `/blog/[page]`, `/app/[appId]`, `/timeline/[year]/[slug]`) must not get one.
 
 ## Known broken, deliberately not fixed
 
 Documented so nobody rediscovers them as new bugs:
 
-- **`generateRss.ts` reads `contents/` with `fs` 15 times, `generateLlms.ts` 3.** They predate the rule above and were left for a change of their own. Do not copy the pattern.
 - **`npx nextjs-studio` fails on its first run on Windows.** It shells out to `tar -xzf "E:/..."`, and GNU tar reads a drive letter as a remote host spec, so it tries to connect to a machine called `E`. `tar --force-local` extracts the cache by hand as a workaround. The fix belongs in the `nextjs-studio` package.
 - **Client-side navigation from the copied root pages is unverified.** `/` and `/about/` are moved into place after the build, so they are not in the client route manifest and a `<Link>` may fall back to a full page load. Functionally fine either way.
 - **A stale `next dev` will lie to you.** It keeps port 3000 and serves old code while a new one silently starts on 3001, which has twice looked like a routing bug. Check the port in the dev log before believing a 404.
 
 ## Important Notes
 
-- **Never add a link to the navbar, the footer or any menu unless it was asked for.** Creating a page does not imply linking to it. `contents/menu` is the owner's curation: every entry competes for attention with the ones already there, and which routes earn a place is his call, not a side effect of building something. Create the route, register it where the build genuinely needs it (`LOCALIZED_ROUTES`, the sitemaps, `contents/llms`), and stop. The same goes for links added into existing page copy to "improve internal linking": propose them, do not insert them.
+- **Never add a link to the navbar, the footer or any menu unless it was asked for.** Creating a page does not imply linking to it. `contents/menu` is the owner's curation: every entry competes for attention with the ones already there, and which routes earn a place is his call, not a side effect of building something. Create the route, register it where the build genuinely needs it (`contents/llms`, if it should carry a Markdown mirror), and stop. The same goes for links added into existing page copy to "improve internal linking": propose them, do not insert them.
 - **`nextjs-studio` currently points at `portal:../Nextjs-Studio`.** The site does not build without it: the locale-on-JSON support exists only in the local clone. Before any push or deploy, publish that package and swap the `portal:` for a version range.
 - TypeScript errors are ignored during builds (`typescript.ignoreBuildErrors: true`). The build will not surface type errors, and `yarn lint` is broken (see above), so type safety has to be checked by reading types or running `tsc` manually.
 - Images are unoptimized (`images.unoptimized`) for static export compatibility; `next/image` gets no server-side optimization.

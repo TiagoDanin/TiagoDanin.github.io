@@ -1,18 +1,23 @@
 import npmUserPackages from 'npm-user-packages-downloads';
 import fs from 'fs';
 
+interface NpmPackage {
+	name: string;
+	[key: string]: unknown;
+}
+
 console.log('Get npm packages');
 (async () => {
 	try {
-		const data = await npmUserPackages('tiagodanin', '2010-01-01:2100-01-01');
+		const data: NpmPackage[] = await npmUserPackages('tiagodanin', '2010-01-01:2100-01-01');
 
 		// Remove duplicates by package name
 		const originalLength = data.length;
 		const uniquePackages = Array.from(
-			new Map(data.map((pkg: any) => [pkg.name, pkg])).values()
+			new Map(data.map((pkg) => [pkg.name, pkg])).values()
 		);
 
-		uniquePackages.sort((a: any, b: any) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+		uniquePackages.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
 		fs.mkdirSync('contents/npm', { recursive: true })
 		fs.writeFile('contents/npm/index.json', JSON.stringify(uniquePackages, null, 4), (err: NodeJS.ErrnoException | null) => {

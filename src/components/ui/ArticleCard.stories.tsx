@@ -147,7 +147,7 @@ export const VideoPost: Story = {
  */
 export const Portuguese: Story = {
   args: {
-    locale: 'pt',
+    locale: 'br',
     post: {
       slug: 'como-criar-pipelines-poderosos-para-react-native-no-gitlab',
       title: 'Como criar pipelines poderosos para React Native no GitLab',

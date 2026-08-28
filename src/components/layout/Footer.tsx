@@ -5,13 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Trans, useLingui } from "@lingui/react/macro";
 
-import { SocialLinks } from "@/components/ui/SocialLinks";
+import { SocialLinks, type SocialLink } from "@/components/ui/SocialLinks";
 import { LanguageSelect } from "@/components/ui/LanguageSelect";
 import type { MenuItem } from "@/components/layout/Navbar";
 import { DEFAULT_LOCALE, localePath, type Locale } from "@/lib/i18n/locales";
 
 interface FooterProps {
-  socialLinks: { label: string; url: string; icon: string }[];
+  socialLinks: SocialLink[];
   menu: MenuItem[];
   locale?: Locale;
 }

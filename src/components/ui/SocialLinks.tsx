@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 import type { LucideIcon } from "lucide-react";
 
-interface SocialLink {
+export interface SocialLink {
   label: string;
   url: string;
   icon: "Github" | "Linkedin" | "Youtube" | "Instagram";
@@ -13,7 +13,7 @@ interface SocialLinksProps {
   socialLinks: SocialLink[];
 }
 
-const iconMap: Record<string, LucideIcon> = {
+const iconMap: Record<SocialLink['icon'], LucideIcon> = {
   Github,
   Linkedin,
   Youtube,
