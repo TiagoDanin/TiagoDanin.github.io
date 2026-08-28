@@ -1,15 +1,14 @@
 import Link from "next/link";
-import { ensureI18n } from '@/lib/i18n/server';
-import { Trans } from "@lingui/react/macro";
 
 export const metadata = {
   robots: { index: false, follow: true },
 };
 
+/**
+ * English only, and deliberately so: a 404 is reached from a URL that matched
+ * nothing, so there is no locale to read and nothing worth translating.
+ */
 const NotFound = () => {
-  // not-found receives no params, so it cannot resolve a locale itself.
-  ensureI18n();
-
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center">
@@ -19,16 +18,16 @@ const NotFound = () => {
       </div>
 
       <div className="relative z-10 text-center space-y-6 p-8">
-        <h2 className="text-4xl font-bold text-gray-900"><Trans>Page Not Found</Trans></h2>
+        <h2 className="text-4xl font-bold text-gray-900">Page Not Found</h2>
         <p className="text-xl text-gray-600 max-w-md mx-auto">
-          <Trans>Sorry, we couldn&apos;t find the page you&apos;re looking for. Please check the URL or return to the homepage.</Trans>
+          Sorry, we couldn&apos;t find the page you&apos;re looking for. Please check the URL or return to the homepage.
         </p>
         <div className="flex justify-center gap-4">
           <Link
             href="/"
             className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            <Trans>Return Home</Trans>
+            Return Home
           </Link>
           <a
             href="https://github.com/TiagoDanin/TiagoDanin.github.io/issues/new"
@@ -36,7 +35,7 @@ const NotFound = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
           >
-            <Trans>Report Issue</Trans>
+            Report Issue
           </a>
         </div>
       </div>

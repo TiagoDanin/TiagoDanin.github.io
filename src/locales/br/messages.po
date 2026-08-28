@@ -618,7 +618,6 @@ msgstr "Integrações com APIs e SaaS"
 msgid "API Security Analysis"
 msgstr "Análise de segurança de APIs"
 
-#: src/app/(i18n)/[lang]/app/[appId]/not-found.tsx
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
 msgid "App Not Found"
 msgstr "App não encontrado"
@@ -902,10 +901,6 @@ msgstr "Navegue por 250+ projetos, entre eles 70+ pacotes npm, apps Flutter, pro
 msgid "Browse 250+ projects: 70+ npm packages, Flutter & React Native apps, GitHub tools, and mobile games. Open source libraries used by thousands of developers worldwide."
 msgstr "Navegue por 250+ projetos: 70+ pacotes npm, apps em Flutter e React Native, ferramentas no GitHub e jogos mobile. Bibliotecas open source usadas por milhares de pessoas."
 
-#: src/app/(i18n)/[lang]/app/[appId]/not-found.tsx
-msgid "Browse All Apps"
-msgstr "Ver todos os apps"
-
 #: src/app/(i18n)/[lang]/tags/page.tsx
 msgid "Browse all articles and talks by topic"
 msgstr "Veja todos os artigos e palestras por assunto"
@@ -917,10 +912,6 @@ msgstr "Veja todos os projetos e demos ao vivo no GitHub Pages de Tiago Danin. D
 #: src/components/sections/GitHubPages.tsx
 msgid "Browse all my GitHub Pages projects with live demos and documentation"
 msgstr "Veja todos os meus projetos no GitHub Pages com demos ao vivo e documentação"
-
-#: src/app/(i18n)/[lang]/project/[type]/[slug]/not-found.tsx
-msgid "Browse All Projects"
-msgstr "Ver todos os projetos"
 
 #: src/app/(i18n)/[lang]/tags/page.tsx
 msgid "Browse by Tags"
@@ -2791,10 +2782,6 @@ msgstr "Página {pageNumber} de artigos técnicos sobre Flutter, React Native, a
 msgid "Page 1 of {totalPages}"
 msgstr "Página 1 de {totalPages}"
 
-#: src/app/(i18n)/[lang]/not-found.tsx
-msgid "Page Not Found"
-msgstr "Página não encontrada"
-
 #: src/app/(i18n)/[lang]/mobile/page.tsx
 msgid "Performance Analytics"
 msgstr "Analytics de performance"
@@ -3089,7 +3076,6 @@ msgstr "Projeto"
 msgid "Project guidance and code reviews"
 msgstr "Orientação nos projetos e code reviews"
 
-#: src/app/(i18n)/[lang]/project/[type]/[slug]/not-found.tsx
 #: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 msgid "Project Not Found"
 msgstr "Projeto não encontrado"
@@ -3339,10 +3325,6 @@ msgstr "Substituir processos manuais: triagem de tickets de suporte, processamen
 msgid "Replace repetitive workflows with AI, document processing, classification, summarization, and human-in-the-loop pipelines."
 msgstr "Substituir processos repetitivos por IA: processamento de documentos, classificação, resumo e pipelines com human-in-the-loop."
 
-#: src/app/(i18n)/[lang]/not-found.tsx
-msgid "Report Issue"
-msgstr "Reportar problema"
-
 #: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 msgid "Repository"
 msgstr "Repositório"
@@ -3362,10 +3344,6 @@ msgstr "Design responsivo"
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Retrieval-augmented generation built on your data, embeddings, vector stores, and grounded answers with citations."
 msgstr "Retrieval-augmented generation sobre os seus dados: embeddings, vector stores e respostas fundamentadas com citações."
-
-#: src/app/(i18n)/[lang]/not-found.tsx
-msgid "Return Home"
-msgstr "Voltar para o início"
 
 #: src/components/ui/experience-item.tsx
 msgid "Role"
@@ -3581,10 +3559,6 @@ msgstr "Habilidades"
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "Slack/Notion integrations"
 msgstr "Integrações com Slack e Notion"
-
-#: src/app/(i18n)/[lang]/not-found.tsx
-msgid "Sorry, we couldn't find the page you're looking for. Please check the URL or return to the homepage."
-msgstr "Não encontramos a página que você procura. Verifique a URL ou volte para a página inicial."
 
 #: src/app/(i18n)/[lang]/press-kit/page.tsx
 msgid "Speaking history"
@@ -3832,17 +3806,9 @@ msgstr "Testes e qualidade"
 msgid "Testing and release automation"
 msgstr "Testes e automação de release"
 
-#: src/app/(i18n)/[lang]/app/[appId]/not-found.tsx
-msgid "The app you're looking for doesn't exist or may have been moved."
-msgstr "O app que você procura não existe ou pode ter sido movido."
-
 #: src/app/(i18n)/[lang]/press-kit/page.tsx
 msgid "The details that usually end up wrong in event programs."
 msgstr "Os detalhes que costumam sair errados na programação de eventos."
-
-#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/not-found.tsx
-msgid "The event you're looking for doesn't exist or may have been moved."
-msgstr "O evento que você procura não existe ou pode ter sido movido."
 
 #: src/app/(i18n)/[lang]/ai-automation/page.tsx
 msgid "The full stack of AI work, from a single LLM call to multi-agent systems."
@@ -3851,10 +3817,6 @@ msgstr "Todo o espectro de trabalho com IA, de uma única chamada de LLM a siste
 #: src/app/(i18n)/[lang]/app/[appId]/page.tsx
 msgid "The Problem"
 msgstr "O problema"
-
-#: src/app/(i18n)/[lang]/project/[type]/[slug]/not-found.tsx
-msgid "The project you're looking for doesn't exist or may have been moved."
-msgstr "O projeto que você procura não existe ou foi movido."
 
 #: src/app/(i18n)/[lang]/project/[type]/[slug]/page.tsx
 msgid "The requested project could not be found."
@@ -3943,10 +3905,6 @@ msgstr "Tiago sem h, Danin sem acento"
 #: src/app/(i18n)/[lang]/timeline/page.tsx
 msgid "Timeline"
 msgstr "Timeline"
-
-#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/not-found.tsx
-msgid "Timeline Event Not Found"
-msgstr "Evento da linha do tempo não encontrado"
 
 #: src/app/(i18n)/[lang]/timeline/page.tsx
 msgid "Timeline RSS Feed"
@@ -4142,10 +4100,6 @@ msgstr "Ver todos os projetos"
 #: src/app/(i18n)/[lang]/talks/page.tsx
 msgid "View details"
 msgstr "Ver detalhes"
-
-#: src/app/(i18n)/[lang]/timeline/[year]/[slug]/not-found.tsx
-msgid "View Full Timeline"
-msgstr "Ver linha do tempo completa"
 
 #: src/app/(i18n)/[lang]/cybersecurity/page.tsx
 msgid "View HackerOne Profile"
