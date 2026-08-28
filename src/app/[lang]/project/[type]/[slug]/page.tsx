@@ -5,75 +5,16 @@ import Link from 'next/link';
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
 
-import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from "@/utils/parse";
+import {
+  getProjectsMap,
+  urlPrefixMap,
+  type GenericProject,
+  type LicenseInfo,
+} from '@/lib/projects';
 import { HTML_LANG, intlLocale, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
-
-type LicenseInfo = {
-  key?: string;
-  name?: string;
-  spdx_id?: string;
-  url?: string;
-};
-
-type GenericProject = {
-  name?: string;
-  title?: string;
-  description?: string;
-  url?: string;
-  html_url?: string;
-  language?: string;
-  archived?: boolean;
-  stargazers_count?: number;
-  forks_count?: number;
-  watchers_count?: number;
-  open_issues_count?: number;
-  created_at?: string;
-  updated_at?: string;
-  pushed_at?: string;
-  homepage?: string;
-  topics?: string[];
-  license?: LicenseInfo;
-  keywords?: string[];
-  downloads?: number;
-  version?: string;
-  scope?: string;
-  [key: string]: unknown;
-};
-
-// This map has no locale variant: the ten project collections carry no
-// index.br.json, so the catalogue is the same list for every language.
-function getProjectsMap(): Record<string, GenericProject[]> {
-  return {
-    github: queryCollection('github') as unknown as GenericProject[],
-    private: queryCollection('private') as unknown as GenericProject[],
-    npm: queryCollection('npm') as unknown as GenericProject[],
-    luarocks: queryCollection('luarocks') as unknown as GenericProject[],
-    pypi: queryCollection('pypi') as unknown as GenericProject[],
-    atom: queryCollection('atom') as unknown as GenericProject[],
-    googleplay: queryCollection('googleplay') as unknown as GenericProject[],
-    windows: queryCollection('windows') as unknown as GenericProject[],
-    aur: queryCollection('aur') as unknown as GenericProject[],
-    offline: queryCollection('offline') as unknown as GenericProject[],
-  };
-}
-
-const urlPrefixMap: Record<string, string> = {
-  npm: "https://www.npmjs.com/package/",
-  luarocks: "https://luarocks.org/modules/tiagodanin/",
-  pypi: "https://pypi.python.org/pypi/",
-  atom: "https://atom.io/packages/",
-  github: "",
-  private: "",
-  googleplay: "",
-  windows: "",
-  aur: "",
-  offline: "",
-};
-
-type ProjectType = string;
 
 export const dynamicParams = false;
 

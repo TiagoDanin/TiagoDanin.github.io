@@ -47,7 +47,7 @@ const PressPage = async ({ params }: PageProps<'/[lang]/press'>) => {
   const i18n = initI18n(locale);
 
   const about = queryCollection('about').locale(locale).one();
-  const items = getPressItems();
+  const items = getPressItems(locale);
 
   const years = items.map(item => item.date.slice(0, 4)).filter(Boolean).sort();
   const range = years.length

@@ -156,7 +156,10 @@ export function getFaqPerson(locale: Locale = DEFAULT_LOCALE) {
     .map((link) => (typeof link.url === 'string' ? link.url : ''))
     .filter(Boolean);
 
-  const knowsAbout = [...queryCollection('skills')].flatMap((group) => {
+  // Localized, like every other field in this schema: the Portuguese page
+  // should not claim its subject knows "Leadership" while the page says
+  // "Liderança".
+  const knowsAbout = [...queryCollection('skills').locale(locale)].flatMap((group) => {
     const items = Array.isArray(group.items) ? group.items : [];
     return items
       .map((item: { name?: unknown }) => (typeof item?.name === 'string' ? item.name : ''))
@@ -177,7 +180,10 @@ export function getFaqPerson(locale: Locale = DEFAULT_LOCALE) {
 export function getBusinessData(locale: Locale = DEFAULT_LOCALE): Business {
   const row = queryCollection('business').locale(locale).one() as unknown as BusinessRow;
 
-  const workStarts = [...queryCollection('work')]
+  // `.locale()` even for a read that only wants a year: without it the query
+  // returns both language files, and the list doubles the moment a collection
+  // gains a variant.
+  const workStarts = [...queryCollection('work').locale(DEFAULT_LOCALE)]
     .map((entry) => Number(String(entry.startDate ?? '').slice(0, 4)))
     .filter((year) => Number.isFinite(year) && year > 1900);
 

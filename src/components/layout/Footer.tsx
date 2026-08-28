@@ -8,7 +8,7 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import { SocialLinks, type SocialLink } from "@/components/ui/SocialLinks";
 import { LanguageSelect } from "@/components/ui/LanguageSelect";
 import type { MenuItem } from "@/components/layout/Navbar";
-import { DEFAULT_LOCALE, localePath, type Locale } from "@/lib/i18n/locales";
+import { DEFAULT_LOCALE, localePath, splitLocale, type Locale } from "@/lib/i18n/locales";
 
 interface FooterProps {
   socialLinks: SocialLink[];
@@ -19,7 +19,9 @@ interface FooterProps {
 export function Footer({ socialLinks, menu, locale = DEFAULT_LOCALE }: FooterProps) {
   const { t } = useLingui();
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  // Not a bare comparison: the home is `/br` in Portuguese, and `/en` while
+  // the English pages are still at their build-time path.
+  const isHome = splitLocale(pathname ?? "/").base === "/";
   const year = new Date().getFullYear();
   const footerItems = menu.filter(
     (item) => item.footer && !(isHome && item.hideOnHome)

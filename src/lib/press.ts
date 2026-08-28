@@ -1,5 +1,7 @@
 import { queryCollection } from 'nextjs-studio/server';
 
+import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/locales';
+
 export interface PressItem {
   outlet: string;
   title: string;
@@ -44,9 +46,16 @@ export function pressHost(url: string): string {
   }
 }
 
-/** Press coverage, most recent first. */
-export function getPressItems(): PressItem[] {
-  return [...queryCollection('press')]
+/**
+ * Press coverage, most recent first.
+ *
+ * `topic` and `summary` are the site's own words about each piece, so they are
+ * translated; the outlet, the headline, the byline and the pull quote are the
+ * publication's and stay as printed. The collection was read with no locale
+ * until now, which put those two English fields on the Portuguese page.
+ */
+export function getPressItems(locale: Locale = DEFAULT_LOCALE): PressItem[] {
+  return [...queryCollection('press').locale(locale)]
     .map(entry => ({
       outlet: String(entry.outlet ?? ''),
       title: String(entry.title ?? ''),

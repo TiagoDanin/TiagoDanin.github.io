@@ -115,7 +115,7 @@ const BlogPage = async ({ params }: PageProps<'/[lang]/blog/[page]'>) => {
         <p className="mt-2 text-sm text-muted-foreground">
           <Trans>{posts.length} articles</Trans>
         </p>
-        <TagFilter posts={posts} basePath={localePath(locale, '/tags')} />
+        <TagFilter posts={posts} basePath={localePath(locale, '/blog/tags')} />
       </div>
 
       <div className="max-w-2xl mx-auto space-y-16">
@@ -124,6 +124,7 @@ const BlogPage = async ({ params }: PageProps<'/[lang]/blog/[page]'>) => {
             key={index}
             post={post}
             locale={locale}
+            tagBasePath="/blog/tags"
           />
         ))}
       </div>

@@ -124,12 +124,12 @@ const Blog = async ({ params }: PageProps<'/[lang]/blog'>) => {
           <p className="mt-2 text-sm text-muted-foreground">
             <Trans>{posts.length} articles</Trans>
           </p>
-          <TagFilter posts={posts} basePath={localePath(locale, '/tags')} />
+          <TagFilter posts={posts} basePath={localePath(locale, '/blog/tags')} />
         </div>
 
         <div className="max-w-2xl mx-auto space-y-16">
           {currentPosts.map((post, index) => (
-            <ArticleCard key={index} post={post} locale={locale} />
+            <ArticleCard key={index} post={post} locale={locale} tagBasePath="/blog/tags" />
           ))}
         </div>
 

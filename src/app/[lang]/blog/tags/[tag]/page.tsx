@@ -130,6 +130,7 @@ export default async function TagPage({ params }: PageProps<'/[lang]/blog/tags/[
                 key={index}
                 post={post}
                 locale={locale}
+                tagBasePath="/blog/tags"
               />
             ))}
           </div>

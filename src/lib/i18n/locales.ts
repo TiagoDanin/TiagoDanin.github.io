@@ -120,20 +120,27 @@ export function feedPath(name: FeedName, locale: Locale): string {
   return `/rss/${name}${locale === DEFAULT_LOCALE ? '' : `-${locale}`}.xml`;
 }
 
-const SECONDARY = LOCALES.filter((l) => l !== DEFAULT_LOCALE);
-
 /** Strips the trailing slash `trailingSlash: true` puts on every route. */
 function normalize(pathname: string): string {
   const trimmed = pathname.replace(/\/+$/, '');
   return trimmed === '' ? '/' : trimmed;
 }
 
-/** Splits a pathname into the locale it is in and the path without that marker. */
+/**
+ * Splits a pathname into the locale it is in and the path without that marker.
+ *
+ * `/en/...` is recognised even though no such URL is published. The English
+ * pages are *built* at `/en/**` and moved to the root afterwards, so during the
+ * export `usePathname()` reports `/en/about`, and dropping that through as part
+ * of the path is what put `href="/br/en/about/"` in the shipped HTML of every
+ * English page. A crawl found the whole `/br/en/**` tree 404ing off links the
+ * footer's language switcher had written.
+ */
 export function splitLocale(pathname: string): { locale: Locale; base: string } {
   const path = normalize(pathname);
 
-  for (const locale of SECONDARY) {
-    // Prefix form, the migrated routes: /br, /br/about
+  for (const locale of LOCALES) {
+    // Prefix form, the migrated routes: /br, /br/about, and the build-time /en
     if (path === `/${locale}`) return { locale, base: '/' };
     if (path.startsWith(`/${locale}/`)) return { locale, base: path.slice(locale.length + 1) };
 

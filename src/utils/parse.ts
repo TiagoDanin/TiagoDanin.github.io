@@ -5,13 +5,24 @@
 /**
  * Converts a title to a URL-friendly slug
  * Uses a direct regex extraction approach to get only alphanumeric characters and spaces
+ *
+ * Accents are folded to their base letter first. Dropping them instead is what
+ * put `/br/skills/comunicao/` and `/timeline/2024/palestra-no-google-devfest-belm/`
+ * in the sitemap: the regex below keeps only ASCII, so "ç" and "é" vanished
+ * rather than becoming "c" and "e". Every Portuguese title reached a URL with a
+ * hole in the middle of a word.
+ *
+ * Runs of separators collapse to one, so a title written with " - " between two
+ * halves does not reach the URL as `ctf---xibesec`.
  */
 export function titleToSlug(title: string): string {
-  const validChars = title.match(/[a-z0-9\s-]+/gi)?.join('') || '';
-  
+  const folded = title.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const validChars = folded.match(/[a-z0-9\s-]+/gi)?.join('') || '';
+
   return validChars
     .toLowerCase()
     .replace(/\s+/g, '-')
+    .replace(/-{2,}/g, '-')
     .trim()
     .replace(/^-+|-+$/g, '');
 }

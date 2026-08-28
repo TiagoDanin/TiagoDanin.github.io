@@ -8,6 +8,7 @@ import { Milestones } from "@/components/sections/Milestones";
 import { PressMentions } from "@/components/sections/PressMentions";
 import { queryCollection } from 'nextjs-studio/server';
 import { getPressItems, pressDate } from "@/lib/press";
+import { getTimelineEvents } from "@/lib/timeline";
 import { getCallToActionData, getHeroData } from "@/lib/sections";
 import { DEFAULT_LOCALE, HTML_LANG, localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
@@ -74,11 +75,11 @@ const About = async ({ params }: PageProps<'/[lang]/about'>) => {
 
   // Milestones and press are what this page has that the home does not: the
   // home sells what he builds, /about backs it with a record.
-  const milestones = ([...queryCollection('timeline')] as unknown as TimelineEntry[])
+  const milestones = (getTimelineEvents(locale) as unknown as TimelineEntry[])
     .slice()
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 6);
-  const pressItems = getPressItems().slice(0, 3).map((item) => ({
+  const pressItems = getPressItems(locale).slice(0, 3).map((item) => ({
     outlet: item.outlet,
     title: item.title,
     url: item.url,

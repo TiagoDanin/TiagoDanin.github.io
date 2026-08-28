@@ -7,7 +7,7 @@ import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { DEFAULT_LOCALE, localePath, type Locale } from '@/lib/i18n/locales';
+import { DEFAULT_LOCALE, localePath, splitLocale, type Locale } from '@/lib/i18n/locales';
 import { Trans } from "@lingui/react/macro";
 
 interface ProjectsEntry {
@@ -33,7 +33,8 @@ interface ProjectsProps {
 export function Projects({ projects, locale = DEFAULT_LOCALE }: ProjectsProps) {
   const projectsData = projects;
   const pathname = usePathname();
-  const isFullProjects = pathname === "/projects";
+  // `/br/projects` and the build-time `/en/projects` are the same page.
+  const isFullProjects = splitLocale(pathname ?? "/").base === "/projects";
 
   const [isExpanded, setIsExpanded] = useState(false);
   const isMobile = useIsMobile();

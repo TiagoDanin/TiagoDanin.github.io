@@ -15,7 +15,7 @@ import RSS from 'rss';
 
 import { queryCollection } from 'nextjs-studio/server';
 
-import { titleToSlug } from '../src/utils/parse';
+import { getTimelineEvents } from '../src/lib/timeline';
 import {
   contentLang,
   entryPath,
@@ -125,19 +125,14 @@ function buildEntryFeed(kind: 'post' | 'talk', collection: 'posts' | 'talks', lo
   writeFeed(feedFile(name, locale), feed.xml({ indent: true }), entries.length);
 }
 
-type TimelineEvent = { title: string; description: string; date: string };
-
 function buildTimelineFeed(locale: Locale) {
   const copy = COPY[locale].timeline;
   const feed = newFeed('timeline', locale, copy.title, copy.description);
 
-  // The timeline collection has no locale variant yet, so both feeds carry the
-  // same entries. Only the URLs and the feed chrome differ.
-  const events = [...queryCollection('timeline').locale(locale)] as unknown as TimelineEvent[];
-  const source = events.length > 0 ? events : ([...queryCollection('timeline')] as unknown as TimelineEvent[]);
+  const source = getTimelineEvents(locale);
 
   for (const event of source) {
-    const url = `${siteUrl}${localePath(locale, `/timeline/${event.date}/${titleToSlug(event.title)}`)}/`;
+    const url = `${siteUrl}${localePath(locale, `/timeline/${event.date}/${event.slug}`)}/`;
     feed.item({
       title: event.title,
       description: event.description,

@@ -18,9 +18,19 @@ interface ArticleCardProps {
   };
   /** Locale of the page rendering the card, not the content language. */
   locale?: Locale;
+  /**
+   * Where the tag badges link, without the locale prefix.
+   *
+   * The blog passes `/blog/tags` so a tag clicked from a list of articles opens
+   * the blog's own filter, which lists articles only. Everywhere else the badges
+   * point at `/tags`, the site-wide index that also carries talks, projects and
+   * milestones. Only pass `/blog/tags` from a page that hides `Video` posts:
+   * those tags exist in the site-wide index and not in the blog one.
+   */
+  tagBasePath?: string;
 }
 
-export function ArticleCard({ post, locale = DEFAULT_LOCALE }: ArticleCardProps) {
+export function ArticleCard({ post, locale = DEFAULT_LOCALE, tagBasePath = '/tags' }: ArticleCardProps) {
   // Everything visible comes from the catalog now. The hand-rolled pt/en
   // ternaries this replaced also built the old trailing-segment URL, which is a
   // redirect page since posts moved under the locale prefix.
@@ -76,7 +86,7 @@ export function ArticleCard({ post, locale = DEFAULT_LOCALE }: ArticleCardProps)
 
       <div className="relative z-10 mt-3 flex flex-wrap gap-2 pointer-events-auto">
         {(post.tags || []).map((tag: string) => (
-          <Link key={tag} href={localePath(locale, `/tags/${titleToSlug(tag)}`)}>
+          <Link key={tag} href={localePath(locale, `${tagBasePath}/${titleToSlug(tag)}`)}>
             <Badge
               variant="outline"
               className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
