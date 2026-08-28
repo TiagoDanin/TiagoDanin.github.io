@@ -265,17 +265,19 @@ export const WithoutOutsideDays: Story = {
 };
 
 /**
- * A hard boundary rather than a matcher: `fromDate` and `toDate` restrict the
- * navigable range and grey out everything outside it, so the previous month
- * button disables itself at the edge.
+ * A hard boundary rather than a matcher: `startMonth` and `endMonth` restrict
+ * the navigable range, so the previous month button disables itself at the
+ * edge. They replace v8's `fromDate` / `toDate`, which also blocked selection,
+ * hence the explicit `disabled` matcher alongside them.
  */
 export const BoundedRange: Story = {
   args: {
     mode: 'single',
     selected: undefined,
     onSelect: onSelectSpy,
-    fromDate: SEPTEMBER_2024,
-    toDate: new Date(2024, 8, 30),
+    startMonth: SEPTEMBER_2024,
+    endMonth: new Date(2024, 8, 30),
+    disabled: { before: SEPTEMBER_2024, after: new Date(2024, 8, 30) },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

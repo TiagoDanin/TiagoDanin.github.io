@@ -39,24 +39,24 @@ const meta = {
     },
   },
   argTypes: {
-    direction: {
+    orientation: {
       control: 'inline-radio',
       options: ['horizontal', 'vertical'],
       description:
         'Axis the panels are laid along. `vertical` stacks them and turns the handle into a horizontal bar.',
     },
-    autoSaveId: {
-      control: 'text',
+    defaultLayout: {
+      control: false,
       description:
-        'Persists the layout to local storage under this key. Leave unset in stories so each run starts from the declared sizes.',
+        'Panel sizes to start from, keyed by panel id. Leave unset in stories so each run starts from the sizes declared on the panels. `useDefaultLayout` reads it back from storage; v4 dropped the `autoSaveId` shortcut.',
     },
-    onLayout: {
+    onLayoutChange: {
       control: false,
       description: 'Fires with the panel sizes, as percentages, on every change.',
     },
   },
   args: {
-    direction: 'horizontal',
+    orientation: 'horizontal',
     className: 'h-88 w-full rounded-lg border',
   },
   decorators: [
@@ -141,12 +141,12 @@ export const Default: Story = {
 
 /**
  * Stacked panes. The handle becomes a full width bar and the grip icon rotates,
- * both driven by `data-panel-group-direction` rather than by a prop on the
+ * both driven by `aria-orientation` rather than by a prop on the
  * handle.
  */
 export const Vertical: Story = {
   args: {
-    direction: 'vertical',
+    orientation: 'vertical',
     children: (
       <>
         <ResizablePanel defaultSize={60} minSize={30}>

@@ -1,8 +1,8 @@
 import {
   SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
-  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
+  SiHtml5, SiCss, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
   SiNodedotjs, SiPostgresql, SiSqlite,
-  SiFigma, SiCanva, SiUnity, SiBlender, SiAdobexd,
+  SiFigma, SiCanvas, SiUnity, SiBlender,
   SiFirebase, SiGitlab, SiGithub, SiGooglecloud, SiDocker,
 } from 'react-icons/si';
 import { FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette } from 'react-icons/fa';
@@ -10,9 +10,9 @@ import { Brain, Calendar, MessageCircle, Target, Users } from 'lucide-react';
 
 export const TECH_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   SiFlutter, SiReact, SiKotlin, SiSwift, SiIonic,
-  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
+  SiHtml5, SiCss3: SiCss, SiJavascript, SiTypescript, SiVuedotjs, SiTailwindcss,
   SiNodedotjs, SiPostgresql, SiSqlite,
-  SiFigma, SiCanva, SiUnity, SiBlender, SiAdobexd,
+  SiFigma, SiCanva: SiCanvas, SiUnity, SiBlender,
   SiFirebase, SiGitlab, SiGithub, SiGooglecloud, SiDocker,
   FaCode, FaServer, FaJava, FaMicrosoft, FaGamepad, FaPalette,
   Users, Brain, MessageCircle, Target, Calendar,
