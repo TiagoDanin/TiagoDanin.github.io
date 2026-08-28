@@ -17,7 +17,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const APP_DIR = path.join(__dirname, '..', 'src', 'app', '(i18n)', '[lang]');
+const APP_DIR = path.join(__dirname, '..', 'src', 'app', '[lang]');
 
 /**
  * Routes with no dynamic segment, as paths without a trailing slash (`/` aside).

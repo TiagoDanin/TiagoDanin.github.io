@@ -4,7 +4,7 @@ import { join, relative } from 'node:path';
 /**
  * Moves the default locale from its prefix to the site root.
  *
- * Every route under `src/app/(i18n)/[lang]` builds to `dist/en/**` and
+ * Every route under `src/app/[lang]` builds to `dist/en/**` and
  * `dist/br/**`. English is served from `/`, not `/en/`: that is the URL the
  * site has always used, and it is the canonical one. A static export cannot
  * rewrite a request, so the tree is relocated after the build instead.

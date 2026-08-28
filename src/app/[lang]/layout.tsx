@@ -11,7 +11,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import { LOCALES, HTML_LANG } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { localeAlternates, OG_IMAGE, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
-import "../../globals.css";
+import "../globals.css";
 
 /**
  * Root layout for every locale.

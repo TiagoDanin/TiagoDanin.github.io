@@ -79,18 +79,22 @@ Package manager is **Yarn 4** (`packageManager: yarn@4.6.0`, Corepack). Node ver
 
 All dynamic routes are statically pre-rendered via `generateStaticParams()`. Adding content to a collection is enough for a page to exist; there is no runtime fallback.
 
-**`src/app/` holds one route group and nothing else.** The migration is finished; `(legacy)` was deleted once its last route moved:
+**`src/app/` holds no route groups.** The migration is finished: `(legacy)` went when its last route moved, and `(i18n)` went once it was clear it was buying nothing.
 
 ```
 src/app/
-  (i18n)/[lang]/     root layout + every route. One page.tsx per route,
-                     rendered once per locale.
+  [lang]/      root layout + every route. One page.tsx per route,
+               rendered once per locale.
   globals.css  favicon.ico
 ```
 
-There is no `app/layout.tsx`. A route group is the only way to give the tree a root layout that takes `[lang]`, which is in turn the only way for `<html lang>` to differ per locale in a static export. The group is now a single one, kept because collapsing it would mean an `app/[lang]/layout.tsx` and a rewrite of every import path for nothing.
+**There is no `app/layout.tsx`, and `layout.tsx` must not move out of `[lang]`.** It is the root layout, and being inside the dynamic segment is what lets it read the locale and emit `<html lang="en">` against `<html lang="pt-BR">`. At `app/layout.tsx` there are no params, so the tag would freeze at one value for the whole site.
 
-**Adding a route is creating the file.** Put it under `(i18n)/[lang]/`, make it take `params`, and stop. There is nothing to register.
+A route group was long assumed to be the only way to have a root layout under `[lang]`. It is not: `app/[lang]/layout.tsx` is accepted as the root layout on its own, verified against the dev server with both languages still emitting their own `<html lang>`. `(i18n)` was ceremony.
+
+**`not-found.tsx` also stays inside `[lang]`.** It builds to `dist/en/404.html`, which `flattenDefaultLocale.ts` moves to `dist/404.html`, and that single file is what GitHub Pages serves for every miss in either language. A root `app/not-found.tsx` would be the Next-default place for it, but it requires an `app/layout.tsx` and so costs the per-locale `<html lang>` for nothing: the 404 that ships is English either way.
+
+**Adding a route is creating the file.** Put it under `[lang]/`, make it take `params`, and stop. There is nothing to register.
 
 This used to take two hand-kept registries in `locales.ts`, `LOCALIZED_ROUTES` for exact paths and `LOCALIZED_PREFIXES` for subtrees, read by `localePath()`, by the sitemap generator and by the dev rewrites. A route missing from both still built, so the failure was silent: the Portuguese page existed, everything linked to the English one, and the English URL 404'd in dev. Four copies of the list accumulated and drifted, one of them deciding which English URLs announce an `hreflang` pair with six entries in it while the Portuguese sitemap announced the pair for all thirty.
 

@@ -14,7 +14,7 @@ const isDev = process.env.NODE_ENV === "development";
  * exist, and the English site is only reachable at URLs it will never be served
  * from.
  *
- * One catch-all, not a route list. Every route lives under `(i18n)/[lang]`, so
+ * One catch-all, not a route list. Every route lives under `[lang]`, so
  * anything that is not already addressed by locale belongs to the default one.
  * The lookahead is what keeps `/br/about` and `/en/about` from being rewritten
  * into `/en/br/about`; it is built from LOCALES, so a new language needs no
