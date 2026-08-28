@@ -1,9 +1,16 @@
 // Generates the sitemap family for tiagodanin.com:
-//   sitemap.xml                  index pointing at the three sitemaps below
+//   sitemap.xml                  index pointing at the four sitemaps below
 //   sitemap-site.xml             English site pages (written by next-sitemap, only referenced here)
 //   sitemap-site-br.xml          the /br/** pages, kept in their own file
-//   sitemap-project-github.xml   /project/github/[slug] landing pages
+//   sitemap-project-github.xml   /project/github/[slug] landing pages, both languages
 //   sitemap-homepage-github.xml  GitHub Pages homepages served under the custom domain
+//
+// The page lists come from `builtRoutes()` in next-sitemap.config.cjs, which
+// walks the exported tree, and every entry is weighted by that config's own
+// `transform`. Both were duplicated here before, and the copies disagreed: this
+// file listed posts, talks, tags and skills for Portuguese and no project, app,
+// timeline, social or blog page in either language, while a post was priority
+// 0.4 here and 0.7 there.
 
 import fs from 'fs';
 import path from 'path';
@@ -11,11 +18,7 @@ import { fileURLToPath } from 'url';
 
 import { queryCollection } from 'nextjs-studio/server';
 
-import { HTML_LANG, localePath } from '../src/lib/i18n/locales.js';
-import { siteHostedHomepage } from '../src/lib/homepage.js';
-import { indexableTagSlugs } from '../src/lib/tags.js';
-import { indexableSkillSlugs } from '../src/lib/skills.js';
-import { staticRoutes } from './appRoutes.cjs';
+import sitemapConfig from '../next-sitemap.config.cjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,6 +31,9 @@ const SITE_BR_SITEMAP = 'sitemap-site-br.xml';
 const PROJECT_SITEMAP = 'sitemap-project-github.xml';
 const HOMEPAGE_SITEMAP = 'sitemap-homepage-github.xml';
 const INDEX_SITEMAP = 'sitemap.xml';
+
+/** The Portuguese URL prefix. English is served from the root and carries none. */
+const BR_PREFIX = '/br';
 
 type GithubProject = {
   name: string;
@@ -46,13 +52,43 @@ type SitemapEntry = {
   alternates?: AlternateRef[];
 };
 
-function titleToSlug(title: string): string {
-  const validChars = title.match(/[a-z0-9\s-]+/gi)?.join('') || '';
-  return validChars
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .trim()
-    .replace(/^-+|-+$/g, '');
+/** The slice of next-sitemap.config.cjs this script uses. */
+type SitemapConfig = {
+  builtRoutes: (prefix?: string) => string[];
+  isGithubProject: (route: string) => boolean;
+  transform: (
+    config: unknown,
+    urlPath: string
+  ) => Promise<{
+    changefreq: string;
+    priority: number;
+    alternateRefs: Array<{ hreflang: string; href: string }>;
+  }>;
+};
+
+const config = sitemapConfig as unknown as SitemapConfig;
+
+/**
+ * GitHub serves a user's project pages under the custom domain of their user page,
+ * so https://tiagodanin.github.io/Repo/ is a 301 to https://tiagodanin.com/Repo/.
+ * A sitemap must list the canonical target, never the redirect.
+ * Returns null for homepages that are not hosted on the site.
+ */
+function normalizeHomepage(homepage: string): string | null {
+  let url = homepage.trim().replace(/^http:/i, 'https:');
+  url = url.replace(/^https:\/\/(www\.)?tiagodanin\.github\.io/i, siteUrl);
+  url = url.replace(/^https:\/\/www\.tiagodanin\.com/i, siteUrl);
+
+  if (!url.toLowerCase().startsWith(`${siteUrl.toLowerCase()}/`)) {
+    return null;
+  }
+
+  if (!url.endsWith('/')) {
+    url += '/';
+  }
+
+  // The bare domain is the site home, already covered by sitemap-site.xml
+  return url === `${siteUrl}/` ? null : url;
 }
 
 function buildUrlset(entries: SitemapEntry[]): string {
@@ -77,75 +113,36 @@ function buildUrlset(entries: SitemapEntry[]): string {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"${xhtmlNs}>${urls}\n</urlset>`;
 }
 
-/**
- * The Portuguese pages, in a file of their own.
- *
- * Kept out of sitemap-site.xml so the two languages can be submitted and
- * diagnosed separately in Search Console, and so the English sitemap stays what
- * it has always been. Each entry carries the full hreflang set, English
- * included, which is what keeps `/` and `/br/` from reading as duplicates.
- */
-function buildLocalizedEntries(): SitemapEntry[] {
-  // Detail pages are localised the same way, but there are hundreds of them and
-  // no page.tsx to count. Read from the same place the pages do.
-  const detailRoutes = [
-    ...readSlugs('posts').map(slug => `/post/${slug}`),
-    ...readSlugs('talks').map(slug => `/talk/${slug}`),
-    // Both were missing entirely: sitemap-site-br.xml listed /br/tags/ and
-    // /br/skills/ and not one page under either, so every Portuguese tag and
-    // skill page was reachable only by crawling a link.
-    ...indexableTagSlugs().map(slug => `/tags/${slug}`),
-    ...indexableSkillSlugs().map(slug => `/skills/${slug}`),
-    ...queryCollection('faq')
-      .locale('br')
-      .filter((entry: { slug?: string; body?: string }) => entry.slug && (entry.body ?? '').trim())
-      .map((entry: { slug: string }) => `/faq/${entry.slug}`),
-  ];
-
-  return [...staticRoutes(), ...detailRoutes].map(route => {
-    const alternates: AlternateRef[] = [
-      { hreflang: HTML_LANG.en, href: `${siteUrl}${withSlash(localePath('en', route))}` },
-      { hreflang: HTML_LANG.br, href: `${siteUrl}${withSlash(localePath('br', route))}` },
-      { hreflang: 'x-default', href: `${siteUrl}${withSlash(localePath('en', route))}` },
-    ];
-
-    return {
-      loc: `${siteUrl}${withSlash(localePath('br', route))}`,
-      changefreq: 'weekly',
-      priority: sitemapPriority(route),
-      alternates,
-    };
-  });
-}
-
-/** Mirrors the ladder in next-sitemap.config.cjs, so the pair agrees. */
-function sitemapPriority(route: string): string {
-  if (route === '/') return '1.0';
-  if (route.startsWith('/post/') || route.startsWith('/talk/') || route.startsWith('/faq/')) return '0.4';
-  if (route.startsWith('/tags/')) return '0.6';
-  if (route.startsWith('/skills/')) return '0.5';
-  return '0.5';
-}
-
 function withSlash(route: string): string {
   return route.endsWith('/') ? route : `${route}/`;
 }
 
 /**
- * Slugs of the Portuguese entries in an MDX collection.
- *
- * Through the content API, not the filesystem: `nextjs-studio/server`
- * auto-initializes from `process.cwd()` and works in a script the same way it
- * works in a page. Parsing frontmatter here would be a second, worse reader of
- * the same files, free to disagree with the one the site uses.
- *
- * Both languages share a slug, so either side answers the question.
+ * The locale-free route, which is what the config's `transform` weights and
+ * builds the hreflang set from. `/br/post/x` and `/post/x` are one page.
  */
-function readSlugs(collection: 'posts' | 'talks'): string[] {
-  return queryCollection(collection)
-    .where({ lang: 'pt' })
-    .map((entry: { slug: string }) => entry.slug)
-    .filter(Boolean);
+function unprefixed(route: string): string {
+  if (route === BR_PREFIX) return '/';
+  return route.startsWith(`${BR_PREFIX}/`) ? route.slice(BR_PREFIX.length) : route;
+}
+
+/**
+ * One sitemap entry, weighted by next-sitemap's transform.
+ *
+ * Only `loc` is this script's own: the priority ladder, the changefreq and the
+ * three hreflang refs come back identical for `/post/x` and `/br/post/x`, which
+ * is the point. Each entry carries the full set, English included, which is
+ * what keeps `/` and `/br/` from reading as duplicates.
+ */
+async function toEntry(route: string): Promise<SitemapEntry> {
+  const weighted = await config.transform(sitemapConfig, unprefixed(route));
+
+  return {
+    loc: `${siteUrl}${withSlash(route)}`,
+    changefreq: weighted.changefreq,
+    priority: String(weighted.priority),
+    alternates: weighted.alternateRefs.map(ref => ({ hreflang: ref.hreflang, href: ref.href })),
+  };
 }
 
 function buildSitemapIndex(fileNames: string[]): string {
@@ -162,7 +159,7 @@ function writeSitemap(fileName: string, xml: string, count: number): void {
   console.log(`  ${fileName}: ${count} entries`);
 }
 
-function generateSitemaps(): void {
+async function generateSitemaps(): Promise<void> {
   console.log('Generating sitemaps...');
 
   const projectsData = [...queryCollection('github')] as unknown as GithubProject[];
@@ -171,25 +168,29 @@ function generateSitemaps(): void {
     throw new Error('No GitHub projects found. Run `yarn data:github` first.');
   }
 
-  // Every repo in contents/github has a landing page at /project/github/[slug]
-  // (see generateStaticParams in src/app/project/[type]/[slug]/page.tsx)
-  const projectEntries: SitemapEntry[] = [
-    ...new Set(projectsData.map(project => titleToSlug(project.name)).filter(Boolean)),
-  ].map(slug => ({
-    loc: `${siteUrl}/project/github/${slug}/`,
-    changefreq: 'monthly',
-    priority: '0.5',
-  }));
+  const enRoutes = config.builtRoutes();
+  const brRoutes = config.builtRoutes(BR_PREFIX);
 
+  // Both languages of every GitHub landing page live here, so each URL appears
+  // in exactly one sitemap. The Portuguese half used to appear in none.
+  const projectEntries = await Promise.all(
+    [...enRoutes, ...brRoutes].filter(config.isGithubProject).map(toEntry)
+  );
+
+  const brEntries = await Promise.all(
+    brRoutes.filter(route => !config.isGithubProject(route)).map(toEntry)
+  );
+
+  // Not pages of ours, so they carry no alternates: these are the GitHub Pages
+  // sites served under the custom domain.
   const homepageEntries: SitemapEntry[] = [
     ...new Set(
       projectsData
-        .map(project => siteHostedHomepage(project.homepage))
+        .map(project => (project.homepage ? normalizeHomepage(project.homepage) : null))
         .filter((url): url is string => Boolean(url))
     ),
   ].map(loc => ({ loc, changefreq: 'monthly', priority: '0.3' }));
 
-  const brEntries = buildLocalizedEntries();
   writeSitemap(SITE_BR_SITEMAP, buildUrlset(brEntries), brEntries.length);
   writeSitemap(PROJECT_SITEMAP, buildUrlset(projectEntries), projectEntries.length);
   writeSitemap(HOMEPAGE_SITEMAP, buildUrlset(homepageEntries), homepageEntries.length);
@@ -201,4 +202,4 @@ function generateSitemaps(): void {
   console.log('Sitemaps generated successfully');
 }
 
-generateSitemaps();
+await generateSitemaps();
