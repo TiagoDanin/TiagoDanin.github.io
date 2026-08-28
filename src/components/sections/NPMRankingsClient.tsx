@@ -78,7 +78,7 @@ export default function NPMRankingsClient({ npmData, locale = DEFAULT_LOCALE }: 
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-background via-background to-muted/20"></div>
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center space-y-6">
             <Badge variant="secondary" className="mb-4">
@@ -123,7 +123,7 @@ export default function NPMRankingsClient({ npmData, locale = DEFAULT_LOCALE }: 
           <div className="space-y-6">
             {sortedPackages.map((pkg, index) => (
               <Card key={pkg.name} className={`border-2 transition-all hover:shadow-lg ${
-                index < 3 ? 'border-primary/30 bg-gradient-to-r from-primary/5 to-transparent' : ''
+                index < 3 ? 'border-primary/30 bg-linear-to-r from-primary/5 to-transparent' : ''
               }`}>
                 <CardHeader>
                   <div className="flex items-start justify-between">

@@ -29,11 +29,11 @@ export function ProjectCard({ title, description, imageUrl, href, archived }: Pr
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t`${title} (opens in a new tab)`}
-          className="absolute inset-0 z-10 focus:outline-none"
+          className="absolute inset-0 z-10 focus:outline-hidden"
         />
       )}
       {imageUrl && (
-        <div className="aspect-[16/9] overflow-hidden">
+        <div className="aspect-video overflow-hidden">
           <img
             src={imageUrl}
             alt={title}

@@ -24,7 +24,7 @@ const meta = {
           '`role="separator"` with `aria-orientation`, announcing it.',
           '',
           'Vertical separators need a parent with a resolved height. The',
-          'component is `h-full w-[1px]`, so inside a plain block container with',
+          'component is `h-full w-px`, so inside a plain block container with',
           'auto height it collapses to nothing. Give the row a fixed height or',
           '`items-stretch`.',
           '',

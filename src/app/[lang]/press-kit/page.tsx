@@ -399,7 +399,7 @@ export default async function PressKitPage({ params }: PageProps<'/[lang]/press-
             {quickFacts.map(fact => (
               <div key={fact.term} className="border-t border-border/60 pt-4">
                 <dt className="text-sm font-medium text-muted-foreground">{fact.term}</dt>
-                <dd className="mt-1 font-semibold break-words">{fact.detail}</dd>
+                <dd className="mt-1 font-semibold wrap-break-word">{fact.detail}</dd>
                 {fact.note && (
                   <dd className="mt-1 text-sm text-muted-foreground">{fact.note}</dd>
                 )}
@@ -435,7 +435,7 @@ export default async function PressKitPage({ params }: PageProps<'/[lang]/press-
           </p>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:max-w-3xl">
-            <div className="rounded-xl border bg-background p-6 shadow-sm">
+            <div className="rounded-xl border bg-background p-6 shadow-xs">
               <div className="mx-auto w-40 aspect-square rounded-full overflow-hidden bg-primary/10 ring-1 ring-slate-200/80">
                 <Image
                   src={profilePhoto?.src ?? about.avatar}
@@ -467,7 +467,7 @@ export default async function PressKitPage({ params }: PageProps<'/[lang]/press-
               </div>
             </div>
 
-            <div className="rounded-xl border bg-background p-6 shadow-sm">
+            <div className="rounded-xl border bg-background p-6 shadow-xs">
               <div className="mx-auto w-40 aspect-square rounded-xl bg-muted flex items-center justify-center">
                 <Image
                   src="/images/logo.svg"
@@ -502,8 +502,8 @@ export default async function PressKitPage({ params }: PageProps<'/[lang]/press-
 
               <div className="mt-6 grid gap-5 grid-cols-2 lg:grid-cols-4">
                 {galleryPhotos.map(photo => (
-                  <figure key={photo.file} className="rounded-xl border bg-background p-3 shadow-sm">
-                    <div className="aspect-[4/5] overflow-hidden rounded-lg bg-muted">
+                  <figure key={photo.file} className="rounded-xl border bg-background p-3 shadow-xs">
+                    <div className="aspect-4/5 overflow-hidden rounded-lg bg-muted">
                       <Image
                         src={photo.src}
                         alt={t(i18n)`${about.name}, ${photo.label.toLowerCase()}`}
@@ -563,7 +563,7 @@ export default async function PressKitPage({ params }: PageProps<'/[lang]/press-
               return (
                 <div
                   key={topic.title}
-                  className="rounded-xl border bg-background p-6 shadow-sm"
+                  className="rounded-xl border bg-background p-6 shadow-xs"
                 >
                   <Icon className="h-6 w-6 text-foreground" aria-hidden="true" />
                   <h3 className="mt-4 text-lg font-semibold leading-snug">{topic.title}</h3>

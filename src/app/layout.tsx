@@ -1,3 +1,8 @@
+// Imported here, in the root layout, and not only in the branches below it:
+// Next attaches a stylesheet to the entry that imports it, and the 404 came out
+// with its navbar and footer but no Tailwind when only they did.
+import "./globals.css";
+
 /**
  * The root layout, and deliberately a passthrough: no `<html>`, no `<body>`.
  *

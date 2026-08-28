@@ -93,7 +93,7 @@ export function LanguageSelect({ current, pathname, className }: LanguageSelectP
                 lang={HTML_LANG[locale]}
                 className={cn(
                   base,
-                  'text-muted-foreground hover:text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
+                  'text-muted-foreground hover:text-foreground hover:bg-muted focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
                 )}
               >
                 {label}

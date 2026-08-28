@@ -57,7 +57,7 @@ const meta = {
     },
   },
   args: {
-    className: 'h-[18rem] w-[22rem] rounded-md border',
+    className: 'h-72 w-88 rounded-md border',
   },
 } satisfies Meta<typeof ScrollArea>;
 
@@ -142,7 +142,7 @@ export const NoOverflow: Story = {
  */
 export const Horizontal: Story = {
   args: {
-    className: 'w-[22rem] whitespace-nowrap rounded-md border',
+    className: 'w-88 whitespace-nowrap rounded-md border',
     children: (
       <>
         <div className="flex w-max gap-2 p-4">
@@ -196,7 +196,7 @@ export const AlwaysVisibleScrollbar: Story = {
  */
 export const LongProse: Story = {
   args: {
-    className: 'h-[14rem] w-[24rem] rounded-md border',
+    className: 'h-56 w-[24rem] rounded-md border',
     children: (
       <div className="space-y-3 p-4 text-sm text-muted-foreground">
         <p>

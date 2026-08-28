@@ -44,7 +44,7 @@ export function PressMentions({ items, href = "/press" }: PressMentionsProps) {
         <ul className="mt-8 grid gap-6">
           {items.map((item) => (
             <li key={item.url}>
-              <article className="rounded-xl border bg-background p-6 shadow-sm transition-shadow hover:shadow-md">
+              <article className="rounded-xl border bg-background p-6 shadow-xs transition-shadow hover:shadow-md">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                   <span className="font-semibold">{item.outlet}</span>
                   <span aria-hidden="true" className="text-muted-foreground">·</span>

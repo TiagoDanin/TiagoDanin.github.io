@@ -42,7 +42,7 @@ export function BusinessProof({
                 <li key={item.label}>
                   <Link
                     href={resolveHref(item.href)}
-                    className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-none"
+                    className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-hidden"
                   >
                     <span className="w-16 shrink-0 text-2xl font-bold tabular-nums text-foreground">
                       {item.value}

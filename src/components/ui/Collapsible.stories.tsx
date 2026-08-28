@@ -61,7 +61,7 @@ const meta = {
     defaultOpen: false,
     disabled: false,
     onOpenChange: fn(),
-    className: 'w-[26rem] max-w-[90vw] space-y-2',
+    className: 'w-104 max-w-[90vw] space-y-2',
   },
 } satisfies Meta<typeof Collapsible>;
 

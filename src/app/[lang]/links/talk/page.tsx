@@ -23,7 +23,7 @@ export default async function TalkFeedbackPage({ params }: PageProps<'/[lang]/li
   const i18n = initI18n(locale);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-linear-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto py-32 px-4">
         <div className="max-w-2xl mx-auto">
           <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-8">

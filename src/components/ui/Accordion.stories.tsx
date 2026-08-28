@@ -63,7 +63,7 @@ const meta = {
   args: {
     type: 'single',
     collapsible: true,
-    className: 'w-[34rem] max-w-[90vw]',
+    className: 'w-136 max-w-[90vw]',
   },
 } satisfies Meta<typeof Accordion>;
 
@@ -189,7 +189,7 @@ export const MultipleOpen: Story = {
     <Accordion
       type="multiple"
       defaultValue={['stack', 'talks']}
-      className="w-[34rem] max-w-[90vw]"
+      className="w-136 max-w-[90vw]"
     >
       {items}
     </Accordion>

@@ -90,7 +90,7 @@ export function LanguageSuggestion({ href = '/br/', languages }: LanguageSuggest
             type="button"
             onClick={() => setVisible(false)}
             aria-label="Fechar"
-            className="-m-1 shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="-m-1 shrink-0 rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -118,7 +118,7 @@ export function LanguageSuggestion({ href = '/br/', languages }: LanguageSuggest
               writeFlag(window.localStorage, DISMISSED_KEY);
               setVisible(false);
             }}
-            className="ml-auto min-h-[44px] rounded-md px-2 text-xs text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="ml-auto min-h-[44px] rounded-md px-2 text-xs text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
           >
             Não mostrar de novo
           </button>

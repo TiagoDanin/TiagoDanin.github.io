@@ -79,7 +79,7 @@ const meta = {
   args: {
     config: {},
     children: <BarChart data={[]} />,
-    className: 'h-[20rem] w-full',
+    className: 'h-80 w-full',
   },
 } satisfies Meta<typeof ChartContainer>;
 
@@ -236,7 +236,7 @@ export const AreaVariant: Story = {
 export const SingleDataPoint: Story = {
   args: {
     config: downloadsConfig,
-    className: 'h-[16rem] w-full',
+    className: 'h-64 w-full',
     children: (
       <BarChart data={[downloadsByMonth[0]]} margin={{ left: 8, right: 8 }}>
         <CartesianGrid vertical={false} />
@@ -257,7 +257,7 @@ export const SingleDataPoint: Story = {
 export const NoData: Story = {
   args: {
     config: downloadsConfig,
-    className: 'h-[16rem] w-full',
+    className: 'h-64 w-full',
     children: (
       <BarChart data={[]} margin={{ left: 8, right: 8 }}>
         <CartesianGrid vertical={false} />

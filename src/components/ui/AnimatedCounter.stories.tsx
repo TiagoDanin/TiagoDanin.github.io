@@ -138,13 +138,13 @@ export const InRankingCard: Story = {
   },
   render: () => (
     <div className="flex flex-wrap gap-6">
-      <div className="rounded-xl border bg-background p-6 shadow-sm">
+      <div className="rounded-xl border bg-background p-6 shadow-xs">
         <p className="text-3xl font-bold tabular-nums">
           <AnimatedCounter target={1247} duration={2500} />
         </p>
         <p className="mt-1 text-sm text-muted-foreground">Total stars</p>
       </div>
-      <div className="rounded-xl border bg-background p-6 shadow-sm">
+      <div className="rounded-xl border bg-background p-6 shadow-xs">
         <p className="text-3xl font-bold tabular-nums">
           <AnimatedCounter target={1284930} duration={3000} />
         </p>

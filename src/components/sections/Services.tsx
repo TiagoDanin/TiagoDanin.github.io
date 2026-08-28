@@ -68,7 +68,7 @@ export function Services({ expertise }: ServicesProps) {
                 <Link
                   key={item.title}
                   href={item.link}
-                  className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-all group min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="bg-card p-6 rounded-xl shadow-xs hover:shadow-md transition-all group min-h-[44px] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   {content}
                 </Link>
@@ -76,7 +76,7 @@ export function Services({ expertise }: ServicesProps) {
             }
 
             return (
-              <div key={item.title} className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div key={item.title} className="bg-card p-6 rounded-xl shadow-xs hover:shadow-md transition-shadow">
                 {content}
               </div>
             );

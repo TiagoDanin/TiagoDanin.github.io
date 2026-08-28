@@ -11,7 +11,7 @@ export function FaqService({ offering }: FaqServiceProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {offering.map((item) => (
-        <Card key={item.title} className="shadow-sm">
+        <Card key={item.title} className="shadow-xs">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg">{item.title}</CardTitle>
           </CardHeader>

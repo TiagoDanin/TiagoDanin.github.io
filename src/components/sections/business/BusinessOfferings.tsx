@@ -33,7 +33,7 @@ export function BusinessOfferings({ title, note, offerings, resolveHref }: Busin
             const Icon = ICONS[offering.icon];
 
             return (
-              <Card key={offering.title} className="flex flex-col shadow-sm">
+              <Card key={offering.title} className="flex flex-col shadow-xs">
                 <CardHeader>
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     <Icon className="h-5 w-5" />

@@ -20,7 +20,7 @@ interface BioBrowserProps {
 const chipClass = (selected: boolean) =>
   cn(
     "rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors min-h-[36px]",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     selected
       ? "border-transparent bg-primary text-primary-foreground"
       : "border-input bg-background text-muted-foreground hover:bg-accent hover:text-accent-foreground"
@@ -79,7 +79,7 @@ export function BioBrowser({ bios }: BioBrowserProps) {
         {BIO_LENGTHS.map(length => (
           <div
             key={length.key}
-            className="rounded-xl border bg-background p-6 shadow-sm"
+            className="rounded-xl border bg-background p-6 shadow-xs"
           >
             <div className="flex items-start justify-between gap-4">
               <div>

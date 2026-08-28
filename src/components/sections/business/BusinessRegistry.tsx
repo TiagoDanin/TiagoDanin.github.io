@@ -32,7 +32,7 @@ export function BusinessRegistry({
               className="grid gap-1 px-5 py-4 sm:grid-cols-[minmax(0,13rem)_minmax(0,1fr)] sm:gap-6"
             >
               <dt className="text-sm font-medium text-muted-foreground">{record.label}</dt>
-              <dd className="min-w-0 space-y-1 break-words text-sm text-foreground">
+              <dd className="min-w-0 space-y-1 wrap-break-word text-sm text-foreground">
                 {record.value.split('\n').map((line) => (
                   <span key={line} className="block">
                     {line}

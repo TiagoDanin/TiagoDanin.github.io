@@ -27,7 +27,7 @@ export function FaqIndex({ entries, locale }: FaqIndexProps) {
 
               return (
                 <article key={entry.slug} id={entry.slug} className="space-y-2 scroll-mt-24">
-                  <h3 className="text-lg font-semibold text-foreground text-balance break-words">{entry.question}</h3>
+                  <h3 className="text-lg font-semibold text-foreground text-balance wrap-break-word">{entry.question}</h3>
                   <p className="text-muted-foreground leading-relaxed">{entry.answer}</p>
                   {hasPage && (
                     <p>

@@ -76,7 +76,7 @@ export default async function AppsPage({ params }: PageProps<'/[lang]/apps'>) {
     <div className="min-h-screen">
       {/* Hero */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+        <div className="absolute inset-0 bg-linear-to-br from-background via-background to-muted/20" />
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="text-center space-y-6">
             <Badge variant="secondary" className="mb-4">

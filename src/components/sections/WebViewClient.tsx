@@ -157,7 +157,7 @@ export default function WebViewPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-16 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-background via-background to-muted/20"></div>
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center space-y-4">
             <Badge variant="secondary" className="mb-4">
@@ -310,7 +310,7 @@ export default function WebViewPage() {
                     onChange={(e) => setCode(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="// Enter your JavaScript code here&#x0A;console.log('Hello, Bug Bounty!');"
-                    className="flex-1 w-full bg-muted/30 text-foreground border rounded-md p-3 font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="flex-1 w-full bg-muted/30 text-foreground border rounded-md p-3 font-mono text-sm resize-none focus:outline-hidden focus:ring-2 focus:ring-primary"
                   />
                   <Button onClick={executeCode} className="w-full">
                     <PlayCircle className="h-4 w-4 mr-2" />

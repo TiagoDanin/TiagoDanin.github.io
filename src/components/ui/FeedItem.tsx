@@ -16,7 +16,7 @@ export interface FeedItemProps {
  */
 export function FeedItem({ title, url, description }: FeedItemProps) {
   return (
-    <div className="p-6 rounded-lg border bg-card shadow-sm flex flex-col gap-2">
+    <div className="p-6 rounded-lg border bg-card shadow-xs flex flex-col gap-2">
       <div className="flex items-center justify-between gap-4">
         <h2 className="text-xl font-semibold">{title}</h2>
         <Link

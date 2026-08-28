@@ -199,7 +199,7 @@ export const SingleItem: Story = {
 
 /**
  * A long slug. The list wraps rather than overflowing, because
- * `BreadcrumbList` is a flex container with `flex-wrap` and `break-words`.
+ * `BreadcrumbList` is a flex container with `flex-wrap` and `wrap-break-word`.
  */
 export const LongTrail: Story = {
   parameters: { layout: 'padded' },

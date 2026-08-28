@@ -46,7 +46,7 @@ export function Milestones({ milestones, href = "/timeline" }: MilestonesProps) 
           {milestones.map((event) => (
             <li
               key={`${event.date}-${event.title}`}
-              className="rounded-xl border bg-background p-6 shadow-sm transition-shadow hover:shadow-md"
+              className="rounded-xl border bg-background p-6 shadow-xs transition-shadow hover:shadow-md"
             >
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                 <time dateTime={event.date} className="text-sm font-semibold text-muted-foreground">

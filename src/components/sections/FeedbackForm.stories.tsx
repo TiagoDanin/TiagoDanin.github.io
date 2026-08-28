@@ -61,7 +61,7 @@ const meta = {
   decorators: [
     (Story) => (
       <div className="container mx-auto px-4 py-10">
-        <div className="mx-auto max-w-2xl rounded-2xl border bg-background p-8 shadow-sm">
+        <div className="mx-auto max-w-2xl rounded-2xl border bg-background p-8 shadow-xs">
           <h1 className="mb-6 text-2xl font-bold tracking-tight">Feedback da talk</h1>
           <Story />
         </div>

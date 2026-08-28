@@ -55,7 +55,7 @@ export function Navbar({ menu, locale = DEFAULT_LOCALE }: { menu: MenuItem[]; lo
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-200",
         isScrolled
-          ? "bg-background/95 backdrop-blur-sm border-b border-border/60 py-3"
+          ? "bg-background/95 backdrop-blur-xs border-b border-border/60 py-3"
           : "bg-background border-b border-transparent py-4"
       )}
     >

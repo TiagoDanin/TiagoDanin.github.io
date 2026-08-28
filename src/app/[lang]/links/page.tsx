@@ -89,7 +89,7 @@ export default async function Links({ params }: PageProps<'/[lang]/links'>) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }} />
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-linear-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto py-32 px-4">
         <div className="max-w-3xl mx-auto">
           <div className="max-w-md mx-auto">
@@ -97,7 +97,7 @@ export default async function Links({ params }: PageProps<'/[lang]/links'>) {
             <div className="text-center mb-8">
               <Avatar className="w-24 h-24 mx-auto mb-4 ring-4 ring-white shadow-lg">
                 <AvatarImage src="https://avatars.githubusercontent.com/u/5731176?v=4" alt="Tiago Danin" />
-                <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-green-400 to-emerald-400 text-white">
+                <AvatarFallback className="text-2xl font-bold bg-linear-to-br from-green-400 to-emerald-400 text-white">
                   TD
                 </AvatarFallback>
               </Avatar>
@@ -124,7 +124,7 @@ export default async function Links({ params }: PageProps<'/[lang]/links'>) {
                   <Button
                     key={index}
                     variant="outline"
-                    className="w-full min-h-14 h-auto whitespace-normal bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white hover:scale-105 transition-all duration-200 shadow-sm hover:shadow-md dark:bg-gray-800/80 dark:border-gray-700 dark:hover:bg-gray-800"
+                    className="w-full min-h-14 h-auto whitespace-normal bg-white/80 backdrop-blur-xs border-gray-200 hover:bg-white hover:scale-105 transition-all duration-200 shadow-xs hover:shadow-md dark:bg-gray-800/80 dark:border-gray-700 dark:hover:bg-gray-800"
                     asChild
                   >
                     <a
@@ -137,7 +137,7 @@ export default async function Links({ params }: PageProps<'/[lang]/links'>) {
                         {IconComponent && (
                           <IconComponent className="w-5 h-5 text-gray-600 dark:text-gray-300 shrink-0" />
                         )}
-                        <span className="font-medium text-gray-900 dark:text-white text-left break-words">
+                        <span className="font-medium text-gray-900 dark:text-white text-left wrap-break-word">
                           {link.title}
                         </span>
                       </div>

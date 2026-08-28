@@ -27,15 +27,15 @@ export function BusinessHero({
     <section className="relative overflow-hidden px-4 pb-16 pt-16 md:pb-24 md:pt-20">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-green-100 opacity-60 blur-3xl"
+        className="pointer-events-none absolute -left-40 -top-40 h-136 w-136 rounded-full bg-green-100 opacity-60 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-48 top-24 h-[38rem] w-[38rem] rounded-full bg-purple-100 opacity-50 blur-3xl"
+        className="pointer-events-none absolute -right-48 top-24 h-152 w-152 rounded-full bg-purple-100 opacity-50 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-40 left-1/3 h-[26rem] w-[26rem] rounded-full bg-yellow-100 opacity-40 blur-3xl"
+        className="pointer-events-none absolute -bottom-40 left-1/3 h-104 w-104 rounded-full bg-yellow-100 opacity-40 blur-3xl"
       />
 
       <div className="container relative z-10 mx-auto max-w-6xl">

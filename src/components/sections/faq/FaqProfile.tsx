@@ -9,7 +9,7 @@ export function FaqProfile({ facts }: FaqProfileProps) {
   if (facts.length === 0) return null;
 
   return (
-    <Card className="shadow-sm">
+    <Card className="shadow-xs">
       <CardContent className="p-6">
         <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
           {facts.map((fact) => (

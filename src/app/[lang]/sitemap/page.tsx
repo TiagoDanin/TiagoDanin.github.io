@@ -142,7 +142,7 @@ export default async function SitemapPage({ params }: PageProps<'/[lang]/sitemap
 
       <div className="space-y-8">
         {lists.map((list) => (
-          <section key={list.file} className="rounded-lg border p-6 shadow-sm">
+          <section key={list.file} className="rounded-lg border p-6 shadow-xs">
             <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
               <div>
                 <h2 className="text-2xl font-semibold">{list.title}</h2>

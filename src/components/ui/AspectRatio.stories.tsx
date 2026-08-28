@@ -50,7 +50,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[30rem] max-w-[90vw]">
+      <div className="w-120 max-w-[90vw]">
         <Story />
       </div>
     ),

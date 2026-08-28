@@ -116,7 +116,7 @@ export default async function Timeline({ params }: PageProps<'/[lang]/timeline'>
             return (
               <li key={index} className="mb-10 ms-4">
                 {/* Timeline dot */}
-                <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -inset-s-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
 
                 <div className="mb-2">
                   {/* Year tag */}
@@ -142,7 +142,7 @@ export default async function Timeline({ params }: PageProps<'/[lang]/timeline'>
                 </div>
 
                 {/* Content */}
-                <Link href={localePath(locale, `/timeline/${year}/${slug}`)} className="block group min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded">
+                <Link href={localePath(locale, `/timeline/${year}/${slug}`)} className="block group min-h-[44px] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded">
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                     {item.title}
                   </h3>

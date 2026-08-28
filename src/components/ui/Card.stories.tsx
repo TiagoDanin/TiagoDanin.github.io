@@ -25,7 +25,7 @@ const meta = {
       description: {
         component: [
           'A compound component, not a single element. `Card` is the white',
-          'surface with `rounded-lg border shadow-sm`; `CardHeader`,',
+          'surface with `rounded-lg border shadow-xs`; `CardHeader`,',
           '`CardTitle`, `CardDescription`, `CardContent` and `CardFooter` are',
           'the slots that give it its rhythm. All six are plain divs with',
           'forwarded refs and no state, so any of them can be skipped.',
@@ -42,7 +42,7 @@ const meta = {
           'outline, since a card grid full of `h3`s under an `h3` reads as a flat',
           'list to a screen reader.',
           '',
-          'The card carries `shadow-sm` at rest. `DESIGN.md` allows',
+          'The card carries `shadow-xs` at rest. `DESIGN.md` allows',
           '`hover:shadow-md` or `hover:shadow-lg` on top, but only on a card that',
           'has somewhere to go.',
         ].join('\n'),

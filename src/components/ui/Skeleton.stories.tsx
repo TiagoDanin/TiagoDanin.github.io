@@ -115,7 +115,7 @@ export const ProjectCardPlaceholder: Story = {
     >
       {[0, 1].map((index) => (
         <Card key={index} className="overflow-hidden">
-          <Skeleton className="aspect-[16/9] w-full rounded-none motion-reduce:animate-none" />
+          <Skeleton className="aspect-video w-full rounded-none motion-reduce:animate-none" />
           <CardHeader className="p-4">
             <Skeleton className="h-6 w-2/3 motion-reduce:animate-none" />
           </CardHeader>

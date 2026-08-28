@@ -66,7 +66,7 @@ export default async function FaqPage({ params }: PageProps<'/[lang]/faq'>) {
   return (
     <div className="min-h-screen">
       <section className="relative container mx-auto py-32 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+        <div className="absolute inset-0 bg-linear-to-br from-background via-background to-muted/20" />
         <div className="max-w-2xl mx-auto relative z-10">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground text-balance">

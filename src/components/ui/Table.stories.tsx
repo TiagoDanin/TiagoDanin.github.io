@@ -311,7 +311,7 @@ export const EmptyState: Story = {
  */
 export const WideTable: Story = {
   args: {
-    className: 'min-w-[52rem]',
+    className: 'min-w-208',
     children: (
       <>
         <TableCaption>Full package index with registry metadata</TableCaption>

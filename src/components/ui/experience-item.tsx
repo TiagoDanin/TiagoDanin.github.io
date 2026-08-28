@@ -24,7 +24,7 @@ export function ExperienceItem({ company, role, startDate, endDate, logo, descri
       role="button"
       tabIndex={0}
       aria-expanded={isExpanded}
-      className="flex flex-col gap-4 group cursor-pointer hover:bg-muted/50 rounded-lg p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="flex flex-col gap-4 group cursor-pointer hover:bg-muted/50 rounded-lg p-2 transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring"
       onClick={toggle}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -34,7 +34,7 @@ export function ExperienceItem({ company, role, startDate, endDate, logo, descri
       }}
     >
       <div className="flex gap-4">
-        <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-background/50 shadow-sm ring-1 ring-slate-900/5 transition group-hover:bg-background">
+        <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-background/50 shadow-xs ring-1 ring-slate-900/5 transition group-hover:bg-background">
           <Image
             src={logo}
             alt={company}

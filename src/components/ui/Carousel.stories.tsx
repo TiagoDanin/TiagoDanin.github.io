@@ -71,7 +71,7 @@ const meta = {
   decorators: [
     (Story) => (
       // The arrows sit outside the track, so the frame needs room for them.
-      <div className="w-[26rem] max-w-[80vw] px-14 py-6">
+      <div className="w-104 max-w-[80vw] px-14 py-6">
         <Story />
       </div>
     ),
@@ -237,7 +237,7 @@ export const Vertical: Story = {
     opts: { align: 'start' },
     children: (
       <>
-        <CarouselContent className="h-[16rem]">
+        <CarouselContent className="h-64">
           {screenshots.map((shot) => (
             <CarouselItem key={shot.title} className="basis-1/2">
               <Card>
@@ -255,7 +255,7 @@ export const Vertical: Story = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[22rem] max-w-[80vw] py-14">
+      <div className="w-88 max-w-[80vw] py-14">
         <Story />
       </div>
     ),

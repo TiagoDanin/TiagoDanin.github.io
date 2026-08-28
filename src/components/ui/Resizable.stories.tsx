@@ -57,7 +57,7 @@ const meta = {
   },
   args: {
     direction: 'horizontal',
-    className: 'h-[22rem] w-full rounded-lg border',
+    className: 'h-88 w-full rounded-lg border',
   },
   decorators: [
     (Story) => (

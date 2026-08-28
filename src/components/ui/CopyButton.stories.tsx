@@ -194,7 +194,7 @@ export const BesideHeading: Story = {
     },
   },
   render: (args) => (
-    <div className="max-w-xl rounded-xl border bg-background p-6 shadow-sm">
+    <div className="max-w-xl rounded-xl border bg-background p-6 shadow-xs">
       <div className="flex items-start justify-between gap-4">
         <div>
           <h3 className="font-semibold">Short</h3>

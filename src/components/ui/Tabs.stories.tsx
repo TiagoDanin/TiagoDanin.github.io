@@ -67,7 +67,7 @@ const meta = {
   args: {
     defaultValue: 'en',
     onValueChange: fn(),
-    className: 'w-[32rem] max-w-[90vw]',
+    className: 'w-lg max-w-[90vw]',
   },
 } satisfies Meta<typeof Tabs>;
 

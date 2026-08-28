@@ -249,7 +249,7 @@ export default async function MentorshipPage({ params }: PageProps<'/[lang]/ment
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-background via-background to-muted/20"></div>
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center space-y-6">
             <Badge variant="secondary" className="mb-4">
