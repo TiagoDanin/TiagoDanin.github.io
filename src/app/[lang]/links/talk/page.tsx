@@ -14,7 +14,6 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/links/talk
     title: t(i18n)`Feedback da Talk`,
     description: t(i18n)`Compartilhe seu feedback sobre a talk e receba o bônus de acesso ao material complementar.`,
     alternates: localeAlternates(locale, '/links/talk'),
-    robots: { index: false, follow: false },
   };
 }
 

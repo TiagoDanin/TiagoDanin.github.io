@@ -37,10 +37,6 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/blog/tags/
     title: t(i18n)`Posts tagged with "${originalTagName}"`,
     description: t(i18n)`All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles.`,
     alternates: localeAlternates(locale, `/blog/tags/${tagSlug}`),
-    robots: {
-      index: false,
-      follow: true,
-    },
     openGraph: {
       title: t(i18n)`Posts tagged with "${originalTagName}" - Tiago Danin`,
       description: t(i18n)`All blog posts tagged with "${originalTagName}"`,

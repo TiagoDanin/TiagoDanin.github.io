@@ -62,28 +62,39 @@ export default async function Links({ params }: PageProps<'/[lang]/links'>) {
 
   // Only the links the page actually renders belong in the graph.
   const active = ([...linksData] as unknown as LinkEntry[]).filter((l) => l.enabled);
+  const pageId = pageUrl(locale, '/links');
+  // The list is a sibling node in the graph, not a `hasPart` of the page:
+  // `hasPart` has a range of CreativeWork, and ItemList is an Intangible, so
+  // nesting it there is a schema.org range violation.
   const profileSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "name": t(i18n)`Link in Bio, Tiago Danin`,
-    "url": pageUrl(locale, '/links'),
-    "inLanguage": HTML_LANG[locale],
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Tiago Danin",
-      "url": pageUrl(locale, '/'),
-      "sameAs": active.map((l) => l.url).filter(Boolean),
-    },
-    "hasPart": {
-      "@type": "ItemList",
-      "numberOfItems": active.length,
-      "itemListElement": active.map((l, i) => ({
-        "@type": "ListItem",
-        "position": i + 1,
-        "name": l.title,
-        "url": l.url,
-      })),
-    },
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": `${pageId}#profilepage`,
+        "name": t(i18n)`Link in Bio, Tiago Danin`,
+        "url": pageId,
+        "inLanguage": HTML_LANG[locale],
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Tiago Danin",
+          "url": pageUrl(locale, '/'),
+          "sameAs": active.map((l) => l.url).filter(Boolean),
+        },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${pageId}#links`,
+        "name": t(i18n)`Link in Bio, Tiago Danin`,
+        "numberOfItems": active.length,
+        "itemListElement": active.map((l, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": l.title,
+          "url": l.url,
+        })),
+      },
+    ],
   };
 
   return (

@@ -12,6 +12,8 @@ import { fileURLToPath } from 'url';
 import { queryCollection } from 'nextjs-studio/server';
 
 import { HTML_LANG, localePath } from '../src/lib/i18n/locales.js';
+import { indexableTagSlugs } from '../src/lib/tags.js';
+import { indexableSkillSlugs } from '../src/lib/skills.js';
 import { staticRoutes } from './appRoutes.cjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -111,6 +113,12 @@ function buildLocalizedEntries(): SitemapEntry[] {
   const detailRoutes = [
     ...readSlugs('posts').map(slug => `/post/${slug}`),
     ...readSlugs('talks').map(slug => `/talk/${slug}`),
+    // Both were missing entirely: sitemap-site-br.xml listed /br/tags/ and
+    // /br/skills/ and not one page under either, so every Portuguese tag and
+    // skill page was reachable only by crawling a link. Only the ones that ask
+    // to be indexed, matching the noindex the pages themselves emit.
+    ...indexableTagSlugs().map(slug => `/tags/${slug}`),
+    ...indexableSkillSlugs().map(slug => `/skills/${slug}`),
     ...queryCollection('faq')
       .locale('br')
       .filter((entry: { slug?: string; body?: string }) => entry.slug && (entry.body ?? '').trim())
@@ -127,10 +135,19 @@ function buildLocalizedEntries(): SitemapEntry[] {
     return {
       loc: `${siteUrl}${withSlash(localePath('br', route))}`,
       changefreq: 'weekly',
-      priority: route === '/' ? '1.0' : route.startsWith('/post/') || route.startsWith('/talk/') || route.startsWith('/faq/') ? '0.4' : '0.5',
+      priority: sitemapPriority(route),
       alternates,
     };
   });
+}
+
+/** Mirrors the ladder in next-sitemap.config.cjs, so the pair agrees. */
+function sitemapPriority(route: string): string {
+  if (route === '/') return '1.0';
+  if (route.startsWith('/post/') || route.startsWith('/talk/') || route.startsWith('/faq/')) return '0.4';
+  if (route.startsWith('/tags/')) return '0.6';
+  if (route.startsWith('/skills/')) return '0.5';
+  return '0.5';
 }
 
 function withSlash(route: string): string {

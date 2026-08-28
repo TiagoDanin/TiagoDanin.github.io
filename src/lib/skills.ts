@@ -1,6 +1,6 @@
 import { queryCollection } from 'nextjs-studio/server';
 
-import { DEFAULT_LOCALE, contentLang, type Locale } from '@/lib/i18n/locales';
+import { DEFAULT_LOCALE, LOCALES, contentLang, type Locale } from '@/lib/i18n/locales';
 import { titleToSlug } from '@/utils/parse';
 
 export interface SkillItem {
@@ -127,17 +127,19 @@ export function getSkillContent(locale: Locale, englishName: string) {
 export type SkillContent = ReturnType<typeof getSkillContent>;
 
 /**
- * Whether `/skills/<slug>` should be indexed and submitted in a sitemap.
+ * Every skill slug, for the sitemaps.
  *
- * 23 of the 40 skills match no post, no talk and no repository. What renders
- * for those is one paragraph from a dictionary in the page file plus a Service
- * schema, forty times over with the name swapped, which is a doorway page by
- * every definition Google publishes. They keep their page, keep being linked
- * from `/skills`, and stop asking to be indexed.
- *
- * The bar is one real item, not a subjective quality call: a skill with a
- * repository behind it has something on the page that exists nowhere else.
+ * No threshold, matching the tags and by the same call: all 40 are submitted,
+ * including the 23 that match no post, talk or repository and so render one
+ * dictionary paragraph and a Service schema. Those are the pages carrying the
+ * least of their own, and the description below is what differentiates them.
  */
-export function isSkillIndexable(content: SkillContent): boolean {
-  return content.total > 0;
+export function indexableSkillSlugs(): string[] {
+  const slugs = new Set<string>();
+
+  for (const locale of LOCALES) {
+    for (const entry of getAllSkills(locale)) slugs.add(entry.slug);
+  }
+
+  return [...slugs];
 }

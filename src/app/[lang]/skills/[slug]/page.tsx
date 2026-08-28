@@ -4,14 +4,13 @@ import { notFound } from 'next/navigation';
 import { Plural, Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
 import type { I18n } from '@lingui/core';
-import { queryCollection } from 'nextjs-studio/server';
 import { ArrowRight, Briefcase, BookOpen, Mic } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { titleToSlug, formatDate } from '@/utils/parse';
+import { formatDate } from '@/utils/parse';
 import { eventLabel } from '@/lib/talks';
-import { contentLang, entryPath, intlLocale, localePath } from '@/lib/i18n/locales';
-import { getAllSkills, getSkillBySlug, getSkillContent, isSkillIndexable } from '@/lib/skills';
+import { entryPath, intlLocale, localePath } from '@/lib/i18n/locales';
+import { getAllSkills, getSkillBySlug, getSkillContent } from '@/lib/skills';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
@@ -92,7 +91,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/skills/[sl
   // down to "Hire for freelance projects, consulting, and mentorship". A
   // description that repeats verbatim site-wide gives a crawler nothing to tell
   // the pages apart by; these counts are different on every one of them.
-  const description = isSkillIndexable(content)
+  const description = content.total > 0
     ? t(
         i18n
       )`${skill.name} work by Tiago Danin: ${content.projects.length} open source repositories, ${content.posts.length} articles and ${content.talks.length} talks.`
@@ -102,10 +101,6 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/skills/[sl
     title: t(i18n)`${skill.name} Developer | Tiago Danin`,
     description,
     alternates: localeAlternates(locale, `/skills/${slug}`),
-    // A skill matching no post, talk or repository renders one dictionary
-    // paragraph and nothing else. Forty of those from one template is a doorway
-    // set; it keeps its page and its links, and stops asking to be indexed.
-    robots: isSkillIndexable(content) ? undefined : { index: false, follow: true },
     openGraph: {
       title: t(i18n)`${skill.name} Developer, Tiago Danin`,
       description,

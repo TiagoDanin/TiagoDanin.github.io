@@ -96,7 +96,10 @@ export default async function GitHubRankingsPage({ params }: PageProps<'/[lang]/
         "author": { "@type": "Person", "name": "Tiago Danin", "url": pageUrl(locale, '/') },
         "interactionStatistic": {
           "@type": "InteractionCounter",
-          "interactionType": "https://schema.org/LikeAction",
+          // An instance, not the class URI: "https://schema.org/LikeAction" is a
+          // class and fails strict schema.org validation for a property whose
+          // range is Action.
+          "interactionType": { "@type": "LikeAction" },
           "userInteractionCount": repo.stargazers_count,
         },
       },

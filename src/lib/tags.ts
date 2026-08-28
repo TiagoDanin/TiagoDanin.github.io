@@ -240,44 +240,16 @@ export function buildBlogTagIndex(locale: Locale): TagIndex {
 }
 
 /**
- * How much a tag page needs before it asks to be indexed.
+ * Every tag slug, for the sitemaps.
  *
- * The index runs to 495 tags, and 240 of them carry exactly one item: a GitHub
- * topic used by a single repository. A page listing one link is thin content,
- * and several hundred of them generated from one template is the shape Google
- * reads as doorway pages, which costs the pages that *do* deserve to rank.
- *
- * Below the line a tag still gets a page, still renders and is still linked and
- * crawled: `noindex, follow` keeps the navigation and the link equity while
- * withdrawing the request to index. It is only excluded from the sitemaps.
- *
- * 3 rather than 2 because a two-item page is one item plus a "related tags"
- * row, which is still not a page worth landing on from a search result.
- */
-export const TAG_MIN_ITEMS_TO_INDEX = 3;
-
-/** Whether `/tags/<slug>` should be indexed and submitted in a sitemap. */
-export function isTagIndexable(entry: TagEntry | undefined): boolean {
-  return (entry?.total ?? 0) >= TAG_MIN_ITEMS_TO_INDEX;
-}
-
-/**
- * The tag slugs worth submitting, unioned across locales like `allTagSlugs`.
- *
- * A tag indexable in one language and not the other would put a URL in one
- * sitemap whose `hreflang` twin is noindex, so the threshold is applied to the
- * richest reading of the tag rather than per language.
+ * There is no quality threshold here, by the owner's call: every tag page is
+ * indexable and submitted, including the 240 that carry a single item. The
+ * alternative considered was `noindex, follow` below three items, which is the
+ * usual guard against a few hundred one-link pages reading as doorway content.
+ * It is not in place, so the thin pages are competing on their own merits.
  */
 export function indexableTagSlugs(): string[] {
-  const slugs = new Set<string>();
-
-  for (const locale of LOCALES) {
-    buildTagIndex(locale).forEach((entry, slug) => {
-      if (isTagIndexable(entry)) slugs.add(slug);
-    });
-  }
-
-  return [...slugs];
+  return allTagSlugs('all');
 }
 
 /** Tags sorted the way both index pages list them: most content first. */
