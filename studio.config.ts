@@ -166,6 +166,34 @@ const config: StudioConfig = {
         ],
       },
     },
+    /**
+     * The two documents rendered on /legal, one MDX file each per language.
+     * Prose only: the structure lives in the page, so an edit here is an edit
+     * to the wording and never to the layout.
+     */
+    legal: {
+      schema: {
+        collection: "legal",
+        label: "Privacy and Terms (/legal)",
+        fields: [
+          { name: "title", type: "text", required: true },
+          {
+            name: "slug",
+            type: "select",
+            required: true,
+            options: [opt("privacy"), opt("terms")],
+          },
+          { name: "updatedAt", type: "date", includeDay: true, required: true },
+          {
+            name: "lang",
+            type: "select",
+            required: true,
+            options: [opt("en"), opt("pt")],
+          },
+          { name: "description", type: "long-text", required: true },
+        ],
+      },
+    },
     bios: {
       schema: {
         collection: "bios",
