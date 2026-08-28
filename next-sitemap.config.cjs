@@ -52,15 +52,25 @@ module.exports = {
       'https://tiagodanin.com/sitemap-site-br.xml',
       'https://tiagodanin.com/sitemap-project-github.xml',
       'https://tiagodanin.com/sitemap-homepage-github.xml',
-      // The RSS feeds are deliberately NOT listed here. Google tolerates RSS 2.0
-      // as a sitemap, but every other crawler parses a `Sitemap:` line against
-      // the sitemaps.org schema, finds <rss> where <urlset> was promised, and
-      // reports the feed as malformed (Ahrefs: "Sitemap in the wrong format /
-      // Invalid representation"). Nothing is lost: the posts, talks, timeline
-      // entries and projects are already in sitemap-site.xml and
-      // sitemap-site-br.xml, and the feeds are discovered the correct way, via
-      // the <link rel="alternate" type="application/rss+xml"> tags that
-      // /blog, /talks, /timeline and /projects emit through feedPath().
+      // The RSS feeds are listed as sitemaps on purpose, and this is standard,
+      // not a Google-only tolerance: sitemaps.org itself says "in addition to
+      // the XML protocol, we support RSS feeds and text files". Google accepts
+      // RSS 2.0 and Atom 1.0; Bing accepts both and recommends them precisely
+      // for signalling new URLs. What they add over the XML sitemaps is the
+      // real pubDate of each entry, where `lastmod` here is only the build
+      // timestamp.
+      //
+      // They are listed here and not inside sitemap.xml because a
+      // <sitemapindex> may only reference XML sitemaps.
+      //
+      // Ahrefs Site Audit flags all four as "Sitemap in the wrong format /
+      // Invalid representation". That is a false positive: its parser assumes
+      // <urlset>/<sitemapindex> and rejects a format the protocol allows.
+      // Dismiss it there; do not delete these lines to silence the report.
+      'https://tiagodanin.com/rss/blog.xml',
+      'https://tiagodanin.com/rss/talks.xml',
+      'https://tiagodanin.com/rss/timeline.xml',
+      'https://tiagodanin.com/rss/projects.xml',
     ],
   },
   transform: async (config, urlPath) => {
