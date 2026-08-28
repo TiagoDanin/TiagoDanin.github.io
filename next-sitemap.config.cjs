@@ -52,14 +52,15 @@ module.exports = {
       'https://tiagodanin.com/sitemap-site-br.xml',
       'https://tiagodanin.com/sitemap-project-github.xml',
       'https://tiagodanin.com/sitemap-homepage-github.xml',
-      // Google accepts RSS 2.0 as a sitemap format, and the feeds carry the
-      // pubDate freshness signal the XML sitemaps do not. They are listed here
-      // and not inside sitemap.xml because a <sitemapindex> may only reference
-      // XML sitemaps (sitemaps.org protocol).
-      'https://tiagodanin.com/rss/blog.xml',
-      'https://tiagodanin.com/rss/talks.xml',
-      'https://tiagodanin.com/rss/timeline.xml',
-      'https://tiagodanin.com/rss/projects.xml',
+      // The RSS feeds are deliberately NOT listed here. Google tolerates RSS 2.0
+      // as a sitemap, but every other crawler parses a `Sitemap:` line against
+      // the sitemaps.org schema, finds <rss> where <urlset> was promised, and
+      // reports the feed as malformed (Ahrefs: "Sitemap in the wrong format /
+      // Invalid representation"). Nothing is lost: the posts, talks, timeline
+      // entries and projects are already in sitemap-site.xml and
+      // sitemap-site-br.xml, and the feeds are discovered the correct way, via
+      // the <link rel="alternate" type="application/rss+xml"> tags that
+      // /blog, /talks, /timeline and /projects emit through feedPath().
     ],
   },
   transform: async (config, urlPath) => {
@@ -73,9 +74,6 @@ module.exports = {
     } else if (urlPath === '/rankings/github' || urlPath === '/rankings/npm') {
       priority = 0.8;
       changefreq = 'weekly';
-    } else if (urlPath === '/rss/blog.xml' || urlPath === '/rss/talks.xml' || urlPath === '/rss/timeline.xml' || urlPath === '/rss/projects.xml') {
-      priority = 0.1;
-      changefreq = 'monthly';
     } else if (urlPath === '/llms-full.txt' || urlPath === '/llms.txt') {
       priority = 0.1;
       changefreq = 'monthly';

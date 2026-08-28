@@ -12,6 +12,7 @@ import { fileURLToPath } from 'url';
 import { queryCollection } from 'nextjs-studio/server';
 
 import { HTML_LANG, localePath } from '../src/lib/i18n/locales.js';
+import { siteHostedHomepage } from '../src/lib/homepage.js';
 import { indexableTagSlugs } from '../src/lib/tags.js';
 import { indexableSkillSlugs } from '../src/lib/skills.js';
 import { staticRoutes } from './appRoutes.cjs';
@@ -52,29 +53,6 @@ function titleToSlug(title: string): string {
     .replace(/\s+/g, '-')
     .trim()
     .replace(/^-+|-+$/g, '');
-}
-
-/**
- * GitHub serves a user's project pages under the custom domain of their user page,
- * so https://tiagodanin.github.io/Repo/ is a 301 to https://tiagodanin.com/Repo/.
- * A sitemap must list the canonical target, never the redirect.
- * Returns null for homepages that are not hosted on the site.
- */
-function normalizeHomepage(homepage: string): string | null {
-  let url = homepage.trim().replace(/^http:/i, 'https:');
-  url = url.replace(/^https:\/\/(www\.)?tiagodanin\.github\.io/i, siteUrl);
-  url = url.replace(/^https:\/\/www\.tiagodanin\.com/i, siteUrl);
-
-  if (!url.toLowerCase().startsWith(`${siteUrl.toLowerCase()}/`)) {
-    return null;
-  }
-
-  if (!url.endsWith('/')) {
-    url += '/';
-  }
-
-  // The bare domain is the site home, already covered by sitemap-site.xml
-  return url === `${siteUrl}/` ? null : url;
 }
 
 function buildUrlset(entries: SitemapEntry[]): string {
@@ -206,7 +184,7 @@ function generateSitemaps(): void {
   const homepageEntries: SitemapEntry[] = [
     ...new Set(
       projectsData
-        .map(project => (project.homepage ? normalizeHomepage(project.homepage) : null))
+        .map(project => siteHostedHomepage(project.homepage))
         .filter((url): url is string => Boolean(url))
     ),
   ].map(loc => ({ loc, changefreq: 'monthly', priority: '0.3' }));

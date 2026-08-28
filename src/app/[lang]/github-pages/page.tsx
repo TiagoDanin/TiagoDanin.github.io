@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import GitHubPagesSection from "@/components/sections/GitHubPages";
 import { queryCollection } from 'nextjs-studio/server';
+import { canonicalHomepage } from '@/lib/homepage';
 import { t } from "@lingui/core/macro";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
@@ -38,7 +39,9 @@ export default async function Index({ params }: PageProps<'/[lang]/github-pages'
   const githubProjects = queryCollection('github').map(p => ({
     name: p.name,
     description: p.description || '',
-    homepage: p.homepage || '',
+    // Normalized here so the card href and the ItemList JSON-LD below
+    // carry the URL that answers, not the one GitHub 301s away from.
+    homepage: canonicalHomepage(p.homepage),
     html_url: p.html_url || '',
   }));
 

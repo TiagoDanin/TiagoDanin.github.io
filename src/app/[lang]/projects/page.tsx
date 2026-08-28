@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { queryCollection } from 'nextjs-studio/server';
+import { canonicalHomepage } from '@/lib/homepage';
 import { Github, Package, Smartphone, ArrowRight } from 'lucide-react';
 
 import { Projects } from "@/components/sections/Projects";
@@ -104,7 +105,7 @@ const ProjectsPage = async ({ params }: PageProps<'/[lang]/projects'>) => {
       projects: queryCollection('github').map(p => ({
         title: p.name,
         description: p.description || '',
-        href: p.homepage || p.html_url || null,
+        href: canonicalHomepage(p.homepage) || p.html_url || null,
         archived: p.archived,
       })),
     },
