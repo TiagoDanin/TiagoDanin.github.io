@@ -2,24 +2,6 @@ import type { FaqEntry } from '@/lib/faq';
 import { pageUrl } from '@/lib/i18n/seo';
 import type { Locale } from '@/lib/i18n/locales';
 
-/**
- * Structured data for the FAQ.
- *
- * Two things worth knowing before extending this.
- *
- * The index and the detail pages carry *different* types on purpose. `FAQPage`
- * describes a page holding many questions; `QAPage` describes a page that is one
- * question. Putting `FAQPage` on a single-question page, which is the easy
- * mistake, tells a parser to expect a list and hands it one item.
- *
- * And none of this produces a rich result on Google: `FAQPage` rich results have
- * been limited to government and health sites since August 2023. The reason it
- * is here is the other readers, the answer engines that parse the graph to
- * decide what a page is about and who it is about. That is also why every page
- * carries the same `Person`: it is what ties thirty separate answers to one
- * identity rather than thirty unrelated documents.
- */
-
 interface PersonInput {
   name: string;
   jobTitle: string;
@@ -69,15 +51,11 @@ function breadcrumb(items: Array<{ name: string; item: string }>) {
       '@type': 'ListItem',
       position: index + 1,
       name: entry.name,
-      // Page URLs, written with the trailing slash by hand. Next normalises the
-      // URLs inside `metadata`, but a raw string in a JSON-LD block is emitted
-      // exactly as written, and the version without the slash is a 301.
       item: entry.item,
     })),
   };
 }
 
-/** The index: every question as one `FAQPage`. */
 export function faqPageSchema(
   locale: Locale,
   entries: readonly FaqEntry[],
@@ -105,13 +83,6 @@ export function faqPageSchema(
   ];
 }
 
-/**
- * A detail page: one `QAPage`, plus whatever the layout adds.
- *
- * `HowTo` on `steps` and `Service` on `service` are not decoration. They are the
- * reason the layout exists: a numbered list of steps and a description of scope
- * are different claims, and saying so in the graph costs nothing.
- */
 export function qaPageSchema(
   locale: Locale,
   entry: FaqEntry,

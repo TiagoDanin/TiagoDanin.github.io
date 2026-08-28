@@ -1,33 +1,10 @@
 import { intlLocale, type Locale } from '@/lib/i18n/locales';
 
-/**
- * The FAQ collection: one question per entry, answered so that the answer works
- * when it is lifted out of the page.
- *
- * The site is not found by anyone searching its own category. A search for
- * "desenvolvedor Flutter Belém" returns job boards and agencies, and no person.
- * These entries exist to answer that question directly, with a dated fact and a
- * link behind every claim.
- */
-
-/**
- * Which shape sustains the answer.
- *
- * The choice is not decorative: each one is a different extractable block, and
- * each carries its own schema.org type on the detail page. The answer itself is
- * identical across all five, always first, always self contained. The layout
- * only decides what backs it up.
- */
 export type FaqLayout =
-  /** who someone is: an identity card plus linked proof. `Person`. */
   | 'profile'
-  /** what someone has done: a dated list, newest first. `ItemList`. */
   | 'evidence'
-  /** whether someone covers X and Y: a table of thing, where, proof. `ItemList`. */
   | 'matrix'
-  /** how something works: numbered steps. `HowTo`. */
   | 'steps'
-  /** what someone takes on: scope and limits. `Service`. */
   | 'service';
 
 export const FAQ_LAYOUTS: readonly FaqLayout[] = [
@@ -67,34 +44,12 @@ export interface FaqLink {
   href: string;
 }
 
-/**
- * One entry, in one language.
- *
- * The studio has no discriminated union, so every block is optional and
- * `layout` decides which one is rendered. Filling `steps` on a `profile` entry
- * is harmless; it simply never reaches the page.
- */
 export interface FaqEntry {
   slug: string;
   layout: FaqLayout;
   category: string;
   question: string;
-  /**
-   * 40 to 60 words, self contained.
-   *
-   * This is the field an answer engine lifts. It has to survive being read with
-   * no page around it, which is why it repeats the subject instead of saying
-   * "he".
-   */
   answer: string;
-  /**
-   * The body of the detail page.
-   *
-   * Empty on purpose when the question has no material behind it. An entry with
-   * no body stays on the index as an anchor and never gets a page of its own,
-   * which is what keeps 30 near identical short pages from reading as doorway
-   * pages.
-   */
   body?: string;
   facts?: FaqFact[];
   evidence?: FaqEvidence[];
@@ -107,18 +62,8 @@ export interface FaqEntry {
   seoDescription?: string;
 }
 
-/** A row as it sits in contents/faq, before tokens are filled in. */
 export type FaqRow = Record<string, unknown>;
 
-/**
- * The numbers the copy refers to, counted from the other collections at build
- * time.
- *
- * They are counted rather than written because a number written into prose goes
- * stale the moment the 67th package ships, and because a research agent writing
- * this FAQ inflated 19 talks into "35+" and 141 repositories into "250+". A
- * counted number cannot be wrong in that direction.
- */
 export interface FaqStats {
   talkCount: number;
   postCount: number;
@@ -128,13 +73,6 @@ export interface FaqStats {
   polybarStars: number;
 }
 
-/**
- * Compact form of a download count: "4,4 mi" in Portuguese, "4.4M" in English.
- *
- * Through `intlLocale` and never the raw code. `br` is also the subtag for
- * Breton, so `Intl.NumberFormat("br")` does not throw, it just formats the
- * wrong language.
- */
 function compact(value: number, locale: Locale): string {
   return new Intl.NumberFormat(intlLocale(locale), {
     notation: 'compact',
@@ -142,7 +80,6 @@ function compact(value: number, locale: Locale): string {
   }).format(value);
 }
 
-/** Replaces the `{token}` placeholders the content uses for moving numbers. */
 function fill(text: string, stats: FaqStats, locale: Locale): string {
   return text
     .replaceAll('{talkCount}', String(stats.talkCount))
@@ -165,12 +102,6 @@ function isLayout(value: unknown): value is FaqLayout {
   return typeof value === 'string' && (FAQ_LAYOUTS as readonly string[]).includes(value);
 }
 
-/**
- * Normalises the collection rows and fills every token.
- *
- * A row with no slug or no answer is dropped rather than rendered half empty: it
- * would reach the index as a question with nothing under it.
- */
 export function buildFaq(rows: readonly FaqRow[], stats: FaqStats, locale: Locale): FaqEntry[] {
   const entries: FaqEntry[] = [];
 
@@ -215,9 +146,6 @@ export function buildFaq(rows: readonly FaqRow[], stats: FaqStats, locale: Local
       links: arr<FaqLink>(row.links)
         .filter((l) => str(l.href))
         .map((l) => ({ label: text(l.label), href: str(l.href) })),
-      // The studio's array field always wraps items in an object, so a `related`
-      // edited there arrives as `[{ slug }]` while the hand written JSON uses
-      // plain strings. Both mean the same thing.
       related: arr<string | { slug?: string }>(row.related)
         .map((item) => (typeof item === 'string' ? item : str(item?.slug)))
         .filter(Boolean),
@@ -229,7 +157,6 @@ export function buildFaq(rows: readonly FaqRow[], stats: FaqStats, locale: Local
   return entries;
 }
 
-/** The entries that earn a page of their own: the ones with a body behind them. */
 export function faqWithPages(entries: readonly FaqEntry[]): FaqEntry[] {
   return entries.filter((entry) => (entry.body ?? '').trim().length > 0);
 }
@@ -238,7 +165,6 @@ export function findFaqEntry(entries: readonly FaqEntry[], slug: string): FaqEnt
   return entries.find((entry) => entry.slug === slug);
 }
 
-/** Index order: categories in first-seen order, entries in collection order. */
 export function groupFaqByCategory(entries: readonly FaqEntry[]): Array<{
   category: string;
   entries: FaqEntry[];
@@ -255,13 +181,6 @@ export function groupFaqByCategory(entries: readonly FaqEntry[]): Array<{
   return [...groups].map(([category, list]) => ({ category, entries: list }));
 }
 
-/**
- * Resolves `related` slugs to entries.
- *
- * Only entries that have a page of their own survive. A question with no body is
- * never generated as a route, so linking to it from a sibling would be a link to
- * a 404: the index is where those questions live, under their anchor.
- */
 export function relatedFaqEntries(
   entries: readonly FaqEntry[],
   entry: FaqEntry,
