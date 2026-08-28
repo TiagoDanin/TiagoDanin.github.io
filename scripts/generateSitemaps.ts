@@ -11,7 +11,8 @@ import { fileURLToPath } from 'url';
 
 import { queryCollection } from 'nextjs-studio/server';
 
-import { HTML_LANG, LOCALIZED_ROUTES, localePath } from '../src/lib/i18n/locales.js';
+import { HTML_LANG, localePath } from '../src/lib/i18n/locales.js';
+import { staticRoutes } from './appRoutes.cjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -105,20 +106,18 @@ function buildUrlset(entries: SitemapEntry[]): string {
  * included, which is what keeps `/` and `/br/` from reading as duplicates.
  */
 function buildLocalizedEntries(): SitemapEntry[] {
-  // Posts and talks are localised by prefix too, but there are 52 of them and
-  // they are not in LOCALIZED_ROUTES. Read from the same place the pages do.
+  // Detail pages are localised the same way, but there are hundreds of them and
+  // no page.tsx to count. Read from the same place the pages do.
   const detailRoutes = [
     ...readSlugs('posts').map(slug => `/post/${slug}`),
     ...readSlugs('talks').map(slug => `/talk/${slug}`),
-    // Only the FAQ entries that have a body: the others never get a page, and
-    // listing a URL the build did not generate submits a 404.
     ...queryCollection('faq')
       .locale('br')
       .filter((entry: { slug?: string; body?: string }) => entry.slug && (entry.body ?? '').trim())
       .map((entry: { slug: string }) => `/faq/${entry.slug}`),
   ];
 
-  return [...LOCALIZED_ROUTES, ...detailRoutes].map(route => {
+  return [...staticRoutes(), ...detailRoutes].map(route => {
     const alternates: AlternateRef[] = [
       { hreflang: HTML_LANG.en, href: `${siteUrl}${withSlash(localePath('en', route))}` },
       { hreflang: HTML_LANG.br, href: `${siteUrl}${withSlash(localePath('br', route))}` },
