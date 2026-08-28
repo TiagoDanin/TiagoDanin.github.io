@@ -127,7 +127,7 @@
   {
     "date": "2023",
     "title": "🗣️ Talk at DevOpsDays Belém",
-    "description": "Talk on 'DevOps for Mobile Development' at the DevOpsDays Belém event (November 2023).",
+    "description": "Talk on 'DevOps for Mobile Development' at the DevOpsDays Belém event (November 2023), on bringing continuous delivery practices to mobile apps.",
     "tags": [
       "devops",
       "mobile",
@@ -139,7 +139,7 @@
   {
     "date": "2023",
     "title": "📚 Studies in Digital Marketing",
-    "description": "Began studies in Digital Marketing to expand knowledge beyond programming.",
+    "description": "Began studies in Digital Marketing to expand knowledge beyond programming, covering how a product finds and keeps an audience.",
     "tags": [
       "estudo",
       "marketingdigital",
@@ -161,7 +161,7 @@
   {
     "date": "2022",
     "title": "💻 Hacktoberfest",
-    "description": "Participated in Hacktoberfest 2022.",
+    "description": "Participated in Hacktoberfest 2022, a second year in a row of open source contributions through October, after the 2021 edition.",
     "tags": [
       "hacktoberfest"
     ]
@@ -169,7 +169,7 @@
   {
     "date": "2022",
     "title": "🎮 Project: Slime Dungeon Survival Game",
-    "description": "Created the game 'Slime Dungeon Survival Game' using Flutter and the Bonfire engine.",
+    "description": "Created the game 'Slime Dungeon Survival Game' using Flutter and the Bonfire engine, taking mobile development into game development.",
     "tags": [
       "flutter",
       "gamedev",
@@ -190,7 +190,7 @@
   {
     "date": "2021",
     "title": "💻 Open Source",
-    "description": "Participated in Hacktoberfest 2021.",
+    "description": "Participated in Hacktoberfest 2021, contributing to open source repositories through October, four years after the first edition, in 2017.",
     "tags": [
       "hacktoberfest"
     ]
@@ -198,7 +198,7 @@
   {
     "date": "2020",
     "title": "🏆 Achievements",
-    "description": "Won 1st TecBan Hackathon 2020. Gave lecture about neural networks at BrazilJS.",
+    "description": "Won the 1st TecBan Hackathon 2020 with the app Bicos, covered by Canaltech. Gave a lecture about neural networks with Brain.js at BrazilJS.",
     "tags": [
       "hackathon",
       "braziljs"
@@ -207,7 +207,7 @@
   {
     "date": "2019",
     "title": "🗣 Events & Security",
-    "description": "Participated in VueJs Norte, Flisol & DataTechDay. Started studying security with Hackerone.",
+    "description": "Participated in VueJs Norte, Flisol and DataTechDay. Started studying security with HackerOne, reporting vulnerabilities as an independent researcher.",
     "tags": [
       "events",
       "security"
@@ -216,7 +216,7 @@
   {
     "date": "2018",
     "title": "🎓 IFPA",
-    "description": "Started IFPA - Technologist degree in system analysis and development. Studied Probot, Telegraf & Arduino.",
+    "description": "Started IFPA, a technologist degree in system analysis and development. Studied Probot, Telegraf and Arduino alongside the course.",
     "tags": [
       "ifpa",
       "arduino"
@@ -225,7 +225,7 @@
   {
     "date": "2017",
     "title": "🎓 Graduation & Achievements",
-    "description": "Finished High School. Won multiple sports competitions. Participated in Hacktoberfest 2017.",
+    "description": "Finished High School. Won multiple sports competitions. Participated in Hacktoberfest 2017, the first of a run that repeated in later years.",
     "tags": [
       "highschool",
       "hacktoberfest"
@@ -244,7 +244,7 @@
   {
     "date": "2015",
     "title": "Lua & First Programs ❤️",
-    "description": "Learned programming in Lua. Created my first program: a plugin to search music on Spotify via Telegram Bot.",
+    "description": "Learned programming in Lua. Created my first program: a plugin to search music on Spotify via a Telegram Bot, where everything else started.",
     "tags": [
       "lua",
       "firstprogram",
@@ -263,7 +263,7 @@
   {
     "date": "2013",
     "title": "🗣 Lecture on Creation of Blogging",
-    "description": "Contributed to a lecture talking about my experience.",
+    "description": "Contributed to a lecture on creating blogs, sharing my experience building WapSiteMobile, WapSiteBr and WSBrasil.",
     "tags": [
       "lecture",
       "blogging"
@@ -272,7 +272,7 @@
   {
     "date": "2012",
     "title": "🖥 My first WebSite",
-    "description": "The name was WapSiteMobile. Later... My forum (WapSiteBr) and in 2013 my blog (WSBrasil).",
+    "description": "The name was WapSiteMobile. Later came my forum (WapSiteBr) and, in 2013, my blog (WSBrasil): the first three sites I built and published on my own.",
     "tags": [
       "website",
       "forum",
@@ -282,7 +282,7 @@
   {
     "date": "2008",
     "title": "Electronic Circuit 🔬",
-    "description": "Fascinated by electronic circuits.",
+    "description": "Fascinated by electronic circuits. In 2008, electronics came before programming as the interest of the moment, still years away from any code.",
     "tags": [
       "electroniccircuit"
     ]
@@ -290,7 +290,7 @@
   {
     "date": "2006",
     "title": "Mathematics 🔬",
-    "description": "Fascinated by mathematics.",
+    "description": "Fascinated by mathematics. Long before the first line of code, numbers were the first subject to hold his attention.",
     "tags": [
       "mathematics"
     ]
@@ -298,7 +298,7 @@
   {
     "date": "1998",
     "title": "😍 Birth",
-    "description": "printf(\"Hello World!\");",
+    "description": "printf(\"Hello World!\"); The first line of this timeline: Tiago Danin was born in 1998, more than a decade before his first program in Lua.",
     "tags": [
       "birth"
     ]

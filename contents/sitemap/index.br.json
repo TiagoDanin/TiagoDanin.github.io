@@ -1,6 +1,6 @@
 {
   "title": "Mapa do site",
-  "description": "Todas as páginas de tiagodanin.com, agrupadas pelo sitemap XML que as lista.",
+  "description": "Todas as páginas de tiagodanin.com, agrupadas pelo sitemap XML que as lista: site em inglês e português, projetos no GitHub e homepages do GitHub Pages.",
   "sections": [
     {
       "file": "sitemap.xml",

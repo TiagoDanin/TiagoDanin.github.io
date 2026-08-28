@@ -1,6 +1,6 @@
 {
   "title": "Sitemap",
-  "description": "Every page on tiagodanin.com, grouped by the XML sitemap that lists it.",
+  "description": "Every page on tiagodanin.com, grouped by the XML sitemap that lists it: site pages in English and Portuguese, GitHub project pages and GitHub Pages homepages.",
   "sections": [
     {
       "file": "sitemap.xml",

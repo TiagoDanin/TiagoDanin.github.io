@@ -127,7 +127,7 @@
   {
     "date": "2023",
     "title": "🗣️ Palestra no DevOpsDays Belém",
-    "description": "Palestra sobre 'DevOps para Desenvolvimento Mobile' no evento DevOpsDays Belém (novembro de 2023).",
+    "description": "Palestra sobre 'DevOps para Desenvolvimento Mobile' no evento DevOpsDays Belém (novembro de 2023), sobre levar entrega contínua para apps mobile.",
     "tags": [
       "devops",
       "mobile",
@@ -139,7 +139,7 @@
   {
     "date": "2023",
     "title": "📚 Estudos em Marketing Digital",
-    "description": "Começou a estudar Marketing Digital para ampliar o conhecimento para além da programação.",
+    "description": "Começou a estudar Marketing Digital para ampliar o conhecimento para além da programação, incluindo como um produto encontra e mantém público.",
     "tags": [
       "estudo",
       "marketingdigital",
@@ -161,7 +161,7 @@
   {
     "date": "2022",
     "title": "💻 Hacktoberfest",
-    "description": "Participou do Hacktoberfest 2022.",
+    "description": "Participou do Hacktoberfest 2022, segundo ano seguido contribuindo com projetos open source ao longo de outubro, depois da edição de 2021.",
     "tags": [
       "hacktoberfest"
     ]
@@ -169,7 +169,7 @@
   {
     "date": "2022",
     "title": "🎮 Projeto: Slime Dungeon Survival Game",
-    "description": "Criou o jogo 'Slime Dungeon Survival Game' usando Flutter e a engine Bonfire.",
+    "description": "Criou o jogo 'Slime Dungeon Survival Game' usando Flutter e a engine Bonfire, levando o desenvolvimento mobile para o desenvolvimento de jogos.",
     "tags": [
       "flutter",
       "gamedev",
@@ -190,7 +190,7 @@
   {
     "date": "2021",
     "title": "💻 Open Source",
-    "description": "Participou do Hacktoberfest 2021.",
+    "description": "Participou do Hacktoberfest 2021, contribuindo com repositórios open source ao longo de outubro, quatro anos depois da primeira edição, em 2017.",
     "tags": [
       "hacktoberfest"
     ]
@@ -198,7 +198,7 @@
   {
     "date": "2020",
     "title": "🏆 Conquistas",
-    "description": "Venceu o 1º Hackathon TecBan 2020. Palestrou sobre redes neurais no BrazilJS.",
+    "description": "Venceu o 1º Hackathon TecBan 2020 com o app Bicos, com cobertura da Canaltech. Palestrou sobre redes neurais com Brain.js no BrazilJS.",
     "tags": [
       "hackathon",
       "braziljs"
@@ -207,7 +207,7 @@
   {
     "date": "2019",
     "title": "🗣 Eventos e Segurança",
-    "description": "Participou do VueJs Norte, Flisol e DataTechDay. Começou a estudar segurança na Hackerone.",
+    "description": "Participou do VueJs Norte, Flisol e DataTechDay. Começou a estudar segurança na HackerOne, reportando vulnerabilidades como pesquisador independente.",
     "tags": [
       "events",
       "security"
@@ -216,7 +216,7 @@
   {
     "date": "2018",
     "title": "🎓 IFPA",
-    "description": "Entrou no IFPA - Tecnólogo em Análise e Desenvolvimento de Sistemas. Estudou Probot, Telegraf e Arduino.",
+    "description": "Entrou no IFPA, tecnólogo em Análise e Desenvolvimento de Sistemas. Estudou Probot, Telegraf e Arduino em paralelo ao curso.",
     "tags": [
       "ifpa",
       "arduino"
@@ -225,7 +225,7 @@
   {
     "date": "2017",
     "title": "🎓 Formatura e Conquistas",
-    "description": "Concluiu o Ensino Médio. Venceu várias competições esportivas. Participou do Hacktoberfest 2017.",
+    "description": "Concluiu o Ensino Médio. Venceu várias competições esportivas. Participou do Hacktoberfest 2017, o primeiro de uma sequência que se repetiria.",
     "tags": [
       "highschool",
       "hacktoberfest"
@@ -263,7 +263,7 @@
   {
     "date": "2013",
     "title": "🗣 Palestra sobre Criação de Blogs",
-    "description": "Contribuiu com uma palestra contando a própria experiência.",
+    "description": "Contribuiu com uma palestra sobre criação de blogs, contando a experiência de construir o WapSiteMobile, o WapSiteBr e o WSBrasil.",
     "tags": [
       "lecture",
       "blogging"
@@ -272,7 +272,7 @@
   {
     "date": "2012",
     "title": "🖥 Meu primeiro site",
-    "description": "O nome era WapSiteMobile. Depois veio o fórum (WapSiteBr) e, em 2013, o blog (WSBrasil).",
+    "description": "O nome era WapSiteMobile. Depois veio o fórum (WapSiteBr) e, em 2013, o blog (WSBrasil): os três primeiros sites construídos e publicados por conta própria.",
     "tags": [
       "website",
       "forum",
@@ -282,7 +282,7 @@
   {
     "date": "2008",
     "title": "Circuito Eletrônico 🔬",
-    "description": "Fascinado por circuitos eletrônicos.",
+    "description": "Fascinado por circuitos eletrônicos. Em 2008, a eletrônica veio antes da programação como interesse do momento, ainda longe de qualquer código.",
     "tags": [
       "electroniccircuit"
     ]
@@ -290,7 +290,7 @@
   {
     "date": "2006",
     "title": "Matemática 🔬",
-    "description": "Fascinado por matemática.",
+    "description": "Fascinado por matemática. Muito antes da primeira linha de código, os números foram o primeiro assunto a prender sua atenção.",
     "tags": [
       "mathematics"
     ]
@@ -298,7 +298,7 @@
   {
     "date": "1998",
     "title": "😍 Nascimento",
-    "description": "printf(\"Hello World!\");",
+    "description": "printf(\"Hello World!\"); A primeira linha desta linha do tempo: Tiago Danin nasceu em 1998, mais de uma década antes do primeiro programa em Lua.",
     "tags": [
       "birth"
     ]
