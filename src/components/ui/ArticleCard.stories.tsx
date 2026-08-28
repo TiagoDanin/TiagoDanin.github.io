@@ -7,8 +7,8 @@ const COVER =
   '/images/posts/flutter-widgetbook-como-documentar-seu-design-system-do-jeito-certo/cover.png';
 
 /**
- * The blog listing card. Five routes render it: `/blog`, `/blog/[page]`,
- * `/blog/pt`, `/blog/tags/[tag]` and `/tags/[tag]`.
+ * The blog listing card. Four routes render it: `/blog`, `/blog/[page]`,
+ * `/blog/tags/[tag]` and `/tags/[tag]`.
  */
 const meta = {
   title: 'UI/ArticleCard',
@@ -33,7 +33,9 @@ const meta = {
           'visible content is `pointer-events-none`. Screen readers get one link',
           'per card instead of one for the cover plus one for the title. The tag',
           'chips sit above it with `pointer-events-auto`, so they stay separately',
-          'clickable and route to `/tags/[tag]`.',
+          'clickable, and `tagBasePath` decides where they land: the three blog',
+          'routes send them to `/blog/tags/[tag]`, which lists articles only, and',
+          'everywhere else they open the site-wide `/tags/[tag]`.',
           '',
           'Every post has a destination, so the permanent `cursor-pointer` here',
           'satisfies the "affordance honesta" rule in `DESIGN.md`. Compare with',
@@ -44,6 +46,12 @@ const meta = {
     },
   },
   argTypes: {
+    tagBasePath: {
+      control: 'text',
+      description:
+        'Where the tag chips link, before the locale prefix. Only a page that hides `Video` posts may pass `/blog/tags`: those tags reach the site-wide index and not the blog one.',
+      table: { defaultValue: { summary: '/tags' } },
+    },
     post: {
       control: 'object',
       description:

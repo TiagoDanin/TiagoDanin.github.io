@@ -43,7 +43,7 @@ const meta = {
     basePath: {
       control: 'text',
       description:
-        'Prefix for every link. Every page currently leaves it at the default, so all tag links resolve to `/tags/[tag]/`.',
+        'Prefix for every link. The three blog routes pass `/blog/tags`, so a tag clicked from a list of articles opens the blog filter; the default sends it to the site-wide index.',
       table: { defaultValue: { summary: '/tags' } },
     },
   },
