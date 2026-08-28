@@ -1,4 +1,84 @@
-const { staticRoutes } = require('./scripts/appRoutes.cjs');
+const fs = require('node:fs');
+const path = require('node:path');
+
+// next.config.ts sets distDir: 'dist', and `yarn deploy` builds before it runs
+// `yarn sitemap`, so the export is on disk by the time this config is loaded.
+const DIST_DIR = path.join(__dirname, 'dist');
+
+// `<meta name="robots">` is emitted near the top of <head>; the deepest one
+// measured sits 2.3 kB in. Reading a fixed head off each file keeps this a
+// couple of megabytes rather than the ~70 MB a full read of every page costs.
+const HEAD_BYTES = 32 * 1024;
+
+// Directories under dist/ that hold no page: the client bundle, the RSC payload
+// dumps, the Portuguese half (sitemap-site-br.xml lists those), and the two
+// error pages, which are noindex anyway.
+const SKIP_DIRS = new Set(['_next', 'br', '404', '_not-found']);
+
+/**
+ * Every English page, read off the build output.
+ *
+ * next-sitemap reads the route manifest instead, and since the `[lang]`
+ * migration that manifest says every English page lives under `/en`. They do
+ * not: `scripts/flattenDefaultLocale.ts` moves `dist/en/**` to the root after
+ * the build, which is why `/en/*` is excluded below. `additionalPaths` used to
+ * put back only the static routes plus the FAQ, so the sitemap went from 379
+ * URLs to 63 and every dynamic English page - 300 of them, every post, talk,
+ * project, app, tag, skill, timeline event and blog page - silently stopped
+ * being submitted.
+ *
+ * The exported tree is the answer to the question the manifest was being asked.
+ * It is also the only source that cannot drift from what shipped: enumerating
+ * `contents/` here would mean a second, worse copy of ten `generateStaticParams`
+ * functions plus the slug rules, free to disagree with the pages that exist.
+ * A directory holding an index.html is a page; nothing else in dist/ has one.
+ */
+function builtRoutes() {
+  if (!fs.existsSync(DIST_DIR)) {
+    throw new Error(
+      'dist/ not found. next-sitemap reads the exported pages, so the build has to run first: `yarn deploy` chains build -> sitemap -> build.'
+    );
+  }
+
+  const routes = [];
+
+  const walk = (dir, prefix) => {
+    if (fs.existsSync(path.join(dir, 'index.html'))) {
+      routes.push(prefix === '' ? '/' : prefix);
+    }
+
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      // `__next.$d$lang/` and friends are build metadata, not routes.
+      if (entry.name.startsWith('__next.')) continue;
+      if (prefix === '' && SKIP_DIRS.has(entry.name)) continue;
+
+      walk(path.join(dir, entry.name), `${prefix}/${entry.name}`);
+    }
+  };
+
+  walk(DIST_DIR, '');
+
+  return routes
+    // Listed in sitemap-project-github.xml, so the family stays disjoint.
+    .filter((route) => !route.startsWith('/project/github/'))
+    .filter((route) => !isNoindex(route))
+    .sort();
+}
+
+/** Whether the page tells crawlers not to index it, read from the page itself. */
+function isNoindex(route) {
+  const file = path.join(DIST_DIR, route === '/' ? '' : route, 'index.html');
+  const fd = fs.openSync(file, 'r');
+
+  try {
+    const head = Buffer.alloc(HEAD_BYTES);
+    const read = fs.readSync(fd, head, 0, HEAD_BYTES, 0);
+    return head.subarray(0, read).includes('noindex');
+  } finally {
+    fs.closeSync(fd);
+  }
+}
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
@@ -12,13 +92,11 @@ module.exports = {
   // sitemap-project-github.xml and sitemap-homepage-github.xml alongside this file.
   sitemapBaseFileName: 'sitemap-site',
   generateIndexSitemap: false,
-  // Listed elsewhere, so every sitemap in the family stays disjoint:
-  // /project/github/* in sitemap-project-github.xml, /br/* in sitemap-site-br.xml.
-  //
-  // /en/* is excluded because it does not survive the build: next-sitemap reads
-  // the route manifest, which still says the English pages live under /en,
-  // while scripts/flattenDefaultLocale.ts has already moved them to the root.
-  // Listing them would submit 404s. additionalPaths puts the real URLs back.
+  // Everything this file publishes comes from additionalPaths, off the exported
+  // tree. The manifest paths are all excluded: /en/* does not survive the build
+  // (flattenDefaultLocale.ts moves it to the root), /br/* belongs to
+  // sitemap-site-br.xml and /project/github/* to sitemap-project-github.xml, so
+  // every sitemap in the family stays disjoint.
   exclude: [
     '/project/github/*',
     '/br',
@@ -34,39 +112,19 @@ module.exports = {
     '/talk/*/pt',
   ],
 
-  additionalPaths: async (config) => {
-    // The English pages, put back by hand: next-sitemap reads the route
-    // manifest, which still says they live under /en, and /en/* is excluded
-    // above because flattenDefaultLocale.ts has already moved them to the root.
-    // Read off the App Router tree, so adding a page needs no edit here.
-    const localized = staticRoutes();
+  additionalPaths: async (config) =>
+    Promise.all(builtRoutes().map((route) => config.transform(config, route))),
 
-    const faq = require('./contents/faq/index.json')
-      .filter((entry) => entry.slug && String(entry.body || '').trim())
-      .map((entry) => `/faq/${entry.slug}`);
-    return Promise.all([...localized, ...faq].map((route) => config.transform(config, route)));
-  },
   robotsTxtOptions: {
     additionalSitemaps: [
       'https://tiagodanin.com/sitemap.xml',
       'https://tiagodanin.com/sitemap-site-br.xml',
       'https://tiagodanin.com/sitemap-project-github.xml',
       'https://tiagodanin.com/sitemap-homepage-github.xml',
-      // The RSS feeds are listed as sitemaps on purpose, and this is standard,
-      // not a Google-only tolerance: sitemaps.org itself says "in addition to
-      // the XML protocol, we support RSS feeds and text files". Google accepts
-      // RSS 2.0 and Atom 1.0; Bing accepts both and recommends them precisely
-      // for signalling new URLs. What they add over the XML sitemaps is the
-      // real pubDate of each entry, where `lastmod` here is only the build
-      // timestamp.
-      //
-      // They are listed here and not inside sitemap.xml because a
-      // <sitemapindex> may only reference XML sitemaps.
-      //
-      // Ahrefs Site Audit flags all four as "Sitemap in the wrong format /
-      // Invalid representation". That is a false positive: its parser assumes
-      // <urlset>/<sitemapindex> and rejects a format the protocol allows.
-      // Dismiss it there; do not delete these lines to silence the report.
+      // Google accepts RSS 2.0 as a sitemap format, and the feeds carry the
+      // pubDate freshness signal the XML sitemaps do not. They are listed here
+      // and not inside sitemap.xml because a <sitemapindex> may only reference
+      // XML sitemaps (sitemaps.org protocol).
       'https://tiagodanin.com/rss/blog.xml',
       'https://tiagodanin.com/rss/talks.xml',
       'https://tiagodanin.com/rss/timeline.xml',
@@ -84,6 +142,9 @@ module.exports = {
     } else if (urlPath === '/rankings/github' || urlPath === '/rankings/npm') {
       priority = 0.8;
       changefreq = 'weekly';
+    } else if (urlPath === '/rss/blog.xml' || urlPath === '/rss/talks.xml' || urlPath === '/rss/timeline.xml' || urlPath === '/rss/projects.xml') {
+      priority = 0.1;
+      changefreq = 'monthly';
     } else if (urlPath === '/llms-full.txt' || urlPath === '/llms.txt') {
       priority = 0.1;
       changefreq = 'monthly';
