@@ -3,78 +3,73 @@ import Link from "next/link";
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
 import { queryCollection } from 'nextjs-studio/server';
-import { ArrowLeft, Mic, Video } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArticleCard } from "@/components/ui/ArticleCard";
-import { TagFilter } from "@/components/ui/TagFilter";
+import { TagEntryList } from "@/components/ui/TagEntryList";
 import { titleToSlug, toISODate, getRandomColorWithDarkMode } from '@/utils/parse';
-import { eventLabel } from '@/lib/talks';
-import { contentLang, entryPath, localePath, type Locale } from '@/lib/i18n/locales';
+import { allTagSlugs, buildTagIndex, prettifyTagSlug, type TagEntry, type TaggedItem } from '@/lib/tags';
+import { contentLang, localePath, type Locale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl } from '@/lib/i18n/seo';
 
-function getPosts(locale: Locale) {
-  return [...queryCollection('posts').where({ lang: contentLang(locale) })].sort((a, b) => b.date.localeCompare(a.date));
-}
-
-function getTalks(locale: Locale) {
-  return [...queryCollection('talks').where({ lang: contentLang(locale) })].sort((a, b) => b.date.localeCompare(a.date));
-}
-
-function getAllTagsMap(locale: Locale) {
-  const posts = getPosts(locale);
-  const talks = getTalks(locale);
-  const map = new Map<string, string>();
-  posts.forEach((post) => {
-    ((post.tags as string[]) || []).forEach((tag: string) => {
-      map.set(titleToSlug(tag), tag);
-    });
-  });
-  talks.forEach((talk) => {
-    ((talk.tags as string[]) || []).forEach((tag: string) => {
-      map.set(titleToSlug(tag), tag);
-    });
-  });
-  return map;
-}
-
-// Overrides never localize: acronyms and brand casing read the same in every
-// language.
-const TAG_DISPLAY_OVERRIDES: Record<string, string> = {
-  ai: 'AI', ios: 'iOS', uiux: 'UI/UX', devops: 'DevOps', api: 'API', css: 'CSS',
-};
-
-function prettifyTagSlug(slug: string): string {
-  if (TAG_DISPLAY_OVERRIDES[slug]) return TAG_DISPLAY_OVERRIDES[slug];
-  return decodeURIComponent(slug)
-    .split('-')
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
-}
-
 export const dynamicParams = false;
 
-export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  const locale = resolveLocale(params.lang);
-  const allTagsMap = getAllTagsMap(locale);
-  return Array.from(allTagsMap.keys()).map((tag) => ({ tag }));
+export async function generateStaticParams() {
+  // One list for every locale on purpose: see `allTagSlugs`. A tag page that
+  // exists in English and 404s in Portuguese would break its own hreflang.
+  return allTagSlugs('all').map((tag) => ({ tag }));
+}
+
+function entryFor(locale: Locale, slug: string): { entry?: TagEntry; name: string } {
+  const entry = buildTagIndex(locale).get(slug);
+  return { entry, name: entry?.name ?? prettifyTagSlug(slug) };
+}
+
+function itemsOf(entry: TagEntry | undefined, source: TaggedItem['source']): TaggedItem[] {
+  return (entry?.items ?? []).filter((item) => item.source === source);
+}
+
+/**
+ * The other tags carried by the same content, most shared first.
+ *
+ * This row used to be every tag on the site, which was fine at forty and is not
+ * at four hundred. Co-occurrence keeps it a navigation aid instead of a dump.
+ */
+function relatedTags(entry: TagEntry | undefined, slug: string): Array<{ slug: string; name: string }> {
+  const counts = new Map<string, { name: string; count: number }>();
+
+  for (const item of entry?.items ?? []) {
+    for (const tag of item.tags) {
+      const tagSlug = titleToSlug(tag);
+      if (!tagSlug || tagSlug === slug) continue;
+      const current = counts.get(tagSlug);
+      if (current) current.count += 1;
+      else counts.set(tagSlug, { name: tag, count: 1 });
+    }
+  }
+
+  return [...counts.entries()]
+    .sort((a, b) => b[1].count - a[1].count || a[1].name.localeCompare(b[1].name))
+    .slice(0, 18)
+    .map(([tagSlug, value]) => ({ slug: tagSlug, name: value.name }));
 }
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/tags/[tag]'>): Promise<Metadata> {
   const { lang, tag: tagSlug } = await params;
   const locale = resolveLocale(lang);
   const i18n = getI18nInstance(locale);
-  const allTagsMap = getAllTagsMap(locale);
-  const originalTagName = allTagsMap.get(tagSlug) || prettifyTagSlug(tagSlug);
+  const { name } = entryFor(locale, tagSlug);
 
   return {
-    title: t(i18n)`${originalTagName} - Articles & Talks`,
-    description: t(i18n)`All articles and talks about ${originalTagName} by Tiago Danin. Software development, mobile apps, and technology content.`,
+    title: t(i18n)`${name} - Articles, Talks & Projects`,
+    description: t(i18n)`Everything about ${name} by Tiago Danin: articles, talks, open source projects and career milestones.`,
     alternates: localeAlternates(locale, `/tags/${tagSlug}`),
     openGraph: {
-      title: t(i18n)`${originalTagName} - Articles & Talks | Tiago Danin`,
-      description: t(i18n)`All articles and talks about ${originalTagName}`,
+      title: t(i18n)`${name} - Articles, Talks & Projects | Tiago Danin`,
+      description: t(i18n)`Everything about ${name}: articles, talks, projects and milestones.`,
       url: pageUrl(locale, `/tags/${tagSlug}`),
       type: "website",
       ...openGraphDefaults(locale),
@@ -87,31 +82,43 @@ export default async function TagPage({ params }: PageProps<'/[lang]/tags/[tag]'
   const locale = resolveLocale(lang);
   const i18n = initI18n(locale);
 
-  const posts = getPosts(locale);
-  const talks = getTalks(locale);
-  const allTagsMap = getAllTagsMap(locale);
-  const originalTagName = allTagsMap.get(tagSlug) || prettifyTagSlug(tagSlug);
+  const { entry, name } = entryFor(locale, tagSlug);
 
-  const taggedPosts = posts.filter((post) => {
-    const postTags = (post.tags as string[]) || [];
-    return postTags.some((tag: string) => titleToSlug(tag) === tagSlug);
-  });
+  // Articles keep `ArticleCard`, which needs the cover and the original URL the
+  // tag index does not carry.
+  const taggedPosts = [...queryCollection('posts').where({ lang: contentLang(locale) })]
+    .filter((post) => ((post.tags as string[]) || []).some((tag) => titleToSlug(tag) === tagSlug))
+    .sort((a, b) => b.date.localeCompare(a.date));
 
-  const taggedTalks = talks.filter((talk) => {
-    const talkTags = (talk.tags as string[]) || [];
-    return talkTags.some((tag: string) => titleToSlug(tag) === tagSlug);
-  });
+  const taggedTalks = itemsOf(entry, 'talk');
+  const taggedProjects = itemsOf(entry, 'project');
+  const taggedTimeline = itemsOf(entry, 'timeline');
+  const related = relatedTags(entry, tagSlug);
 
-  const allContent = [...posts, ...talks];
+  const platformLabels: Record<string, string> = {
+    npm: t(i18n)`NPM Package`,
+    pypi: t(i18n)`PyPI Package`,
+    luarocks: t(i18n)`LuaRocks Module`,
+    atom: t(i18n)`Atom Package`,
+    github: t(i18n)`Open Source Project`,
+    aur: t(i18n)`AUR Package`,
+    googleplay: t(i18n)`Android App`,
+    windows: t(i18n)`Windows App`,
+    private: t(i18n)`Project`,
+    offline: t(i18n)`Project`,
+  };
+
+  const total = taggedPosts.length + taggedTalks.length + taggedProjects.length + taggedTimeline.length;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": t(i18n)`${originalTagName} - Articles & Talks`,
+    "name": t(i18n)`${name} - Articles, Talks & Projects`,
     "url": pageUrl(locale, `/tags/${tagSlug}`),
-    "description": t(i18n)`All articles and talks about ${originalTagName}`,
+    "description": t(i18n)`Everything about ${name}: articles, talks, projects and milestones.`,
     "mainEntity": {
       "@type": "ItemList",
+      "numberOfItems": total,
       "itemListElement": [
         ...taggedPosts.map((post, i) => ({
           "@type": "BlogPosting",
@@ -128,8 +135,16 @@ export default async function TagPage({ params }: PageProps<'/[lang]/tags/[tag]'
           "name": talk.title,
           "description": talk.description,
           "startDate": toISODate(talk.date),
-          "url": pageUrl(locale, `/talk/${talk.slug}`),
+          "url": pageUrl(locale, talk.path),
           "performer": { "@type": "Person", "name": "Tiago Danin" },
+        })),
+        ...taggedProjects.map((project, i) => ({
+          "@type": "SoftwareSourceCode",
+          "position": taggedPosts.length + taggedTalks.length + i + 1,
+          "name": project.title,
+          "description": project.description,
+          "url": pageUrl(locale, project.path),
+          "author": { "@type": "Person", "name": "Tiago Danin" },
         })),
       ],
     },
@@ -150,19 +165,58 @@ export default async function TagPage({ params }: PageProps<'/[lang]/tags/[tag]'
           </div>
 
           <div className="text-center">
-            <h1 className="text-3xl font-bold tracking-tight">
-              {originalTagName}
-            </h1>
+            <h1 className="text-3xl font-bold tracking-tight">{name}</h1>
             <p className="mt-2 text-muted-foreground">
-              {taggedPosts.length === 1
-                ? <Trans>{taggedPosts.length} article</Trans>
-                : <Trans>{taggedPosts.length} articles</Trans>}
-              {' '}&middot;{' '}
-              {taggedTalks.length === 1
-                ? <Trans>{taggedTalks.length} talk</Trans>
-                : <Trans>{taggedTalks.length} talks</Trans>}
+              {taggedPosts.length > 0 && (
+                <span>
+                  {taggedPosts.length === 1
+                    ? <Trans>{taggedPosts.length} article</Trans>
+                    : <Trans>{taggedPosts.length} articles</Trans>}
+                </span>
+              )}
+              {taggedTalks.length > 0 && (
+                <span>
+                  {taggedPosts.length > 0 && <> &middot; </>}
+                  {taggedTalks.length === 1
+                    ? <Trans>{taggedTalks.length} talk</Trans>
+                    : <Trans>{taggedTalks.length} talks</Trans>}
+                </span>
+              )}
+              {taggedProjects.length > 0 && (
+                <span>
+                  {(taggedPosts.length > 0 || taggedTalks.length > 0) && <> &middot; </>}
+                  {taggedProjects.length === 1
+                    ? <Trans>{taggedProjects.length} project</Trans>
+                    : <Trans>{taggedProjects.length} projects</Trans>}
+                </span>
+              )}
+              {taggedTimeline.length > 0 && (
+                <span>
+                  {(taggedPosts.length > 0 || taggedTalks.length > 0 || taggedProjects.length > 0) && <> &middot; </>}
+                  {taggedTimeline.length === 1
+                    ? <Trans>{taggedTimeline.length} milestone</Trans>
+                    : <Trans>{taggedTimeline.length} milestones</Trans>}
+                </span>
+              )}
             </p>
-            <TagFilter posts={allContent as Array<{ tags: string[] }>} basePath={localePath(locale, '/tags')} />
+
+            {related.length > 0 && (
+              <div className="mt-6">
+                <h2 className="sr-only"><Trans>Related tags</Trans></h2>
+                <div className="flex flex-wrap justify-center gap-1.5">
+                  {related.map((tag) => (
+                    <Link key={tag.slug} href={localePath(locale, `/tags/${tag.slug}`)}>
+                      <Badge
+                        variant="outline"
+                        className={`text-[10px] ${getRandomColorWithDarkMode(tag.name)}`}
+                      >
+                        {tag.name}
+                      </Badge>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -170,86 +224,66 @@ export default async function TagPage({ params }: PageProps<'/[lang]/tags/[tag]'
           <section className="max-w-2xl mx-auto mb-16">
             <h2 className="text-xl font-semibold tracking-tight mb-8"><Trans>Articles</Trans></h2>
             <div className="space-y-16">
-              {taggedPosts.map((post, index) => (
-                <ArticleCard
-                  key={index}
-                  post={post}
-                  locale={locale}
-                />
+              {taggedPosts.map((post) => (
+                <ArticleCard key={post.slug} post={post} locale={locale} />
               ))}
             </div>
           </section>
         )}
 
         {taggedTalks.length > 0 && (
-          <section className="max-w-2xl mx-auto">
+          <section className="max-w-2xl mx-auto mb-16">
             <h2 className="text-xl font-semibold tracking-tight mb-8"><Trans>Talks</Trans></h2>
-            <div className="space-y-8">
-              {taggedTalks.map((talk) => (
-                <article key={talk.slug} className="group relative flex flex-col items-start">
-                  <Link href={entryPath(locale, 'talk', String(talk.slug))} className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-6" aria-label={t(i18n)`View ${talk.title}`} />
-                  <div className="absolute -inset-x-4 -inset-y-6 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-zinc-800 pointer-events-none" />
-
-                  <div className="relative pointer-events-none order-first mb-3 flex items-center gap-2">
-                    <time className="flex items-center text-sm text-zinc-400 pl-3.5">
-                      <span className="absolute inset-y-0 left-0 flex items-center">
-                        <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
-                      </span>
-                      {talk.date}
-                    </time>
-                    <Badge variant="secondary" className="flex items-center gap-1">
-                      <Mic className="h-3 w-3" />
-                      {eventLabel(talk)}
-                    </Badge>
-                  </div>
-
-                  <h3 className="relative pointer-events-none text-base font-semibold tracking-tight">
-                    {talk.title}
-                  </h3>
-
-                  <p className="relative pointer-events-none mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    {talk.description}
-                  </p>
-
-                  <div className="relative z-10 mt-3 flex flex-wrap gap-2 pointer-events-auto">
-                    {((talk.tags as string[]) || []).map((tag: string) => (
-                      <Link key={tag} href={localePath(locale, `/tags/${titleToSlug(tag)}`)}>
-                        <Badge
-                          variant="outline"
-                          className={`text-xs ${getRandomColorWithDarkMode(tag)}`}
-                        >
-                          {tag}
-                        </Badge>
-                      </Link>
-                    ))}
-                  </div>
-
-                  <div className="relative pointer-events-none mt-4 flex items-center gap-4 text-sm font-medium text-primary">
-                    <span className="flex items-center">
-                      <Trans>View details</Trans>
-                      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="ml-1 h-4 w-4 stroke-current">
-                        <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    {talk.youtubeUrl && (
-                      <Link
-                        href={talk.youtubeUrl}
-                        className="flex items-center text-red-600 dark:text-red-400 hover:underline pointer-events-auto"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Video className="h-4 w-4 mr-1" />
-                        <Trans>YouTube</Trans>
-                      </Link>
-                    )}
-                  </div>
-                </article>
-              ))}
-            </div>
+            <TagEntryList
+              label={t(i18n)`Talks tagged ${name}`}
+              linkLabel={(title) => t(i18n)`View ${title}`}
+              items={taggedTalks.map((talk) => ({
+                key: talk.key,
+                title: talk.title,
+                description: talk.description,
+                href: talk.href,
+                date: talk.date,
+                badge: talk.meta || undefined,
+              }))}
+            />
           </section>
         )}
 
-        {taggedPosts.length === 0 && taggedTalks.length === 0 && (
+        {taggedProjects.length > 0 && (
+          <section className="max-w-2xl mx-auto mb-16">
+            <h2 className="text-xl font-semibold tracking-tight mb-8"><Trans>Projects</Trans></h2>
+            <TagEntryList
+              label={t(i18n)`Projects tagged ${name}`}
+              linkLabel={(title) => t(i18n)`View ${title}`}
+              items={taggedProjects.map((project) => ({
+                key: project.key,
+                title: project.title,
+                description: project.description,
+                href: project.href,
+                badge: platformLabels[project.meta ?? ''] ?? project.meta,
+              }))}
+            />
+          </section>
+        )}
+
+        {taggedTimeline.length > 0 && (
+          <section className="max-w-2xl mx-auto mb-16">
+            <h2 className="text-xl font-semibold tracking-tight mb-8"><Trans>Milestones</Trans></h2>
+            <TagEntryList
+              label={t(i18n)`Milestones tagged ${name}`}
+              linkLabel={(title) => t(i18n)`View ${title}`}
+              items={taggedTimeline.map((event) => ({
+                key: event.key,
+                title: event.title,
+                description: event.description,
+                href: event.href,
+                date: event.date,
+              }))}
+            />
+          </section>
+        )}
+
+        {total === 0 && (
           <div className="max-w-2xl mx-auto text-center py-16">
             <p className="text-muted-foreground text-lg"><Trans>No content found with this tag.</Trans></p>
             <Button variant="outline" className="mt-4" asChild>

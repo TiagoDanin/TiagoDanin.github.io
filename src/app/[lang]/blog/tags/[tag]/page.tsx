@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
 import { titleToSlug, toISODate } from '@/utils/parse';
+import { allTagSlugs, buildBlogTagIndex, tagName } from '@/lib/tags';
 import { contentLang, localePath, type Locale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl } from '@/lib/i18n/seo';
@@ -18,45 +19,19 @@ function getPosts(locale: Locale) {
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
-function getAllTagsMap(locale: Locale) {
-  const posts = getPosts(locale);
-  const map = new Map<string, string>();
-  posts.forEach((post) => {
-    ((post.tags as string[]) || []).forEach((tag: string) => {
-      map.set(titleToSlug(tag), tag);
-    });
-  });
-  return map;
-}
-
-// Overrides never localize: acronyms and brand casing read the same in every
-// language.
-const TAG_DISPLAY_OVERRIDES: Record<string, string> = {
-  ai: 'AI', ios: 'iOS', uiux: 'UI/UX', devops: 'DevOps', api: 'API', css: 'CSS',
-};
-
-function prettifyTagSlug(slug: string): string {
-  if (TAG_DISPLAY_OVERRIDES[slug]) return TAG_DISPLAY_OVERRIDES[slug];
-  return decodeURIComponent(slug)
-    .split('-')
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
-}
-
 export const dynamicParams = false;
 
-export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  const locale = resolveLocale(params.lang);
-  const allTagsMap = getAllTagsMap(locale);
-  return Array.from(allTagsMap.keys()).map((tag) => ({ tag }));
+export async function generateStaticParams() {
+  // Unioned across locales, like `/tags/[tag]`: the page announces an hreflang
+  // pair either way, so generating one half of it would publish a link to a 404.
+  return allTagSlugs('blog').map((tag) => ({ tag }));
 }
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/blog/tags/[tag]'>): Promise<Metadata> {
   const { lang, tag: tagSlug } = await params;
   const locale = resolveLocale(lang);
   const i18n = getI18nInstance(locale);
-  const allTagsMap = getAllTagsMap(locale);
-  const originalTagName = allTagsMap.get(tagSlug) || prettifyTagSlug(tagSlug);
+  const originalTagName = tagName(buildBlogTagIndex(locale), tagSlug);
 
   return {
     title: t(i18n)`Posts tagged with "${originalTagName}"`,
@@ -82,8 +57,7 @@ export default async function TagPage({ params }: PageProps<'/[lang]/blog/tags/[
   const i18n = initI18n(locale);
 
   const posts = getPosts(locale);
-  const allTagsMap = getAllTagsMap(locale);
-  const originalTagName = allTagsMap.get(tagSlug) || prettifyTagSlug(tagSlug);
+  const originalTagName = tagName(buildBlogTagIndex(locale), tagSlug);
 
   const taggedPosts = posts.filter((post) => {
     const postTags = (post.tags as string[]) || [];
@@ -119,6 +93,11 @@ export default async function TagPage({ params }: PageProps<'/[lang]/blog/tags/[
                 <Trans>Back to Blog</Trans>
               </Link>
             </Button>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href={localePath(locale, '/blog/tags')} className="flex items-center gap-2">
+                <Trans>All Topics</Trans>
+              </Link>
+            </Button>
           </div>
 
           <div className="text-center">
@@ -130,7 +109,7 @@ export default async function TagPage({ params }: PageProps<'/[lang]/blog/tags/[
                 ? <Trans>{taggedPosts.length} post found</Trans>
                 : <Trans>{taggedPosts.length} posts found</Trans>}
             </p>
-            <TagFilter posts={posts} basePath={localePath(locale, '/tags')} />
+            <TagFilter posts={posts} basePath={localePath(locale, '/blog/tags')} />
           </div>
         </div>
 
