@@ -65,8 +65,20 @@ export async function renderMdx(source: string): Promise<React.ReactElement> {
              * rest of the prose without an `!important`.
              */
             theme: 'github-light',
-            colorReplacements: { '#fff': 'hsl(var(--secondary))' },
+            colorReplacements: {
+              '#fff': 'hsl(var(--secondary))',
+              // github-light's comment grey reaches 4.4:1 on that surface,
+              // just under AA. Two shades darker clears it at 4.7:1.
+              '#6a737d': '#656e78',
+            },
             langs: codeLanguages,
+            /**
+             * A few older posts open a fence with no language. Untouched they
+             * would come out as a bare `pre` next to the highlighted ones,
+             * framed differently for no reason the reader can see; as `text`
+             * they stay uncoloured but share the block.
+             */
+            defaultLanguage: 'text',
             fallbackLanguage: 'text',
             addLanguageClass: true,
           },
