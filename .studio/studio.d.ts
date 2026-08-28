@@ -258,6 +258,7 @@ export interface OfflineEntry {
 /** Data shape for the "posts" collection. */
 export interface PostsEntry {
   title: string;
+  seoTitle: string;
   date: string;
   description: string;
   slug: string;
@@ -314,6 +315,7 @@ export interface SociallinksEntry {
 /** Data shape for the "talks" collection. */
 export interface TalksEntry {
   title: string;
+  seoTitle: string;
   date: string;
   description: string;
   slug: string;

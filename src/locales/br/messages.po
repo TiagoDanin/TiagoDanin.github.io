@@ -80,7 +80,7 @@ msgstr "{0} downloads."
 #. placeholder {1}: category.toLowerCase()
 #: src/app/[lang]/skills/[slug]/page.tsx
 msgid "{0} in Tiago Danin's toolkit, part of his {1} work."
-msgstr ""
+msgstr "{0} no kit de ferramentas de Tiago Danin, parte do seu trabalho com {1}."
 
 #. placeholder {0}: taggedTimeline.length
 #: src/app/[lang]/tags/[tag]/page.tsx
@@ -170,7 +170,7 @@ msgstr "{0} URLs, ver XML"
 #. placeholder {3}: content.talks.length
 #: src/app/[lang]/skills/[slug]/page.tsx
 msgid "{0} work by Tiago Danin: {1} open source repositories, {2} articles and {3} talks."
-msgstr ""
+msgstr "Trabalho com {0} de Tiago Danin: {1} repositórios open source, {2} artigos e {3} palestras."
 
 #. placeholder {0}: about.name
 #. placeholder {1}: photo.label.toLowerCase()
@@ -192,7 +192,7 @@ msgstr "{otherProjectsPrivateCount} projetos secretos"
 
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
 msgid "{platformContext} by Tiago Danin, mobile developer based in Belém, Pará."
-msgstr ""
+msgstr "{platformContext} de Tiago Danin, desenvolvedor mobile em Belém, Pará."
 
 #. placeholder {0}: (baseDescription || truncatedDescription).substring(0, 60)
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
@@ -1833,7 +1833,7 @@ msgstr "Do prompt à produção"
 
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
 msgid "Full details on tiagodanin.com."
-msgstr ""
+msgstr "Detalhes completos em tiagodanin.com."
 
 #: src/app/[lang]/press-kit/page.tsx
 msgid "Full name"
@@ -2216,7 +2216,7 @@ msgstr "Atualizado em"
 
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
 msgid "Last updated in {updatedYear}."
-msgstr ""
+msgstr "Última atualização em {updatedYear}."
 
 #: src/app/[lang]/web-development/page.tsx
 msgid "Launch & Iterate"
@@ -3672,7 +3672,7 @@ msgstr "Integrações com Slack e Notion"
 
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
 msgid "Source code, install command and stats on tiagodanin.com."
-msgstr ""
+msgstr "Código-fonte, comando de instalação e estatísticas em tiagodanin.com."
 
 #: src/app/[lang]/press-kit/page.tsx
 msgid "Speaking history"

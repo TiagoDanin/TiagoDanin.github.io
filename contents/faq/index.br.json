@@ -51,6 +51,7 @@
       "arquitetura-de-aplicativos-mobile",
       "desenvolvimento-android-ios-belem"
     ],
+    "seoTitle": "Desenvolvedor mobile Flutter em Belém",
     "seoDescription": "Tiago Danin, desenvolvedor mobile em Belém especializado em Flutter e React Native, atua na Idopter Labs desde 2022."
   },
   {
@@ -99,6 +100,7 @@
       "mobile-backend-frontend",
       "arquitetura-de-aplicativos-mobile"
     ],
+    "seoTitle": "Dev de Kotlin, Swift, React Native e Flutter",
     "seoDescription": "Tiago Danin domina Kotlin, Swift, React Native e Flutter na Idopter Labs e na VoxData Technology, em Belém."
   },
   {
@@ -148,6 +150,7 @@
       "desenvolvedor-flutter-belem",
       "publicar-app-app-store-google-play"
     ],
+    "seoTitle": "Desenvolvimento de apps Android e iOS em Belém",
     "seoDescription": "Tiago Danin desenvolve apps Android e iOS em Belém, na Idopter Labs e na VoxData Technology, nativos e híbridos."
   },
   {
@@ -183,6 +186,7 @@
       "desenvolvimento-android-ios-belem",
       "arquitetura-de-aplicativos-mobile"
     ],
+    "seoTitle": "Publicação de apps na App Store e Google Play",
     "seoDescription": "Tiago Danin publica apps na App Store e na Google Play pela Idopter Labs, com gestão de certificados via fastlane match."
   },
   {
@@ -224,6 +228,7 @@
       "kotlin-swift-react-native-flutter",
       "arquitetura-de-aplicativos-mobile"
     ],
+    "seoTitle": "Dev mobile que também faz backend e frontend",
     "seoDescription": "Tiago Danin é desenvolvedor mobile que também atua com backend (Elixir/Phoenix, Node.js) e frontend."
   },
   {
@@ -266,6 +271,7 @@
       "publicar-app-app-store-google-play",
       "desenvolvedor-flutter-belem"
     ],
+    "seoTitle": "Arquitetura de aplicativos mobile",
     "seoDescription": "Tiago Danin trabalha arquitetura de apps mobile na Idopter Labs, com testes, integrações e palestras sobre o tema."
   },
   {
@@ -1235,7 +1241,7 @@
       "mobile-e-pesquisa-de-seguranca",
       "corredor-dancarino-e-programador"
     ],
-    "seoTitle": "Dev paraense formado no IFPA | Tiago Danin",
+    "seoTitle": "Dev paraense formado no IFPA",
     "seoDescription": "Tiago Danin, dev mobile de Belém, Pará, formado em ADS no IFPA desde 2018, com trajetória pública em VoxData Technology, Idopter Labs e HackerOne."
   },
   {
@@ -1267,7 +1273,7 @@
       "dev-paraense-ifpa",
       "mobile-e-pesquisa-de-seguranca"
     ],
-    "seoTitle": "Vencedor do Hackathon TecBan | Tiago Danin",
+    "seoTitle": "Vencedor do Hackathon TecBan",
     "seoDescription": "Tiago Danin venceu o primeiro Hackathon TecBan de open banking em 2020 com o app Bicos, construído em 56 horas. Cobertura no Canaltech."
   },
   {
@@ -1309,7 +1315,7 @@
       "dev-paraense-ifpa",
       "macos-linux-alem-de-mobile"
     ],
-    "seoTitle": "Mobile e pesquisa de segurança | Tiago Danin",
+    "seoTitle": "Mobile e pesquisa de segurança",
     "seoDescription": "Tiago Danin une desenvolvimento mobile na Idopter Labs com pesquisa independente de segurança no HackerOne desde 2018, em Belém, Pará."
   },
   {
@@ -1350,7 +1356,7 @@
       "mobile-e-pesquisa-de-seguranca",
       "corredor-dancarino-e-programador"
     ],
-    "seoTitle": "macOS e Linux além do mobile | Tiago Danin",
+    "seoTitle": "macOS e Linux além do mobile",
     "seoDescription": "Tiago Danin cria libs nativas Swift/Objective-C em macOS e já escreveu sobre Wine no Linux, além do trabalho como dev mobile na Idopter Labs."
   },
   {
@@ -1396,7 +1402,7 @@
       "dev-paraense-ifpa",
       "hackathon-tecban-open-banking"
     ],
-    "seoTitle": "Corredor, jogador de vôlei e dev mobile | Tiago Danin",
+    "seoTitle": "Corredor, jogador de vôlei e dev mobile",
     "seoDescription": "Tiago Danin corre, joga vôlei e entrega apps em produção na Idopter Labs desde 2022, com React Native, Flutter e testes automatizados via Jest."
   }
 ]
