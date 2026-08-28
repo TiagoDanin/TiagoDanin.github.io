@@ -6,7 +6,7 @@ import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { queryCollection } from 'nextjs-studio/server';
 import { HTML_LANG, type Locale } from "@/lib/i18n/locales";
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { SitemapTable, type SitemapUrl } from "@/components/ui/SitemapTable";
 
@@ -82,9 +82,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/sitemap'>)
       description,
       url: pageUrl(locale, '/sitemap'),
       type: 'website',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
+      ...twitterDefaults(),
       card: 'summary',
       title: t(i18n)`${title} - Tiago Danin`,
       description,
@@ -162,7 +163,7 @@ export default async function SitemapPage({ params }: PageProps<'/[lang]/sitemap
                 <Trans>No URLs found. Run <code>yarn sitemap</code> to generate {list.file}.</Trans>
               </p>
             ) : (
-              <SitemapTable urls={list.urls} />
+              <SitemapTable urls={list.urls} locale={locale} />
             )}
           </section>
         ))}

@@ -9,7 +9,7 @@ import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
 import { contentLang, HTML_LANG, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, openGraphDefaults, pageUrl } from '@/lib/i18n/seo';
 
 const POSTS_PER_PAGE = 10;
 
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/blog/[page
       description: t(i18n)`Articles about software development, mobile apps, and technology.`,
       url: pageUrl(locale, `/blog/${pageNumber}`),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
   };
 }

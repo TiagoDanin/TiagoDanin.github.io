@@ -3,7 +3,7 @@ import GitHubPagesSection from "@/components/sections/GitHubPages";
 import { queryCollection } from 'nextjs-studio/server';
 import { t } from "@lingui/core/macro";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/github-pages'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -21,10 +21,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/github-pag
       description: t(i18n)`Interactive demos, tools, and open source project showcases hosted on GitHub Pages.`,
       url: pageUrl(locale, '/github-pages'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`GitHub Pages Projects - Tiago Danin`,
       description: t(i18n)`Interactive demos and tools hosted on GitHub Pages.`,
     },

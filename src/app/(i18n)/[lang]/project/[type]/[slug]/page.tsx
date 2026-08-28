@@ -9,7 +9,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug } from "@/utils/parse";
 import { HTML_LANG, intlLocale, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 type LicenseInfo = {
   key?: string;
@@ -147,7 +147,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/project/[t
   const languageLabel = project.language ? t(i18n)` Built with ${project.language}.` : '';
   const tagsLabel = tags.length ? t(i18n)` Topics: ${tags.join(', ')}.` : '';
   const starsLabel = project.stargazers_count ? t(i18n)` ${project.stargazers_count} stars on GitHub.` : '';
-  const downloadsLabel = project.downloads ? t(i18n)` ${Number(project.downloads).toLocaleString('en-US')} downloads.` : '';
+  const downloadsLabel = project.downloads ? t(i18n)` ${Number(project.downloads).toLocaleString(intlLocale(locale))} downloads.` : '';
   const licenseName = (project.license as LicenseInfo | undefined)?.name;
   const licenseLabel = licenseName ? t(i18n)` Licensed under ${licenseName}.` : '';
 
@@ -188,10 +188,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/project/[t
       description: truncatedDescription,
       type: 'article',
       url: pageUrl(locale, path),
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: seoTitle,
       description: truncatedDescription,
     },
@@ -323,7 +323,7 @@ export default async function ProjectPage({ params }: PageProps<'/[lang]/project
     sentences.push(t(i18n)`${project.stargazers_count} stars on GitHub.`);
   }
   if (project.downloads) {
-    sentences.push(t(i18n)`${Number(project.downloads).toLocaleString('en-US')} downloads.`);
+    sentences.push(t(i18n)`${Number(project.downloads).toLocaleString(intlLocale(locale))} downloads.`);
   }
   if (licenseDisplay) {
     sentences.push(t(i18n)`Licensed under ${licenseDisplay}.`);
@@ -550,7 +550,7 @@ export default async function ProjectPage({ params }: PageProps<'/[lang]/project
                       <p className="text-sm text-gray-500 dark:text-gray-400"><Trans>Downloads</Trans></p>
                       <p className="text-lg font-medium flex items-center gap-1">
                         <Download className="h-4 w-4" />
-                        {(project.downloads as number).toLocaleString()}
+                        {(project.downloads as number).toLocaleString(intlLocale(locale))}
                       </p>
                     </div>
                   )}

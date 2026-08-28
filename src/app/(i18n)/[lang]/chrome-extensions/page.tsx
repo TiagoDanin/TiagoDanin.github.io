@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/chrome-extensions'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -36,10 +36,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/chrome-ext
       description: t(i18n)`Custom Chrome extensions with Manifest V3, TypeScript, and Chrome Web Store publishing.`,
       url: pageUrl(locale, '/chrome-extensions'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: "summary_large_image",
+      ...twitterDefaults(),
       title: t(i18n)`Chrome Extensions Developer | Tiago Danin`,
       description: t(i18n)`Custom Chrome extensions with Manifest V3, TypeScript, and Chrome Web Store publishing.`,
     },

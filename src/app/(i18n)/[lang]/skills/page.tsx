@@ -7,7 +7,7 @@ import { titleToSlug } from '@/utils/parse';
 import { Badge } from '@/components/ui/badge';
 import { localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 interface SkillItem {
   name: string;
@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/skills'>):
       description: t(i18n)`Expert mobile and full-stack developer. Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, and more.`,
       url: pageUrl(locale, '/skills'),
       type: 'profile',
-      siteName: 'Tiago Danin',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
+      ...twitterDefaults(),
       card: 'summary',
       title: t(i18n)`Technical Skills | Tiago Danin`,
       description: t(i18n)`Flutter, React Native, Swift, Kotlin, Node.js, TypeScript, see all skills.`,

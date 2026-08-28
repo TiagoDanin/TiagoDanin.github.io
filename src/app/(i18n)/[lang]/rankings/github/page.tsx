@@ -4,7 +4,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import GitHubRankingsClient from '@/components/sections/GitHubRankingsClient';
 import { HTML_LANG } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/rankings/github'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -40,16 +40,14 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/rankings/g
       )`Updated rankings of the most starred GitHub repositories. Compare stars, forks & watchers across top open source projects.`,
       url: pageUrl(locale, '/rankings/github'),
       type: "website",
-      siteName: "Tiago Danin",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Most Starred GitHub Repos - All Time Rankings`,
       description: t(
         i18n
       )`See top GitHub repositories ranked by stars, forks & engagement. Updated rankings of the best open source projects.`,
-      creator: "@tiagodanin",
       site: "@tiagodanin",
     },
   };
@@ -129,7 +127,7 @@ export default async function GitHubRankingsPage({ params }: PageProps<'/[lang]/
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <GitHubRankingsClient githubData={[...githubData]} />
+      <GitHubRankingsClient githubData={[...githubData]} locale={locale} />
     </>
   );
 }

@@ -8,9 +8,9 @@ import { Mic, Video } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { formatDate, getRandomColor, toISODate } from '@/utils/parse';
 import { eventLabel } from '@/lib/talks';
-import { contentLang, entryPath, HTML_LANG, intlLocale } from "@/lib/i18n/locales";
+import { contentLang, entryPath, feedPath, HTML_LANG, intlLocale } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/talks'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/talks'>): 
       ...alternates,
       types: {
         ...markdownAlternate('/talks'),
-        'application/rss+xml': [{ url: '/rss/talks.xml', title: 'Talks RSS Feed' }],
+        'application/rss+xml': [{ url: feedPath('talks', locale), title: 'Talks RSS Feed' }],
       },
     },
     openGraph: {
@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/talks'>): 
       )`Talks about mobile development, Flutter, React Native and cybersecurity. Presentations at tech events.`,
       url: pageUrl(locale, '/talks'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Tech Talks | Tiago Danin`,
       description: t(i18n)`Talks about mobile, Flutter, React Native and security at tech events.`,
       creator: "@tiagodanin",
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/talks'>): 
 
 const TalksPage = async ({ params }: PageProps<'/[lang]/talks'>) => {
   const locale = resolveLocale((await params).lang);
-  initI18n(locale);
+  const i18n = initI18n(locale);
 
   const talks = queryCollection('talks').where({ lang: contentLang(locale) });
   const sortedTalks = [...talks].sort(
@@ -63,8 +63,8 @@ const TalksPage = async ({ params }: PageProps<'/[lang]/talks'>) => {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') },
-      { "@type": "ListItem", "position": 2, "name": "Talks", "item": pageUrl(locale, '/talks') }
+      { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+      { "@type": "ListItem", "position": 2, "name": t(i18n)`Talks`, "item": pageUrl(locale, '/talks') }
     ]
   };
 

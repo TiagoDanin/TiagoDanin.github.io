@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { queryCollection } from "nextjs-studio/server";
 import { localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/apps'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/apps'>): P
       )`Android apps built and published on Google Play, games, productivity tools, and relaxation apps.`,
       url: pageUrl(locale, '/apps'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: "summary_large_image",
+      ...twitterDefaults(),
       title: t(i18n)`Android Apps | Tiago Danin`,
       description: t(i18n)`Android apps built and published on Google Play.`,
     },
@@ -57,8 +57,8 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/apps'>): P
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') },
-            { "@type": "ListItem", "position": 2, "name": "Apps", "item": pageUrl(locale, '/apps') },
+            { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+            { "@type": "ListItem", "position": 2, "name": t(i18n)`Apps`, "item": pageUrl(locale, '/apps') },
           ],
         },
       ]),

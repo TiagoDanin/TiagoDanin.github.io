@@ -10,7 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { queryCollection } from "nextjs-studio/server";
 import { localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 function getApps() {
   return [...queryCollection("googleplay")];
@@ -46,10 +46,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/app/[appId
       description: app.storeDescription,
       url: pageUrl(locale, `/app/${app.slug}`),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: "summary_large_image",
+      ...twitterDefaults(),
       title: t(i18n)`${app.name} | Android App`,
       description: app.tagline,
     },

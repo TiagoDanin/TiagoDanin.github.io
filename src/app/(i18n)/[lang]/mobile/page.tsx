@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 import { localePath } from "@/lib/i18n/locales";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/mobile'>): Promise<Metadata> {
@@ -36,10 +36,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/mobile'>):
       )`Professional mobile app development with Flutter and React Native. Native integrations, testing, UI/UX, and ASO expertise.`,
       url: pageUrl(locale, '/mobile'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Mobile Development Services | Tiago Danin`,
       description: t(i18n)`Professional mobile app development with Flutter and React Native.`,
     },

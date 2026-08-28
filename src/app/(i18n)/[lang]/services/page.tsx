@@ -14,7 +14,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/services'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -36,10 +36,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/services'>
       )`Mobile development, cybersecurity, and mentorship services. 250+ projects delivered with Flutter, React Native, iOS & Android.`,
       url: pageUrl(locale, '/services'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Professional Services | Tiago Danin`,
       description: t(
         i18n
@@ -68,8 +68,8 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/services'>
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') },
-            { "@type": "ListItem", "position": 2, "name": "Services", "item": pageUrl(locale, '/services') }
+            { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+            { "@type": "ListItem", "position": 2, "name": t(i18n)`Services`, "item": pageUrl(locale, '/services') }
           ]
         }
       ])
@@ -186,10 +186,10 @@ export default async function ServicesPage({ params }: PageProps<'/[lang]/servic
               <Trans>Professional Services</Trans>
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-              <Trans>Let&apos;s Build Something Amazing</Trans>
+              <Trans>What I work on</Trans>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              <Trans>I help startups and companies launch high-performance mobile apps, secure their applications, and grow their teams through mentorship.</Trans>
+              <Trans>Mobile apps in Flutter and React Native, application security, and mentorship for engineering teams.</Trans>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Button size="lg" asChild>

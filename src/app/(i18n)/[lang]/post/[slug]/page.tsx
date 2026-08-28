@@ -15,7 +15,7 @@ import { toISODate, formatDate } from '@/utils/parse';
 import { getCallToActionData } from '@/lib/sections';
 import { contentLang, DEFAULT_LOCALE, HTML_LANG, intlLocale, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export const dynamicParams = false;
 
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/post/[slug
       : ['blog', 'software development', 'technology'],
     alternates: {
       ...localeAlternates(locale, `/post/${post.slug}`),
-      types: markdownAlternate(`/post/${post.slug}`),
+      types: markdownAlternate(`/post/${post.slug}`, locale),
     },
     openGraph: {
       title: post.title,
@@ -59,16 +59,13 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/post/[slug
       type: 'article',
       publishedTime: toISODate(post.date),
       authors: [`${ORIGIN}/about/`],
-      siteName: 'Tiago Danin',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
       ...(coverUrl && { images: [{ url: coverUrl, alt: post.title }] }),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: post.title,
       description,
-      creator: '@tiagodanin',
-      site: '@tiagodanin',
       ...(coverUrl && { images: [coverUrl] }),
     },
   };
@@ -77,7 +74,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/post/[slug
 export default async function Post({ params }: PageProps<'/[lang]/post/[slug]'>) {
   const { lang, slug } = await params;
   const locale = resolveLocale(lang);
-  initI18n(locale);
+  const i18n = initI18n(locale);
 
   const post = getPostBySlug(slug, contentLang(locale));
   if (!post) notFound();
@@ -90,8 +87,8 @@ export default async function Post({ params }: PageProps<'/[lang]/post/[slug]'>)
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": pageUrl(locale, '/blog') },
+      { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+      { "@type": "ListItem", "position": 2, "name": t(i18n)`Blog`, "item": pageUrl(locale, '/blog') },
       { "@type": "ListItem", "position": 3, "name": post.title, "item": url },
     ],
   };

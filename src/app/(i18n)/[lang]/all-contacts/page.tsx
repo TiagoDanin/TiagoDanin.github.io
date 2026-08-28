@@ -24,7 +24,7 @@ import type { LucideIcon } from 'lucide-react';
 
 import { HTML_LANG } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/all-contacts'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -47,10 +47,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/all-contac
       )`All contact methods and social media profiles. Connect on GitHub, LinkedIn, Twitter, and more.`,
       url: pageUrl(locale, '/all-contacts'),
       type: "profile",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`All Contacts - Tiago Danin`,
       description: t(i18n)`All contact methods and social media profiles.`,
     },

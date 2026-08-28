@@ -12,7 +12,7 @@ import { titleToSlug, formatDate } from '@/utils/parse';
 import { eventLabel } from '@/lib/talks';
 import { contentLang, entryPath, intlLocale, localePath, type Locale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 interface SkillItem {
   name: string;
@@ -135,10 +135,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/skills/[sl
       description,
       url: pageUrl(locale, `/skills/${slug}`),
       type: 'profile',
-      siteName: 'Tiago Danin',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
+      ...twitterDefaults(),
       card: 'summary',
       title: t(i18n)`${skill.name} Developer | Tiago Danin`,
       description,

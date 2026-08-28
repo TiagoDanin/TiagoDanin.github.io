@@ -9,7 +9,7 @@ import { t } from "@lingui/core/macro";
 
 import { localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/mentorship'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -43,10 +43,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/mentorship
       )`1:1 mentorship in game development, AI, and mobile development. Weekly video calls with personalized guidance.`,
       url: pageUrl(locale, '/mentorship'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Mentorship Services | Tiago Danin`,
       description: t(i18n)`1:1 mentorship in game development, AI, and mobile development.`,
     },

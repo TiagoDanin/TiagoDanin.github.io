@@ -31,7 +31,7 @@ export default async function TalkFeedbackPage({ params }: PageProps<'/[lang]/li
               <Trans>Feedback da talk</Trans>
             </h1>
             <Suspense fallback={<div className="text-gray-500">{t(i18n)`Carregando...`}</div>}>
-              <FeedbackForm />
+              <FeedbackForm locale={locale} />
             </Suspense>
           </div>
         </div>

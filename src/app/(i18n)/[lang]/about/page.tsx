@@ -9,9 +9,9 @@ import { PressMentions } from "@/components/sections/PressMentions";
 import { queryCollection } from 'nextjs-studio/server';
 import { getPressItems, pressDate } from "@/lib/press";
 import { getCallToActionData, getHeroData } from "@/lib/sections";
-import { DEFAULT_LOCALE, HTML_LANG } from "@/lib/i18n/locales";
+import { DEFAULT_LOCALE, HTML_LANG, localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 interface TimelineEntry {
   date: string;
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/about'>): 
       )`Mobile developer specializing in Flutter, React Native & native iOS/Android. Open source contributor, security researcher, and mentor.`,
       url: pageUrl(locale, '/about'),
       type: "profile",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
       // Flat, not nested under `profile`: Next types og:profile that way, and
       // the nested form this page carried before was silently dropped, so the
       // og:profile:* tags never reached the HTML.
@@ -50,12 +50,11 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/about'>): 
       username: "tiagodanin",
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`About Tiago Danin - Mobile Developer`,
       description: t(
         i18n
       )`Flutter expert, React Native developer, security researcher & bug hunter. Open source advocate.`,
-      creator: '@tiagodanin',
       site: '@tiagodanin',
     },
   };
@@ -168,12 +167,13 @@ const About = async ({ params }: PageProps<'/[lang]/about'>) => {
         stats={hero.stats}
         socialLinks={hero.socialLinks}
         showPressKit
+        locale={locale}
       />
       <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />
 
-      <Milestones milestones={milestones} />
+      <Milestones milestones={milestones} href={localePath(locale, "/timeline")} />
 
-      <PressMentions items={pressItems} />
+      <PressMentions items={pressItems} href={localePath(locale, "/press")} />
 
       <CallToAction email={contact.email} linkedInUrl={contact.linkedInUrl} />
     </>

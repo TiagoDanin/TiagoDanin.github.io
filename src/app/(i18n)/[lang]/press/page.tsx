@@ -9,7 +9,7 @@ import { getPressItems, pressDate, pressHost } from "@/lib/press";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { intlLocale, localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/press'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -30,13 +30,13 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/press'>): 
       description: t(i18n)`Articles, interviews and releases that mention Tiago Danin.`,
       url: pageUrl(locale, '/press'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
+      ...twitterDefaults(),
       card: 'summary',
       title: t(i18n)`Press Coverage - Tiago Danin`,
       description: t(i18n)`Articles, interviews and releases that mention Tiago Danin.`,
-      creator: '@tiagodanin',
       site: '@tiagodanin',
     },
   };

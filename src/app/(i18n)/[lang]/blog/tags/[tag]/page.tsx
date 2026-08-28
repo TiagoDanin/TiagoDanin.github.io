@@ -10,7 +10,7 @@ import { TagFilter } from "@/components/ui/TagFilter";
 import { titleToSlug, toISODate } from '@/utils/parse';
 import { contentLang, localePath, type Locale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, openGraphDefaults, pageUrl } from '@/lib/i18n/seo';
 
 function getPosts(locale: Locale) {
   return [...queryCollection('posts').where({ lang: contentLang(locale) })]
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/blog/tags/
       description: t(i18n)`All blog posts tagged with "${originalTagName}"`,
       url: pageUrl(locale, `/blog/tags/${tagSlug}`),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
   };
 }

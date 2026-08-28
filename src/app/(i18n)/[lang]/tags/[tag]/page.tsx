@@ -12,7 +12,7 @@ import { titleToSlug, toISODate, getRandomColorWithDarkMode } from '@/utils/pars
 import { eventLabel } from '@/lib/talks';
 import { contentLang, entryPath, localePath, type Locale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, openGraphDefaults, pageUrl } from '@/lib/i18n/seo';
 
 function getPosts(locale: Locale) {
   return [...queryCollection('posts').where({ lang: contentLang(locale) })].sort((a, b) => b.date.localeCompare(a.date));
@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/tags/[tag]
       description: t(i18n)`All articles and talks about ${originalTagName}`,
       url: pageUrl(locale, `/tags/${tagSlug}`),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
   };
 }

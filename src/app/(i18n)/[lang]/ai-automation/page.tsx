@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/ai-automation'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -33,10 +33,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/ai-automat
       description: t(i18n)`Agent workflows, LLM integration, RAG, MCP servers, and AI-powered automation, built to ship.`,
       url: pageUrl(locale, '/ai-automation'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: "summary_large_image",
+      ...twitterDefaults(),
       title: t(i18n)`AI Automation & Integration | Tiago Danin`,
       description: t(i18n)`Agent workflows, LLM integration, RAG, MCP servers, and AI-powered automation.`,
     },
@@ -61,9 +61,9 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/ai-automat
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') },
-            { "@type": "ListItem", "position": 2, "name": "Services", "item": pageUrl(locale, '/services') },
-            { "@type": "ListItem", "position": 3, "name": "AI Automation", "item": pageUrl(locale, '/ai-automation') },
+            { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+            { "@type": "ListItem", "position": 2, "name": t(i18n)`Services`, "item": pageUrl(locale, '/services') },
+            { "@type": "ListItem", "position": 3, "name": t(i18n)`AI Automation`, "item": pageUrl(locale, '/ai-automation') },
           ],
         },
       ]),

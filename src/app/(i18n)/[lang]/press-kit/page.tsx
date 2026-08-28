@@ -15,7 +15,7 @@ import { eventLabel } from "@/lib/talks";
 import { getPressItems } from "@/lib/press";
 import { contentLang, localePath, entryPath, type Locale } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 import {
   ArrowRight,
   Bot,
@@ -49,18 +49,15 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/press-kit'
       )`Bios in English and Portuguese, photo, logo and talk topics and booking contact. Everything an event or publication needs.`,
       url: pageUrl(locale, '/press-kit'),
       type: "profile",
-      profile: {
-        firstName: "Tiago",
-        lastName: "Danin",
-        username: "tiagodanin",
-      },
-      ...openGraphLocale(locale),
+      firstName: "Tiago",
+      lastName: "Danin",
+      username: "tiagodanin",
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Press Kit - Tiago Danin`,
       description: t(i18n)`Ready to use bios, photo, logo and talk topics for events and media.`,
-      creator: '@tiagodanin',
       site: '@tiagodanin',
     },
   };

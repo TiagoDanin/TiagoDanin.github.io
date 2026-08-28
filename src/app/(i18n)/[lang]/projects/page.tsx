@@ -9,8 +9,9 @@ import { Projects } from "@/components/sections/Projects";
 import { FullProjects } from "@/components/sections/FullProjects";
 import type { ProjectForCard } from "@/components/sections/FullProjects";
 import { Card, CardContent } from '@/components/ui/card';
+import { feedPath, localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/projects'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/projects'>
       ...alternates,
       types: {
         ...markdownAlternate('/projects'),
-        'application/rss+xml': [{ url: '/rss/projects.xml', title: 'Projects RSS Feed' }],
+        'application/rss+xml': [{ url: feedPath('projects', locale), title: 'Projects RSS Feed' }],
       },
     },
     openGraph: {
@@ -37,10 +38,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/projects'>
       )`Browse 250+ projects including 70+ npm packages, Flutter apps, React Native projects, and developer tools. Open source libraries used worldwide.`,
       url: pageUrl(locale, '/projects'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`250+ Open Source Projects | Tiago Danin`,
       description: t(
         i18n
@@ -69,8 +70,8 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/projects'>
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') },
-            { "@type": "ListItem", "position": 2, "name": "Projects", "item": pageUrl(locale, '/projects') }
+            { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+            { "@type": "ListItem", "position": 2, "name": t(i18n)`Projects`, "item": pageUrl(locale, '/projects') }
           ]
         }
       ])
@@ -112,7 +113,9 @@ const ProjectsPage = async ({ params }: PageProps<'/[lang]/projects'>) => {
       projects: queryCollection('googleplay').map(p => ({
         title: p.name,
         description: p.description,
-        href: `/app/${p.slug}`,
+        // The only in-site link in this list; every other section points at an
+        // external registry, which localePath leaves alone anyway.
+        href: localePath(locale, `/app/${p.slug}`),
       })),
     },
     { title: "NPM", projects: toCards(queryCollection('npm'), p => `https://www.npmjs.com/package/${p.name}`) },
@@ -127,14 +130,14 @@ const ProjectsPage = async ({ params }: PageProps<'/[lang]/projects'>) => {
 
   return (
     <div>
-      <Projects projects={[...projectsData]} />
+      <Projects projects={[...projectsData]} locale={locale} />
 
       <section className="container mx-auto px-4 -mt-20 mb-4 relative z-10">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold text-gray-900"><Trans>Explore</Trans></h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <Link href="/rankings/github">
+          <Link href={localePath(locale, "/rankings/github")}>
             <Card className="border-2 hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer h-full">
               <CardContent className="p-5 flex items-center gap-4">
                 <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
@@ -149,7 +152,7 @@ const ProjectsPage = async ({ params }: PageProps<'/[lang]/projects'>) => {
             </Card>
           </Link>
 
-          <Link href="/rankings/npm">
+          <Link href={localePath(locale, "/rankings/npm")}>
             <Card className="border-2 hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer h-full">
               <CardContent className="p-5 flex items-center gap-4">
                 <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
@@ -164,7 +167,7 @@ const ProjectsPage = async ({ params }: PageProps<'/[lang]/projects'>) => {
             </Card>
           </Link>
 
-          <Link href="/apps">
+          <Link href={localePath(locale, "/apps")}>
             <Card className="border-2 hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer h-full">
               <CardContent className="p-5 flex items-center gap-4">
                 <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">

@@ -8,7 +8,7 @@ import { Tag } from "lucide-react";
 import { titleToSlug, getRandomColorWithDarkMode } from '@/utils/parse';
 import { contentLang, localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, pageUrl } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/tags'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/tags'>): P
       description: t(i18n)`Explore all articles and talks organized by technology tags.`,
       url: pageUrl(locale, '/tags'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
   };
 }

@@ -9,7 +9,7 @@ import { t } from "@lingui/core/macro";
 import type { I18n } from "@lingui/core";
 
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/cybersecurity'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -35,10 +35,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/cybersecur
       )`Professional vulnerability assessment and security testing. HackerOne researcher with expertise in mobile and web security.`,
       url: pageUrl(locale, '/cybersecurity'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Cybersecurity Services | Tiago Danin`,
       description: t(i18n)`Professional vulnerability assessment and security testing.`,
     },

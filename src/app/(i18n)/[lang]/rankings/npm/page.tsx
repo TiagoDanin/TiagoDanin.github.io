@@ -4,7 +4,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import NPMRankingsClient from '@/components/sections/NPMRankingsClient';
 import { HTML_LANG } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/rankings/npm'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -40,14 +40,12 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/rankings/n
       )`Compare the most downloaded NPM packages with real-time stats. Downloads, versions & dependency insights for JavaScript developers.`,
       url: pageUrl(locale, '/rankings/npm'),
       type: "website",
-      siteName: "Tiago Danin",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`NPM Package Rankings - Downloads & Statistics`,
       description: t(i18n)`Rankings of the most downloaded NPM packages. Real-time stats, versions & dependency insights.`,
-      creator: "@tiagodanin",
       site: "@tiagodanin",
     },
   };
@@ -121,7 +119,7 @@ export default async function NPMRankingsPage({ params }: PageProps<'/[lang]/ran
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <NPMRankingsClient npmData={[...npmData]} />
+      <NPMRankingsClient npmData={[...npmData]} locale={locale} />
     </>
   );
 }

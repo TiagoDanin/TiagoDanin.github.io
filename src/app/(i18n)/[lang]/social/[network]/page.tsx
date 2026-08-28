@@ -22,7 +22,7 @@ import type { LucideIcon } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import { t } from '@lingui/core/macro';
 
-import { localeAlternates, openGraphLocale, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 
 const iconMap: Record<string, LucideIcon> = {
@@ -90,9 +90,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/social/[ne
       description: description,
       url: pageUrl(locale, `/social/${network}`),
       type: 'profile',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
+      ...twitterDefaults(),
       card: 'summary',
       title: t(i18n)`${contact.label} - Tiago Danin`,
       description: description,

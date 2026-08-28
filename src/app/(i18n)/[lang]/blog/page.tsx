@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
 import { toISODate } from '@/utils/parse';
-import { contentLang, DEFAULT_LOCALE, entryPath, HTML_LANG } from "@/lib/i18n/locales";
+import { contentLang, entryPath, feedPath, HTML_LANG, localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 const POSTS_PER_PAGE = 10;
 
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/blog'>): P
         ...markdownAlternate('/blog'),
         // Declared inside the existing types object: spreading the Markdown
         // helper next to a later `types` key would drop it silently.
-        'application/rss+xml': [{ url: '/rss/blog.xml', title: 'Blog RSS Feed' }],
+        'application/rss+xml': [{ url: feedPath('blog', locale), title: 'Blog RSS Feed' }],
       },
     },
     openGraph: {
@@ -50,11 +50,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/blog'>): P
       )`In-depth tutorials and articles on mobile development, AI agents, cybersecurity, and open source. Free guides for developers.`,
       url: pageUrl(locale, '/blog'),
       type: "website",
-      siteName: "Tiago Danin",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Dev Blog - Flutter, AI & Security | Tiago Danin`,
       description: t(
         i18n
@@ -92,8 +91,8 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/blog'>): P
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": pageUrl(locale, '/blog') }
+            { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+            { "@type": "ListItem", "position": 2, "name": t(i18n)`Blog`, "item": pageUrl(locale, '/blog') }
           ]
         }
       ])
@@ -107,17 +106,15 @@ const Blog = async ({ params }: PageProps<'/[lang]/blog'>) => {
 
   const posts = listPosts(contentLang(locale));
 
-  // Pagination exists only for the default locale: /blog/[page] has not been
-  // migrated, so any other language lists everything on one page, which is what
-  // it did before the move.
-  const paginated = locale === DEFAULT_LOCALE;
-  const totalPages = paginated ? Math.ceil(posts.length / POSTS_PER_PAGE) : 1;
-  const currentPosts = paginated ? posts.slice(0, POSTS_PER_PAGE) : posts;
+  // Both languages paginate. This was English-only while /blog/[page] lived in
+  // (legacy), so the Portuguese blog put all 33 posts on one page.
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const currentPosts = posts.slice(0, POSTS_PER_PAGE);
   const hasNextPage = totalPages > 1;
 
   return (
     <>
-      {hasNextPage && <link rel="next" href="https://tiagodanin.com/blog/2/" />}
+      {hasNextPage && <link rel="next" href={`${ORIGIN}${localePath(locale, '/blog/2')}/`} />}
       <div className="container mx-auto py-32">
         <div className="max-w-2xl mx-auto mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
@@ -127,7 +124,7 @@ const Blog = async ({ params }: PageProps<'/[lang]/blog'>) => {
           <p className="mt-2 text-sm text-muted-foreground">
             <Trans>{posts.length} articles</Trans>
           </p>
-          <TagFilter posts={posts} />
+          <TagFilter posts={posts} basePath={localePath(locale, '/tags')} />
         </div>
 
         <div className="max-w-2xl mx-auto space-y-16">
@@ -147,7 +144,7 @@ const Blog = async ({ params }: PageProps<'/[lang]/blog'>) => {
               </span>
             </div>
             <Button variant="outline" asChild>
-              <Link href="/blog/2">
+              <Link href={localePath(locale, "/blog/2")}>
                 <Trans>Next</Trans>
                 <ChevronRight className="h-4 w-4" />
               </Link>

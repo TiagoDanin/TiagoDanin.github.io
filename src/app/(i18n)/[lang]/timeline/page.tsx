@@ -4,9 +4,9 @@ import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
 import { queryCollection } from 'nextjs-studio/server';
 import { titleToSlug, getRandomColor, toISODate } from '@/utils/parse';
-import { localePath, intlLocale, HTML_LANG } from '@/lib/i18n/locales';
+import { feedPath, localePath, intlLocale, HTML_LANG } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/timeline'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/timeline'>
       types: {
         ...markdownAlternate('/timeline'),
         'application/rss+xml': [
-          { url: '/rss/timeline.xml', title: t(i18n)`Timeline RSS Feed` }
+          { url: feedPath('timeline', locale), title: t(i18n)`Timeline RSS Feed` }
         ],
       },
     },
@@ -31,10 +31,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/timeline'>
       description: t(i18n)`Career milestones from education to senior mobile developer. Professional journey in mobile development, cybersecurity, and open source.`,
       url: pageUrl(locale, '/timeline'),
       type: "profile",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Career Timeline | Tiago Danin`,
       description: t(i18n)`Professional journey: education, projects, and career milestones in mobile development.`,
       creator: "@tiagodanin",

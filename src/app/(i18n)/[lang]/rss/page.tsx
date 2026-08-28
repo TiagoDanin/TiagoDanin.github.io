@@ -4,9 +4,9 @@ import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 
 import { FeedItem } from "@/components/ui/FeedItem";
-import { HTML_LANG } from "@/lib/i18n/locales";
+import { feedPath, HTML_LANG, type Locale } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/rss'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -24,9 +24,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/rss'>): Pr
       description: t(i18n)`Subscribe to RSS feeds for blog posts, talks, timeline, and projects.`,
       url: pageUrl(locale, '/rss'),
       type: 'website',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
+      ...twitterDefaults(),
       card: 'summary',
       title: t(i18n)`RSS Feeds - Tiago Danin`,
       description: t(i18n)`Subscribe to RSS feeds for all content updates.`,
@@ -39,27 +40,28 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/rss'>): Pr
 // TODO: this copy belongs in a contents/ collection, like the rest of the site.
 // Locale-dependent, so it has to be built per render rather than at module
 // level: a module-level array would freeze its strings in whichever language
-// rendered first.
-function getFeeds(i18n: I18n) {
+// rendered first. Each locale also has its own feed files, so the URLs move
+// with the language too.
+function getFeeds(i18n: I18n, locale: Locale) {
   return [
     {
       title: t(i18n)`Blog Posts`,
-      url: '/rss/blog.xml',
+      url: feedPath('blog', locale),
       description: t(i18n)`All articles and thoughts about development, technology and more.`,
     },
     {
       title: t(i18n)`Talks`,
-      url: '/rss/talks.xml',
+      url: feedPath('talks', locale),
       description: t(i18n)`Talks and presentations about development, technology and more.`,
     },
     {
       title: t(i18n)`Timeline`,
-      url: '/rss/timeline.xml',
+      url: feedPath('timeline', locale),
       description: t(i18n)`Professional journey and career milestones.`,
     },
     {
       title: t(i18n)`Projects`,
-      url: '/rss/projects.xml',
+      url: feedPath('projects', locale),
       description: t(i18n)`All projects by Tiago Danin.`,
     },
   ] as const;
@@ -69,7 +71,7 @@ export default async function RSSLandingPage({ params }: PageProps<'/[lang]/rss'
   const locale = resolveLocale((await params).lang);
   const i18n = initI18n(locale);
 
-  const feeds = getFeeds(i18n);
+  const feeds = getFeeds(i18n, locale);
 
   // A directory of feeds: each one is a DataFeed, the page is the collection.
   const collectionSchema = {

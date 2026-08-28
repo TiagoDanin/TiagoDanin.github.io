@@ -10,7 +10,7 @@ import type { I18n } from "@lingui/core";
 import { queryCollection } from "nextjs-studio/server";
 
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 import { localePath } from "@/lib/i18n/locales";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/game-development'>): Promise<Metadata> {
@@ -39,10 +39,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/game-devel
       )`Indie and casual games for mobile and web. From prototype to Google Play, with idle, arcade, and survival mechanics.`,
       url: pageUrl(locale, '/game-development'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: "summary_large_image",
+      ...twitterDefaults(),
       title: t(i18n)`Game Development Services | Tiago Danin`,
       description: t(i18n)`Indie and casual games for mobile and web. From prototype to Google Play.`,
     },
@@ -67,9 +67,9 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/game-devel
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') },
-            { "@type": "ListItem", "position": 2, "name": "Services", "item": pageUrl(locale, '/services') },
-            { "@type": "ListItem", "position": 3, "name": "Game Development", "item": pageUrl(locale, '/game-development') },
+            { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') },
+            { "@type": "ListItem", "position": 2, "name": t(i18n)`Services`, "item": pageUrl(locale, '/services') },
+            { "@type": "ListItem", "position": 3, "name": t(i18n)`Game Development`, "item": pageUrl(locale, '/game-development') },
           ],
         },
       ]),

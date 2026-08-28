@@ -9,7 +9,7 @@ import { t } from "@lingui/core/macro";
 import type { I18n } from "@lingui/core";
 import { queryCollection } from "nextjs-studio/server";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, openGraphLocale, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/web-development'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -34,10 +34,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/web-develo
       description: t(i18n)`Modern websites with Next.js, React, and TypeScript, fast, accessible, and SEO-ready.`,
       url: pageUrl(locale, '/web-development'),
       type: "website",
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: "summary_large_image",
+      ...twitterDefaults(),
       title: t(i18n)`Website Development | Tiago Danin`,
       description: t(i18n)`Modern websites with Next.js, React, and TypeScript, fast, accessible, and SEO-ready.`,
     },

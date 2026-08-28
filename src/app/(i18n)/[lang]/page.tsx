@@ -13,7 +13,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import { getCallToActionData, getHeroData, getTestimonialsData } from '@/lib/sections';
 import { contentLang, DEFAULT_LOCALE, HTML_LANG, localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
-import { localeAlternates, markdownAlternate, openGraphLocale, ORIGIN, pageUrl } from "@/lib/i18n/seo";
+import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
 export async function generateMetadata({ params }: PageProps<'/[lang]'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
@@ -36,10 +36,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]'>): Promis
       )`Flutter, React Native, iOS & Android developer. 250+ projects delivered, bug hunter on HackerOne, and open source contributor.`,
       url: pageUrl(locale, '/'),
       type: 'website',
-      ...openGraphLocale(locale),
+      ...openGraphDefaults(locale),
     },
     twitter: {
-      card: 'summary_large_image',
+      ...twitterDefaults(),
       title: t(i18n)`Tiago Danin - Mobile Developer | Flutter & React Native`,
       description: t(
         i18n
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]'>): Promis
 
 const Index = async ({ params }: PageProps<'/[lang]'>) => {
   const locale = resolveLocale((await params).lang);
-  initI18n(locale);
+  const i18n = initI18n(locale);
 
   const posts = [...queryCollection('posts').where({ lang: contentLang(locale) })].sort((a, b) => b.date.localeCompare(a.date));
   const projectsData = queryCollection('projects').locale(locale);
@@ -59,7 +59,14 @@ const Index = async ({ params }: PageProps<'/[lang]'>) => {
   const volunteerData = queryCollection('volunteer').locale(locale);
   const skillsData = queryCollection('skills').locale(locale);
   const aboutData = queryCollection('about').locale(locale).one();
-  const expertiseData = queryCollection('expertise').locale(locale);
+  // The links come from contents/expertise as bare routes, so they are resolved
+  // here rather than in the component: the page reads, the component draws.
+  // Passed raw, the Portuguese home linked its four expertise cards at the
+  // English pages.
+  const expertiseData = [...queryCollection('expertise').locale(locale)].map((item) => ({
+    ...item,
+    link: item.link ? localePath(locale, String(item.link)) : item.link,
+  }));
 
   const hero = getHeroData(locale);
   const recognition = getTestimonialsData(locale);
@@ -84,7 +91,7 @@ const Index = async ({ params }: PageProps<'/[lang]'>) => {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": pageUrl(locale, '/') }
+        { "@type": "ListItem", "position": 1, "name": t(i18n)`Home`, "item": pageUrl(locale, '/') }
       ]
     }
   ];
@@ -95,9 +102,9 @@ const Index = async ({ params }: PageProps<'/[lang]'>) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
-      <Hero about={hero.about} stats={hero.stats} socialLinks={hero.socialLinks} />
-      <Services expertise={[...expertiseData]} />
-      <Projects projects={[...projectsData]} />
+      <Hero about={hero.about} stats={hero.stats} socialLinks={hero.socialLinks} locale={locale} />
+      <Services expertise={expertiseData} />
+      <Projects projects={[...projectsData]} locale={locale} />
       <Testimonials testimonials={recognition.testimonials} tokens={recognition.tokens} />
       <RecentPosts posts={[...posts]} />
       <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />
