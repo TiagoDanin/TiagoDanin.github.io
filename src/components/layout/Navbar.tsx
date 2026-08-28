@@ -65,7 +65,7 @@ export function Navbar({ menu, locale = DEFAULT_LOCALE }: { menu: MenuItem[]; lo
           aria-label={t`Tiago Danin home`}
           className="flex items-center gap-2 text-lg sm:text-xl font-semibold shrink-0"
         >
-          <Image src="/images/logo.svg" alt="" width={24} height={24} aria-hidden />
+          <Image src="/images/logo.svg" alt="Tiago Danin" width={24} height={24} />
           <span>Tiago Danin</span>
         </Link>
 

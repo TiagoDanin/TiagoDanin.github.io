@@ -23,7 +23,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(__dirname, '..', 'public');
 const siteUrl = 'https://tiagodanin.com';
 
-const SITEMAPS = ['sitemap-site.xml', 'sitemap-site-br.xml'];
+const SITEMAPS = ['sitemap-site.xml', 'sitemap-site-br.xml', 'sitemap-project-github.xml'];
 const XHTML_NS = 'xmlns:xhtml="http://www.w3.org/1999/xhtml"';
 
 function mirrorPath(routePath: string): string {
