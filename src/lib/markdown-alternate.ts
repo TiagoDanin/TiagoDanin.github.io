@@ -12,10 +12,3 @@ export function markdownUrl(canonical: string): string {
   return clean === 'https://tiagodanin.com' ? `${clean}/index.md` : `${clean}.md`;
 }
 
-/** The `alternates` pair for a page that has a mirror: canonical plus the Markdown link. */
-export function withMarkdown(canonical: string) {
-  return {
-    canonical,
-    types: { 'text/markdown': markdownUrl(canonical) },
-  };
-}

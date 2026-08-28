@@ -13,10 +13,11 @@ import { splitLocale } from '../src/lib/i18n/locales.js';
  * A separate pass because next-sitemap builds `sitemap-site.xml` itself and its
  * `alternateRefs` only carry an `hreflang`, with no way to express a `type`.
  *
- * The mirror is English-only by design, so a `/br/` entry points at the English
- * `.md`. Existence is checked on disk rather than derived from a route list:
- * announcing a mirror that was never written promises a 404 to whoever follows
- * it, and the file is the only thing that cannot be wrong about that.
+ * Posts and talks are mirrored in both languages; every other page only in
+ * English. So each URL tries its own path first and falls back to the
+ * English one. Existence is checked on disk rather than derived from a route
+ * list: announcing a mirror that was never written promises a 404 to whoever
+ * follows it, and the file is the only thing that cannot be wrong about that.
  */
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(__dirname, '..', 'public');
@@ -25,17 +26,24 @@ const siteUrl = 'https://tiagodanin.com';
 const SITEMAPS = ['sitemap-site.xml', 'sitemap-site-br.xml'];
 const XHTML_NS = 'xmlns:xhtml="http://www.w3.org/1999/xhtml"';
 
+function mirrorPath(routePath: string): string {
+  const clean = routePath.replace(/\/+$/, '');
+  return clean === '' ? '/index.md' : `${clean}.md`;
+}
+
 /** Path of the Markdown mirror for a page URL, or null when there is no file. */
 function markdownFor(loc: string): string | null {
   if (!loc.startsWith(siteUrl)) return null;
 
-  // The mirror only exists in the default locale, so /br/about/ resolves to the
-  // same file /about/ does.
-  const { base } = splitLocale(loc.slice(siteUrl.length) || '/');
-  const relative = base === '/' ? '/index.md' : `${base}.md`;
+  const routePath = loc.slice(siteUrl.length) || '/';
+  // Its own language first, the English mirror second. /br/post/x/ has a
+  // Portuguese .md; /br/about/ resolves to the same file /about/ does.
+  const candidates = [mirrorPath(routePath), mirrorPath(splitLocale(routePath).base)];
 
-  const file = path.join(publicDir, relative);
-  return fs.existsSync(file) ? `${siteUrl}${relative}` : null;
+  for (const relative of candidates) {
+    if (fs.existsSync(path.join(publicDir, relative))) return `${siteUrl}${relative}`;
+  }
+  return null;
 }
 
 function annotate(fileName: string): void {
