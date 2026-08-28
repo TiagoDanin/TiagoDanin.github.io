@@ -5,15 +5,6 @@ interface FaqEvidenceProps {
   items: FaqEvidenceItem[];
 }
 
-/**
- * The `evidence` layout: a dated list, newest first, for "has anyone done X"
- * questions.
- *
- * Every row carries a real date and, where one exists, a link. That is the whole
- * point of the layout: the claim in the answer above is only worth as much as
- * the dated record under it, and an undated list of adjectives would prove
- * nothing to a reader or to a model.
- */
 export function FaqEvidence({ items }: FaqEvidenceProps) {
   if (items.length === 0) return null;
 

@@ -4,13 +4,6 @@ interface FaqStepsProps {
   steps: FaqStep[];
 }
 
-/**
- * The `steps` layout: numbered steps for "how does it work" questions.
- *
- * An ordered list, so the order is in the markup rather than only in the visual
- * numbering. This layout is the one that carries `HowTo` structured data on the
- * detail page, and the two have to describe the same steps in the same order.
- */
 export function FaqSteps({ steps }: FaqStepsProps) {
   if (steps.length === 0) return null;
 

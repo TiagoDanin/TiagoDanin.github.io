@@ -5,16 +5,6 @@ interface FaqServiceProps {
   offering: FaqStep[];
 }
 
-/**
- * The `service` layout: what someone takes on, for "who do I call for" questions.
- *
- * Cards rather than a list because each item is a separate piece of scope that a
- * reader compares against their own need, and because the entries here are often
- * as much about limits as about capability.
- *
- * No hover transform on the card: DESIGN.md allows it on small badges and icons
- * only. These are not links, so they get no hover affordance at all.
- */
 export function FaqService({ offering }: FaqServiceProps) {
   if (offering.length === 0) return null;
 

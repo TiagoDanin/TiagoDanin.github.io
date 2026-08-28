@@ -6,16 +6,6 @@ interface FaqMatrixProps {
   rows: FaqMatrixRow[];
 }
 
-/**
- * The `matrix` layout: a table for "does one person cover X and Y" questions.
- *
- * A table beats prose here for both audiences. A reader scans it, and an answer
- * engine extracts a row as a fact triple instead of having to parse a sentence
- * that lists six technologies with commas.
- *
- * The wrapper scrolls on its own so a wide table never makes the page body
- * scroll sideways, which is the rule in DESIGN.md.
- */
 export function FaqMatrix({ rows }: FaqMatrixProps) {
   if (rows.length === 0) return null;
 

@@ -10,18 +10,6 @@ interface FaqIndexProps {
   locale: Locale;
 }
 
-/**
- * The index: every question with its answer already visible.
- *
- * The answers are inline rather than hidden behind a link or an accordion. A
- * page that only lists questions makes the reader click to learn anything, and
- * gives an answer engine nothing to extract from the page it is most likely to
- * fetch first. The link to the detail page is an offer of more, not the only way
- * to get an answer.
- *
- * Each entry carries an `id` so the questions with no page of their own are
- * still addressable, as `/faq/#slug`.
- */
 export function FaqIndex({ entries, locale }: FaqIndexProps) {
   const groups = groupFaqByCategory(entries);
 
@@ -39,8 +27,8 @@ export function FaqIndex({ entries, locale }: FaqIndexProps) {
 
               return (
                 <article key={entry.slug} id={entry.slug} className="space-y-2 scroll-mt-24">
-                  <h3 className="text-lg font-semibold text-foreground">{entry.question}</h3>
-                  <p className="text-muted-foreground leading-relaxed max-w-3xl">{entry.answer}</p>
+                  <h3 className="text-lg font-semibold text-foreground text-balance break-words">{entry.question}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{entry.answer}</p>
                   {hasPage && (
                     <p>
                       <Link

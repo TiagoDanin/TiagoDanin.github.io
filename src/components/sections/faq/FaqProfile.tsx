@@ -5,13 +5,6 @@ interface FaqProfileProps {
   facts: FaqFact[];
 }
 
-/**
- * The `profile` layout: an identity card for "who is" questions.
- *
- * A description list rather than a table, because these are attributes of one
- * subject and not a grid. `dt`/`dd` also survives being read out of order by a
- * screen reader, which a two column div does not.
- */
 export function FaqProfile({ facts }: FaqProfileProps) {
   if (facts.length === 0) return null;
 
