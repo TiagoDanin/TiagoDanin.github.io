@@ -338,9 +338,6 @@ const config: StudioConfig = {
           { name: "headline", type: "text", required: true },
           { name: "lede", type: "long-text", required: true },
           { name: "chips", type: "array", itemFields: [{ name: "value", type: "text", required: true }] },
-          { name: "heroAppsLabel", type: "text", required: true },
-          { name: "heroAppsCaption", type: "long-text", required: true },
-          { name: "heroAppsMoreLabel", type: "text", required: true },
           { name: "heroRecordLabel", type: "text", required: true },
           { name: "trackTitle", type: "text", required: true },
           { name: "track", type: "long-text", required: true },
@@ -399,7 +396,6 @@ const config: StudioConfig = {
           },
           { name: "registryTitle", type: "text", required: true },
           { name: "registryNote", type: "long-text", required: true },
-          { name: "registrySummaryLabel", type: "text", required: true },
           { name: "registryLinkLabel", type: "text", required: true },
           { name: "registryLinkHref", type: "url", required: true },
           {

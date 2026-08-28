@@ -1,0 +1,202 @@
+{
+  "legalName": "TIAGO DANIN TECH SOLUTIONS LTDA",
+  "tradeName": "Tiago Danin Tech Solutions",
+  "cnpj": "67.171.570/0001-15",
+  "foundedAt": "2020-10-14",
+  "cnpjOpenedAt": "2026-06-03",
+  "city": "Belém",
+  "region": "Pará",
+  "country": "Brasil",
+  "eyebrow": "Desenvolvimento de software em Belém, desde 2020",
+  "headline": "Seu app mobile, do briefing até a loja",
+  "lede": "Fico em Belém, no Pará, e trabalho com software desde 2020. Você chega com um app para construir, uma base de código que ninguém do time quer abrir, ou algo que eu já mantenho e prefere licenciar a refazer. Do primeiro e-mail até a entrega, você fala comigo.",
+  "chips": [
+    "Apps publicados na Google Play e na Microsoft Store",
+    "Contrato assinado e nota fiscal",
+    "Código, credenciais e contas de loja ficam com você"
+  ],
+  "heroRecordLabel": "Dados da empresa",
+  "trackTitle": "{years} anos de trabalho com software, empresa própria desde 2020",
+  "track": "Backend freelance no IssueHunt de 2018 a 2019. Desenvolvedor mobile na VoxData de 2019 a 2022, e na Idopter Labs desde 2022. Em paralelo, pesquisa de segurança no HackerOne desde 2018, ainda ativa.",
+  "proofTitle": "O que você pode conferir agora",
+  "proofNote": "Todo número aqui é um link.",
+  "proof": [
+    {
+      "value": "{repoCount}",
+      "label": "Repositórios públicos",
+      "detail": "Código, issues e histórico de commits, tudo aberto.",
+      "href": "/projects"
+    },
+    {
+      "value": "{npmCount}",
+      "label": "Pacotes publicados no npm",
+      "detail": "{npmDownloads} downloads somados.",
+      "href": "/rankings/npm"
+    },
+    {
+      "value": "{talkCount}",
+      "label": "Palestras em eventos",
+      "detail": "Em eventos desde 2013. Três têm gravação pública.",
+      "href": "/talks"
+    },
+    {
+      "value": "{postCount}",
+      "label": "Artigos técnicos",
+      "detail": "Sobre mobile, segurança e open source, desde 2018.",
+      "href": "/blog"
+    }
+  ],
+  "offeringsTitle": "O que dá para contratar",
+  "offeringsNote": "Três formatos de contrato. Se o seu caso não couber em nenhum deles, escreva mesmo assim, eu digo se dá.",
+  "offerings": [
+    {
+      "code": "",
+      "icon": "Smartphone",
+      "title": "Desenvolvimento sob encomenda",
+      "description": "Do briefing até o app publicado na loja. Faço submissão dentro de empresa desde 2019.",
+      "bullets": [
+        "Flutter e React Native, com Kotlin e Swift nativos quando o seu app precisa",
+        "Publicação na Google Play e na App Store, incluindo responder à revisão quando ela reprova",
+        "Firebase, pipelines de CI/CD e testes automatizados montados junto com o projeto",
+        "Módulos nativos em Swift, Objective-C, Java e Kotlin para o projeto React Native que você já tem rodando"
+      ],
+      "href": "/mobile",
+      "linkLabel": "Desenvolvimento de aplicativos em Flutter e React Native"
+    },
+    {
+      "code": "",
+      "icon": "Package",
+      "title": "Licenciamento de software",
+      "description": "Um pacote ou app que eu já mantenho, licenciado para o seu produto, em vez de um orçamento para refazer do zero.",
+      "bullets": [
+        "Pacotes no npm, PyPI, LuaRocks e AUR, com o código aberto para o seu time ler antes de decidir",
+        "Aplicativos já publicados na Google Play e na Microsoft Store",
+        "Ferramentas de desenvolvimento publicadas como open source, com código e licença",
+        "Licença comercial e suporte para o que já está lançado, sem abrir um projeto novo"
+      ],
+      "href": "/projects",
+      "linkLabel": "Catálogo completo de projetos públicos"
+    },
+    {
+      "code": "",
+      "icon": "Shield",
+      "title": "Consultoria e revisão",
+      "description": "O app está apanhando na revisão da loja, ou quem escreveu o código saiu do time. Eu leio a base e trabalho junto com quem vai continuar mantendo.",
+      "bullets": [
+        "Análise de segurança e revisão de código do seu aplicativo mobile",
+        "Revisão de arquitetura na sua base React Native ou Flutter",
+        "Engenharia de release: pipelines, feature flags e rollout gradual",
+        "Mentoria individual para as pessoas que ficam com o projeto depois"
+      ],
+      "href": "/cybersecurity",
+      "linkLabel": "Análise de segurança e revisão de código"
+    }
+  ],
+  "audienceTitle": "Quando faz sentido me chamar, e quando não faz",
+  "audienceNote": "Três casos que funcionam bem e três que eu não pego. Digo agora para você não descobrir depois de assinar.",
+  "audience": [
+    {
+      "title": "Funciona: projeto com escopo fechado",
+      "detail": "Você tem um app para construir, ou uma entrega com objetivo claro. Escopo, prazo e preço saem por escrito antes da primeira linha de código."
+    },
+    {
+      "title": "Funciona: revisão pontual",
+      "detail": "Seu app está apanhando na revisão da loja, a arquitetura React Native ou Flutter travou o time, ou você quer uma análise de segurança antes do lançamento. Contrato por entrega, com data para acabar."
+    },
+    {
+      "title": "Funciona: licença e suporte do que já existe",
+      "detail": "Você precisa de algo que eu já publico e mantenho. Sai licença comercial e suporte, em vez de um orçamento para refazer do zero."
+    },
+    {
+      "title": "Não funciona: alocação de squad",
+      "detail": "Não vendo cabeça nem dedicação integral. Quem faz o trabalho sou eu, e a agenda é combinada projeto a projeto."
+    },
+    {
+      "title": "Não funciona: contrato por hora, sem escopo",
+      "detail": "Sem escopo escrito e sem critério de pronto, a conversa acaba na fatura. Com escopo, você sabe o preço antes de começar e eu sei quando terminei."
+    }
+  ],
+  "processTitle": "Como o seu projeto anda",
+  "processNote": "Quatro etapas, iguais em todo contrato.",
+  "process": [
+    {
+      "title": "Escopo",
+      "detail": "Você descreve o problema. Eu volto com o que entendi, o que construiria e o que deixaria de fora de propósito. Essa primeira devolutiva não custa nada."
+    },
+    {
+      "title": "Orçamento escrito",
+      "detail": "Preço, prazo e tudo que está fora do escopo, por escrito. Nada começa antes de você ter esse documento na mão."
+    },
+    {
+      "title": "Entrega iterativa",
+      "detail": "Builds que você instala e abre, em cadência fixa. Você vê o app rodando muito antes de ele ficar pronto."
+    },
+    {
+      "title": "Passagem de bastão",
+      "detail": "Código, credenciais, contas de loja e documentação ficam com você no fim. Suporte depois disso é acordo separado, e você decide se assina."
+    }
+  ],
+  "stackTitle": "Com o que eu construo",
+  "stackNote": "A stack por trás do trabalho acima, agrupada do jeito que é usada no projeto.",
+  "registryTitle": "Dados da empresa",
+  "registryNote": "Dados públicos do cadastro da Receita Federal.",
+  "registryLinkLabel": "Consultar na Receita Federal",
+  "registryLinkHref": "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp",
+  "registry": [
+    {
+      "label": "Razão social",
+      "value": "TIAGO DANIN TECH SOLUTIONS LTDA"
+    },
+    {
+      "label": "Nome fantasia",
+      "value": "Tiago Danin Tech Solutions"
+    },
+    {
+      "label": "CNPJ",
+      "value": "67.171.570/0001-15"
+    },
+    {
+      "label": "Natureza jurídica",
+      "value": "Sociedade Empresária Limitada"
+    },
+    {
+      "label": "Porte",
+      "value": "Microempresa"
+    },
+    {
+      "label": "Regime tributário",
+      "value": "Simples Nacional"
+    },
+    {
+      "label": "Situação cadastral",
+      "value": "Ativa"
+    },
+    {
+      "label": "Continuidade",
+      "value": "O negócio funciona desde outubro de 2020. O CNPJ atual é de junho de 2026, quando a natureza jurídica mudou de empresário individual para sociedade limitada, com o mesmo titular, a mesma atividade principal e a mesma cidade."
+    },
+    {
+      "label": "Sócio-administrador",
+      "value": "Tiago Jatahy Danin"
+    },
+    {
+      "label": "Atividade principal",
+      "value": "6201-5/01 Desenvolvimento de programas de computador sob encomenda"
+    },
+    {
+      "label": "Atividades secundárias",
+      "value": "6203-1/00 Desenvolvimento e licenciamento de programas não-customizáveis\n6204-0/00 Consultoria em tecnologia da informação"
+    },
+    {
+      "label": "Município",
+      "value": "Belém, Pará, Brasil"
+    }
+  ],
+  "contactTitle": "Me conte o problema, eu respondo com o escopo",
+  "contactDetail": "Eu leio e respondo o e-mail. Pode mandar antes de estar pronto: quatro linhas bastam, dizendo o que é o produto, para quem é, o prazo se houver e a faixa de orçamento se houver.",
+  "contactNote": "CNPJ 67.171.570/0001-15, contrato assinado, nota fiscal, Simples Nacional. Trabalho remoto.",
+  "contactEmailLabel": "Mandar um e-mail",
+  "contactLinkedInLabel": "Chamar no LinkedIn",
+  "seoTitle": "Desenvolvimento de apps mobile em Belém, desde 2020",
+  "seoDescription": "Aplicativos mobile sob encomenda em Belém, no Pará, desde 2020. Flutter, React Native, Kotlin e Swift, do briefing até a publicação na loja."
+}

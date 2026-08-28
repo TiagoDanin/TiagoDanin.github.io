@@ -1,0 +1,202 @@
+{
+  "legalName": "TIAGO DANIN TECH SOLUTIONS LTDA",
+  "tradeName": "Tiago Danin Tech Solutions",
+  "cnpj": "67.171.570/0001-15",
+  "foundedAt": "2020-10-14",
+  "cnpjOpenedAt": "2026-06-03",
+  "city": "Belém",
+  "region": "Pará",
+  "country": "Brasil",
+  "eyebrow": "Software development since 2020, Belém, Brazil",
+  "headline": "Your mobile app, from the brief to the store",
+  "lede": "I build software from Belém, in northern Brazil, and have done since 2020. You come with an app to build, a codebase somebody else wrote and nobody wants to open, or a library you would rather license than rebuild. From the first email to the handover, you deal with me.",
+  "chips": [
+    "Apps published to Google Play and the Microsoft Store",
+    "Signed contract and nota fiscal",
+    "Code, credentials and store accounts are yours at the end"
+  ],
+  "heroRecordLabel": "Company details",
+  "trackTitle": "{years} years of software work, my own company since 2020",
+  "track": "Freelance backend at IssueHunt from 2018 to 2019. Mobile developer at VoxData from 2019 to 2022, and at Idopter Labs since 2022. Independent security research on HackerOne runs alongside it, since 2018 and still active.",
+  "proofTitle": "What you can check right now",
+  "proofNote": "Every number here is a link.",
+  "proof": [
+    {
+      "value": "{repoCount}",
+      "label": "Public repositories",
+      "detail": "Source, issues and commit history, all open.",
+      "href": "/projects"
+    },
+    {
+      "value": "{npmCount}",
+      "label": "Packages published on npm",
+      "detail": "{npmDownloads} downloads across them.",
+      "href": "/rankings/npm"
+    },
+    {
+      "value": "{talkCount}",
+      "label": "Talks at events",
+      "detail": "At events since 2013. Three have a public recording.",
+      "href": "/talks"
+    },
+    {
+      "value": "{postCount}",
+      "label": "Technical articles",
+      "detail": "Mobile development, security and open source, since 2018.",
+      "href": "/blog"
+    }
+  ],
+  "offeringsTitle": "What you can hire",
+  "offeringsNote": "Three shapes of work: something built from a scope written down before it starts, a licence for something already published and maintained, and a second reading of something that already exists.",
+  "offerings": [
+    {
+      "code": "",
+      "icon": "Smartphone",
+      "title": "A mobile app, built and shipped",
+      "description": "Your app from the brief to a listing live on the store. I have handled store submission inside companies since 2019.",
+      "bullets": [
+        "Flutter and React Native, with native Kotlin and Swift where your app needs it",
+        "Publishing to Google Play and the App Store, including answering the review team when they reject a build",
+        "Firebase, CI/CD pipelines and automated tests set up with the project",
+        "Native modules in Swift, Objective-C, Java and Kotlin, bridged into the React Native codebase you already have"
+      ],
+      "href": "/mobile",
+      "linkLabel": "Mobile development in Flutter and React Native"
+    },
+    {
+      "code": "",
+      "icon": "Package",
+      "title": "A licence for something already built",
+      "description": "License a package or an app I already maintain, instead of paying to have it built again and then waiting for it.",
+      "bullets": [
+        "Open source packages already published on npm, PyPI, LuaRocks and the AUR",
+        "Apps already live on Google Play and the Microsoft Store",
+        "Developer tooling published as open source packages, source and licence included",
+        "Commercial licensing and support for anything already released"
+      ],
+      "href": "/projects",
+      "linkLabel": "All {repoCount} public repositories"
+    },
+    {
+      "code": "",
+      "icon": "Shield",
+      "title": "A second pair of eyes on your codebase",
+      "description": "Your app is failing store review, or the developer who built it left. I read the codebase and work with the team that keeps it running.",
+      "bullets": [
+        "Security assessment and code review of your mobile app, by someone reporting flaws through HackerOne since 2018",
+        "Architecture review of your React Native or Flutter codebase, with the findings written down",
+        "Release engineering: pipelines, feature flags and staged rollouts",
+        "One to one mentoring for the engineers who will own the code after I leave"
+      ],
+      "href": "/cybersecurity",
+      "linkLabel": "Security and code review"
+    }
+  ],
+  "audienceTitle": "Who this works for, and who it does not",
+  "audienceNote": "Three cases that work well, and three I turn down. Better you know now than after signing.",
+  "audience": [
+    {
+      "title": "A project with a closed scope",
+      "detail": "You know roughly what the app has to do, and you want a price, a deadline and a list of exclusions in writing before anything starts."
+    },
+    {
+      "title": "A codebase somebody else wrote",
+      "detail": "Your app is failing store review, or the developer who built it is gone and nobody left on the team has opened the project. I read it and tell you what I find."
+    },
+    {
+      "title": "A licence and support for something already published",
+      "detail": "You need a library or an app that already exists and is already maintained, and you would rather license it than pay to have it built a second time."
+    },
+    {
+      "title": "Not this: a developer allocated to your squad",
+      "detail": "I do not sell headcount or full-time availability. I do the work, and the calendar is agreed project by project."
+    },
+    {
+      "title": "Not this: hourly work with no scope",
+      "detail": "With no written scope and no definition of done, the conversation ends up being about the invoice. With one, you know the price before anything starts and I know when I am finished."
+    }
+  ],
+  "processTitle": "How your project runs",
+  "processNote": "The same four steps on every contract.",
+  "process": [
+    {
+      "title": "Scope",
+      "detail": "You describe the problem. I come back with what I understood, what I would build and what I would deliberately leave out. That first pass is free and binds you to nothing."
+    },
+    {
+      "title": "Written estimate",
+      "detail": "Price, deadline and everything outside the scope, in writing. Nothing starts before you have that document."
+    },
+    {
+      "title": "Iterative delivery",
+      "detail": "Builds you can install and open, on a fixed cadence. You see your app running long before it is finished."
+    },
+    {
+      "title": "Handover",
+      "detail": "Source code, credentials, store accounts and documentation are yours at the end. Support after that is a separate agreement you choose to sign."
+    }
+  ],
+  "stackTitle": "What I build with",
+  "stackNote": "The stack behind the work above, grouped the way it is used on a project.",
+  "registryTitle": "Company details",
+  "registryNote": "Public data from the register held by the Receita Federal, the Brazilian federal tax authority.",
+  "registryLinkLabel": "Check the CNPJ on the Receita Federal",
+  "registryLinkHref": "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp",
+  "registry": [
+    {
+      "label": "Legal name",
+      "value": "TIAGO DANIN TECH SOLUTIONS LTDA"
+    },
+    {
+      "label": "Trade name",
+      "value": "Tiago Danin Tech Solutions"
+    },
+    {
+      "label": "CNPJ",
+      "value": "67.171.570/0001-15"
+    },
+    {
+      "label": "Legal form",
+      "value": "Sociedade Empresária Limitada, a Brazilian limited company"
+    },
+    {
+      "label": "Size",
+      "value": "Microempresa, the register's micro-enterprise bracket"
+    },
+    {
+      "label": "Tax regime",
+      "value": "Simples Nacional"
+    },
+    {
+      "label": "Register status",
+      "value": "Active"
+    },
+    {
+      "label": "Operating since",
+      "value": "October 2020. The current CNPJ dates from June 2026, when the business changed legal form from Empresário Individual, the Brazilian sole trader registration, to a limited company. Same owner, same principal activity and same city as the registration it replaced."
+    },
+    {
+      "label": "Managing partner",
+      "value": "Tiago Jatahy Danin, sole managing partner"
+    },
+    {
+      "label": "Primary activity",
+      "value": "6201-5/01 Custom computer program development"
+    },
+    {
+      "label": "Secondary activities",
+      "value": "6203-1/00 Development and licensing of non-customisable programs\n6204-0/00 Information technology consulting"
+    },
+    {
+      "label": "Location",
+      "value": "Belém, Pará, Brazil"
+    }
+  ],
+  "contactTitle": "Tell me the problem and I reply with a scope",
+  "contactDetail": "I read and answer the email myself. Send it unfinished: four lines are enough, saying what the product is, who it is for, the deadline if there is one, and the budget range if there is one.",
+  "contactNote": "CNPJ 67.171.570/0001-15, signed contract, nota fiscal, Simples Nacional. Remote, from Belém.",
+  "contactEmailLabel": "Send an email",
+  "contactLinkedInLabel": "Message me on LinkedIn",
+  "seoTitle": "Mobile app development in Belém, Brazil, since 2020",
+  "seoDescription": "Mobile apps built to order from Belém, Brazil, by a developer working since 2020. Flutter, React Native, Kotlin and Swift, from the brief to the store listing."
+}
