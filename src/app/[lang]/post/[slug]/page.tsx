@@ -15,7 +15,7 @@ import { toISODate, formatDate } from '@/utils/parse';
 import { getCallToActionData } from '@/lib/sections';
 import { contentLang, DEFAULT_LOCALE, HTML_LANG, intlLocale, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, metaTitle, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export const dynamicParams = false;
 
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/post/[slug
   const coverUrl = post.cover ? `${ORIGIN}${post.cover}` : undefined;
 
   return {
-    title: post.title,
+    title: metaTitle(post.title, post.seoTitle),
     description,
     keywords: post.tags.length > 0
       ? [...post.tags, 'Tiago Danin', 'blog']

@@ -22,7 +22,9 @@ export async function generateMetadata({ params }: PageProps<'/[lang]'>): Promis
   const alternates = localeAlternates(locale, '/');
 
   return {
-    title: t(i18n)`Tiago Danin - Mobile Developer | Flutter, React Native & iOS/Android`,
+    // `title.template` skips the segment that declares it, so the home page
+    // carries its own brand and its own length budget.
+    title: t(i18n)`Tiago Danin - Mobile Developer | Flutter & React Native`,
     description: t(
       i18n
     )`Mobile developer with 250+ projects and 70+ open source packages. Specializing in Flutter, React Native, iOS & Android. Bug hunter on HackerOne.`,

@@ -2,6 +2,8 @@ import { queryCollection } from 'nextjs-studio/server';
 
 export interface PostContent {
   title: string;
+  /** Shorter `<title>` for the SERP, when the article title overflows it. */
+  seoTitle?: string;
   date: string;
   description: string;
   slug: string;
@@ -21,6 +23,7 @@ export function getPostBySlug(slug: string, lang: string = 'en'): PostContent | 
 
   return {
     title: post.title,
+    seoTitle: post.seoTitle || undefined,
     date: post.date,
     description: post.description,
     slug: post.slug,

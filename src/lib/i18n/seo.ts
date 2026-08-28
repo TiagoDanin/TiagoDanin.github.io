@@ -87,3 +87,48 @@ export function twitterDefaults() {
 export function markdownAlternate(path: string, locale: Locale = DEFAULT_LOCALE) {
   return { 'text/markdown': markdownUrl(pageUrl(locale, path)) };
 }
+
+/**
+ * The brand the root layout appends to every child route through
+ * `title.template`. Not applied to `[lang]/page.tsx`: Next skips the segment
+ * that declares the template, which is why the home page writes its own.
+ */
+const BRAND = 'Tiago Danin';
+const BRAND_SUFFIX = ` | ${BRAND}`;
+const BRAND_RE = /\s*\|\s*Tiago Danin\s*$/i;
+
+/**
+ * Longest `<title>` worth emitting, brand included.
+ *
+ * Google renders roughly 60 characters and rewrites the rest; Ahrefs starts
+ * flagging at 70. Sixty is the target, so a title that would only fit under
+ * the looser bar still loses the brand rather than the words that rank.
+ */
+const TITLE_MAX = 60;
+
+/** Drops a brand the string already carries, so nothing gets it twice. */
+export function stripBrand(title: string): string {
+  return title.replace(BRAND_RE, '').trim();
+}
+
+/** `<base> | Tiago Danin`, without doubling a brand the base already has. */
+export function brandTitle(base: string): string {
+  return `${stripBrand(base)}${BRAND_SUFFIX}`;
+}
+
+/**
+ * The `title` for a page whose layout appends the brand.
+ *
+ * Takes the candidates longest first (the full title, then the shorter
+ * `seoTitle` the content may carry) and returns the first one that still fits
+ * under `TITLE_MAX` with the brand on it. When none does, the last candidate is
+ * returned as `absolute`, which is what suppresses the template: an article
+ * title that already fills the SERP should not spend fourteen more characters
+ * repeating a name the reader sees on every other result.
+ */
+export function metaTitle(...candidates: (string | undefined | null)[]): string | { absolute: string } {
+  const options = candidates.map((candidate) => stripBrand(candidate ?? '')).filter(Boolean);
+  const fitting = options.find((option) => option.length + BRAND_SUFFIX.length <= TITLE_MAX);
+  if (fitting) return fitting;
+  return { absolute: options[options.length - 1] ?? BRAND };
+}

@@ -17,7 +17,7 @@ import { toISODate, formatDate, getRandomColorWithDarkMode } from '@/utils/parse
 import { getCallToActionData } from '@/lib/sections';
 import { contentLang, DEFAULT_LOCALE, HTML_LANG, intlLocale, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, metaTitle, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export const dynamicParams = false;
 
@@ -46,7 +46,10 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/talk/[slug
     : talk.description;
 
   return {
-    title: `${talk.title} - ${eventLabel(talk)}`,
+    // The event is what tells two editions of the same talk apart, so it
+    // leads; the bare title, then the content's own short form, take over as
+    // the label pushes the tag past what a SERP shows.
+    title: metaTitle(`${talk.title} - ${eventLabel(talk)}`, talk.title, talk.seoTitle),
     description,
     keywords: ['talk', 'presentation', 'workshop', talk.event, eventLabel(talk), ...(talk.tags || [])],
     alternates: {

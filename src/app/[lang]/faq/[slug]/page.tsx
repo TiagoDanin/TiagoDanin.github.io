@@ -18,7 +18,7 @@ import { getFaqData, getFaqPerson } from '@/lib/sections';
 import { qaPageSchema } from '@/lib/faq-jsonld';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localePath, type Locale } from '@/lib/i18n/locales';
-import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
+import { brandTitle, localeAlternates, markdownAlternate, metaTitle, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   const locale = resolveLocale(params.lang);
@@ -41,14 +41,14 @@ export async function generateMetadata({
   const description = (entry.seoDescription || entry.answer).slice(0, 160);
 
   return {
-    title,
+    title: metaTitle(title),
     description,
     alternates: {
       ...localeAlternates(locale, path),
       types: markdownAlternate(path),
     },
     openGraph: {
-      title: `${title} | Tiago Danin`,
+      title: brandTitle(title),
       description,
       url: pageUrl(locale, path),
       type: 'article',
@@ -56,7 +56,7 @@ export async function generateMetadata({
     },
     twitter: {
       ...twitterDefaults(),
-      title: `${title} | Tiago Danin`,
+      title: brandTitle(title),
       description,
     },
     other: {

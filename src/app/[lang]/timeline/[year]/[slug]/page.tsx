@@ -9,7 +9,7 @@ import { getRandomColorWithDarkMode, toISODate } from '@/utils/parse';
 import { findTimelineEvent, getTimelineEvents } from '@/lib/timeline';
 import { localePath, HTML_LANG } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
+import { localeAlternates, metaTitle, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export const dynamicParams = false;
 
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/timeline/[
     : event.description;
 
   return {
-    title: `${event.title} (${event.date})`,
+    title: metaTitle(`${event.title} (${event.date})`),
     description: truncatedDescription,
     keywords: ['timeline', 'career', 'professional journey', 'milestone', ...event.tags],
     alternates: localeAlternates(locale, `/timeline/${year}/${slug}`),

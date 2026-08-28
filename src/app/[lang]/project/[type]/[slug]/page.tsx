@@ -15,9 +15,51 @@ import {
 import { HTML_LANG, intlLocale, localePath } from '@/lib/i18n/locales';
 import { canonicalHomepage } from '@/lib/homepage';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
-import { localeAlternates, markdownAlternate, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
+import { localeAlternates, markdownAlternate, metaTitle, openGraphDefaults, pageUrl, twitterDefaults } from '@/lib/i18n/seo';
 
 export const dynamicParams = false;
+
+/**
+ * Ahrefs flags a meta description under 110 characters and Google cuts one past
+ * ~160, so the target is the band between them.
+ *
+ * The lead sentence is always kept; every other sentence is appended only when
+ * it still fits, which is why nothing here ever needs an ellipsis or lands in
+ * the band by cutting a word in half. A sentence that does not fit is skipped
+ * and the next, shorter one is tried. `fillers` are generic closers, reached
+ * only when the project's own metadata was not enough to clear the floor.
+ */
+const META_DESCRIPTION_MIN = 115;
+const META_DESCRIPTION_MAX = 160;
+
+function packDescription(lead: string, fragments: string[], fillers: string[]): string {
+  let out = lead.trim();
+
+  const append = (fragment: string) => {
+    const next = fragment.trim();
+    if (!next) return;
+    if (out.length + 1 + next.length > META_DESCRIPTION_MAX) return;
+    out = out ? `${out} ${next}` : next;
+  };
+
+  fragments.forEach(append);
+
+  for (const filler of fillers) {
+    if (out.length >= META_DESCRIPTION_MIN) break;
+    append(filler);
+  }
+
+  return out.length > META_DESCRIPTION_MAX
+    ? `${out.substring(0, META_DESCRIPTION_MAX - 3)}...`
+    : out;
+}
+
+/** npm and PyPI descriptions rarely carry final punctuation; the meta sentence needs it. */
+function endWithPeriod(text: string): string {
+  const trimmed = text.trim();
+  if (!trimmed) return '';
+  return /[.!?…]$/.test(trimmed) ? trimmed : `${trimmed}.`;
+}
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   // Project data carries no locale variant, so every language gets the same
@@ -86,34 +128,36 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/project/[t
     ...(Array.isArray(project.keywords) ? project.keywords : []),
   ].map((tg) => String(tg).toLowerCase()).filter(Boolean))).slice(0, 5);
 
-  const languageLabel = project.language ? t(i18n)` Built with ${project.language}.` : '';
-  const tagsLabel = tags.length ? t(i18n)` Topics: ${tags.join(', ')}.` : '';
-  const starsLabel = project.stargazers_count ? t(i18n)` ${project.stargazers_count} stars on GitHub.` : '';
-  const downloadsLabel = project.downloads ? t(i18n)` ${Number(project.downloads).toLocaleString(intlLocale(locale))} downloads.` : '';
-  const licenseName = (project.license as LicenseInfo | undefined)?.name;
-  const licenseLabel = licenseName ? t(i18n)` Licensed under ${licenseName}.` : '';
+  // No leading space: these reuse the message ids the page body already
+  // translates, and `packDescription` is what joins them.
+  const languageLabel = project.language ? t(i18n)`Built with ${project.language}.` : '';
+  const tagsLabel = tags.length ? t(i18n)`Topics: ${tags.join(', ')}.` : '';
+  const starsLabel = project.stargazers_count ? t(i18n)`${project.stargazers_count} stars on GitHub.` : '';
+  const downloadsLabel = project.downloads ? t(i18n)`${Number(project.downloads).toLocaleString(intlLocale(locale))} downloads.` : '';
+  const licenseDisplay = (project.license as LicenseInfo | undefined)?.name;
+  const licenseLabel = licenseDisplay ? t(i18n)`Licensed under ${licenseDisplay}.` : '';
+  const updatedYear = project.updated_at ? new Date(project.updated_at).getFullYear() : null;
+  const updatedLabel = updatedYear && !Number.isNaN(updatedYear) ? t(i18n)`Last updated in ${updatedYear}.` : '';
 
-  const MIN_DESCRIPTION_LEN = 50;
-  const isThin = baseDescription.length < MIN_DESCRIPTION_LEN;
+  const lead = baseDescription
+    ? endWithPeriod(baseDescription)
+    : t(i18n)`${title}: ${platformContext} by Tiago Danin.`;
 
-  let enrichedDescription: string;
-  if (isThin) {
-    const lead = baseDescription
-      ? `${baseDescription}.`
-      : t(i18n)`${title}: ${platformContext} by Tiago Danin.`;
-    enrichedDescription = `${lead}${languageLabel}${tagsLabel}${starsLabel}${downloadsLabel}${licenseLabel}`.trim();
-  } else {
-    enrichedDescription = `${baseDescription}${languageLabel}${starsLabel}${downloadsLabel}`.trim();
-  }
-
-  const truncatedDescription = enrichedDescription.length > 160
-    ? enrichedDescription.substring(0, 157) + '...'
-    : enrichedDescription;
+  const truncatedDescription = packDescription(
+    lead,
+    [languageLabel, tagsLabel, starsLabel, downloadsLabel, licenseLabel],
+    [
+      updatedLabel,
+      t(i18n)`${platformContext} by Tiago Danin, mobile developer based in Belém, Pará.`,
+      t(i18n)`Source code, install command and stats on tiagodanin.com.`,
+      t(i18n)`Full details on tiagodanin.com.`,
+    ],
+  );
 
   const path = `/project/${type}/${slug}`;
 
   return {
-    title: seoTitle,
+    title: metaTitle(seoTitle),
     description: truncatedDescription,
     keywords: [
       title, type, project.language, 'open source', 'Tiago Danin',
@@ -126,7 +170,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/project/[t
       types: markdownAlternate(path),
     },
     openGraph: {
-      title: t(i18n)`${title} - ${(baseDescription || enrichedDescription).substring(0, 60)}`,
+      title: t(i18n)`${title} - ${(baseDescription || truncatedDescription).substring(0, 60)}`,
       description: truncatedDescription,
       type: 'article',
       url: pageUrl(locale, path),

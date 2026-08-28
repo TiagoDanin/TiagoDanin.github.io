@@ -2,6 +2,8 @@ import { queryCollection } from 'nextjs-studio/server';
 
 export interface TalkContent {
   title: string;
+  /** Shorter `<title>` for the SERP, when the talk title overflows it. */
+  seoTitle?: string;
   date: string;
   description: string;
   slug: string;
@@ -31,6 +33,7 @@ export function getTalkBySlug(slug: string, lang: string = 'en'): TalkContent | 
 
   return {
     title: talk.title,
+    seoTitle: talk.seoTitle || undefined,
     date: talk.date,
     description: talk.description,
     slug: talk.slug,
