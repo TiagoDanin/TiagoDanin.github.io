@@ -51,6 +51,13 @@
         "title": "Construindo Produtos Reais com Agentes Inteligentes: Da Ideia ao Código",
         "url": "https://gist.github.com/TiagoDanin/daa300130cbb4acad436b9b82cfd6dfa",
         "icon": "presentation",
+        "enabled": false,
+        "talk_avaliation": true
+    },
+    {
+        "title": "Sua digital não é sua senha: biometria do seu app mobile pode ser hackeada",
+        "url": "https://drive.google.com/drive/folders/1h7lqkmxavFdXWhdDCfKPyPaSTjP4nCt9?usp=drive_link",
+        "icon": "presentation",
         "enabled": true,
         "talk_avaliation": true
     }
