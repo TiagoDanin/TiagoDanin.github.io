@@ -1,0 +1,115 @@
+---
+title: "Por que sua chave de API em Apps Mobile precisa ser restrita (mesmo que pareça que não)"
+seoTitle: "Chave de API em app mobile precisa ser restrita"
+date: "2026-05"
+description: "Extraí duas chaves do Google Maps de apps mobile em menos de um minuto, ambas sem restrição nenhuma. Os dois reports fecharam como Informative no HackerOne. O passo a passo da extração com apktool, a validação dos endpoints e as três camadas que resolvem o problema de verdade."
+slug: "why-your-api-key-in-mobile-apps-needs-to-be-restricted"
+originalUrl: "https://www.linkedin.com/pulse/por-que-sua-chave-de-api-em-apps-mobile-precisa-ser-restrita-danin-ioxye/"
+lang: "pt"
+cover: "/images/posts/por-que-sua-chave-de-api-em-apps-mobile-precisa-ser-restrita/cover.png"
+tags: ["Security", "Mobile", "Android", "Article"]
+---
+
+![Por que sua chave de API em Apps Mobile precisa ser restrita](/images/posts/por-que-sua-chave-de-api-em-apps-mobile-precisa-ser-restrita/cover.png)
+
+Estava olhando alguns aplicativos mobile que usam Google Maps e, em menos de um minuto, tinha duas chaves de API na mão. Funcionais, sem restrição nenhuma, extraídas com ferramentas que qualquer pesquisador de segurança tem instaladas.
+
+Reportei os dois casos. Os dois foram fechados como **Informative** no HackerOne. E é justamente por causa dessa resposta que resolvi escrever esse artigo.
+
+## Por que esse padrão é tão comum
+
+A intuição da maioria dos devs é essa: "se a chave precisa estar dentro do app, ela já está exposta de qualquer jeito, então não tem o que fazer".
+
+É uma meia-verdade, e a parte verdadeira é bem convincente. APK é basicamente um arquivo ZIP. Código Java compila para bytecode que `apktool` e `jadx` revertem em segundos. String fica em texto plano no `res/values/strings.xml` ou no `AndroidManifest.xml`. Não existe ofuscação que resolva isso de forma definitiva, qualquer coisa que o app precise ler em runtime, o atacante também consegue ler.
+
+A parte falsa é tratar "exposta" como sinônimo de "abusável". Existe um espectro inteiro entre uma chave completamente livre e uma chave que está embutida no app mas só responde quando a chamada vem de um contexto que o provedor consegue validar. É esse espectro que a resposta padrão ignora.
+
+## Extraindo a chave
+
+O começo é direto. Com o APK em mãos:
+
+```bash
+java -jar apktool_2.12.0.jar d app.apk
+```
+
+Isso me dá o `AndroidManifest.xml`, os arquivos de strings, o smali do código e os recursos. As chaves do Google Cloud têm um prefixo público bem conhecido, então o grep é trivial:
+
+```bash
+grep -r "AIzaSy" .
+```
+
+Em um dos apps, a chave estava no manifesto:
+
+```xml
+<meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="AIzaSy[REDACTED]"/>
+```
+
+No outro, no arquivo de strings:
+
+```xml
+<string name="google_api_key">AIzaSy[REDACTED]</string>
+```
+
+Até aqui, nada de anormal. É assim que o SDK do Google Maps espera receber a chave, e nenhum dos dois casos é um erro de implementação.
+
+## Validando a chave
+
+Encontrar chave embutida não é vulnerabilidade. O problema começa quando você prova que ela funciona fora do app legítimo.
+
+Para isso uso o [gmapsapiscanner](https://github.com/ozguralp/gmapsapiscanner), um projeto open source que dispara requisições contra todos os endpoints conhecidos do Google Maps: Geocoding, Places (Find Place, Autocomplete, Details, Nearby Search, Text Search), Static Maps, Street View, Elevation, Timezone, Directions e Distance Matrix.
+
+Testar todos importa porque restrição de chave no Google Cloud é configurável **por API**. É muito comum encontrar app que bloqueou o serviço principal e deixou todo o resto aberto, o que mantém a chave abusável mesmo parecendo protegida.
+
+Uma chamada simples já responde a pergunta:
+
+```bash
+curl "https://maps.googleapis.com/maps/api/geocode/json?latlng=12,34&key=AIzaSy[REDACTED]"
+```
+
+Em uma chave bem configurada, a resposta é essa:
+
+```json
+{
+  "error_message": "This IP, site or mobile application is not authorized to use this API key. Request received from IP address xxxxxxxx, with empty referer",
+  "results": [],
+  "status": "REQUEST_DENIED"
+}
+```
+
+Nos dois apps, o que voltou foi o JSON completo, com resultados, sem bloqueio nenhum. Da minha máquina pessoal, sem relação alguma com o app de produção.
+
+## O cenário de risco é real
+
+Isso não é hipotético. Existem bots rodando 24 horas por dia que baixam APKs em massa da Play Store, descompilam, dão grep nos prefixos conhecidos (`AIzaSy`, `sk_live` e por aí vai) e validam cada chave encontrada contra os endpoints abertos.
+
+Chave válida vira insumo. Ela é usada para rodar operação de terceiro em cima da conta de quem publicou o app, e a descoberta costuma vir pela fatura no fim do mês, não por um alerta de segurança.
+
+## A solução são três camadas
+
+O Google Cloud Console já entrega tudo o que é necessário.
+
+**1. Application restriction.** Restringe a chave por package name (`com.exemplo.app`) combinado com o fingerprint SHA-1 do certificado de assinatura. O Google valida se a chamada vem daquela combinação exata. Quem extrai a chave precisaria assinar um APK com o certificado da empresa para conseguir usá-la. No iOS o equivalente é o bundle ID.
+
+**2. API restriction.** Limita quais serviços do Maps aquela chave pode acessar. Se o app usa só Static Maps e Places, só esses dois ficam habilitados. Qualquer tentativa de Geocoding ou Directions volta como `REQUEST_DENIED` na hora. Reduz drasticamente a superfície explorável.
+
+**3. Usage cap.** Define um teto de gasto mensal. É o último recurso: protege o bolso, mas não impede o abuso. A chave continua sendo consumida até bater o limite, e quando bate, o app legítimo também para de funcionar até o próximo ciclo.
+
+As três trabalham juntas. Application restriction barra a origem, API restriction reduz o escopo, usage cap segura o prejuízo quando as outras duas falham. Só a terceira, sozinha, é exatamente o cenário que encontrei.
+
+## Como os reports terminaram
+
+Os dois fecharam como Informative, com a justificativa padrão: chave de mapa precisa estar embutida no front-end para renderizar, e o usage cap existe para limitar gasto. Não discuti.
+
+Bug bounty tem resposta padronizada para reduzir ruído, e cada programa decide qual nível de risco aceita. Para um banco com orçamento grande, chave de mapa exposta pode realmente não ser prioridade. O que me incomoda não é o triage, é o trade-off inteiro nunca ser documentado em lugar nenhum, e o dev do outro lado achar que "não tem o que fazer".
+
+## A regra que vale para qualquer projeto
+
+Toda chave embutida no app precisa estar restrita. Sem exceção.
+
+E se uma chave não pode ser restrita nem por assinatura nem por escopo, ela provavelmente não deveria estar no app. Nesse caso a solução certa é mover a chamada para um proxy no backend, que integra com o terceiro e expõe só o necessário.
+
+## Divulgação responsável
+
+Alguns dados técnicos foram modificados ou omitidos seguindo as diretrizes de divulgação responsável do HackerOne e as regras dos programas de bug bounty das empresas envolvidas. As chaves estão redacted e nenhum identificador das aplicações foi exposto.

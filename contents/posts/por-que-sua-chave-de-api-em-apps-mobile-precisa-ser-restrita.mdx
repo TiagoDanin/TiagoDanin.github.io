@@ -1,0 +1,115 @@
+---
+title: "Why Your API Key in Mobile Apps Needs to Be Restricted (Even When It Looks Like It Doesn't)"
+seoTitle: "Why Your Mobile App API Key Needs Restrictions"
+date: "2026-05"
+description: "I pulled two working Google Maps API keys out of mobile apps in under a minute, both with no restrictions at all. Both reports were closed as Informative on HackerOne. Here is the extraction with apktool, the endpoint validation, and the three layers that actually fix it."
+slug: "why-your-api-key-in-mobile-apps-needs-to-be-restricted"
+originalUrl: "https://www.linkedin.com/pulse/por-que-sua-chave-de-api-em-apps-mobile-precisa-ser-restrita-danin-ioxye/"
+lang: "en"
+cover: "/images/posts/por-que-sua-chave-de-api-em-apps-mobile-precisa-ser-restrita/cover.png"
+tags: ["Security", "Mobile", "Android", "Article"]
+---
+
+![Why your API key in mobile apps needs to be restricted](/images/posts/por-que-sua-chave-de-api-em-apps-mobile-precisa-ser-restrita/cover.png)
+
+I was looking at a few mobile apps that use Google Maps and, in under a minute, I had two API keys in hand. Working keys, with no restrictions at all, pulled out with tools any security researcher already has installed.
+
+I reported both cases. Both were closed as **Informative** on HackerOne. And that response is exactly why I decided to write this article.
+
+## Why this pattern is so common
+
+Most developers reason the same way: "if the key has to live inside the app, it is already exposed anyway, so there is nothing to do about it".
+
+That is a half truth, and the true half is convincing. An APK is basically a ZIP file. Java code compiles to bytecode that `apktool` and `jadx` reverse in seconds. Strings sit in plain text in `res/values/strings.xml` or in `AndroidManifest.xml`. No obfuscation solves that for good: anything the app needs to read at runtime, an attacker can read too.
+
+The false half is treating "exposed" as a synonym for "abusable". There is a whole spectrum between a completely open key and a key that is embedded in the app but only answers when the call comes from a context the provider can validate. That spectrum is what the standard answer ignores.
+
+## Extracting the key
+
+The start is straightforward. With the APK in hand:
+
+```bash
+java -jar apktool_2.12.0.jar d app.apk
+```
+
+That gives me the `AndroidManifest.xml`, the string files, the smali code and the resources. Google Cloud keys have a well known public prefix, so the grep is trivial:
+
+```bash
+grep -r "AIzaSy" .
+```
+
+In one of the apps, the key was in the manifest:
+
+```xml
+<meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="AIzaSy[REDACTED]"/>
+```
+
+In the other one, in the strings file:
+
+```xml
+<string name="google_api_key">AIzaSy[REDACTED]</string>
+```
+
+So far, nothing abnormal. This is how the Google Maps SDK expects to receive the key, and neither case is an implementation mistake.
+
+## Validating the key
+
+Finding an embedded key is not a vulnerability. The problem starts when you prove it works outside the legitimate app.
+
+For that I use [gmapsapiscanner](https://github.com/ozguralp/gmapsapiscanner), an open source project that fires requests against every known Google Maps endpoint: Geocoding, Places (Find Place, Autocomplete, Details, Nearby Search, Text Search), Static Maps, Street View, Elevation, Timezone, Directions and Distance Matrix.
+
+Testing all of them matters because key restriction on Google Cloud is configurable **per API**. It is very common to find an app that locked down the main service and left everything else open, which keeps the key abusable while looking protected.
+
+A single call already answers the question:
+
+```bash
+curl "https://maps.googleapis.com/maps/api/geocode/json?latlng=12,34&key=AIzaSy[REDACTED]"
+```
+
+On a properly configured key, the response looks like this:
+
+```json
+{
+  "error_message": "This IP, site or mobile application is not authorized to use this API key. Request received from IP address xxxxxxxx, with empty referer",
+  "results": [],
+  "status": "REQUEST_DENIED"
+}
+```
+
+On both apps, what came back was the full JSON, with results, no blocking whatsoever. From my personal machine, with no relationship at all to the production app.
+
+## The risk scenario is real
+
+This is not hypothetical. There are bots running around the clock that download APKs in bulk from the Play Store, decompile them, grep for the known prefixes (`AIzaSy`, `sk_live` and so on) and validate every key they find against the open endpoints.
+
+A valid key becomes raw material. It gets used to run someone else's operation on top of the account that published the app, and the discovery usually arrives through the monthly invoice, not through a security alert.
+
+## The fix is three layers
+
+The Google Cloud Console already ships everything you need.
+
+**1. Application restriction.** Restricts the key by package name (`com.example.app`) combined with the SHA-1 fingerprint of the signing certificate. Google validates that the call comes from that exact combination. Whoever extracts the key would have to sign an APK with the company's certificate to use it. On iOS the equivalent is the bundle ID.
+
+**2. API restriction.** Limits which Maps services that key can reach. If the app only uses Static Maps and Places, only those two stay enabled. Any attempt at Geocoding or Directions comes back as `REQUEST_DENIED` right away. It shrinks the exploitable surface dramatically.
+
+**3. Usage cap.** Sets a monthly spending ceiling. This is the last resort: it protects the wallet, but it does not prevent abuse. The key keeps being consumed until it hits the limit, and when it does, the legitimate app stops working too until the next cycle.
+
+The three work together. Application restriction blocks the origin, API restriction narrows the scope, usage cap contains the damage when the other two fail. Relying on the third one alone is exactly the scenario I found.
+
+## How the reports ended
+
+Both were closed as Informative, with the standard justification: map keys have to be embedded in the front end to render, and the usage cap exists to limit spending. I did not argue.
+
+Bug bounty has canned responses to cut down on noise, and each program decides which risk level it accepts. For a bank with a large budget, an exposed map key may genuinely not be a priority. What bothers me is not the triage, it is that the full trade-off never gets documented anywhere, leaving the developer on the other side convinced that "there is nothing to do about it".
+
+## The rule that applies to any project
+
+Every key embedded in the app needs to be restricted. No exceptions.
+
+And if a key cannot be restricted by signature or by scope, it probably should not be in the app at all. In that case the right solution is to move the call to a backend proxy that integrates with the third party and exposes only what is needed.
+
+## Responsible disclosure
+
+Some technical details were modified or omitted following HackerOne's responsible disclosure guidelines and the bug bounty program rules of the companies involved. The keys are redacted and no identifier of the applications was exposed.
