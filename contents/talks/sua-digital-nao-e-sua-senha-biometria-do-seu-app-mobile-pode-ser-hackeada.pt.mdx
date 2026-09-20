@@ -1,0 +1,18 @@
+---
+title: "Sua digital não é sua senha: biometria do seu app mobile pode ser hackeada"
+seoTitle: "Biometria de app mobile pode ser hackeada - XibéSec"
+date: "2026-09"
+description: "Como implementações incorretas de biometria no Android permitem burlar a autenticação, com ataques reais demonstrados a partir de uma vulnerabilidade que reportei."
+slug: "sua-digital-nao-e-sua-senha-biometria-do-seu-app-mobile-pode-ser-hackeada"
+event: "XibéSec"
+edition: "2026"
+lang: "pt"
+youtubeUrl: ""
+tags: ["Security", "Mobile", "Android"]
+---
+
+Em 2019 encontrei uma forma de passar pela autenticação biométrica de um app sem nenhum truque envolvendo a digital em si. Não precisei de molde, sensor falso ou dedo emprestado: bastou entender o que o app fazia depois que a leitura acontecia. O problema quase nunca é a sua digital, é o que vem depois dela.
+
+Nesta palestra mostro como implementações incorretas de biometria no Android permitem burlar a autenticação, partindo de um caso real de vulnerabilidade que identifiquei e reportei. Passo pela engenharia reversa do app, pelo ponto exato onde a verificação deixa de valer alguma coisa e pela demonstração do ataque funcionando.
+
+A ideia não é assustar quem usa, e sim mostrar para quem desenvolve onde a proteção realmente mora: no que o app valida, onde guarda o segredo e no que ele aceita como prova de que a biometria aconteceu. No fim, as contramedidas que fecham esse buraco.

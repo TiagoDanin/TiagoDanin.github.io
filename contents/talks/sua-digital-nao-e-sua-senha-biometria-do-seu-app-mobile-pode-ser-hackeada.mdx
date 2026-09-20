@@ -1,0 +1,18 @@
+---
+title: "Your Fingerprint Is Not Your Password: Your Mobile App's Biometrics Can Be Hacked"
+seoTitle: "Mobile App Biometrics Can Be Hacked - XibéSec"
+date: "2026-09"
+description: "How incorrect biometric implementations on Android allow authentication bypass, with real attacks demonstrated from a vulnerability I found and reported."
+slug: "sua-digital-nao-e-sua-senha-biometria-do-seu-app-mobile-pode-ser-hackeada"
+event: "XibéSec"
+edition: "2026"
+lang: "en"
+youtubeUrl: ""
+tags: ["Security", "Mobile", "Android"]
+---
+
+Back in 2019 I found a way past an app's biometric authentication without any trick involving the fingerprint itself. No mold, no fake sensor, no borrowed finger: all it took was understanding what the app did after the read happened. The problem is almost never your fingerprint, it is what comes after it.
+
+In this talk I show how incorrect biometric implementations on Android allow authentication bypass, starting from a real vulnerability case I identified and reported. I walk through the reverse engineering of the app, the exact point where the check stops meaning anything, and a demonstration of the attack working.
+
+The goal is not to scare users, it is to show developers where the protection actually lives: in what the app validates, where it stores the secret, and what it accepts as proof that the biometric check happened. And to close with the countermeasures that fix the gap.
