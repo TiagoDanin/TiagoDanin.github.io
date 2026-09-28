@@ -36,6 +36,56 @@ export function getLegalDoc(slug: 'privacy' | 'terms', locale: Locale): LegalDoc
   };
 }
 
+export type AppLegalKind = 'privacy' | 'terms';
+
+export interface AppLegalApp {
+  /** The `[app]` segment of /legal/[app]. Matches the app's slug on /apps when it has one. */
+  app: string;
+  appName: string;
+}
+
+/**
+ * Every app with documents on /legal/[app], read from the English files.
+ *
+ * English is the source of the list because every app has it; a Portuguese
+ * translation is optional and its absence only drops that half of the page.
+ */
+export function getAppLegalApps(): AppLegalApp[] {
+  const seen = new Map<string, AppLegalApp>();
+  for (const doc of queryCollection('applegal').where({ lang: 'en' })) {
+    const app = String(doc.app ?? '');
+    if (app && !seen.has(app)) seen.set(app, { app, appName: String(doc.appName ?? app) });
+  }
+  return [...seen.values()].sort((a, b) => a.appName.localeCompare(b.appName));
+}
+
+/**
+ * The privacy policy or the terms of one app, in the page's language. No
+ * fallback, same as `getLegalDoc`.
+ */
+export function getAppLegalDoc(app: string, kind: AppLegalKind, locale: Locale): LegalDoc | null {
+  const lang = contentLang(locale);
+  const doc =
+    lang === 'en'
+      ? queryCollection('applegal').where({ app, kind, lang: 'en' }).first()
+      : queryCollection('applegal').locale(lang).where({ app, kind }).first();
+
+  if (!doc) return null;
+
+  return {
+    title: String(doc.title ?? ''),
+    slug: kind,
+    updatedAt: String(doc.updatedAt ?? ''),
+    description: String(doc.description ?? ''),
+    body: String(doc.body ?? ''),
+  };
+}
+
+/** Whether /legal/[app] has anything to show in this language. */
+export function appLegalHasLocale(app: string, locale: Locale): boolean {
+  return getAppLegalDoc(app, 'privacy', locale) !== null || getAppLegalDoc(app, 'terms', locale) !== null;
+}
+
 /**
  * Long form date for the "last updated" line.
  *

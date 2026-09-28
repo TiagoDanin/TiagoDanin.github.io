@@ -54,7 +54,7 @@ export function getHeroData(locale: Locale = DEFAULT_LOCALE): HeroData {
   const socialLinks = [...queryCollection('sociallinks')] as unknown as HeroSocialLink[];
 
   const projectsTotal = PROJECT_COLLECTIONS.reduce(
-    (sum, key) => sum + [...queryCollection(key)].length,
+    (sum, key) => sum + [...queryCollection(key).locale(locale)].length,
     0
   );
   const npmDownloadsTotal = [...queryCollection('npm')].reduce(

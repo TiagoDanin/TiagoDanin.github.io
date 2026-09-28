@@ -62,10 +62,7 @@ function endWithPeriod(text: string): string {
 }
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  // Project data carries no locale variant, so every language gets the same
-  // full set of type/slug pairs.
-  resolveLocale(params.lang);
-  const projectsMap = getProjectsMap();
+  const projectsMap = getProjectsMap(resolveLocale(params.lang));
   const result: { type: string, slug: string }[] = [];
 
   Object.entries(projectsMap).forEach(([type, projects]) => {
@@ -85,7 +82,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/project/[t
   const locale = resolveLocale(lang);
   const i18n = getI18nInstance(locale);
 
-  const projectsMap = getProjectsMap();
+  const projectsMap = getProjectsMap(locale);
   const projects = projectsMap[type] || [];
   const project = projects.find((p) =>
     (p.name && titleToSlug(p.name) === slug) ||
@@ -252,7 +249,7 @@ export default async function ProjectPage({ params }: PageProps<'/[lang]/project
   const locale = resolveLocale(lang);
   const i18n = initI18n(locale);
 
-  const projectsMap = getProjectsMap();
+  const projectsMap = getProjectsMap(locale);
   const projects = projectsMap[type] || [];
   const project = projects.find((p) =>
     (p.name && titleToSlug(p.name) === slug) ||

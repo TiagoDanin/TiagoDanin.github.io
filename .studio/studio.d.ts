@@ -16,13 +16,25 @@ export type Slug      = Brand<string, 'Slug'>;
 export interface AboutEntry {
   name: string;
   greeting: string;
-  roles: Array<"Mobile Developer" | "Bug Hunter">;
+  roles: Array<"Desenvolvedor Mobile" | "Bug Hunter" | "Mobile Developer">;
   avatar: HttpUrl;
   bio: string;
   bioExtra: string;
   seoDescription: string;
   cvUrl: HttpUrl;
   email: Email;
+}
+
+/** Data shape for the "applegal" collection. */
+export interface ApplegalEntry {
+  title: string;
+  slug: string;
+  app: string;
+  appName: string;
+  kind: string;
+  updatedAt: ISODate;
+  lang: string;
+  description: string;
 }
 
 /** Data shape for the "atom" collection. */
@@ -47,6 +59,73 @@ export interface BiosEntry {
   long: string;
 }
 
+/** Data shape for the "business" collection. */
+export interface BusinessEntry {
+  legalName: string;
+  tradeName: string;
+  cnpj: string;
+  foundedAt: ISODate;
+  cnpjOpenedAt: ISODate;
+  city: string;
+  region: string;
+  country: string;
+  eyebrow: string;
+  headline: string;
+  lede: string;
+  chips: Array<"Apps publicados na Google Play e na Microsoft Store" | "Contrato assinado e nota fiscal" | "Código, credenciais e contas de loja ficam com você" | "Apps published to Google Play and the Microsoft Store" | "Signed contract and nota fiscal" | "Code, credentials and store accounts are yours at the end">;
+  heroRecordLabel: string;
+  trackTitle: string;
+  track: string;
+  proofTitle: string;
+  proofNote: string;
+  proof: Array<{
+    value: string;
+    label: string;
+    detail: string;
+    href: string;
+  }>;
+  offeringsTitle: string;
+  offeringsNote: string;
+  offerings: Array<{
+    code: string;
+    icon: string;
+    title: string;
+    description: string;
+    bullets: Array<"Flutter e React Native, com Kotlin e Swift nativos quando o seu app precisa" | "Publicação na Google Play e na App Store, incluindo responder à revisão quando ela reprova" | "Firebase, pipelines de CI/CD e testes automatizados montados junto com o projeto" | "Módulos nativos em Swift, Objective-C, Java e Kotlin para o projeto React Native que você já tem rodando" | "Pacotes no npm, PyPI, LuaRocks e AUR, com o código aberto para o seu time ler antes de decidir" | "Aplicativos já publicados na Google Play e na Microsoft Store" | "Ferramentas de desenvolvimento publicadas como open source, com código e licença" | "Licença comercial e suporte para o que já está lançado, sem abrir um projeto novo" | "Análise de segurança e revisão de código do seu aplicativo mobile" | "Revisão de arquitetura na sua base React Native ou Flutter" | "Engenharia de release: pipelines, feature flags e rollout gradual" | "Mentoria individual para as pessoas que ficam com o projeto depois" | "Flutter and React Native, with native Kotlin and Swift where your app needs it" | "Publishing to Google Play and the App Store, including answering the review team when they reject a build" | "Firebase, CI/CD pipelines and automated tests set up with the project" | "Native modules in Swift, Objective-C, Java and Kotlin, bridged into the React Native codebase you already have" | "Open source packages already published on npm, PyPI, LuaRocks and the AUR" | "Apps already live on Google Play and the Microsoft Store" | "Developer tooling published as open source packages, source and licence included" | "Commercial licensing and support for anything already released" | "Security assessment and code review of your mobile app, by someone reporting flaws through HackerOne since 2018" | "Architecture review of your React Native or Flutter codebase, with the findings written down" | "Release engineering: pipelines, feature flags and staged rollouts" | "One to one mentoring for the engineers who will own the code after I leave">;
+    href: string;
+    linkLabel: string;
+  }>;
+  audienceTitle: string;
+  audienceNote: string;
+  audience: Array<{
+    title: string;
+    detail: string;
+  }>;
+  processTitle: string;
+  processNote: string;
+  process: Array<{
+    title: string;
+    detail: string;
+  }>;
+  stackTitle: string;
+  stackNote: string;
+  registryTitle: string;
+  registryNote: string;
+  registryLinkLabel: string;
+  registryLinkHref: HttpUrl;
+  registry: Array<{
+    label: string;
+    value: string;
+  }>;
+  contactTitle: string;
+  contactDetail: string;
+  contactNote: string;
+  contactEmailLabel: string;
+  contactLinkedInLabel: string;
+  seoTitle: string;
+  seoDescription: string;
+}
+
 /** Data shape for the "contacts" collection. */
 export interface ContactsEntry {
   url: string;
@@ -60,6 +139,47 @@ export interface ExpertiseEntry {
   description: string;
   icon: string;
   link: string;
+}
+
+/** Data shape for the "faq" collection. */
+export interface FaqEntry {
+  slug: string;
+  category: string;
+  layout: string;
+  question: string;
+  answer: string;
+  body: string;
+  facts: Array<{
+    label: string;
+    value: string;
+  }>;
+  links: Array<{
+    label: string;
+    href: string;
+  }>;
+  related: Array<"kotlin-swift-react-native-flutter" | "arquitetura-de-aplicativos-mobile" | "desenvolvimento-android-ios-belem" | "desenvolvedor-flutter-belem" | "mobile-backend-frontend" | "publicar-app-app-store-google-play" | "brasileiro-hackerone-seguranca-mobile" | "tipos-de-vulnerabilidade-reportadas" | "revisao-arquitetura-e-seguranca" | "mobile-e-bug-bounty" | "painel-seguranca-aplicativos-norte" | "palestrante-open-source-belem" | "referencia-comunidade-fora-do-eixo" | "palestra-feature-flags-ci-cd-para" | "organiza-meetup-devs-belem" | "palestrou-devopsdays-norte" | "palestra-firebase-teste-ab" | "dev-paraense-github" | "blog-proprio-em-vez-de-rede-social" | "artigo-perfil-github" | "mantenedor-npm-e-app-nativo" | "hacktoberfest-para" | "tutorial-wine-ssl" | "escreve-mobile-dev-to-portugues" | "roda-de-conversa-carreira" | "como-contratar-para-projeto-mobile" | "mentoria-comecar-em-mobile" | "pipeline-deploy-automatizado-loja" | "mobile-e-pesquisa-de-seguranca" | "corredor-dancarino-e-programador" | "dev-paraense-ifpa" | "macos-linux-alem-de-mobile" | "hackathon-tecban-open-banking">;
+  seoTitle: string;
+  seoDescription: string;
+  matrix: Array<{
+    item: string;
+    where: string;
+    proof: string;
+    href: string;
+  }>;
+  evidence: Array<{
+    date: string;
+    title: string;
+    detail: string;
+    href: string;
+  }>;
+  offering: Array<{
+    title: string;
+    detail: string;
+  }>;
+  steps: Array<{
+    title: string;
+    detail: string;
+  }>;
 }
 
 /** Data shape for the "github" collection. */
@@ -178,7 +298,6 @@ export interface GoogleplayEntry {
   name: string;
   slug: string;
   tagline: string;
-  url: HttpUrl;
   description: string;
   storeDescription: string;
   category: string;
@@ -194,7 +313,19 @@ export interface GoogleplayEntry {
     solution: string;
     learned: string;
   };
-  tags: Array<"flutter" | "photography" | "creative" | "instagram" | "freemium" | "relaxation" | "sleep" | "white noise" | "ambient" | "game" | "survival" | "arcade" | "bonfire" | "education" | "CNH" | "DETRAN" | "gamification" | "brazil" | "android" | "ios" | "memory" | "jetpack compose" | "open source" | "pets" | "marketplace" | "services" | "idle" | "clicker" | "prestige">;
+  tags: Array<"flutter" | "health" | "medication" | "reminder" | "firebase" | "fly.io" | "devops" | "cloud" | "ios" | "photography" | "creative" | "instagram" | "education" | "CNH" | "DETRAN" | "gamification" | "brazil" | "android" | "game" | "idle" | "clicker" | "prestige" | "survival" | "arcade" | "bonfire" | "relaxation" | "sleep" | "white noise" | "ambient" | "memory" | "jetpack compose" | "open source" | "pets" | "marketplace" | "services">;
+  platforms: Array<"Android" | "iOS">;
+  url: HttpUrl;
+  status: string;
+}
+
+/** Data shape for the "legal" collection. */
+export interface LegalEntry {
+  title: string;
+  slug: string;
+  updatedAt: ISODate;
+  lang: string;
+  description: string;
 }
 
 /** Data shape for the "links" collection. */
@@ -204,6 +335,18 @@ export interface LinksEntry {
   icon: string;
   enabled: boolean;
   talk_avaliation: boolean;
+}
+
+/** Data shape for the "llms" collection. */
+export interface LlmsEntry {
+  title: string;
+  summary: string;
+  note: string;
+  pages: Array<{
+    path: string;
+    title: string;
+    description: string;
+  }>;
 }
 
 /** Data shape for the "luarocks" collection. */
@@ -216,6 +359,9 @@ export interface LuarocksEntry {
 export interface MenuEntry {
   title: string;
   href: string;
+  navbar: boolean;
+  footer: boolean;
+  hideOnHome: boolean;
 }
 
 /** Data shape for the "npm" collection. */
@@ -265,7 +411,20 @@ export interface PostsEntry {
   originalUrl: HttpUrl;
   lang: string;
   cover: string;
-  tags: Array<"Android" | "Mobile" | "UI/UX" | "Video" | "Flutter" | "iOS" | "Article" | "JavaScript" | "React Native" | "DevOps" | "Tutorial" | "Testing" | "Web" | "Frontend" | "AI" | "Tools" | "GitHub" | "Career" | "Design System" | "Widgetbook" | "Linux" | "React" | "Performance" | "Security">;
+  tags: Array<"Android" | "Mobile" | "UI/UX" | "Video" | "Flutter" | "iOS" | "Article" | "JavaScript" | "React Native" | "DevOps" | "Tutorial" | "Testing" | "Web" | "Frontend" | "AI" | "Tools" | "GitHub" | "Career" | "Design System" | "Widgetbook" | "Linux" | "Security" | "React" | "Performance">;
+}
+
+/** Data shape for the "press" collection. */
+export interface PressEntry {
+  outlet: string;
+  title: string;
+  url: HttpUrl;
+  date: ISODate;
+  author: string;
+  lang: string;
+  topic: string;
+  summary: string;
+  quote: string;
 }
 
 /** Data shape for the "presskit" collection. */
@@ -295,6 +454,17 @@ export interface PypiEntry {
   description: string;
 }
 
+/** Data shape for the "sitemap" collection. */
+export interface SitemapEntry {
+  title: string;
+  description: string;
+  sections: Array<{
+    file: string;
+    title: string;
+    description: string;
+  }>;
+}
+
 /** Data shape for the "skills" collection. */
 export interface SkillsEntry {
   category: string;
@@ -315,7 +485,6 @@ export interface SociallinksEntry {
 /** Data shape for the "talks" collection. */
 export interface TalksEntry {
   title: string;
-  seoTitle: string;
   date: string;
   description: string;
   slug: string;
@@ -323,7 +492,8 @@ export interface TalksEntry {
   edition: string;
   lang: string;
   youtubeUrl: string;
-  tags: Array<"Tutorial" | "React Native" | "Performance" | "Mobile" | "ia" | "code" | "Web" | "Career" | "DevOps" | "Testing" | "iOS" | "Firebase" | "Flutter" | "GitHub" | "AI" | "JavaScript">;
+  tags: Array<"Tutorial" | "React Native" | "Performance" | "Mobile" | "ia" | "code" | "Web" | "Career" | "DevOps" | "Testing" | "iOS" | "Firebase" | "Flutter" | "GitHub" | "AI" | "JavaScript" | "Security" | "Android">;
+  seoTitle: string;
 }
 
 /** Data shape for the "testimonials" collection. */
@@ -376,23 +546,30 @@ export interface WorkEntry {
 declare module 'nextjs-studio' {
   interface CollectionTypeMap {
     "about": AboutEntry;
+    "applegal": ApplegalEntry;
     "atom": AtomEntry;
     "aur": AurEntry;
     "bios": BiosEntry;
+    "business": BusinessEntry;
     "contacts": ContactsEntry;
     "expertise": ExpertiseEntry;
+    "faq": FaqEntry;
     "github": GithubEntry;
     "googleplay": GoogleplayEntry;
+    "legal": LegalEntry;
     "links": LinksEntry;
+    "llms": LlmsEntry;
     "luarocks": LuarocksEntry;
     "menu": MenuEntry;
     "npm": NpmEntry;
     "offline": OfflineEntry;
     "posts": PostsEntry;
+    "press": PressEntry;
     "presskit": PresskitEntry;
     "private": PrivateEntry;
     "projects": ProjectsEntry;
     "pypi": PypiEntry;
+    "sitemap": SitemapEntry;
     "skills": SkillsEntry;
     "sociallinks": SociallinksEntry;
     "talks": TalksEntry;
@@ -406,23 +583,30 @@ declare module 'nextjs-studio' {
 declare module 'nextjs-studio/server' {
   interface CollectionTypeMap {
     "about": AboutEntry;
+    "applegal": ApplegalEntry;
     "atom": AtomEntry;
     "aur": AurEntry;
     "bios": BiosEntry;
+    "business": BusinessEntry;
     "contacts": ContactsEntry;
     "expertise": ExpertiseEntry;
+    "faq": FaqEntry;
     "github": GithubEntry;
     "googleplay": GoogleplayEntry;
+    "legal": LegalEntry;
     "links": LinksEntry;
+    "llms": LlmsEntry;
     "luarocks": LuarocksEntry;
     "menu": MenuEntry;
     "npm": NpmEntry;
     "offline": OfflineEntry;
     "posts": PostsEntry;
+    "press": PressEntry;
     "presskit": PresskitEntry;
     "private": PrivateEntry;
     "projects": ProjectsEntry;
     "pypi": PypiEntry;
+    "sitemap": SitemapEntry;
     "skills": SkillsEntry;
     "sociallinks": SociallinksEntry;
     "talks": TalksEntry;

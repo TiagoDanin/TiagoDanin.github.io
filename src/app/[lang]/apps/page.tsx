@@ -70,7 +70,7 @@ export default async function AppsPage({ params }: PageProps<'/[lang]/apps'>) {
   const locale = resolveLocale((await params).lang);
   const i18n = initI18n(locale);
 
-  const apps = [...queryCollection("googleplay")];
+  const apps = [...queryCollection("googleplay").locale(locale)];
 
   return (
     <div className="min-h-screen">

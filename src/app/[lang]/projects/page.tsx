@@ -111,7 +111,7 @@ const ProjectsPage = async ({ params }: PageProps<'/[lang]/projects'>) => {
     },
     {
       title: "Google Play",
-      projects: queryCollection('googleplay').map(p => ({
+      projects: queryCollection('googleplay').locale(locale).map(p => ({
         title: p.name,
         description: p.description,
         // The only in-site link in this list; every other section points at an

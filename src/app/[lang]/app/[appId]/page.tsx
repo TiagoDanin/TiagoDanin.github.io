@@ -8,33 +8,43 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { queryCollection } from "nextjs-studio/server";
-import { localePath } from "@/lib/i18n/locales";
+import { getAppLegalApps } from "@/lib/legal";
+import { localePath, type Locale } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 
-function getApps() {
-  return [...queryCollection("googleplay")];
+function getApps(locale: Locale) {
+  return [...queryCollection("googleplay").locale(locale)];
+}
+
+/** Platform names are proper nouns; an entry without the field is Android only. */
+function platformsOf(app: { platforms?: string[] }): string[] {
+  return app.platforms?.length ? app.platforms : ["Android"];
+}
+
+/** An entry without a store link is unreleased unless it says it was pulled. */
+function wasRemoved(app: { status?: string }): boolean {
+  return app.status === "removed";
 }
 
 export const dynamicParams = false;
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  // The collection is not language-keyed: every app entry is available under
-  // every locale, so both languages get the same set of slugs.
-  resolveLocale(params.lang);
-  const apps = getApps();
-  return apps.map((app) => ({ appId: app.slug }));
+  // index.br.json keeps every slug of index.json, so both languages get the
+  // same set of pages.
+  return getApps(resolveLocale(params.lang)).map((app) => ({ appId: app.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/app/[appId]'>): Promise<Metadata> {
   const { lang, appId } = await params;
   const locale = resolveLocale(lang);
   const i18n = getI18nInstance(locale);
-  const app = getApps().find((a) => a.slug === appId);
+  const app = getApps(locale).find((a) => a.slug === appId);
 
   if (!app) {
     return { title: t(i18n)`App Not Found` };
   }
+  const platforms = platformsOf(app);
 
   return {
     title: t(i18n)`${app.name} - Android App`,
@@ -60,7 +70,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/app/[appId
           "@type": "MobileApplication",
           "name": app.name,
           "description": app.storeDescription,
-          "operatingSystem": "Android",
+          "operatingSystem": platforms.join(", "),
           "applicationCategory": app.category,
           "url": app.url ?? pageUrl(locale, `/app/${app.slug}`),
           "author": {
@@ -93,12 +103,14 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
   const locale = resolveLocale(lang);
   initI18n(locale);
 
-  const apps = getApps();
+  const apps = getApps(locale);
   const app = apps.find((a) => a.slug === appId);
 
   if (!app) {
     notFound();
   }
+
+  const hasLegal = getAppLegalApps().some((entry) => entry.app === app.slug);
 
   const otherApps = apps.filter((a) => a.slug !== appId).slice(0, 2);
 
@@ -137,9 +149,11 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
             <div className="flex-1 text-center md:text-left space-y-4">
               <div className="flex flex-wrap items-center gap-2 justify-center md:justify-start">
                 <Badge variant="outline">{app.category}</Badge>
-                <Badge variant="secondary">
-                  <Trans>Android</Trans>
-                </Badge>
+                {platformsOf(app).map((platform) => (
+                  <Badge key={platform} variant="secondary">
+                    {platform}
+                  </Badge>
+                ))}
                 {app.tags.slice(0, 2).map((tag) => (
                   <Badge key={tag} variant="secondary" className="text-xs">
                     {tag}
@@ -167,6 +181,10 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
                       <ExternalLink className="h-5 w-5 mr-2" />
                       <Trans>Download on Google Play</Trans>
                     </a>
+                  </Button>
+                ) : wasRemoved(app) ? (
+                  <Button size="lg" disabled variant="secondary">
+                    <Trans>No longer on Google Play</Trans>
                   </Button>
                 ) : (
                   <Button size="lg" disabled variant="secondary">
@@ -285,9 +303,28 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
             <Button size="lg" asChild style={{ backgroundColor: app.accentColor, color: "#fff" }}>
               <a href={app.url} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-5 w-5 mr-2" />
-                <Trans>Get it on Google Play — Free</Trans>
+                <Trans>Get it free on Google Play</Trans>
               </a>
             </Button>
+          </div>
+        </section>
+      )}
+
+      {hasLegal && (
+        <section className="px-4 pt-12">
+          <div className="container mx-auto max-w-3xl text-center">
+            <p className="text-sm text-muted-foreground">
+              <Trans>
+                What the app collects, and the rules for its paid features:{" "}
+                <Link
+                  href={localePath(locale, `/legal/${app.slug}`)}
+                  className="underline underline-offset-4 hover:text-foreground"
+                >
+                  privacy policy and terms of use
+                </Link>
+                .
+              </Trans>
+            </p>
           </div>
         </section>
       )}

@@ -202,7 +202,7 @@ export default async function PressKitPage({ params }: PageProps<'/[lang]/press-
   const pressItems = getPressItems(locale);
 
   const projectsTotal = PROJECT_COLLECTIONS.reduce(
-    (sum, key) => sum + [...queryCollection(key)].length,
+    (sum, key) => sum + [...queryCollection(key).locale(locale)].length,
     0
   );
 

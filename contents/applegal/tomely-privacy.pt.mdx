@@ -1,0 +1,89 @@
+---
+title: "Política de privacidade"
+slug: "tomely-privacy"
+app: "tomely"
+appName: "Tomely"
+kind: "privacy"
+updatedAt: "2026-09-28"
+lang: "pt"
+description: "O Tomely guarda seus remédios e doses na sua própria conta, não mostra anúncio e nunca liga seus dados de saúde às estatísticas. Isto é o que ele guarda, onde, e como apagar."
+---
+
+O Tomely é um lembrete de remédios para Android. Para lembrar de uma dose, ele precisa saber o que você toma e quando, e isso é dado de saúde. Esta página diz o que o app guarda, quem mais tem acesso e como apagar tudo.
+
+Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR te dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer coisa disso.
+
+### O que você informa ao app
+
+#### Sua conta
+
+O Tomely pede login, com e-mail e senha ou com Google. A conta guarda seu nome, seu e-mail e, se você usar Google, sua foto de perfil. Ela existe para seus remédios sobreviverem a uma troca de celular.
+
+#### Seus remédios e doses
+
+Cada remédio cadastrado guarda nome, cor, ícone, tipo, horários, dose e unidade, instruções, data de início, quantidade em estoque e quando avisar sobre o estoque. Cada dose que você confirma, pula ou adia guarda o horário previsto, o horário em que você agiu e o que escolheu. Sua sequência de dias e suas preferências de notificação, som e vibração ficam junto do perfil.
+
+Registros de remédios e doses são dados pessoais sensíveis pela LGPD. Eles são tratados com o seu consentimento, que você dá ao criar a conta e cadastrar um remédio, e que você retira apagando a conta.
+
+### O que o app coleta sozinho
+
+#### Estatísticas de uso
+
+O Google Analytics para Firebase registra as telas que você abre e alguns eventos: cadastro ou login, adicionar, editar ou excluir um remédio, confirmar uma dose, ver um alerta de estoque e concluir ou pular a apresentação inicial. Esses eventos levam o tipo de remédio e o número de horários. Nunca levam o nome do remédio, e o app deliberadamente não envia o ID da sua conta ao Analytics, então essas estatísticas não ficam ligadas à sua conta. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho. O Tomely não mostra anúncio e não usa esse ID para publicidade.
+
+#### Relatórios de falha
+
+O Firebase Crashlytics recebe um relatório quando o app trava: o erro, o modelo do aparelho, a versão do Android e o estado do app naquele momento. Antes de registrar qualquer coisa, o app remove endereços de e-mail e caminhos da conta do texto, e deixa o identificador de usuário em branco.
+
+### O que fica no seu celular
+
+Os lembretes são agendados no próprio aparelho, então tocam mesmo sem internet. O app guarda suas preferências, seu idioma, o rascunho de um remédio que você não terminou de cadastrar e as ações de dose esperando sincronizar. O Firestore também mantém uma cópia local dos seus dados para o app funcionar offline. O backup automático do Android está desligado para o Tomely.
+
+As notificações de lembrete mostram o nome do remédio, inclusive na tela de bloqueio. Se outras pessoas mexem no seu celular, dá para esconder o conteúdo das notificações nas configurações do Android.
+
+### Quem mais recebe
+
+O Tomely não tem servidor próprio. Tudo o que está acima vai para o Google, que trata os dados em meu nome:
+
+- **Firebase Authentication e Cloud Firestore** guardam sua conta, seus remédios e suas doses. As regras de segurança deixam só a sua conta, logada, ler ou gravar os seus registros.
+- **Google Analytics para Firebase** e **Firebase Crashlytics** recebem as estatísticas e os relatórios de falha descritos acima.
+- **Login com Google**, se você escolher, confirma sua identidade com a sua conta Google.
+- **Firebase Cloud Messaging** faz parte do app e pode registrar um token para o seu aparelho. Hoje o Tomely não envia mensagens push.
+
+Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
+
+Não vendo seus dados, não alugo, não compartilho com anunciante nem repasso para corretor de dados. Só os revelaria se um juiz ou uma autoridade brasileira exigisse, na forma da lei.
+
+### Para que é usado
+
+Para prestar o serviço que você pediu: manter sua conta, agendar lembretes, registrar doses, calcular histórico, sequência e previsão de estoque. As estatísticas de uso e os relatórios de falha servem para achar bugs e entender quais recursos as pessoas usam, com base no meu legítimo interesse em manter o app funcionando. Nada é usado para traçar seu perfil ou te mostrar publicidade.
+
+### Onde fica guardado
+
+O Firebase guarda os dados em servidores do Google, que podem estar fora do Brasil, inclusive nos Estados Unidos. O Google aplica a essas transferências as salvaguardas descritas nos termos de tratamento de dados dele.
+
+### Por quanto tempo
+
+Sua conta, seus remédios e seu histórico de doses existem enquanto a conta existir. Quando você apaga a conta, o app apaga o histórico de doses, os remédios e o perfil, e depois a própria conta. As estatísticas do Analytics e os relatórios de falha não ficam ligados à sua conta e são mantidos pelo prazo de retenção configurado no Firebase, depois do qual o Google os apaga.
+
+### Apagar seus dados e seus outros direitos
+
+Dentro do app: Perfil, Conta, Excluir conta. Você confirma digitando DELETE, e tudo o que está listado acima sai do Firestore e do Firebase Authentication. O app também cancela seus lembretes e limpa os dados locais.
+
+Se você não consegue mais abrir o app, escreva para TiagoDanin@outlook.com a partir do e-mail da conta e eu apago por você. Você também pode me pedir para saber quais dados existem sobre você, corrigir, receber uma cópia ou retirar o consentimento. Respondo em até 15 dias, o prazo que a LGPD dá. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
+
+### Segurança
+
+O tráfego com o Firebase é criptografado, e o acesso aos seus registros fica restrito à sua conta pelas regras de segurança. Nenhum sistema é totalmente seguro, e não posso prometer que ninguém nunca vai invadir, mas aviso você e a ANPD se um incidente puser seus dados em risco.
+
+### Crianças
+
+O Tomely é feito para adultos. Não é direcionado a crianças, e não coleto de propósito dados de menores de 18 anos. Se você acha que uma criança criou uma conta, me escreva e eu apago.
+
+### Mudanças
+
+Se esta política mudar, a data no topo muda junto. Quando a mudança afetar o que é coletado ou quem recebe, o app mostra um aviso antes de ela valer.
+
+### Contato
+
+Tiago Danin, TiagoDanin@outlook.com.

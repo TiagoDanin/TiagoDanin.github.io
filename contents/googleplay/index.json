@@ -1,81 +1,235 @@
 [
 	{
+		"name": "Tomely",
+		"slug": "tomely",
+		"tagline": "Never miss a dose.",
+		"description": "Medication reminder that rings on time, even offline, keeps a dose history and warns you before a medication runs out.",
+		"storeDescription": "Add a medication once and Tomely rings at every dose. Confirm or postpone straight from the notification, follow your day split into morning, afternoon and evening, and see a history of everything you took. It counts your pills and warns you before they run out. No ads, no subscription.",
+		"category": "Medical",
+		"icon": "💊",
+		"accentColor": "#14B8A6",
+		"features": [
+			{
+				"icon": "⏰",
+				"title": "Reminders on time",
+				"description": "An alarm at every dose, with sound and vibration. If you do not confirm, it reminds you again, and it keeps working without internet."
+			},
+			{
+				"icon": "📅",
+				"title": "Any schedule",
+				"description": "Every day, some weekdays, every X days or every X hours, several doses a day, each with its own amount and instructions."
+			},
+			{
+				"icon": "📊",
+				"title": "History and streaks",
+				"description": "Every dose logged with the time you took it, a 7-day adherence chart and a streak of days without a missed dose."
+			},
+			{
+				"icon": "📦",
+				"title": "Stock alerts",
+				"description": "Tomely counts what is left and warns you before a medication runs out, so the refill is not a surprise."
+			}
+		],
+		"buildStory": {
+			"problem": "Medication reminders are most useful to people who struggle with small text and busy screens, and most apps in the Brazilian market are built for people who already live on their phones.",
+			"solution": "A Flutter app designed for adults from 25 to 60+, with large touch targets and text, reminders scheduled on the device with exact alarms, and data synced to a Firebase account so it survives a new phone.",
+			"learned": "Health data changes every decision. The account ID never reaches Analytics or Crashlytics, logs are scrubbed before they leave the phone, and deleting the account erases everything from inside the app."
+		},
+		"tags": [
+			"flutter",
+			"health",
+			"medication",
+			"reminder",
+			"firebase"
+		]
+	},
+	{
+		"name": "FlyControl",
+		"slug": "flycontrol",
+		"tagline": "Your Fly.io apps, in your pocket.",
+		"description": "Unofficial Fly.io client to check apps and machines, read live logs, follow CPU and memory, and restart a machine from your phone.",
+		"storeDescription": "FlyControl shows at a glance which of your Fly.io apps and Machines are running, streams their logs and charts CPU, memory, network and disk. Start, stop, restart or destroy a machine from your phone. It signs in with a Fly.io token that stays in the device's encrypted storage and is sent only to Fly.io. Not affiliated with Fly.io.",
+		"category": "Tools",
+		"icon": "🎈",
+		"accentColor": "#7C3AED",
+		"platforms": [
+			"Android",
+			"iOS"
+		],
+		"features": [
+			{
+				"icon": "🖥️",
+				"title": "Apps and machines",
+				"description": "Every app with its status and regions, and each machine with filters and search."
+			},
+			{
+				"icon": "📜",
+				"title": "Live logs",
+				"description": "Logs streamed as they happen, with a level filter and one tap to copy a line."
+			},
+			{
+				"icon": "📈",
+				"title": "Metrics",
+				"description": "CPU, memory, network and disk charts from the last hour to the last 30 days."
+			},
+			{
+				"icon": "🔐",
+				"title": "Token stays on the phone",
+				"description": "Several accounts and organizations, stored in the Keystore or Keychain and sent to the Fly.io API and nowhere else."
+			}
+		],
+		"buildStory": {
+			"problem": "Checking whether a Fly.io machine was up, or reading its logs, meant opening a laptop. The web dashboard is not made for a phone.",
+			"solution": "A Flutter client for Android and iOS that talks directly to the Machines API, the GraphQL API and the Prometheus metrics endpoint, with no server and no account of its own.",
+			"learned": "Most of the work was in the API, not the UI: undocumented endpoints, rate limits and refresh intervals chosen so the app stays fresh without hammering Fly.io."
+		},
+		"tags": [
+			"flutter",
+			"fly.io",
+			"devops",
+			"cloud",
+			"ios"
+		]
+	},
+	{
 		"name": "CAM Covers",
 		"slug": "cam-covers",
 		"tagline": "Turn your photos into music album covers.",
 		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers",
-		"description": "Transform ordinary photos into professional-looking album covers, inspired by real music players like Spotify.",
-		"storeDescription": "Spotted that viral trend of turning selfies into music album covers? CAM Covers makes it instant. Pick a player template, drop in your photo, customize the title and artist name — then share straight to Instagram. No design skills required.",
+		"description": "Turns a photo into a music player screen with your own song title and artist, ready to share.",
+		"storeDescription": "Spotted the trend of turning selfies into music player covers? CAM Covers does it in a few taps. Pick a player style, choose or take a photo, crop it, type the song title and artist, and save or share the image. Everything is rendered on your phone, with no account.",
 		"category": "Photography",
 		"icon": "🎵",
 		"accentColor": "#EC4899",
 		"features": [
 			{
 				"icon": "🎨",
-				"title": "Multiple Player Templates",
-				"description": "Choose from templates inspired by real music players. Each has a distinct aesthetic — find the one that fits your vibe."
+				"title": "Six player styles",
+				"description": "Green, Red, Minimalist, Blur, Anime and Metal, each inspired by a real music player."
 			},
 			{
 				"icon": "✏️",
-				"title": "Fully Customizable",
-				"description": "Edit the song title, artist name, and decorative elements. Every detail is yours to control."
+				"title": "Your text, your colours",
+				"description": "Edit the song title, the artist and the extra line, and change the player colour."
+			},
+			{
+				"icon": "📷",
+				"title": "Gallery or camera",
+				"description": "Pick a photo or take one, then crop it to fit the cover."
 			},
 			{
 				"icon": "📤",
-				"title": "Share Instantly",
-				"description": "Export and share to Instagram, WhatsApp, or save to your gallery — all in one tap."
-			},
-			{
-				"icon": "💎",
-				"title": "Freemium Model",
-				"description": "Core features are free. Unlock premium templates and remove ads with a one-time upgrade."
+				"title": "Save and share",
+				"description": "Save to the gallery or send it through the share sheet to Instagram Stories, TikTok or WhatsApp."
 			}
 		],
 		"buildStory": {
-			"problem": "I tried to create an album cover montage manually on Instagram and it took forever — stickers, manual cropping, multiple apps. There had to be a faster way.",
-			"solution": "An app that uses Flutter's own rendering system as the editing canvas. RenderRepaintBoundary captures the live UI as a high-res image. No complex image manipulation library needed — Flutter itself became the editor.",
+			"problem": "I tried to create an album cover montage manually on Instagram and it took forever: stickers, manual cropping, several apps. There had to be a faster way.",
+			"solution": "An app that uses Flutter's own rendering system as the editing canvas. RenderRepaintBoundary captures the live UI as a high-resolution image, so no image manipulation library was needed. Flutter itself became the editor.",
 			"learned": "AI-assisted template creation cut 8 hours of design work to under 1 hour. I used Claude 3.5 via Cursor to generate 4 templates from 2 existing ones. The lesson: think about what parts of your product can be accelerated with AI before writing them from scratch."
 		},
-		"tags": ["flutter", "photography", "creative", "instagram", "freemium"]
+		"tags": [
+			"flutter",
+			"photography",
+			"creative",
+			"instagram"
+		]
 	},
 	{
-		"name": "Virtual Pocket Air Conditioning",
-		"slug": "virtual-pocket-air-conditioning",
-		"tagline": "Better sleep starts with the right sound.",
-		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning",
-		"description": "Virtual air conditioning in your pocket — a relaxing sound that helps you sleep better at night.",
-		"storeDescription": "Struggling to fall asleep? Virtual Pocket Air Conditioning turns your phone into a white noise machine — playing the calming, continuous hum of an air conditioner so you can drift off faster and sleep deeper. Created as a fun project to study animations in Flutter.",
-		"category": "Health & Fitness",
-		"icon": "❄️",
-		"accentColor": "#3B82F6",
+		"name": "Direção Fácil",
+		"slug": "direcao-facil",
+		"tagline": "Pass your CNH exam. 5 minutes a day.",
+		"url": "https://play.google.com/store/apps/details?id=com.direcaofacil",
+		"description": "Gamified app to help Brazilians pass the CNH theory exam with short lessons and DETRAN-style quizzes.",
+		"storeDescription": "Direção Fácil is a Duolingo-style app for the theory exam of the Brazilian driver's license (CNH). Study traffic law, road signs, defensive driving and first aid in short lessons, then test yourself with DETRAN-style questions based on the traffic code. Not affiliated with DETRAN or SENATRAN.",
+		"category": "Education",
+		"icon": "🚗",
+		"accentColor": "#F59E0B",
 		"features": [
 			{
-				"icon": "🎵",
-				"title": "Realistic AC Sound",
-				"description": "High-quality audio loop that mimics a real air conditioner — no distracting cuts or loops."
+				"icon": "📚",
+				"title": "Themed trails",
+				"description": "Legislation, road signs, defensive driving, first aid, basic mechanics, and infractions and penalties."
 			},
 			{
-				"icon": "🌙",
-				"title": "Sleep-Optimized",
-				"description": "Continuous playback designed to mask background noise and help your brain wind down."
+				"icon": "📝",
+				"title": "Quizzes with explanations",
+				"description": "Multiple-choice questions in the exam format, with the reason behind every answer."
 			},
 			{
-				"icon": "🔋",
-				"title": "Battery Friendly",
-				"description": "Lightweight and optimized so it won't drain your battery overnight."
+				"icon": "🏆",
+				"title": "Gamified progress",
+				"description": "XP, levels, streaks, daily quests and achievements, plus a weekly heat map of your study days."
 			},
 			{
-				"icon": "📱",
-				"title": "Simple & Distraction-Free",
-				"description": "One tap to start. No ads, no unnecessary permissions, no friction."
+				"icon": "❤️",
+				"title": "Lives",
+				"description": "Up to five lives that refill over time. Watch an ad for one more, or go Premium for unlimited lives."
 			}
 		],
 		"buildStory": {
-			"problem": "I couldn't sleep without background noise. Air conditioning units are expensive and not always available — so I built a virtual one.",
-			"solution": "A dead-simple Flutter app that plays a looped AC ambient sound. The project also served as a sandbox for experimenting with animations in Flutter.",
-			"learned": "The apps users keep are the ones that do one thing extremely well. No feature creep needed."
+			"problem": "Studying for the CNH theoretical exam in Brazil is boring, dense, and most people fail on the first try because the study materials are awful.",
+			"solution": "A gamified study app modeled after Duolingo: short lessons, quizzes and trails covering the topics of the official exam.",
+			"learned": "Gamification only works when the core learning loop is solid. Points and levels are motivators, not substitutes for well-structured content."
 		},
-		"tags": ["flutter", "relaxation", "sleep", "white noise", "ambient"]
+		"tags": [
+			"education",
+			"CNH",
+			"DETRAN",
+			"gamification",
+			"brazil",
+			"android"
+		]
+	},
+	{
+		"name": "Idle Elevator",
+		"slug": "idle-elevator",
+		"tagline": "How high can your elevator go?",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.idle_elevator",
+		"description": "Idle clicker game where you manage an elevator that never stops climbing. Upgrade attributes, collect coins, and unlock prestige bonuses.",
+		"storeDescription": "Idle Elevator is an idle clicker game where you manage an elevator that climbs endlessly. Tap to earn extra coins while the elevator rises automatically, pick up passengers for a 3x income bonus, chain combos to multiply earnings, and hit BOOST to accelerate the elevator by 5x. Invest in Speed, Capacity and Profit upgrades, buying in bulk with 10x, 100x or MAX. Reach enough floors to unlock prestige and restart with permanent income bonuses. Your elevator keeps earning offline for up to 4 hours.",
+		"category": "Games",
+		"icon": "🛗",
+		"accentColor": "#6366F1",
+		"features": [
+			{
+				"icon": "🛗",
+				"title": "Endless Climb",
+				"description": "The elevator rises automatically. Tap the building for extra coins and pick up passengers for a 3x income bonus."
+			},
+			{
+				"icon": "⚡",
+				"title": "Combos & Boost",
+				"description": "Chain combos to multiply your earnings and activate BOOST to accelerate the elevator by 5x."
+			},
+			{
+				"icon": "📈",
+				"title": "Three Upgrade Paths",
+				"description": "Invest in Speed, Capacity and Profit. Buy upgrades individually or in bulk with 10x, 100x or MAX."
+			},
+			{
+				"icon": "🏆",
+				"title": "Prestige System",
+				"description": "Reach enough floors to unlock prestige and restart with permanent income bonuses that compound run after run."
+			},
+			{
+				"icon": "💤",
+				"title": "Offline Earnings",
+				"description": "Your elevator keeps working for up to 4 hours while the app is closed. Collect the coins when you return, and double them."
+			}
+		],
+		"buildStory": {
+			"problem": "I wanted to explore the idle/incremental genre, games where progression keeps happening even when the player isn't actively playing, and ship a polished version of one.",
+			"solution": "An elevator-themed idle clicker with three upgrade trees, a prestige loop, and offline earnings. The elevator metaphor maps naturally to vertical progression, which makes the core loop intuitive on first open.",
+			"learned": "Idle games live or die by their numbers. Tuning the cost curves and prestige multipliers took longer than building the entire UI: the game has to feel rewarding at minute 1 and still be motivating at hour 10."
+		},
+		"tags": [
+			"game",
+			"idle",
+			"clicker",
+			"android",
+			"prestige"
+		]
 	},
 	{
 		"name": "The Slime Dungeon",
@@ -83,7 +237,7 @@
 		"tagline": "Surrounded by adorable danger. How long can you last?",
 		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.the_slime_dungeon",
 		"description": "Survive in a dungeon full of slimes! You are stuck with adorable creatures. How long can you survive?",
-		"storeDescription": "You wake up trapped in a dungeon filled with slimes — cute, relentless, and closing in. Dodge, survive, and see how long your reflexes hold. A fast-paced survival game built with Flutter and the Bonfire game engine.",
+		"storeDescription": "You wake up trapped in a dungeon filled with slimes: cute, relentless and closing in. Move with the joystick, aim your fireballs and keep an eye on your stamina. Open chests for potions, survive the growing waves and put your score on the Google Play Games leaderboard. Built with Flutter and the Bonfire game engine.",
 		"category": "Games",
 		"icon": "🟢",
 		"accentColor": "#10B981",
@@ -91,76 +245,88 @@
 			{
 				"icon": "🎮",
 				"title": "Survival Gameplay",
-				"description": "Classic arcade survival loop — stay alive as long as possible against increasingly aggressive slimes."
-			},
-			{
-				"icon": "🐛",
-				"title": "Adorable Enemies",
-				"description": "Slimes are cute. They're also relentless. The contrast makes losing feel almost okay."
-			},
-			{
-				"icon": "⚡",
-				"title": "Fast Sessions",
-				"description": "Each run takes seconds to start and minutes to master. Perfect for short breaks."
+				"description": "Waves of slimes that keep growing. Big slimes are worth 5 points, small ones 3. Stay alive as long as you can."
 			},
 			{
 				"icon": "🔥",
-				"title": "Built with Bonfire",
-				"description": "Powered by the Bonfire game engine on top of Flutter — smooth performance on Android."
-			}
-		],
-		"buildStory": {
-			"problem": "I wanted to build a mobile game that was genuinely fun to play — not just a tutorial project I'd never open again.",
-			"solution": "A survival dungeon game with a single twist: the enemies are cute slimes. Used Flutter with the Bonfire engine, which gave me RPG-style game mechanics without writing a full engine from scratch.",
-			"learned": "Game feel matters more than graphics. Getting the movement and hit detection right took longer than building the entire visual layer. Bonfire made the RPG primitives easy — the hard part was tuning the difficulty curve."
-		},
-		"tags": ["flutter", "game", "survival", "arcade", "bonfire"]
-	},
-	{
-		"name": "Direção Fácil",
-		"slug": "direcao-facil",
-		"tagline": "Pass your CNH exam. 5 minutes a day.",
-		"url": "https://play.google.com/store/apps/details?id=com.direcaofacil",
-		"description": "Gamified app to help Brazilians pass the CNH theoretical driving exam through short lessons and interactive quizzes.",
-		"storeDescription": "Direção Fácil is a Duolingo-style app for studying the Brazilian driver's license (CNH) theoretical exam. Study traffic laws, signaling, and defensive driving in 5-minute lessons, then test yourself with realistic practice exams that mirror the official DETRAN format.",
-		"category": "Education",
-		"icon": "🚗",
-		"accentColor": "#F59E0B",
-		"features": [
-			{
-				"icon": "📚",
-				"title": "9 Official DETRAN Modules",
-				"description": "All content mapped to official exam topics: legislation, signaling, defensive driving, first aid, mechanics, and more."
+				"title": "Fireballs and stamina",
+				"description": "Aim with the joystick and fire, but every shot costs stamina."
 			},
 			{
-				"icon": "⏱️",
-				"title": "5-Minute Lessons",
-				"description": "Short, focused sessions designed to fit into your day — no hour-long study marathons required."
+				"icon": "🧪",
+				"title": "Chests and potions",
+				"description": "Red restores life, blue gives a temporary shield, green is poison."
 			},
 			{
 				"icon": "🏆",
-				"title": "Gamified Progress",
-				"description": "Points, levels, and achievements keep you coming back — the same loop that makes Duolingo addictive."
-			},
-			{
-				"icon": "📝",
-				"title": "Realistic Practice Exams",
-				"description": "Simulados that match the official DETRAN test format so there are no surprises on exam day."
+				"title": "Leaderboard",
+				"description": "Sign in with Google Play Games, if you want, to compare your best run with other players."
 			}
 		],
 		"buildStory": {
-			"problem": "Studying for the CNH theoretical exam in Brazil is boring, dense, and most people fail on the first try because the study materials are awful.",
-			"solution": "A gamified study app modeled after Duolingo — short lessons, adaptive quizzes, and realistic simulados covering all 9 official DETRAN modules.",
-			"learned": "Gamification only works when the core learning loop is solid. Points and levels are motivators, not substitutes for well-structured content."
+			"problem": "I wanted to build a mobile game that was genuinely fun to play, not just a tutorial project I'd never open again.",
+			"solution": "A survival dungeon game with a single twist: the enemies are cute slimes. Used Flutter with the Bonfire engine, which gave me RPG-style game mechanics without writing a full engine from scratch.",
+			"learned": "Game feel matters more than graphics. Getting the movement and hit detection right took longer than building the entire visual layer. Bonfire made the RPG primitives easy; the hard part was tuning the difficulty curve."
 		},
-		"tags": ["education", "CNH", "DETRAN", "gamification", "brazil", "android", "ios"]
+		"tags": [
+			"flutter",
+			"game",
+			"survival",
+			"arcade",
+			"bonfire"
+		]
+	},
+	{
+		"name": "Virtual Pocket Air Conditioning",
+		"slug": "virtual-pocket-air-conditioning",
+		"tagline": "An air conditioner hum, in your pocket.",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning",
+		"description": "A virtual air conditioner in your pocket: one button, a wind animation and the continuous hum of an AC unit.",
+		"storeDescription": "Virtual Pocket Air Conditioning turns your phone into a pretend air conditioner. Press the power button and the hum of an AC unit fades in, with cool air waves on screen. It does not cool anything, but plenty of people sleep better with that sound in the background. Built as a fun project to study animations in Flutter.",
+		"category": "Health & Fitness",
+		"icon": "❄️",
+		"accentColor": "#3B82F6",
+		"features": [
+			{
+				"icon": "🎵",
+				"title": "AC sound",
+				"description": "A looped air conditioner hum that fades in when you turn it on and fades out when you turn it off."
+			},
+			{
+				"icon": "🌬️",
+				"title": "Wind animation",
+				"description": "The AC pulses and cool air waves drift across the screen while it runs."
+			},
+			{
+				"icon": "🔘",
+				"title": "One button",
+				"description": "Power on, power off. Nothing else to configure."
+			},
+			{
+				"icon": "🔒",
+				"title": "Nothing collected",
+				"description": "No ads, no account, no internet access. The only permission keeps the sound playing."
+			}
+		],
+		"buildStory": {
+			"problem": "I couldn't sleep without background noise. Air conditioning units are expensive and not always available, so I built a virtual one.",
+			"solution": "A small Flutter app that plays a looped AC ambient sound. The project also served as a sandbox for experimenting with animations in Flutter.",
+			"learned": "The apps users keep are the ones that do one thing extremely well. No feature creep needed."
+		},
+		"tags": [
+			"flutter",
+			"relaxation",
+			"sleep",
+			"white noise",
+			"ambient"
+		]
 	},
 	{
 		"name": "Emoji Memory Jetpack",
 		"slug": "emoji-memory-jetpack",
 		"tagline": "Train your brain. Match your emojis.",
 		"description": "Match similar emojis. Memory game open-source, built with Android Jetpack Compose.",
-		"storeDescription": "A fun and colorful memory card game built entirely with Jetpack Compose. Flip cards, find matching emoji pairs, and challenge your brain — all in a smooth, modern Android UI.",
+		"storeDescription": "A colourful memory card game built entirely with Jetpack Compose. Flip cards, find the six matching emoji pairs and play again. The cards flip in 3D and shine as you tilt the phone. No longer on Google Play; the source code is on GitHub.",
 		"category": "Games",
 		"icon": "🧠",
 		"accentColor": "#EF4444",
@@ -168,37 +334,44 @@
 			{
 				"icon": "😀",
 				"title": "Emoji Cards",
-				"description": "Vibrant emoji pairs that make the game visually engaging and universally accessible."
+				"description": "Six emoji pairs on a four-column board, reshuffled with one tap."
 			},
 			{
 				"icon": "⚡",
 				"title": "Jetpack Compose",
-				"description": "Built entirely with Jetpack Compose — smooth animations, declarative UI, modern Android."
+				"description": "Built entirely with Jetpack Compose: declarative UI and 3D flip animations."
+			},
+			{
+				"icon": "✨",
+				"title": "Holographic tilt",
+				"description": "A sheen on the cards follows the phone's tilt, read from the accelerometer."
 			},
 			{
 				"icon": "🔓",
 				"title": "Open Source",
-				"description": "Full source code available. Learn how a real Android game is built with Compose."
-			},
-			{
-				"icon": "🏆",
-				"title": "Progressive Difficulty",
-				"description": "Board sizes grow as you improve, keeping the challenge fresh every session."
+				"description": "Full source code under the MIT licence. Learn how a small Android game is built with Compose."
 			}
 		],
 		"buildStory": {
-			"problem": "I wanted to practice MVVM architecture and Jetpack Compose with a real, shipped project — not just a tutorial exercise.",
+			"problem": "I wanted to practice MVVM architecture and Jetpack Compose with a real, shipped project, not just a tutorial exercise.",
 			"solution": "A memory card game inspired by iagocavalcante/memorize, rebuilt from scratch in Kotlin with Jetpack Compose and a clean MVVM structure.",
-			"learned": "Managing game state through a ViewModel feels different from regular UI state — the ViewModel becomes the game engine, not just a data holder."
+			"learned": "Managing game state through a ViewModel feels different from regular UI state: the ViewModel becomes the game engine, not just a data holder."
 		},
-		"tags": ["game", "memory", "jetpack compose", "open source", "android"]
+		"tags": [
+			"game",
+			"memory",
+			"jetpack compose",
+			"open source",
+			"android"
+		],
+		"status": "removed"
 	},
 	{
 		"name": "Petmob",
 		"slug": "petmob",
 		"tagline": "Find the best care for your pet.",
 		"description": "Find the best pet care provider near you, or register as a service provider and earn extra income.",
-		"storeDescription": "Petmob connects pet owners with the best service providers in their area — grooming, vet visits, boarding, walks and more. Love animals? Register as a provider and start earning on your own schedule.",
+		"storeDescription": "Petmob connects pet owners with service providers in their area: grooming, vet visits, boarding, walks and more. Love animals? Register as a provider and start earning on your own schedule.",
 		"category": "Lifestyle",
 		"icon": "🐾",
 		"accentColor": "#8B5CF6",
@@ -229,50 +402,12 @@
 			"solution": "A pet services marketplace connecting owners and providers with ratings, scheduling, and integrated payments.",
 			"learned": "The biggest challenge in local services marketplaces is the bootstrap problem: the app only has value when there's density on both sides."
 		},
-		"tags": ["pets", "marketplace", "services", "android", "brazil"]
-	},
-	{
-		"name": "Idle Elevator",
-		"slug": "idle-elevator",
-		"tagline": "How high can your elevator go?",
-		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.idle_elevator",
-		"description": "Idle clicker game where you manage an elevator that never stops climbing. Upgrade attributes, collect coins, and unlock prestige bonuses.",
-		"storeDescription": "Idle Elevator is an idle clicker game where you manage an elevator that climbs endlessly. Tap to earn extra coins while the elevator rises automatically, pick up passengers for a 3x income bonus, chain combos to multiply earnings, and hit BOOST to accelerate the elevator by 5x. Invest in Speed, Capacity, and Profit upgrades — buy in bulk with 10x, 100x, or MAX. Reach enough floors to unlock prestige and restart with permanent income bonuses. Your elevator keeps earning offline, too.",
-		"category": "Games",
-		"icon": "🛗",
-		"accentColor": "#6366F1",
-		"features": [
-			{
-				"icon": "🛗",
-				"title": "Endless Climb",
-				"description": "The elevator rises automatically — tap the building for extra coins and pick up passengers for a 3x income bonus."
-			},
-			{
-				"icon": "⚡",
-				"title": "Combos & Boost",
-				"description": "Chain combos to multiply your earnings and activate BOOST to accelerate the elevator by 5x."
-			},
-			{
-				"icon": "📈",
-				"title": "Three Upgrade Paths",
-				"description": "Invest in Speed, Capacity, and Profit. Buy upgrades individually or in bulk with 10x, 100x, or MAX."
-			},
-			{
-				"icon": "🏆",
-				"title": "Prestige System",
-				"description": "Reach enough floors to unlock prestige and restart with permanent income bonuses that compound run after run."
-			},
-			{
-				"icon": "💤",
-				"title": "Offline Earnings",
-				"description": "Your elevator keeps working when the app is closed. Collect accumulated coins on return — or watch an ad to double them."
-			}
-		],
-		"buildStory": {
-			"problem": "I wanted to explore the idle/incremental genre — games where progression keeps happening even when the player isn't actively playing — and ship a polished version of one.",
-			"solution": "An elevator-themed idle clicker with three upgrade trees, a prestige loop, and offline earnings. The elevator metaphor maps naturally to vertical progression, which makes the core loop intuitive on first open.",
-			"learned": "Idle games live or die by their numbers. Tuning the cost curves and prestige multipliers took longer than building the entire UI — the game has to feel rewarding at minute 1 and still be motivating at hour 10."
-		},
-		"tags": ["game", "idle", "clicker", "android", "prestige"]
+		"tags": [
+			"pets",
+			"marketplace",
+			"services",
+			"android",
+			"brazil"
+		]
 	}
 ]

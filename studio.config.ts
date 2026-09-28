@@ -196,6 +196,38 @@ const config: StudioConfig = {
         ],
       },
     },
+    /**
+     * Privacy policy and terms of use of each app, rendered on /legal/[app].
+     * Two MDX files per app and per language (`tomely-privacy.mdx`,
+     * `tomely-terms.pt.mdx`). The route list comes from the `app` field, so an
+     * app that is not on /apps yet (Scoreboard) can still have its documents.
+     */
+    applegal: {
+      schema: {
+        collection: "applegal",
+        label: "App Privacy and Terms (/legal/[app])",
+        fields: [
+          { name: "title", type: "text", required: true },
+          { name: "slug", type: "text", required: true },
+          { name: "app", type: "text", required: true },
+          { name: "appName", type: "text", required: true },
+          {
+            name: "kind",
+            type: "select",
+            required: true,
+            options: [opt("privacy"), opt("terms")],
+          },
+          { name: "updatedAt", type: "date", includeDay: true, required: true },
+          {
+            name: "lang",
+            type: "select",
+            required: true,
+            options: [opt("en"), opt("pt")],
+          },
+          { name: "description", type: "long-text", required: true },
+        ],
+      },
+    },
     bios: {
       schema: {
         collection: "bios",

@@ -11,6 +11,7 @@
  */
 import { queryCollection } from 'nextjs-studio/server';
 
+import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/locales';
 import { titleToSlug } from '@/utils/parse';
 
 export type LicenseInfo = {
@@ -62,12 +63,18 @@ export const PROJECT_TYPES = [
 export type ProjectType = (typeof PROJECT_TYPES)[number];
 
 /**
- * This map has no locale variant: the ten project collections carry no
- * index.br.json, so the catalogue is the same list for every language.
+ * Every collection is read through `.locale()`. Only `googleplay` carries an
+ * `index.br.json` today, and without the filter it would list each app twice;
+ * the others hold just the default-locale file, so the filter is a no-op there.
+ * Slugs come from `name`, which the translation keeps, so both languages get
+ * the same type/slug pairs.
  */
-export function getProjectsMap(): Record<string, GenericProject[]> {
+export function getProjectsMap(locale: Locale = DEFAULT_LOCALE): Record<string, GenericProject[]> {
   return Object.fromEntries(
-    PROJECT_TYPES.map((type) => [type, queryCollection(type) as unknown as GenericProject[]])
+    PROJECT_TYPES.map((type) => [
+      type,
+      [...queryCollection(type).locale(locale)] as unknown as GenericProject[],
+    ])
   ) as Record<string, GenericProject[]>;
 }
 

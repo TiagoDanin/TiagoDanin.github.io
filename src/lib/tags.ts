@@ -127,7 +127,7 @@ function timelineItems(locale: Locale): TaggedItem[] {
 }
 
 function projectItems(locale: Locale): TaggedItem[] {
-  const map = getProjectsMap();
+  const map = getProjectsMap(locale);
   const items: TaggedItem[] = [];
 
   for (const type of PROJECT_TYPES) {

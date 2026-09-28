@@ -1,0 +1,95 @@
+---
+title: "Política de privacidade"
+slug: "cam-covers-privacy"
+app: "cam-covers"
+appName: "CAM Covers"
+kind: "privacy"
+updatedAt: "2026-09-28"
+lang: "pt"
+description: "O CAM Covers não tem conta e nunca envia sua foto. Ele mostra anúncios e manda estatísticas de uso ao Google. Isto é o que vai para quem, e como limitar."
+---
+
+O CAM Covers transforma uma foto em uma tela de player de música "tocando agora", que você salva e compartilha. A foto não sai do seu celular, a não ser que você mesmo compartilhe. O que sai são estatísticas de uso, relatórios de falha e o que a rede de anúncios do Google precisa para mostrar anúncios. Esta página explica cada um.
+
+Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR te dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer coisa disso.
+
+### O que você informa ao app
+
+#### Sua foto
+
+Você escolhe uma foto da galeria ou tira uma com a câmera. As duas coisas passam pelo seletor e pela câmera do próprio Android, então o app não precisa de permissão de câmera nem de armazenamento. A foto é recortada e desenhada no modelo dentro do celular. A imagem pronta é gravada no armazenamento do próprio app como cam-covers.png e salva em um álbum "CAM Covers" na sua galeria. Ela nunca é enviada para mim nem para servidor nenhum.
+
+#### O texto da capa
+
+O título da música, o artista e a linha extra que você digita ficam dentro da imagem. Não são enviados para lugar nenhum.
+
+Quando você compartilha, a imagem passa pelo menu de compartilhamento do Android e vai para o app que você escolher, como Instagram ou WhatsApp. A partir daí vale a política de privacidade desse app.
+
+### O que o app coleta sozinho
+
+#### Estatísticas de uso
+
+O Google Analytics para Firebase registra eventos como abrir o app, escolher um estilo, abrir o editor, chegar à tela de compartilhamento, escolher onde compartilhar, abrir a tela Sobre e tocar em Premium. O app não cria conta nem envia ID de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho.
+
+#### Contador de estilos
+
+Quando você toca em um estilo, o app soma um ao contador desse estilo no Cloud Firestore. O contador é um número por estilo. Ele não diz nada sobre quem tocou.
+
+#### Relatórios de falha
+
+O Firebase Crashlytics recebe um relatório quando o app trava: o erro, o modelo do aparelho, a versão do Android e o estado do app naquele momento.
+
+#### Anúncios
+
+O CAM Covers mostra um banner na tela inicial e um anúncio de tela cheia depois que você salva uma imagem. Quem entrega é o Google AdMob. Para escolher e medir anúncios, o AdMob usa o ID de publicidade, seu endereço IP, o modelo do aparelho e como você interage com os anúncios, e pode mostrar anúncios com base nos seus interesses. Dá para redefinir ou excluir o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns aparelhos, Google, Anúncios). Excluir o ID acaba com os anúncios personalizados no aparelho inteiro.
+
+### O que fica no seu celular
+
+As imagens prontas e duas marcações que o app guarda sobre anúncios e Premium. Desinstalar o app apaga as marcações. As imagens que você salvou na galeria ficam lá até você apagar.
+
+### Quem mais recebe
+
+O app não tem servidor próprio. O que ele envia vai para o Google:
+
+- **Google AdMob** recebe o que precisa para mostrar anúncios, como descrito acima.
+- **Google Analytics para Firebase** e **Firebase Crashlytics** recebem as estatísticas e os relatórios de falha.
+- **Cloud Firestore** entrega a lista de estilos e guarda os contadores.
+- **Firebase Remote Config** me deixa ligar ou desligar recursos, como os anúncios, sem atualizar o app. Ele recebe a versão do app e as informações do aparelho necessárias para responder.
+
+Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy), [como o Google usa informações de apps que usam seus serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
+
+A tela Sobre carrega meu avatar do GitHub e tem links para o meu GitHub e o meu Instagram. A opção de feedback abre seu app de e-mail endereçado a TiagoDanin@outlook.com; nada é enviado até você apertar enviar.
+
+Não vendo seus dados nem repasso para corretor de dados. Só os revelaria se um juiz ou uma autoridade brasileira exigisse, na forma da lei.
+
+### Para que é usado
+
+Os anúncios pagam o app, e se apoiam no meu legítimo interesse e nas escolhas que você faz nas configurações de anúncios do Android. As estatísticas, os contadores e os relatórios de falha servem para achar bugs e ver quais estilos as pessoas usam, com base no meu legítimo interesse em manter o app funcionando.
+
+### Onde fica guardado
+
+O Google guarda esses dados em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. O Google aplica a essas transferências as salvaguardas descritas nos termos de tratamento de dados dele.
+
+### Por quanto tempo
+
+As estatísticas do Analytics e os relatórios de falha ficam guardados pelo prazo de retenção configurado no Firebase, depois o Google apaga. O AdMob guarda os dados dele pela política do próprio Google. Os contadores de estilo ficam enquanto o estilo existir.
+
+### Seus direitos
+
+Como não existe conta, nada do meu lado liga os dados ao seu nome. Mesmo assim, você pode me perguntar o que existe, pedir exclusão ou se opor ao tratamento em TiagoDanin@outlook.com, e respondo em até 15 dias, o prazo que a LGPD dá. Redefinir o ID de publicidade e desinstalar o app cortam a ligação entre os dados novos e o seu aparelho. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
+
+### Segurança
+
+O tráfego com os serviços do Google é criptografado. Nenhum sistema é totalmente seguro, mas suas fotos nem chegam a estar em um servidor.
+
+### Crianças
+
+O CAM Covers não é direcionado a crianças, e não coleto de propósito dados de menores de 13 anos. Se você acha que dados de uma criança chegaram ao app, me escreva.
+
+### Mudanças
+
+Se esta política mudar, a data no topo muda junto. Quando a mudança afetar o que é coletado ou quem recebe, o app mostra um aviso antes de ela valer.
+
+### Contato
+
+Tiago Danin, TiagoDanin@outlook.com.

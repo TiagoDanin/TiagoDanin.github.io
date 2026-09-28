@@ -167,7 +167,7 @@ module.exports = {
     } else if (urlPath === '/business') {
       priority = 0.9;
       changefreq = 'monthly';
-    } else if (urlPath === '/legal') {
+    } else if (urlPath === '/legal' || urlPath.startsWith('/legal/')) {
       priority = 0.3;
       changefreq = 'yearly';
     } else if (urlPath === '/faq') {

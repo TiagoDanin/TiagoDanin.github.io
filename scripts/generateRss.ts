@@ -166,7 +166,7 @@ function buildProjectsFeed(locale: Locale) {
   const feed = newFeed('projects', locale, copy.title, copy.description);
 
   const projects = PROJECT_COLLECTIONS.flatMap(
-    (name) => [...queryCollection(name)] as unknown as Project[]
+    (name) => [...queryCollection(name).locale(locale)] as unknown as Project[]
   );
 
   let count = 0;

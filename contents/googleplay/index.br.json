@@ -1,0 +1,413 @@
+[
+	{
+		"name": "Tomely",
+		"slug": "tomely",
+		"tagline": "Nunca mais esqueça uma dose.",
+		"description": "Lembrete de remédios que toca na hora certa, mesmo sem internet, guarda o histórico de doses e avisa antes de o remédio acabar.",
+		"storeDescription": "Cadastre o remédio uma vez e o Tomely toca em cada dose. Confirme ou adie direto pela notificação, acompanhe o dia dividido em manhã, tarde e noite e veja o histórico de tudo o que você tomou. Ele conta os comprimidos e avisa antes de acabarem. Sem anúncio e sem assinatura.",
+		"category": "Medicina",
+		"icon": "💊",
+		"accentColor": "#14B8A6",
+		"features": [
+			{
+				"icon": "⏰",
+				"title": "Lembrete na hora certa",
+				"description": "Alarme em cada dose, com som e vibração. Se você não confirmar, ele lembra de novo, e funciona sem internet."
+			},
+			{
+				"icon": "📅",
+				"title": "Qualquer horário",
+				"description": "Todo dia, alguns dias da semana, a cada X dias ou a cada X horas, várias doses por dia, cada uma com sua quantidade e instrução."
+			},
+			{
+				"icon": "📊",
+				"title": "Histórico e sequência",
+				"description": "Cada dose registrada com o horário em que você tomou, gráfico de adesão dos últimos 7 dias e sequência de dias sem esquecer."
+			},
+			{
+				"icon": "📦",
+				"title": "Aviso de estoque",
+				"description": "O Tomely conta o que sobrou e avisa antes de o remédio acabar, para a recompra não pegar você de surpresa."
+			}
+		],
+		"buildStory": {
+			"problem": "Lembrete de remédio é mais útil justamente para quem tem dificuldade com letra pequena e tela cheia de coisa, e a maioria dos apps do mercado brasileiro é feita para quem já vive no celular.",
+			"solution": "Um app Flutter pensado para adultos de 25 a 60+, com botões e textos grandes, lembretes agendados no próprio aparelho com alarme exato e dados sincronizados numa conta Firebase para sobreviver à troca de celular.",
+			"learned": "Dado de saúde muda cada decisão. O ID da conta nunca chega ao Analytics nem ao Crashlytics, os logs são limpos antes de sair do celular e apagar a conta apaga tudo, de dentro do app."
+		},
+		"tags": [
+			"flutter",
+			"health",
+			"medication",
+			"reminder",
+			"firebase"
+		]
+	},
+	{
+		"name": "FlyControl",
+		"slug": "flycontrol",
+		"tagline": "Seus apps do Fly.io no bolso.",
+		"description": "Cliente não oficial do Fly.io para ver apps e máquinas, ler logs ao vivo, acompanhar CPU e memória e reiniciar uma máquina pelo celular.",
+		"storeDescription": "O FlyControl mostra num relance quais apps e Machines do Fly.io estão rodando, transmite os logs e desenha gráficos de CPU, memória, rede e disco. Ligue, desligue, reinicie ou destrua uma máquina pelo celular. O login é com um token do Fly.io, que fica no armazenamento criptografado do aparelho e só é enviado ao Fly.io. Não é afiliado ao Fly.io.",
+		"category": "Ferramentas",
+		"icon": "🎈",
+		"accentColor": "#7C3AED",
+		"platforms": [
+			"Android",
+			"iOS"
+		],
+		"features": [
+			{
+				"icon": "🖥️",
+				"title": "Apps e máquinas",
+				"description": "Cada app com status e regiões, e cada máquina com filtros e busca."
+			},
+			{
+				"icon": "📜",
+				"title": "Logs ao vivo",
+				"description": "Logs chegando na hora, com filtro de nível e um toque para copiar a linha."
+			},
+			{
+				"icon": "📈",
+				"title": "Métricas",
+				"description": "Gráficos de CPU, memória, rede e disco da última hora até os últimos 30 dias."
+			},
+			{
+				"icon": "🔐",
+				"title": "O token fica no celular",
+				"description": "Várias contas e organizações, guardadas no Keystore ou no Keychain e enviadas só para a API do Fly.io."
+			}
+		],
+		"buildStory": {
+			"problem": "Ver se uma máquina do Fly.io estava de pé, ou ler os logs dela, exigia abrir o notebook. O painel web não foi feito para celular.",
+			"solution": "Um cliente Flutter para Android e iOS que fala direto com a Machines API, com a API GraphQL e com o endpoint de métricas Prometheus, sem servidor e sem conta própria.",
+			"learned": "A maior parte do trabalho foi na API, não na interface: endpoints sem documentação, limites de requisição e intervalos de atualização escolhidos para o app ficar em dia sem martelar o Fly.io."
+		},
+		"tags": [
+			"flutter",
+			"fly.io",
+			"devops",
+			"cloud",
+			"ios"
+		]
+	},
+	{
+		"name": "CAM Covers",
+		"slug": "cam-covers",
+		"tagline": "Transforme suas fotos em capas de música.",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers",
+		"description": "Transforma uma foto numa tela de player de música, com o título e o artista que você quiser, pronta para compartilhar.",
+		"storeDescription": "Viu a trend de transformar selfie em capa de player de música? O CAM Covers faz isso em poucos toques. Escolha um estilo de player, escolha ou tire uma foto, recorte, digite o título da música e o artista, e salve ou compartilhe a imagem. Tudo é montado no seu celular, sem conta.",
+		"category": "Fotografia",
+		"icon": "🎵",
+		"accentColor": "#EC4899",
+		"features": [
+			{
+				"icon": "🎨",
+				"title": "Seis estilos de player",
+				"description": "Green, Red, Minimalist, Blur, Anime e Metal, cada um inspirado num player de música de verdade."
+			},
+			{
+				"icon": "✏️",
+				"title": "Seu texto, suas cores",
+				"description": "Edite o título da música, o artista e a linha extra, e troque a cor do player."
+			},
+			{
+				"icon": "📷",
+				"title": "Galeria ou câmera",
+				"description": "Escolha uma foto ou tire na hora, depois recorte para caber na capa."
+			},
+			{
+				"icon": "📤",
+				"title": "Salve e compartilhe",
+				"description": "Salve na galeria ou mande pela tela de compartilhamento para o Stories do Instagram, TikTok ou WhatsApp."
+			}
+		],
+		"buildStory": {
+			"problem": "Tentei montar uma capa de álbum na mão no Instagram e demorou uma eternidade: figurinhas, recorte manual, vários apps. Tinha que existir um jeito mais rápido.",
+			"solution": "Um app que usa o próprio sistema de renderização do Flutter como tela de edição. O RenderRepaintBoundary captura a interface ao vivo como imagem em alta resolução, então não precisei de biblioteca de manipulação de imagem. O próprio Flutter virou o editor.",
+			"learned": "Criar templates com ajuda de IA reduziu 8 horas de design para menos de 1. Usei o Claude 3.5 pelo Cursor para gerar 4 templates a partir de 2 existentes. A lição: pense em que partes do produto a IA pode acelerar antes de escrever do zero."
+		},
+		"tags": [
+			"flutter",
+			"photography",
+			"creative",
+			"instagram"
+		]
+	},
+	{
+		"name": "Direção Fácil",
+		"slug": "direcao-facil",
+		"tagline": "Passe na prova da CNH. 5 minutos por dia.",
+		"url": "https://play.google.com/store/apps/details?id=com.direcaofacil",
+		"description": "App gamificado para passar na prova teórica da CNH, com lições curtas e simulados no estilo do DETRAN.",
+		"storeDescription": "O Direção Fácil é um app no estilo Duolingo para a prova teórica da CNH. Estude legislação, placas, direção defensiva e primeiros socorros em lições curtas, depois teste o que aprendeu com questões no estilo do DETRAN, baseadas no Código de Trânsito. Não é afiliado ao DETRAN nem à SENATRAN.",
+		"category": "Educação",
+		"icon": "🚗",
+		"accentColor": "#F59E0B",
+		"features": [
+			{
+				"icon": "📚",
+				"title": "Trilhas por tema",
+				"description": "Legislação, placas, direção defensiva, primeiros socorros, mecânica básica, e infrações e penalidades."
+			},
+			{
+				"icon": "📝",
+				"title": "Quizzes com explicação",
+				"description": "Questões de múltipla escolha no formato da prova, com o porquê de cada resposta."
+			},
+			{
+				"icon": "🏆",
+				"title": "Progresso gamificado",
+				"description": "XP, níveis, sequências, missões diárias e conquistas, além de um mapa semanal dos seus dias de estudo."
+			},
+			{
+				"icon": "❤️",
+				"title": "Vidas",
+				"description": "Até cinco vidas que voltam com o tempo. Assista a um anúncio para ganhar mais uma, ou vire Premium para ter vidas infinitas."
+			}
+		],
+		"buildStory": {
+			"problem": "Estudar para a prova teórica da CNH é chato e denso, e muita gente reprova na primeira tentativa porque o material de estudo é ruim.",
+			"solution": "Um app de estudo gamificado inspirado no Duolingo: lições curtas, quizzes e trilhas cobrindo os temas da prova oficial.",
+			"learned": "Gamificação só funciona quando o ciclo de aprendizado é sólido. Pontos e níveis motivam, mas não substituem conteúdo bem organizado."
+		},
+		"tags": [
+			"education",
+			"CNH",
+			"DETRAN",
+			"gamification",
+			"brazil",
+			"android"
+		]
+	},
+	{
+		"name": "Idle Elevator",
+		"slug": "idle-elevator",
+		"tagline": "Até onde seu elevador consegue subir?",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.idle_elevator",
+		"description": "Jogo idle clicker em que você cuida de um elevador que nunca para de subir. Melhore atributos, junte moedas e desbloqueie bônus de prestígio.",
+		"storeDescription": "Idle Elevator é um jogo idle clicker em que você cuida de um elevador que sobe sem parar. Toque para ganhar moedas extras enquanto ele sobe sozinho, pegue passageiros para triplicar a renda, emende combos para multiplicar os ganhos e acione o BOOST para deixar o elevador 5x mais rápido. Invista em Velocidade, Capacidade e Lucro, comprando de 10x, 100x ou MAX. Chegue longe o bastante para liberar o prestígio e recomeçar com bônus de renda permanentes. O elevador continua rendendo offline por até 4 horas.",
+		"category": "Jogos",
+		"icon": "🛗",
+		"accentColor": "#6366F1",
+		"features": [
+			{
+				"icon": "🛗",
+				"title": "Subida sem fim",
+				"description": "O elevador sobe sozinho. Toque no prédio para ganhar moedas extras e pegue passageiros para triplicar a renda."
+			},
+			{
+				"icon": "⚡",
+				"title": "Combos e Boost",
+				"description": "Emende combos para multiplicar os ganhos e acione o BOOST para deixar o elevador 5x mais rápido."
+			},
+			{
+				"icon": "📈",
+				"title": "Três melhorias",
+				"description": "Invista em Velocidade, Capacidade e Lucro. Compre uma de cada vez ou de 10x, 100x ou MAX."
+			},
+			{
+				"icon": "🏆",
+				"title": "Prestígio",
+				"description": "Chegue longe o bastante para liberar o prestígio e recomeçar com bônus de renda permanentes que se acumulam a cada rodada."
+			},
+			{
+				"icon": "💤",
+				"title": "Ganhos offline",
+				"description": "O elevador continua trabalhando por até 4 horas com o app fechado. Recolha as moedas quando voltar, e dobre o valor."
+			}
+		],
+		"buildStory": {
+			"problem": "Eu queria explorar o gênero idle/incremental, jogos em que o progresso continua mesmo quando a pessoa não está jogando, e publicar uma versão bem acabada de um.",
+			"solution": "Um idle clicker com tema de elevador, três árvores de melhoria, um ciclo de prestígio e ganhos offline. A metáfora do elevador combina com progressão vertical, o que deixa o ciclo principal intuitivo desde a primeira abertura.",
+			"learned": "Jogo idle vive ou morre pelos números. Ajustar as curvas de custo e os multiplicadores de prestígio levou mais tempo do que construir a interface inteira: o jogo tem que parecer recompensador no minuto 1 e continuar motivando na hora 10."
+		},
+		"tags": [
+			"game",
+			"idle",
+			"clicker",
+			"android",
+			"prestige"
+		]
+	},
+	{
+		"name": "The Slime Dungeon",
+		"slug": "the-slime-dungeon",
+		"tagline": "Cercado de um perigo fofo. Quanto tempo você aguenta?",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.the_slime_dungeon",
+		"description": "Sobreviva numa masmorra cheia de slimes! Você está preso com criaturas adoráveis. Quanto tempo consegue sobreviver?",
+		"storeDescription": "Você acorda preso numa masmorra cheia de slimes: fofos, incansáveis e cada vez mais perto. Ande com o joystick, mire as bolas de fogo e fique de olho na sua energia. Abra baús para achar poções, sobreviva às ondas que só crescem e coloque sua pontuação no ranking do Google Play Games. Feito com Flutter e o motor de jogo Bonfire.",
+		"category": "Jogos",
+		"icon": "🟢",
+		"accentColor": "#10B981",
+		"features": [
+			{
+				"icon": "🎮",
+				"title": "Sobrevivência",
+				"description": "Ondas de slimes que só crescem. Slime grande vale 5 pontos, pequeno vale 3. Fique vivo o máximo que puder."
+			},
+			{
+				"icon": "🔥",
+				"title": "Bolas de fogo e energia",
+				"description": "Mire com o joystick e atire, mas cada disparo gasta energia."
+			},
+			{
+				"icon": "🧪",
+				"title": "Baús e poções",
+				"description": "A vermelha recupera vida, a azul dá um escudo temporário, a verde é veneno."
+			},
+			{
+				"icon": "🏆",
+				"title": "Ranking",
+				"description": "Entre com o Google Play Games, se quiser, para comparar sua melhor partida com a de outros jogadores."
+			}
+		],
+		"buildStory": {
+			"problem": "Eu queria fazer um jogo mobile que fosse divertido de verdade, não só um projeto de tutorial que eu nunca mais ia abrir.",
+			"solution": "Um jogo de sobrevivência numa masmorra com uma única virada: os inimigos são slimes fofos. Usei Flutter com o motor Bonfire, que me deu mecânicas de RPG sem precisar escrever um motor do zero.",
+			"learned": "A sensação de jogo importa mais do que os gráficos. Acertar o movimento e a detecção de colisão levou mais tempo do que toda a parte visual. O Bonfire facilitou o básico de RPG; o difícil foi calibrar a curva de dificuldade."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"survival",
+			"arcade",
+			"bonfire"
+		]
+	},
+	{
+		"name": "Virtual Pocket Air Conditioning",
+		"slug": "virtual-pocket-air-conditioning",
+		"tagline": "O barulhinho do ar-condicionado, no bolso.",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning",
+		"description": "Um ar-condicionado virtual no bolso: um botão, uma animação de vento e o zumbido contínuo de um aparelho de ar.",
+		"storeDescription": "O Ar Condicionado Virtual de Bolso transforma o celular num ar-condicionado de mentira. Aperte o botão e o zumbido do aparelho vai subindo, com ondas de ar frio na tela. Ele não esfria nada, mas muita gente dorme melhor com esse som ao fundo. Nasceu como projeto para estudar animações no Flutter.",
+		"category": "Saúde e fitness",
+		"icon": "❄️",
+		"accentColor": "#3B82F6",
+		"features": [
+			{
+				"icon": "🎵",
+				"title": "Som de ar-condicionado",
+				"description": "O zumbido de um aparelho em loop, que sobe quando você liga e some aos poucos quando desliga."
+			},
+			{
+				"icon": "🌬️",
+				"title": "Animação de vento",
+				"description": "O aparelho pulsa e ondas de ar frio atravessam a tela enquanto ele está ligado."
+			},
+			{
+				"icon": "🔘",
+				"title": "Um botão",
+				"description": "Liga, desliga. Nada mais para configurar."
+			},
+			{
+				"icon": "🔒",
+				"title": "Nada coletado",
+				"description": "Sem anúncio, sem conta, sem acesso à internet. A única permissão serve para o som continuar tocando."
+			}
+		],
+		"buildStory": {
+			"problem": "Eu não conseguia dormir sem um barulho de fundo. Ar-condicionado é caro e nem sempre está disponível, então fiz um virtual.",
+			"solution": "Um app Flutter pequeno que toca o som ambiente de um ar-condicionado em loop. O projeto também serviu de laboratório para experimentar animações no Flutter.",
+			"learned": "Os apps que as pessoas mantêm instalados são os que fazem uma coisa muito bem. Não precisa inventar recurso."
+		},
+		"tags": [
+			"flutter",
+			"relaxation",
+			"sleep",
+			"white noise",
+			"ambient"
+		]
+	},
+	{
+		"name": "Emoji Memory Jetpack",
+		"slug": "emoji-memory-jetpack",
+		"tagline": "Treine a memória. Encontre os pares.",
+		"description": "Encontre os emojis iguais. Jogo da memória de código aberto, feito com Jetpack Compose para Android.",
+		"storeDescription": "Um jogo da memória colorido, feito inteiro com Jetpack Compose. Vire as cartas, encontre os seis pares de emoji e jogue de novo. As cartas giram em 3D e brilham quando você inclina o celular. Não está mais no Google Play; o código está no GitHub.",
+		"category": "Jogos",
+		"icon": "🧠",
+		"accentColor": "#EF4444",
+		"features": [
+			{
+				"icon": "😀",
+				"title": "Cartas de emoji",
+				"description": "Seis pares de emoji num tabuleiro de quatro colunas, embaralhados de novo com um toque."
+			},
+			{
+				"icon": "⚡",
+				"title": "Jetpack Compose",
+				"description": "Feito inteiro com Jetpack Compose: interface declarativa e animação de virada em 3D."
+			},
+			{
+				"icon": "✨",
+				"title": "Brilho holográfico",
+				"description": "Um reflexo nas cartas acompanha a inclinação do celular, lida pelo acelerômetro."
+			},
+			{
+				"icon": "🔓",
+				"title": "Código aberto",
+				"description": "Código-fonte completo sob a licença MIT. Veja como um jogo Android pequeno é feito com Compose."
+			}
+		],
+		"buildStory": {
+			"problem": "Eu queria praticar arquitetura MVVM e Jetpack Compose num projeto real e publicado, não num exercício de tutorial.",
+			"solution": "Um jogo da memória inspirado no iagocavalcante/memorize, refeito do zero em Kotlin com Jetpack Compose e uma estrutura MVVM limpa.",
+			"learned": "Cuidar do estado de um jogo num ViewModel é diferente de cuidar do estado de uma tela comum: o ViewModel vira o motor do jogo, não só um lugar para guardar dados."
+		},
+		"tags": [
+			"game",
+			"memory",
+			"jetpack compose",
+			"open source",
+			"android"
+		],
+		"status": "removed"
+	},
+	{
+		"name": "Petmob",
+		"slug": "petmob",
+		"tagline": "Encontre o melhor cuidado para o seu pet.",
+		"description": "Encontre o melhor prestador de serviços para pets perto de você, ou cadastre-se como prestador e ganhe uma renda extra.",
+		"storeDescription": "O Petmob conecta tutores de pets a prestadores de serviço da região: banho e tosa, veterinário, hospedagem, passeios e mais. Gosta de bicho? Cadastre-se como prestador e comece a ganhar no seu horário.",
+		"category": "Estilo de vida",
+		"icon": "🐾",
+		"accentColor": "#8B5CF6",
+		"features": [
+			{
+				"icon": "🔍",
+				"title": "Encontre prestadores",
+				"description": "Busque serviços para pets perto de você: banho e tosa, veterinário, hospedagem, passeios e mais."
+			},
+			{
+				"icon": "💰",
+				"title": "Ganhe uma renda extra",
+				"description": "Cadastre-se como prestador e atenda pets da sua região no seu horário."
+			},
+			{
+				"icon": "⭐",
+				"title": "Avaliações verificadas",
+				"description": "Escolha prestadores pelas avaliações reais de outros tutores da sua região."
+			},
+			{
+				"icon": "📅",
+				"title": "Agendamento fácil",
+				"description": "Agende serviços direto no app, com confirmação na hora."
+			}
+		],
+		"buildStory": {
+			"problem": "Achar alguém de confiança para cuidar do pet é difícil. A maioria das indicações ainda acontece no boca a boca.",
+			"solution": "Um marketplace de serviços para pets que conecta tutores e prestadores, com avaliações, agendamento e pagamento integrado.",
+			"learned": "O maior desafio de um marketplace de serviços locais é o ovo e a galinha: o app só tem valor quando há gente suficiente dos dois lados."
+		},
+		"tags": [
+			"pets",
+			"marketplace",
+			"services",
+			"android",
+			"brazil"
+		]
+	}
+]

@@ -1,0 +1,62 @@
+---
+title: "Privacy policy"
+slug: "flycontrol-privacy"
+app: "flycontrol"
+appName: "FlyControl"
+kind: "privacy"
+updatedAt: "2026-09-28"
+lang: "en"
+description: "FlyControl has no account and no server. Your Fly.io token stays in the phone's encrypted storage and goes only to the Fly.io API. No analytics, no ads."
+---
+
+FlyControl is an unofficial Fly.io client. It has no FlyControl account and no server of its own. The only thing it keeps is the Fly.io token you give it, and that token goes from your phone straight to Fly.io and nowhere else.
+
+I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it. FlyControl is not affiliated with, endorsed by or supported by Fly.io.
+
+### What you give the app
+
+#### Your Fly.io token
+
+To connect, you paste a Fly.io token, usually an organization token from `fly tokens create org`, or the output of `fly auth token`. Before saving it, the app checks with Fly.io that the token works and lists its organizations.
+
+The token is stored in the phone's encrypted storage, the Android Keystore or the iOS Keychain, together with the label you give the account and the slugs and names of its organizations. On iOS it is kept for this device only and is not restored to another one. You can connect more than one account; each is stored the same way.
+
+The token is sent only to Fly.io's API, at api.machines.dev and api.fly.io, in the authorization header of each request. I never receive it.
+
+### What the app loads from Fly.io
+
+With your token, the app asks Fly.io for your apps, machines, regions, logs, metrics and deployment history. The deployment history includes the email of whoever made each release, shown in the deployment details. All of this is kept in memory while the app runs and is not written to disk. When you start, stop, restart or destroy a machine, that command goes to Fly.io the same way.
+
+Fly.io processes those requests under its own [privacy policy](https://fly.io/legal/privacy-policy).
+
+### What else stays on your phone
+
+The app saves your appearance setting (light, dark or system), the selected organization and whether you are in demo mode. It reads the clipboard only when you tap Paste on the connect screen, and writes to it only when you copy a log line or a value.
+
+There are no analytics, no crash reporting, no ads, no notifications and no third-party SDK that collects data. I do not sell data, rent it or share it with anyone.
+
+### Why it is used
+
+Only to show you your own Fly.io resources and to run the commands you choose, which is the service you asked for.
+
+### Deleting it
+
+In the app, remove one account, or disconnect every account, and the stored tokens are deleted from the device. Uninstalling the app deletes them too. The token itself still exists at Fly.io until you revoke it there, with `fly tokens revoke` or in the Fly.io dashboard. Do that if you lose the phone.
+
+Since I hold no data about you, there is nothing for me to access, correct or delete on my side. You can still write to me with any question about your rights, and I answer within 15 days. You may also complain to the ANPD, Brazil's data protection authority.
+
+### Security
+
+Requests to Fly.io are encrypted in transit, and the token is kept in the system's encrypted storage. No system is completely secure. Use a token with the narrowest scope that works for you.
+
+### Children
+
+FlyControl is meant for adults who run infrastructure on Fly.io. It is not directed at children, and I do not knowingly collect data from anyone under 18.
+
+### Changes
+
+If this policy changes, the date at the top changes with it. A change that affects what is collected or where it goes will be described here before the version that makes it is published.
+
+### Contact
+
+Tiago Danin, TiagoDanin@outlook.com.

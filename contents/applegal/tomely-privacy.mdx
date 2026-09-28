@@ -1,0 +1,89 @@
+---
+title: "Privacy policy"
+slug: "tomely-privacy"
+app: "tomely"
+appName: "Tomely"
+kind: "privacy"
+updatedAt: "2026-09-28"
+lang: "en"
+description: "Tomely keeps your medications and doses in your own account, sends no ads, and never ties your health data to analytics. This is what it stores, where, and how to delete it."
+---
+
+Tomely is a medication reminder for Android. To remind you of a dose it has to know what you take and when, and that is health data. This page says what the app stores, who else touches it and how you erase all of it.
+
+I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
+
+### What you give the app
+
+#### Your account
+
+Tomely asks you to sign in, with an email and password or with Google. The account holds your name, your email and, if you use Google, your profile photo. It exists so your medications survive a new phone.
+
+#### Your medications and doses
+
+Each medication you add stores its name, colour, icon, type, schedule, dose and unit, instructions, start date, stock count and when to warn you about stock. Each dose you confirm, skip or postpone stores the time it was due, the time you acted and what you chose. Your streak and your notification, sound and vibration preferences are stored with your profile.
+
+Medication and dose records count as sensitive personal data under the LGPD. They are processed with your consent, which you give when you create the account and add a medication, and which you withdraw by deleting the account.
+
+### What the app collects on its own
+
+#### Usage statistics
+
+Google Analytics for Firebase records which screens you open and a few events: signing up or in, adding, editing or deleting a medication, confirming a dose, seeing a stock alert and finishing or skipping onboarding. Those events carry the kind of medication and the number of schedules. They never carry a medication name, and the app deliberately does not send your account ID to Analytics, so these statistics are not linked to your account. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID. Tomely shows no ads and does not use that ID for advertising.
+
+#### Crash reports
+
+Firebase Crashlytics receives a report when the app crashes: the error, the device model, the Android version and the state of the app at that moment. Before anything is logged, the app removes email addresses and account paths from the text, and it leaves the user identifier blank.
+
+### What stays on your phone
+
+Reminders are scheduled on the device, so they ring even without a connection. The app keeps your preferences, your language, a draft of a medication you have not finished adding and any dose actions waiting to sync. Firestore also keeps a local copy of your data so the app works offline. Android's automatic backup is turned off for Tomely.
+
+Reminder notifications show the medication name, including on the lock screen. If other people handle your phone, you can hide notification content in Android's settings.
+
+### Who else receives it
+
+Tomely has no server of its own. Everything above goes to Google, which processes it on my behalf:
+
+- **Firebase Authentication and Cloud Firestore** hold your account, medications and doses. Security rules let only your signed-in account read or write your records.
+- **Google Analytics for Firebase** and **Firebase Crashlytics** receive the statistics and crash reports described above.
+- **Google Sign-In**, if you choose it, confirms your identity with your Google account.
+- **Firebase Cloud Messaging** is part of the app and may register a token for your device. Tomely sends no push messages today.
+
+Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy).
+
+I do not sell your data, rent it, share it with advertisers, or hand it to a data broker. I would only disclose it if a Brazilian court or authority legally required it.
+
+### Why it is used
+
+To run the service you asked for: keep your account, schedule reminders, record doses, compute your history, streaks and stock forecast. The usage statistics and crash reports are used to find bugs and understand which features people use, on the basis of my legitimate interest in keeping the app working. Nothing is used to profile you or to show you advertising.
+
+### Where it is stored
+
+Firebase stores data on Google servers, which may be outside Brazil, including in the United States. Google applies the safeguards described in its data processing terms to those transfers.
+
+### How long it is kept
+
+Your account, medications and dose history exist for as long as the account does. When you delete the account, the app deletes the dose history, the medications and the profile, then the account itself. Analytics statistics and crash reports are not linked to your account and are kept for the retention period configured in Firebase, after which Google deletes them.
+
+### Deleting your data and your other rights
+
+Inside the app: Profile, Account, Delete account. You confirm by typing DELETE, and everything listed above is removed from Firestore and from Firebase Authentication. The app also cancels your reminders and clears its local data.
+
+If you can no longer open the app, write to TiagoDanin@outlook.com from the email on the account and I delete it for you. You can also ask me what data exists about you, to correct it, to receive a copy, or to withdraw consent. I answer within 15 days, the period the LGPD sets. You may also complain to the ANPD, Brazil's data protection authority.
+
+### Security
+
+Traffic to Firebase is encrypted, and access to your records is limited to your account by security rules. No system is completely secure, and I cannot promise that nobody will ever break in, but I will tell you and the ANPD if an incident puts your data at risk.
+
+### Children
+
+Tomely is meant for adults. It is not directed at children, and I do not knowingly collect data from anyone under 18. If you believe a child has created an account, write to me and I delete it.
+
+### Changes
+
+If this policy changes, the date at the top changes with it. For a change that affects what is collected or who receives it, the app shows a notice before the change takes effect.
+
+### Contact
+
+Tiago Danin, TiagoDanin@outlook.com.
