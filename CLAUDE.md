@@ -152,7 +152,11 @@ That move has three consequences worth knowing before debugging them:
 
 **Project routes** are `/project/[type]/[slug]`, where `type` is one of ten collections mapped in `src/app/project/[type]/[slug]/page.tsx`: `github`, `private`, `npm`, `luarocks`, `pypi`, `atom`, `googleplay`, `windows`, `aur`, `offline`. Slugs come from `titleToSlug(project.name ?? project.title)`. Adding a new project source means adding the collection *and* registering it in `getProjectsMap()` plus `urlPrefixMap`.
 
-Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/tags/[tag]`, `/blog/tags/[tag]`, `/timeline/[year]/[slug]`.
+Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/tags/[tag]`, `/blog/tags/[tag]`, `/timeline/[year]/[slug]`, `/legal/[app]`.
+
+**`/legal/[app]` is the privacy policy and terms of each app**, the URL pasted into the Play Console. It reads `contents/applegal/<app>-privacy.mdx` and `<app>-terms.mdx` (plus `.pt.mdx`), and the route list comes from their `app` field, not from `googleplay`, so an unreleased app (Scoreboard) can have its documents without a card on `/apps`. `/app/[appId]` links to it when the slugs match. Write the documents from what the app's code ships, not from its roadmap.
+
+**`googleplay` has an `index.br.json`**, the only project collection that does. Every read goes through `.locale()` (`getProjectsMap(locale)` included) or each app lists twice. Keep `name` identical in both files: `projectSlug()` builds `/project/googleplay/[slug]` from it.
 
 ### Component Architecture
 - **Layout**: `Navbar`, `Footer`
@@ -407,3 +411,13 @@ Documented so nobody rediscovers them as new bugs:
 - `.mcp.json` registers the `chrome-devtools` MCP server (verifying UI in a real browser) and the Storybook one (only answers while `yarn storybook` runs). It is tracked, but a `.gitignore` outside the repo also lists it, so re-adding it needs `git add -f`.
 - **Commits carry no `Co-Authored-By` trailer.** Owner's preference, and it overrides the default.
 - Never run `yarn build`, `yarn deploy`, or any data-fetching command without explicit user permission. Builds are slow and overwrite generated files (`dist/`, `public/rss/`, `public/*sitemap*`, `contents/github`, `contents/npm`).
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

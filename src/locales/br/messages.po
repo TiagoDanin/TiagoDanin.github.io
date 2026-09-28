@@ -178,6 +178,14 @@ msgstr "Trabalho com {0} de Tiago Danin: {1} repositórios open source, {2} arti
 msgid "{0}, {1}"
 msgstr "{0}, {1}"
 
+#: src/app/[lang]/legal/[app]/page.tsx
+msgid "{appName}: privacy and terms of use"
+msgstr "{appName}: privacidade e termos de uso"
+
+#: src/app/[lang]/legal/[app]/page.tsx
+msgid "{appName}: privacy policy and terms of use"
+msgstr "{appName}: política de privacidade e termos de uso"
+
 #: src/app/[lang]/tags/[tag]/page.tsx
 msgid "{name} - Articles, Talks & Projects"
 msgstr "{name} - Artigos, palestras e projetos"
@@ -356,6 +364,10 @@ msgstr "Pronto para teste A/B"
 #: src/app/[lang]/about/page.tsx
 msgid "About - Flutter, React Native & Bug Hunter"
 msgstr "Sobre - Flutter, React Native e Bug Hunter"
+
+#: src/app/[lang]/legal/[app]/page.tsx
+msgid "About {appName}"
+msgstr "Sobre o {appName}"
 
 #: src/app/[lang]/about/page.tsx
 msgid "About Tiago Danin - Mobile Developer"
@@ -573,10 +585,6 @@ msgstr "Um processo com opinião, pensado para passar na revisão de primeira."
 #: src/app/[lang]/web-development/page.tsx
 msgid "Analytics & conversion tracking"
 msgstr "Analytics e rastreamento de conversão"
-
-#: src/app/[lang]/app/[appId]/page.tsx
-msgid "Android"
-msgstr "Android"
 
 #: src/app/[lang]/project/[type]/[slug]/page.tsx
 #: src/app/[lang]/tags/[tag]/page.tsx
@@ -1529,6 +1537,7 @@ msgstr "Processamento de documentos e e-mails"
 msgid "Document ingestion pipelines"
 msgstr "Pipelines de ingestão de documentos"
 
+#: src/app/[lang]/legal/[app]/page.tsx
 #: src/app/[lang]/legal/page.tsx
 msgid "Documents"
 msgstr "Documentos"
@@ -1903,8 +1912,8 @@ msgid "Get in Touch"
 msgstr "Falar comigo"
 
 #: src/app/[lang]/app/[appId]/page.tsx
-msgid "Get it on Google Play — Free"
-msgstr "Baixe no Google Play: grátis"
+msgid "Get it free on Google Play"
+msgstr "Baixe grátis no Google Play"
 
 #: src/app/[lang]/cybersecurity/page.tsx
 msgid "Get Security Assessment"
@@ -2210,6 +2219,7 @@ msgstr "Última modificação"
 msgid "Last Push"
 msgstr "Último push"
 
+#: src/app/[lang]/legal/[app]/page.tsx
 #: src/app/[lang]/legal/page.tsx
 msgid "Last updated"
 msgstr "Atualizado em"
@@ -2694,6 +2704,10 @@ msgstr "Sem descrição"
 #: src/components/sections/GitHubRankingsClient.tsx
 msgid "No description available"
 msgstr "Sem descrição disponível"
+
+#: src/app/[lang]/app/[appId]/page.tsx
+msgid "No longer on Google Play"
+msgstr "Não está mais no Google Play"
 
 #: src/app/[lang]/blog/tags/[tag]/page.tsx
 msgid "No posts found with this tag."
@@ -3932,6 +3946,10 @@ msgstr "Os detalhes que costumam sair errados na programação de eventos."
 msgid "The full stack of AI work, from a single LLM call to multi-agent systems."
 msgstr "Todo o espectro de trabalho com IA, de uma única chamada de LLM a sistemas multi-agente."
 
+#: src/app/[lang]/legal/[app]/page.tsx
+msgid "The privacy policy covers what the app collects, who else receives it and how to delete it. The terms of use cover what is free, what is paid and what you may do with the app."
+msgstr "A política de privacidade diz o que o app coleta, quem mais recebe e como apagar. Os termos de uso dizem o que é grátis, o que é pago e o que você pode fazer com o app."
+
 #: src/app/[lang]/app/[appId]/page.tsx
 msgid "The Problem"
 msgstr "O problema"
@@ -3963,6 +3981,10 @@ msgstr "Este artigo foi traduzido do português com ajuda de um LLM. A versão o
 #: src/components/ui/LanguageSelect.tsx
 msgid "This page has no version in this language yet"
 msgstr "Esta página ainda não tem versão neste idioma"
+
+#: src/app/[lang]/legal/[app]/page.tsx
+msgid "This site has its own documents, separate from the app's: <0>privacy and terms of the site</0>."
+msgstr "Este site tem documentos próprios, separados dos do app: <0>privacidade e termos do site</0>."
 
 #: src/app/[lang]/social/[network]/page.tsx
 msgid "This social/contact network does not exist."
@@ -4374,6 +4396,10 @@ msgstr "Sessões individuais semanais por vídeo"
 msgid "weekly calls"
 msgstr "calls semanais"
 
+#: src/app/[lang]/legal/[app]/page.tsx
+msgid "What {appName} collects, which services receive it, how to delete it, and the rules for using the app and its paid features."
+msgstr "O que o {appName} coleta, quais serviços recebem, como apagar, e as regras de uso do app e dos recursos pagos."
+
 #: src/app/[lang]/ai-automation/page.tsx
 #: src/app/[lang]/web-development/page.tsx
 msgid "What I Build"
@@ -4402,6 +4428,10 @@ msgstr "O que ele faz"
 #: src/app/[lang]/faq/page.tsx
 msgid "What people ask before getting in touch, answered in one place. Every answer links to the talk, article or repository behind it."
 msgstr "O que costumam perguntar antes de entrar em contato, respondido num lugar só. Cada resposta leva à palestra, ao artigo ou ao repositório por trás dela."
+
+#: src/app/[lang]/app/[appId]/page.tsx
+msgid "What the app collects, and the rules for its paid features: <0>privacy policy and terms of use</0>."
+msgstr "O que o app coleta, e as regras dos recursos pagos: <0>política de privacidade e termos de uso</0>."
 
 #: src/app/[lang]/legal/page.tsx
 msgid "What this site collects, how to stop it, and what you may do with the code and the writing published here."
