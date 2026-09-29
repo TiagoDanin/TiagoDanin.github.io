@@ -4,12 +4,12 @@ slug: "flycontrol-privacy"
 app: "flycontrol"
 appName: "FlyControl"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "en"
-description: "FlyControl has no account and no server. Your Fly.io token stays in the phone's encrypted storage and goes only to the Fly.io API. No analytics, no ads."
+description: "FlyControl has no account and no server. Your Fly.io token stays in the phone's encrypted storage and goes only to the Fly.io API. Anonymous usage statistics go to Firebase. No ads."
 ---
 
-FlyControl is an unofficial Fly.io client. It has no FlyControl account and no server of its own. The only thing it keeps is the Fly.io token you give it, and that token goes from your phone straight to Fly.io and nowhere else.
+FlyControl is an unofficial Fly.io client. It has no FlyControl account and no server of its own. The only thing it keeps is the Fly.io token you give it, and that token goes from your phone straight to Fly.io and nowhere else. Apart from that, the app sends a set of anonymous usage statistics.
 
 I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it. FlyControl is not affiliated with, endorsed by or supported by Fly.io.
 
@@ -33,17 +33,25 @@ Fly.io processes those requests under its own [privacy policy](https://fly.io/le
 
 The app saves your appearance setting (light, dark or system), the selected organization and whether you are in demo mode. It reads the clipboard only when you tap Paste on the connect screen, and writes to it only when you copy a log line or a value.
 
-There are no analytics, no crash reporting, no ads, no notifications and no third-party SDK that collects data. I do not sell data, rent it or share it with anyone.
+### Usage statistics
+
+Google Analytics for Firebase records how the app is used: connecting (and why a connection failed), entering demo mode, switching, removing or disconnecting accounts, changing organization, the screens you open, how many apps or machines a list has (in ranges such as "2 to 5"), opening an app or a machine, the machine commands you run and whether they worked, the metrics range you pick, opening logs and filtering them by level, pulling to refresh, the kind of error a screen shows and the appearance setting. It also records whether you are in demo mode. It never records your token, the names or IDs of your organizations, apps or machines, log lines, metrics values or anything else loaded from Fly.io.
+
+Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, operating system, app version and approximate location. On Android the SDK may read the install referrer (how you got to the app on Google Play). The app turns off the advertising ID, so the SDK neither reads nor sends it. The app does not send a user ID and does not use this data for advertising.
+
+Google runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy). The statistics are kept for the retention period configured in Firebase, after which Google deletes them.
+
+There is no crash reporting, no ads and no notifications. I do not sell data, rent it or share it with anyone.
 
 ### Why it is used
 
-Only to show you your own Fly.io resources and to run the commands you choose, which is the service you asked for.
+Your token and your Fly.io data are used only to show you your own resources and to run the commands you choose, which is the service you asked for. The usage statistics are used to find bugs and to see which features people use, on the basis of my legitimate interest in keeping the app working.
 
 ### Deleting it
 
 In the app, remove one account, or disconnect every account, and the stored tokens are deleted from the device. Uninstalling the app deletes them too. The token itself still exists at Fly.io until you revoke it there, with `fly tokens revoke` or in the Fly.io dashboard. Do that if you lose the phone.
 
-Since I hold no data about you, there is nothing for me to access, correct or delete on my side. You can still write to me with any question about your rights, and I answer within 15 days. You may also complain to the ANPD, Brazil's data protection authority.
+The usage statistics carry no name or account, so I usually cannot tell which ones are yours; you can still ask me what exists, ask me to delete it or object to it. You can still write to me with any question about your rights, and I answer within 15 days. You may also complain to the ANPD, Brazil's data protection authority.
 
 ### Security
 

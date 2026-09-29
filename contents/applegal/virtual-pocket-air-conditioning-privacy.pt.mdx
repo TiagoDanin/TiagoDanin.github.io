@@ -4,36 +4,50 @@ slug: "virtual-pocket-air-conditioning-privacy"
 app: "virtual-pocket-air-conditioning"
 appName: "Virtual Pocket Air Conditioning"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "pt"
-description: "O Ar Condicionado Virtual de Bolso não coleta nada: sem conta, sem estatísticas, sem anúncio e sem permissão de internet. Ele toca um som, e só."
+description: "O Ar Condicionado Virtual de Bolso não tem conta nem anúncio. Ele toca um som e envia estatísticas de uso anônimas ao Firebase. É só isso."
 ---
 
-O Ar Condicionado Virtual de Bolso não coleta nenhum dado pessoal. Não tem cadastro, nada é salvo no celular, e o app nem pede permissão para usar a internet.
+O Ar Condicionado Virtual de Bolso não tem conta, não tem anúncio e não tem cadastro. Ele toca um som. O único dado que sai do celular é um conjunto de estatísticas de uso anônimas.
 
-Eu, Tiago Danin, sou o desenvolvedor. Escreva para TiagoDanin@outlook.com sobre qualquer coisa desta página.
+Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR te dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer coisa disso.
 
 ### O que o app faz com o seu celular
 
-Ele toca em loop um som de ar-condicionado que vem dentro do app e mostra uma animação. Ele pede ao Android uma única permissão, a de manter o aparelho acordado enquanto o som toca, para o áudio não parar quando a tela apaga.
+Ele toca em loop um som de ar-condicionado que vem dentro do app e mostra uma animação. Ele pede ao Android para manter o aparelho acordado enquanto o som toca, para o áudio não parar quando a tela apaga. Ele não salva nada no celular.
 
-Não tem estatísticas de uso, relatório de falhas, anúncio nem SDK de terceiros que colete dados. Nada do que você faz no app é registrado ou enviado para lugar nenhum.
+### O que o app envia
+
+O Google Analytics para Firebase registra como o app é usado: quando você liga ou desliga o ar-condicionado e por quanto tempo ele ficou ligado, quando chega ao volume máximo, quando você sai ou volta para o app com ele ligado, quando o som falha, quando você abre a tela Sobre e qual link toca lá. Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, versão do Android, versão do app e localização aproximada. O SDK pode ler a origem da instalação (como você chegou ao app no Google Play). O app desliga o ID de publicidade, então o SDK não lê nem envia esse ID. O app não envia ID de usuário, porque não tem, e não usa esses dados para publicidade.
+
+Para isso, o app agora usa a conexão com a internet.
+
+### Quem mais recebe
+
+O Google, que opera o Firebase e trata esses dados em meu nome, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
+
+Não vendo esses dados, não compartilho com anunciante nem repasso para corretor de dados. As estatísticas servem para achar bugs e ver quais partes do app as pessoas usam, com base no meu legítimo interesse em mantê-lo funcionando.
 
 ### Links para fora
 
-A tela Sobre tem links para tiagodanin.com e para a página do autor do som no orangefreesounds.com. Tocar em um deles abre o seu navegador, e a partir daí vale a política de privacidade do próprio site.
+A tela Sobre tem links para tiagodanin.com, para esta página e para a página do autor do som no orangefreesounds.com. Tocar em um deles abre o seu navegador, e a partir daí vale a política de privacidade do próprio site.
+
+### Por quanto tempo
+
+As estatísticas são mantidas pelo prazo de retenção configurado no Firebase, depois do qual o Google as apaga.
 
 ### Seus direitos
 
-Como não guardo nenhum dado seu, não há o que acessar, corrigir ou apagar. A LGPD (Lei 13.709/2018) continua te dando o direito de perguntar, e eu respondo no endereço acima.
+Como as estatísticas não levam nome nem conta, em geral não consigo saber quais são suas. Mesmo assim, você pode me perguntar o que existe, pedir que eu apague ou se opor ao tratamento, em TiagoDanin@outlook.com. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
 
 ### Crianças
 
-O app não é direcionado a crianças, e não coleta nada de ninguém, crianças incluídas.
+O app não é direcionado a crianças. Não coleto de propósito dados de menores de 13 anos. Se você acha que dados de uma criança chegaram até mim, me escreva e eu apago o que conseguir encontrar.
 
 ### Mudanças
 
-Se uma versão futura passar a coletar alguma coisa, esta página vai dizer antes de essa versão ser publicada, e a data no topo vai mudar.
+Se esta política mudar, a data no topo muda junto. Uma mudança no que é coletado é descrita aqui antes de a versão que a faz ser publicada.
 
 ### Contato
 

@@ -4,9 +4,9 @@ slug: "flycontrol-privacy"
 app: "flycontrol"
 appName: "FlyControl"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "pt"
-description: "O FlyControl não tem conta nem servidor. Seu token do Fly.io fica criptografado no celular e vai só para a API do Fly.io. Sem estatísticas, sem anúncio."
+description: "O FlyControl não tem conta nem servidor. Seu token do Fly.io fica criptografado no celular e vai só para a API do Fly.io. Estatísticas de uso anônimas vão para o Firebase. Sem anúncio."
 ---
 
 O FlyControl é um cliente não oficial do Fly.io. Ele não tem conta própria nem servidor. A única coisa que guarda é o token do Fly.io que você informa, e esse token vai do seu celular direto para o Fly.io, e para nenhum outro lugar.
@@ -33,17 +33,25 @@ O Fly.io trata essas requisições sob a [política de privacidade](https://fly.
 
 O app salva sua preferência de aparência (claro, escuro ou do sistema), a organização selecionada e se você está no modo de demonstração. Ele só lê a área de transferência quando você toca em Colar na tela de conexão, e só escreve nela quando você copia uma linha de log ou um valor.
 
-Não tem estatísticas de uso, relatório de falhas, anúncio, notificação nem SDK de terceiros que colete dados. Não vendo, não alugo e não compartilho dados com ninguém.
+### Estatísticas de uso
+
+O Google Analytics para Firebase registra como o app é usado: conectar (e por que uma conexão falhou), entrar no modo demonstração, trocar, remover ou desconectar contas, mudar de organização, as telas que você abre, quantos apps ou máquinas uma lista tem (em faixas como "2 a 5"), abrir um app ou uma máquina, os comandos de máquina que você executa e se deram certo, o período de métricas que você escolhe, abrir os logs e filtrá-los por nível, puxar para atualizar, o tipo de erro que uma tela mostra e a configuração de aparência. Ele também registra se você está no modo demonstração. Ele nunca registra seu token, nomes ou IDs das suas organizações, apps ou máquinas, linhas de log, valores de métricas nem nada que venha do Fly.io.
+
+Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, sistema operacional, versão do app e localização aproximada. No Android, o SDK pode ler a origem da instalação (como você chegou ao app no Google Play). O app desliga o ID de publicidade, então o SDK não lê nem envia esse ID. O app não envia ID de usuário e não usa esses dados para publicidade.
+
+O Google opera o Firebase e trata esses dados em meu nome, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR). As estatísticas são mantidas pelo prazo de retenção configurado no Firebase, depois do qual o Google as apaga.
+
+Não tem relatório de falhas, anúncio nem notificação. Não vendo, não alugo e não compartilho dados com ninguém.
 
 ### Para que é usado
 
-Só para mostrar os seus próprios recursos no Fly.io e executar os comandos que você escolhe, que é o serviço que você pediu.
+Seu token e seus dados do Fly.io servem só para mostrar os seus próprios recursos e executar os comandos que você escolhe, que é o serviço que você pediu. As estatísticas de uso servem para achar bugs e ver quais recursos as pessoas usam, com base no meu legítimo interesse em manter o app funcionando.
 
 ### Apagar
 
 No app, remova uma conta, ou desconecte todas, e os tokens guardados são apagados do aparelho. Desinstalar o app também apaga. O token continua existindo no Fly.io até você revogá-lo lá, com `fly tokens revoke` ou no painel do Fly.io. Faça isso se perder o celular.
 
-Como não guardo nenhum dado seu, não há nada para eu acessar, corrigir ou apagar do meu lado. Você ainda pode me escrever com qualquer dúvida sobre seus direitos, e eu respondo em até 15 dias. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
+As estatísticas de uso não levam nome nem conta, então em geral não consigo saber quais são suas; mesmo assim, você pode me perguntar o que existe, pedir que eu apague ou se opor ao tratamento. Você ainda pode me escrever com qualquer dúvida sobre seus direitos, e eu respondo em até 15 dias. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
 
 ### Segurança
 

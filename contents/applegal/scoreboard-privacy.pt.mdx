@@ -4,14 +4,14 @@ slug: "scoreboard-privacy"
 app: "scoreboard"
 appName: "Scoreboard"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "pt"
-description: "O Scoreboard funciona offline e guarda a partida no seu celular. Sem conta, sem estatísticas, sem anúncio e sem permissão de internet. Nada sai do aparelho."
+description: "O Scoreboard funciona sem internet e guarda a partida no seu celular. Sem conta e sem anúncio. Ele envia estatísticas de uso anônimas ao Firebase."
 ---
 
-O Scoreboard não coleta nenhum dado pessoal. Não tem conta, não tem servidor e não tem permissão de internet. A partida que você está marcando e as suas configurações ficam no seu celular.
+O Scoreboard não tem conta nem servidor próprio. A partida que você está marcando e as suas configurações ficam no seu celular. O único dado que sai dele é um conjunto de estatísticas de uso anônimas.
 
-Eu, Tiago Danin, sou o desenvolvedor. Escreva para TiagoDanin@outlook.com sobre qualquer coisa desta página.
+Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR te dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer coisa disso.
 
 ### O que fica no seu celular
 
@@ -25,19 +25,29 @@ Desinstalar o app, ou limpar os dados dele nas configurações do Android, apaga
 - **Tela sempre acesa** enquanto a tela da partida está aberta, liberada quando você sai dela.
 - **Compartilhar**, só quando você toca. O app entrega ao menu de compartilhamento do sistema uma linha de texto como "Azul 21 x 18 Vermelho", e você escolhe para onde vai.
 
-Não tem estatísticas de uso, relatório de falhas, anúncio nem SDK de terceiros que colete dados.
+### O que o app envia
+
+O Google Analytics para Firebase registra como o app é usado: as perguntas da apresentação e as regras que você escolhe (pontuação, sets ou tempo, set decisivo, ponto de ouro, rodízio), partidas iniciadas, retomadas, reiniciadas, abandonadas e encerradas (com a cor vencedora, o número de sets e uma duração aproximada), sets encerrados, desfazer, placares editados à mão, o relógio iniciado ou pausado, o compartilhamento de um resultado, revanches e as configurações que você liga ou desliga. Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, sistema operacional, versão do app e localização aproximada. No Android, o SDK pode ler a origem da instalação (como você chegou ao app no Google Play). O app desliga o ID de publicidade, então o SDK não lê nem envia esse ID. O app não envia ID de usuário, porque não tem, e não usa esses dados para publicidade. O placar nunca é enviado ponto a ponto.
+
+Para isso, o app agora usa a conexão com a internet. Marcar a partida continua funcionando sem internet; as estatísticas esperam e saem quando houver conexão.
+
+### Quem mais recebe
+
+O Google, que opera o Firebase e trata esses dados em meu nome, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
+
+Não vendo esses dados, não compartilho com anunciante nem repasso para corretor de dados. As estatísticas servem para achar bugs e ver com quais regras as pessoas jogam, com base no meu legítimo interesse em manter o app funcionando. Elas são mantidas pelo prazo de retenção configurado no Firebase, depois do qual o Google as apaga.
 
 ### Seus direitos
 
-Como não guardo nenhum dado seu, não há o que acessar, corrigir ou apagar. A LGPD (Lei 13.709/2018) continua te dando o direito de perguntar, e eu respondo no endereço acima.
+Como as estatísticas não levam nome nem conta, em geral não consigo saber quais são suas. Mesmo assim, você pode me perguntar o que existe, pedir que eu apague ou se opor ao tratamento, em TiagoDanin@outlook.com. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
 
 ### Crianças
 
-O app não é direcionado a crianças, e não coleta nada de ninguém, crianças incluídas.
+O app não é direcionado a crianças. Não coleto de propósito dados de menores de 13 anos. Se você acha que dados de uma criança chegaram até mim, me escreva e eu apago o que conseguir encontrar.
 
 ### Mudanças
 
-Se uma versão futura passar a coletar alguma coisa, esta página vai dizer antes de essa versão ser publicada, e a data no topo vai mudar.
+Se esta política mudar, a data no topo muda junto. Uma mudança no que é coletado é descrita aqui antes de a versão que a faz ser publicada.
 
 ### Contato
 

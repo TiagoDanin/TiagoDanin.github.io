@@ -4,7 +4,7 @@ slug: "tomely-privacy"
 app: "tomely"
 appName: "Tomely"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "en"
 description: "Tomely keeps your medications and doses in your own account, sends no ads, and never ties your health data to analytics. This is what it stores, where, and how to delete it."
 ---
@@ -29,7 +29,7 @@ Medication and dose records count as sensitive personal data under the LGPD. The
 
 #### Usage statistics
 
-Google Analytics for Firebase records which screens you open and a few events: signing up or in, adding, editing or deleting a medication, confirming a dose, seeing a stock alert and finishing or skipping onboarding. Those events carry the kind of medication and the number of schedules. They never carry a medication name, and the app deliberately does not send your account ID to Analytics, so these statistics are not linked to your account. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID. Tomely shows no ads and does not use that ID for advertising.
+Google Analytics for Firebase records which screens you open and a few events: signing in or out, deleting the account, starting, finishing or skipping the tutorial, adding, editing or deleting a medication, marking a dose (taken, missed or postponed), tapping a reminder button, allowing or refusing notifications, a streak growing, a stock alert shown and a stock update. Those events carry only categories and counts, such as the kind of medication, the number of schedules, the stock level or the streak length. They never carry a medication name, and the app deliberately does not send your account ID to Analytics, so these statistics are not linked to your account. Analytics also sees your device model, operating system, app version and approximate location. Tomely shows no ads and turns off the advertising ID, so the SDK neither reads nor sends it.
 
 #### Crash reports
 

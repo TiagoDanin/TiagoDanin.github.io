@@ -4,32 +4,46 @@ slug: "emoji-memory-jetpack-privacy"
 app: "emoji-memory-jetpack"
 appName: "Emoji Memory Jetpack"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "en"
-description: "Emoji Memory Jetpack collects nothing. It asks for no permissions, never goes online and saves nothing. It is no longer on Google Play."
+description: "Emoji Memory Jetpack has no account and no ads, and saves nothing on the phone. It sends anonymous game statistics to Firebase. This is all of it."
 ---
 
-Emoji Memory Jetpack collects no personal data. It asks for no permissions, has no internet access and saves nothing on the phone. The app is no longer on Google Play; this page is for the phones where it is still installed.
+Emoji Memory Jetpack has no account, no ads and no server of its own, and it saves nothing on the phone. The only data that leaves it is a set of anonymous game statistics. The app is no longer on Google Play; this page is for the phones where it is still installed.
 
-I, Tiago Danin, am the developer. Write to TiagoDanin@outlook.com about anything on this page.
+I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
-### What the app uses
+### What the app uses on the phone
 
 The game reads the phone's motion sensor to tilt the cards and move their shine. Those readings stay in memory while the game is open and are never stored or sent.
 
-There are no analytics, no crash reporting, no ads and no third-party SDK that collects data. The source code is public on GitHub, at TiagoDanin/Emoji-Memory-Jetpack, so anyone can check this.
+### What the app sends
+
+Google Analytics for Firebase records how the game is played: when a round starts, how long the first flip takes, each pair matched or missed, the number of moves and the time when you win, when you restart, pause or leave a round, and when you open the About window and which link you tap there. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the game on Google Play). The game turns off the advertising ID, so the SDK neither reads nor sends it. The game does not send a user ID, because it has none, and does not use this data for advertising.
+
+For this, the game now uses the internet connection. The source code is public on GitHub, at TiagoDanin/Emoji-Memory-Jetpack, so anyone can check what is sent.
+
+### Who else receives it
+
+Google, which runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy).
+
+I do not sell this data, share it with advertisers, or hand it to a data broker. The statistics are used to find bugs and to tune the game, on the basis of my legitimate interest in keeping it working.
+
+### How long it is kept
+
+Statistics are kept for the retention period configured in Firebase, after which Google deletes them.
 
 ### Your rights
 
-Since I hold no data about you, there is nothing to access, correct or delete. The LGPD (Lei 13.709/2018) still gives you the right to ask, and I answer at the address above.
+Since the statistics carry no name or account, I usually cannot tell which ones are yours. You can still ask me what exists, ask me to delete it, or object to it, at TiagoDanin@outlook.com. You may also complain to the ANPD, Brazil's data protection authority.
 
 ### Children
 
-The game is not directed at children, and it collects nothing from anyone, children included.
+The game is not directed at children. I do not knowingly collect data from children under 13. If you believe a child's data reached me, write to me and I delete what I can find.
 
 ### Changes
 
-If this page changes, the date at the top changes with it.
+If this policy changes, the date at the top changes with it. A change in what is collected is described here before the version that makes it is published.
 
 ### Contact
 

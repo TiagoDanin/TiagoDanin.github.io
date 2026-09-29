@@ -4,36 +4,50 @@ slug: "virtual-pocket-air-conditioning-privacy"
 app: "virtual-pocket-air-conditioning"
 appName: "Virtual Pocket Air Conditioning"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "en"
-description: "Virtual Pocket Air Conditioning collects nothing: no account, no analytics, no ads and no internet permission. It plays a sound and that is all."
+description: "Virtual Pocket Air Conditioning has no account and no ads. It plays a sound and sends anonymous usage statistics to Firebase. This is all of it."
 ---
 
-Virtual Pocket Air Conditioning collects no personal data. There is nothing to sign up for, nothing is saved on the phone, and the app does not even ask for permission to use the internet.
+Virtual Pocket Air Conditioning has no account, no ads and nothing to sign up for. It plays a sound. The only data that leaves the phone is a set of anonymous usage statistics.
 
-I, Tiago Danin, am the developer. Write to TiagoDanin@outlook.com about anything on this page.
+I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
 ### What the app does with your phone
 
-It plays a bundled air conditioner sound in a loop and shows an animation. It asks Android for one permission, to keep the device awake while the sound plays, so the audio does not stop when the screen turns off.
+It plays a bundled air conditioner sound in a loop and shows an animation. It asks Android to keep the device awake while the sound plays, so the audio does not stop when the screen turns off. It saves nothing on the phone.
 
-It has no analytics, no crash reporting, no ads and no third-party SDK that collects data. Nothing you do in the app is recorded or sent anywhere.
+### What the app sends
+
+Google Analytics for Firebase records how the app is used: when you turn the air conditioner on or off and for how long it ran, when it reaches full volume, when you leave or come back to the app with it on, when the sound fails to play, when you open the About screen and which link you tap there. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the app on Google Play). The app turns off the advertising ID, so the SDK neither reads nor sends it. The app does not send a user ID, because it has none, and does not use this data for advertising.
+
+For this, the app now uses the internet connection.
+
+### Who else receives it
+
+Google, which runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy).
+
+I do not sell this data, share it with advertisers, or hand it to a data broker. The statistics are used to find bugs and to see which parts of the app people use, on the basis of my legitimate interest in keeping it working.
 
 ### Links out
 
-The About screen links to tiagodanin.com and to the page of the sound's author on orangefreesounds.com. Tapping one opens your browser, and from then on that site's own privacy policy applies.
+The About screen links to tiagodanin.com, to this page and to the page of the sound's author on orangefreesounds.com. Tapping one opens your browser, and from then on that site's own privacy policy applies.
+
+### How long it is kept
+
+Statistics are kept for the retention period configured in Firebase, after which Google deletes them.
 
 ### Your rights
 
-Since I hold no data about you, there is nothing to access, correct or delete. The LGPD (Lei 13.709/2018) still gives you the right to ask, and I answer at the address above.
+Since the statistics carry no name or account, I usually cannot tell which ones are yours. You can still ask me what exists, ask me to delete it, or object to it, at TiagoDanin@outlook.com. You may also complain to the ANPD, Brazil's data protection authority.
 
 ### Children
 
-The app is not directed at children, and it collects nothing from anyone, children included.
+The app is not directed at children. I do not knowingly collect data from children under 13. If you believe a child's data reached me, write to me and I delete what I can find.
 
 ### Changes
 
-If a future version starts collecting anything, this page will say so before that version is published, and the date at the top will change.
+If this policy changes, the date at the top changes with it. A change in what is collected is described here before the version that makes it is published.
 
 ### Contact
 

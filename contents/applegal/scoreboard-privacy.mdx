@@ -4,14 +4,14 @@ slug: "scoreboard-privacy"
 app: "scoreboard"
 appName: "Scoreboard"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "en"
-description: "Scoreboard works offline and keeps the match on your phone. No account, no analytics, no ads and no internet permission. Nothing leaves the device."
+description: "Scoreboard works offline and keeps the match on your phone. No account and no ads. It sends anonymous usage statistics to Firebase."
 ---
 
-Scoreboard collects no personal data. It has no account, no server and no internet permission. The match you are scoring and your settings stay on your phone.
+Scoreboard has no account and no server of its own. The match you are scoring and your settings stay on your phone. The only data that leaves it is a set of anonymous usage statistics.
 
-I, Tiago Danin, am the developer. Write to TiagoDanin@outlook.com about anything on this page.
+I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
 ### What stays on your phone
 
@@ -25,19 +25,29 @@ Uninstalling the app, or clearing its data in Android settings, erases all of it
 - **Screen always on** while the match screen is open, released when you leave it.
 - **Sharing**, only when you tap it. The app hands the system share sheet a line of text such as "Blue 21 x 18 Red", and you choose where it goes.
 
-There are no analytics, no crash reporting, no ads and no third-party SDK that collects data.
+### What the app sends
+
+Google Analytics for Firebase records how the app is used: the introduction questions and the rules you pick (scoring, sets or time, deciding set, golden point, rotation), matches started, resumed, restarted, abandoned and finished (with the winning colour, the number of sets and a rough duration), sets ended, undo, scores edited by hand, the clock started or paused, sharing a result, rematches and the settings you switch. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, operating system, app version and approximate location. On Android the SDK may read the install referrer (how you got to the app on Google Play). The app turns off the advertising ID, so the SDK neither reads nor sends it. The app does not send a user ID, because it has none, and does not use this data for advertising. Scores are never sent point by point.
+
+For this, the app now uses the internet connection. Scoring still works offline; the statistics wait and go out when there is a connection.
+
+### Who else receives it
+
+Google, which runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy).
+
+I do not sell this data, share it with advertisers, or hand it to a data broker. The statistics are used to find bugs and to see which rules people play with, on the basis of my legitimate interest in keeping the app working. They are kept for the retention period configured in Firebase, after which Google deletes them.
 
 ### Your rights
 
-Since I hold no data about you, there is nothing to access, correct or delete. The LGPD (Lei 13.709/2018) still gives you the right to ask, and I answer at the address above.
+Since the statistics carry no name or account, I usually cannot tell which ones are yours. You can still ask me what exists, ask me to delete it, or object to it, at TiagoDanin@outlook.com. You may also complain to the ANPD, Brazil's data protection authority.
 
 ### Children
 
-The app is not directed at children, and it collects nothing from anyone, children included.
+The app is not directed at children. I do not knowingly collect data from children under 13. If you believe a child's data reached me, write to me and I delete what I can find.
 
 ### Changes
 
-If a future version starts collecting anything, this page will say so before that version is published, and the date at the top will change.
+If this policy changes, the date at the top changes with it. A change in what is collected is described here before the version that makes it is published.
 
 ### Contact
 

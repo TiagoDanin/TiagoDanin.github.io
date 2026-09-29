@@ -4,12 +4,12 @@ slug: "the-slime-dungeon-privacy"
 app: "the-slime-dungeon"
 appName: "The Slime Dungeon"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "en"
-description: "The Slime Dungeon has no account of its own. Play Games sign-in is optional, for the leaderboard. The ads SDK starts with the game but shows no ads."
+description: "The Slime Dungeon has no account of its own. Play Games sign-in is optional, for the leaderboard. The ads SDK starts with the game but shows no ads. Firebase receives anonymous game statistics."
 ---
 
-The Slime Dungeon is an action game for Android. It has no account and no server of its own. Your high score is kept on the phone, and what leaves it goes to Google: the leaderboard, if you sign in to Play Games, and the ads SDK built into the game.
+The Slime Dungeon is an action game for Android. It has no account and no server of its own. Your high score is kept on the phone, and what leaves it goes to Google: the leaderboard, if you sign in to Play Games, the ads SDK built into the game, and a set of game statistics.
 
 I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
@@ -25,6 +25,10 @@ After the tutorial, the game offers to sign you in to Google Play Games so you c
 
 The game includes Google's Mobile Ads SDK (AdMob) and starts it when it opens. It shows no ads today. Even so, the SDK can send Google the device's advertising ID, the device model, the Android version and information about the app. You can reset or delete the advertising ID in Android's settings, under Privacy, Ads.
 
+### Game statistics
+
+Google Analytics for Firebase records how the game is played: which menu option you tap, the tutorial opened and finished, each run started and ended (score, enemies defeated, how long it lasted and how it ended), when the dungeon gets harder, chests opened, potions picked up, deaths, scores sent to the leaderboard, the Play Games sign-in result, the review prompt and the sound switch. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the game on Google Play). Because the game includes the ads SDK, the advertising ID is available on the phone and the Analytics SDK can read it as well. The game sends no user ID and no Play Games name, and I do not use these statistics for advertising.
+
 ### Reviews and links
 
 After you open the menu a few times, the game asks once whether you want to rate it. The review window belongs to Google Play, and the game does not see what you write.
@@ -33,13 +37,13 @@ The About screen loads my avatar from GitHub and links to my site, my Twitter, t
 
 ### Who else receives it
 
-Only Google, through Play Games, Google Play and the Mobile Ads SDK, on servers that may be outside Brazil, including in the United States, and GitHub when the About screen loads the avatar. Their terms: [Google Privacy Policy](https://policies.google.com/privacy), [how Google uses data from apps](https://policies.google.com/technologies/partner-sites) and [GitHub privacy statement](https://docs.github.com/site-policy/privacy-policies/github-privacy-statement).
+Only Google, through Play Games, Google Play, Firebase and the Mobile Ads SDK, on servers that may be outside Brazil, including in the United States, and GitHub when the About screen loads the avatar. Their terms: [Google Privacy Policy](https://policies.google.com/privacy), [Firebase privacy](https://firebase.google.com/support/privacy), [how Google uses data from apps](https://policies.google.com/technologies/partner-sites) and [GitHub privacy statement](https://docs.github.com/site-policy/privacy-policies/github-privacy-statement).
 
-I do not sell data, share it with advertisers, or hand it to a data broker.
+I do not sell data, share it with advertisers, or hand it to a data broker. The statistics are used to find bugs and to balance the game, on the basis of my legitimate interest in keeping it working.
 
 ### Your rights
 
-The game keeps nothing about you on a server of mine, so there is nothing for me to hand over or delete beyond what is on your phone. To remove your score and profile from the leaderboard, use your Google account's Play Games settings. You can still ask me anything about this at TiagoDanin@outlook.com, and you may complain to the ANPD, Brazil's data protection authority.
+The game keeps nothing about you on a server of mine, so there is nothing for me to hand over or delete beyond what is on your phone. To remove your score and profile from the leaderboard, use your Google account's Play Games settings. The statistics carry no name or account, so I usually cannot tell which ones are yours; you can still ask me to delete them or object to them. They are kept for the retention period configured in Firebase, after which Google deletes them. You can still ask me anything about this at TiagoDanin@outlook.com, and you may complain to the ANPD, Brazil's data protection authority.
 
 ### Children
 

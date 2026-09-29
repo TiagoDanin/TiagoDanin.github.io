@@ -4,7 +4,7 @@ slug: "tomely-privacy"
 app: "tomely"
 appName: "Tomely"
 kind: "privacy"
-updatedAt: "2026-09-28"
+updatedAt: "2026-09-29"
 lang: "pt"
 description: "O Tomely guarda seus remédios e doses na sua própria conta, não mostra anúncio e nunca liga seus dados de saúde às estatísticas. Isto é o que ele guarda, onde, e como apagar."
 ---
@@ -29,7 +29,7 @@ Registros de remédios e doses são dados pessoais sensíveis pela LGPD. Eles s�
 
 #### Estatísticas de uso
 
-O Google Analytics para Firebase registra as telas que você abre e alguns eventos: cadastro ou login, adicionar, editar ou excluir um remédio, confirmar uma dose, ver um alerta de estoque e concluir ou pular a apresentação inicial. Esses eventos levam o tipo de remédio e o número de horários. Nunca levam o nome do remédio, e o app deliberadamente não envia o ID da sua conta ao Analytics, então essas estatísticas não ficam ligadas à sua conta. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho. O Tomely não mostra anúncio e não usa esse ID para publicidade.
+O Google Analytics para Firebase registra as telas que você abre e alguns eventos: entrar ou sair da conta, excluir a conta, começar, concluir ou pular o tutorial, adicionar, editar ou excluir um remédio, marcar uma dose (tomada, perdida ou adiada), tocar em um botão do lembrete, permitir ou recusar notificações, a sequência de dias crescer, um alerta de estoque exibido e uma atualização de estoque. Esses eventos levam só categorias e contagens, como o tipo de remédio, o número de horários, o nível do estoque ou o tamanho da sequência. Nunca levam o nome do remédio, e o app deliberadamente não envia o ID da sua conta ao Analytics, então essas estatísticas não ficam ligadas à sua conta. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada. O Tomely não mostra anúncio e desliga o ID de publicidade, então o SDK não lê nem envia esse ID.
 
 #### Relatórios de falha
 
