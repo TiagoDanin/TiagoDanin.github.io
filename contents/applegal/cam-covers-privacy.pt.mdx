@@ -6,10 +6,10 @@ appName: "CAM Covers"
 kind: "privacy"
 updatedAt: "2026-09-28"
 lang: "pt"
-description: "O CAM Covers não tem conta e nunca envia sua foto. Ele mostra anúncios e manda estatísticas de uso ao Google. Isto é o que vai para quem, e como limitar."
+description: "O CAM Covers não tem conta e nunca envia sua foto. Ele mostra anúncios, vende o Premium pelo Google Play e manda estatísticas de uso ao Google. Isto é o que vai para quem, e como limitar."
 ---
 
-O CAM Covers transforma uma foto em uma tela de player de música "tocando agora", que você salva e compartilha. A foto não sai do seu celular, a não ser que você mesmo compartilhe. O que sai são estatísticas de uso, relatórios de falha e o que a rede de anúncios do Google precisa para mostrar anúncios. Esta página explica cada um.
+O CAM Covers transforma uma foto em uma tela de player de música "tocando agora", que você salva e compartilha. A foto não sai do seu celular, a não ser que você mesmo compartilhe. O que sai são estatísticas de uso, relatórios de falha, o que a rede de anúncios do Google precisa para mostrar anúncios e, se você comprar o Premium, o que o Google Play precisa para processar o pagamento. Esta página explica cada um.
 
 Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR te dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer coisa disso.
 
@@ -17,54 +17,61 @@ Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da
 
 #### Sua foto
 
-Você escolhe uma foto da galeria ou tira uma com a câmera. As duas coisas passam pelo seletor e pela câmera do próprio Android, então o app não precisa de permissão de câmera nem de armazenamento. A foto é recortada e desenhada no modelo dentro do celular. A imagem pronta é gravada no armazenamento do próprio app como cam-covers.png e salva em um álbum "CAM Covers" na sua galeria. Ela nunca é enviada para mim nem para servidor nenhum.
+Você escolhe uma foto da galeria pelo seletor de fotos do próprio Android e recorta em quadrado na tela de recorte que abre em seguida, então o app não precisa de permissão de armazenamento. A foto é desenhada no modelo dentro do celular. Quando você salva, a imagem pronta vai para um álbum "CAM Covers" na sua galeria, e uma cópia da última capa fica no armazenamento do próprio app para você poder compartilhar. Nada disso é enviado para mim nem para servidor nenhum.
 
 #### O texto da capa
 
 O título da música, o artista e a linha extra que você digita ficam dentro da imagem. Não são enviados para lugar nenhum.
 
-Quando você compartilha, a imagem passa pelo menu de compartilhamento do Android e vai para o app que você escolher, como Instagram ou WhatsApp. A partir daí vale a política de privacidade desse app.
+Quando você compartilha, a imagem passa pelo menu de compartilhamento do Android e vai para o app que você escolher. A partir daí vale a política de privacidade desse app.
 
 ### O que o app coleta sozinho
 
 #### Estatísticas de uso
 
-O Google Analytics para Firebase registra eventos como abrir o app, escolher um estilo, abrir o editor, chegar à tela de compartilhamento, escolher onde compartilhar, abrir a tela Sobre e tocar em Premium. O app não cria conta nem envia ID de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho.
+O Google Analytics para Firebase registra eventos como abrir o app, escolher ou cancelar uma foto, escolher um estilo, abrir o editor, salvar uma capa (com o estilo, se ela chegou à galeria e se levava a marca), chegar à tela de compartilhamento, se o compartilhamento aconteceu, ver ou fechar a tela do Premium, tocar para comprar ou restaurar, e se uma compra deu certo. O app não cria conta nem envia ID de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho.
 
 #### Contador de estilos
 
-Quando você toca em um estilo, o app soma um ao contador desse estilo no Cloud Firestore. O contador é um número por estilo. Ele não diz nada sobre quem tocou.
+Quando você abre um estilo, o app soma um ao contador desse estilo no Cloud Firestore. O contador é um número por estilo. Ele não diz nada sobre quem abriu.
 
 #### Relatórios de falha
 
-O Firebase Crashlytics recebe um relatório quando o app trava: o erro, o modelo do aparelho, a versão do Android e o estado do app naquele momento.
+O Firebase Crashlytics recebe um relatório quando o app trava ou quando um erro é capturado: o erro, o modelo do aparelho, a versão do Android e o estado do app naquele momento.
 
 #### Anúncios
 
-O CAM Covers mostra um banner na tela inicial e um anúncio de tela cheia depois que você salva uma imagem. Quem entrega é o Google AdMob. Para escolher e medir anúncios, o AdMob usa o ID de publicidade, seu endereço IP, o modelo do aparelho e como você interage com os anúncios, e pode mostrar anúncios com base nos seus interesses. Dá para redefinir ou excluir o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns aparelhos, Google, Anúncios). Excluir o ID acaba com os anúncios personalizados no aparelho inteiro.
+Sem o Premium, o CAM Covers mostra um banner no fim da lista de estilos e, depois que você salva uma capa, às vezes um anúncio de tela cheia (no máximo um a cada dois minutos). Quem entrega é o Google AdMob. Para escolher e medir anúncios, o AdMob usa o ID de publicidade, seu endereço IP, o modelo do aparelho e como você interage com os anúncios, e pode mostrar anúncios com base nos seus interesses.
+
+Onde a lei pede consentimento, como na União Europeia e no Reino Unido, o app mostra o formulário de consentimento do Google antes de carregar qualquer anúncio, e você pode mudar a resposta depois em Configurações, "Privacidade dos anúncios". Também dá para redefinir ou excluir o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns aparelhos, Google, Anúncios). Excluir o ID acaba com os anúncios personalizados no aparelho inteiro.
+
+#### Compra do Premium
+
+O Premium é uma compra única feita pelo Google Play. Quem cuida do pagamento é o Google Play: eu nunca vejo seu cartão nem seus dados de pagamento. O app pergunta ao Google Play se a sua conta Google comprou o Premium quando você compra, quando você toca em "Restaurar compra" e, sem avisar, quando o app abre, para reconhecer uma compra feita em outro celular. O Google me mostra, no Play Console, as informações do pedido que ele dá a todo desenvolvedor, como número do pedido, data, país e valor.
 
 ### O que fica no seu celular
 
-As imagens prontas e duas marcações que o app guarda sobre anúncios e Premium. Desinstalar o app apaga as marcações. As imagens que você salvou na galeria ficam lá até você apagar.
+A sua última capa, se você tem o Premium, quantas capas você já salvou e se o app já pediu uma avaliação. Desinstalar o app apaga tudo isso. As imagens que você salvou na galeria ficam lá até você apagar.
 
 ### Quem mais recebe
 
 O app não tem servidor próprio. O que ele envia vai para o Google:
 
-- **Google AdMob** recebe o que precisa para mostrar anúncios, como descrito acima.
+- **Google AdMob** recebe o que precisa para mostrar anúncios e para registrar sua escolha de consentimento, como descrito acima.
+- **Google Play** processa o pagamento do Premium, diz ao app se você tem o Premium e mostra o pedido de avaliação quando o app pede um.
 - **Google Analytics para Firebase** e **Firebase Crashlytics** recebem as estatísticas e os relatórios de falha.
-- **Cloud Firestore** entrega a lista de estilos e guarda os contadores.
-- **Firebase Remote Config** me deixa ligar ou desligar recursos, como os anúncios, sem atualizar o app. Ele recebe a versão do app e as informações do aparelho necessárias para responder.
+- **Cloud Firestore** guarda os contadores que ordenam a lista de estilos.
+- **Firebase Remote Config** me deixa desligar recursos, como os anúncios, sem atualizar o app, e escolher qual versão da tela do Premium o app mostra. Ele recebe a versão do app e as informações do aparelho necessárias para responder.
 
-Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy), [como o Google usa informações de apps que usam seus serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
+Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy), [como o Google usa informações de apps que usam seus serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR), [termos do Google Play](https://play.google.com/about/play-terms/?hl=pt-BR) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
 
-A tela Sobre carrega meu avatar do GitHub e tem links para o meu GitHub e o meu Instagram. A opção de feedback abre seu app de e-mail endereçado a TiagoDanin@outlook.com; nada é enviado até você apertar enviar.
+A tela de Configurações tem um link para esta página. "Enviar sugestão" abre seu app de e-mail endereçado a TiagoDanin@outlook.com, com a versão do app, a versão do Android e o idioma do app já na mensagem; nada é enviado até você apertar enviar.
 
 Não vendo seus dados nem repasso para corretor de dados. Só os revelaria se um juiz ou uma autoridade brasileira exigisse, na forma da lei.
 
 ### Para que é usado
 
-Os anúncios pagam o app, e se apoiam no meu legítimo interesse e nas escolhas que você faz nas configurações de anúncios do Android. As estatísticas, os contadores e os relatórios de falha servem para achar bugs e ver quais estilos as pessoas usam, com base no meu legítimo interesse em manter o app funcionando.
+Os anúncios pagam o app. Eles se apoiam no seu consentimento onde a lei exige e, fora disso, no meu legítimo interesse e nas escolhas que você faz nas configurações de anúncios do Android. Os dados da compra servem para entregar o Premium que você pagou, o que é a execução desse contrato. As estatísticas, os contadores e os relatórios de falha servem para achar bugs, ver quais estilos as pessoas usam e comparar versões da tela do Premium, com base no meu legítimo interesse em manter o app funcionando.
 
 ### Onde fica guardado
 
@@ -72,7 +79,7 @@ O Google guarda esses dados em servidores que podem estar fora do Brasil, inclus
 
 ### Por quanto tempo
 
-As estatísticas do Analytics e os relatórios de falha ficam guardados pelo prazo de retenção configurado no Firebase, depois o Google apaga. O AdMob guarda os dados dele pela política do próprio Google. Os contadores de estilo ficam enquanto o estilo existir.
+As estatísticas do Analytics e os relatórios de falha ficam guardados pelo prazo de retenção configurado no Firebase, depois o Google apaga. O AdMob e o Google Play guardam os dados deles pelas políticas do próprio Google. Os contadores de estilo ficam enquanto o estilo existir.
 
 ### Seus direitos
 

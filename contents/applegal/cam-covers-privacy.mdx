@@ -6,10 +6,10 @@ appName: "CAM Covers"
 kind: "privacy"
 updatedAt: "2026-09-28"
 lang: "en"
-description: "CAM Covers has no account and never uploads your photo. It shows ads and sends usage statistics to Google. This is what reaches whom, and how to limit it."
+description: "CAM Covers has no account and never uploads your photo. It shows ads, sells Premium through Google Play and sends usage statistics to Google. This is what reaches whom, and how to limit it."
 ---
 
-CAM Covers turns a photo into a "now playing" music player screen that you save and share. The photo never leaves your phone unless you share it yourself. What does leave is usage statistics, crash reports and what Google's ad network needs to show ads. This page says what each of those is.
+CAM Covers turns a photo into a "now playing" music player screen that you save and share. The photo never leaves your phone unless you share it yourself. What does leave is usage statistics, crash reports, what Google's ad network needs to show ads, and, if you buy Premium, what Google Play needs to process the payment. This page says what each of those is.
 
 I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
@@ -17,54 +17,61 @@ I, Tiago Danin, am the developer and the controller of this data under the LGPD 
 
 #### Your photo
 
-You pick a photo from the gallery or take one with the camera. Both go through Android's own picker and camera, so the app needs no camera or storage permission. The photo is cropped and drawn into the template on the phone. The finished image is written to the app's own storage as cam-covers.png and saved to a "CAM Covers" album in your gallery. It is never uploaded to me or to any server.
+You pick a photo from your gallery through Android's own photo picker and crop it square in the cropping screen that opens next, so the app needs no storage permission. The photo is drawn into the template on the phone. When you save, the finished image goes to a "CAM Covers" album in your gallery, and a copy of your latest cover stays in the app's own storage so you can share it. None of it is uploaded to me or to any server.
 
 #### The text on the cover
 
 The song title, artist and extra line you type stay inside the image. They are not sent anywhere.
 
-When you share, the image goes through Android's share sheet to the app you choose, such as Instagram or WhatsApp. From there, that app's own privacy policy applies.
+When you share, the image goes through Android's share sheet to the app you choose. From there, that app's own privacy policy applies.
 
 ### What the app collects on its own
 
 #### Usage statistics
 
-Google Analytics for Firebase records events such as opening the app, choosing a style, opening the editor, reaching the share screen, picking where to share, opening the About screen and tapping Premium. The app does not create an account or send a user ID, so these events are tied to an app installation, not to a name. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
+Google Analytics for Firebase records events such as opening the app, picking or cancelling a photo, choosing a style, opening the editor, saving a cover (with the style, whether it reached the gallery and whether it carried the mark), reaching the share screen, whether sharing went through, seeing or closing the Premium screen, tapping to buy or restore, and whether a purchase went through. The app does not create an account or send a user ID, so these events are tied to an app installation, not to a name. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
 
 #### Style counter
 
-When you tap a style, the app adds one to that style's counter in Cloud Firestore. The counter is a single number per style. It says nothing about who tapped it.
+When you open a style, the app adds one to that style's counter in Cloud Firestore. The counter is a single number per style. It says nothing about who opened it.
 
 #### Crash reports
 
-Firebase Crashlytics receives a report when the app crashes: the error, the device model, the Android version and the state of the app at that moment.
+Firebase Crashlytics receives a report when the app crashes or an error is caught: the error, the device model, the Android version and the state of the app at that moment.
 
 #### Ads
 
-CAM Covers shows a banner on the home screen and a full-screen ad after you save an image. Google AdMob serves them. To pick and measure ads, AdMob uses the advertising ID, your IP address, the device model and how you interact with the ads, and it may show ads based on your interests. You can reset or delete the advertising ID in Android settings, under Privacy, Ads (on some phones, Google, Ads). Deleting it stops personalised ads on the whole device.
+Without Premium, CAM Covers shows a banner at the end of the style list and, after you save a cover, sometimes a full-screen ad (at most one every two minutes). Google AdMob serves them. To pick and measure ads, AdMob uses the advertising ID, your IP address, the device model and how you interact with the ads, and it may show ads based on your interests.
+
+Where the law asks for consent, such as in the EU and the UK, the app shows Google's consent form before any ad loads, and you can change your answer later in Settings, "Ad privacy choices". You can also reset or delete the advertising ID in Android settings, under Privacy, Ads (on some phones, Google, Ads). Deleting it stops personalised ads on the whole device.
+
+#### Premium purchase
+
+Premium is a one-time purchase made through Google Play. Google Play handles the payment: I never see your card or your payment details. The app asks Google Play whether your Google account has bought Premium, when you buy, when you tap "Restore purchase" and quietly when the app starts, so a purchase made on another phone is picked up. Google shares with me, through the Play Console, the order information it gives every developer, such as the order number, date, country and amount.
 
 ### What stays on your phone
 
-The finished images, and two flags the app keeps about ads and Premium. Uninstalling the app removes the flags. Images you saved to the gallery stay there until you delete them.
+Your latest cover, whether you have Premium, how many covers you have saved and whether the app has already asked you for a rating. Uninstalling the app removes all of it. Images you saved to the gallery stay there until you delete them.
 
 ### Who else receives it
 
 The app has no server of its own. What it sends goes to Google:
 
-- **Google AdMob** receives what it needs to show ads, as described above.
+- **Google AdMob** receives what it needs to show ads and to record your consent choice, as described above.
+- **Google Play** processes the Premium payment, tells the app whether you own Premium, and shows the rating prompt when the app asks for one.
 - **Google Analytics for Firebase** and **Firebase Crashlytics** receive the statistics and crash reports.
-- **Cloud Firestore** serves the list of styles and holds the style counters.
-- **Firebase Remote Config** lets me switch features such as ads on or off without an update. It receives the app version and device information needed to answer.
+- **Cloud Firestore** holds the style counters that order the style list.
+- **Firebase Remote Config** lets me switch features such as ads off without an update and choose which version of the Premium screen the app shows. It receives the app version and device information needed to answer.
 
-Their terms: [Firebase privacy](https://firebase.google.com/support/privacy), [How Google uses information from apps that use its services](https://policies.google.com/technologies/partner-sites) and [Google Privacy Policy](https://policies.google.com/privacy).
+Their terms: [Firebase privacy](https://firebase.google.com/support/privacy), [How Google uses information from apps that use its services](https://policies.google.com/technologies/partner-sites), [Google Play terms](https://play.google.com/about/play-terms/) and [Google Privacy Policy](https://policies.google.com/privacy).
 
-The About screen loads my GitHub avatar from GitHub and links to my GitHub and Instagram. The feedback option opens your email app addressed to TiagoDanin@outlook.com; nothing is sent until you press send.
+The Settings screen links to this page. "Send feedback" opens your email app addressed to TiagoDanin@outlook.com, with the app version, the Android version and the app's language already in the message; nothing is sent until you press send.
 
 I do not sell your data or hand it to a data broker. I would only disclose it if a Brazilian court or authority legally required it.
 
 ### Why it is used
 
-The ads pay for the app, and they rely on my legitimate interest and on the choices you make in Android's ad settings. The statistics, counters and crash reports are used to find bugs and to see which styles people use, on the basis of my legitimate interest in keeping the app working.
+The ads pay for the app. They rely on your consent where the law requires it, and otherwise on my legitimate interest and on the choices you make in Android's ad settings. Purchase data is used to deliver the Premium you paid for, which is the performance of that contract. The statistics, counters and crash reports are used to find bugs, to see which styles people use and to compare versions of the Premium screen, on the basis of my legitimate interest in keeping the app working.
 
 ### Where it is stored
 
@@ -72,7 +79,7 @@ Google stores this data on its servers, which may be outside Brazil, including i
 
 ### How long it is kept
 
-Analytics statistics and crash reports are kept for the retention period configured in Firebase, then Google deletes them. AdMob keeps its data under Google's own policy. Style counters are kept for as long as the style exists.
+Analytics statistics and crash reports are kept for the retention period configured in Firebase, then Google deletes them. AdMob and Google Play keep their data under Google's own policies. Style counters are kept for as long as the style exists.
 
 ### Your rights
 
