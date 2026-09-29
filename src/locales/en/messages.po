@@ -178,6 +178,14 @@ msgstr "{0} work by Tiago Danin: {1} open source repositories, {2} articles and 
 msgid "{0}, {1}"
 msgstr "{0}, {1}"
 
+#: src/app/[lang]/app/[appId]/page.tsx
+msgid "{appName} screenshot {position}"
+msgstr "{appName} screenshot {position}"
+
+#: src/app/[lang]/app/[appId]/page.tsx
+msgid "{appName} screenshots"
+msgstr "{appName} screenshots"
+
 #: src/app/[lang]/legal/[app]/page.tsx
 msgid "{appName}: privacy and terms of use"
 msgstr "{appName}: privacy and terms of use"
@@ -3508,6 +3516,10 @@ msgstr "Scope & Permissions"
 #: src/app/[lang]/cybersecurity/page.tsx
 msgid "Scope Definition"
 msgstr "Scope Definition"
+
+#: src/app/[lang]/app/[appId]/page.tsx
+msgid "Screenshots"
+msgstr "Screenshots"
 
 #: src/components/sections/GitHubPages.tsx
 msgid "Search GitHub Pages projects"

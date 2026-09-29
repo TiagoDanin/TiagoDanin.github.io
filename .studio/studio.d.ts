@@ -314,7 +314,12 @@ export interface GoogleplayEntry {
     learned: string;
   };
   tags: Array<"flutter" | "health" | "medication" | "reminder" | "firebase" | "fly.io" | "devops" | "cloud" | "ios" | "photography" | "creative" | "instagram" | "education" | "CNH" | "DETRAN" | "gamification" | "brazil" | "android" | "game" | "idle" | "clicker" | "prestige" | "survival" | "arcade" | "bonfire" | "relaxation" | "sleep" | "white noise" | "ambient" | "memory" | "jetpack compose" | "open source" | "pets" | "marketplace" | "services">;
-  platforms: Array<"Android" | "iOS">;
+  iconImage: string;
+  screenshots: Array<{
+    src: string;
+    width: number;
+    height: number;
+  }>;
   url: HttpUrl;
   status: string;
 }

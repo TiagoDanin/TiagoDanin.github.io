@@ -7,6 +7,8 @@ import { ExternalLink, ArrowLeft, ArrowRight, CheckCircle, Lightbulb, Rocket, Bo
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { AppIcon } from "@/components/ui/AppIcon";
+import { AppScreenshots } from "@/components/sections/AppScreenshots";
 import { queryCollection } from "nextjs-studio/server";
 import { getAppLegalApps } from "@/lib/legal";
 import { localePath, type Locale } from "@/lib/i18n/locales";
@@ -15,11 +17,6 @@ import { localeAlternates, openGraphDefaults, pageUrl, twitterDefaults } from "@
 
 function getApps(locale: Locale) {
   return [...queryCollection("googleplay").locale(locale)];
-}
-
-/** Platform names are proper nouns; an entry without the field is Android only. */
-function platformsOf(app: { platforms?: string[] }): string[] {
-  return app.platforms?.length ? app.platforms : ["Android"];
 }
 
 /** An entry without a store link is unreleased unless it says it was pulled. */
@@ -44,7 +41,6 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/app/[appId
   if (!app) {
     return { title: t(i18n)`App Not Found` };
   }
-  const platforms = platformsOf(app);
 
   return {
     title: t(i18n)`${app.name} - Android App`,
@@ -70,7 +66,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/app/[appId
           "@type": "MobileApplication",
           "name": app.name,
           "description": app.storeDescription,
-          "operatingSystem": platforms.join(", "),
+          "operatingSystem": "Android",
           "applicationCategory": app.category,
           "url": app.url ?? pageUrl(locale, `/app/${app.slug}`),
           "author": {
@@ -101,7 +97,7 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/app/[appId
 export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/[appId]'>) {
   const { lang, appId } = await params;
   const locale = resolveLocale(lang);
-  initI18n(locale);
+  const i18n = initI18n(locale);
 
   const apps = getApps(locale);
   const app = apps.find((a) => a.slug === appId);
@@ -111,6 +107,11 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
   }
 
   const hasLegal = getAppLegalApps().some((entry) => entry.app === app.slug);
+  const appName = app.name;
+  const screenshots = (app.screenshots ?? []).map((shot, index) => {
+    const position = index + 1;
+    return { ...shot, alt: t(i18n)`${appName} screenshot ${position}` };
+  });
 
   const otherApps = apps.filter((a) => a.slug !== appId).slice(0, 2);
 
@@ -137,23 +138,20 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
         />
         <div className="container mx-auto max-w-5xl relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-10">
-            {/* App icon */}
-            <div
-              className="text-8xl p-8 rounded-3xl shrink-0 shadow-lg"
-              style={{ backgroundColor: `${app.accentColor}15`, border: `2px solid ${app.accentColor}30` }}
-            >
-              {app.icon}
-            </div>
+            <AppIcon
+              name={app.name}
+              image={app.iconImage}
+              emoji={app.icon}
+              accentColor={app.accentColor}
+              size={160}
+              className="shadow-lg"
+            />
 
             {/* App info */}
             <div className="flex-1 text-center md:text-left space-y-4">
               <div className="flex flex-wrap items-center gap-2 justify-center md:justify-start">
                 <Badge variant="outline">{app.category}</Badge>
-                {platformsOf(app).map((platform) => (
-                  <Badge key={platform} variant="secondary">
-                    {platform}
-                  </Badge>
-                ))}
+                <Badge variant="secondary">Android</Badge>
                 {app.tags.slice(0, 2).map((tag) => (
                   <Badge key={tag} variant="secondary" className="text-xs">
                     {tag}
@@ -196,6 +194,12 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
           </div>
         </div>
       </section>
+
+      <AppScreenshots
+        title={t(i18n)`Screenshots`}
+        label={t(i18n)`${appName} screenshots`}
+        screenshots={screenshots}
+      />
 
       {/* Features */}
       <section className="py-20 px-4 bg-muted/30">
@@ -297,7 +301,14 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
       {app.url && (
         <section className="py-20 px-4 bg-muted/30">
           <div className="container mx-auto max-w-3xl text-center space-y-6">
-            <div className="text-6xl mb-4">{app.icon}</div>
+            <AppIcon
+              name={app.name}
+              image={app.iconImage}
+              emoji={app.icon}
+              accentColor={app.accentColor}
+              size={80}
+              className="mx-auto mb-4"
+            />
             <h2 className="text-3xl md:text-4xl font-bold">{app.tagline}</h2>
             <p className="text-xl text-muted-foreground">{app.description}</p>
             <Button size="lg" asChild style={{ backgroundColor: app.accentColor, color: "#fff" }}>
@@ -349,12 +360,13 @@ export default async function AppLandingPage({ params }: PageProps<'/[lang]/app/
                 <Link key={other.slug} href={localePath(locale, `/app/${other.slug}`)}>
                   <Card className="group hover:border-primary/50 transition-all duration-300 hover:shadow-md cursor-pointer">
                     <CardContent className="p-6 flex gap-4 items-center">
-                      <div
-                        className="text-4xl p-3 rounded-2xl shrink-0"
-                        style={{ backgroundColor: `${other.accentColor}15` }}
-                      >
-                        {other.icon}
-                      </div>
+                      <AppIcon
+                        name={other.name}
+                        image={other.iconImage}
+                        emoji={other.icon}
+                        accentColor={other.accentColor}
+                        size={56}
+                      />
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-base group-hover:text-primary transition-colors">
                           {other.name}

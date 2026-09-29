@@ -156,7 +156,7 @@ Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/t
 
 **`/legal/[app]` is the privacy policy and terms of each app**, the URL pasted into the Play Console. It reads `contents/applegal/<app>-privacy.mdx` and `<app>-terms.mdx` (plus `.pt.mdx`), and the route list comes from their `app` field, not from `googleplay`, so an unreleased app (Scoreboard) can have its documents without a card on `/apps`. `/app/[appId]` links to it when the slugs match. Write the documents from what the app's code ships, not from its roadmap.
 
-**`googleplay` has an `index.br.json`**, the only project collection that does. Every read goes through `.locale()` (`getProjectsMap(locale)` included) or each app lists twice. Keep `name` identical in both files: `projectSlug()` builds `/project/googleplay/[slug]` from it.
+**`googleplay` has an `index.br.json`**, the only project collection that does. Every read goes through `.locale()` (`getProjectsMap(locale)` included) or each app lists twice. Keep `name` identical in both files: `projectSlug()` builds `/project/googleplay/[slug]` from it. Store artwork lives in `public/images/apps/<slug>/` as WebP (`icon.webp`, `screenshot-N.webp`), taken from the Play listing or the app's `store/` folder; when the screenshots differ by language they sit in `en/` and `br/`, and each locale file points `screenshots` at its own set. `iconImage` is optional: an app without artwork (Petmob) falls back to its `icon` emoji through `AppIcon`. The `<slug>.webp` files at the root of that folder are 192px leftovers that nothing references.
 
 ### Component Architecture
 - **Layout**: `Navbar`, `Footer`

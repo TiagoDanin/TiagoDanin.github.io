@@ -41,6 +41,34 @@
 			"medication",
 			"reminder",
 			"firebase"
+		],
+		"iconImage": "/images/apps/tomely/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/tomely/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/tomely/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/tomely/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/tomely/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/tomely/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			}
 		]
 	},
 	{
@@ -48,34 +76,35 @@
 		"slug": "flycontrol",
 		"tagline": "Seus apps do Fly.io no bolso.",
 		"description": "Cliente não oficial do Fly.io para ver apps e máquinas, ler logs ao vivo, acompanhar CPU e memória e reiniciar uma máquina pelo celular.",
-		"storeDescription": "O FlyControl mostra num relance quais apps e Machines do Fly.io estão rodando, transmite os logs e desenha gráficos de CPU, memória, rede e disco. Ligue, desligue, reinicie ou destrua uma máquina pelo celular. O login é com um token do Fly.io, que fica no armazenamento criptografado do aparelho e só é enviado ao Fly.io. Não é afiliado ao Fly.io.",
+		"storeDescription": "O FlyControl é um cliente não oficial do Fly.io para Android. Ele mostra se seus apps e máquinas estão rodando e deixa você agir pelo celular: ligar, desligar ou reiniciar uma máquina, acompanhar os logs e ver os gráficos de CPU, memória, rede e disco. O login é com um token de organização do Fly.io, que fica no armazenamento criptografado do aparelho e só é enviado para a API do Fly.io. Não é afiliado ao Fly.io.",
 		"category": "Ferramentas",
 		"icon": "🎈",
 		"accentColor": "#7C3AED",
-		"platforms": [
-			"Android",
-			"iOS"
-		],
 		"features": [
 			{
 				"icon": "🖥️",
 				"title": "Apps e máquinas",
-				"description": "Cada app com status e regiões, e cada máquina com filtros e busca."
+				"description": "Cada app da organização com status, quantidade de máquinas e regiões. Filtre máquinas por estado e busque por ID, app ou região."
+			},
+			{
+				"icon": "⚡",
+				"title": "Aja pelo celular",
+				"description": "Ligue, desligue ou reinicie uma máquina. Destruir uma pede confirmação antes."
 			},
 			{
 				"icon": "📜",
 				"title": "Logs ao vivo",
-				"description": "Logs chegando na hora, com filtro de nível e um toque para copiar a linha."
+				"description": "Acompanhe os logs de um app ou de uma máquina, filtre por nível e copie qualquer linha."
 			},
 			{
 				"icon": "📈",
 				"title": "Métricas",
-				"description": "Gráficos de CPU, memória, rede e disco da última hora até os últimos 30 dias."
+				"description": "Gráficos de CPU, memória, rede e disco da última hora até os últimos 30 dias, além dos deploys recentes."
 			},
 			{
 				"icon": "🔐",
 				"title": "O token fica no celular",
-				"description": "Várias contas e organizações, guardadas no Keystore ou no Keychain e enviadas só para a API do Fly.io."
+				"description": "Várias contas e organizações, guardadas em armazenamento criptografado e enviadas só para a API do Fly.io."
 			}
 		],
 		"buildStory": {
@@ -89,15 +118,39 @@
 			"devops",
 			"cloud",
 			"ios"
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.fly_control",
+		"iconImage": "/images/apps/flycontrol/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/flycontrol/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/flycontrol/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/flycontrol/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/flycontrol/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			}
 		]
 	},
 	{
 		"name": "CAM Covers",
 		"slug": "cam-covers",
-		"tagline": "Transforme suas fotos em capas de música.",
+		"tagline": "Transforme suas fotos em capas de álbum de verdade.",
 		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers",
 		"description": "Transforma uma foto numa tela de player de música, com o título e o artista que você quiser, pronta para compartilhar.",
-		"storeDescription": "Viu a trend de transformar selfie em capa de player de música? O CAM Covers faz isso em poucos toques. Escolha um estilo de player, escolha ou tire uma foto, recorte, digite o título da música e o artista, e salve ou compartilhe a imagem. Tudo é montado no seu celular, sem conta.",
+		"storeDescription": "O CAM Covers transforma suas fotos em capas de álbum inspiradas em players de música de verdade, de um disco de rock grunge a um single lo-fi. Escolha um estilo de player, coloque uma foto, digite o título da música e o artista, e compartilhe no Instagram, WhatsApp, Facebook ou TikTok. Tudo é montado no seu celular, sem conta.",
 		"category": "Fotografia",
 		"icon": "🎵",
 		"accentColor": "#EC4899",
@@ -133,6 +186,34 @@
 			"photography",
 			"creative",
 			"instagram"
+		],
+		"iconImage": "/images/apps/cam-covers/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/cam-covers/screenshot-1.webp",
+				"width": 592,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/cam-covers/screenshot-2.webp",
+				"width": 592,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/cam-covers/screenshot-3.webp",
+				"width": 592,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/cam-covers/screenshot-4.webp",
+				"width": 592,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/cam-covers/screenshot-5.webp",
+				"width": 592,
+				"height": 1280
+			}
 		]
 	},
 	{
@@ -141,20 +222,25 @@
 		"tagline": "Passe na prova da CNH. 5 minutos por dia.",
 		"url": "https://play.google.com/store/apps/details?id=com.direcaofacil",
 		"description": "App gamificado para passar na prova teórica da CNH, com lições curtas e simulados no estilo do DETRAN.",
-		"storeDescription": "O Direção Fácil é um app no estilo Duolingo para a prova teórica da CNH. Estude legislação, placas, direção defensiva e primeiros socorros em lições curtas, depois teste o que aprendeu com questões no estilo do DETRAN, baseadas no Código de Trânsito. Não é afiliado ao DETRAN nem à SENATRAN.",
+		"storeDescription": "O Direção Fácil é o app completo para passar na prova teórica da CNH e aprender legislação de trânsito de verdade. Estude por tema em trilhas, pratique com questões no estilo do DETRAN baseadas no CTB e veja quais temas ainda te custam pontos. A prova tem 30 questões de múltipla escolha e aprova quem acerta 21. Não é afiliado ao DETRAN, à SENATRAN nem a nenhum órgão do governo.",
 		"category": "Educação",
 		"icon": "🚗",
 		"accentColor": "#F59E0B",
 		"features": [
 			{
-				"icon": "📚",
-				"title": "Trilhas por tema",
-				"description": "Legislação, placas, direção defensiva, primeiros socorros, mecânica básica, e infrações e penalidades."
+				"icon": "📝",
+				"title": "Simulado no estilo DETRAN",
+				"description": "Questões baseadas no Código de Trânsito Brasileiro (CTB), no formato da prova oficial. Faça quantos quiser."
 			},
 			{
-				"icon": "📝",
-				"title": "Quizzes com explicação",
-				"description": "Questões de múltipla escolha no formato da prova, com o porquê de cada resposta."
+				"icon": "📚",
+				"title": "Trilhas por tema",
+				"description": "Legislação, placas, direção defensiva, primeiros socorros, mecânica básica, e infrações e penalidades, numa ordem que faz sentido."
+			},
+			{
+				"icon": "📊",
+				"title": "Acompanhamento de desempenho",
+				"description": "Sua evolução em cada tema, para saber onde focar antes que um ponto fraco te custe pontos na prova."
 			},
 			{
 				"icon": "🏆",
@@ -179,6 +265,34 @@
 			"gamification",
 			"brazil",
 			"android"
+		],
+		"iconImage": "/images/apps/direcao-facil/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/direcao-facil/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/direcao-facil/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/direcao-facil/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/direcao-facil/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/direcao-facil/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			}
 		]
 	},
 	{
@@ -229,6 +343,29 @@
 			"clicker",
 			"android",
 			"prestige"
+		],
+		"iconImage": "/images/apps/idle-elevator/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/idle-elevator/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/idle-elevator/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/idle-elevator/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/idle-elevator/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			}
 		]
 	},
 	{
@@ -274,6 +411,19 @@
 			"survival",
 			"arcade",
 			"bonfire"
+		],
+		"iconImage": "/images/apps/the-slime-dungeon/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/the-slime-dungeon/screenshot-1.webp",
+				"width": 590,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/the-slime-dungeon/screenshot-2.webp",
+				"width": 590,
+				"height": 1280
+			}
 		]
 	},
 	{
@@ -319,6 +469,19 @@
 			"sleep",
 			"white noise",
 			"ambient"
+		],
+		"iconImage": "/images/apps/virtual-pocket-air-conditioning/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/virtual-pocket-air-conditioning/br/screenshot-1.webp",
+				"width": 591,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/virtual-pocket-air-conditioning/br/screenshot-2.webp",
+				"width": 591,
+				"height": 1280
+			}
 		]
 	},
 	{
@@ -364,7 +527,20 @@
 			"open source",
 			"android"
 		],
-		"status": "removed"
+		"status": "removed",
+		"iconImage": "/images/apps/emoji-memory-jetpack/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/emoji-memory-jetpack/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/emoji-memory-jetpack/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
 	},
 	{
 		"name": "Petmob",

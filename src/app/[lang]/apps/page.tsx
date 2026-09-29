@@ -6,6 +6,7 @@ import { ExternalLink, ArrowRight, Smartphone } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { AppIcon } from "@/components/ui/AppIcon";
 import { queryCollection } from "nextjs-studio/server";
 import { localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
@@ -104,12 +105,13 @@ export default async function AppsPage({ params }: PageProps<'/[lang]/apps'>) {
               >
                 <CardHeader>
                   <div className="flex items-start gap-4">
-                    <div
-                      className="text-4xl p-3 rounded-2xl shrink-0"
-                      style={{ backgroundColor: `${app.accentColor}20` }}
-                    >
-                      {app.icon}
-                    </div>
+                    <AppIcon
+                      name={app.name}
+                      image={app.iconImage}
+                      emoji={app.icon}
+                      accentColor={app.accentColor}
+                      size={64}
+                    />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <Badge variant="outline" className="text-xs">
