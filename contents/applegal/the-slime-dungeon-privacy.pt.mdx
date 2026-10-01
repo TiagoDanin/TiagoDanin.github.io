@@ -6,28 +6,30 @@ appName: "The Slime Dungeon"
 kind: "privacy"
 updatedAt: "2026-09-29"
 lang: "pt"
-description: "O The Slime Dungeon não tem conta própria. O login no Play Games é opcional, para o ranking. O SDK de anúncios inicia com o jogo, mas não mostra anúncio. O Firebase recebe estatísticas anônimas do jogo."
+description: "O The Slime Dungeon não tem conta própria. O login no Play Games é opcional, para o ranking. O Google AdMob mostra um banner e um anúncio opcional por uma vida extra, pedindo consentimento onde a lei exige. O Firebase recebe estatísticas anônimas do jogo."
 ---
 
-O The Slime Dungeon é um jogo de ação para Android. Ele não tem conta nem servidor próprio. Sua maior pontuação fica no celular, e o que sai dele vai para o Google: o ranking, se você entrar no Play Games, o SDK de anúncios que vem dentro do jogo e um conjunto de estatísticas do jogo.
+O The Slime Dungeon é um jogo de ação para Android. Ele não tem conta nem servidor próprio. Sua maior pontuação fica no celular, e o que sai dele vai para o Google: o ranking, se você entrar no Play Games, os anúncios e um conjunto de estatísticas do jogo.
 
 Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR te dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer coisa disso.
 
 ### O que fica no seu celular
 
-Sua maior pontuação, se o tutorial já foi mostrado, se o Play Games está ligado, a configuração de som e quantas vezes o menu já abriu. Desinstalar o jogo ou limpar os dados dele apaga tudo isso.
+Sua maior pontuação, se o tutorial já foi mostrado, se o Play Games está ligado, se a música e os efeitos sonoros estão ligados e quantas vezes o menu já abriu. O SDK de anúncios também guarda no celular a sua escolha de consentimento. Desinstalar o jogo ou limpar os dados dele apaga tudo isso.
 
 ### Google Play Games e o ranking
 
 Depois do tutorial, o jogo oferece login no Google Play Games para você entrar no ranking. Dá para pular, e dá para desligar depois nas Configurações. Enquanto estiver ligado, o jogo entra sozinho ao abrir e envia sua pontuação ao ranking quando o cavaleiro morre. Seu nome e seu avatar do Play Games aparecem ao lado da pontuação, e qualquer pessoa que abrir o ranking consegue ver. Quem opera o Play Games é o Google, que trata esse perfil pelos próprios termos; eu só vejo o que o ranking mostra para todo mundo.
 
-### O SDK de anúncios
+### Anúncios
 
-O jogo inclui o SDK de anúncios do Google (AdMob) e o inicia quando abre. Hoje ele não mostra nenhum anúncio. Mesmo assim, o SDK pode enviar ao Google o ID de publicidade do aparelho, o modelo, a versão do Android e informações sobre o app. Dá para redefinir ou excluir o ID de publicidade nas configurações do Android, em Privacidade, Anúncios.
+Quando o cavaleiro morre, a tela de fim de jogo mostra um banner e pode oferecer uma vida extra: se você escolher assistir a um anúncio até o fim, o cavaleiro levanta onde caiu. Essa oferta aparece uma vez por partida. Nenhum anúncio aparece enquanto você joga. Quem serve os anúncios é o Google AdMob. Para escolher e medir os anúncios, o AdMob usa o ID de publicidade, seu endereço IP, o modelo do aparelho, a versão do Android e como você interage com os anúncios, e pode mostrar anúncios baseados nos seus interesses.
+
+Onde a lei pede consentimento, como na União Europeia e no Reino Unido, o jogo mostra o formulário de consentimento do Google antes de carregar qualquer anúncio, e você pode mudar a resposta depois em Configurações, "Privacidade dos anúncios". Também dá para redefinir ou excluir o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns celulares, Google, Anúncios). Excluir o ID desliga os anúncios personalizados no aparelho inteiro.
 
 ### Estatísticas do jogo
 
-O Google Analytics para Firebase registra como o jogo é jogado: qual opção do menu você toca, o tutorial aberto e concluído, cada partida iniciada e encerrada (pontuação, inimigos derrotados, quanto durou e como terminou), quando a masmorra fica mais difícil, baús abertos, poções pegas, mortes, pontuações enviadas ao ranking, o resultado do login no Play Games, o pedido de avaliação e a chave de som. Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, versão do Android, versão do app e localização aproximada. O SDK pode ler a origem da instalação (como você chegou ao jogo no Google Play). Como o jogo inclui o SDK de anúncios, o ID de publicidade está disponível no celular e o SDK do Analytics também pode lê-lo. O jogo não envia ID de usuário nem o nome do Play Games, e eu não uso essas estatísticas para publicidade.
+O Google Analytics para Firebase registra como o jogo é jogado: qual opção do menu você toca, o tutorial aberto e concluído, cada partida iniciada e encerrada (pontuação, inimigos derrotados, quanto durou e como terminou), quando a masmorra fica mais difícil, baús abertos, poções pegas, mortes, vidas extras usadas, pontuações enviadas ao ranking, o resultado do login no Play Games, o pedido de avaliação e a chave de som. Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, versão do Android, versão do app e localização aproximada. O SDK pode ler a origem da instalação (como você chegou ao jogo no Google Play). Como o jogo mostra anúncios, o ID de publicidade está disponível no celular e o SDK também pode lê-lo. O jogo não envia ID de usuário nem o nome do Play Games, e eu não uso essas estatísticas para publicidade.
 
 ### Avaliações e links
 
@@ -39,7 +41,9 @@ A tela Sobre carrega meu avatar do GitHub e tem links para o meu site, meu Twitt
 
 Só o Google, pelo Play Games, pelo Google Play, pelo Firebase e pelo SDK de anúncios, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos, e o GitHub quando a tela Sobre carrega o avatar. Os termos deles: [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR), [privacidade do Firebase](https://firebase.google.com/support/privacy), [como o Google usa dados de apps](https://policies.google.com/technologies/partner-sites?hl=pt-BR) e [declaração de privacidade do GitHub](https://docs.github.com/site-policy/privacy-policies/github-privacy-statement).
 
-Não vendo dados, não compartilho com anunciante nem repasso para corretor de dados. As estatísticas servem para achar bugs e equilibrar o jogo, com base no meu legítimo interesse em mantê-lo funcionando.
+Não vendo seus dados nem repasso para corretor de dados. Só os revelaria se um tribunal ou uma autoridade brasileira exigisse por lei.
+
+As estatísticas servem para achar bugs e equilibrar o jogo, com base no meu legítimo interesse em mantê-lo funcionando. Os anúncios pagam o jogo. Eles se baseiam no seu consentimento onde a lei exige e, fora disso, no meu legítimo interesse e nas escolhas que você faz nas configurações de anúncios do Android.
 
 ### Seus direitos
 
@@ -51,7 +55,7 @@ O jogo tem classificação livre, mas não é direcionado a crianças. Não cole
 
 ### Mudanças
 
-Se esta política mudar, a data no topo muda junto. Se o jogo passar a mostrar anúncios ou vender alguma coisa, esta página é atualizada antes de essa versão sair.
+Se esta política mudar, a data no topo muda junto. Se o jogo passar a vender alguma coisa, esta página é atualizada antes de essa versão sair.
 
 ### Contato
 

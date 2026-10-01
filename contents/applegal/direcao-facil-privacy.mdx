@@ -6,7 +6,7 @@ appName: "Direção Fácil"
 kind: "privacy"
 updatedAt: "2026-09-29"
 lang: "en"
-description: "Direção Fácil keeps your study progress in your account, shows optional rewarded ads and uses Superwall for Premium. What it stores and how to delete it."
+description: "Direção Fácil keeps your study progress in your account, shows optional rewarded ads and sells Premium through Google Play. What it stores and how to delete it."
 ---
 
 Direção Fácil is a study app for the Brazilian driver's licence (CNH) theory exam. To keep your progress between sessions and phones it needs an account, and to pay for itself it shows optional ads and sells Premium. This page says what the app stores, who else touches it and how to have it deleted.
@@ -25,13 +25,13 @@ Studying requires signing in, with Google or with an email and password. The acc
 
 #### Your progress
 
-Your profile stores your XP and level, your streak and the days you studied, achievements, completed modules, lessons and trails, daily quests, weekly XP, perfect quizzes, the questions you got wrong, whether the study reminder is on and whether you are Premium.
+Your profile stores your XP and level, your streak and the days you studied, achievements, completed modules, lessons and trails, daily quests, weekly XP, perfect quizzes, the questions you got wrong and whether the study reminder is on.
 
 ### What the app collects on its own
 
 #### Usage statistics
 
-Google Analytics for Firebase records the screens you open and events such as starting and finishing a quiz, answering a question, leaving a quiz, finishing a lesson, keeping or losing a streak, running out of lives, signing in or out, finishing or skipping onboarding, watching an ad, opening the Premium offer, buying or restoring Premium and deleting the account. The app does not send your account ID to Analytics. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
+Google Analytics for Firebase records the screens you open and events such as starting and finishing a quiz, answering a question, leaving a quiz, finishing a lesson, keeping or losing a streak, running out of lives, signing in or out, finishing or skipping onboarding, watching an ad, buying or restoring Premium and deleting the account. The app does not send your account ID to Analytics. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
 
 #### Crash reports and performance
 
@@ -39,19 +39,19 @@ Firebase Crashlytics receives a report when the app crashes: the error, the devi
 
 #### Notifications
 
-Firebase Cloud Messaging registers a token for your device when you allow notifications. Direção Fácil sends no push messages today.
+Firebase Cloud Messaging registers a token for your device. Direção Fácil sends no push messages today and does not ask for notification permission.
 
 #### Ads
 
-The only ads are rewarded ones: when you run out of lives you can choose to watch an ad to get one back. Nothing plays unless you tap it. Google AdMob serves them, and to pick and measure ads it uses the advertising ID, your IP address, the device model and how you interact with the ad. You can reset or delete the advertising ID in Android settings, under Privacy, Ads (on some phones, Google, Ads).
+The only ads are rewarded ones: when you run out of lives you can choose to watch an ad to get one back. Nothing plays unless you tap it. Before the first ad, where the law of the place you are in requires it, the app shows Google's consent form, and you can change your answer later in Profile, Ad privacy (Privacidade dos anúncios). Google AdMob serves them, and to pick and measure ads it uses the advertising ID, your IP address, the device model and how you interact with the ad. You can reset or delete the advertising ID in Android settings, under Privacy, Ads (on some phones, Google, Ads).
 
 #### Premium
 
-The Premium offer is shown by Superwall. So that a purchase can be tied to the right person, the app gives Superwall your account ID (the identifier Firebase creates for your account, not your email). Payment itself is handled by Google Play; I never see your card details.
+Premium is a one-time purchase made through Google Play. The purchase belongs to your Google Play account, not to your app account: Direção Fácil only asks Google Play whether it exists. No other service is involved, and I never see your card details.
 
 ### What stays on your phone
 
-Your cached name, email and profile photo address, your sound, vibration and reminder preferences, your lives and their timers, the last day quests were generated, and whether onboarding is done. Uninstalling the app removes them.
+Your cached name, email and profile photo address, your sound and vibration preferences, whether you bought Premium, your lives and their timers, the last day quests were generated, and whether onboarding is done. Uninstalling the app removes them.
 
 ### Who else receives it
 
@@ -61,11 +61,10 @@ The app has no server of its own besides the images below:
 - **Google Analytics for Firebase, Crashlytics, Performance Monitoring, Remote Config and Cloud Messaging** receive the statistics, reports and tokens described above.
 - **Google Sign-In**, if you choose it, confirms your identity with your Google account.
 - **Google AdMob** receives what it needs to show the rewarded ads.
-- **Superwall** shows the Premium offer and receives your account ID and what happens on the offer screen.
-- **Google Play** processes purchases.
+- **Google Play** processes the Premium purchase.
 - The traffic sign images in the questions are loaded from direcaofacil.com, which receives your IP address like any web server.
 
-Their terms: [Firebase privacy](https://firebase.google.com/support/privacy), [Google Privacy Policy](https://policies.google.com/privacy), [How Google uses information from apps that use its services](https://policies.google.com/technologies/partner-sites) and [Superwall privacy](https://superwall.com/privacy).
+Their terms: [Firebase privacy](https://firebase.google.com/support/privacy), [Google Privacy Policy](https://policies.google.com/privacy) and [How Google uses information from apps that use its services](https://policies.google.com/technologies/partner-sites).
 
 I do not sell your data or hand it to a data broker. I would only disclose it if a Brazilian court or authority legally required it.
 
@@ -75,21 +74,21 @@ To run the service you asked for: keep your account and progress, build the trai
 
 ### Where it is stored
 
-Google and Superwall store data on servers that may be outside Brazil, including in the United States. They apply the safeguards described in their data processing terms to those transfers.
+Google stores data on servers that may be outside Brazil, including in the United States, and applies the safeguards described in its data processing terms to those transfers.
 
 ### How long it is kept
 
-Your account and progress exist for as long as the account does. The onboarding answers are not linked to anyone and are kept to improve the course. Analytics statistics and crash reports are kept for the retention period configured in Firebase. AdMob, Superwall and Google Play keep their own records under their own policies, and Google Play keeps purchase records for as long as tax and consumer law require.
+Your account and progress exist for as long as the account does. The onboarding answers are not linked to anyone and are kept to improve the course. Analytics statistics and crash reports are kept for the retention period configured in Firebase. AdMob and Google Play keep their own records under their own policies, and Google Play keeps purchase records for as long as tax and consumer law require.
 
 ### Deleting your account and your other rights
 
-The app does not have a delete button yet. To delete your account, write to TiagoDanin@outlook.com from the email you use in the app and ask for deletion. Within 15 days I delete your profile and progress from Firestore and your account from Firebase Authentication, and I reply to confirm. Signing out does not delete anything.
+In the app, open Profile (Perfil) and tap Delete account (Excluir conta). The app asks you to confirm, with your password or by picking your Google account again, and right away deletes your profile and progress from Firestore, your account from Firebase Authentication and what was stored on the phone. If you cannot get into the app, write to TiagoDanin@outlook.com from the account's email and ask for deletion: within 15 days I delete all of that and reply to confirm. Signing out does not delete anything. Premium belongs to your Google Play account and is not deleted with it.
 
 You can also ask me what data exists about you, to correct it, to receive a copy, or to withdraw consent. I answer within 15 days, the period the LGPD sets. You may also complain to the ANPD, Brazil's data protection authority.
 
 ### Security
 
-Traffic to Firebase and Superwall is encrypted, and access to your profile is limited to your account by security rules. No system is completely secure, and I cannot promise that nobody will ever break in, but I will tell you and the ANPD if an incident puts your data at risk.
+Traffic to Firebase and Google Play is encrypted, and access to your profile is limited to your account by security rules. No system is completely secure, and I cannot promise that nobody will ever break in, but I will tell you and the ANPD if an incident puts your data at risk.
 
 ### Children
 

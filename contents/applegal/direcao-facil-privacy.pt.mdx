@@ -6,7 +6,7 @@ appName: "Direção Fácil"
 kind: "privacy"
 updatedAt: "2026-09-29"
 lang: "pt"
-description: "O Direção Fácil guarda seu progresso na sua conta, mostra anúncios opcionais com recompensa e usa a Superwall no Premium. Isto é o que ele guarda e como apagar."
+description: "O Direção Fácil guarda seu progresso na sua conta, mostra anúncios opcionais com recompensa e vende o Premium pelo Google Play. Isto é o que ele guarda e como apagar."
 ---
 
 O Direção Fácil é um app de estudo para a prova teórica da CNH. Para guardar seu progresso entre uma sessão e outra, e entre celulares, ele precisa de uma conta. Para se pagar, ele mostra anúncios opcionais e vende o Premium. Esta página diz o que o app guarda, quem mais tem acesso e como pedir a exclusão.
@@ -25,13 +25,13 @@ Para estudar é preciso entrar, com Google ou com e-mail e senha. A conta guarda
 
 #### Seu progresso
 
-Seu perfil guarda XP e nível, sequência e dias em que você estudou, conquistas, módulos, lições e trilhas concluídos, missões diárias, XP da semana, quizzes perfeitos, as questões que você errou, se o lembrete de estudo está ligado e se você é Premium.
+Seu perfil guarda XP e nível, sequência e dias em que você estudou, conquistas, módulos, lições e trilhas concluídos, missões diárias, XP da semana, quizzes perfeitos, as questões que você errou e se o lembrete de estudo está ligado.
 
 ### O que o app coleta sozinho
 
 #### Estatísticas de uso
 
-O Google Analytics para Firebase registra as telas que você abre e eventos como começar e terminar um quiz, responder uma questão, sair de um quiz, concluir uma lição, manter ou perder a sequência de dias, ficar sem vidas, entrar ou sair da conta, concluir ou pular a apresentação inicial, assistir a um anúncio, abrir a oferta do Premium, comprar ou restaurar o Premium e excluir a conta. O app não envia o ID da sua conta ao Analytics. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho.
+O Google Analytics para Firebase registra as telas que você abre e eventos como começar e terminar um quiz, responder uma questão, sair de um quiz, concluir uma lição, manter ou perder a sequência de dias, ficar sem vidas, entrar ou sair da conta, concluir ou pular a apresentação inicial, assistir a um anúncio, comprar ou restaurar o Premium e excluir a conta. O app não envia o ID da sua conta ao Analytics. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho.
 
 #### Relatórios de falha e desempenho
 
@@ -39,19 +39,19 @@ O Firebase Crashlytics recebe um relatório quando o app trava: o erro, o modelo
 
 #### Notificações
 
-O Firebase Cloud Messaging registra um token para o seu aparelho quando você permite notificações. Hoje o Direção Fácil não envia mensagens push.
+O Firebase Cloud Messaging registra um token para o seu aparelho. Hoje o Direção Fácil não envia mensagens push e não pede permissão para notificar.
 
 #### Anúncios
 
-Os únicos anúncios são os com recompensa: quando suas vidas acabam, você pode escolher assistir a um anúncio para ganhar uma de volta. Nada toca sem você tocar no botão. Quem entrega é o Google AdMob, que para escolher e medir anúncios usa o ID de publicidade, seu endereço IP, o modelo do aparelho e como você interage com o anúncio. Dá para redefinir ou excluir o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns aparelhos, Google, Anúncios).
+Os únicos anúncios são os com recompensa: quando suas vidas acabam, você pode escolher assistir a um anúncio para ganhar uma de volta. Nada toca sem você tocar no botão. Antes do primeiro anúncio, quando a lei do lugar onde você está exige, o app mostra o formulário de consentimento do Google, e dá para mudar a resposta depois em Perfil, Privacidade dos anúncios. Quem entrega é o Google AdMob, que para escolher e medir anúncios usa o ID de publicidade, seu endereço IP, o modelo do aparelho e como você interage com o anúncio. Dá para redefinir ou excluir o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns aparelhos, Google, Anúncios).
 
 #### Premium
 
-A oferta do Premium é exibida pela Superwall. Para a compra ficar ligada à pessoa certa, o app informa à Superwall o ID da sua conta (o identificador que o Firebase cria para a conta, não o seu e-mail). O pagamento em si é feito pelo Google Play; eu nunca vejo os dados do seu cartão.
+O Premium é uma compra única feita pelo Google Play. A compra fica ligada à sua conta Google Play, não à conta do app: o Direção Fácil só pergunta ao Google Play se ela existe. Nenhum outro serviço participa, e eu nunca vejo os dados do seu cartão.
 
 ### O que fica no seu celular
 
-Seu nome, e-mail e endereço da foto de perfil em cache, suas preferências de som, vibração e lembrete, suas vidas e os cronômetros delas, o último dia em que as missões foram geradas e se a apresentação inicial já foi feita. Desinstalar o app apaga tudo isso.
+Seu nome, e-mail e endereço da foto de perfil em cache, suas preferências de som e vibração, se você comprou o Premium, suas vidas e os cronômetros delas, o último dia em que as missões foram geradas e se a apresentação inicial já foi feita. Desinstalar o app apaga tudo isso.
 
 ### Quem mais recebe
 
@@ -61,11 +61,10 @@ O app não tem servidor próprio, fora o das imagens citado abaixo:
 - **Google Analytics para Firebase, Crashlytics, Performance Monitoring, Remote Config e Cloud Messaging** recebem as estatísticas, os relatórios e os tokens descritos acima.
 - **Login com Google**, se você escolher, confirma sua identidade com a sua conta Google.
 - **Google AdMob** recebe o que precisa para mostrar os anúncios com recompensa.
-- **Superwall** exibe a oferta do Premium e recebe o ID da sua conta e o que acontece na tela da oferta.
-- **Google Play** processa as compras.
+- **Google Play** processa a compra do Premium.
 - As imagens das placas de trânsito nas questões são carregadas de direcaofacil.com, que recebe seu endereço IP como qualquer servidor web.
 
-Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy), [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR), [como o Google usa informações de apps que usam seus serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR) e [privacidade da Superwall](https://superwall.com/privacy).
+Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy), [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR) e [como o Google usa informações de apps que usam seus serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR).
 
 Não vendo seus dados nem repasso para corretor de dados. Só os revelaria se um juiz ou uma autoridade brasileira exigisse, na forma da lei.
 
@@ -75,21 +74,21 @@ Para prestar o serviço que você pediu: manter sua conta e seu progresso, monta
 
 ### Onde fica guardado
 
-O Google e a Superwall guardam os dados em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. Eles aplicam a essas transferências as salvaguardas descritas nos termos de tratamento de dados de cada um.
+O Google guarda os dados em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos, e aplica a essas transferências as salvaguardas descritas nos termos de tratamento de dados dele.
 
 ### Por quanto tempo
 
-Sua conta e seu progresso existem enquanto a conta existir. As respostas da apresentação inicial não estão ligadas a ninguém e ficam guardadas para melhorar o conteúdo. As estatísticas do Analytics e os relatórios de falha ficam pelo prazo de retenção configurado no Firebase. AdMob, Superwall e Google Play mantêm os próprios registros pelas políticas deles, e o Google Play guarda os registros de compra pelo tempo que a lei fiscal e a de consumo exigirem.
+Sua conta e seu progresso existem enquanto a conta existir. As respostas da apresentação inicial não estão ligadas a ninguém e ficam guardadas para melhorar o conteúdo. As estatísticas do Analytics e os relatórios de falha ficam pelo prazo de retenção configurado no Firebase. AdMob e Google Play mantêm os próprios registros pelas políticas deles, e o Google Play guarda os registros de compra pelo tempo que a lei fiscal e a de consumo exigirem.
 
 ### Apagar sua conta e seus outros direitos
 
-O app ainda não tem botão de exclusão. Para apagar sua conta, escreva para TiagoDanin@outlook.com a partir do e-mail que você usa no app e peça a exclusão. Em até 15 dias apago seu perfil e seu progresso do Firestore e sua conta do Firebase Authentication, e respondo confirmando. Sair da conta não apaga nada.
+No app, abra Perfil e toque em Excluir conta. O app pede para você confirmar (com a senha, ou escolhendo sua conta Google de novo) e na mesma hora apaga seu perfil e seu progresso do Firestore, sua conta do Firebase Authentication e o que estava guardado no celular. Se não conseguir entrar no app, escreva para TiagoDanin@outlook.com a partir do e-mail da conta e peça a exclusão: em até 15 dias apago tudo isso e respondo confirmando. Sair da conta não apaga nada. O Premium pertence à sua conta Google Play e não é apagado junto.
 
 Você também pode me pedir para saber quais dados existem sobre você, corrigir, receber uma cópia ou retirar o consentimento. Respondo em até 15 dias, o prazo que a LGPD dá. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
 
 ### Segurança
 
-O tráfego com o Firebase e a Superwall é criptografado, e o acesso ao seu perfil fica restrito à sua conta pelas regras de segurança. Nenhum sistema é totalmente seguro, e não posso prometer que ninguém nunca vai invadir, mas aviso você e a ANPD se um incidente puser seus dados em risco.
+O tráfego com o Firebase e o Google Play é criptografado, e o acesso ao seu perfil fica restrito à sua conta pelas regras de segurança. Nenhum sistema é totalmente seguro, e não posso prometer que ninguém nunca vai invadir, mas aviso você e a ANPD se um incidente puser seus dados em risco.
 
 ### Crianças
 
