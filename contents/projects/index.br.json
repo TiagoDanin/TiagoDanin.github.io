@@ -30,12 +30,6 @@
     "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.the_slime_dungeon"
   },
   {
-    "title": "Ar-condicionado Virtual de Bolso",
-    "description": "Tenha um ar-condicionado virtual no bolso! Um app de som relaxante para dormir melhor. Criado como projeto para estudar animações em Flutter.",
-    "imageUrl": "/projects/virtual-pocket-air-conditioning.webp",
-    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning"
-  },
-  {
     "title": "FlyControl",
     "description": "Cliente não oficial do Fly.io para ver apps e máquinas, ler logs ao vivo, acompanhar CPU e memória e reiniciar uma máquina pelo celular.",
     "imageUrl": "/projects/flycontrol.webp",
@@ -58,5 +52,23 @@
     "description": "Um jogo de decorar inspirado nos livros de cenários com adesivos: abra a caixa de mudança de cada cômodo e monte cenários em isométrico, peça por peça.",
     "imageUrl": "/projects/mini-cenarios-br.webp",
     "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.mini_scene"
+  },
+  {
+    "title": "Ciclogravura",
+    "description": "Jogo inspirado nas garrafas de areia do Nordeste: despeje areia colorida, incline o celular e modele paisagens no vidro, grão por grão.",
+    "imageUrl": "/projects/ciclogravura-br.webp",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.ciclogravura"
+  },
+  {
+    "title": "Poker Trainer",
+    "description": "Lições de No Limit Hold'em para iniciantes: 58 lições em 13 fases, mais de 400 exercícios e uma explicação depois de cada resposta. Sem dinheiro real.",
+    "imageUrl": "/projects/poker-trainer-br.webp",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.poker_trainer"
+  },
+  {
+    "title": "Love Wrapped",
+    "description": "Transforma a conversa do WhatsApp de um casal numa retrospectiva, uma cena por tela, e num vídeo vertical, tudo dentro do celular.",
+    "imageUrl": "/projects/wrapped-love-stories-br.webp",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.wrapped_love"
   }
 ]
