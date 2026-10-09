@@ -108,7 +108,7 @@ export function Hero({ about, stats, socialLinks, showPressKit = false, locale =
               </div>
             )}
 
-            <dl className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-5 pt-7 border-t border-border/60">
+            <dl className="grid grid-cols-3 sm:grid-cols-5 gap-x-6 gap-y-5 pt-7 border-t border-border/60">
               {stats.map(stat => (
                 <div key={stat.label} className="space-y-1">
                   <dt className="text-xl sm:text-2xl font-bold text-foreground tabular-nums tracking-tight">

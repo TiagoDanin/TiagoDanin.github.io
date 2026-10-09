@@ -35,6 +35,9 @@ const config: StudioConfig = {
           { name: "seoDescription", type: "text", required: true },
           { name: "cvUrl", type: "url", required: true },
           { name: "email", type: "email", required: true },
+          // Private apps I worked on as part of a company team. Added to the
+          // googleplay count for the "apps worked on" stat in the hero.
+          { name: "privateAppsCount", type: "number", required: true },
         ],
       },
     },

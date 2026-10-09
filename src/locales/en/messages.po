@@ -689,6 +689,10 @@ msgstr "Approval workflows"
 msgid "Apps"
 msgstr "Apps"
 
+#: src/lib/sections.ts
+msgid "apps worked on"
+msgstr "apps worked on"
+
 #: src/app/[lang]/game-development/page.tsx
 msgid "Arcade & Survival"
 msgstr "Arcade & Survival"

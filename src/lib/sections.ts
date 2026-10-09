@@ -43,7 +43,7 @@ export interface HeroData {
 }
 
 /**
- * Profile copy plus the four counts under the bio, totalled across ten project
+ * Profile copy plus the five counts under the bio, totalled across ten project
  * collections. Derived rather than authored, so the numbers on the page cannot
  * drift from what the site actually ships.
  *
@@ -61,6 +61,11 @@ export function getHeroData(locale: Locale = DEFAULT_LOCALE): HeroData {
     (sum, pkg) => sum + (typeof pkg.downloads === 'number' ? pkg.downloads : 0),
     0
   );
+  // My own apps plus private ones I worked on in company teams, a count only
+  // the owner knows.
+  const privateApps = queryCollection('about').one().privateAppsCount;
+  const appsTotal = [...queryCollection('googleplay').locale(locale)].length
+    + (typeof privateApps === 'number' ? privateApps : 0);
   const posts = [...queryCollection('posts').where({ lang: 'en' })];
   const talks = [...queryCollection('talks').where({ lang: 'en' })];
   const videos = talks.filter(
@@ -71,6 +76,7 @@ export function getHeroData(locale: Locale = DEFAULT_LOCALE): HeroData {
   const stats: HeroStat[] = [
     { value: formatDownloads(npmDownloadsTotal), label: t(i18n)`npm downloads` },
     { value: formatProjects(projectsTotal), label: t(i18n)`projects` },
+    { value: String(appsTotal), label: t(i18n)`apps worked on` },
     { value: String(posts.length + videos.length), label: t(i18n)`posts & videos` },
     { value: String(talks.length), label: t(i18n)`talks` },
   ];

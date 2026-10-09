@@ -689,6 +689,10 @@ msgstr "Fluxos de aprovação"
 msgid "Apps"
 msgstr "Apps"
 
+#: src/lib/sections.ts
+msgid "apps worked on"
+msgstr "apps em que atuei"
+
 #: src/app/[lang]/game-development/page.tsx
 msgid "Arcade & Survival"
 msgstr "Arcade e Survival"

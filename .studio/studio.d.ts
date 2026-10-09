@@ -23,6 +23,7 @@ export interface AboutEntry {
   seoDescription: string;
   cvUrl: HttpUrl;
   email: Email;
+  privateAppsCount: number;
 }
 
 /** Data shape for the "applegal" collection. */
@@ -298,6 +299,7 @@ export interface GoogleplayEntry {
   name: string;
   slug: string;
   tagline: string;
+  url: HttpUrl;
   description: string;
   storeDescription: string;
   category: string;
@@ -313,14 +315,13 @@ export interface GoogleplayEntry {
     solution: string;
     learned: string;
   };
-  tags: Array<"flutter" | "health" | "medication" | "reminder" | "firebase" | "fly.io" | "devops" | "cloud" | "ios" | "photography" | "creative" | "instagram" | "education" | "CNH" | "DETRAN" | "gamification" | "brazil" | "android" | "game" | "idle" | "clicker" | "prestige" | "survival" | "arcade" | "bonfire" | "relaxation" | "sleep" | "white noise" | "ambient" | "memory" | "jetpack compose" | "open source" | "pets" | "marketplace" | "services">;
+  tags: Array<"unity" | "game" | "puzzle" | "sokoban" | "pixel-art" | "android" | "flutter" | "whatsapp" | "kotlin" | "privacy" | "video" | "poker" | "education" | "gamification" | "offline" | "sports" | "scoreboard" | "event-sourcing" | "health" | "medication" | "reminder" | "firebase" | "fly.io" | "devops" | "cloud" | "ios" | "photography" | "creative" | "instagram" | "CNH" | "DETRAN" | "brazil" | "idle" | "clicker" | "prestige" | "survival" | "arcade" | "bonfire" | "relaxation" | "sleep" | "white noise" | "ambient" | "flame" | "falling sand" | "cozy" | "isometric" | "decorating" | "memory" | "jetpack compose" | "open source">;
   iconImage: string;
   screenshots: Array<{
     src: string;
     width: number;
     height: number;
   }>;
-  url: HttpUrl;
   status: string;
 }
 

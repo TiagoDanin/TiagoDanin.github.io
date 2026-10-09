@@ -14,10 +14,11 @@ const socialLinks: HeroSocialLink[] = [
   { label: 'Instagram', url: 'https://instagram.com/tiagodanin', icon: 'Instagram' },
 ];
 
-/** The four counts `getHeroData()` totals across ten project collections. */
+/** The five counts `getHeroData()` derives from the collections. */
 const stats: HeroStat[] = [
   { value: '2.4M+', label: 'npm downloads' },
   { value: '250+', label: 'projects' },
+  { value: '47', label: 'apps worked on' },
   { value: '31', label: 'posts & videos' },
   { value: '18', label: 'talks' },
 ];
@@ -30,7 +31,7 @@ const meta = {
     docs: {
       description: {
         component: [
-          'Opening block of both the home page and /about: name, bio, the four',
+          'Opening block of both the home page and /about: name, bio, the five',
           'derived counts, and the orbiting avatar.',
           '',
           'Three details drive most of the behaviour here:',
@@ -198,7 +199,7 @@ export const MinimalProfile: Story = {
 
 /**
  * Below `sm` the avatar column drops under the copy, the two actions stack, and
- * the stats grid folds from four columns to two. Both actions keep the 44px
+ * the stats grid folds from five columns to three. Both actions keep the 44px
  * touch target.
  */
 export const Mobile: Story = {
