@@ -8,7 +8,7 @@
   {
     "title": "CAM Covers",
     "description": "An application that transforms ordinary photos into professional-looking album covers, inspired by real music players.",
-    "imageUrl": "/projects/cam-covers-app.png",
+    "imageUrl": "/projects/cam-covers.webp",
     "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.camcovers.cam_covers"
   },
   {
@@ -19,19 +19,44 @@
   },
   {
     "title": "Stone World",
-    "description": "A puzzle game set in a stone world, developed with Unity 3D. Coming soon!",
-    "imageUrl": "/projects/stone-game.png"
+    "description": "A push box puzzle in pixel art: push rune stones onto an ancient altar, take keys from chests and open gates across 20 hand-made chambers.",
+    "imageUrl": "/projects/stone-world.webp",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.stoneworld"
   },
   {
     "title": "The Slime Dungeon",
     "description": "Survive in a dungeon of slimes! You are stuck with adorable creatures. How long can you survive? Built with Flutter and Bonfire engine.",
-    "imageUrl": "/projects/slime-game.png",
+    "imageUrl": "/projects/the-slime-dungeon.webp",
     "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.the_slime_dungeon"
   },
   {
     "title": "Virtual Pocket Air Conditioning",
     "description": "Have a virtual air conditioner in your pocket! This relaxing sound app provides better sleep. Created as a fun project to study animations in Flutter.",
-    "imageUrl": "/projects/air-conditionin.png",
+    "imageUrl": "/projects/virtual-pocket-air-conditioning.webp",
     "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.apps.virtual_pocket_air_conditioning"
+  },
+  {
+    "title": "FlyControl",
+    "description": "Unofficial Fly.io client to check apps and machines, read live logs, follow CPU and memory, and restart a machine from your phone.",
+    "imageUrl": "/projects/flycontrol.webp",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.fly_control"
+  },
+  {
+    "title": "Tomely",
+    "description": "Medication reminder that rings on time, even offline, keeps a dose history and warns you before a medication runs out.",
+    "imageUrl": "/projects/tomely.webp",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.medication_reminder"
+  },
+  {
+    "title": "Direção Fácil",
+    "description": "Gamified app to help Brazilians pass the CNH theory exam with short lessons and DETRAN-style quizzes.",
+    "imageUrl": "/projects/direcao-facil.webp",
+    "href": "https://play.google.com/store/apps/details?id=com.direcaofacil"
+  },
+  {
+    "title": "Mini Cenários",
+    "description": "A cozy decorating game inspired by sticker scene books: unpack each room's moving box and arrange tiny isometric rooms, piece by piece.",
+    "imageUrl": "/projects/mini-cenarios.webp",
+    "href": "https://play.google.com/store/apps/details?id=com.tiagodanin.mini_scene"
   }
 ]

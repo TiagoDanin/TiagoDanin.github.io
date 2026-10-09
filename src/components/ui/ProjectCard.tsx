@@ -33,7 +33,9 @@ export function ProjectCard({ title, description, imageUrl, href, archived }: Pr
         />
       )}
       {imageUrl && (
-        <div className="aspect-video overflow-hidden">
+        // Play Store feature graphic ratio (1024x500): most cover images are one,
+        // and 16:9 cut the app name off the left edge of the banners.
+        <div className="aspect-[1024/500] overflow-hidden">
           <img
             src={imageUrl}
             alt={title}

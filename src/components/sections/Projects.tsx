@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
@@ -28,10 +28,36 @@ interface ProjectsProps {
   locale?: Locale;
 
   projects: ProjectsEntry[];
+
+  /**
+   * How many cards to show, drawn at random from `projects` on every visit.
+   * Leave it out to show the whole list, in order.
+   *
+   * The export is static, so the draw happens in the browser: the HTML carries
+   * the first `limit` entries, and the shuffle replaces them after hydration.
+   * Shuffling during render would make the server and client markup disagree.
+   */
+  limit?: number;
 }
 
-export function Projects({ projects, locale = DEFAULT_LOCALE }: ProjectsProps) {
-  const projectsData = projects;
+function pickRandom<T>(items: T[], count: number): T[] {
+  const pool = [...items];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, count);
+}
+
+export function Projects({ projects, locale = DEFAULT_LOCALE, limit }: ProjectsProps) {
+  const [projectsData, setProjectsData] = useState(() =>
+    limit === undefined ? projects : projects.slice(0, limit),
+  );
+
+  useEffect(() => {
+    setProjectsData(limit === undefined ? projects : pickRandom(projects, limit));
+  }, [projects, limit]);
+
   const pathname = usePathname();
   // `/br/projects` and the build-time `/en/projects` are the same page.
   const isFullProjects = splitLocale(pathname ?? "/").base === "/projects";
@@ -56,8 +82,8 @@ export function Projects({ projects, locale = DEFAULT_LOCALE }: ProjectsProps) {
 
           <div className={`${(isExpanded || !isMobile) ? '' : 'h-[780px] overflow-hidden'} relative`}>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {projectsData.map((project, index) => (
-                <ProjectCard key={index} {...project} />
+              {projectsData.map((project) => (
+                <ProjectCard key={project.title} {...project} />
               ))}
             </div>
 

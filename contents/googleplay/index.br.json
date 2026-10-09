@@ -1,5 +1,333 @@
 [
 	{
+		"name": "Stone World",
+		"slug": "stone-world",
+		"tagline": "Empurre as pedras rúnicas até o altar. Sem relógio, sem vidas.",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.stoneworld",
+		"description": "Um quebra-cabeça de empurrar caixas em pixel art: leve pedras rúnicas até um altar antigo, pegue chaves em baús e abra portões em 20 câmaras feitas à mão.",
+		"storeDescription": "Stone World é um jogo de quebra-cabeça no estilo Sokoban, em pixel art. Em cada câmara você empurra pedras rúnicas até um altar antigo, pega chaves em baús e abre os portões que estão no caminho, e quando todas as runas acendem o portal para a próxima câmara se abre. A pedra só anda quando é empurrada, então uma pedra encostada num canto fica ali, e recomeçar está sempre a um toque. São 20 câmaras feitas à mão, sem relógio e sem vidas, e tudo funciona offline. O jogo está em inglês e é gratuito, com um anúncio em tela cheia a cada cinco câmaras e uma compra opcional que abre todas as câmaras e remove os anúncios.",
+		"category": "Jogos",
+		"icon": "🪨",
+		"accentColor": "#53CEE7",
+		"features": [
+			{
+				"icon": "🧩",
+				"title": "20 câmaras feitas à mão",
+				"description": "Da primeira lição a um final com quatro chaves e quatro portões. Cada câmara acrescenta uma ideia à anterior e abre quando você resolve a que vem antes."
+			},
+			{
+				"icon": "🔑",
+				"title": "Runas, chaves e portões",
+				"description": "Acenda o altar uma pedra rúnica de cada vez, pegue chaves nos baús e gaste cada uma num portão. Chave usada no portão errado não volta."
+			},
+			{
+				"icon": "🏛️",
+				"title": "Pátios e terraços",
+				"description": "As câmaras mais adiante ligam pátios e terraços por escadas, e a pedra só vai aonde você consegue ir atrás dela."
+			},
+			{
+				"icon": "🕹️",
+				"title": "Controle para movimentos exatos",
+				"description": "Toque numa seta para andar exatamente uma casa, segure para continuar andando, ou toque em qualquer ponto da tela para o joystick aparecer sob o seu dedo."
+			},
+			{
+				"icon": "🌙",
+				"title": "Calmo e offline",
+				"description": "Sem relógio, sem vidas e sem precisar de conexão. Agate, um guia de pedra, dá uma dica curta na entrada, e as primeiras câmaras mostram o caminho com pontinhos azuis."
+			}
+		],
+		"buildStory": {
+			"problem": "Comecei o Stone World no Unity em 2021: um menu, um contador de runas e pedras que eram corpos de física comuns, empurrados para qualquer lado. Depois o projeto ficou parado por anos. Em 2026 eu quis terminar esse jogo em vez de começar outro.",
+			"solution": "Migrei para o Unity 6 com URP 2D e mudei as pedras para que cada empurrão as mova exatamente uma casa numa grade, o que tornou possível desenhar os quebra-cabeças. Cada câmara é montada por um script de editor, e um solucionador em busca em largura sobre os empurrões prova que ela tem solução antes de ir para a loja. Depois um passeio em Play Mode repete essa solução na cena real. A arte vem de pacotes de pixel art licenciados.",
+			"learned": "Tentei gerar câmaras a partir de sementes e dar nota a elas, e apaguei as dez: tinham solução, mas uma não continuava a outra. As que foram publicadas são posicionadas à mão e conferidas pelo solucionador, e provar a última levou 13 minutos e 1,7 milhão de estados. A primeira versão também tinha 45 MB de download, e cortar código sem uso, desligar a splash e remover um pacote de pós-processamento que o jogo não usava mais baixou para 35,6 MB."
+		},
+		"tags": [
+			"unity",
+			"game",
+			"puzzle",
+			"sokoban",
+			"pixel-art",
+			"android"
+		],
+		"iconImage": "/images/apps/stone-world/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/stone-world/screenshot-1.webp",
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"src": "/images/apps/stone-world/screenshot-2.webp",
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"src": "/images/apps/stone-world/screenshot-3.webp",
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"src": "/images/apps/stone-world/screenshot-4.webp",
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"src": "/images/apps/stone-world/screenshot-5.webp",
+				"width": 1280,
+				"height": 720
+			}
+		]
+	},
+	{
+		"name": "Love Wrapped",
+		"slug": "wrapped-love-stories",
+		"tagline": "A conversa de vocês, contada como história de amor.",
+		"description": "Transforma a conversa do WhatsApp de um casal numa retrospectiva, uma cena por tela, e num vídeo vertical, tudo dentro do celular.",
+		"storeDescription": "O Love Wrapped lê a conversa do WhatsApp exportada entre duas pessoas e conta a história de volta como uma retrospectiva: as primeiras mensagens, o primeiro \"te amo\", a maior sequência de dias seguidos, as horas e as palavras de vocês. A conversa é lida no celular e nunca vai para a internet, o app guarda só os números da história e não é preciso criar conta. Dá para trocar os nomes e a ordem das cenas e depois transformar tudo num vídeo 9:16 com trilha sonora original. Sem anúncio, e um Premium vitalício opcional pelo Google Play libera todas as cenas e o vídeo completo em 1080p sem marca d'água.",
+		"category": "Estilo de vida",
+		"icon": "💞",
+		"accentColor": "#FF3D7F",
+		"features": [
+			{
+				"icon": "🔒",
+				"title": "Lida no celular",
+				"description": "A conversa é processada no aparelho e o app apaga a cópia dele quando a leitura termina. Só os números da história ficam salvos, nunca as mensagens."
+			},
+			{
+				"icon": "🎬",
+				"title": "Uma descoberta por tela",
+				"description": "As cenas são escolhidas pelo que a conversa tem de verdade, das primeiras mensagens como notificações numa tela de bloqueio aos marcos, risadas e emojis."
+			},
+			{
+				"icon": "💞",
+				"title": "Sobre o casal",
+				"description": "Nunca compara quem manda mais mensagem, quem responde mais rápido ou quem pede desculpa, e nunca relembra um momento ruim."
+			},
+			{
+				"icon": "✏️",
+				"title": "Do jeito de vocês",
+				"description": "Troque os nomes, mude a ordem ou esconda cenas. O Premium adiciona uma cor por cena e uma foto de vocês atrás das primeiras mensagens."
+			},
+			{
+				"icon": "📱",
+				"title": "Um vídeo para compartilhar",
+				"description": "Um MP4 9:16 com trilha sonora original, gerado no celular, ou uma cena como imagem. O vídeo gratuito é em 720p com marca d'água."
+			}
+		],
+		"buildStory": {
+			"problem": "Uma retrospectiva de relacionamento precisa da conversa inteira do WhatsApp, que é praticamente o arquivo mais íntimo de um celular. A leitura tinha que acontecer no aparelho, e a exportação muda entre Android e iPhone e de um idioma para outro.",
+			"solution": "Um app Flutter com um parser escrito à mão, em Dart puro, que lê a exportação em streaming dentro de um isolate e só deixa sair os agregados; uma conversa de 200 mil mensagens foi lida em cerca de cinco segundos nos meus testes. Um motor de cenas pontua cada cena possível com esses números, e um único CustomPainter desenha o visualizador e cada quadro do vídeo, que um encoder em Kotlin com MediaCodec transforma em H.264 com trilha AAC.",
+			"learned": "A regra que moldou o motor é nunca inventar dado: uma cena que não consegue sustentar a frase com os números da conversa fica de fora. Desenhar a prévia e o vídeo com o mesmo painter também garante que a história que você assiste é o vídeo que você compartilha."
+		},
+		"tags": [
+			"flutter",
+			"whatsapp",
+			"kotlin",
+			"privacy",
+			"video"
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.wrapped_love",
+		"iconImage": "/images/apps/wrapped-love-stories/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/wrapped-love-stories/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/br/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Poker Trainer",
+		"slug": "poker-trainer",
+		"tagline": "Texas Hold'em, uma lição curta de cada vez.",
+		"description": "Lições de No Limit Hold'em para iniciantes: 58 lições em 13 fases, mais de 400 exercícios e uma explicação depois de cada resposta. Sem dinheiro real.",
+		"storeDescription": "O Poker Trainer ensina No Limit Texas Hold'em em lições de três a cinco minutos, do ranking de mãos ao push or fold de torneio. Cada exercício é uma decisão, seguida de uma explicação curta com as cartas que importam acesas. As 58 lições em 13 fases vêm dentro do app, funcionam sem internet e estão em português e em inglês. Não existe dinheiro real e fichas nunca são vendidas. Todas as lições são gratuitas, não há anúncios, e uma compra opcional acaba com a espera por vidas.",
+		"category": "Educação",
+		"icon": "🃏",
+		"accentColor": "#00A857",
+		"features": [
+			{
+				"icon": "🗺️",
+				"title": "13 fases",
+				"description": "58 lições da Mesa da Cozinha à Mesa Final. Cada fase termina com um desafio que mistura tudo o que ela ensinou."
+			},
+			{
+				"icon": "🃏",
+				"title": "Decisões de verdade",
+				"description": "Aja na mesa, nomeie a mão, aponte quem ganha no showdown, complete uma mão, conte outs ou responda uma pergunta rápida."
+			},
+			{
+				"icon": "💡",
+				"title": "O porquê, depois de cada resposta",
+				"description": "Uma explicação curta com as cartas que decidem acesas. Uma resposta errada volta no fim da lição, e o resumo aponta os erros que você mais repete."
+			},
+			{
+				"icon": "🔥",
+				"title": "Sequência, XP, vidas e fichas",
+				"description": "Um hábito diário, como num app de idiomas. As vidas voltam com o tempo ou com fichas ganhas nas lições. Fichas nunca são vendidas e não existe dinheiro real."
+			},
+			{
+				"icon": "🎯",
+				"title": "Treino e ranking de mãos",
+				"description": "Treino livre em qualquer lição já destravada, sem gastar vidas, e uma tabela do ranking de mãos com a frequência de cada mão em sete cartas."
+			}
+		],
+		"buildStory": {
+			"problem": "Material de estudo de poker é longo, denso e longe da mesa. O iniciante que sabe algumas regras e joga no feeling costuma desistir antes de os conceitos fixarem.",
+			"solution": "Um app Flutter no formato de app de idiomas: lições curtas, uma decisão por exercício e uma trilha de fases que destravam em ordem. O conteúdo é JSON empacotado em português e inglês, o progresso fica no celular, e o único uso de rede é o Firebase Analytics, um placar do Google Play Games e a compra, e nenhum deles trava o app.",
+			"learned": "Resposta escrita à mão não é confiável. Um validador em Node com avaliador de mãos próprio confere cada resposta que depende das cartas e checa se os dois idiomas batem exercício por exercício, e uma versão dele em Dart decide quais cartas acendem depois da resposta. Não vender fichas foi decisão consciente: ficha vendida por dinheiro num app de poker parece jogo de azar simulado."
+		},
+		"tags": [
+			"flutter",
+			"poker",
+			"education",
+			"gamification",
+			"offline"
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.poker_trainer",
+		"iconImage": "/images/apps/poker-trainer/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/poker-trainer/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/br/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Scoreboard",
+		"slug": "scoreboard",
+		"tagline": "O placar, legível do outro lado da quadra.",
+		"description": "Placar para dois times, Azul e Vermelho, com pontos de +1, +5 ou tênis, sets ou relógio, desfazer exato e o placar no relógio de pulso.",
+		"storeDescription": "O Scoreboard marca o placar de uma partida entre dois times, Azul e Vermelho. Em vez de uma lista de esportes, na primeira vez ele pergunta como vocês jogam: pontos de +1, +5 ou contagem de tênis, sets ou partida por tempo com relógio, set decisivo, ponto de ouro e rodízio de times. Toque em um lado para marcar, desfaça exatamente a última mudança, troque de lado, ouça o placar em voz alta e marque pontos pelo relógio de pulso ou pela tela bloqueada. Funciona sem internet, sem conta, sem anúncio e sem nada para comprar.",
+		"category": "Esportes",
+		"icon": "🏐",
+		"accentColor": "#0462D3",
+		"features": [
+			{
+				"icon": "❓",
+				"title": "Regras, não esportes",
+				"description": "Nada de lista de esportes. Responda uma vez como vocês jogam: pontos por set, melhor de quantos, set decisivo, diferença de dois pontos, games e tie-break do tênis, ou períodos no relógio."
+			},
+			{
+				"icon": "↩️",
+				"title": "Desfazer exato",
+				"description": "Desfazer reverte exatamente a última mudança, não só o número. Segure o placar de um time para escolher o número numa roleta, ou segure o desfazer para recomeçar."
+			},
+			{
+				"icon": "⌚",
+				"title": "Placar no relógio",
+				"description": "No Android, o placar aparece como uma música tocando no relógio de pulso ou na tela bloqueada. Voltar e avançar somam um ponto para cada lado, e o botão do meio desfaz."
+			},
+			{
+				"icon": "🔄",
+				"title": "Rodízio de times",
+				"description": "Quem ganha fica e quem perde sai, e depois de 2, 3 ou 4 vitórias seguidas o vencedor sai também. No empate, os dois times saem."
+			},
+			{
+				"icon": "🔊",
+				"title": "Feito para a quadra",
+				"description": "Placar falado em voz alta, som e vibração a cada ponto, tela sempre acesa, trava na horizontal e a partida salva a cada mudança."
+			}
+		],
+		"buildStory": {
+			"problem": "O nosso vôlei de racha tem regras próprias, como set decisivo até 15 e vencedor que sai depois de algumas vitórias seguidas. Um placar montado em cima de uma lista de esportes não consegue descrever um jogo assim.",
+			"solution": "Um app Flutter para Android e iOS em que a partida é descrita pelas respostas de um onboarding curto, não por um esporte. O placar nunca é salvo: a partida é a regra mais uma lista de eventos, e um motor puro reproduz esses eventos até chegar ao placar atual. Sem backend, sem login, só o Firebase Analytics.",
+			"learned": "Guardar eventos em vez do placar deixou o desfazer exato, já que ele só remove o último evento, e faz a partida sobreviver ao app sendo fechado. A parte chata foi o relógio: o Android descarta atualizações de notificação em rajada, então a sessão de mídia sem som que chega ao Wear OS agrupa as atualizações a cada 250 ms."
+		},
+		"tags": [
+			"flutter",
+			"sports",
+			"scoreboard",
+			"offline",
+			"event-sourcing"
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.scoreboard",
+		"iconImage": "/images/apps/scoreboard/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/scoreboard/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/br/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
 		"name": "Tomely",
 		"slug": "tomely",
 		"tagline": "Nunca mais esqueça uma dose.",
@@ -69,7 +397,8 @@
 				"width": 720,
 				"height": 1280
 			}
-		]
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.medication_reminder"
 	},
 	{
 		"name": "FlyControl",
@@ -480,6 +809,172 @@
 			{
 				"src": "/images/apps/virtual-pocket-air-conditioning/br/screenshot-2.webp",
 				"width": 591,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Ciclogravura",
+		"slug": "ciclogravura",
+		"tagline": "Arte em areia dentro da garrafa.",
+		"description": "Jogo inspirado nas garrafas de areia do Nordeste: despeje areia colorida, incline o celular e modele paisagens no vidro, grão por grão.",
+		"storeDescription": "Ciclogravura é um jogo em retrato inspirado num artesanato do Nordeste: desenhar paisagens dentro de uma garrafa de vidro com areia colorida. Você despeja a areia pelo canudo, inclina o celular para as camadas correrem, empurra com o palito, tira um pouco com a colher e coloca pequenos itens lá dentro. O Modo Livre não tem objetivo nem pontuação, e a campanha pede que você recrie uma paisagem de referência e dá estrelas para a sua garrafa. Algumas garrafas e itens abrem depois de um vídeo que você escolhe assistir, e um Premium vitalício opcional pelo Google Play abre todos eles, dispensa os vídeos e tira a marca d'água das imagens compartilhadas.",
+		"category": "Jogos",
+		"icon": "🏜️",
+		"accentColor": "#E8762D",
+		"features": [
+			{
+				"icon": "🥄",
+				"title": "Canudo, palito e colher",
+				"description": "Despeje com o canudo, modele com o palito e remova com a colher, em 14 cores de areia, com desfazer a qualquer momento."
+			},
+			{
+				"icon": "📱",
+				"title": "Inclinação de verdade",
+				"description": "A areia escorre conforme você vira o celular, pelo acelerômetro, ou pelos botões de inclinar na tela."
+			},
+			{
+				"icon": "🏖️",
+				"title": "Modo Livre e coleção",
+				"description": "Sem objetivo e sem pressa. As garrafas prontas vão para a coleção, cada uma com o peso da areia usada, e podem ser compartilhadas como imagem."
+			},
+			{
+				"icon": "⭐",
+				"title": "Campanha",
+				"description": "Dois mundos e 9 níveis, como o sertão, a jangada e os Lençóis. Cada garrafa é comparada com a referência e ganha de uma a cinco estrelas."
+			},
+			{
+				"icon": "🐚",
+				"title": "Garrafas e itens",
+				"description": "9 formatos de garrafa e 9 itens, como concha, coqueiro e mandacaru, colocados lá dentro com pinça e presos pela areia ao redor."
+			}
+		],
+		"buildStory": {
+			"problem": "Jogos de areia caindo costumam tratar a areia como líquido: ela se nivela e qualquer forma modelada desmorona. No artesanato de verdade, o artesão forma morros e céus encostando uma vareta fina no vidro, então o jogo precisava deixar esse trabalho ficar no lugar.",
+			"solution": "Um app Flutter com um loop do Flame sobre uma grade em Dart puro de 160 por 260 células, um grão por célula, atualizada a 100 passos fixos por segundo. Os grãos aceleram ao cair, seguram mais um passo 20% das vezes para as encostas desabarem em pequenas avalanches e pararem perto de 32 graus, e os grãos pressionados pelo palito só caem na vertical, que é o que mantém uma forma modelada. O palito segue a palheta usada em Majorlândia: afunda a cor de cima na camada de baixo e nunca troca células de lugar.",
+			"learned": "A maior parte da sensação veio de algumas regras pequenas de física, não do desenho. O desenho teve o seu próprio limite: a imagem da areia é refeita a cada quadro, e pintar cada grão com 3 por 3 pixels derrubou o driver de GL do emulador depois de um minuto despejando areia, então ela continua com um pixel por grão."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"flame",
+			"falling sand",
+			"brazil"
+		],
+		"iconImage": "/images/apps/ciclogravura/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/ciclogravura/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/br/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.ciclogravura"
+	},
+	{
+		"name": "Mini Cenários",
+		"slug": "mini-cenarios",
+		"tagline": "Abra a caixa de mudança e monte cenários em miniatura, peça por peça.",
+		"description": "Um jogo de decorar inspirado nos livros de cenários com adesivos: abra a caixa de mudança de cada cômodo e monte cenários em isométrico, peça por peça.",
+		"storeDescription": "Mini Cenários é um jogo de decorar casa inspirado nos livros de cenários com adesivos. Cada um dos oito cenários chega numa caixa de mudança: toque na caixa para tirar a próxima peça, arraste para o chão ou para a parede, vire e ponha enfeites pequenos em cima de mesas, escrivaninhas e da cama. Cada cenário tem seis tarefas, como virar a TV para o sofá, que rendem moedas, e concluir todas abre o próximo. No modo livre você cria seus próprios cenários sem tarefas, e a galeria guarda todos para compartilhar como imagem. Os cenários ficam no seu celular, as moedas nunca são vendidas, os anúncios com recompensa só aparecem quando você pede, e uma compra Premium opcional abre tudo e acaba com eles.",
+		"category": "Jogos",
+		"icon": "🛋️",
+		"accentColor": "#FFCA00",
+		"features": [
+			{
+				"icon": "📦",
+				"title": "Uma caixa de mudança por cenário",
+				"description": "Oito cenários, da sala ao jardim e ao quarto gamer. Cada um chega numa caixa com as próprias peças, e você tira uma de cada vez com um toque."
+			},
+			{
+				"icon": "🪑",
+				"title": "Arrastar, girar, empilhar",
+				"description": "Arraste as peças para onde couberem, vire para o lado que quiser e ponha canecas, livros, um abajur ou um gatinho dormindo em cima de mesas, escrivaninhas e da cama. Desfazer está a um toque."
+			},
+			{
+				"icon": "✅",
+				"title": "Tarefas que rendem moedas",
+				"description": "Cada cenário tem seis metas, como um tapete embaixo da cama ou a TV virada para o sofá. Cada tarefa rende moedas, e cumprir todas abre o próximo cenário."
+			},
+			{
+				"icon": "🎨",
+				"title": "Loja, paredes e pisos",
+				"description": "Gaste as moedas com mais de 100 peças, bichinhos e novas cores de sofá, poltrona e cama, e troque a estampa das paredes e do piso de qualquer cenário."
+			},
+			{
+				"icon": "🖼️",
+				"title": "Modo livre e galeria",
+				"description": "Crie seus próprios cenários em três tamanhos, sem tarefas, guarde todos na galeria e compartilhe cada um como imagem."
+			}
+		],
+		"buildStory": {
+			"problem": "Eu queria uma versão para celular dos livros de cenários com adesivos, aqueles em que você monta um cômodo em 3D colando adesivos, com o ciclo de desempacotar de jogos como Unbox the Room e sem nenhum relógio.",
+			"solution": "Um app em Flutter em que cada móvel é um pequeno script em Python que desenha a peça em SVG isométrico, de frente e de costas, e escreve um índice com a área que ela ocupa e como ela gira. O app lê esse índice em vez de manter uma cópia própria, então o desenho e as regras de encaixe não têm como discordar. Um CustomPainter desenha cada cômodo de trás para a frente ordenando as áreas das peças, e a trilha de caixinha de música e os efeitos sonoros são sintetizados por um script, então não há licença para controlar.",
+			"learned": "A ordem de desenho deu mais trabalho do que parece. As vistas de costas precisaram ter cada forma reordenada pela profundidade, e as peças tinham que ser ordenadas pela área que ocupam, nunca à mão. A outra lição foi sobre as tarefas: as peças novas caíam em lugares que cumpriam uma tarefa por acaso, então agora elas entram pela porta, longe de qualquer arranjo, porque arrumar o cômodo é o jogo."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"cozy",
+			"isometric",
+			"decorating"
+		],
+		"iconImage": "/images/apps/mini-cenarios/icon.webp",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.mini_scene",
+		"screenshots": [
+			{
+				"src": "/images/apps/mini-cenarios/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/br/screenshot-6.webp",
+				"width": 720,
 				"height": 1280
 			}
 		]

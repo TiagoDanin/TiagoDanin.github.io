@@ -106,7 +106,7 @@ const Index = async ({ params }: PageProps<'/[lang]'>) => {
       />
       <Hero about={hero.about} stats={hero.stats} socialLinks={hero.socialLinks} locale={locale} />
       <Services expertise={expertiseData} />
-      <Projects projects={[...projectsData]} locale={locale} />
+      <Projects projects={[...projectsData]} locale={locale} limit={6} />
       <Testimonials testimonials={recognition.testimonials} tokens={recognition.tokens} />
       <RecentPosts posts={[...posts]} />
       <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />

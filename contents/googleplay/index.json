@@ -1,5 +1,333 @@
 [
 	{
+		"name": "Stone World",
+		"slug": "stone-world",
+		"tagline": "Push the rune stones home. No timers, no lives.",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.stoneworld",
+		"description": "A push box puzzle in pixel art: push rune stones onto an ancient altar, take keys from chests and open gates across 20 hand-made chambers.",
+		"storeDescription": "Stone World is a Sokoban-style puzzle game in pixel art. In each chamber you push rune stones onto an ancient altar, take keys from chests and open the gates in the way, and when every rune is lit the portal to the next chamber opens. A stone only moves when you push it, so a stone pushed into a corner stays there, and restarting is always one tap away. There are 20 hand-made chambers, no timers and no lives, and everything works offline. The game is free, with a full-screen ad after every fifth chamber and one optional purchase that opens every chamber and removes the ads.",
+		"category": "Games",
+		"icon": "🪨",
+		"accentColor": "#53CEE7",
+		"features": [
+			{
+				"icon": "🧩",
+				"title": "20 hand-made chambers",
+				"description": "From a first lesson to a finale with four keys and four gates. Each chamber adds one idea to the one before it and opens once you solve it."
+			},
+			{
+				"icon": "🔑",
+				"title": "Runes, keys and gates",
+				"description": "Light the altar one rune stone at a time, take keys from chests and spend each one on a gate. A key used on the wrong gate is gone."
+			},
+			{
+				"icon": "🏛️",
+				"title": "Courtyards and terraces",
+				"description": "Later chambers join courtyards and terraces with stairs, where a stone can only go where you can follow it."
+			},
+			{
+				"icon": "🕹️",
+				"title": "Controls made for exact moves",
+				"description": "Tap an arrow to move exactly one cell, hold it to keep walking, or touch anywhere on the screen to bring the joystick under your thumb."
+			},
+			{
+				"icon": "🌙",
+				"title": "Calm and offline",
+				"description": "No timers, no lives and no connection needed. Agate, a stone guide, gives a short hint as you enter, and the first chambers show the way with blue motes."
+			}
+		],
+		"buildStory": {
+			"problem": "I started Stone World in Unity in 2021: a main menu, a rune counter and stones that were plain physics bodies you could shove around freely. Then it sat untouched for years. In 2026 I wanted to finish it instead of starting something new.",
+			"solution": "I moved it to Unity 6 with URP 2D and changed the stones so a push moves them exactly one cell on a grid, which made the puzzles possible to design at all. Each chamber is built by an editor script, and a breadth-first solver over pushes proves it solvable before it ships, then a Play Mode walkthrough replays that solution in the real scene. The art comes from licensed pixel art packs.",
+			"learned": "I tried generating chambers from seeds and scoring them, and deleted all ten: they were solvable but did not follow on from one another. The ones that shipped are placed by hand and checked by the solver, and proving the last chamber took 13 minutes and 1.7 million states. The first release was also a 45 MB download, and stripping unused code, turning off the splash and removing a post-processing stack the game no longer used brought it to 35.6 MB."
+		},
+		"tags": [
+			"unity",
+			"game",
+			"puzzle",
+			"sokoban",
+			"pixel-art",
+			"android"
+		],
+		"iconImage": "/images/apps/stone-world/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/stone-world/screenshot-1.webp",
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"src": "/images/apps/stone-world/screenshot-2.webp",
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"src": "/images/apps/stone-world/screenshot-3.webp",
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"src": "/images/apps/stone-world/screenshot-4.webp",
+				"width": 1280,
+				"height": 720
+			},
+			{
+				"src": "/images/apps/stone-world/screenshot-5.webp",
+				"width": 1280,
+				"height": 720
+			}
+		]
+	},
+	{
+		"name": "Love Wrapped",
+		"slug": "wrapped-love-stories",
+		"tagline": "Your chat, told back as a love story.",
+		"description": "Turns a WhatsApp chat between two people into a Wrapped of the relationship, one scene per screen, and a vertical video, all on the phone.",
+		"storeDescription": "Love Wrapped reads a WhatsApp chat export between two people and tells the story back as a Wrapped: the first messages, the first \"I love you\", the longest run of days in a row, the hours and words that are yours. The chat is read on the phone and never uploaded, only the numbers of the story are kept, and there is no account to create. The story can be renamed and reordered, then turned into a 9:16 video with an original soundtrack. No ads, and one optional lifetime Premium through Google Play unlocks every scene and the full 1080p video without the watermark.",
+		"category": "Lifestyle",
+		"icon": "💞",
+		"accentColor": "#FF3D7F",
+		"features": [
+			{
+				"icon": "🔒",
+				"title": "Read on the phone",
+				"description": "The chat is parsed on the device and the app deletes its copy when the reading ends. Only the story's numbers are saved, never the messages."
+			},
+			{
+				"icon": "🎬",
+				"title": "One discovery per screen",
+				"description": "Scenes are picked from what the chat really holds, from the first messages shown as lock screen notifications to milestones, laughs and emoji."
+			},
+			{
+				"icon": "💞",
+				"title": "About the couple",
+				"description": "It never ranks who texts more, who replies faster or who says sorry, and it never brings back a bad moment."
+			},
+			{
+				"icon": "✏️",
+				"title": "Make it yours",
+				"description": "Change the names, reorder or hide scenes. Premium adds a color per scene and a photo of the two of you behind the first messages."
+			},
+			{
+				"icon": "📱",
+				"title": "A video to share",
+				"description": "A 9:16 MP4 with an original soundtrack, rendered on the phone, or a single scene as an image. The free video is 720p with a watermark."
+			}
+		],
+		"buildStory": {
+			"problem": "A recap of a relationship needs the whole WhatsApp conversation, which is about the most private file on a phone. The reading had to happen on the device, and the export looks different on Android and iPhone and in each language.",
+			"solution": "A Flutter app with a hand-written, pure-Dart parser that streams the export in an isolate and lets only aggregates out; a 200,000-message chat read in about five seconds in my tests. A scene engine scores each possible scene against those numbers, and one CustomPainter draws the viewer and every video frame, which a Kotlin MediaCodec encoder turns into H.264 with an AAC soundtrack.",
+			"learned": "The rule that shaped the engine is to never invent data: a scene that cannot back its sentence with the chat's numbers is dropped. Drawing the preview and the video with the same painter also means the story you watch is the video you share."
+		},
+		"tags": [
+			"flutter",
+			"whatsapp",
+			"kotlin",
+			"privacy",
+			"video"
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.wrapped_love",
+		"iconImage": "/images/apps/wrapped-love-stories/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/wrapped-love-stories/en/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/en/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/wrapped-love-stories/en/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Poker Trainer",
+		"slug": "poker-trainer",
+		"tagline": "Texas Hold'em, one short lesson at a time.",
+		"description": "No Limit Hold'em lessons for beginners: 58 lessons in 13 phases, over 400 exercises and an explanation after every answer. No real money.",
+		"storeDescription": "Poker Trainer teaches No Limit Texas Hold'em in lessons of three to five minutes, from hand rankings to push or fold in tournaments. Each exercise is one decision, followed by a short explanation with the cards that matter lit up. The 58 lessons in 13 phases are bundled in the app, work offline and come in English and Portuguese. There is no real money and chips are never sold. Every lesson is free, there are no ads, and one optional purchase removes the wait for lives.",
+		"category": "Education",
+		"icon": "🃏",
+		"accentColor": "#00A857",
+		"features": [
+			{
+				"icon": "🗺️",
+				"title": "13 phases",
+				"description": "58 lessons from the Kitchen Table to the Final Table. Each phase ends with a challenge that mixes everything it taught."
+			},
+			{
+				"icon": "🃏",
+				"title": "Real decisions",
+				"description": "Act at the table, name the hand, pick the winner at showdown, complete a hand, count outs, or answer a quick question."
+			},
+			{
+				"icon": "💡",
+				"title": "Why, after every answer",
+				"description": "A short explanation with the cards that decide it lit up. A wrong answer comes back at the end of the lesson, and the summary points out the mistakes you repeat."
+			},
+			{
+				"icon": "🔥",
+				"title": "Streak, XP, lives and chips",
+				"description": "A daily habit, like a language app. Lives refill over time or with chips earned in lessons. Chips are never sold and there is no real money."
+			},
+			{
+				"icon": "🎯",
+				"title": "Practice and hand rankings",
+				"description": "Free practice on any lesson already unlocked, without spending lives, and a hand rankings sheet with how often each hand comes up in seven cards."
+			}
+		],
+		"buildStory": {
+			"problem": "Poker study material is long, dense and far from the table. A beginner who knows some rules and plays by feel tends to give up before the concepts stick.",
+			"solution": "A Flutter app shaped like a language app: short lessons, one decision per exercise, a path of phases that unlock in order. The content is bundled JSON in English and Portuguese, progress stays on the phone, and the only network use is Firebase Analytics, a Google Play Games leaderboard and the purchase, none of which blocks the app.",
+			"learned": "Authored answers cannot be trusted. A Node validator with its own hand evaluator scores every hand-based answer and checks that both languages match exercise by exercise, and a Dart port of it decides which cards light up after an answer. Keeping chips off sale was deliberate: chips sold for money in a poker app read as simulated gambling."
+		},
+		"tags": [
+			"flutter",
+			"poker",
+			"education",
+			"gamification",
+			"offline"
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.poker_trainer",
+		"iconImage": "/images/apps/poker-trainer/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/poker-trainer/en/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/en/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/poker-trainer/en/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Scoreboard",
+		"slug": "scoreboard",
+		"tagline": "The score, readable from across the court.",
+		"description": "Scoreboard for two teams, Blue and Red, with +1, +5 or tennis scoring, sets or a timed clock, exact undo and the score on your watch.",
+		"storeDescription": "Scoreboard keeps the score of a match between two teams, Blue and Red. Instead of a list of sports, the first launch asks how you play: +1, +5 or tennis scoring, sets or a timed match with a clock, a deciding set, a golden point and team rotation. Tap a side to score, undo the exact last change, swap sides, hear the score out loud and add points from a watch or the lock screen. It works offline, with no account, no ads and nothing to buy.",
+		"category": "Sports",
+		"icon": "🏐",
+		"accentColor": "#0462D3",
+		"features": [
+			{
+				"icon": "❓",
+				"title": "Rules, not sports",
+				"description": "No list of sports to pick from. Answer once how you play: points per set, best of how many, deciding set, two-point lead, tennis games and tiebreaks, or periods on a clock."
+			},
+			{
+				"icon": "↩️",
+				"title": "Exact undo",
+				"description": "Undo reverses the last change exactly, not just the number. Hold a team's score to set it on a wheel, or hold undo to start over."
+			},
+			{
+				"icon": "⌚",
+				"title": "Score from your watch",
+				"description": "On Android the score shows up as a playing track on a watch or the lock screen. Previous and next add a point to each side, and the middle button undoes."
+			},
+			{
+				"icon": "🔄",
+				"title": "Team rotation",
+				"description": "Winner stays and loser leaves, and after 2, 3 or 4 wins in a row the winner leaves too. A draw sends both teams off."
+			},
+			{
+				"icon": "🔊",
+				"title": "Made for the court",
+				"description": "Score read out loud, sound and vibration on each point, the screen kept awake, a landscape lock, and the match saved on every change."
+			}
+		],
+		"buildStory": {
+			"problem": "Our pickup volleyball has its own rules, like a deciding set to 15 and a winner who leaves after a few wins in a row. A scoreboard built around a list of sports cannot describe a game like that.",
+			"solution": "A Flutter app for Android and iOS where a match is described by the answers to a short onboarding instead of a sport. The score is never stored: a match is its rules plus a list of events, and a pure engine replays them into the current score. No backend, no login, only Firebase Analytics.",
+			"learned": "Storing events instead of the score made undo exact, since it only drops the last event, and it lets a match survive the app being killed. The fiddly part was the watch: Android drops bursts of notification updates, so the silent media session that reaches Wear OS coalesces them every 250 ms."
+		},
+		"tags": [
+			"flutter",
+			"sports",
+			"scoreboard",
+			"offline",
+			"event-sourcing"
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.scoreboard",
+		"iconImage": "/images/apps/scoreboard/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/scoreboard/en/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/en/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/scoreboard/en/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
 		"name": "Tomely",
 		"slug": "tomely",
 		"tagline": "Never miss a dose.",
@@ -69,7 +397,8 @@
 				"width": 720,
 				"height": 1280
 			}
-		]
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.medication_reminder"
 	},
 	{
 		"name": "FlyControl",
@@ -480,6 +809,172 @@
 			{
 				"src": "/images/apps/virtual-pocket-air-conditioning/en/screenshot-2.webp",
 				"width": 591,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Ciclogravura",
+		"slug": "ciclogravura",
+		"tagline": "Sand art inside a glass bottle.",
+		"description": "A game based on the Brazilian sand bottle craft: pour colored sand, tilt the phone and shape landscapes against the glass, grain by grain.",
+		"storeDescription": "Ciclogravura is a portrait game based on a craft from the Brazilian Northeast: drawing landscapes inside a glass bottle with colored sand. Pour sand through a straw, tilt the phone to make the layers slide, push them with a skewer, take some out with a spoon and set small items inside. Free mode has no goal and no score, and the campaign asks you to recreate a reference landscape and grades your bottle in stars. Some bottles and items open after a rewarded video you choose to watch, and one optional lifetime Premium through Google Play opens all of them, skips the videos and removes the watermark from shared pictures.",
+		"category": "Games",
+		"icon": "🏜️",
+		"accentColor": "#E8762D",
+		"features": [
+			{
+				"icon": "🥄",
+				"title": "Straw, skewer and spoon",
+				"description": "Pour with the straw, shape with the skewer and remove with the spoon, in 14 sand colors, with undo at any time."
+			},
+			{
+				"icon": "📱",
+				"title": "Real tilt",
+				"description": "The sand runs as you turn the phone, read from the accelerometer, or with the tilt buttons on screen."
+			},
+			{
+				"icon": "🏖️",
+				"title": "Free mode and collection",
+				"description": "No goal and no rush. Finished bottles go into a collection, each with the weight of sand it took, and can be shared as a picture."
+			},
+			{
+				"icon": "⭐",
+				"title": "Campaign",
+				"description": "Two worlds and 9 levels, such as the backlands, a raft and the Lençóis dunes. Each bottle is compared with the reference and earns one to five stars."
+			},
+			{
+				"icon": "🐚",
+				"title": "Bottles and items",
+				"description": "9 bottle shapes and 9 items, like a shell, a palm tree and a cactus, set inside with tweezers and held in place by the sand around them."
+			}
+		],
+		"buildStory": {
+			"problem": "Falling-sand toys usually treat sand like a liquid: it levels out and any shape you carve collapses. In the real craft the artisan carves hills and skies against the glass with a thin rod, so the game had to let that work stay in place.",
+			"solution": "A Flutter app with a Flame loop over a pure-Dart grid of 160 by 260 cells, one grain per cell, stepped a fixed 100 times a second. Grains speed up as they fall, hold on 20% of the time so slopes collapse in small avalanches and rest near 32 degrees, and grains pressed by the skewer only fall straight down, which is what keeps a carved shape. The skewer follows the palheta used in Majorlândia: it sinks the upper color into the layer below and never swaps cells.",
+			"learned": "Most of the feel came from a handful of small physics rules, not from the drawing. The drawing had its own limit: the sand picture is rebuilt every frame, and painting each grain as 3 by 3 pixels crashed the emulator's GL driver after a minute of pouring, so it stays one pixel per grain."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"flame",
+			"falling sand",
+			"brazil"
+		],
+		"iconImage": "/images/apps/ciclogravura/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/ciclogravura/en/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/en/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ciclogravura/en/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.ciclogravura"
+	},
+	{
+		"name": "Mini Cenários",
+		"slug": "mini-cenarios",
+		"tagline": "Unpack the moving box and decorate tiny rooms, one piece at a time.",
+		"description": "A cozy decorating game inspired by sticker scene books: unpack each room's moving box and arrange tiny isometric rooms, piece by piece.",
+		"storeDescription": "Mini Cenários is a cozy room decorating game inspired by the sticker scene books. Each of its eight rooms arrives in a moving box: tap the box to take the next piece out, drag it onto the floor or the wall, turn it and set small decor on tables, desks and the bed. Every room has six tasks, such as turning the TV toward the sofa, that pay coins, and finishing them opens the next room. In free mode you create your own rooms with no tasks, and the gallery keeps every room to share as a picture. Your rooms stay on your phone, coins are never sold, rewarded ads are only shown when you ask for one, and one optional Premium purchase opens everything and removes them.",
+		"category": "Games",
+		"icon": "🛋️",
+		"accentColor": "#FFCA00",
+		"features": [
+			{
+				"icon": "📦",
+				"title": "A moving box per room",
+				"description": "Eight rooms, from the living room to the garden and a gamer room. Each one arrives in a box with its own pieces, and you take them out one tap at a time."
+			},
+			{
+				"icon": "🪑",
+				"title": "Drag, turn, stack",
+				"description": "Drag pieces anywhere they fit, turn them to face where you want, and set mugs, books, a lamp or a sleeping cat on tables, desks and the bed. Undo is one tap away."
+			},
+			{
+				"icon": "✅",
+				"title": "Tasks that pay coins",
+				"description": "Each room has six goals, like a rug under the bed or the TV facing the sofa. Every task pays coins, and meeting all of them opens the next room."
+			},
+			{
+				"icon": "🎨",
+				"title": "Shop, walls and floors",
+				"description": "Spend coins on more than 100 pieces, pets and new colours of the sofa, armchair and bed, and change the wall and floor patterns of any room."
+			},
+			{
+				"icon": "🖼️",
+				"title": "Free mode and gallery",
+				"description": "Create your own rooms in three sizes with no tasks, keep every room in the gallery and share it as a picture."
+			}
+		],
+		"buildStory": {
+			"problem": "I wanted a phone version of the sticker scene books, the ones where you build a small 3D room by placing stickers, with the unpacking loop of games like Unbox the Room and none of the timers.",
+			"solution": "A Flutter app where every piece of furniture is a small Python script that draws it in isometric SVG, front and back, and writes an index with its footprint and how it turns. The app reads that index instead of keeping its own copy, so the drawing and the placement rules cannot disagree. A CustomPainter draws each room back to front by sorting the footprints, and the music box loop and sound effects are synthesized by a script, so there is no licence to track.",
+			"learned": "Draw order was harder than it looks. Back views needed every shape re-sorted by depth, and pieces had to be sorted by footprint, never by hand. The other lesson was about the tasks: new pieces used to land in spots that met a task by chance, so now they arrive by the door, away from any arrangement, because arranging the room is the game."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"cozy",
+			"isometric",
+			"decorating"
+		],
+		"iconImage": "/images/apps/mini-cenarios/icon.webp",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.mini_scene",
+		"screenshots": [
+			{
+				"src": "/images/apps/mini-cenarios/en/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/en/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/mini-cenarios/en/screenshot-6.webp",
+				"width": 720,
 				"height": 1280
 			}
 		]
