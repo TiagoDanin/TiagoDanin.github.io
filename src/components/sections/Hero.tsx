@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
-import { ArrowRight, Newspaper } from "lucide-react";
+import { ArrowRight, Bug, Check, GitMerge, Newspaper, Rocket, ShieldCheck, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { Trans } from "@lingui/react/macro";
 import { DEFAULT_LOCALE, localePath, type Locale } from '@/lib/i18n/locales';
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 export interface HeroAbout {
   name: string;
@@ -46,6 +47,18 @@ export interface HeroProps {
   /** Only /about surfaces the press kit; the home page keeps the two primary CTAs. */
   showPressKit?: boolean;
 }
+
+// Work markers on the ring (r = 49 in the 100-unit square), in the order the
+// scan reaches them: 0, 90, 180 and 270 degrees. The scan starts 45 degrees
+// behind the first and takes 3s per quarter, so marker `i` is hit at
+// 1.5s + 3s * i of each 12s lap. `.animate-orbit-marker-*` in globals.css runs
+// on that clock, delayed by `i * 3s`.
+const ORBIT_MARKERS: { Icon: LucideIcon; left: string; top: string }[] = [
+  { Icon: Bug, left: "99%", top: "50%" },
+  { Icon: Rocket, left: "50%", top: "99%" },
+  { Icon: GitMerge, left: "1%", top: "50%" },
+  { Icon: ShieldCheck, left: "50%", top: "1%" },
+];
 
 /**
  * Opening block of the home and about pages: name, bio, derived counts, and
@@ -152,54 +165,15 @@ export function Hero({ about, stats, socialLinks, showPressKit = false, locale =
               viewBox="0 0 100 100"
               className="absolute inset-0 w-full h-full overflow-visible"
             >
-              <defs>
-                <linearGradient id="orbitTrailA" x1="100%" y1="50%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="rgb(148 163 184)" stopOpacity="0.7" />
-                  <stop offset="60%" stopColor="rgb(148 163 184)" stopOpacity="0.22" />
-                  <stop offset="100%" stopColor="rgb(148 163 184)" stopOpacity="0" />
-                </linearGradient>
-                <linearGradient id="orbitTrailB" x1="0%" y1="50%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgb(148 163 184)" stopOpacity="0.7" />
-                  <stop offset="60%" stopColor="rgb(148 163 184)" stopOpacity="0.22" />
-                  <stop offset="100%" stopColor="rgb(148 163 184)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
               <circle
                 cx="50"
                 cy="50"
                 r="49"
                 fill="none"
-                stroke="rgb(226 232 240)"
+                stroke="rgb(203 213 225)"
                 strokeWidth="0.25"
                 strokeDasharray="0.6 1.8"
               />
-              <g
-                className="animate-orbit-cw"
-                style={{ transformOrigin: "50% 50%" }}
-              >
-                <path
-                  d="M 50 1 A 49 49 0 0 1 99 50"
-                  fill="none"
-                  stroke="url(#orbitTrailA)"
-                  strokeWidth="0.55"
-                  strokeDasharray="1.4 1.8"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M 50 99 A 49 49 0 0 1 1 50"
-                  fill="none"
-                  stroke="url(#orbitTrailB)"
-                  strokeWidth="0.55"
-                  strokeDasharray="1.4 1.8"
-                  strokeLinecap="round"
-                />
-                <circle cx="99" cy="50" r="3.6" fill="rgb(34 197 94)" fillOpacity="0.08" />
-                <circle cx="99" cy="50" r="2.2" fill="rgb(34 197 94)" fillOpacity="0.2" />
-                <circle cx="99" cy="50" r="1.3" fill="rgb(34 197 94)" />
-                <circle cx="1" cy="50" r="3.6" fill="rgb(168 85 247)" fillOpacity="0.08" />
-                <circle cx="1" cy="50" r="2.2" fill="rgb(168 85 247)" fillOpacity="0.2" />
-                <circle cx="1" cy="50" r="1.3" fill="rgb(168 85 247)" />
-              </g>
             </svg>
 
             <div className="absolute inset-[6%] rounded-full overflow-hidden bg-primary/10 ring-1 ring-slate-200/80 shadow-lg">
@@ -211,6 +185,48 @@ export function Hero({ about, stats, socialLinks, showPressKit = false, locale =
                 className="h-full w-full object-cover"
                 priority
               />
+            </div>
+
+            {/* Bug, deploy, code review, security: a scan laps the ring and
+                turns each into a check as it passes. The layer turns, each
+                marker turns back, so the icons stay upright. */}
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 animate-orbit-cw">
+              <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full overflow-visible">
+                <defs>
+                  {/* Fades the scan arc from nothing at its tail to the leading edge. */}
+                  <linearGradient id="scanTrail" gradientUnits="userSpaceOnUse" x1="81.5" y1="12.47" x2="99" y2="50">
+                    <stop offset="0%" stopColor="rgb(34 197 94)" stopOpacity="0" />
+                    <stop offset="100%" stopColor="rgb(34 197 94)" stopOpacity="0.75" />
+                  </linearGradient>
+                </defs>
+                <g className="animate-scan-sweep" style={{ transformOrigin: "50% 50%" }}>
+                  <path
+                    d="M 81.5 12.47 A 49 49 0 0 1 99 50"
+                    fill="none"
+                    stroke="url(#scanTrail)"
+                    strokeWidth="0.7"
+                    strokeLinecap="round"
+                  />
+                  <circle cx="99" cy="50" r="0.9" fill="rgb(34 197 94)" />
+                </g>
+              </svg>
+
+              {ORBIT_MARKERS.map(({ Icon, left, top }, i) => (
+                <div key={i} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left, top }}>
+                  <div
+                    className="animate-orbit-ccw relative grid h-7 w-7 place-items-center lg:h-8 lg:w-8"
+                    style={{ "--marker-delay": `${i * 3}s` } as CSSProperties}
+                  >
+                    <span className="animate-orbit-marker-pulse absolute inset-0 rounded-full border border-green-500" />
+                    <span className="animate-orbit-marker-idle absolute inset-0 grid place-items-center rounded-full bg-white ring-1 ring-slate-200 shadow-sm">
+                      <Icon className="h-3.5 w-3.5 text-slate-500 lg:h-4 lg:w-4" strokeWidth={1.75} />
+                    </span>
+                    <span className="animate-orbit-marker-done absolute inset-0 grid place-items-center rounded-full bg-white ring-1 ring-green-500 shadow-sm">
+                      <Check className="h-3.5 w-3.5 text-green-600 lg:h-4 lg:w-4" strokeWidth={2.5} />
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <div className="absolute -bottom-14 left-1/2 -translate-x-1/2">

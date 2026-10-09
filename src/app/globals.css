@@ -223,9 +223,67 @@
   animation: orbit-cw 40s linear infinite;
 }
 
+/* Keeps an orbiting icon upright: the same turn, backwards. */
+.animate-orbit-ccw {
+  animation: orbit-cw 40s linear infinite reverse;
+}
+
+/*
+ * Hero scan. It turns inside the 40s orbit layer, so these angles
+ * are relative to the ring: one lap is 12s, starting 45deg behind the first
+ * marker, which puts a marker under the arc every 3s, at 1.5s + 3s * i. The
+ * marker keyframes are 12s long with the hit at 12.5%, and each marker is
+ * delayed by i * 3s. Change one number and the rest must follow.
+ */
+@keyframes scan-sweep {
+  from { transform: rotate(-45deg); }
+  to { transform: rotate(315deg); }
+}
+
+@keyframes orbit-marker-idle {
+  0%, 12% { opacity: 1; }
+  15%, 32% { opacity: 0; }
+  37%, 100% { opacity: 1; }
+}
+
+@keyframes orbit-marker-done {
+  0%, 12.5% { opacity: 0; transform: scale(0.6); }
+  16%, 30% { opacity: 1; transform: scale(1); }
+  35%, 100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes orbit-marker-pulse {
+  0%, 12% { opacity: 0; transform: scale(0.8); }
+  12.5% { opacity: 0.5; transform: scale(0.9); }
+  25%, 100% { opacity: 0; transform: scale(1.9); }
+}
+
+.animate-scan-sweep {
+  animation: scan-sweep 12s linear infinite;
+}
+
+.animate-orbit-marker-idle,
+.animate-orbit-marker-done,
+.animate-orbit-marker-pulse {
+  animation: 12s cubic-bezier(0.25, 1, 0.5, 1) var(--marker-delay, 0s) infinite both;
+}
+
+.animate-orbit-marker-idle { animation-name: orbit-marker-idle; }
+.animate-orbit-marker-done { animation-name: orbit-marker-done; }
+.animate-orbit-marker-pulse { animation-name: orbit-marker-pulse; }
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-orbit-cw {
+  .animate-orbit-cw,
+  .animate-orbit-ccw,
+  .animate-orbit-marker-idle {
     animation: none;
+  }
+
+  /* The scan only makes sense moving: the markers stay as plain icons. */
+  .animate-scan-sweep,
+  .animate-orbit-marker-done,
+  .animate-orbit-marker-pulse {
+    display: none;
   }
 }
 
