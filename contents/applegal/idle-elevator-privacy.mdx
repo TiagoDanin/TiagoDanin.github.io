@@ -4,9 +4,9 @@ slug: "idle-elevator-privacy"
 app: "idle-elevator"
 appName: "Idle Elevator"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-13"
 lang: "en"
-description: "Idle Elevator has no account and keeps your save on the phone. It sends anonymous game statistics and crash reports to Firebase. This is all of it."
+description: "Idle Elevator has no account and keeps your save on the phone. It sends game statistics and crash reports to Firebase, and uses Google AdMob for an optional video that doubles your offline earnings."
 ---
 
 Idle Elevator is an idle game for Android. It has no account and no server of its own. Your progress lives on your phone, and the only data that leaves it is a set of game statistics and crash reports.
@@ -29,21 +29,27 @@ Once you have played on two different days, the game schedules one reminder for 
 
 #### Game statistics
 
-Google Analytics for Firebase records game events: a new game started, an upgrade bought, a boost used, a tap combo or a floor record reached, a prestige offered, accepted or declined, offline earnings collected, a bonus reward claimed, a reminder opened and a setting switched, with the level, floor or amount involved. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the game on Google Play). The game turns off the advertising ID, so the SDK neither reads nor sends it. The game does not send a user ID, because it has none, and does not use this data for advertising.
+Google Analytics for Firebase records game events: a new game started, an upgrade bought, a boost used, a tap combo or a floor record reached, a prestige offered, accepted or declined, offline earnings collected, a bonus reward claimed, the video for the offline bonus started and whether it ended with the reward, a reminder opened and a setting switched, with the level, floor or amount involved. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the game on Google Play). Because the game now has an ad, the SDK may also read the device's advertising ID. The game does not send a user ID, because it has none, and does not use these statistics for advertising.
 
 #### Crash reports
 
 Firebase Crashlytics receives a report when the game crashes: the error, the stack trace, the device model and the Android version.
 
+### Ads
+
+When you come back, the game shows what the elevator earned while you were away. COLLECT gives you that amount, as always. A second button, shown only when a video is ready, plays a short rewarded video ad and then gives you twice the amount. There are no banners and no ads that appear on their own. Google AdMob serves the video. To pick and measure ads, AdMob uses the advertising ID, your IP address, the device model and how you interact with the ad, and it may show ads based on your interests.
+
+Where the law asks for consent, such as in the EU and the UK, the game shows Google's consent form before any ad loads, and you can change your answer later in Settings, "Ad privacy". You can also reset or delete the advertising ID in Android settings, under Privacy, Ads (on some phones, Google, Ads). Deleting it stops personalised ads on the whole device.
+
 ### Who else receives it
 
-Google, which runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy).
+Google, which runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Google AdMob also receives what it needs to show the video you ask for and to record your consent choice. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy).
 
-I do not sell this data, share it with advertisers, or hand it to a data broker. The statistics are used to find bugs and to balance the game, on the basis of my legitimate interest in keeping it working.
+I do not sell this data or hand it to a data broker, and the statistics are not shared with advertisers. The statistics are used to find bugs and to balance the game, on the basis of my legitimate interest in keeping it working. The video relies on your consent where the law requires it, and otherwise on my legitimate interest and on the choices you make in Android's ad settings.
 
 ### How long it is kept
 
-Your save stays on the phone until you uninstall the game or clear its data. Statistics and crash reports are kept for the retention period configured in Firebase, after which Google deletes them.
+Your save stays on the phone until you uninstall the game or clear its data. Statistics and crash reports are kept for the retention period configured in Firebase, after which Google deletes them. AdMob keeps its data under Google's own policies.
 
 ### Your rights
 
@@ -55,7 +61,7 @@ The game is rated for everyone but is not directed at children. I do not knowing
 
 ### Changes
 
-If this policy changes, the date at the top changes with it. If the game ever adds ads or purchases, this page is updated before that version is released.
+If this policy changes, the date at the top changes with it. If the game adds more ads or any purchase, this page is updated before that version is released.
 
 ### Contact
 

@@ -4,9 +4,9 @@ slug: "wrapped-love-stories-privacy"
 app: "wrapped-love-stories"
 appName: "Love Wrapped"
 kind: "privacy"
-updatedAt: "2026-10-04"
+updatedAt: "2026-10-13"
 lang: "pt"
-description: "O Love Wrapped lê sua conversa do WhatsApp no seu celular e nunca a envia. Ele guarda só os números da história de vocês, manda estatísticas de uso e relatórios de falha ao Google e vende o Premium pelo Google Play."
+description: "O Love Wrapped lê sua conversa do WhatsApp no seu celular e nunca a envia. Ele guarda só os números da história de vocês, manda estatísticas de uso e relatórios de falha ao Google, mostra um anúncio em vídeo antes de quem não tem Premium salvar ou compartilhar um vídeo e vende o Premium pelo Google Play."
 ---
 
 O Love Wrapped lê uma conversa do WhatsApp que você exporta e conta a história dela: quanto vocês conversam, quando, quais palavras e emojis são de vocês, e um vídeo para compartilhar. A conversa é lida no seu celular e nunca é enviada para mim nem para servidor nenhum. O que sai do celular são estatísticas de uso, relatórios de falha e, se você comprar o Premium, o que o Google Play precisa para processar o pagamento. Esta página explica cada um.
@@ -46,9 +46,13 @@ O vídeo e as imagens das cenas são desenhados no seu celular. Um vídeo fica n
 
 #### Estatísticas de uso
 
-O Google Analytics para Firebase registra eventos como abrir o app, qual tela está aberta, começar uma importação (por compartilhamento ou pelo seletor), se ela deu certo ou por que falhou, o tamanho da conversa em faixas amplas (por exemplo "10 mil a 50 mil mensagens", "1 a 3 anos"), quanto tempo a leitura levou, quantas cenas a história tem, chegar ao fim da história, compartilhar uma cena (o tipo de cena, nunca o conteúdo), criar, cancelar, compartilhar ou salvar um vídeo, ver a tela do Premium e se uma compra foi concluída. Nenhum evento leva um nome, uma palavra, uma mensagem ou qualquer outra coisa da sua conversa. O app não cria conta nem envia identificador de usuário, então esses eventos ficam ligados a uma instalação do app, não a uma pessoa. O Analytics também vê o modelo do aparelho, o sistema operacional, a versão do app e a localização aproximada.
+O Google Analytics para Firebase registra eventos como abrir o app, qual tela está aberta, começar uma importação (por compartilhamento ou pelo seletor), se ela deu certo ou por que falhou, o tamanho da conversa em faixas amplas (por exemplo "10 mil a 50 mil mensagens", "1 a 3 anos"), quanto tempo a leitura levou, quantas cenas a história tem, chegar ao fim da história, compartilhar uma cena (o tipo de cena, nunca o conteúdo), criar, cancelar, compartilhar ou salvar um vídeo, começar e concluir o anúncio antes de salvar ou compartilhar, ver a tela do Premium e se uma compra foi concluída. Nenhum evento leva um nome, uma palavra, uma mensagem ou qualquer outra coisa da sua conversa. O app não cria conta nem envia identificador de usuário, então esses eventos ficam ligados a uma instalação do app, não a uma pessoa. O Analytics também vê o modelo do aparelho, o sistema operacional, a versão do app e a localização aproximada, e pode ler o ID de publicidade do aparelho.
 
-O app não tem anúncios e não lê o ID de publicidade do aparelho: ele foi removido do app e a coleta está desligada.
+#### Anúncios
+
+Sem o Premium, um vídeo de anúncio curto toca antes de você salvar ou compartilhar um vídeo que fez; um anúncio vale para aquele vídeo. Quem entrega o anúncio é o Google AdMob. Para escolher e medir os anúncios, o AdMob usa o ID de publicidade do aparelho, o seu endereço IP, o modelo do aparelho e como você interage com o anúncio, e pode mostrar anúncios baseados nos seus interesses. Nada da sua conversa vai para o AdMob: o pedido de anúncio não leva palavras, nomes nem números da sua história. Com o Premium nenhum anúncio aparece.
+
+Onde a lei pede consentimento, como na União Europeia e no Reino Unido, o app mostra o formulário de consentimento do Google antes de carregar qualquer anúncio, e você pode mudar a resposta depois em Sobre, "Privacidade dos anúncios". Você também pode redefinir ou apagar o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns celulares, Google, Anúncios). Apagar o ID encerra os anúncios personalizados no aparelho todo.
 
 #### Relatórios de falha
 
@@ -67,6 +71,7 @@ Seus Wrappeds salvos, como descrito acima, e se você tem o Premium. Desinstalar
 O app não tem servidor próprio. O que ele envia vai para o Google:
 
 - **Google Analytics para Firebase** e **Firebase Crashlytics** recebem as estatísticas e os relatórios de falha.
+- **Google AdMob** recebe o que precisa para mostrar os anúncios e registrar a sua escolha de consentimento, como descrito acima. Ele nunca recebe nada da sua conversa.
 - **Google Play** processa o pagamento do Premium e informa ao app se você o tem.
 
 Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy), [como o Google usa informações de apps que usam seus serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR), [termos do Google Play](https://play.google.com/about/play-terms/?hl=pt-BR) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).

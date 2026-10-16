@@ -4,9 +4,9 @@ slug: "idle-elevator-privacy"
 app: "idle-elevator"
 appName: "Idle Elevator"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-13"
 lang: "pt"
-description: "O Idle Elevator não tem conta e guarda seu progresso no celular. Ele envia estatísticas anônimas do jogo e relatórios de falha ao Firebase. É só isso."
+description: "O Idle Elevator não tem conta e guarda seu progresso no celular. Ele envia estatísticas do jogo e relatórios de falha ao Firebase e usa o Google AdMob num vídeo opcional que dobra os ganhos offline."
 ---
 
 O Idle Elevator é um jogo idle para Android. Ele não tem conta nem servidor próprio. Seu progresso fica no seu celular, e o único dado que sai dele é um conjunto de estatísticas do jogo e relatórios de falha.
@@ -29,21 +29,27 @@ Depois que você joga em dois dias diferentes, o jogo agenda um lembrete para o 
 
 #### Estatísticas do jogo
 
-O Google Analytics para Firebase registra eventos do jogo: um jogo novo iniciado, uma melhoria comprada, um impulso usado, um combo de toques ou um recorde de andar alcançado, um prestígio oferecido, aceito ou recusado, ganhos offline coletados, um bônus resgatado, um lembrete aberto e uma configuração alterada, com o nível, o andar ou o valor envolvido. Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, versão do Android, versão do app e localização aproximada. O SDK pode ler a origem da instalação (como você chegou ao jogo no Google Play). O jogo desliga o ID de publicidade, então o SDK não lê nem envia esse ID. O jogo não envia ID de usuário, porque não tem, e não usa esses dados para publicidade.
+O Google Analytics para Firebase registra eventos do jogo: um jogo novo iniciado, uma melhoria comprada, um impulso usado, um combo de toques ou um recorde de andar alcançado, um prestígio oferecido, aceito ou recusado, ganhos offline coletados, um bônus resgatado, o vídeo do bônus offline iniciado e se terminou com a recompensa, um lembrete aberto e uma configuração alterada, com o nível, o andar ou o valor envolvido. Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, versão do Android, versão do app e localização aproximada. O SDK pode ler a origem da instalação (como você chegou ao jogo no Google Play). Como o jogo agora tem anúncio, o SDK também pode ler o ID de publicidade do aparelho. O jogo não envia ID de usuário, porque não tem, e não usa essas estatísticas para publicidade.
 
 #### Relatórios de falha
 
 O Firebase Crashlytics recebe um relatório quando o jogo trava: o erro, o rastreamento da pilha, o modelo do aparelho e a versão do Android.
 
+### Anúncios
+
+Quando você volta, o jogo mostra o que o elevador ganhou enquanto você estava fora. COLETAR te dá esse valor, como sempre. Um segundo botão, que só aparece quando há um vídeo pronto, toca um anúncio curto em vídeo e depois te dá o dobro. Não há banners nem anúncios que aparecem sozinhos. Quem entrega o vídeo é o Google AdMob. Para escolher e medir os anúncios, o AdMob usa o ID de publicidade, o seu endereço IP, o modelo do aparelho e como você interage com o anúncio, e pode mostrar anúncios baseados nos seus interesses.
+
+Onde a lei pede consentimento, como na União Europeia e no Reino Unido, o jogo mostra o formulário de consentimento do Google antes de carregar qualquer anúncio, e você pode mudar a resposta depois em Configurações, "Privacidade dos anúncios". Você também pode redefinir ou apagar o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns celulares, Google, Anúncios). Apagar o ID encerra os anúncios personalizados no aparelho todo.
+
 ### Quem mais recebe
 
-O Google, que opera o Firebase e trata esses dados em meu nome, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
+O Google, que opera o Firebase e trata esses dados em meu nome, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. O Google AdMob também recebe o que precisa para mostrar o vídeo que você pede e para registrar a sua escolha de consentimento. Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
 
-Não vendo esses dados, não compartilho com anunciante nem repasso para corretor de dados. As estatísticas servem para achar bugs e equilibrar o jogo, com base no meu legítimo interesse em mantê-lo funcionando.
+Não vendo esses dados nem repasso para corretor de dados, e as estatísticas não são compartilhadas com anunciantes. Elas servem para achar bugs e equilibrar o jogo, com base no meu legítimo interesse em mantê-lo funcionando. O vídeo depende do seu consentimento onde a lei exige e, nos demais casos, do meu legítimo interesse e das escolhas que você faz nas configurações de anúncios do Android.
 
 ### Por quanto tempo
 
-Seu progresso fica no celular até você desinstalar o jogo ou limpar os dados dele. Estatísticas e relatórios de falha são mantidos pelo prazo de retenção configurado no Firebase, depois do qual o Google os apaga.
+Seu progresso fica no celular até você desinstalar o jogo ou limpar os dados dele. Estatísticas e relatórios de falha são mantidos pelo prazo de retenção configurado no Firebase, depois do qual o Google os apaga. O AdMob guarda os dados dele pelas políticas do próprio Google.
 
 ### Seus direitos
 
@@ -55,7 +61,7 @@ O jogo tem classificação livre, mas não é direcionado a crianças. Não cole
 
 ### Mudanças
 
-Se esta política mudar, a data no topo muda junto. Se o jogo um dia ganhar anúncios ou compras, esta página é atualizada antes de essa versão sair.
+Se esta política mudar, a data no topo muda junto. Se o jogo ganhar mais anúncios ou alguma compra, esta página é atualizada antes de essa versão sair.
 
 ### Contato
 

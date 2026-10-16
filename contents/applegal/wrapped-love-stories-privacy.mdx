@@ -4,12 +4,12 @@ slug: "wrapped-love-stories-privacy"
 app: "wrapped-love-stories"
 appName: "Love Wrapped"
 kind: "privacy"
-updatedAt: "2026-10-04"
+updatedAt: "2026-10-13"
 lang: "en"
-description: "Love Wrapped reads your WhatsApp chat on your phone and never uploads it. It keeps only the numbers of your story, sends usage statistics and crash reports to Google, and sells Premium through Google Play."
+description: "Love Wrapped reads your WhatsApp chat on your phone and never uploads it. It keeps only the numbers of your story, sends usage statistics and crash reports to Google, shows a video ad before a free user saves or shares a video, and sells Premium through Google Play."
 ---
 
-Love Wrapped reads a WhatsApp chat you export and tells the story of that conversation: how much you talk, when, which words and emoji are yours, and a video to share. The chat is read on your phone and is never sent to me or to any server. What does leave the phone is usage statistics, crash reports and, if you buy Premium, what Google Play needs to process the payment. This page says what each of those is.
+Love Wrapped reads a WhatsApp chat you export and tells the story of that conversation: how much you talk, when, which words and emoji are yours, and a video to share. The chat is read on your phone and is never sent to me or to any server. What does leave the phone is usage statistics, crash reports, what Google AdMob needs to show the ad before a free video is saved or shared, and, if you buy Premium, what Google Play needs to process the payment. This page says what each of those is.
 
 I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
@@ -46,9 +46,13 @@ The video and the scene images are drawn on your phone. A video stays in the app
 
 #### Usage statistics
 
-Google Analytics for Firebase records events such as opening the app, which screen is open, starting an import (from a share or the picker), whether it succeeded or why it failed, the size of the chat in broad ranges (for example "10k to 50k messages", "1 to 3 years"), how long the reading took, how many scenes a story has, finishing a story, sharing a scene (which kind of scene, never its content), making, cancelling, sharing or saving a video, seeing the Premium screen and whether a purchase went through. No event carries a name, a word, a message or anything else from your chat. The app does not create an account or send a user ID, so these events are tied to an app installation, not to a person. Analytics also sees your device model, operating system, app version and approximate location.
+Google Analytics for Firebase records events such as opening the app, which screen is open, starting an import (from a share or the picker), whether it succeeded or why it failed, the size of the chat in broad ranges (for example "10k to 50k messages", "1 to 3 years"), how long the reading took, how many scenes a story has, finishing a story, sharing a scene (which kind of scene, never its content), making, cancelling, sharing or saving a video, starting and completing the ad before a save or share, seeing the Premium screen and whether a purchase went through. No event carries a name, a word, a message or anything else from your chat. The app does not create an account or send a user ID, so these events are tied to an app installation, not to a person. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
 
-The app has no ads and does not read the device's advertising ID: it is removed from the app and its collection is turned off.
+#### Ads
+
+Without Premium, a short rewarded video ad plays before you save or share a video you made; one ad covers that video. Google AdMob serves it. To pick and measure ads, AdMob uses the device's advertising ID, your IP address, the device model and how you interact with the ad, and it may show ads based on your interests. Nothing from your chat is ever given to AdMob: the ad request carries no words, names or numbers from your story. With Premium no ad is ever shown.
+
+Where the law asks for consent, such as in the EU and the UK, the app shows Google's consent form before any ad loads, and you can change your answer later in About, "Ad privacy". You can also reset or delete the advertising ID in Android settings, under Privacy, Ads (on some phones, Google, Ads). Deleting it stops personalised ads on the whole device.
 
 #### Crash reports
 
@@ -67,6 +71,7 @@ Your saved Wrappeds as described above, and whether you have Premium. Uninstalli
 The app has no server of its own. What it sends goes to Google:
 
 - **Google Analytics for Firebase** and **Firebase Crashlytics** receive the statistics and crash reports.
+- **Google AdMob** receives what it needs to show the ads and to record your consent choice, as described above. It never receives anything from your chat.
 - **Google Play** processes the Premium payment and tells the app whether you own Premium.
 
 Their terms: [Firebase privacy](https://firebase.google.com/support/privacy), [How Google uses information from apps that use its services](https://policies.google.com/technologies/partner-sites), [Google Play terms](https://play.google.com/about/play-terms/) and [Google Privacy Policy](https://policies.google.com/privacy).
