@@ -53,28 +53,28 @@
 		"screenshots": [
 			{
 				"src": "/images/apps/stone-world/screenshot-1.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			},
 			{
 				"src": "/images/apps/stone-world/screenshot-2.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			},
 			{
 				"src": "/images/apps/stone-world/screenshot-3.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			},
 			{
 				"src": "/images/apps/stone-world/screenshot-4.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			},
 			{
 				"src": "/images/apps/stone-world/screenshot-5.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			}
 		]
 	},
@@ -519,28 +519,28 @@
 		"iconImage": "/images/apps/cam-covers/icon.webp",
 		"screenshots": [
 			{
-				"src": "/images/apps/cam-covers/screenshot-1.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/br/screenshot-1.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/cam-covers/screenshot-2.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/br/screenshot-2.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/cam-covers/screenshot-3.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/br/screenshot-3.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/cam-covers/screenshot-4.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/br/screenshot-4.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/cam-covers/screenshot-5.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/br/screenshot-5.webp",
+				"width": 720,
 				"height": 1280
 			}
 		]
@@ -694,6 +694,11 @@
 				"src": "/images/apps/idle-elevator/screenshot-4.webp",
 				"width": 720,
 				"height": 1280
+			},
+			{
+				"src": "/images/apps/idle-elevator/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
 			}
 		]
 	},
@@ -744,13 +749,28 @@
 		"iconImage": "/images/apps/the-slime-dungeon/icon.webp",
 		"screenshots": [
 			{
-				"src": "/images/apps/the-slime-dungeon/screenshot-1.webp",
-				"width": 590,
+				"src": "/images/apps/the-slime-dungeon/br/screenshot-1.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/the-slime-dungeon/screenshot-2.webp",
-				"width": 590,
+				"src": "/images/apps/the-slime-dungeon/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/the-slime-dungeon/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/the-slime-dungeon/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/the-slime-dungeon/br/screenshot-5.webp",
+				"width": 720,
 				"height": 1280
 			}
 		]
@@ -803,12 +823,22 @@
 		"screenshots": [
 			{
 				"src": "/images/apps/virtual-pocket-air-conditioning/br/screenshot-1.webp",
-				"width": 591,
+				"width": 720,
 				"height": 1280
 			},
 			{
 				"src": "/images/apps/virtual-pocket-air-conditioning/br/screenshot-2.webp",
-				"width": 591,
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/virtual-pocket-air-conditioning/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/virtual-pocket-air-conditioning/br/screenshot-4.webp",
+				"width": 720,
 				"height": 1280
 			}
 		]
@@ -980,11 +1010,297 @@
 		]
 	},
 	{
+		"name": "Desert Run",
+		"slug": "desert-run",
+		"tagline": "Troque a marcha na hora certa. Vença os quatro chefões do deserto.",
+		"description": "Um jogo de arrancada lado a lado com cara de roguelike: largue no verde, troque na faixa verde, escolha o caminho num mapa novo a cada jornada e vença quatro chefões.",
+		"storeDescription": "Desert Run é um jogo de arrancada lado a lado com mapa de roguelike. Espere a luz verde, troque a marcha quando o ponteiro estiver na faixa verde e use nitro, pulso e sobregiro na reta. Cada jornada tem um mapa novo de corridas, rachas, lojas, oficinas e paradas de mistério, e perder uma única corrida manda você de volta ao capítulo 1, com uma segunda chance por jornada. Cada uma das quatro terras tem um chefão que muda uma regra da corrida, e o dinheiro das vitórias compra melhorias permanentes de motor, câmbio, nitro e pneus. As corridas funcionam sem internet, em português e inglês.",
+		"category": "Jogos",
+		"icon": "🏁",
+		"accentColor": "#F2711C",
+		"features": [
+			{
+				"icon": "🚦",
+				"title": "Largada e troca no tempo certo",
+				"description": "Toque no verde e troque quando o ponteiro estiver na faixa verde. Troca perfeita dá um empurrão extra; tocar antes queima a largada."
+			},
+			{
+				"icon": "🗺️",
+				"title": "Um mapa novo a cada jornada",
+				"description": "Escolha um caminho de corridas, rachas mais difíceis, lojas de power-up, oficinas e paradas de mistério. Os power-ups combinam até o fim da jornada."
+			},
+			{
+				"icon": "🏜️",
+				"title": "Quatro terras, quatro chefões",
+				"description": "Fogo, gelo, uma floresta sobre uma cidade abandonada e uma cidade em ruínas. Cada chefão muda uma regra da corrida."
+			},
+			{
+				"icon": "🔧",
+				"title": "Uma garagem que fica",
+				"description": "Motor, câmbio, nitro e pneus até o nível 12, além de outros carros. As melhorias continuam depois do game over."
+			}
+		],
+		"buildStory": {
+			"problem": "Jogo de arrancada no celular costuma ser a mesma corrida repetida com números maiores. Eu queria que cada jornada fosse diferente, como num roguelike, sem a corrida deixar de ser sobre acertar a largada e a troca de marcha.",
+			"solution": "Um jogo em Unity 6 com URP 2D em que a interface inteira é montada em C#, sem prefabs: um script de inicialização cria a câmera e o canvas e troca as telas. Um mapa ramificado com semente, no estilo de Slay the Spire, define o caminho, e um modelo longitudinal do carro, com marchas, qualidade da troca e nitro, roda cada corrida contra uma IA com um estilo por chefão.",
+			"learned": "Os carros renderizados em 3D no Blender foram reprovados três vezes. Os que foram para o jogo são desenhos 2D recortados de uma prancha pintada, com as rodas girando numa suspensão de mola e amortecedor, e funcionam melhor no tamanho do celular do que qualquer um dos renders."
+		},
+		"tags": [
+			"unity",
+			"game",
+			"racing",
+			"roguelike",
+			"android"
+		],
+		"iconImage": "/images/apps/desert-run/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/desert-run/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/br/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Deadline",
+		"slug": "deadline",
+		"tagline": "Real ou vazio? Resista ao Dealer mascarado.",
+		"description": "Um duelo de nervos contra um Dealer mascarado: uma espingarda com cartuchos reais e vazios em ordem escondida, três itens e três rodadas para sobreviver.",
+		"storeDescription": "Deadline é uma roleta de espingarda numa mesa de feltro, contra um Dealer de máscara de porcelana. Você sabe quantos cartuchos são reais e quantos são vazios, mas não a ordem. Na sua vez, você atira no Dealer ou em você mesmo, e um vazio em você dá outra jogada. Três itens mudam as chances: o Observador mostra o próximo cartucho, o Kit médico recupera uma vida e as Algemas tiram a vez do Dealer. O Dealer só sabe o que está na mesa, e a mesa mostra a chance de o próximo cartucho ser real. Quatro dificuldades, sem internet, em português e inglês. Gratuito, com um vídeo opcional para uma vida extra e uma compra que tira os anúncios.",
+		"category": "Jogos",
+		"icon": "♠️",
+		"accentColor": "#B91C1C",
+		"features": [
+			{
+				"icon": "🎯",
+				"title": "Atire no Dealer ou em você",
+				"description": "Um vazio em você mantém a vez; qualquer outro tiro passa. Os dois começam cada rodada com três vidas."
+			},
+			{
+				"icon": "🔍",
+				"title": "Três itens",
+				"description": "Observador, Kit médico e Algemas. Espiar e algemar não gastam a vez, então dá para fazer os dois e ainda atirar."
+			},
+			{
+				"icon": "⚖️",
+				"title": "Um Dealer que joga limpo",
+				"description": "Os itens ficam à vista, todo cartucho disparado aparece e a mesa mostra a chance do próximo."
+			},
+			{
+				"icon": "💀",
+				"title": "Quatro dificuldades",
+				"description": "Iniciante, Normal e Desafiante, além do Insano, que só abre depois de vencer uma partida no Desafiante."
+			}
+		],
+		"buildStory": {
+			"problem": "Um jogo de cartuchos escondidos depende de confiança. Se o Dealer parece saber a ordem, toda derrota parece trapaça do jogo, e ninguém joga uma segunda partida.",
+			"solution": "Um app em Flutter com as regras em Dart puro e um gerador aleatório injetado, então uma partida é a semente mais cada comando e pode ser repetida exatamente. A IA do Dealer lê a mesma mesa que o jogador vê, e a tela mostra a chance do próximo cartucho. Testes automatizados cobrem as regras, o replay, a política de anúncios e uma simulação de balanceamento.",
+			"learned": "A primeira arte, desenhada por scripts Python em formas simples, ficou muito abaixo das pranchas de referência. Pintar cada sprite com um modelo de imagem a partir dessas pranchas, um arquivo por sprite, foi o que aproximou o Dealer e a mesa delas."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"strategy",
+			"android"
+		],
+		"iconImage": "/images/apps/deadline/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/deadline/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/br/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/br/screenshot-7.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/br/screenshot-8.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Last Haven",
+		"slug": "last-haven",
+		"tagline": "Três sobreviventes, um vale selvagem e um rádio quebrado.",
+		"description": "Um jogo de sobrevivência e colônia na vertical: colete, construa, plante e pesquise com três sobreviventes, resista aos saqueadores e monte um rádio para pedir resgate.",
+		"storeDescription": "Last Haven é um jogo de sobrevivência e colônia para o celular, no espírito de RimWorld, só que bem menor. Você decide o que construir e em que ordem, e os colonos escolhem o próprio trabalho a partir de seis habilidades e de uma lista de prioridades. Fome, energia, humor e saúde mudam ao longo de um dia de oito minutos, o vale manda chuva, seca, febre e andarilhos, e o jogo pausa quando os saqueadores aparecem para você dar ordens com calma. Doze pesquisas em três eras terminam num transmissor de rádio: construa e aguente três dias até o resgate. Na vertical, sem internet, em português e inglês, e dá para jogar até o fim sem pagar.",
+		"category": "Jogos",
+		"icon": "🏕️",
+		"accentColor": "#5B7F3A",
+		"features": [
+			{
+				"icon": "🪓",
+				"title": "Colonos com trabalho próprio",
+				"description": "Seis habilidades de 1 a 10 e uma lista de prioridades: quem constrói constrói, quem planta planta e a médica vai até quem se machucou."
+			},
+			{
+				"icon": "🌧️",
+				"title": "Um vale que não dá sossego",
+				"description": "Chuva forte, seca, febre, andarilhos pedindo para ficar, sucata pelo vale e, depois, os saqueadores."
+			},
+			{
+				"icon": "📻",
+				"title": "Pesquisa até o resgate",
+				"description": "Doze pesquisas em três eras, da fogueira ao laboratório. A última é o transmissor de rádio."
+			},
+			{
+				"icon": "⏯️",
+				"title": "Feito para partidas curtas",
+				"description": "Na vertical e quase sempre com uma mão, com pausa e velocidades de 1x a 4x perto do polegar e salvamento a cada minuto."
+			}
+		],
+		"buildStory": {
+			"problem": "Jogos de colônia como RimWorld são feitos para mouse, tela grande e noites longas. Eu queria o mesmo ciclo de necessidades, trabalhos e ataques num celular segurado com uma mão por poucos minutos.",
+			"solution": "Um app em Flutter sem motor de jogo: uma simulação em Dart puro com ticks fixos, pathfinding com Dijkstra, gerador aleatório xorshift e saves em JSON por espaço, desenhada por um único CustomPainter. As peças nascem como SVGs gerados por script, e PNGs pintados substituem cada uma pelo id conforme ficam prontos.",
+			"learned": "Misturar arte pintada e vetorial no mesmo mapa aparece. O terreno e alguns objetos já são pintados e o resto ainda é SVG, então a colônia fica desigual até as outras peças serem pintadas também."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"simulation",
+			"survival",
+			"android"
+		],
+		"iconImage": "/images/apps/last-haven/icon.webp"
+	},
+	{
+		"name": "Ver-o-Guia Belém",
+		"slug": "ver-o-guia-belem",
+		"tagline": "Belém do Pará no bolso, com fonte para cada informação.",
+		"description": "Um guia local de Belém do Pará: pontos turísticos, comida paraense, ilhas, roteiros prontos e a agenda do Círio, com fonte para cada informação prática.",
+		"storeDescription": "Ver-o-Guia Belém é um guia de Belém do Pará para levar no bolso. Tem pontos turísticos do Ver-o-Peso ao Theatro da Paz, comida paraense como açaí, tacacá e maniçoba, passeios para o Combu, Cotijuba e Mosqueiro, roteiros prontos de um, dois e três dias e a agenda do Círio de Nazaré e de outras festas. Cada informação prática mostra a fonte e a data em que foi conferida, com o aviso \"Confirme antes de ir\", e não há avaliação nem preço sem uma fonte real. As fotos são do Wikimedia Commons, com crédito. O conteúdo funciona sem internet; só o mapa precisa de conexão. Gratuito, com dois anúncios no meio do conteúdo e sem compras, em português e inglês.",
+		"category": "Viagens e local",
+		"icon": "🗺️",
+		"accentColor": "#0F5132",
+		"features": [
+			{
+				"icon": "🏛️",
+				"title": "Lugares com história",
+				"description": "Mais de 45 lugares, do Ver-o-Peso e da Estação das Docas à cerâmica de Icoaraci, cada um com história, dicas e endereço."
+			},
+			{
+				"icon": "🍲",
+				"title": "Gastronomia paraense",
+				"description": "Açaí, tacacá, maniçoba, pato no tucupi e mais: o que é cada prato e onde costuma ter."
+			},
+			{
+				"icon": "🗓️",
+				"title": "Roteiros e o Círio",
+				"description": "Roteiros de um, dois e três dias, parada por parada, e a agenda do Círio de Nazaré e das festas do ano."
+			},
+			{
+				"icon": "📌",
+				"title": "Fonte para cada informação",
+				"description": "Horários e preços mostram de onde vieram e quando foram conferidos. Sem fonte, sem avaliação."
+			}
+		],
+		"buildStory": {
+			"problem": "A maioria dos guias de Belém mistura horários desatualizados com notas e preços que ninguém consegue rastrear. Para quem está montando o dia, um horário errado dito com confiança é pior do que nenhuma resposta.",
+			"solution": "Um app em Flutter com cinco abas e o guia inteiro empacotado em JSON, cada item com a URL da fonte e a data em que foi conferido. As fotos vêm do Wikimedia Commons com autor e licença, o mapa usa tiles do OpenStreetMap e a localização é lida de forma aproximada e só no celular.",
+			"learned": "Exigir uma fonte real para cada item decidiu o que o guia deixa de fora. Não há estrelas nem avaliações, e hospedagem e ingressos foram cortados de vez, porque não existia fonte atual para eles."
+		},
+		"tags": [
+			"flutter",
+			"travel",
+			"guide",
+			"belém",
+			"brazil",
+			"android"
+		],
+		"iconImage": "/images/apps/ver-o-guia-belem/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/ver-o-guia-belem/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/br/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
 		"name": "Emoji Memory Jetpack",
 		"slug": "emoji-memory-jetpack",
 		"tagline": "Treine a memória. Encontre os pares.",
 		"description": "Encontre os emojis iguais. Jogo da memória de código aberto, feito com Jetpack Compose para Android.",
-		"storeDescription": "Um jogo da memória colorido, feito inteiro com Jetpack Compose. Vire as cartas, encontre os seis pares de emoji e jogue de novo. As cartas giram em 3D e brilham quando você inclina o celular. Não está mais no Google Play; o código está no GitHub.",
+		"storeDescription": "Um jogo da memória colorido, feito inteiro com Jetpack Compose. Vire as cartas, encontre os seis pares de emoji e jogue de novo. As cartas giram em 3D e brilham quando você inclina o celular. De volta ao Google Play desde setembro de 2026, e o código está no GitHub.",
 		"category": "Jogos",
 		"icon": "🧠",
 		"accentColor": "#EF4444",
@@ -1022,20 +1338,30 @@
 			"open source",
 			"android"
 		],
-		"status": "removed",
 		"iconImage": "/images/apps/emoji-memory-jetpack/icon.webp",
 		"screenshots": [
 			{
-				"src": "/images/apps/emoji-memory-jetpack/screenshot-1.webp",
+				"src": "/images/apps/emoji-memory-jetpack/br/screenshot-1.webp",
 				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/emoji-memory-jetpack/screenshot-2.webp",
+				"src": "/images/apps/emoji-memory-jetpack/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/emoji-memory-jetpack/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/emoji-memory-jetpack/br/screenshot-4.webp",
 				"width": 720,
 				"height": 1280
 			}
-		]
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.emoji_memory_jetpack"
 	},
 	{
 		"name": "Petmob",

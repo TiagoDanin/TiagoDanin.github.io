@@ -53,28 +53,28 @@
 		"screenshots": [
 			{
 				"src": "/images/apps/stone-world/screenshot-1.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			},
 			{
 				"src": "/images/apps/stone-world/screenshot-2.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			},
 			{
 				"src": "/images/apps/stone-world/screenshot-3.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			},
 			{
 				"src": "/images/apps/stone-world/screenshot-4.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			},
 			{
 				"src": "/images/apps/stone-world/screenshot-5.webp",
-				"width": 1280,
-				"height": 720
+				"width": 720,
+				"height": 1280
 			}
 		]
 	},
@@ -519,28 +519,28 @@
 		"iconImage": "/images/apps/cam-covers/icon.webp",
 		"screenshots": [
 			{
-				"src": "/images/apps/cam-covers/screenshot-1.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/en/screenshot-1.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/cam-covers/screenshot-2.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/en/screenshot-2.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/cam-covers/screenshot-3.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/en/screenshot-3.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/cam-covers/screenshot-4.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/en/screenshot-4.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/cam-covers/screenshot-5.webp",
-				"width": 592,
+				"src": "/images/apps/cam-covers/en/screenshot-5.webp",
+				"width": 720,
 				"height": 1280
 			}
 		]
@@ -694,6 +694,11 @@
 				"src": "/images/apps/idle-elevator/screenshot-4.webp",
 				"width": 720,
 				"height": 1280
+			},
+			{
+				"src": "/images/apps/idle-elevator/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
 			}
 		]
 	},
@@ -744,13 +749,28 @@
 		"iconImage": "/images/apps/the-slime-dungeon/icon.webp",
 		"screenshots": [
 			{
-				"src": "/images/apps/the-slime-dungeon/screenshot-1.webp",
-				"width": 590,
+				"src": "/images/apps/the-slime-dungeon/en/screenshot-1.webp",
+				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/the-slime-dungeon/screenshot-2.webp",
-				"width": 590,
+				"src": "/images/apps/the-slime-dungeon/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/the-slime-dungeon/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/the-slime-dungeon/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/the-slime-dungeon/en/screenshot-5.webp",
+				"width": 720,
 				"height": 1280
 			}
 		]
@@ -803,12 +823,22 @@
 		"screenshots": [
 			{
 				"src": "/images/apps/virtual-pocket-air-conditioning/en/screenshot-1.webp",
-				"width": 591,
+				"width": 720,
 				"height": 1280
 			},
 			{
 				"src": "/images/apps/virtual-pocket-air-conditioning/en/screenshot-2.webp",
-				"width": 591,
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/virtual-pocket-air-conditioning/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/virtual-pocket-air-conditioning/en/screenshot-4.webp",
+				"width": 720,
 				"height": 1280
 			}
 		]
@@ -980,11 +1010,297 @@
 		]
 	},
 	{
+		"name": "Desert Run",
+		"slug": "desert-run",
+		"tagline": "Shift at the right moment. Beat the four desert bosses.",
+		"description": "A side by side drag racing roguelite: launch on green, shift in the green zone, pick a route through a new map every run and beat four bosses.",
+		"storeDescription": "Desert Run is a side by side drag racing game with a roguelike map. Wait for the green light, shift when the needle is in the green zone and use nitro, pulse and overrev on the straight. Every run has a new map of races, duels, shops, workshops and mystery stops, and losing a single race sends you back to chapter 1, with one second chance per run. Four lands each have a boss that changes one rule of the race, and the money you win buys permanent upgrades for the engine, gearbox, nitro and tires. Races work offline, in English and Portuguese.",
+		"category": "Games",
+		"icon": "🏁",
+		"accentColor": "#F2711C",
+		"features": [
+			{
+				"icon": "🚦",
+				"title": "Launch and shift on time",
+				"description": "Tap on green, shift when the needle is in the green zone. A perfect shift gives an extra push, an early tap is a false start."
+			},
+			{
+				"icon": "🗺️",
+				"title": "A new map every run",
+				"description": "Choose a route of races, harder duels, power-up shops, workshops and mystery stops. Power-ups stack until the run ends."
+			},
+			{
+				"icon": "🏜️",
+				"title": "Four lands, four bosses",
+				"description": "Fire, ice, a forest over an abandoned city and a city in ruins. Each boss changes one rule of the race."
+			},
+			{
+				"icon": "🔧",
+				"title": "A garage that stays",
+				"description": "Engine, gearbox, nitro and tires up to level 12, plus more cars. Upgrades survive a game over."
+			}
+		],
+		"buildStory": {
+			"problem": "Drag racing games on the phone tend to be the same race repeated with bigger numbers. I wanted each run to play differently, the way a roguelike does, while the race itself stays about timing a launch and a shift.",
+			"solution": "A Unity 6 game in URP 2D where the whole interface is built in C# with no prefabs: one boot script creates the camera and the canvas and swaps the screens. A seeded branching map in the style of Slay the Spire picks the route, and a longitudinal car model with gears, shift quality and nitro runs each race against an AI with a style per boss.",
+			"learned": "Rendering the cars as 3D models in Blender was rejected three times. The cars that shipped are 2D drawings cut from a painted sheet, with the wheels spinning on a spring-damper suspension, which reads better at phone size than any of the renders."
+		},
+		"tags": [
+			"unity",
+			"game",
+			"racing",
+			"roguelike",
+			"android"
+		],
+		"iconImage": "/images/apps/desert-run/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/desert-run/en/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/en/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/desert-run/en/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Deadline",
+		"slug": "deadline",
+		"tagline": "Live or blank? Outlast the masked Dealer.",
+		"description": "A duel of nerve against a masked Dealer: a shotgun loaded with live and blank shells in a hidden order, three items and three rounds to survive.",
+		"storeDescription": "Deadline is a shotgun roulette duel at a felt table, against a Dealer in a porcelain mask. You know how many shells are live and how many are blank, but not the order. On your turn you shoot the Dealer or yourself, and a blank at yourself gives you another turn. Three items change the odds: the Observer shows the next shell, the Medkit heals a life and the Handcuffs skip the Dealer's turn. The Dealer knows only what is on the table, and the table shows the chance that the next shell is live. Four difficulties, offline, in English and Portuguese. Free, with one optional video for an extra life and one purchase that removes the ads.",
+		"category": "Games",
+		"icon": "♠️",
+		"accentColor": "#B91C1C",
+		"features": [
+			{
+				"icon": "🎯",
+				"title": "Shoot the Dealer or yourself",
+				"description": "A blank at yourself keeps the turn, any other shot passes it. Both start each round with three lives."
+			},
+			{
+				"icon": "🔍",
+				"title": "Three items",
+				"description": "Observer, Medkit and Handcuffs. Peeking and cuffing don't use your turn, so you can do both and still shoot."
+			},
+			{
+				"icon": "⚖️",
+				"title": "A Dealer who plays fair",
+				"description": "Every item is in plain sight, every fired shell is shown and the table gives the odds of the next one."
+			},
+			{
+				"icon": "💀",
+				"title": "Four difficulties",
+				"description": "Beginner, Normal and Hard, plus Insane, which only opens after you win a run on Hard."
+			}
+		],
+		"buildStory": {
+			"problem": "A game of hidden shells lives on trust. If the Dealer seems to know the order, every loss feels like the game cheated, and nobody plays a second run.",
+			"solution": "A Flutter app with the rules in pure Dart and an injected random generator, so a run is its seed plus every command and can be replayed exactly. The Dealer's AI reads the same table the player sees, and the screen shows the odds of the next shell. Automated tests cover the rules, the replay, the ad policy and a balance simulation.",
+			"learned": "The first art, drawn by Python scripts in simple shapes, fell far short of the reference sheets. Painting each sprite with an image model against those sheets, one file per sprite, is what brought the Dealer and the table close to them."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"strategy",
+			"android"
+		],
+		"iconImage": "/images/apps/deadline/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/deadline/en/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/en/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/en/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/en/screenshot-7.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/deadline/en/screenshot-8.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
+		"name": "Last Haven",
+		"slug": "last-haven",
+		"tagline": "Three survivors, a wild valley and a broken radio.",
+		"description": "A portrait colony survival game: gather, build, farm and research with three survivors, hold off raiders and build a radio to call for rescue.",
+		"storeDescription": "Last Haven is a colony survival game for the phone, in the spirit of RimWorld but much smaller. You decide what gets built and in what order, and the colonists pick their own jobs from six skills and a list of priorities. Hunger, energy, mood and health change through an eight-minute day, the valley sends rain, drought, fever and wanderers, and the game pauses when raiders are spotted so you can give orders calmly. Twelve research projects across three eras end in a radio transmitter: build it and hold out three days for the rescue. Portrait, offline, in English and Portuguese, and playable to the end for free.",
+		"category": "Games",
+		"icon": "🏕️",
+		"accentColor": "#5B7F3A",
+		"features": [
+			{
+				"icon": "🪓",
+				"title": "Colonists with their own jobs",
+				"description": "Six skills from 1 to 10 and a priority list, so the builder builds, the farmer plants and the medic goes to whoever got hurt."
+			},
+			{
+				"icon": "🌧️",
+				"title": "A valley that pushes back",
+				"description": "Heavy rain, drought, fever, wanderers asking to join, scrap in the valley, and then the raiders."
+			},
+			{
+				"icon": "📻",
+				"title": "Research toward the rescue",
+				"description": "Twelve projects in three eras, from the campfire to a lab. The last one is the radio transmitter."
+			},
+			{
+				"icon": "⏯️",
+				"title": "Made for short sessions",
+				"description": "Portrait and mostly one-handed, with pause and 1x to 4x speed under the thumb and a save every minute."
+			}
+		],
+		"buildStory": {
+			"problem": "Colony sims like RimWorld are built for a mouse, a big screen and long evenings. I wanted the same loop of needs, jobs and raids to fit a phone held in one hand for a few minutes.",
+			"solution": "A Flutter app with no game engine: a pure-Dart simulation on fixed ticks, with Dijkstra pathfinding, a xorshift random generator and JSON saves per slot, drawn by a single CustomPainter. The pieces start as SVGs generated by a script, and painted PNGs replace them by id as they are made.",
+			"learned": "Mixing painted and vector art on the same map shows. The terrain and a handful of objects are painted and the rest is still SVG, so the colony looks uneven until the remaining pieces are painted too."
+		},
+		"tags": [
+			"flutter",
+			"game",
+			"simulation",
+			"survival",
+			"android"
+		],
+		"iconImage": "/images/apps/last-haven/icon.webp"
+	},
+	{
+		"name": "Ver-o-Guia Belém",
+		"slug": "ver-o-guia-belem",
+		"tagline": "Belém do Pará in your pocket, with a source for every detail.",
+		"description": "A local guide to Belém do Pará: sights, Pará food, river islands, ready day plans and the Círio calendar, with a source for every practical detail.",
+		"storeDescription": "Ver-o-Guia Belém is a pocket guide to Belém, in the Brazilian Amazon state of Pará. It covers sights from the Ver-o-Peso market to Theatro da Paz, Pará food like açaí, tacacá and maniçoba, trips to Combu, Cotijuba and Mosqueiro, ready plans for one, two and three days, and the calendar of the Círio de Nazaré and other festivals. Every practical detail shows its source and the date it was checked, with a \"Confirm before you go\" note, and there are no ratings or prices without a real source. Photos come from Wikimedia Commons with credits. The content works offline; only the map needs a connection. Free, with two inline ads and no purchases, in Portuguese and English.",
+		"category": "Travel & Local",
+		"icon": "🗺️",
+		"accentColor": "#0F5132",
+		"features": [
+			{
+				"icon": "🏛️",
+				"title": "Places with their history",
+				"description": "More than 45 places, from Ver-o-Peso and Estação das Docas to the potters of Icoaraci, each with history, tips and address."
+			},
+			{
+				"icon": "🍲",
+				"title": "Pará food",
+				"description": "Açaí, tacacá, maniçoba, duck in tucupi and more: what each dish is and where it is usually found."
+			},
+			{
+				"icon": "🗓️",
+				"title": "Day plans and the Círio",
+				"description": "Plans for one, two and three days, stop by stop, plus the calendar of the Círio de Nazaré and the yearly festivals."
+			},
+			{
+				"icon": "📌",
+				"title": "A source for every detail",
+				"description": "Hours and prices show where they came from and when they were checked. No source means no rating."
+			}
+		],
+		"buildStory": {
+			"problem": "Most guides to Belém mix stale opening hours with ratings and prices nobody can trace back to anything. For a visitor planning a day, a confident wrong opening hour is worse than no answer at all.",
+			"solution": "A Flutter app with five tabs and the whole guide bundled as JSON, each item carrying the URL of its source and the date it was checked. Photos come from Wikimedia Commons with author and licence, the map uses OpenStreetMap tiles, and location is read coarsely and only on the phone.",
+			"learned": "Holding every item to a real source decided what the guide leaves out. There are no stars or reviews, and lodging and tickets were cut altogether, because no current source existed for them."
+		},
+		"tags": [
+			"flutter",
+			"travel",
+			"guide",
+			"belém",
+			"brazil",
+			"android"
+		],
+		"iconImage": "/images/apps/ver-o-guia-belem/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/ver-o-guia-belem/en/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/en/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/en/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/ver-o-guia-belem/en/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
 		"name": "Emoji Memory Jetpack",
 		"slug": "emoji-memory-jetpack",
 		"tagline": "Train your brain. Match your emojis.",
 		"description": "Match similar emojis. Memory game open-source, built with Android Jetpack Compose.",
-		"storeDescription": "A colourful memory card game built entirely with Jetpack Compose. Flip cards, find the six matching emoji pairs and play again. The cards flip in 3D and shine as you tilt the phone. No longer on Google Play; the source code is on GitHub.",
+		"storeDescription": "A colourful memory card game built entirely with Jetpack Compose. Flip cards, find the six matching emoji pairs and play again. The cards flip in 3D and shine as you tilt the phone. Back on Google Play since September 2026, and the source code is on GitHub.",
 		"category": "Games",
 		"icon": "🧠",
 		"accentColor": "#EF4444",
@@ -1022,20 +1338,30 @@
 			"open source",
 			"android"
 		],
-		"status": "removed",
 		"iconImage": "/images/apps/emoji-memory-jetpack/icon.webp",
 		"screenshots": [
 			{
-				"src": "/images/apps/emoji-memory-jetpack/screenshot-1.webp",
+				"src": "/images/apps/emoji-memory-jetpack/en/screenshot-1.webp",
 				"width": 720,
 				"height": 1280
 			},
 			{
-				"src": "/images/apps/emoji-memory-jetpack/screenshot-2.webp",
+				"src": "/images/apps/emoji-memory-jetpack/en/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/emoji-memory-jetpack/en/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/emoji-memory-jetpack/en/screenshot-4.webp",
 				"width": 720,
 				"height": 1280
 			}
-		]
+		],
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.games.emoji_memory_jetpack"
 	},
 	{
 		"name": "Petmob",
