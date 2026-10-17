@@ -4,18 +4,20 @@ slug: "scoreboard-privacy"
 app: "scoreboard"
 appName: "Scoreboard"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-17"
 lang: "en"
-description: "Scoreboard works offline and keeps the match on your phone. No account and no ads. It sends anonymous usage statistics to Firebase."
+description: "Scoreboard works offline and keeps the match on your phone. No account and no ads. It sends anonymous usage statistics and crash reports to Firebase."
 ---
 
-Scoreboard has no account and no server of its own. The match you are scoring and your settings stay on your phone. The only data that leaves it is a set of anonymous usage statistics.
+Scoreboard has no account and no server of its own. The match you are scoring and your settings stay on your phone. The only data that leaves it is a set of anonymous usage statistics and, when something breaks, a crash report.
 
 I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
 ### What stays on your phone
 
 The app saves the current match (its rules, the list of points scored, when it started and which side each team is on), the rules of your last match, the winning streak and your preferences for voice, sound, vibration and the introduction screens. That is what lets it resume a match after you close it. Teams are always Blue and Red: the app asks for no names and no photos.
+
+The app also keeps a few numbers of its own: how many times you have opened it (it stops counting at 11), the day of the first and of the last launch, and how many matches had a result. They never leave the phone as they are; the statistics below only carry rough ranges made from them, such as "2 to 7 days since install".
 
 Uninstalling the app, or clearing its data in Android settings, erases all of it.
 
@@ -24,22 +26,25 @@ Uninstalling the app, or clearing its data in Android settings, erases all of it
 - **Spoken score**, off by default. When you turn it on, the score text goes to the phone's own speech engine, the one set in your Android or iOS settings.
 - **Screen always on** while the match screen is open, released when you leave it.
 - **Sharing**, only when you tap it. The app hands the system share sheet a line of text such as "Blue 21 x 18 Red", and you choose where it goes.
+- **Rating request.** On the 3rd, 5th and 10th time you open the app, it may ask the store (Google Play, or the App Store on iPhone) to show its rating card. The store decides whether the card appears. Your stars and any review go to the store under its own terms, and the app never learns whether you rated it or what you wrote.
 
 ### What the app sends
 
-Google Analytics for Firebase records how the app is used: the introduction questions and the rules you pick (scoring, sets or time, deciding set, golden point, rotation), matches started, resumed, restarted, abandoned and finished (with the winning colour, the number of sets and a rough duration), sets ended, undo, scores edited by hand, the clock started or paused, sharing a result, rematches and the settings you switch. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, operating system, app version and approximate location. On Android the SDK may read the install referrer (how you got to the app on Google Play). The app turns off the advertising ID, so the SDK neither reads nor sends it. The app does not send a user ID, because it has none, and does not use this data for advertising. Scores are never sent point by point.
+Google Analytics for Firebase records how the app is used: the introduction questions and the rules you pick (scoring, sets or time, deciding set, golden point, rotation), matches started, resumed, restarted, abandoned and finished (with the winning colour, the number of sets and a rough duration), sets ended, undo, scores edited by hand, the clock started or paused, sharing a result, rematches, the settings you switch and when a rating card was requested. It also records return visits, with the time since the last visit and since the first launch in ranges of days, the first match that reaches a result, and errors of the spoken score or the media notification. Each statistic is tagged with your current rules and switches, a range of matches played (such as "2 to 5") and the month of your first launch. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, operating system, app version and approximate location. On Android the SDK may read the install referrer (how you got to the app on Google Play). The app turns off the advertising ID, so the SDK neither reads nor sends it. The app does not send a user ID, because it has none, and does not use this data for advertising. Scores are never sent point by point.
 
-For this, the app now uses the internet connection. Scoring still works offline; the statistics wait and go out when there is a connection.
+When the app crashes or hits an error, Firebase Crashlytics sends a crash report: the technical trace of the error, the device model, operating system, app version and an ID that Crashlytics creates for this installation. The report carries no user ID and nothing you typed. Development builds of the app send none.
+
+For this, the app now uses the internet connection. Scoring still works offline; the statistics and reports wait and go out when there is a connection.
 
 ### Who else receives it
 
 Google, which runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy).
 
-I do not sell this data, share it with advertisers, or hand it to a data broker. The statistics are used to find bugs and to see which rules people play with, on the basis of my legitimate interest in keeping the app working. They are kept for the retention period configured in Firebase, after which Google deletes them.
+I do not sell this data, share it with advertisers, or hand it to a data broker. The statistics and crash reports are used to find bugs and to see which rules people play with, on the basis of my legitimate interest in keeping the app working. They are kept for the retention period configured in Firebase, after which Google deletes them.
 
 ### Your rights
 
-Since the statistics carry no name or account, I usually cannot tell which ones are yours. You can still ask me what exists, ask me to delete it, or object to it, at TiagoDanin@outlook.com. You may also complain to the ANPD, Brazil's data protection authority.
+Since the statistics and crash reports carry no name or account, I usually cannot tell which ones are yours. You can still ask me what exists, ask me to delete it, or object to it, at TiagoDanin@outlook.com. You may also complain to the ANPD, Brazil's data protection authority.
 
 ### Children
 

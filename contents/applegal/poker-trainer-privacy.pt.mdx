@@ -4,26 +4,28 @@ slug: "poker-trainer-privacy"
 app: "poker-trainer"
 appName: "Poker Trainer"
 kind: "privacy"
-updatedAt: "2026-10-13"
+updatedAt: "2026-10-17"
 lang: "pt"
-description: "O Poker Trainer funciona sem internet e guarda o seu progresso no celular. Sem conta. Ele envia estatísticas de uso ao Firebase, o seu XP para o ranking do Play Games se você entrar nele, usa o Google Play na compra opcional de vidas infinitas e o Google AdMob num vídeo opcional que devolve uma vida."
+description: "O Poker Trainer funciona sem internet e guarda o seu progresso no celular. Sem conta. Ele envia estatísticas de uso e relatórios de falha ao Firebase, o seu XP para o ranking do Play Games se você entrar nele, usa o Google Play na compra opcional de vidas infinitas e o Google AdMob num vídeo opcional que devolve uma vida."
 ---
 
-O Poker Trainer não tem conta nem servidor próprio. As lições vêm dentro do app e o seu progresso fica no seu celular. O que sai dele é um conjunto de estatísticas de uso, o seu XP total para o ranking só se você entrar no Google Play Games, as consultas que o app faz ao Google Play sobre a compra de vidas infinitas e o que o Google AdMob precisa quando você escolhe assistir a um vídeo para ganhar uma vida.
+O Poker Trainer não tem conta nem servidor próprio. As lições vêm dentro do app e o seu progresso fica no seu celular. O que sai dele é um conjunto de estatísticas de uso, um relatório de falha quando algo quebra, o seu XP total para o ranking só se você entrar no Google Play Games, as consultas que o app faz ao Google Play sobre a compra de vidas infinitas e o que o Google AdMob precisa quando você escolhe assistir a um vídeo para ganhar uma vida.
 
 Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR lhe dá os mesmos direitos e eu os atendo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer um deles.
 
 ### O que fica no seu celular
 
-O app guarda o seu progresso: quais lições você concluiu, a sua melhor precisão e o número de tentativas em cada uma, o seu XP, fichas, vidas e sequência de dias, os dias em que você jogou, a lição que ficou pela metade, se você comprou vidas infinitas e contadores de respostas e dos tipos de erro que você comete, que alimentam as dicas no fim da lição. É isso que permite continuar de onde você parou.
+O app guarda o seu progresso: quais lições você concluiu, a sua melhor precisão e o número de tentativas em cada uma, o seu XP, fichas, vidas e sequência de dias, os dias em que você jogou, a lição que ficou pela metade, se você comprou vidas infinitas e contadores de respostas e dos tipos de erro que você comete, que alimentam as dicas no fim da lição. É isso que permite continuar de onde você parou. O app também conta quantas vezes você o abriu, até a 11ª vez, para o pedido de avaliação descrito abaixo. Esse número fica no celular.
 
 Desinstalar o app, ou apagar os dados dele nas configurações do Android, apaga tudo isso.
 
 ### O que o app envia
 
-O Google Analytics para Firebase registra como o app é usado: lições iniciadas, concluídas ou abandonadas no meio (com a lição, a fase e uma faixa de precisão), cada resposta (a lição, o tipo de exercício e se acertou), ficar sem vidas, abrir as notas extras de um exercício, as dicas mostradas no fim da lição, concluir uma fase, marcos da sequência de dias, fichas ganhas e gastas, o treino livre, abrir o ranking ou enviar pontos para ele, ver a oferta de vidas infinitas, o resultado de uma compra (comprada, cancelada, pendente ou com falha) e de um "Restaurar compra", e começar um vídeo por uma vida e se ele terminou com a vida. Como em qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura, cada sessão e as telas que você visita, junto com um ID desta instalação, o modelo do aparelho, o sistema operacional, a versão do app e a localização aproximada. No Android o SDK pode ler a origem da instalação (como você chegou ao app no Google Play). Como o app agora tem anúncio, o SDK também pode ler o ID de publicidade do aparelho. O app não envia um ID de usuário, porque não tem um, e não usa essas estatísticas para publicidade.
+O Google Analytics para Firebase registra como o app é usado: lições iniciadas, concluídas ou abandonadas no meio (com a lição, a fase e uma faixa de precisão), cada resposta (a lição, o tipo de exercício e se acertou), ficar sem vidas, abrir as notas extras de um exercício, as dicas mostradas no fim da lição, concluir uma fase, marcos da sequência de dias, fichas ganhas e gastas, o treino livre, abrir o ranking ou enviar pontos para ele, ver a oferta de vidas infinitas, o resultado de uma compra (comprada, cancelada, pendente ou com falha) e de um "Restaurar compra", e começar um vídeo por uma vida e se ele terminou com a vida. Ele também registra o cartão de introdução de uma lição, a retomada de uma lição que ficou pela metade, sequências de 5, 10 ou 20 acertos, a tela de vidas esgotadas e o que você escolheu nela (com uma faixa das fichas que faltavam), o aviso de sequência em risco e uma sequência que voltou a zero, fases abertas ou fechadas no caminho, toques em lições bloqueadas e no ranking de mãos, o fim de um treino, quando a loja não devolveu a oferta de compra, a sua resposta ao formulário de consentimento de anúncios e quando um cartão de avaliação foi pedido. Quando você volta ao app, ele registra o tempo desde a sua última lição em faixas de dias, a sua sequência e a fase em que você está. Cada estatística leva junto a sua fase atual, faixas da sua sequência e das lições concluídas, se você tem vidas infinitas, o idioma e a versão das lições e se o formulário de consentimento permite anúncios. Como em qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura, cada sessão e as telas que você visita, junto com um ID desta instalação, o modelo do aparelho, o sistema operacional, a versão do app e a localização aproximada. No Android o SDK pode ler a origem da instalação (como você chegou ao app no Google Play). Como o app agora tem anúncio, o SDK também pode ler o ID de publicidade do aparelho. O app não envia um ID de usuário, porque não tem um, e não usa essas estatísticas para publicidade.
 
-As lições funcionam sem internet. As estatísticas esperam e saem quando houver conexão.
+Quando o app trava ou dá erro, o Firebase Crashlytics envia um relatório de falha: o rastro técnico do erro, o modelo do aparelho, o sistema operacional, a versão do app e um ID que o Crashlytics cria para esta instalação. O relatório não leva ID de usuário nem nada sobre as suas respostas. As versões de desenvolvimento do app não enviam nenhum.
+
+As lições funcionam sem internet. As estatísticas e os relatórios esperam e saem quando houver conexão.
 
 ### Ranking do Google Play Games
 
@@ -39,15 +41,19 @@ Quando as suas vidas acabam, o app pode oferecer um vídeo curto que devolve uma
 
 Onde a lei pede consentimento, como na União Europeia e no Reino Unido, o app mostra o formulário de consentimento do Google antes de carregar qualquer anúncio, e você pode mudar a resposta depois em "Privacidade dos anúncios", na tela de vidas esgotadas. Você também pode redefinir ou apagar o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns celulares, Google, Anúncios). Apagar o ID encerra os anúncios personalizados no aparelho todo.
 
+### Pedido de avaliação
+
+Na 3ª, na 5ª e na 10ª vez que você abre o app, ele pode pedir ao Google Play que mostre o cartão de avaliação. É o Google Play que decide se o cartão aparece. Suas estrelas e o comentário, se houver, vão para o Google Play, sob os termos dele, e o app nunca fica sabendo se você avaliou nem o que escreveu.
+
 ### Quem mais recebe
 
 O Google, que opera o Firebase e trata esses dados em meu nome, em servidores que podem ficar fora do Brasil, inclusive nos Estados Unidos. O Google Play também processa o pagamento das vidas infinitas e informa ao app se você as possui, e o Google AdMob recebe o que precisa para mostrar os vídeos que você pede e para registrar a sua escolha de consentimento. Os termos dele: [privacidade do Firebase](https://firebase.google.com/support/privacy), [termos do Google Play](https://play.google.com/about/play-terms/) e [Política de Privacidade do Google](https://policies.google.com/privacy).
 
-Eu não vendo esses dados nem repasso a corretores de dados, e as estatísticas não são compartilhadas com anunciantes. As estatísticas servem para achar erros e ver quais lições estão difíceis ou fáceis demais, com base no meu legítimo interesse em manter o app funcionando e melhorá-lo. Os vídeos dependem do seu consentimento onde a lei exige e, nos demais casos, do meu legítimo interesse e das escolhas que você faz nas configurações de anúncios do Android. Os dados de compra servem para entregar as vidas infinitas que você pagou, que é a execução desse contrato, e os registros de pedido ficam guardados pelo tempo que a lei fiscal exige. As estatísticas ficam guardadas pelo prazo de retenção configurado no Firebase e depois o Google as apaga. O AdMob e o Google Play guardam os dados deles pelas políticas do próprio Google.
+Eu não vendo esses dados nem repasso a corretores de dados, e as estatísticas não são compartilhadas com anunciantes. As estatísticas e os relatórios de falha servem para achar erros e ver quais lições estão difíceis ou fáceis demais, com base no meu legítimo interesse em manter o app funcionando e melhorá-lo. Os vídeos dependem do seu consentimento onde a lei exige e, nos demais casos, do meu legítimo interesse e das escolhas que você faz nas configurações de anúncios do Android. Os dados de compra servem para entregar as vidas infinitas que você pagou, que é a execução desse contrato, e os registros de pedido ficam guardados pelo tempo que a lei fiscal exige. As estatísticas e os relatórios de falha ficam guardados pelo prazo de retenção configurado no Firebase e depois o Google os apaga. O AdMob e o Google Play guardam os dados deles pelas políticas do próprio Google.
 
 ### Seus direitos
 
-Como as estatísticas não têm nome nem conta, em geral eu não consigo saber quais são suas. Redefinir o ID de publicidade e desinstalar o app cortam a ligação entre os dados novos e o seu aparelho. Mesmo assim você pode me pedir para saber o que existe, pedir a exclusão ou se opor ao tratamento, em TiagoDanin@outlook.com. Você também pode reclamar à ANPD, a autoridade brasileira de proteção de dados.
+Como as estatísticas e os relatórios de falha não têm nome nem conta, em geral eu não consigo saber quais são seus. Redefinir o ID de publicidade e desinstalar o app cortam a ligação entre os dados novos e o seu aparelho. Mesmo assim você pode me pedir para saber o que existe, pedir a exclusão ou se opor ao tratamento, em TiagoDanin@outlook.com. Você também pode reclamar à ANPD, a autoridade brasileira de proteção de dados.
 
 ### Crianças
 

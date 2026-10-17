@@ -4,9 +4,9 @@ slug: "ver-o-guia-belem-privacy"
 app: "ver-o-guia-belem"
 appName: "Ver-o-Guia Belém"
 kind: "privacy"
-updatedAt: "2026-10-15"
+updatedAt: "2026-10-17"
 lang: "en"
-description: "Ver-o-Guia Belém has no account and keeps your favourites on your phone. It uses your approximate location only on the phone, shows two ad banners and sends usage statistics to Google. This is what reaches whom, and how to limit it."
+description: "Ver-o-Guia Belém has no account and keeps your favourites on your phone. It uses your approximate location only on the phone, shows two ad banners and sends usage statistics and crash reports to Google. This is what reaches whom, and how to limit it."
 ---
 
 Ver-o-Guia Belém (shown as "Ver-o-Guia" on your phone) is a tourist guide to Belém do Pará: places, food, trips, ready-made day plans, the city's yearly festivals and a map. The guide's content comes inside the app. Your favourites, the stops you mark as visited, the places you opened recently and your settings stay on your phone. What leaves it is usage statistics, crash reports, what Google's ad network needs to show the two banners, the map tiles the app downloads from OpenStreetMap and, if you choose to write to me, your email. This page says what each of those is.
@@ -17,7 +17,7 @@ I, Tiago Danin, am the developer and the controller of this data under the LGPD 
 
 #### Favourites, plans and searches
 
-The places you save as favourites, the itinerary stops you mark as visited, your last searches, the places you opened recently (shown in Profile under "Keep exploring", where you can clear them), whether you have already seen the welcome screen, the appearance you choose (light, dark or the system's) and the language of the app are kept in the app's own storage on your phone. None of it is uploaded to me or to any server.
+The places you save as favourites, the itinerary stops you mark as visited, your last searches, the places you opened recently (shown in Profile under "Keep exploring", where you can clear them), whether you have already seen the welcome screen, the appearance you choose (light, dark or the system's), the language of the app, the day you last opened it and how many times you have opened it (it stops counting at 11) are kept in the app's own storage on your phone. None of it is uploaded to me or to any server.
 
 #### Your location
 
@@ -31,15 +31,19 @@ The app asks for your approximate location only when you tap "See what's nearby"
 
 "Report wrong information", in Profile, opens your email app with a message addressed to me and the app version in the subject. Nothing is sent unless you send it. If you do, I receive your email address and what you wrote, and I use them only to answer you and to fix the guide. You can ask me to delete that message at any time.
 
+#### Rating request
+
+On the 3rd, 5th and 10th time you open the app, once the home screen is showing, it may ask Google Play to show its rating card. Google Play decides whether the card appears. Your stars and any review go to Google Play under its own terms, and the app never learns whether you rated it or what you wrote.
+
 ### What the app collects on its own
 
 #### Usage statistics
 
-Google Analytics for Firebase records events such as opening a screen, opening a place, a trip or an itinerary, adding or removing a favourite, sharing a place, opening directions, choosing a filter, searching, asking for your location and changing the language. These events carry only the ids of the guide's own places, trips and itineraries, the filter or language chosen, the number of search results in a range (0, 1 to 5, 6 or more) and whether location access was granted. The text you type in the search and your coordinates are never sent. The app does not create an account or send a user ID, so these events are tied to an app installation, not to a name. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
+Google Analytics for Firebase records events such as opening a screen, opening a place, a trip or an itinerary, adding or removing a favourite, sharing a place, opening directions, choosing a filter, searching, asking for your location and changing the language. It also records opening a dish or an event, checking itinerary stops as visited, picking a place on the map, opening a source, a photo credit or the legal pages, a search closed without a result opened, a filter that leaves no places, how long the guide's content took to load, map or link errors, when each of the two banners loaded or was seen, your answer to the ad consent form, coming back to the app (with the days since the last visit and since installing, in ranges) and when a rating card was requested. These events carry only the ids of the guide's own places, dishes, events, trips and itineraries, the filter, language or appearance chosen, counts and ranges (such as the number of search results: 0, 1 to 5, 6 or more) and whether location access was granted. Each event is also tagged with ranges of your favourites and visited stops, your answer to the location request, the app language and appearance, the month the app was installed, the version of the guide's content and whether ads are allowed. The text you type in the search, the addresses of the links you open and your coordinates are never sent. The app does not create an account or send a user ID, so these events are tied to an app installation, not to a name. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
 
 #### Crash reports
 
-Firebase Crashlytics receives a report when the app crashes or an error is caught: the error, the device model, the Android version and the state of the app at that moment.
+Firebase Crashlytics receives a report when the app crashes or an error is caught: the error, the device model, the Android version, the app version, the state of the app at that moment and an ID that Crashlytics creates for this installation. The report carries no user ID and nothing you typed. Development builds of the app send none.
 
 #### Ads
 
@@ -55,7 +59,7 @@ The map images come from the OpenStreetMap Foundation's tile servers. When the m
 
 ### What stays on your phone
 
-Your favourites, the stops you marked as visited, your recent searches, the places you opened recently, and your appearance and language settings. Uninstalling the app removes all of it.
+Your favourites, the stops you marked as visited, your recent searches, the places you opened recently, your appearance and language settings, the day you last opened the app and how many times you opened it. The last two never leave the phone as they are: the day only becomes the "days since the last visit" range in the statistics, and the count only decides when to ask for a rating. Uninstalling the app removes all of it.
 
 ### Who else receives it
 

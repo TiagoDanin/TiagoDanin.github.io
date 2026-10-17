@@ -4,18 +4,18 @@ slug: "the-slime-dungeon-privacy"
 app: "the-slime-dungeon"
 appName: "The Slime Dungeon"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-17"
 lang: "en"
-description: "The Slime Dungeon has no account of its own. Play Games sign-in is optional, for the leaderboard. Google AdMob shows a banner and an optional ad for an extra life, after asking for consent where the law requires it. Firebase receives anonymous game statistics."
+description: "The Slime Dungeon has no account of its own. Play Games sign-in is optional, for the leaderboard. Google AdMob shows a banner and an optional ad for an extra life, after asking for consent where the law requires it. Firebase receives anonymous game statistics and crash reports."
 ---
 
-The Slime Dungeon is an action game for Android. It has no account and no server of its own. Your high score is kept on the phone, and what leaves it goes to Google: the leaderboard, if you sign in to Play Games, the ads, and a set of game statistics.
+The Slime Dungeon is an action game for Android. It has no account and no server of its own. Your high score is kept on the phone, and what leaves it goes to Google: the leaderboard, if you sign in to Play Games, the ads, and a set of game statistics and crash reports.
 
 I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
 ### What stays on your phone
 
-Your best score, whether the tutorial was shown, whether Play Games is turned on, whether music and sound effects are on, and a count of how many times the menu has opened. The ads SDK also keeps your consent choice on the phone. Uninstalling the game or clearing its data erases them.
+Your best score, whether the tutorial was shown, whether Play Games is turned on, whether music and sound effects are on, how many runs you have played, the day you first opened the game, the day you last opened it, and how many times you have opened it (it stops counting at 11). Those numbers never leave the phone as they are; the statistics below only carry rough ranges made from them, such as "4 to 7 days since the last visit". The ads SDK also keeps your consent choice on the phone. Uninstalling the game or clearing its data erases them.
 
 ### Google Play Games and the leaderboard
 
@@ -29,11 +29,13 @@ Where the law asks for consent, such as in the EU and the UK, the game shows Goo
 
 ### Game statistics
 
-Google Analytics for Firebase records how the game is played: which menu option you tap, the tutorial opened and finished, each run started and ended (score, enemies defeated, how long it lasted and how it ended), when the dungeon gets harder, chests opened, potions picked up, deaths, extra lives used, scores sent to the leaderboard, the Play Games sign-in result, the review prompt and the sound switch. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the game on Google Play). Because the game shows ads, the advertising ID is available on the phone and the SDK can read it as well. The game sends no user ID and no Play Games name, and I do not use these statistics for advertising.
+Google Analytics for Firebase records how the game is played: which menu option you tap, the tutorial opened and finished, each run started and ended (score, enemies defeated, how long it lasted and how it ended), when the dungeon gets harder, chests opened, potions picked up, deaths, extra lives used, scores sent to the leaderboard, the Play Games sign-in result, the review prompt and the sound switch. It also records return visits, with the days since the last visit and since the first launch in ranges, the tutorial pages seen or skipped, how long the dungeon took to load, the first fireball and the first kill of a run, moments of low life, run totals such as fireballs, attacks, kills and damage taken, new high scores, leaving the game in the middle of a run, the extra life offer and what you did with it, ads that failed to load, and your answers to the ad consent form. Each statistic is tagged with a range of runs played and of your best score, the month of your first launch, how the tutorial went, the Play Games state, the sound switch, whether ads are allowed and the game's language. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the game on Google Play). Because the game shows ads, the advertising ID is available on the phone and the SDK can read it as well. The game sends no user ID and no Play Games name, and I do not use these statistics for advertising.
+
+When the game crashes, or when an error happens while it asks for a rating, Firebase Crashlytics sends a crash report: the technical trace of the error, the device model, Android version, app version and an ID that Crashlytics creates for this installation. The report carries no user ID and no Play Games name. Development builds of the game send none.
 
 ### Reviews and links
 
-After you open the menu a few times, the game asks once whether you want to rate it. The review window belongs to Google Play, and the game does not see what you write.
+On the 3rd, 5th and 10th time you open the game, it may ask Google Play to show its rating card on the menu. Google Play decides whether the card appears. Your stars and any review go to Google Play under its own terms, and the game never learns whether you rated it or what you wrote.
 
 The About screen loads my avatar from GitHub and links to my site, my Twitter, the itch.io pages of the artists whose assets the game uses, and the Flame and Bonfire engines. Opening any of them takes you to a site with its own privacy policy.
 
@@ -43,11 +45,11 @@ Only Google, through Play Games, Google Play, Firebase and the Mobile Ads SDK, o
 
 I do not sell your data or hand it to a data broker. I would only disclose it if a Brazilian court or authority legally required it.
 
-The statistics are used to find bugs and to balance the game, on the basis of my legitimate interest in keeping it working. The ads pay for the game. They rely on your consent where the law requires it, and otherwise on my legitimate interest and on the choices you make in Android's ad settings.
+The statistics and crash reports are used to find bugs and to balance the game, on the basis of my legitimate interest in keeping it working. The ads pay for the game. They rely on your consent where the law requires it, and otherwise on my legitimate interest and on the choices you make in Android's ad settings.
 
 ### Your rights
 
-The game keeps nothing about you on a server of mine, so there is nothing for me to hand over or delete beyond what is on your phone. To remove your score and profile from the leaderboard, use your Google account's Play Games settings. The statistics carry no name or account, so I usually cannot tell which ones are yours; you can still ask me to delete them or object to them. They are kept for the retention period configured in Firebase, after which Google deletes them. You can still ask me anything about this at TiagoDanin@outlook.com, and you may complain to the ANPD, Brazil's data protection authority.
+The game keeps nothing about you on a server of mine, so there is nothing for me to hand over or delete beyond what is on your phone. To remove your score and profile from the leaderboard, use your Google account's Play Games settings. The statistics and crash reports carry no name or account, so I usually cannot tell which ones are yours; you can still ask me to delete them or object to them. They are kept for the retention period configured in Firebase, after which Google deletes them. You can still ask me anything about this at TiagoDanin@outlook.com, and you may complain to the ANPD, Brazil's data protection authority.
 
 ### Children
 

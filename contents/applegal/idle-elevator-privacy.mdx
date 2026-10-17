@@ -4,7 +4,7 @@ slug: "idle-elevator-privacy"
 app: "idle-elevator"
 appName: "Idle Elevator"
 kind: "privacy"
-updatedAt: "2026-10-13"
+updatedAt: "2026-10-17"
 lang: "en"
 description: "Idle Elevator has no account and keeps your save on the phone. It sends game statistics and crash reports to Firebase, and uses Google AdMob for an optional video that doubles your offline earnings."
 ---
@@ -17,7 +17,7 @@ I, Tiago Danin, am the developer and the controller of this data under the LGPD 
 
 The game saves your coins, floors, upgrade levels, prestige count and bonus, and the time of the last save, so it can pay offline earnings when you come back. It also saves your sound, vibration and notification settings.
 
-To time its daily reminder, the app records when you open it, one time per day, keeping at most the last five. That list never leaves the device.
+To time its daily reminder, the app records when you open it, one time per day, keeping at most the last five. That list never leaves the device. The game also counts how many times you have opened it, up to 11, to know when to ask for a rating (see below). The count stays on the phone.
 
 None of this is backed up to the cloud. Uninstalling the game or clearing its data erases your progress for good.
 
@@ -25,15 +25,19 @@ None of this is backed up to the cloud. Uninstalling the game or clearing its da
 
 Once you have played on two different days, the game schedules one reminder for the next day, a little before the time you usually open it. The reminder is created on the phone; no server sends it. You can turn it off in the game's Settings or in Android's notification settings.
 
+### Rating request
+
+On the 3rd, 5th and 10th time you open the game, it may ask Google Play to show its rating card. Google Play decides whether the card appears. Your stars and any review go to Google Play under its own terms, and the game never learns whether you rated it or what you wrote.
+
 ### What the app sends
 
 #### Game statistics
 
-Google Analytics for Firebase records game events: a new game started, an upgrade bought, a boost used, a tap combo or a floor record reached, a prestige offered, accepted or declined, offline earnings collected, a bonus reward claimed, the video for the offline bonus started and whether it ended with the reward, a reminder opened and a setting switched, with the level, floor or amount involved. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the game on Google Play). Because the game now has an ad, the SDK may also read the device's advertising ID. The game does not send a user ID, because it has none, and does not use these statistics for advertising.
+Google Analytics for Firebase records game events: a new game started, an upgrade bought, a boost used, a tap combo or a floor record reached, a prestige offered, accepted or declined, offline earnings collected, a bonus reward claimed, the video for the offline bonus started and whether it ended with the reward, a reminder opened and a setting switched, with the level, floor or amount involved. It also records how a play session went when you leave the game (its length in ranges such as "5 to 15 minutes", and how many floors, upgrades and taps it had), how long you were away when you come back (also in ranges), your first steps in a new game, the stats sheets you open, how long the game took to start, whether a video loaded or failed to show, your answers to the ad consent form and to the notification permission, when a rating card was requested, and errors the game recovered from. Each statistic is tagged with ranges of your progress (best floor and prestige count), your sound, vibration and notification settings, whether the notification permission was given and whether ads are allowed. Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, Android version, app version and approximate location. The SDK may read the install referrer (how you got to the game on Google Play). Because the game now has an ad, the SDK may also read the device's advertising ID. The game does not send a user ID, because it has none, and does not use these statistics for advertising.
 
 #### Crash reports
 
-Firebase Crashlytics receives a report when the game crashes: the error, the stack trace, the device model and the Android version.
+Firebase Crashlytics receives a report when the game crashes or hits an error it recovers from: the error, the stack trace, the device model, the Android version, the app version and an ID that Crashlytics creates for this installation. The report carries no user ID. Development builds of the game send none.
 
 ### Ads
 

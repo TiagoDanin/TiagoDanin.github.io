@@ -4,12 +4,12 @@ slug: "flycontrol-privacy"
 app: "flycontrol"
 appName: "FlyControl"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-17"
 lang: "pt"
-description: "O FlyControl não tem conta nem servidor. Seu token do Fly.io fica criptografado no celular e vai só para a API do Fly.io. Estatísticas de uso anônimas vão para o Firebase. Sem anúncio."
+description: "O FlyControl não tem conta nem servidor. Seu token do Fly.io fica criptografado no celular e vai só para a API do Fly.io. Estatísticas de uso anônimas e relatórios de falha vão para o Firebase. Sem anúncio."
 ---
 
-O FlyControl é um cliente não oficial do Fly.io. Ele não tem conta própria nem servidor. A única coisa que guarda é o token do Fly.io que você informa, e esse token vai do seu celular direto para o Fly.io, e para nenhum outro lugar.
+O FlyControl é um cliente não oficial do Fly.io. Ele não tem conta própria nem servidor. A única coisa que guarda é o token do Fly.io que você informa, e esse token vai do seu celular direto para o Fly.io, e para nenhum outro lugar. Fora isso, o app envia um conjunto de estatísticas de uso anônimas e, quando algo quebra, um relatório de falha.
 
 Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR te dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer coisa disso. O FlyControl não é afiliado, endossado nem mantido pelo Fly.io.
 
@@ -33,25 +33,33 @@ O Fly.io trata essas requisições sob a [política de privacidade](https://fly.
 
 O app salva sua preferência de aparência (claro, escuro ou do sistema), a organização selecionada e se você está no modo de demonstração. Ele só lê a área de transferência quando você toca em Colar na tela de conexão, e só escreve nela quando você copia uma linha de log ou um valor.
 
+Ele também guarda alguns números para ele mesmo: quantas vezes você abriu o app, em qual abertura ele pediu avaliação pela última vez e os dias da sua primeira e da sua última abertura. Eles não saem do celular do jeito que estão; as estatísticas abaixo só levam faixas feitas a partir deles, como "2 a 7 dias desde a última abertura", e o mês da primeira abertura.
+
+Na 3ª, na 5ª e na 10ª vez que você abre o app com uma conta conectada, ele pode pedir à loja (Google Play, ou App Store no iPhone) que mostre o cartão de avaliação. É a loja que decide se o cartão aparece. Suas estrelas e o comentário, se houver, vão para a loja, sob os termos dela, e o app nunca fica sabendo se você avaliou nem o que escreveu.
+
 ### Estatísticas de uso
 
-O Google Analytics para Firebase registra como o app é usado: conectar (e por que uma conexão falhou), entrar no modo demonstração, trocar, remover ou desconectar contas, mudar de organização, as telas que você abre, quantos apps ou máquinas uma lista tem (em faixas como "2 a 5"), abrir um app ou uma máquina, os comandos de máquina que você executa e se deram certo, o período de métricas que você escolhe, abrir os logs e filtrá-los por nível, puxar para atualizar, o tipo de erro que uma tela mostra e a configuração de aparência. Ele também registra se você está no modo demonstração. Ele nunca registra seu token, nomes ou IDs das suas organizações, apps ou máquinas, linhas de log, valores de métricas nem nada que venha do Fly.io.
+O Google Analytics para Firebase registra como o app é usado: conectar (e por que uma conexão falhou), entrar no modo demonstração, trocar, remover ou desconectar contas, mudar de organização, as telas que você abre, quantos apps ou máquinas uma lista tem (em faixas como "2 a 5"), abrir um app ou uma máquina, os comandos de máquina que você executa e se deram certo, o período de métricas que você escolhe, abrir os logs e filtrá-los por nível, puxar para atualizar, o tipo de erro que uma tela mostra e a configuração de aparência. Ele também registra se você está no modo demonstração.
+
+Na tela de conexão, ele registra se você usou o botão Colar e se a área de transferência tinha texto, o tipo de token colado (lido pelo prefixo, como um token de organização), quantas tentativas a conexão levou, mais ou menos quanto tempo você ficou na tela e se você abriu a ajuda do token ou saiu de adicionar conta sem terminar. Ele também registra a primeira busca em Apps ou Máquinas e se ela não achou nada (nunca o que você digitou), os estados de máquina que você filtra, abrir máquinas a partir de uma região, abrir um deploy (com o status dele), cancelar um comando de máquina, uma máquina que ligou ou desligou fora do app, um fluxo de logs que começa, uma linha de log que você copia (só o nível dela), métricas que não carregam, quanto tempo o Fly.io levou para responder em faixas, cada abertura com os dias desde a última e desde a primeira em faixas, e quando um cartão de avaliação foi pedido. Cada estatística leva junto se é o modo demonstração, a configuração de aparência, faixas de quantas contas, organizações, apps e máquinas você tem e o mês da sua primeira abertura. Ele nunca registra seu token, nomes ou IDs das suas organizações, apps ou máquinas, linhas de log, valores de métricas nem nada que venha do Fly.io.
+
+Quando o app trava, o Firebase Crashlytics envia um relatório de falha: o rastro técnico do erro, o modelo do aparelho, o sistema operacional, a versão do app e um ID que o Crashlytics cria para esta instalação. Um pedido de avaliação que falha também é relatado assim. O relatório não leva ID de usuário nem nada que venha do Fly.io. As versões de desenvolvimento do app não enviam nenhum.
 
 Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, sistema operacional, versão do app e localização aproximada. No Android, o SDK pode ler a origem da instalação (como você chegou ao app no Google Play). O app desliga o ID de publicidade, então o SDK não lê nem envia esse ID. O app não envia ID de usuário e não usa esses dados para publicidade.
 
-O Google opera o Firebase e trata esses dados em meu nome, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR). As estatísticas são mantidas pelo prazo de retenção configurado no Firebase, depois do qual o Google as apaga.
+O Google opera o Firebase e trata esses dados em meu nome, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR). As estatísticas e os relatórios de falha são mantidos pelo prazo de retenção configurado no Firebase, depois do qual o Google os apaga.
 
-Não tem relatório de falhas, anúncio nem notificação. Não vendo, não alugo e não compartilho dados com ninguém.
+Não tem anúncio nem notificação. Não vendo, não alugo e não compartilho dados com ninguém.
 
 ### Para que é usado
 
-Seu token e seus dados do Fly.io servem só para mostrar os seus próprios recursos e executar os comandos que você escolhe, que é o serviço que você pediu. As estatísticas de uso servem para achar bugs e ver quais recursos as pessoas usam, com base no meu legítimo interesse em manter o app funcionando.
+Seu token e seus dados do Fly.io servem só para mostrar os seus próprios recursos e executar os comandos que você escolhe, que é o serviço que você pediu. As estatísticas de uso e os relatórios de falha servem para achar bugs e ver quais recursos as pessoas usam, com base no meu legítimo interesse em manter o app funcionando.
 
 ### Apagar
 
 No app, remova uma conta, ou desconecte todas, e os tokens guardados são apagados do aparelho. Desinstalar o app também apaga. O token continua existindo no Fly.io até você revogá-lo lá, com `fly tokens revoke` ou no painel do Fly.io. Faça isso se perder o celular.
 
-As estatísticas de uso não levam nome nem conta, então em geral não consigo saber quais são suas; mesmo assim, você pode me perguntar o que existe, pedir que eu apague ou se opor ao tratamento. Você ainda pode me escrever com qualquer dúvida sobre seus direitos, e eu respondo em até 15 dias. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
+As estatísticas de uso e os relatórios de falha não levam nome nem conta, então em geral não consigo saber quais são seus; mesmo assim, você pode me perguntar o que existe, pedir que eu apague ou se opor ao tratamento. Você ainda pode me escrever com qualquer dúvida sobre seus direitos, e eu respondo em até 15 dias. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
 
 ### Segurança
 

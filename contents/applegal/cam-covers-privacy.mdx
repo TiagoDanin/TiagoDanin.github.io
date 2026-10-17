@@ -4,9 +4,9 @@ slug: "cam-covers-privacy"
 app: "cam-covers"
 appName: "CAM Covers"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-17"
 lang: "en"
-description: "CAM Covers has no account and never uploads your photo. It shows ads, sells Premium through Google Play and sends usage statistics to Google. This is what reaches whom, and how to limit it."
+description: "CAM Covers has no account and never uploads your photo. It shows ads, sells Premium through Google Play and sends usage statistics and crash reports to Google. This is what reaches whom, and how to limit it."
 ---
 
 CAM Covers turns a photo into a "now playing" music player screen that you save and share. The photo never leaves your phone unless you share it yourself. What does leave is usage statistics, crash reports, what Google's ad network needs to show ads, and, if you buy Premium, what Google Play needs to process the payment. This page says what each of those is.
@@ -29,7 +29,7 @@ When you share, the image goes through Android's share sheet to the app you choo
 
 #### Usage statistics
 
-Google Analytics for Firebase records events such as opening the app, picking or cancelling a photo, choosing a style, opening the editor, changing a part of the cover (which part, never what you type), saving a cover (with the style, whether it reached the gallery and whether it carried the mark), reaching the share screen, whether sharing went through, seeing an ad after saving, being asked for a rating, using an option in Settings, seeing or closing the Premium screen, tapping to buy or restore, and whether a purchase went through. The app does not create an account or send a user ID, so these events are tied to an app installation, not to a name. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
+Google Analytics for Firebase records events such as opening the app, coming back to it (with the days since your last visit and since installing, in ranges), picking or cancelling a photo or failing to load it, choosing a style, opening the editor, changing a part of the cover (which part, never what you type), saving a cover (with the style, whether it reached the gallery, whether it carried the mark and roughly how long it took), reaching 1, 5, 10, 25, 50 or 100 saved covers, closing the editor (with how many parts you changed), reaching the share screen, whether sharing went through, seeing an ad after saving or why none was shown, an ad that failed to load (with AdMob's error code), your answer on the ad consent form, being asked for a rating, using an option in Settings, seeing or closing the Premium screen, tapping to buy or restore, and whether a purchase went through. Each statistic is also tagged with whether you have Premium, a range of how many covers you have saved, which version of the Premium screen you get, the month the app was installed and whether ads may be requested under your consent choice. The app does not create an account or send a user ID, so these events are tied to an app installation, not to a name. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
 
 #### Style counter
 
@@ -37,7 +37,7 @@ When you open a style, the app adds one to that style's counter in Cloud Firesto
 
 #### Crash reports
 
-Firebase Crashlytics receives a report when the app crashes or an error is caught: the error, the device model, the Android version and the state of the app at that moment.
+Firebase Crashlytics receives a report when the app crashes or an error is caught: the error, the device model, the Android version, the app version, an ID that Crashlytics creates for this installation and the state of the app at that moment. It carries no user ID and nothing you typed. Development builds of the app send none.
 
 #### Ads
 
@@ -51,7 +51,11 @@ Premium is a one-time purchase made through Google Play. Google Play handles the
 
 ### What stays on your phone
 
-Your latest cover, whether you have Premium, how many covers you have saved and whether the app has already asked you for a rating. Uninstalling the app removes all of it. Images you saved to the gallery stay there until you delete them.
+Your latest cover, whether you have Premium, how many covers you have saved, how many times you have opened the app, the last day you opened it and on which open the app last asked for a rating. These numbers never leave the phone as they are; the statistics only carry ranges made from them, and the rating event carries the open count (3, 5 or 10).
+
+On the 3rd, 5th and 10th time you open the app, it may ask Google Play to show its rating card. Google Play decides whether the card appears. Your stars and any review go to Google Play under its own terms, and the app never learns whether you rated it or what you wrote.
+
+Uninstalling the app removes all of it. Images you saved to the gallery stay there until you delete them.
 
 ### Who else receives it
 

@@ -4,9 +4,9 @@ slug: "ver-o-guia-belem-privacy"
 app: "ver-o-guia-belem"
 appName: "Ver-o-Guia Belém"
 kind: "privacy"
-updatedAt: "2026-10-15"
+updatedAt: "2026-10-17"
 lang: "pt"
-description: "O Ver-o-Guia Belém não tem conta e guarda seus favoritos no seu celular. Ele usa sua localização aproximada só no celular, mostra dois banners de anúncio e manda estatísticas de uso ao Google. Isto é o que vai para quem, e como limitar."
+description: "O Ver-o-Guia Belém não tem conta e guarda seus favoritos no seu celular. Ele usa sua localização aproximada só no celular, mostra dois banners de anúncio e manda estatísticas de uso e relatórios de falha ao Google. Isto é o que vai para quem, e como limitar."
 ---
 
 O Ver-o-Guia Belém (que aparece como "Ver-o-Guia" no seu celular) é um guia turístico de Belém do Pará: lugares, comida, passeios, roteiros prontos, as festas de todo ano e um mapa. O conteúdo do guia vem dentro do app. Seus favoritos, as paradas que você marca como visitadas, os lugares que você abriu por último e suas configurações ficam no seu celular. O que sai dele são estatísticas de uso, relatórios de falha, o que a rede de anúncios do Google precisa para mostrar os dois banners os pedaços de mapa que o app baixa do OpenStreetMap e, se você decidir me escrever, o seu e-mail. Esta página explica cada um.
@@ -17,7 +17,7 @@ Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da
 
 #### Favoritos, roteiros e buscas
 
-Os lugares que você salva nos favoritos, as paradas de roteiro que você marca como visitadas, suas últimas buscas, os lugares que você abriu por último (em Perfil, "Continue explorando", onde dá para limpar), se você já viu a tela de boas-vindas, a aparência que você escolhe (clara, escura ou a do sistema) e o idioma do app ficam no armazenamento do próprio app, no seu celular. Nada disso é enviado para mim nem para nenhum servidor.
+Os lugares que você salva nos favoritos, as paradas de roteiro que você marca como visitadas, suas últimas buscas, os lugares que você abriu por último (em Perfil, "Continue explorando", onde dá para limpar), se você já viu a tela de boas-vindas, a aparência que você escolhe (clara, escura ou a do sistema), o idioma do app, o dia em que você abriu o app pela última vez e quantas vezes você já abriu (para de contar em 11) ficam no armazenamento do próprio app, no seu celular. Nada disso é enviado para mim nem para nenhum servidor.
 
 #### Sua localização
 
@@ -31,15 +31,19 @@ O app pede sua localização aproximada só quando você toca em "Ver o que est�
 
 "Reportar uma informação errada", em Perfil, abre o seu app de e-mail com uma mensagem endereçada a mim e a versão do app no assunto. Nada é enviado se você não enviar. Se enviar, eu recebo o seu endereço de e-mail e o que você escreveu, e uso isso só para te responder e corrigir o guia. Você pode me pedir para apagar essa mensagem a qualquer momento.
 
+#### Pedido de avaliação
+
+Na 3ª, na 5ª e na 10ª vez que você abre o app, depois que a tela inicial aparece, ele pode pedir ao Google Play que mostre o cartão de avaliação. É o Google Play que decide se o cartão aparece. Suas estrelas e o comentário, se houver, vão para o Google Play, sob os termos dele, e o app nunca fica sabendo se você avaliou nem o que escreveu.
+
 ### O que o app coleta por conta própria
 
 #### Estatísticas de uso
 
-O Google Analytics para Firebase registra eventos como abrir uma tela, abrir um lugar, um passeio ou um roteiro, adicionar ou tirar um favorito, compartilhar um lugar, abrir o "Como chegar", escolher um filtro, fazer uma busca, pedir a localização e trocar o idioma. Esses eventos levam só os identificadores dos lugares, passeios e roteiros do próprio guia, o filtro ou o idioma escolhido, a quantidade de resultados da busca em faixas (0, 1 a 5, 6 ou mais) e se o acesso à localização foi permitido. O texto que você digita na busca e suas coordenadas nunca são enviados. O app não cria conta nem envia identificador de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê o modelo do aparelho, o sistema operacional, a versão do app e a localização aproximada, e pode ler o ID de publicidade do aparelho.
+O Google Analytics para Firebase registra eventos como abrir uma tela, abrir um lugar, um passeio ou um roteiro, adicionar ou tirar um favorito, compartilhar um lugar, abrir o "Como chegar", escolher um filtro, fazer uma busca, pedir a localização e trocar o idioma. Ele também registra abrir um prato ou um evento, marcar paradas de roteiro como visitadas, escolher um lugar no mapa, abrir uma fonte, um crédito de foto ou as páginas legais, uma busca fechada sem abrir nenhum resultado, um filtro que deixa a lista sem lugares, quanto tempo o conteúdo do guia levou para carregar, erros do mapa ou de links, quando cada um dos dois banners carregou ou foi visto, sua resposta ao formulário de consentimento de anúncios, as voltas ao app (com os dias desde a última visita e desde a instalação, em faixas) e quando um cartão de avaliação foi pedido. Esses eventos levam só os identificadores dos lugares, pratos, eventos, passeios e roteiros do próprio guia, o filtro, o idioma ou a aparência escolhida, contagens e faixas (como a quantidade de resultados da busca: 0, 1 a 5, 6 ou mais) e se o acesso à localização foi permitido. Cada evento também leva faixas dos seus favoritos e das paradas visitadas, sua resposta ao pedido de localização, o idioma e a aparência do app, o mês em que o app foi instalado, a versão do conteúdo do guia e se os anúncios são permitidos. O texto que você digita na busca, os endereços dos links que você abre e suas coordenadas nunca são enviados. O app não cria conta nem envia identificador de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê o modelo do aparelho, o sistema operacional, a versão do app e a localização aproximada, e pode ler o ID de publicidade do aparelho.
 
 #### Relatórios de falha
 
-O Firebase Crashlytics recebe um relatório quando o app trava ou um erro é capturado: o erro, o modelo do aparelho, a versão do Android e o estado do app naquele momento.
+O Firebase Crashlytics recebe um relatório quando o app trava ou um erro é capturado: o erro, o modelo do aparelho, a versão do Android, a versão do app, o estado do app naquele momento e um ID que o Crashlytics cria para esta instalação. O relatório não leva ID de usuário nem nada que você digitou. As versões de desenvolvimento do app não enviam nenhum.
 
 #### Anúncios
 
@@ -55,7 +59,7 @@ As imagens do mapa vêm dos servidores da Fundação OpenStreetMap. Com o mapa a
 
 ### O que fica no seu celular
 
-Seus favoritos, as paradas que você marcou como visitadas, suas buscas recentes, os lugares que você abriu por último e suas escolhas de aparência e idioma. Desinstalar o app apaga tudo isso.
+Seus favoritos, as paradas que você marcou como visitadas, suas buscas recentes, os lugares que você abriu por último, suas escolhas de aparência e idioma, o dia em que você abriu o app pela última vez e quantas vezes você já abriu. Esses dois últimos não saem do celular do jeito que estão: o dia só vira a faixa de "dias desde a última visita" nas estatísticas, e a contagem só decide quando pedir uma avaliação. Desinstalar o app apaga tudo isso.
 
 ### Quem mais recebe
 

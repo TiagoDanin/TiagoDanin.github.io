@@ -4,9 +4,9 @@ slug: "mini-cenarios-privacy"
 app: "mini-cenarios"
 appName: "Mini Cenários"
 kind: "privacy"
-updatedAt: "2026-10-08"
+updatedAt: "2026-10-17"
 lang: "en"
-description: "Mini Cenários has no account and keeps your decorated rooms on your phone. It shows a rewarded ad only when you ask for one, sells Premium through Google Play and sends usage statistics to Google. This is what reaches whom, and how to limit it."
+description: "Mini Cenários has no account and keeps your decorated rooms on your phone. It shows a rewarded ad only when you ask for one, sells Premium through Google Play and sends usage statistics and crash reports to Google. This is what reaches whom, and how to limit it."
 ---
 
 Mini Cenários is a game about decorating small isometric rooms, like the sticker scene books. Your rooms, your coins and your progress stay on your phone. What leaves it is usage statistics, crash reports, what Google's ad network needs when you choose to watch an ad, and, if you buy Premium, what Google Play needs to process the payment. This page says what each of those is.
@@ -27,11 +27,11 @@ When you share a room, a picture of it with its name and the name of the game go
 
 #### Usage statistics
 
-Google Analytics for Firebase records events such as opening a room, placing or removing a piece, undoing, completing a task, opening a piece from the moving box, finishing a room, sharing it, creating or deleting a free room, changing walls or floor, turning music or effects on or off, buying a decoration with coins, claiming an achievement, starting and completing a rewarded ad, and buying, cancelling or restoring Premium. These events carry only the ids of the game's own rooms and pieces and simple counts. The names you give rooms are never sent, and rooms you create are sent only as "free". The app does not create an account or send a user ID, so these events are tied to an app installation, not to a name. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
+Google Analytics for Firebase records events such as opening a room, placing or removing a piece, undoing, completing a task, opening a piece from the moving box, finishing a room, sharing it, creating or deleting a free room, changing walls or floor, turning music or effects on or off, buying a decoration with coins, claiming an achievement, starting and completing a rewarded ad, and buying, cancelling or restoring Premium. It also records a piece that would not fit, the tray tab you switch to, opening the task list, a summary of each visit to a room (minutes spent and how many pieces you added, moved or removed), the coins you earn and where they came from, renaming a room (never the name itself), the steps of the first play, looking at a closed room or a shop decoration, a rewarded ad that did not load or paid nothing, the result of the ad consent step, the Premium screen and the purchase flow (opened, started, failed, pending, price unavailable, restore result) and when a rating card was requested. Each time you come back after a while, it records a return visit with the days since your last visit and since the app was installed, in ranges, the number of rooms you finished and how long the app took to start. Each statistic is also tagged with whether you have Premium, the rooms finished, a range of free rooms and of coins, the language the app shows and whether your consent allows ads. These events carry only the ids of the game's own rooms and pieces and simple counts. The names you give rooms are never sent, and rooms you create are sent only as "free". The app does not create an account or send a user ID, so these events are tied to an app installation, not to a name. Analytics also sees your device model, operating system, app version and approximate location, and it may read the device's advertising ID.
 
 #### Crash reports
 
-Firebase Crashlytics receives a report when the app crashes or an error is caught: the error, the device model, the Android version and the state of the app at that moment.
+Firebase Crashlytics receives a report when the app crashes or an error is caught: the technical trace of the error, a short fixed label for where it happened, the device model, the Android version, the app version and an ID that Crashlytics creates for this installation. The report carries no user ID, no room names and nothing you typed. Development builds of the app send none.
 
 #### Ads
 
@@ -45,9 +45,13 @@ Premium is a one-time purchase made through Google Play. Google Play handles the
 
 Coins are earned by playing and are never sold.
 
+#### Rating request
+
+On the 3rd, 5th and 10th time you open the app, it may ask Google Play to show its rating card. Google Play decides whether the card appears. Your stars and any review go to Google Play under its own terms, and the app never learns whether you rated it or what you wrote.
+
 ### What stays on your phone
 
-Your rooms and everything in them, your free rooms and their names, your coins, the decorations you bought, your achievements, how many times you shared, which rooms and decorations you opened with an ad, whether you have Premium and whether music and effects are on. Uninstalling the app removes all of it. Pictures you shared stay wherever you sent them.
+Your rooms and everything in them, your free rooms and their names, your coins, the decorations you bought, your achievements, how many times you shared, which rooms and decorations you opened with an ad, whether you have Premium and whether music and effects are on. The app also keeps two values for itself: how many times you have opened it and when it was last on screen. They never leave the phone as they are; the statistics only carry the ranges of days described above. Uninstalling the app removes all of it. Pictures you shared stay wherever you sent them.
 
 ### Who else receives it
 

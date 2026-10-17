@@ -4,7 +4,7 @@ slug: "tomely-privacy"
 app: "tomely"
 appName: "Tomely"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-17"
 lang: "en"
 description: "Tomely keeps your medications and doses in your own account, sends no ads, and never ties your health data to analytics. This is what it stores, where, and how to delete it."
 ---
@@ -29,17 +29,19 @@ Medication and dose records count as sensitive personal data under the LGPD. The
 
 #### Usage statistics
 
-Google Analytics for Firebase records which screens you open and a few events: signing in or out, deleting the account, starting, finishing or skipping the tutorial, adding, editing or deleting a medication, marking a dose (taken, missed or postponed), tapping a reminder button, allowing or refusing notifications, a streak growing, a stock alert shown and a stock update. Those events carry only categories and counts, such as the kind of medication, the number of schedules, the stock level or the streak length. They never carry a medication name, and the app deliberately does not send your account ID to Analytics, so these statistics are not linked to your account. Analytics also sees your device model, operating system, app version and approximate location. Tomely shows no ads and turns off the advertising ID, so the SDK neither reads nor sends it.
+Google Analytics for Firebase records which screens you open and a few events: signing in or out, a failed sign-in (with the error code), deleting the account, starting, finishing or skipping the tutorial, adding, editing or deleting a medication, a form left unfinished or stopped by a missing field, marking a dose (taken, missed or postponed, and whether early, on time or late), tapping a reminder button, allowing or refusing notifications, a streak growing or ending, a day closed, the day's doses all taken, a stock alert shown, a stock update, a screen that failed to load, a change that the server refused, a settings change and when a rating card was requested. Each time the Today screen loads, it also records a return visit with the days since your last visit and since you created the account, in ranges, the number of medications, the doses due and taken that day, and how long the screen took to load. Those events carry only categories and counts, such as the kind of medication, the number of schedules, the stock level or the streak length. Each statistic is also tagged with a range of how many medications you have, whether you use stock, whether notifications and exact alarms are allowed, whether reminders are on, how you sign in, the app language and the month you created the account. They never carry a medication name, a dose, anything you typed or the times you take your medications, and the app deliberately does not send your account ID to Analytics, so these statistics are not linked to your account. Analytics also sees your device model, operating system, app version and approximate location. Tomely shows no ads and turns off the advertising ID, so the SDK neither reads nor sends it.
 
 #### Crash reports
 
-Firebase Crashlytics receives a report when the app crashes: the error, the device model, the Android version and the state of the app at that moment. Before anything is logged, the app removes email addresses and account paths from the text, and it leaves the user identifier blank.
+Firebase Crashlytics receives a report when the app crashes or hits an error: the error, the device model, the Android version, the app version, an ID that Crashlytics creates for this installation and the state of the app at that moment. The app's own log lines in these reports name medications only by their internal ID, never by name. Before anything is logged, the app removes email addresses and account paths from the text, and it leaves the user identifier blank.
 
 ### What stays on your phone
 
-Reminders are scheduled on the device, so they ring even without a connection. The app keeps your preferences, your language, a draft of a medication you have not finished adding and any dose actions waiting to sync. Firestore also keeps a local copy of your data so the app works offline. Android's automatic backup is turned off for Tomely.
+Reminders are scheduled on the device, so they ring even without a connection. The app keeps your preferences, your language, a draft of a medication you have not finished adding and any dose actions waiting to sync, including a "Taken" tapped on a notification while the app was closed. For the statistics and the rating request it also keeps how many times you have opened the app (it stops counting at 11), the last day the Today screen loaded and a count of reminder buttons tapped while the app was closed, which is sent as events on the next open and then cleared. These numbers stay on the phone; only ranges or counts made from them go into the statistics. Firestore also keeps a local copy of your data so the app works offline. Android's automatic backup is turned off for Tomely.
 
 Reminder notifications show the medication name, including on the lock screen. If other people handle your phone, you can hide notification content in Android's settings.
+
+On the 3rd, 5th and 10th time you open the app, it may ask Google Play to show its rating card. Google Play decides whether the card appears. Your stars and any review go to Google Play under its own terms, and the app never learns whether you rated it or what you wrote.
 
 ### Who else receives it
 

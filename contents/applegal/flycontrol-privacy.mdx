@@ -4,12 +4,12 @@ slug: "flycontrol-privacy"
 app: "flycontrol"
 appName: "FlyControl"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-17"
 lang: "en"
-description: "FlyControl has no account and no server. Your Fly.io token stays in the phone's encrypted storage and goes only to the Fly.io API. Anonymous usage statistics go to Firebase. No ads."
+description: "FlyControl has no account and no server. Your Fly.io token stays in the phone's encrypted storage and goes only to the Fly.io API. Anonymous usage statistics and crash reports go to Firebase. No ads."
 ---
 
-FlyControl is an unofficial Fly.io client. It has no FlyControl account and no server of its own. The only thing it keeps is the Fly.io token you give it, and that token goes from your phone straight to Fly.io and nowhere else. Apart from that, the app sends a set of anonymous usage statistics.
+FlyControl is an unofficial Fly.io client. It has no FlyControl account and no server of its own. The only thing it keeps is the Fly.io token you give it, and that token goes from your phone straight to Fly.io and nowhere else. Apart from that, the app sends a set of anonymous usage statistics and, when something breaks, a crash report.
 
 I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it. FlyControl is not affiliated with, endorsed by or supported by Fly.io.
 
@@ -33,25 +33,33 @@ Fly.io processes those requests under its own [privacy policy](https://fly.io/le
 
 The app saves your appearance setting (light, dark or system), the selected organization and whether you are in demo mode. It reads the clipboard only when you tap Paste on the connect screen, and writes to it only when you copy a log line or a value.
 
+It also keeps a few numbers of its own: how many times you have opened the app, the open on which it last asked for a rating, and the days of your first and last launch. They never leave the phone as they are; the statistics below only carry rough ranges made from them, such as "2 to 7 days since the last launch", and the month of the first launch.
+
+On the 3rd, 5th and 10th time you open the app with an account connected, it may ask the store (Google Play, or the App Store on iPhone) to show its rating card. The store decides whether the card appears. Your stars and any review go to the store under its own terms, and the app never learns whether you rated it or what you wrote.
+
 ### Usage statistics
 
-Google Analytics for Firebase records how the app is used: connecting (and why a connection failed), entering demo mode, switching, removing or disconnecting accounts, changing organization, the screens you open, how many apps or machines a list has (in ranges such as "2 to 5"), opening an app or a machine, the machine commands you run and whether they worked, the metrics range you pick, opening logs and filtering them by level, pulling to refresh, the kind of error a screen shows and the appearance setting. It also records whether you are in demo mode. It never records your token, the names or IDs of your organizations, apps or machines, log lines, metrics values or anything else loaded from Fly.io.
+Google Analytics for Firebase records how the app is used: connecting (and why a connection failed), entering demo mode, switching, removing or disconnecting accounts, changing organization, the screens you open, how many apps or machines a list has (in ranges such as "2 to 5"), opening an app or a machine, the machine commands you run and whether they worked, the metrics range you pick, opening logs and filtering them by level, pulling to refresh, the kind of error a screen shows and the appearance setting. It also records whether you are in demo mode.
+
+On the connect screen it records whether you used the Paste button and whether the clipboard held text, the kind of token pasted (read from its prefix, such as an organization token), how many tries a connection took, roughly how long you spent on the screen, and whether you opened the token help or left adding an account without finishing. It also records the first search on Apps or Machines and whether it found nothing (never what you typed), the machine states you filter by, opening machines from a region, opening a deployment (with its status), cancelling a machine command, a machine that started or stopped outside the app, a log stream that starts, a log line you copy (only its level), metrics that fail to load, how long Fly.io took to answer in ranges, each launch with the days since the last launch and since the first in ranges, and when a rating card was requested. Each statistic is tagged with demo mode or not, the appearance setting, ranges of how many accounts, organizations, apps and machines you have, and the month of your first launch. It never records your token, the names or IDs of your organizations, apps or machines, log lines, metrics values or anything else loaded from Fly.io.
+
+When the app crashes, Firebase Crashlytics sends a crash report: the technical trace of the error, the device model, operating system, app version and an ID that Crashlytics creates for this installation. A failed rating request is also reported this way. The report carries no user ID and nothing loaded from Fly.io. Development builds of the app send none.
 
 Like any app using the SDK, it also records automatic events such as the first open and each session, together with an ID for this installation, the device model, operating system, app version and approximate location. On Android the SDK may read the install referrer (how you got to the app on Google Play). The app turns off the advertising ID, so the SDK neither reads nor sends it. The app does not send a user ID and does not use this data for advertising.
 
-Google runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy). The statistics are kept for the retention period configured in Firebase, after which Google deletes them.
+Google runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy) and [Google Privacy Policy](https://policies.google.com/privacy). The statistics and crash reports are kept for the retention period configured in Firebase, after which Google deletes them.
 
-There is no crash reporting, no ads and no notifications. I do not sell data, rent it or share it with anyone.
+There are no ads and no notifications. I do not sell data, rent it or share it with anyone.
 
 ### Why it is used
 
-Your token and your Fly.io data are used only to show you your own resources and to run the commands you choose, which is the service you asked for. The usage statistics are used to find bugs and to see which features people use, on the basis of my legitimate interest in keeping the app working.
+Your token and your Fly.io data are used only to show you your own resources and to run the commands you choose, which is the service you asked for. The usage statistics and crash reports are used to find bugs and to see which features people use, on the basis of my legitimate interest in keeping the app working.
 
 ### Deleting it
 
 In the app, remove one account, or disconnect every account, and the stored tokens are deleted from the device. Uninstalling the app deletes them too. The token itself still exists at Fly.io until you revoke it there, with `fly tokens revoke` or in the Fly.io dashboard. Do that if you lose the phone.
 
-The usage statistics carry no name or account, so I usually cannot tell which ones are yours; you can still ask me what exists, ask me to delete it or object to it. You can still write to me with any question about your rights, and I answer within 15 days. You may also complain to the ANPD, Brazil's data protection authority.
+The usage statistics and crash reports carry no name or account, so I usually cannot tell which ones are yours; you can still ask me what exists, ask me to delete it or object to it. You can still write to me with any question about your rights, and I answer within 15 days. You may also complain to the ANPD, Brazil's data protection authority.
 
 ### Security
 

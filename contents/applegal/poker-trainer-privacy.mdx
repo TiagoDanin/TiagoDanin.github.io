@@ -4,26 +4,28 @@ slug: "poker-trainer-privacy"
 app: "poker-trainer"
 appName: "Poker Trainer"
 kind: "privacy"
-updatedAt: "2026-10-13"
+updatedAt: "2026-10-17"
 lang: "en"
-description: "Poker Trainer works offline and keeps your progress on your phone. No account. It sends usage statistics to Firebase, your XP to the Play Games ranking if you sign in, uses Google Play for the optional unlimited lives purchase, and Google AdMob for an optional video that gives a life back."
+description: "Poker Trainer works offline and keeps your progress on your phone. No account. It sends usage statistics and crash reports to Firebase, your XP to the Play Games ranking if you sign in, uses Google Play for the optional unlimited lives purchase, and Google AdMob for an optional video that gives a life back."
 ---
 
-Poker Trainer has no account and no server of its own. The lessons ship inside the app, and your progress stays on your phone. What leaves it is a set of usage statistics, your total XP for the ranking only if you sign in to Google Play Games, the questions the app asks Google Play about the unlimited lives purchase, and what Google AdMob needs when you choose to watch a video for a life.
+Poker Trainer has no account and no server of its own. The lessons ship inside the app, and your progress stays on your phone. What leaves it is a set of usage statistics, a crash report when something breaks, your total XP for the ranking only if you sign in to Google Play Games, the questions the app asks Google Play about the unlimited lives purchase, and what Google AdMob needs when you choose to watch a video for a life.
 
 I, Tiago Danin, am the developer and the controller of this data under the LGPD (Lei 13.709/2018). If you are in the EU, the GDPR gives you the same rights and I answer them the same way. Write to TiagoDanin@outlook.com about any of it.
 
 ### What stays on your phone
 
-The app saves your progress: which lessons you finished, your best accuracy and number of attempts on each, your XP, chips, lives and streak, the days you played, the lesson you left halfway, whether you bought unlimited lives, and counters of answers and of the kinds of mistakes you make, which feed the tips at the end of a lesson. That is what lets you pick up where you stopped.
+The app saves your progress: which lessons you finished, your best accuracy and number of attempts on each, your XP, chips, lives and streak, the days you played, the lesson you left halfway, whether you bought unlimited lives, and counters of answers and of the kinds of mistakes you make, which feed the tips at the end of a lesson. That is what lets you pick up where you stopped. The app also counts how many times you have opened it, up to the 11th time, for the rating request described below. That number stays on the phone.
 
 Uninstalling the app, or clearing its data in Android settings, erases all of it.
 
 ### What the app sends
 
-Google Analytics for Firebase records how the app is used: lessons started, finished or left halfway (with the lesson, its phase and a rough accuracy), each answer (the lesson, the kind of exercise and whether it was right), running out of lives, opening an exercise's extra notes, the tips shown at the end of a lesson, finishing a phase, streak milestones, chips earned and spent, free practice, opening the ranking or sending a score to it, seeing the unlimited lives offer, the outcome of a purchase (bought, cancelled, pending or failed) and of a "Restore purchase", and starting a video for a life and whether it ended with the life. Like any app using the SDK, it also records automatic events such as the first open, each session and the screens you visit, together with an ID for this installation, the device model, operating system, app version and approximate location. On Android the SDK may read the install referrer (how you got to the app on Google Play). Because the app now has ads, the SDK may also read the device's advertising ID. The app does not send a user ID, because it has none, and does not use these statistics for advertising.
+Google Analytics for Firebase records how the app is used: lessons started, finished or left halfway (with the lesson, its phase and a rough accuracy), each answer (the lesson, the kind of exercise and whether it was right), running out of lives, opening an exercise's extra notes, the tips shown at the end of a lesson, finishing a phase, streak milestones, chips earned and spent, free practice, opening the ranking or sending a score to it, seeing the unlimited lives offer, the outcome of a purchase (bought, cancelled, pending or failed) and of a "Restore purchase", and starting a video for a life and whether it ended with the life. It also records the intro card of a lesson, resuming a lesson you left halfway, runs of 5, 10 or 20 right answers, the out of lives screen and what you chose there (with a rough range of the chips you were missing), the streak at risk banner and a streak that went back to zero, phases opened or closed on the path, taps on locked lessons and on the hand rankings, the end of a practice session, when the store could not return the purchase offer, your answer to the ad consent form, and when a rating card was requested. When you come back to the app, it records the time since your last lesson in ranges of days, your streak and the phase you are in. Each statistic is tagged with your current phase, ranges of your streak and of the lessons you finished, whether you own unlimited lives, the language and version of the lessons and whether the consent form allows ads. Like any app using the SDK, it also records automatic events such as the first open, each session and the screens you visit, together with an ID for this installation, the device model, operating system, app version and approximate location. On Android the SDK may read the install referrer (how you got to the app on Google Play). Because the app now has ads, the SDK may also read the device's advertising ID. The app does not send a user ID, because it has none, and does not use these statistics for advertising.
 
-Lessons work offline. The statistics wait and go out when there is a connection.
+When the app crashes or hits an error, Firebase Crashlytics sends a crash report: the technical trace of the error, the device model, operating system, app version and an ID that Crashlytics creates for this installation. The report carries no user ID and nothing about your answers. Development builds of the app send none.
+
+Lessons work offline. The statistics and reports wait and go out when there is a connection.
 
 ### Google Play Games ranking
 
@@ -39,15 +41,19 @@ When you run out of lives, the app can offer a short video that gives you one li
 
 Where the law asks for consent, such as in the EU and the UK, the app shows Google's consent form before any ad loads, and you can change your answer later through "Ad privacy" on the out of lives screen. You can also reset or delete the advertising ID in Android settings, under Privacy, Ads (on some phones, Google, Ads). Deleting it stops personalised ads on the whole device.
 
+### Rating request
+
+On the 3rd, 5th and 10th time you open the app, it may ask Google Play to show its rating card. Google Play decides whether the card appears. Your stars and any review go to Google Play under its own terms, and the app never learns whether you rated it or what you wrote.
+
 ### Who else receives it
 
 Google, which runs Firebase and processes this data on my behalf, on servers that may be outside Brazil, including in the United States. Google Play also processes the unlimited lives payment and tells the app whether you own it, and Google AdMob receives what it needs to show the videos you ask for and to record your consent choice. Their terms: [Firebase privacy](https://firebase.google.com/support/privacy), [Google Play terms](https://play.google.com/about/play-terms/) and [Google Privacy Policy](https://policies.google.com/privacy).
 
-I do not sell this data or hand it to a data broker, and the statistics are not shared with advertisers. The statistics are used to find bugs and to see which lessons are too hard or too easy, on the basis of my legitimate interest in keeping the app working and improving it. The videos rely on your consent where the law requires it, and otherwise on my legitimate interest and on the choices you make in Android's ad settings. Purchase data is used to deliver the unlimited lives you paid for, which is the performance of that contract, and order records are kept as tax law requires. The statistics are kept for the retention period configured in Firebase, after which Google deletes them. AdMob and Google Play keep their data under Google's own policies.
+I do not sell this data or hand it to a data broker, and the statistics are not shared with advertisers. The statistics and crash reports are used to find bugs and to see which lessons are too hard or too easy, on the basis of my legitimate interest in keeping the app working and improving it. The videos rely on your consent where the law requires it, and otherwise on my legitimate interest and on the choices you make in Android's ad settings. Purchase data is used to deliver the unlimited lives you paid for, which is the performance of that contract, and order records are kept as tax law requires. The statistics and crash reports are kept for the retention period configured in Firebase, after which Google deletes them. AdMob and Google Play keep their data under Google's own policies.
 
 ### Your rights
 
-Since the statistics carry no name or account, I usually cannot tell which ones are yours. Resetting the advertising ID and uninstalling the app cut the link between new data and your device. You can still ask me what exists, ask me to delete it, or object to it, at TiagoDanin@outlook.com. You may also complain to the ANPD, Brazil's data protection authority.
+Since the statistics and crash reports carry no name or account, I usually cannot tell which ones are yours. Resetting the advertising ID and uninstalling the app cut the link between new data and your device. You can still ask me what exists, ask me to delete it, or object to it, at TiagoDanin@outlook.com. You may also complain to the ANPD, Brazil's data protection authority.
 
 ### Children
 

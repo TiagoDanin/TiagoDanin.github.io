@@ -4,9 +4,9 @@ slug: "cam-covers-privacy"
 app: "cam-covers"
 appName: "CAM Covers"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-17"
 lang: "pt"
-description: "O CAM Covers não tem conta e nunca envia sua foto. Ele mostra anúncios, vende o Premium pelo Google Play e manda estatísticas de uso ao Google. Isto é o que vai para quem, e como limitar."
+description: "O CAM Covers não tem conta e nunca envia sua foto. Ele mostra anúncios, vende o Premium pelo Google Play e manda estatísticas de uso e relatórios de falha ao Google. Isto é o que vai para quem, e como limitar."
 ---
 
 O CAM Covers transforma uma foto em uma tela de player de música "tocando agora", que você salva e compartilha. A foto não sai do seu celular, a não ser que você mesmo compartilhe. O que sai são estatísticas de uso, relatórios de falha, o que a rede de anúncios do Google precisa para mostrar anúncios e, se você comprar o Premium, o que o Google Play precisa para processar o pagamento. Esta página explica cada um.
@@ -29,7 +29,7 @@ Quando você compartilha, a imagem passa pelo menu de compartilhamento do Androi
 
 #### Estatísticas de uso
 
-O Google Analytics para Firebase registra eventos como abrir o app, escolher ou cancelar uma foto, escolher um estilo, abrir o editor, mudar uma parte da capa (qual parte, nunca o que você digita), salvar uma capa (com o estilo, se ela chegou à galeria e se levava a marca), chegar à tela de compartilhamento, se o compartilhamento aconteceu, ver um anúncio depois de salvar, receber o pedido de avaliação, usar uma opção das Configurações, ver ou fechar a tela do Premium, tocar para comprar ou restaurar, e se uma compra deu certo. O app não cria conta nem envia ID de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho.
+O Google Analytics para Firebase registra eventos como abrir o app, voltar a ele (com os dias desde a última visita e desde a instalação, em faixas), escolher ou cancelar uma foto ou não conseguir carregá-la, escolher um estilo, abrir o editor, mudar uma parte da capa (qual parte, nunca o que você digita), salvar uma capa (com o estilo, se ela chegou à galeria, se levava a marca e mais ou menos quanto tempo levou), chegar a 1, 5, 10, 25, 50 ou 100 capas salvas, fechar o editor (com quantas partes você mudou), chegar à tela de compartilhamento, se o compartilhamento aconteceu, ver um anúncio depois de salvar ou o motivo de nenhum aparecer, um anúncio que não carregou (com o código de erro do AdMob), a sua resposta no formulário de consentimento de anúncios, receber o pedido de avaliação, usar uma opção das Configurações, ver ou fechar a tela do Premium, tocar para comprar ou restaurar, e se uma compra deu certo. Cada estatística leva junto se você tem o Premium, uma faixa de quantas capas você já salvou, qual versão da tela do Premium você vê, o mês em que o app foi instalado e se o app pode pedir anúncios conforme a sua escolha de consentimento. O app não cria conta nem envia ID de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê modelo do aparelho, sistema operacional, versão do app e localização aproximada, e pode ler o ID de publicidade do aparelho.
 
 #### Contador de estilos
 
@@ -37,7 +37,7 @@ Quando você abre um estilo, o app soma um ao contador desse estilo no Cloud Fir
 
 #### Relatórios de falha
 
-O Firebase Crashlytics recebe um relatório quando o app trava ou quando um erro é capturado: o erro, o modelo do aparelho, a versão do Android e o estado do app naquele momento.
+O Firebase Crashlytics recebe um relatório quando o app trava ou quando um erro é capturado: o erro, o modelo do aparelho, a versão do Android, a versão do app, um ID que o Crashlytics cria para esta instalação e o estado do app naquele momento. O relatório não leva ID de usuário nem nada que você digitou. As versões de desenvolvimento do app não enviam nenhum.
 
 #### Anúncios
 
@@ -51,7 +51,11 @@ O Premium é uma compra única feita pelo Google Play. Quem cuida do pagamento �
 
 ### O que fica no seu celular
 
-A sua última capa, se você tem o Premium, quantas capas você já salvou e se o app já pediu uma avaliação. Desinstalar o app apaga tudo isso. As imagens que você salvou na galeria ficam lá até você apagar.
+A sua última capa, se você tem o Premium, quantas capas você já salvou, quantas vezes você abriu o app, o último dia em que você o abriu e em qual abertura o app pediu uma avaliação pela última vez. Esses números não saem do celular do jeito que estão; as estatísticas só levam faixas feitas a partir deles, e o evento de avaliação leva o número da abertura (3, 5 ou 10).
+
+Na 3ª, na 5ª e na 10ª vez que você abre o app, ele pode pedir ao Google Play que mostre o cartão de avaliação. É o Google Play que decide se o cartão aparece. Suas estrelas e o comentário, se houver, vão para o Google Play, sob os termos dele, e o app nunca fica sabendo se você avaliou nem o que escreveu.
+
+Desinstalar o app apaga tudo isso. As imagens que você salvou na galeria ficam lá até você apagar.
 
 ### Quem mais recebe
 

@@ -4,18 +4,20 @@ slug: "scoreboard-privacy"
 app: "scoreboard"
 appName: "Scoreboard"
 kind: "privacy"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-17"
 lang: "pt"
-description: "O Scoreboard funciona sem internet e guarda a partida no seu celular. Sem conta e sem anúncio. Ele envia estatísticas de uso anônimas ao Firebase."
+description: "O Scoreboard funciona sem internet e guarda a partida no seu celular. Sem conta e sem anúncio. Ele envia estatísticas de uso anônimas e relatórios de falha ao Firebase."
 ---
 
-O Scoreboard não tem conta nem servidor próprio. A partida que você está marcando e as suas configurações ficam no seu celular. O único dado que sai dele é um conjunto de estatísticas de uso anônimas.
+O Scoreboard não tem conta nem servidor próprio. A partida que você está marcando e as suas configurações ficam no seu celular. O único dado que sai dele é um conjunto de estatísticas de uso anônimas e, quando algo quebra, um relatório de falha.
 
 Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados, nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR te dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer coisa disso.
 
 ### O que fica no seu celular
 
 O app salva a partida atual (as regras, a lista de pontos marcados, quando começou e de que lado está cada time), as regras da última partida, a sequência de vitórias e suas preferências de voz, som, vibração e das telas de apresentação. É isso que permite retomar uma partida depois de fechar o app. Os times são sempre Azul e Vermelho: o app não pede nome nem foto.
+
+O app também guarda alguns números para ele mesmo: quantas vezes você abriu o app (para de contar em 11), o dia da primeira e da última abertura e quantas partidas tiveram resultado. Eles não saem do celular do jeito que estão; as estatísticas abaixo só levam faixas feitas a partir deles, como "2 a 7 dias desde a instalação".
 
 Desinstalar o app, ou limpar os dados dele nas configurações do Android, apaga tudo.
 
@@ -24,22 +26,25 @@ Desinstalar o app, ou limpar os dados dele nas configurações do Android, apaga
 - **Placar falado**, desligado por padrão. Quando você liga, o texto do placar vai para o mecanismo de voz do próprio celular, o que estiver configurado no Android ou no iOS.
 - **Tela sempre acesa** enquanto a tela da partida está aberta, liberada quando você sai dela.
 - **Compartilhar**, só quando você toca. O app entrega ao menu de compartilhamento do sistema uma linha de texto como "Azul 21 x 18 Vermelho", e você escolhe para onde vai.
+- **Pedido de avaliação.** Na 3ª, na 5ª e na 10ª vez que você abre o app, ele pode pedir à loja (Google Play, ou App Store no iPhone) que mostre o cartão de avaliação. É a loja que decide se o cartão aparece. Suas estrelas e o comentário, se houver, vão para a loja, sob os termos dela, e o app nunca fica sabendo se você avaliou nem o que escreveu.
 
 ### O que o app envia
 
-O Google Analytics para Firebase registra como o app é usado: as perguntas da apresentação e as regras que você escolhe (pontuação, sets ou tempo, set decisivo, ponto de ouro, rodízio), partidas iniciadas, retomadas, reiniciadas, abandonadas e encerradas (com a cor vencedora, o número de sets e uma duração aproximada), sets encerrados, desfazer, placares editados à mão, o relógio iniciado ou pausado, o compartilhamento de um resultado, revanches e as configurações que você liga ou desliga. Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, sistema operacional, versão do app e localização aproximada. No Android, o SDK pode ler a origem da instalação (como você chegou ao app no Google Play). O app desliga o ID de publicidade, então o SDK não lê nem envia esse ID. O app não envia ID de usuário, porque não tem, e não usa esses dados para publicidade. O placar nunca é enviado ponto a ponto.
+O Google Analytics para Firebase registra como o app é usado: as perguntas da apresentação e as regras que você escolhe (pontuação, sets ou tempo, set decisivo, ponto de ouro, rodízio), partidas iniciadas, retomadas, reiniciadas, abandonadas e encerradas (com a cor vencedora, o número de sets e uma duração aproximada), sets encerrados, desfazer, placares editados à mão, o relógio iniciado ou pausado, o compartilhamento de um resultado, revanches, as configurações que você liga ou desliga e quando um cartão de avaliação foi pedido. Ele também registra as voltas ao app, com o tempo desde a última visita e desde a primeira abertura em faixas de dias, a primeira partida que chega a um resultado e os erros do placar falado ou da notificação de mídia. Cada estatística leva junto as suas regras e chaves atuais, uma faixa de partidas jogadas (como "2 a 5") e o mês da sua primeira abertura. Como qualquer app que usa o SDK, ele também registra eventos automáticos, como a primeira abertura e cada sessão, junto com um ID desta instalação, modelo do aparelho, sistema operacional, versão do app e localização aproximada. No Android, o SDK pode ler a origem da instalação (como você chegou ao app no Google Play). O app desliga o ID de publicidade, então o SDK não lê nem envia esse ID. O app não envia ID de usuário, porque não tem, e não usa esses dados para publicidade. O placar nunca é enviado ponto a ponto.
 
-Para isso, o app agora usa a conexão com a internet. Marcar a partida continua funcionando sem internet; as estatísticas esperam e saem quando houver conexão.
+Quando o app trava ou dá erro, o Firebase Crashlytics envia um relatório de falha: o rastro técnico do erro, o modelo do aparelho, o sistema operacional, a versão do app e um ID que o Crashlytics cria para esta instalação. O relatório não leva ID de usuário nem nada que você digitou. As versões de desenvolvimento do app não enviam nenhum.
+
+Para isso, o app agora usa a conexão com a internet. Marcar a partida continua funcionando sem internet; as estatísticas e os relatórios esperam e saem quando houver conexão.
 
 ### Quem mais recebe
 
 O Google, que opera o Firebase e trata esses dados em meu nome, em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos. Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
 
-Não vendo esses dados, não compartilho com anunciante nem repasso para corretor de dados. As estatísticas servem para achar bugs e ver com quais regras as pessoas jogam, com base no meu legítimo interesse em manter o app funcionando. Elas são mantidas pelo prazo de retenção configurado no Firebase, depois do qual o Google as apaga.
+Não vendo esses dados, não compartilho com anunciante nem repasso para corretor de dados. As estatísticas e os relatórios de falha servem para achar bugs e ver com quais regras as pessoas jogam, com base no meu legítimo interesse em manter o app funcionando. Eles são mantidos pelo prazo de retenção configurado no Firebase, depois do qual o Google os apaga.
 
 ### Seus direitos
 
-Como as estatísticas não levam nome nem conta, em geral não consigo saber quais são suas. Mesmo assim, você pode me perguntar o que existe, pedir que eu apague ou se opor ao tratamento, em TiagoDanin@outlook.com. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
+Como as estatísticas e os relatórios de falha não levam nome nem conta, em geral não consigo saber quais são seus. Mesmo assim, você pode me perguntar o que existe, pedir que eu apague ou se opor ao tratamento, em TiagoDanin@outlook.com. Você também pode reclamar na ANPD, a autoridade nacional de proteção de dados.
 
 ### Crianças
 
