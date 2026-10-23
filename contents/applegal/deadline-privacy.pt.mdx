@@ -1,0 +1,82 @@
+---
+title: "Política de privacidade"
+slug: "deadline-privacy"
+app: "deadline"
+appName: "Deadline"
+kind: "privacy"
+updatedAt: "2026-10-22"
+lang: "pt"
+description: "O Deadline não tem conta e guarda suas partidas no celular. Ele mostra anúncios, vende um Premium de pagamento único pelo Google Play e envia estatísticas de uso para o Google. Aqui está o que vai para quem e como limitar isso."
+---
+
+O Deadline é um duelo de nervos contra um Dealer mascarado. Suas partidas, seu recorde e suas configurações ficam no seu celular. O que sai dele são estatísticas de uso, relatórios de falha, o que a rede de anúncios do Google precisa para mostrar anúncios e, se você comprar o Premium, o que o Google Play precisa para processar o pagamento. Esta página explica cada um.
+
+Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR lhe dá os mesmos direitos, e eu respondo da mesma forma. Escreva para TiagoDanin@outlook.com sobre qualquer assunto desta página.
+
+### O que fica no seu celular
+
+A partida em andamento (para você continuar depois), a dificuldade escolhida, quantas partidas você jogou e venceu, sua sequência de vitórias e a melhor delas, sua melhor rodada, se você já liberou o nível Insano, se você tem o Premium, se já terminou sua primeira rodada (quando as dicas param), quantas vezes e quando abriu o app pela primeira e pela última vez, quantas derrotas você teve e quando apareceu o último anúncio de tela cheia (para espaçar os anúncios) e suas configurações de som, música e vibração. Tudo fica no armazenamento do próprio app e nunca é enviado para mim nem para servidor algum. Desinstalar o app apaga tudo.
+
+### O que o app coleta por conta própria
+
+#### Estatísticas de uso
+
+O Google Analytics para Firebase registra eventos como começar ou retomar uma partida, a dificuldade, cada tiro (em quem, real ou festim, e a chance mostrada), as vidas que sobraram, como terminou cada rodada e cada partida, a recompensa e os itens que você e o Dealer usaram, pausar, se a vida extra foi oferecida e como você a ganhou, se um anúncio carregou ou apareceu, sua resposta ao formulário de consentimento de anúncios (se anúncios podem ser pedidos), abrir a tela do Premium, comprar, cancelar ou restaurar o Premium e se a loja respondeu, abrir as regras, mudar uma configuração, pedir ao Google Play a janela de avaliação e, quando você volta, quantos dias se passaram desde a última e a primeira visita (em faixas). Ele também guarda algumas características da instalação: se você tem o Premium, a dificuldade escolhida, se o Insano está liberado, faixas de partidas, vitórias e melhor sequência, o mês do primeiro uso, se anúncios podem ser pedidos e a versão do balanceamento do jogo. O app não cria conta nem envia identificador de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê o modelo do aparelho, o sistema, a versão do app e sua localização aproximada, e pode ler o ID de publicidade do aparelho.
+
+#### Relatórios de falha
+
+O Firebase Crashlytics recebe um relatório quando o app trava ou um erro é capturado: o erro, o modelo do aparelho, a versão do Android e o estado do app naquele momento.
+
+#### Anúncios
+
+O Google AdMob mostra dois tipos de anúncio. Um vídeo premiado, que você escolhe assistir na tela de derrota para ganhar uma vida extra naquela partida. E um anúncio de tela cheia, no máximo uma vez a cada três derrotas, só quando você sai da tela de derrota, com pelo menos três minutos de intervalo, nunca depois de você assistir ao vídeo na mesma partida, nunca durante o duelo e nunca na sua primeira sessão. Para escolher e medir anúncios, o AdMob usa o ID de publicidade, seu endereço IP, o modelo do aparelho e como você interage com o anúncio, e pode mostrar anúncios conforme seus interesses. Com o Premium, o anúncio de tela cheia nunca aparece e a vida extra não precisa de vídeo.
+
+Onde a lei pede consentimento, como na União Europeia e no Reino Unido, o app mostra o formulário de consentimento do Google antes de carregar qualquer anúncio, e você pode mudar sua resposta depois em Ajustes, "Privacidade dos anúncios". Você também pode redefinir ou apagar o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns celulares, Google, Anúncios). Apagar o ID encerra os anúncios personalizados no aparelho todo.
+
+#### Compra do Premium
+
+O Premium é uma compra única feita pelo Google Play. O Google Play cuida do pagamento: eu nunca vejo seu cartão nem seus dados de pagamento. O app pergunta ao Google Play se sua conta Google comprou o Premium quando você compra, quando toca em "Restaurar compra" e, discretamente, quando o app abre, para reconhecer uma compra feita em outro celular. O Google compartilha comigo, pelo Play Console, as informações do pedido que entrega a todo desenvolvedor, como número, data, país e valor.
+
+### Quem mais recebe
+
+O app não tem servidor próprio. O que ele envia vai para o Google:
+
+- **Google AdMob** recebe o que precisa para mostrar anúncios e registrar sua escolha de consentimento, como descrito acima.
+- **Google Play** processa o pagamento do Premium e informa ao app se você o tem. Na 3ª, na 5ª e na 10ª vez que você abre o app, ele também pode pedir ao Google Play para mostrar a janela de avaliação; se você avalia e o que escreve ficam com o Google Play, e o app nunca vê.
+- **Google Analytics para Firebase** e **Firebase Crashlytics** recebem as estatísticas e os relatórios de falha.
+
+Os termos deles: [Privacidade do Firebase](https://firebase.google.com/support/privacy), [Como o Google usa informações de apps que usam seus serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR), [Termos do Google Play](https://play.google.com/about/play-terms/) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
+
+Eu não vendo seus dados nem os repasso a corretores de dados. Só os revelaria se um tribunal ou autoridade brasileira exigisse por lei.
+
+### Para que são usados
+
+Os anúncios e o Premium pagam o app. Os anúncios se baseiam no seu consentimento onde a lei exige e, nos demais casos, no meu legítimo interesse e nas escolhas que você faz nas configurações de anúncios do Android. Os dados de compra servem para entregar o Premium que você pagou, que é a execução desse contrato. As estatísticas e os relatórios de falha servem para achar defeitos e equilibrar a dificuldade, com base no meu legítimo interesse em manter o app funcionando.
+
+### Onde ficam guardados
+
+O Google guarda esses dados em servidores que podem estar fora do Brasil, inclusive nos Estados Unidos, e aplica a essas transferências as salvaguardas descritas nos seus termos de tratamento de dados.
+
+### Por quanto tempo
+
+As estatísticas e os relatórios de falha ficam guardados pelo prazo configurado no Firebase e depois o Google os apaga. O AdMob e o Google Play guardam os dados deles conforme as políticas do próprio Google.
+
+### Seus direitos
+
+Como não existe conta, nada do meu lado liga os dados ao seu nome. Mesmo assim, você pode me perguntar o que existe, pedir a exclusão ou se opor ao tratamento pelo TiagoDanin@outlook.com, e eu respondo em até 15 dias, o prazo da LGPD. Redefinir o ID de publicidade e desinstalar o app cortam a ligação entre dados novos e o seu aparelho. Você também pode reclamar à ANPD, a autoridade brasileira de proteção de dados.
+
+### Segurança
+
+O tráfego para os serviços do Google é criptografado. Nenhum sistema é totalmente seguro, mas suas partidas nunca vão para um servidor.
+
+### Crianças
+
+O Deadline é um jogo sobre um duelo com espingarda e não é feito para crianças. Eu não coleto de propósito dados de menores de 13 anos. Se você acha que dados de uma criança chegaram ao app, me escreva.
+
+### Mudanças
+
+Se esta política mudar, a data no topo muda junto. Quando a mudança afetar o que é coletado ou quem recebe, o app avisa antes de ela valer.
+
+### Contato
+
+Tiago Danin, TiagoDanin@outlook.com.
