@@ -22,10 +22,9 @@ interface ArticleCardProps {
    * Where the tag badges link, without the locale prefix.
    *
    * The blog passes `/blog/tags` so a tag clicked from a list of articles opens
-   * the blog's own filter, which lists articles only. Everywhere else the badges
-   * point at `/tags`, the site-wide index that also carries talks, projects and
-   * milestones. Only pass `/blog/tags` from a page that hides `Video` posts:
-   * those tags exist in the site-wide index and not in the blog one.
+   * the blog's own filter, which lists the same posts as the blog (videos only in
+   * pt-BR). Everywhere else the badges point at `/tags`, the site-wide index that
+   * also carries talks, projects and milestones.
    */
   tagBasePath?: string;
 }

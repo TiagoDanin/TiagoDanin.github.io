@@ -2,30 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
-import { queryCollection } from 'nextjs-studio/server';
 import { ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
 import { toISODate } from '@/utils/parse';
-import { contentLang, entryPath, feedPath, HTML_LANG, localePath } from "@/lib/i18n/locales";
+import { entryPath, feedPath, HTML_LANG, localePath } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { localeAlternates, markdownAlternate, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
+import { countArticlesAndVideos } from '@/lib/sections';
+import { blogListsVideos, listBlogPosts } from '@/lib/mdx';
 
 const POSTS_PER_PAGE = 10;
-
-/** Videos live on /talks; the blog lists written pieces only. */
-function listPosts(lang: string) {
-  return [...queryCollection('posts').where({ lang })]
-    .filter((post) => !((post.tags as string[]) || []).includes('Video'))
-    .sort((a, b) => b.date.localeCompare(a.date));
-}
 
 export async function generateMetadata({ params }: PageProps<'/[lang]/blog'>): Promise<Metadata> {
   const locale = resolveLocale((await params).lang);
   const i18n = getI18nInstance(locale);
-  const posts = listPosts(contentLang(locale));
+  const posts = listBlogPosts(locale);
 
   const alternates = localeAlternates(locale, '/blog');
 
@@ -104,7 +98,8 @@ const Blog = async ({ params }: PageProps<'/[lang]/blog'>) => {
   const locale = resolveLocale((await params).lang);
   initI18n(locale);
 
-  const posts = listPosts(contentLang(locale));
+  const posts = listBlogPosts(locale);
+  const articlesAndVideos = countArticlesAndVideos();
 
   // Both languages paginate. This was English-only while /blog/[page] lived in
   // (legacy), so the Portuguese blog put all 33 posts on one page.
@@ -122,7 +117,9 @@ const Blog = async ({ params }: PageProps<'/[lang]/blog'>) => {
             <Trans>Thoughts, insights, and ideas about technology and development</Trans>
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
-            <Trans>{posts.length} articles</Trans>
+            {blogListsVideos(locale)
+              ? <Trans>{articlesAndVideos} articles & videos</Trans>
+              : <Trans>{posts.length} articles</Trans>}
           </p>
           <TagFilter posts={posts} basePath={localePath(locale, '/blog/tags')} />
         </div>

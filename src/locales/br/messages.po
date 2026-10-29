@@ -194,6 +194,11 @@ msgstr "{appName}: privacidade e termos de uso"
 msgid "{appName}: privacy policy and terms of use"
 msgstr "{appName}: política de privacidade e termos de uso"
 
+#: src/app/[lang]/blog/[page]/page.tsx
+#: src/app/[lang]/blog/page.tsx
+msgid "{articlesAndVideos} articles & videos"
+msgstr "{articlesAndVideos} artigos e vídeos"
+
 #: src/app/[lang]/tags/[tag]/page.tsx
 msgid "{name} - Articles, Talks & Projects"
 msgstr "{name} - Artigos, palestras e projetos"
@@ -719,6 +724,10 @@ msgstr "Artigo"
 #: src/components/ui/TagCloud.tsx
 msgid "Articles"
 msgstr "Artigos"
+
+#: src/lib/sections.ts
+msgid "articles & videos"
+msgstr "artigos e vídeos"
 
 #. placeholder {0}: skill.name
 #: src/app/[lang]/skills/[slug]/page.tsx
@@ -2982,10 +2991,6 @@ msgstr "Post não encontrado"
 #: src/app/[lang]/web-development/page.tsx
 msgid "Postgres, SQLite, Cloudflare D1"
 msgstr "Postgres, SQLite, Cloudflare D1"
-
-#: src/lib/sections.ts
-msgid "posts & videos"
-msgstr "posts e vídeos"
 
 #: src/app/[lang]/blog/tags/[tag]/page.tsx
 msgid "Posts tagged with \"{originalTagName}\""

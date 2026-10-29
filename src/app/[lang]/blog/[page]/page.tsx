@@ -2,29 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
-import { queryCollection } from 'nextjs-studio/server';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
-import { contentLang, HTML_LANG, localePath } from '@/lib/i18n/locales';
+import { HTML_LANG, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl } from '@/lib/i18n/seo';
+import { countArticlesAndVideos } from '@/lib/sections';
+import { blogListsVideos, listBlogPosts } from '@/lib/mdx';
 
 const POSTS_PER_PAGE = 10;
-
-/** Videos live on /talks; the blog lists written pieces only. */
-function listPosts(lang: string) {
-  return [...queryCollection('posts').where({ lang })].filter(
-    (p) => !((p.tags as string[]) || []).includes('Video')
-  );
-}
 
 export const dynamicParams = false;
 
 export async function generateStaticParams({ params }: { params: { lang: string } }) {
   const locale = resolveLocale(params.lang);
-  const posts = listPosts(contentLang(locale));
+  const posts = listBlogPosts(locale);
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const pages = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -58,7 +52,8 @@ const BlogPage = async ({ params }: PageProps<'/[lang]/blog/[page]'>) => {
   const locale = resolveLocale(lang);
   const i18n = initI18n(locale);
 
-  const posts = listPosts(contentLang(locale)).sort((a, b) => b.date.localeCompare(a.date));
+  const posts = listBlogPosts(locale);
+  const articlesAndVideos = countArticlesAndVideos();
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const currentPage = Number(page) || 1;
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
@@ -113,7 +108,9 @@ const BlogPage = async ({ params }: PageProps<'/[lang]/blog/[page]'>) => {
           <Trans>Thoughts, insights, and ideas about technology and development</Trans>
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
-          <Trans>{posts.length} articles</Trans>
+          {blogListsVideos(locale)
+            ? <Trans>{articlesAndVideos} articles & videos</Trans>
+            : <Trans>{posts.length} articles</Trans>}
         </p>
         <TagFilter posts={posts} basePath={localePath(locale, '/blog/tags')} />
       </div>

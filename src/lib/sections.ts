@@ -43,6 +43,18 @@ export interface HeroData {
 }
 
 /**
+ * Every English post, article or video, plus every talk with a recording: the
+ * "articles & videos" count on the home page and on the blog.
+ */
+export function countArticlesAndVideos(): number {
+  const posts = [...queryCollection('posts').where({ lang: 'en' })];
+  const videos = [...queryCollection('talks').where({ lang: 'en' })].filter(
+    (t) => t.youtubeUrl && String(t.youtubeUrl).trim().length > 0
+  );
+  return posts.length + videos.length;
+}
+
+/**
  * Profile copy plus the five counts under the bio, totalled across ten project
  * collections. Derived rather than authored, so the numbers on the page cannot
  * drift from what the site actually ships.
@@ -53,8 +65,10 @@ export function getHeroData(locale: Locale = DEFAULT_LOCALE): HeroData {
   const about = queryCollection('about').locale(locale).one() as unknown as HeroAbout;
   const socialLinks = [...queryCollection('sociallinks')] as unknown as HeroSocialLink[];
 
+  // Counted in the default locale: only googleplay has a Portuguese file, and
+  // `.locale('br')` on the others returns nothing.
   const projectsTotal = PROJECT_COLLECTIONS.reduce(
-    (sum, key) => sum + [...queryCollection(key).locale(locale)].length,
+    (sum, key) => sum + [...queryCollection(key).locale(DEFAULT_LOCALE)].length,
     0
   );
   const npmDownloadsTotal = [...queryCollection('npm')].reduce(
@@ -66,18 +80,14 @@ export function getHeroData(locale: Locale = DEFAULT_LOCALE): HeroData {
   const privateApps = queryCollection('about').one().privateAppsCount;
   const appsTotal = [...queryCollection('googleplay').locale(locale)].length
     + (typeof privateApps === 'number' ? privateApps : 0);
-  const posts = [...queryCollection('posts').where({ lang: 'en' })];
   const talks = [...queryCollection('talks').where({ lang: 'en' })];
-  const videos = talks.filter(
-    (t) => t.youtubeUrl && String(t.youtubeUrl).trim().length > 0
-  );
 
   const i18n = getI18nInstance(locale);
   const stats: HeroStat[] = [
     { value: formatDownloads(npmDownloadsTotal), label: t(i18n)`npm downloads` },
     { value: formatProjects(projectsTotal), label: t(i18n)`projects` },
     { value: String(appsTotal), label: t(i18n)`apps worked on` },
-    { value: String(posts.length + videos.length), label: t(i18n)`posts & videos` },
+    { value: String(countArticlesAndVideos()), label: t(i18n)`articles & videos` },
     { value: String(talks.length), label: t(i18n)`talks` },
   ];
 

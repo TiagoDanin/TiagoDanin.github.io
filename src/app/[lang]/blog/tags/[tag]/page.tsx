@@ -2,22 +2,16 @@ import type { Metadata } from 'next';
 import Link from "next/link";
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
-import { queryCollection } from 'nextjs-studio/server';
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import { TagFilter } from "@/components/ui/TagFilter";
 import { titleToSlug, toISODate } from '@/utils/parse';
 import { allTagSlugs, buildBlogTagIndex, tagName } from '@/lib/tags';
-import { contentLang, localePath, type Locale } from '@/lib/i18n/locales';
+import { listBlogPosts } from '@/lib/mdx';
+import { contentLang, localePath } from '@/lib/i18n/locales';
 import { getI18nInstance, initI18n, resolveLocale } from '@/lib/i18n/server';
 import { localeAlternates, openGraphDefaults, pageUrl } from '@/lib/i18n/seo';
-
-function getPosts(locale: Locale) {
-  return [...queryCollection('posts').where({ lang: contentLang(locale) })]
-    .filter((p) => !((p.tags as string[]) || []).includes('Video'))
-    .sort((a, b) => b.date.localeCompare(a.date));
-}
 
 export const dynamicParams = false;
 
@@ -31,10 +25,13 @@ export async function generateMetadata({ params }: PageProps<'/[lang]/blog/tags/
   const { lang, tag: tagSlug } = await params;
   const locale = resolveLocale(lang);
   const i18n = getI18nInstance(locale);
-  const originalTagName = tagName(buildBlogTagIndex(locale), tagSlug);
+  const index = buildBlogTagIndex(locale);
+  const originalTagName = tagName(index, tagSlug);
 
   return {
     title: t(i18n)`Posts tagged with "${originalTagName}"`,
+    // The other locale's half of a tag only it carries (Video, outside pt-BR).
+    ...(!index.has(tagSlug) && { robots: { index: false, follow: true } }),
     description: t(i18n)`All blog posts tagged with "${originalTagName}" - Software development, mobile apps, and technology articles.`,
     alternates: localeAlternates(locale, `/blog/tags/${tagSlug}`),
     openGraph: {
@@ -52,7 +49,7 @@ export default async function TagPage({ params }: PageProps<'/[lang]/blog/tags/[
   const locale = resolveLocale(lang);
   const i18n = initI18n(locale);
 
-  const posts = getPosts(locale);
+  const posts = listBlogPosts(locale);
   const originalTagName = tagName(buildBlogTagIndex(locale), tagSlug);
 
   const taggedPosts = posts.filter((post) => {

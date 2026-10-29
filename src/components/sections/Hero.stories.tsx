@@ -19,7 +19,7 @@ const stats: HeroStat[] = [
   { value: '2.4M+', label: 'npm downloads' },
   { value: '250+', label: 'projects' },
   { value: '47', label: 'apps worked on' },
-  { value: '31', label: 'posts & videos' },
+  { value: '31', label: 'articles & videos' },
   { value: '18', label: 'talks' },
 ];
 

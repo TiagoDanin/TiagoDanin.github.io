@@ -17,6 +17,7 @@ import { queryCollection } from 'nextjs-studio/server';
 import { getTimelineEvents } from '@/lib/timeline';
 
 import { titleToSlug } from '@/utils/parse';
+import { blogListsVideos } from '@/lib/mdx';
 import { entryPath, localePath, contentLang, LOCALES, type Locale } from '@/lib/i18n/locales';
 import {
   PROJECT_TYPES,
@@ -72,18 +73,6 @@ export function prettifyTagSlug(slug: string): string {
     .split('-')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ');
-}
-
-/**
- * A post tagged `Video` is a YouTube link, not an article. The blog lists drop
- * those, so the blog tag index does too.
- *
- * The site-wide index keeps them. `ArticleCard` links every tag it renders, a
- * video card included, so a tag carried only by video posts would be a link to
- * a page `generateStaticParams` never built.
- */
-function isVideoPost(tags: string[]): boolean {
-  return tags.includes('Video');
 }
 
 function postItems(locale: Locale): TaggedItem[] {
@@ -199,7 +188,7 @@ function build(locale: Locale, sources: readonly TagSource[], skipVideos = false
 
   if (sources.includes('post')) {
     const posts = postItems(locale);
-    addItems(index, skipVideos ? posts.filter((post) => !isVideoPost(post.tags)) : posts);
+    addItems(index, skipVideos ? posts.filter((post) => !post.tags.includes('Video')) : posts);
   }
   if (sources.includes('talk')) addItems(index, talkItems(locale));
   if (sources.includes('project')) addItems(index, projectItems(locale));
@@ -234,9 +223,13 @@ export function buildTagIndex(locale: Locale): TagIndex {
   return cached(`all:${locale}`, () => build(locale, TAG_SOURCES));
 }
 
-/** Blog-only view, for `/blog/tags`. Articles, no videos, nothing else. */
+/**
+ * Blog-only view, for `/blog/tags`: the posts the blog lists, so videos only in
+ * pt-BR. A tag carried only by videos would otherwise link, from a card, to a
+ * page `generateStaticParams` never built.
+ */
 export function buildBlogTagIndex(locale: Locale): TagIndex {
-  return cached(`blog:${locale}`, () => build(locale, ['post'], true));
+  return cached(`blog:${locale}`, () => build(locale, ['post'], !blogListsVideos(locale)));
 }
 
 /**

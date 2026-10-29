@@ -34,7 +34,7 @@ const meta = {
           'per card instead of one for the cover plus one for the title. The tag',
           'chips sit above it with `pointer-events-auto`, so they stay separately',
           'clickable, and `tagBasePath` decides where they land: the three blog',
-          'routes send them to `/blog/tags/[tag]`, which lists articles only, and',
+          'routes send them to `/blog/tags/[tag]`, which lists the same posts as the blog, and',
           'everywhere else they open the site-wide `/tags/[tag]`.',
           '',
           'Every post has a destination, so the permanent `cursor-pointer` here',

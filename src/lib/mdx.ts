@@ -46,3 +46,15 @@ export function postHasLocale(slug: string, lang: string): boolean {
   }
   return queryCollection('posts').locale(lang).where({ slug }).count() > 0;
 }
+
+/** The videos are in Portuguese, so only the pt-BR blog lists them. */
+export function blogListsVideos(locale: Locale): boolean {
+  return locale === 'br';
+}
+
+/** The posts a blog list shows in a locale, newest first. */
+export function listBlogPosts(locale: Locale) {
+  return [...queryCollection('posts').where({ lang: contentLang(locale) })]
+    .filter((post) => blogListsVideos(locale) || !((post.tags as string[]) || []).includes('Video'))
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
