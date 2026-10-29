@@ -401,6 +401,10 @@ msgstr "Across all packages"
 msgid "Active contributor to Node.js, ElectronJS, and organizer of Devs Norte community. Deep roots in the developer ecosystem."
 msgstr "Active contributor to Node.js, ElectronJS, and organizer of Devs Norte community. Deep roots in the developer ecosystem."
 
+#: src/components/ui/AdaptivePost.tsx
+msgid "Adaptive post"
+msgstr "Adaptive post"
+
 #: src/app/[lang]/game-development/page.tsx
 msgid "Ads, in-app purchases, double-or-nothing rewards, and prestige economies tuned to the game."
 msgstr "Ads, in-app purchases, double-or-nothing rewards, and prestige economies tuned to the game."
@@ -482,6 +486,7 @@ msgstr "AI-Powered Automation"
 msgid "AI-powered features inside your existing product, chat, summarization, classification, generation."
 msgstr "AI-powered features inside your existing product, chat, summarization, classification, generation."
 
+#: src/components/ui/AdaptivePost.tsx
 #: src/components/ui/TagCloud.tsx
 msgid "All"
 msgstr "All"
@@ -2933,6 +2938,10 @@ msgstr "Photos for promo art"
 #: src/app/[lang]/press-kit/page.tsx
 msgid "Pick a language and the angle that fits your event, then copy. Numbers come from the site data, so they stay current."
 msgstr "Pick a language and the angle that fits your event, then copy. Numbers come from the site data, so they stay current."
+
+#: src/components/ui/AdaptivePost.tsx
+msgid "Pick one and the text keeps only what applies to it."
+msgstr "Pick one and the text keeps only what applies to it."
 
 #: src/app/[lang]/press/page.tsx
 msgid "pieces"

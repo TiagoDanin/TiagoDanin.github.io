@@ -3,6 +3,7 @@ import rehypeShiki from '@shikijs/rehype';
 import { Fragment } from 'react';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { YouTubeEmbed } from '@/components/ui/YouTubeEmbed';
+import { DEFAULT_VARIANT, Variant } from '@/components/ui/AdaptivePost';
 
 const mdxComponents = {
   YouTubeEmbed,
@@ -12,7 +13,7 @@ const mdxComponents = {
  * Grammars loaded for fenced code blocks.
  *
  * Explicit instead of the whole bundle: every entry here is a grammar Shiki
- * parses at build time, and the default is all ~200 of them. The first eight
+ * parses at build time, and the default is all ~200 of them. The first nine
  * are the languages the posts and talks actually use; the rest are the ones a
  * next post is most likely to reach for.
  *
@@ -26,6 +27,7 @@ const codeLanguages = [
   'javascript',
   'json',
   'kotlin',
+  'swift',
   'typescript',
   'xml',
   'yaml',
@@ -47,7 +49,8 @@ const runOptions: RunOptions = {
   baseUrl: import.meta.url,
 };
 
-export async function renderMdx(source: string): Promise<React.ReactElement> {
+/** `variant` picks which `<Variant>` blocks of an adaptive post are rendered. */
+export async function renderMdx(source: string, variant: string = DEFAULT_VARIANT): Promise<React.ReactElement> {
   const code = String(
     await compile(source, {
       outputFormat: 'function-body',
@@ -87,5 +90,9 @@ export async function renderMdx(source: string): Promise<React.ReactElement> {
     })
   );
   const { default: MdxContent } = await run(code, runOptions);
-  return <MdxContent components={mdxComponents} />;
+  const components = {
+    ...mdxComponents,
+    Variant: (props: React.ComponentProps<typeof Variant>) => <Variant {...props} active={variant} />,
+  };
+  return <MdxContent components={components} />;
 }

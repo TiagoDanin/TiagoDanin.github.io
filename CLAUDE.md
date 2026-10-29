@@ -170,7 +170,7 @@ Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/t
 
 **32 of the 64 files in `src/components/ui/` have no production consumer.** They ship with the shadcn install and no route renders them. Their stories do not count: measure importers excluding `*.stories.tsx`, or everything looks used. Deadness is also transitive, `dialog` and `tooltip` are imported only by `command` and `sidebar`, which are themselves unreachable. Each is documented in Storybook and labelled as unused, so check whether one already exists before adding a dependency.
 
-**91 components, 90 stories.** The only one without is `LinguiClientProvider`: it has no visual surface worth cataloguing, and its job is done by the Storybook decorator instead.
+**92 components, 91 stories.** The only one without is `LinguiClientProvider`: it has no visual surface worth cataloguing, and its job is done by the Storybook decorator instead.
 
 ### Styling
 - **Tailwind CSS** (v3), mobile-first.
@@ -182,6 +182,7 @@ Other dynamic routes: `/app/[appId]`, `/skills/[slug]`, `/social/[network]`, `/t
 The site uses **nextjs-studio** as a content layer. All collections live in `contents/`, replacing the old `src/data/` imports (that directory no longer exists).
 
 - **Posts**: `.mdx` files in `contents/posts/` with frontmatter (`title`, `date`, `description`, `slug`, `originalUrl`, `lang`, `cover`, `tags`). Bilingual via filename suffix. Treat EN and PT as equal-weight surfaces.
+- **Adaptive posts**: a post whose frontmatter has `variants` (each with `id`, `label`, `title`, optional `seoTitle`, `description`) is one article written for several readers, and each version is its own page: `[lang]/post/[slug]/[variant]/page.tsx` re-exports the post page and generates `/post/<slug>/<id>/` per variant, with that variant's title, description and canonical. The post's own URL is the `all` version; there is no `/all/`. The body marks blocks with `<Variant for="flutter compose">` (space-separated ids plus `all`), and `renderMdx(body, id)` drops every block not marked for the page being built, so each page's HTML holds only its own text. Text outside every `Variant` is in all versions. The picker at the top is plain links. Only the post's own URL has a Markdown mirror (the `all` blocks), so variant pages announce none. Ids are lowercase slugs and never `all` (the build throws otherwise); a typo in a `for` token is not checked and just drops that block from every version. Comments are shared: the Giscus term stays `slug-lang`. First one: `anatomia-das-barras-do-sistema`, at `/post/system-bars-anatomy-mobile/`.
 - **Talks**: `.mdx` files in `contents/talks/`, same bilingual convention, plus `event`, `edition`, `youtubeUrl`.
 - **Projects**: multiple JSON sources - `contents/github/`, `contents/npm/`, `contents/private/`, `contents/pypi/`, and the rest of the ten types above.
 - **Timeline / Work / Volunteer**: `contents/timeline/`, `contents/work/`, `contents/volunteer/`

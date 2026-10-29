@@ -315,14 +315,13 @@ export interface GoogleplayEntry {
     solution: string;
     learned: string;
   };
-  tags: Array<"unity" | "game" | "puzzle" | "sokoban" | "pixel-art" | "android" | "flutter" | "whatsapp" | "kotlin" | "privacy" | "video" | "poker" | "education" | "gamification" | "offline" | "sports" | "scoreboard" | "event-sourcing" | "health" | "medication" | "reminder" | "firebase" | "fly.io" | "devops" | "cloud" | "ios" | "photography" | "creative" | "instagram" | "CNH" | "DETRAN" | "brazil" | "idle" | "clicker" | "prestige" | "survival" | "arcade" | "bonfire" | "relaxation" | "sleep" | "white noise" | "ambient" | "flame" | "falling sand" | "cozy" | "isometric" | "decorating" | "memory" | "jetpack compose" | "open source">;
+  tags: Array<"unity" | "game" | "puzzle" | "sokoban" | "pixel-art" | "android" | "flutter" | "whatsapp" | "kotlin" | "privacy" | "video" | "poker" | "education" | "gamification" | "offline" | "sports" | "scoreboard" | "event-sourcing" | "health" | "medication" | "reminder" | "firebase" | "fly.io" | "devops" | "cloud" | "ios" | "photography" | "creative" | "instagram" | "CNH" | "DETRAN" | "brazil" | "idle" | "clicker" | "prestige" | "survival" | "arcade" | "bonfire" | "relaxation" | "sleep" | "white noise" | "ambient" | "flame" | "falling sand" | "cozy" | "isometric" | "decorating" | "racing" | "roguelike" | "strategy">;
   iconImage: string;
   screenshots: Array<{
     src: string;
     width: number;
     height: number;
   }>;
-  status: string;
 }
 
 /** Data shape for the "legal" collection. */
@@ -414,10 +413,17 @@ export interface PostsEntry {
   date: string;
   description: string;
   slug: string;
-  originalUrl: HttpUrl;
+  originalUrl: string;
   lang: string;
   cover: string;
-  tags: Array<"Android" | "Mobile" | "UI/UX" | "Video" | "Flutter" | "iOS" | "Article" | "JavaScript" | "React Native" | "DevOps" | "Tutorial" | "Testing" | "Web" | "Frontend" | "AI" | "Tools" | "GitHub" | "Career" | "Design System" | "Widgetbook" | "Linux" | "Security" | "React" | "Performance">;
+  variants: Array<{
+    id: string;
+    label: string;
+    title: string;
+    seoTitle: string;
+    description: string;
+  }>;
+  tags: Array<"Flutter" | "Android" | "iOS" | "Mobile" | "UI/UX" | "Article" | "Video" | "JavaScript" | "React Native" | "DevOps" | "Tutorial" | "Testing" | "Web" | "Frontend" | "AI" | "Tools" | "GitHub" | "Career" | "Design System" | "Widgetbook" | "Linux" | "Security" | "React" | "Performance">;
 }
 
 /** Data shape for the "press" collection. */

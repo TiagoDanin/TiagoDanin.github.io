@@ -123,6 +123,18 @@ const config: StudioConfig = {
           },
           { name: "cover", type: "media", accept: ["image/*"] },
           {
+            // Filled in, the post becomes adaptive: one page per variant at /post/<slug>/<id>/.
+            name: "variants",
+            type: "array",
+            itemFields: [
+              { name: "id", type: "text", required: true },
+              { name: "label", type: "text", required: true },
+              { name: "title", type: "text", required: true },
+              { name: "seoTitle", type: "text" },
+              { name: "description", type: "long-text", required: true },
+            ],
+          },
+          {
             name: "tags",
             type: "multi-select",
             required: true,

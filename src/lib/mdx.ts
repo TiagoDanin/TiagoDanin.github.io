@@ -1,4 +1,6 @@
 import { queryCollection } from 'nextjs-studio/server';
+import type { PostVariant } from '@/components/ui/AdaptivePost';
+import { contentLang, type Locale } from '@/lib/i18n/locales';
 
 export interface PostContent {
   title: string;
@@ -11,6 +13,8 @@ export interface PostContent {
   lang: string;
   cover: string;
   tags: string[];
+  /** Present on an adaptive post: the versions a reader can pick from. */
+  variants?: PostVariant[];
   body: string;
 }
 
@@ -31,6 +35,7 @@ export function getPostBySlug(slug: string, lang: string = 'en'): PostContent | 
     lang: post.lang,
     cover: post.cover ?? '',
     tags: post.tags ?? [],
+    variants: post.variants?.length ? post.variants : undefined,
     body: post.body ?? '',
   };
 }

@@ -401,6 +401,10 @@ msgstr "Em todos os pacotes"
 msgid "Active contributor to Node.js, ElectronJS, and organizer of Devs Norte community. Deep roots in the developer ecosystem."
 msgstr "Contribuidor ativo do Node.js e do ElectronJS, e organizador da comunidade Devs Norte. Raízes fundas no ecossistema."
 
+#: src/components/ui/AdaptivePost.tsx
+msgid "Adaptive post"
+msgstr "Post adaptativo"
+
 #: src/app/[lang]/game-development/page.tsx
 msgid "Ads, in-app purchases, double-or-nothing rewards, and prestige economies tuned to the game."
 msgstr "Anúncios, compras no app, recompensas de dobrar ou perder e economias de prestígio ajustadas ao jogo."
@@ -482,6 +486,7 @@ msgstr "Automação com IA"
 msgid "AI-powered features inside your existing product, chat, summarization, classification, generation."
 msgstr "Funcionalidades com IA dentro do seu produto atual: chat, resumo, classificação, geração."
 
+#: src/components/ui/AdaptivePost.tsx
 #: src/components/ui/TagCloud.tsx
 msgid "All"
 msgstr "Todos"
@@ -2933,6 +2938,10 @@ msgstr "Fotos para material de divulgação"
 #: src/app/[lang]/press-kit/page.tsx
 msgid "Pick a language and the angle that fits your event, then copy. Numbers come from the site data, so they stay current."
 msgstr "Escolha um idioma e o ângulo que combina com o seu evento, depois copie. Os números vêm dos dados do site, então estão sempre atualizados."
+
+#: src/components/ui/AdaptivePost.tsx
+msgid "Pick one and the text keeps only what applies to it."
+msgstr "Escolha uma opção e o texto mostra só o que vale para ela."
 
 #: src/app/[lang]/press/page.tsx
 msgid "pieces"

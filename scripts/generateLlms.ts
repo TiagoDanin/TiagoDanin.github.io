@@ -163,6 +163,10 @@ function writeFile(relativePath: string, body: string): void {
 function mdxToMarkdown(body: string): string {
   return body
     .replace(/^import\s.+$/gm, '')
+    // An adaptive post mirrors its default view: the blocks marked `all`.
+    .replace(/<Variant\s+for="([^"]*)">([\s\S]*?)<\/Variant>/g, (_match, ids: string, inner: string) =>
+      ids.split(/\s+/).includes('all') ? inner : ''
+    )
     .replace(
       /<YouTubeEmbed\s+videoId="([^"]+)"(?:\s+title="([^"]*)")?\s*\/>/g,
       (_match, id: string, title: string) =>

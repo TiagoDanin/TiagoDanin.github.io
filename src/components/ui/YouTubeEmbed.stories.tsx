@@ -4,8 +4,9 @@ import { expect } from 'storybook/test';
 import { YouTubeEmbed } from './YouTubeEmbed';
 
 /**
- * The only custom component available inside MDX. `src/lib/render-mdx.tsx`
- * passes it in the `components` map, so any post or talk body can write
+ * One of the two custom components available inside MDX, beside `Variant`.
+ * `src/lib/render-mdx.tsx` passes it in the `components` map, so any post or
+ * talk body can write
  * `<YouTubeEmbed videoId="..." />` and get a responsive player.
  */
 const meta = {
