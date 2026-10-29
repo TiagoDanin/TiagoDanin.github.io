@@ -1,0 +1,94 @@
+---
+title: "Política de privacidade"
+slug: "swipeclean-privacy"
+app: "swipeclean"
+appName: "SwipeClean"
+kind: "privacy"
+updatedAt: "2026-10-25"
+lang: "pt"
+description: "O SwipeClean lê suas fotos e vídeos no celular para ajudar a limpá-los e nunca os envia para lugar nenhum. Ele não tem conta. Mostra anúncios depois de 100 decisões, vende um Premium de pagamento único pelo Google Play e envia estatísticas de uso para o Google. Aqui está o que vai para quem."
+---
+
+O SwipeClean ajuda você a liberar espaço revisando suas fotos e vídeos um de cada vez. Para isso ele precisa ler a sua galeria, e tudo o que ele lê fica no seu celular: nenhuma foto, vídeo, miniatura, nome de arquivo ou localização sai dele. O que sai do celular são estatísticas de uso, relatórios de falha, o que a rede de anúncios do Google precisa para mostrar anúncios e, se você comprar o Premium, o que o Google Play precisa para processar o pagamento. Esta página explica cada um.
+
+Eu, Tiago Danin, sou o desenvolvedor e o controlador desses dados nos termos da LGPD (Lei 13.709/2018). Se você está na União Europeia, o GDPR lhe dá os mesmos direitos e eu respondo do mesmo jeito. Escreva para TiagoDanin@outlook.com sobre qualquer um deles.
+
+### Suas fotos e vídeos
+
+O app pede ao Android acesso às suas fotos e vídeos. No Android 14 ou mais você pode compartilhar só algumas, e o app trabalha com o que você compartilhou.
+
+Para agrupar a galeria (arquivos grandes, fotos parecidas, screenshots e, com o Premium, fotos borradas e escuras), o app lê o tamanho, a data, a resolução e a pasta de cada arquivo e olha uma cópia cinza de 64 por 64 pixels de cada foto. Dessa cópia pequena ele calcula três números: uma impressão digital usada para achar fotos parecidas, uma nota de nitidez e uma nota de brilho. Isso acontece no celular. A verificação guarda só os três números e o tamanho do arquivo, nunca a cópia pequena. Como em qualquer app de galeria, as miniaturas que o app mostra podem ficar no cache dele, no celular, até você limpar o cache ou desinstalar o app.
+
+Excluir e mover só acontecem quando você pede. Deslizar para a esquerda só marca a foto. Ela é excluída quando você confirma na tela "Para excluir", e então o Android mostra a própria confirmação. No Android 11 ou mais os arquivos vão para a lixeira do Android, de onde o app de galeria consegue restaurá-los pelo tempo que o Android os guarda. Mover uma foto para um álbum muda a pasta dela, depois que o Android pede a sua permissão.
+
+### O que fica no seu celular
+
+A lista das fotos que você manteve e das que marcou para excluir (pelo identificador interno do Android, não pelo nome), quantas decisões você tomou desde que instalou o app, se a tela de apoio da 100ª decisão já apareceu, o histórico de espaço liberado (a data, o número de itens e os bytes de cada exclusão), os resultados da verificação descritos acima, se você tem o Premium e suas preferências de aparência e idioma. Eles ficam no armazenamento do próprio app e nunca são enviados para mim nem para servidor nenhum. Desinstalar o app apaga tudo isso.
+
+### O que o app coleta por conta própria
+
+#### Estatísticas de uso
+
+O Google Analytics para Firebase registra eventos como a tela aberta, sua resposta ao pedido de acesso à galeria (completo, parcial ou negado), o início, o fim ou a falha da verificação, a abertura de uma revisão e o tipo de grupo que ela mostra, cada centésima decisão, quantos itens você manteve e marcou numa revisão (em faixas), as opções que você usa numa foto (ver, detalhes, parecidas, mover, revisar depois, abrir no app de galeria, compartilhar), o resultado de uma movimentação ou de uma exclusão com o número de itens e de bytes em faixas, a abertura e o fechamento da tela do Premium e de onde ela foi aberta, a compra, o cancelamento ou a restauração do Premium e se a loja respondeu, sua resposta ao formulário de consentimento de anúncios, se um anúncio carregou ou apareceu, a troca de aparência ou de idioma e a abertura desta política ou dos termos. Ele também guarda algumas características da instalação: o nível de acesso à galeria, se você tem o Premium, se anúncios podem ser pedidos, sua aparência e seu idioma. Contagens e tamanhos vão em faixas, nunca exatos, e nenhum evento leva nome de arquivo, pasta, data de foto ou qualquer coisa sobre o que as suas fotos mostram. O app não cria conta nem envia um identificador de usuário, então esses eventos ficam ligados a uma instalação do app, não a um nome. O Analytics também vê o modelo do aparelho, o sistema operacional, a versão do app e a localização aproximada, e pode ler o ID de publicidade do aparelho.
+
+#### Relatórios de falha
+
+O Firebase Crashlytics recebe um relatório quando o app trava ou um erro é capturado: o erro, o modelo do aparelho, a versão do Android e o estado do app naquele momento. Os relatórios nunca incluem suas fotos.
+
+#### Anúncios
+
+Nada de anúncio acontece antes da sua 100ª decisão: nenhum formulário de consentimento, nenhum pedido de anúncio. Depois disso, o Google AdMob mostra dois tipos de anúncio, sempre entre duas fotos e nunca por cima de uma. Um banner dentro de um cartão marcado "Publicidade" ocupa o lugar da próxima foto a cada 25 decisões, a partir da 125ª; você sai dele com "Continuar" ou deslizando. E um anúncio de tela cheia, que pode ser um vídeo, depois da 250ª decisão e então a cada 100 decisões. Se um anúncio não estiver pronto, ele é pulado. Para escolher e medir anúncios, o AdMob usa o ID de publicidade, seu endereço IP, o modelo do aparelho e como você interage com o anúncio, e pode mostrar anúncios baseados nos seus interesses. Os anúncios nunca recebem suas fotos. Com o Premium, nenhum anúncio aparece.
+
+Onde a lei pede consentimento, como na União Europeia e no Reino Unido, o app mostra o formulário de consentimento do Google antes de carregar qualquer anúncio, e você pode mudar sua resposta depois em Ajustes, "Privacidade dos anúncios". Você também pode redefinir ou excluir o ID de publicidade nas configurações do Android, em Privacidade, Anúncios (em alguns celulares, Google, Anúncios). Excluí-lo encerra os anúncios personalizados no aparelho inteiro.
+
+#### Compra do Premium
+
+O Premium é uma compra única feita pelo Google Play. O Google Play cuida do pagamento: eu nunca vejo seu cartão nem seus dados de pagamento. O app pergunta ao Google Play se a sua conta Google comprou o Premium quando você compra, quando toca em "Restaurar compras" e, sem avisar, quando o app abre, para reconhecer uma compra feita em outro celular. O Google compartilha comigo, pelo Play Console, as informações do pedido que ele dá a todo desenvolvedor, como o número do pedido, a data, o país e o valor.
+
+#### Compartilhar e abrir uma foto
+
+Quando você escolhe "Compartilhar", a folha de compartilhamento do Android recebe aquele arquivo e o envia para onde você escolher. Quando você escolhe "Abrir no álbum original", o Android abre aquele arquivo no seu app de galeria. O app não envia o arquivo para mais nenhum lugar.
+
+### Quem mais recebe
+
+O app não tem servidor próprio. O que ele envia vai para o Google:
+
+- **Google AdMob** recebe o que precisa para mostrar anúncios e para registrar sua escolha de consentimento, como descrito acima.
+- **Google Play** processa o pagamento do Premium e diz ao app se você tem o Premium.
+- **Google Analytics para Firebase** e **Firebase Crashlytics** recebem as estatísticas e os relatórios de falha.
+
+Os termos deles: [privacidade do Firebase](https://firebase.google.com/support/privacy), [como o Google usa informações de apps que usam seus serviços](https://policies.google.com/technologies/partner-sites?hl=pt-BR), [termos do Google Play](https://play.google.com/about/play-terms/?hl=pt-BR) e [Política de Privacidade do Google](https://policies.google.com/privacy?hl=pt-BR).
+
+Eu não vendo seus dados nem os entrego a corretores de dados. Só os revelaria se um tribunal ou uma autoridade brasileira exigisse por lei.
+
+### Para que são usados
+
+Ler a galeria é o serviço que você pediu: sem isso o app não consegue mostrar nem limpar suas fotos. Os anúncios e o Premium pagam o app. Os anúncios se apoiam no seu consentimento onde a lei exige e, nos demais casos, no meu legítimo interesse e nas escolhas que você faz nas configurações de anúncios do Android. Os dados da compra servem para entregar o Premium que você pagou, que é a execução desse contrato. As estatísticas e os relatórios de falha servem para achar erros e melhorar o app, com base no meu legítimo interesse em mantê-lo funcionando.
+
+### Onde ficam guardados
+
+Suas fotos e os resultados da verificação ficam no seu celular. As estatísticas, os relatórios de falha e os dados de anúncios e de compra ficam nos servidores do Google, que podem estar fora do Brasil, inclusive nos Estados Unidos. O Google aplica a essas transferências as salvaguardas descritas nos termos de tratamento de dados dele.
+
+### Por quanto tempo
+
+No celular, até você desinstalar o app. As estatísticas do Analytics e os relatórios de falha ficam pelo período de retenção configurado no Firebase, e depois o Google os apaga. O AdMob e o Google Play guardam os dados deles conforme as políticas do próprio Google.
+
+### Seus direitos
+
+Como não há conta, nada do meu lado liga dados ao seu nome. Mesmo assim você pode me perguntar o que existe, pedir a exclusão ou se opor ao tratamento em TiagoDanin@outlook.com, e eu respondo em até 15 dias, o prazo da LGPD. Você pode tirar o acesso do app às suas fotos a qualquer momento nas configurações do Android. Redefinir o ID de publicidade e desinstalar o app cortam a ligação entre dados novos e o seu aparelho. Você também pode reclamar à ANPD, a autoridade brasileira de proteção de dados.
+
+### Segurança
+
+O tráfego para os serviços do Google é criptografado. Nenhum sistema é totalmente seguro, mas suas fotos nunca estão num servidor, para começar.
+
+### Crianças
+
+O SwipeClean é uma ferramenta para adultos cuidarem do próprio celular e não é voltado a crianças. Eu não coleto, sabendo, dados de menores de 13 anos. Se você acha que dados de uma criança chegaram ao app, me escreva.
+
+### Mudanças
+
+Se esta política mudar, a data no topo muda junto. Uma mudança que afete o que é coletado ou quem recebe é descrita nas notas da versão no Google Play da atualização que a traz.
+
+### Contato
+
+Tiago Danin, TiagoDanin@outlook.com.
