@@ -1,0 +1,423 @@
+---
+title: "Anatomy of the System Bars: Status Bar and Navigation Bar in Flutter, Jetpack Compose and SwiftUI"
+seoTitle: "Status and navigation bars in Flutter, Compose and SwiftUI"
+date: "2026-10"
+description: "I have had App Store submissions rejected over status bar contrast. How the status bar, the navigation bar and the home indicator work, what edge-to-edge changed on Android, and how to configure each bar in Flutter, Jetpack Compose and SwiftUI."
+slug: "system-bars-anatomy-mobile"
+originalUrl: ""
+lang: "en"
+cover: "/images/posts/anatomia-systemuioverlaystyle/cover.png"
+variants:
+  - id: "flutter"
+    label: "Flutter"
+    title: "Anatomy of the System Bars in Flutter: Status Bar and Navigation Bar with SystemUiOverlayStyle"
+    seoTitle: "Status and navigation bars in Flutter"
+    description: "How the status bar and navigation bar work on Android and iOS, and how to configure them in Flutter with SystemUiOverlayStyle, AnnotatedRegion and SafeArea."
+  - id: "compose"
+    label: "Jetpack Compose"
+    title: "Anatomy of the System Bars in Jetpack Compose: Status Bar and Navigation Bar with enableEdgeToEdge"
+    seoTitle: "Status and navigation bars in Jetpack Compose"
+    description: "How the status bar and navigation bar work on Android, what edge-to-edge changed, and how to configure them in Jetpack Compose with enableEdgeToEdge and insets."
+  - id: "swiftui"
+    label: "SwiftUI"
+    title: "Anatomy of the System Bars in SwiftUI: Status Bar, Home Indicator and Safe Area"
+    seoTitle: "Status bar and safe area in SwiftUI"
+    description: "How the status bar and home indicator work on the iPhone, and how to keep them readable in SwiftUI with toolbarColorScheme, preferredColorScheme and safe area."
+tags: ["Flutter", "Android", "iOS", "Mobile", "UI/UX", "Article"]
+---
+
+![Anatomy of the system bars, in Flutter, Jetpack Compose and SwiftUI, with an Android phone and an iPhone and the bars labelled](/images/posts/anatomia-systemuioverlaystyle/cover.png)
+
+I have had App Store submissions rejected because of the status bar. The problem was contrast: the color of the system icons did not match the screen background, and the information at the top was hard to read. On Android, the same slip usually shows up at the bottom, with a white back icon on a white navigation bar, and the user cannot find a way out of the screen.
+
+<Variant for="all">
+
+This kind of mistake does not depend on the framework. The system bars work the same way for any mobile app, and each stack's APIs only change what things are called, sometimes to the opposite. That is why I decided to write about the anatomy of these bars, how they behave and how to configure them in Flutter, Jetpack Compose and SwiftUI.
+
+</Variant>
+
+<Variant for="flutter">
+
+This kind of mistake does not depend on the framework, but in Flutter it shows up on both platforms at once: the same code draws the screen on Android and iOS, and each system reads a different property to decide the icon color. That is why I decided to write about the anatomy of these bars, how they behave and how to configure them in Flutter.
+
+</Variant>
+
+<Variant for="compose">
+
+This kind of mistake does not depend on the framework. In Jetpack Compose, edge-to-edge changed the rule: painting the status bar with the app color stopped working, and the icon color now depends on what the app draws behind it. That is why I decided to write about the anatomy of these bars, how they behave and how to configure them in Compose.
+
+</Variant>
+
+<Variant for="swiftui">
+
+This kind of mistake does not depend on the framework. In SwiftUI, the care goes into the screens that break from the default, like a dark player, because there is no direct API to choose the status bar text color. That is why I decided to write about the anatomy of these bars, how they behave and how to configure them in SwiftUI.
+
+</Variant>
+
+## What belongs to the system and what belongs to the app
+
+![An Android phone and an iPhone side by side, with the status bar, navigation bar, home indicator, camera cutout, Dynamic Island and app area labelled](/images/posts/anatomia-systemuioverlaystyle/01-anatomia-barras.png)
+
+<Variant for="all flutter">
+
+On Android, the screen has two strips that do not belong to the app. At the top is the status bar, with time, network and battery, sharing space with the camera cutout. At the bottom is the navigation bar, which can be the 3-button one (back, home and recents) or just the gesture bar. iOS has no navigation bar: the bottom has the home indicator, and the top shares the status bar with the notch or the Dynamic Island.
+
+In neither of them does the app draw the icons on these bars. What it controls is two things: what shows behind them and whether the system icons will be light or dark. The first answer comes from the app layout. The second is a setting many people never touch, and it decides whether the time and the back button will be readable.
+
+</Variant>
+
+<Variant for="compose">
+
+On Android, the screen has two strips that do not belong to the app. At the top is the status bar, with time, network and battery, sharing space with the camera cutout. At the bottom is the navigation bar, which can be the 3-button one (back, home and recents) or just the gesture bar.
+
+The app does not draw the icons on these bars. What it controls is two things: what shows behind them and whether the system icons will be light or dark. The first answer comes from the app layout. The second is a setting many people never touch, and it decides whether the time and the back button will be readable.
+
+</Variant>
+
+<Variant for="swiftui">
+
+On the iPhone, the screen has two strips that do not belong to the app. At the top is the status bar, with time, network and battery, sharing space with the notch or the Dynamic Island. At the bottom is the home indicator. There is no navigation bar with buttons like on Android.
+
+The app does not draw what is inside these strips. What it controls is two things: what shows behind them and whether the status bar text will be light or dark. The first answer comes from the app layout. The second is a setting many people never touch, and it decides whether the time will be readable.
+
+</Variant>
+
+## The mistake that usually happens
+
+<Variant for="all flutter compose">
+
+![The same form screen twice: on the left, white icons on a white background and an invisible back button; on the right, dark and readable icons](/images/posts/anatomia-systemuioverlaystyle/02-contraste-errado-certo.png)
+
+</Variant>
+
+<Variant for="all flutter">
+
+This mistake reaches the store because it depends on context. Developers usually test with one theme and one navigation mode, most often gestures, where the bottom bar barely shows. The user runs the dark theme, or 3-button navigation, or lands on a screen without an `AppBar`, like the splash, the onboarding or a video player. Those screens inherit the style of the previous screen, which was designed for a different background.
+
+</Variant>
+
+<Variant for="compose">
+
+This mistake reaches the store because it depends on context. Developers usually test with one theme and one navigation mode, most often gestures, where the bottom bar barely shows. The user runs the dark theme, or 3-button navigation, or lands on a screen without a `TopAppBar`, like the splash, the onboarding or a video player. Those screens inherit the style of the previous screen, which was designed for a different background.
+
+</Variant>
+
+<Variant for="swiftui">
+
+This mistake reaches the store because it depends on context. Developers usually test with the device in a single mode, light or dark. The user runs the other one, or lands on a screen with its own background, like the splash, the onboarding or a video player, and the status bar text has to match that background.
+
+</Variant>
+
+The belief behind the problem is "the bar belongs to the system, so the system takes care of it". Part of it is true: the operating system is what draws the time and the battery. But the color of those icons is the app's decision, and the system does not check whether it matches what sits behind it.
+
+<Variant for="all flutter compose">
+
+## Edge-to-edge changed the rule on Android
+
+![Two profile screens in edge-to-edge: without insets, the title touches the clock and the button sits under the gesture bar; with insets, the background runs behind and the content stays in the free area](/images/posts/anatomia-systemuioverlaystyle/03-edge-to-edge-insets.png)
+
+For a long time, the fix was to paint the status bar with the app color. Starting with Android 15, every app with `targetSdk` 35 draws edge to edge by default: content goes behind the status bar and the navigation bar. `setStatusBarColor` is now ignored, gesture navigation is transparent and 3-button navigation gets a translucent background at 80% opacity. Android 15 still let you opt out of this behavior, but for apps with `targetSdk` 36, on Android 16, that option is gone.
+
+</Variant>
+
+<Variant for="all flutter">
+
+Flutter users are already in this scenario too. Since version 3.27, the default Flutter project uses `targetSdk` 35, so any updated app runs edge-to-edge on Android 15.
+
+</Variant>
+
+<Variant for="all flutter compose">
+
+In practice, two responsibilities are left. The first is choosing the icon color according to the background that will sit behind it. The second is applying the insets, the measures of how much each bar takes up, so the background runs behind them but interactive content does not end up under the clock or the gesture bar.
+
+</Variant>
+
+## How each framework names light and dark
+
+![A table with light background and dark background in the rows and Flutter, Jetpack Compose and SwiftUI in the columns, showing the name each one uses for dark or light icons](/images/posts/anatomia-systemuioverlaystyle/04-nomes-invertidos.png)
+
+Before writing any code, answer one question: is the background behind the bar light or dark? A light background calls for dark icons, and a dark background calls for light icons.
+
+The confusion is that each framework names this differently. In Flutter, the name describes the icon, so dark icons are `dark`. In Compose and SwiftUI, the name describes the background, so the same dark icons are `light`.
+
+<Variant for="all flutter">
+
+One detail about Flutter's presets: `SystemUiOverlayStyle.dark` and `SystemUiOverlayStyle.light` only change the status bar. In both, the navigation bar comes out black with light buttons, so it has to be configured separately, as in the example in the next section.
+
+</Variant>
+
+<Variant for="all flutter">
+
+## In Flutter: SystemUiOverlayStyle
+
+![Anatomy in Flutter: an Android phone and an iPhone with arrows linking statusBarColor, statusBarIconBrightness, AppBar, SafeArea, systemNavigationBarColor, systemNavigationBarIconBrightness and statusBarBrightness to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/06-anatomia-flutter.png)
+
+The starting point is defining a default style in `main`, before `runApp`:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+const defaultStyle = SystemUiOverlayStyle(
+  // Android: transparent bars and dark icons
+  statusBarColor: Colors.transparent,
+  statusBarIconBrightness: Brightness.dark,
+  systemNavigationBarColor: Colors.transparent,
+  systemNavigationBarIconBrightness: Brightness.dark,
+  systemNavigationBarContrastEnforced: true,
+  // iOS: light background behind the status bar, so dark text
+  statusBarBrightness: Brightness.light,
+);
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  SystemChrome.setSystemUIOverlayStyle(defaultStyle);
+  runApp(const MyApp());
+}
+```
+
+Notice that iOS uses a different property. `statusBarIconBrightness` only applies on Android and describes the icon, so it is `Brightness.dark`. `statusBarBrightness` only applies on iOS and describes the background, so it is `Brightness.light`, even though the result is the same dark text.
+
+`systemNavigationBarContrastEnforced` lets Android keep the translucent background on 3-button navigation, which is the protection against the invisible back button. The transparent `statusBarColor` changes nothing in apps with `targetSdk` 35 or higher, but keeps the same look on older apps and versions.
+
+This global style loses to the `AppBar`, which publishes its own style on top of what was set in `main`. If the screen has an `AppBar`, the configuration has to go into the theme, in `AppBarTheme(systemOverlayStyle: defaultStyle)`. Without it, Flutter computes a style from the `AppBar` background color.
+
+For screens that break from the default, the tool is `AnnotatedRegion`. It declares the style of one part of the widget tree, and Flutter applies the style of whichever region sits under each bar:
+
+```dart
+class PlayerScreen extends StatelessWidget {
+  const PlayerScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent,
+      ),
+      child: const Scaffold(
+        backgroundColor: Colors.black,
+        body: SafeArea(
+          child: Center(
+            child: Icon(Icons.play_circle, color: Colors.white, size: 96),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+When the user goes back to the previous screen, the player region leaves the tree and the previous style comes back on its own, with nothing to undo. `SafeArea` takes care of the insets: the black background fills the whole screen and the content stays inside the free area. In lists, `ListView` already does this by itself, because without an explicit `padding` it uses the `MediaQuery` padding.
+
+</Variant>
+
+<Variant for="all compose">
+
+## In Jetpack Compose: enableEdgeToEdge
+
+![Anatomy in Jetpack Compose: an Android phone with arrows linking statusBarStyle, navigationBarStyle, isAppearanceLightStatusBars, isAppearanceLightNavigationBars, isNavigationBarContrastEnforced, WindowInsets and innerPadding to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/07-anatomia-compose.png)
+
+In Compose, the configuration lives in the `Activity`. `enableEdgeToEdge` turns on edge-to-edge also on versions before Android 15 and takes the style of each bar:
+
+```kotlin
+import android.graphics.Color
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge(
+            // light background behind the status bar: dark icons
+            statusBarStyle = SystemBarStyle.light(
+                scrim = Color.TRANSPARENT,
+                darkScrim = Color.BLACK,
+            ),
+            // navigationBarStyle stays at the default: transparent with gestures,
+            // translucent with 3-button navigation
+        )
+        setContent { MyAppTheme { AppNavHost() } }
+    }
+}
+```
+
+The name here is `SystemBarStyle.light`, and the result is dark icons, the opposite of the Flutter preset with the same name. `darkScrim` only kicks in on old devices, where the system cannot draw dark icons. If the app follows the system dark theme, switch to `SystemBarStyle.auto`, which toggles on its own.
+
+For a screen that breaks from the default, the way is to adjust the `WindowInsetsControllerCompat` while it is in the composition and restore the previous value when it leaves:
+
+```kotlin
+@Composable
+fun StatusBarIcons(dark: Boolean) {
+    val view = LocalView.current
+    if (view.isInEditMode) return
+    DisposableEffect(dark) {
+        val window = (view.context as Activity).window
+        val controller = WindowCompat.getInsetsController(window, view)
+        val previous = controller.isAppearanceLightStatusBars
+        controller.isAppearanceLightStatusBars = dark
+        onDispose { controller.isAppearanceLightStatusBars = previous }
+    }
+}
+
+@Composable
+fun PlayerScreen() {
+    StatusBarIcons(dark = false) // black background, light icons
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+            .safeDrawingPadding(),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            imageVector = Icons.Filled.PlayArrow,
+            contentDescription = "Play",
+            tint = Color.White,
+            modifier = Modifier.size(96.dp),
+        )
+    }
+}
+```
+
+`onDispose` plays the role `AnnotatedRegion` plays in Flutter: when the player leaves the screen, the icons go back to dark. `safeDrawingPadding()` is the equivalent of `SafeArea`.
+
+In lists, the `Scaffold` hands the insets over ready in `innerPadding`:
+
+```kotlin
+@Composable
+fun ProfileScreen(rows: List<String>) {
+    Scaffold { innerPadding ->
+        LazyColumn(contentPadding = innerPadding) {
+            items(rows) { item ->
+                Text(item, modifier = Modifier.padding(16.dp))
+            }
+        }
+    }
+}
+```
+
+Passing `innerPadding` as `contentPadding`, and not as `Modifier.padding`, is what lets the list scroll behind the bars without hiding the first and the last item.
+
+</Variant>
+
+<Variant for="all swiftui">
+
+## In SwiftUI: color scheme and safe area
+
+![Anatomy in SwiftUI: an iPhone with arrows linking toolbarColorScheme, toolbarBackground, preferredColorScheme, ignoresSafeArea, safe area and persistentSystemOverlays to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/08-anatomia-swiftui.png)
+
+SwiftUI has no direct API to choose the color of the status bar icons. With the default style, iOS picks the appearance on its own to keep contrast with the content underneath. When a screen needs a guaranteed result, like a dark player, the way is to declare the *color scheme* of the bar or of the presentation.
+
+Inside a `NavigationStack`, each screen can declare the color scheme of its own bar:
+
+```swift
+struct PlayerView: View {
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            Image(systemName: "play.circle.fill")
+                .font(.system(size: 96))
+                .foregroundStyle(.white)
+        }
+        .navigationTitle("Player")
+        .toolbarBackground(.black, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+    }
+}
+```
+
+`toolbarColorScheme(.dark, for: .navigationBar)` gives the status bar light text while this screen is on top of the stack, and going back restores whatever the previous screen declared. The naming follows Compose's logic: `.dark` describes the background, and the result is light text. Both `toolbarBackground` lines are required, because without a visible bar background SwiftUI ignores `toolbarColorScheme`. All three modifiers require iOS 16.
+
+For screens without a navigation bar, like a player opened with `.fullScreenCover`, the way is `.preferredColorScheme(.dark)`. It applies to the whole presentation, so it works well on a modal screen, but on a regular screen in the stack it darkens the whole app. If neither option fits, UIKit is what is left: a `UIHostingController` subclass that overrides `preferredStatusBarStyle`.
+
+Insets work the opposite way from Android. SwiftUI respects the safe area by default, and drawing behind the bars is an explicit choice. In the example, only `Color.black` uses `.ignoresSafeArea()`, so the background fills the whole screen and the icon stays in the free area.
+
+</Variant>
+
+![Two screens: the light home screen with dark icons and the dark player with light icons, with the Flutter, Jetpack Compose and SwiftUI code that declares the style of each](/images/posts/anatomia-systemuioverlaystyle/05-estilo-por-tela.png)
+
+## Before sending it to the store
+
+<Variant for="all flutter">
+
+Most of these mistakes only show up in a specific combination of theme, navigation and screen. Before each submission, it is worth going through four scenarios:
+
+</Variant>
+
+<Variant for="compose swiftui">
+
+Most of these mistakes only show up in a specific combination of theme, navigation and screen. Before each submission, it is worth going through three scenarios:
+
+</Variant>
+
+**Light and dark theme.** Switch the system theme with the app open and go through every screen.
+
+<Variant for="all flutter compose">
+
+**3-button navigation.** Turn it on in the Android settings. That is where the back button disappears when the contrast is wrong.
+
+</Variant>
+
+<Variant for="all flutter">
+
+**Screens without an AppBar.** Splash, onboarding, player, camera and any screen with an image behind the status bar.
+
+</Variant>
+
+<Variant for="compose">
+
+**Screens without a TopAppBar.** Splash, onboarding, player, camera and any screen with an image behind the status bar.
+
+</Variant>
+
+<Variant for="swiftui">
+
+**Screens without a navigation bar.** Splash, onboarding, player, camera and any screen with an image behind the status bar.
+
+</Variant>
+
+<Variant for="all flutter swiftui">
+
+**iPhone with a notch or Dynamic Island, in light and dark mode.** On iOS, the background behind the status bar is always the app's, so test the dark screens with the device in light mode and the light screens in dark mode.
+
+</Variant>
+
+## The rule that holds for any framework
+
+Every decision about the system bars starts with the color of the background behind them. With that answer, the name of each API becomes a translation detail, and the rest is applying the insets so the content does not end up under the clock or the gestures.
+
+<Variant for="all flutter">
+
+None of these APIs checks your configuration. Android's translucent background protects 3-button navigation and the default iOS style tries to keep contrast, but when the app declares the wrong color, the white icon on a white background reaches the store review all the same.
+
+</Variant>
+
+<Variant for="compose">
+
+None of these APIs checks your configuration. Android's translucent background protects 3-button navigation, but when the app declares the wrong color, the white icon on a white background reaches the store review all the same.
+
+</Variant>
+
+<Variant for="swiftui">
+
+None of these APIs checks your configuration. The default iOS style tries to keep contrast, but when the app declares the wrong color, the white text on a white background reaches the store review all the same.
+
+</Variant>
+
+<Variant for="all flutter compose">
+
+After the bars, the next step is the other insets edge-to-edge left exposed: the keyboard, the camera cutout when the app rotates to landscape and the fold on foldable devices. In all of them the system takes up part of the screen, and the app needs to know which part.
+
+</Variant>
+
+<Variant for="swiftui">
+
+After the bars, the next step is the other cases where the system takes up part of the screen: the keyboard and the notch when the app rotates to landscape. In all of them the app needs to know which part is its own.
+
+</Variant>
