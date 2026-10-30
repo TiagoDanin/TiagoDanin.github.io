@@ -6,7 +6,7 @@ description: "I have had App Store submissions rejected over status bar contrast
 slug: "system-bars-anatomy-mobile"
 originalUrl: ""
 lang: "en"
-cover: "/images/posts/anatomia-systemuioverlaystyle/cover.png"
+cover: "/images/posts/anatomia-systemuioverlaystyle/cover-en.png"
 variants:
   - id: "flutter"
     label: "Flutter"
@@ -26,7 +26,7 @@ variants:
 tags: ["Flutter", "Android", "iOS", "Mobile", "UI/UX", "Article"]
 ---
 
-![Anatomy of the system bars, in Flutter, Jetpack Compose and SwiftUI, with an Android phone and an iPhone and the bars labelled](/images/posts/anatomia-systemuioverlaystyle/cover.png)
+![Anatomy of the system bars, in Flutter, Jetpack Compose and SwiftUI, with an Android phone and an iPhone and the bars labelled](/images/posts/anatomia-systemuioverlaystyle/cover-en.png)
 
 I have had App Store submissions rejected because of the status bar. The problem was contrast: the color of the system icons did not match the screen background, and the information at the top was hard to read. On Android, the same slip usually shows up at the bottom, with a white back icon on a white navigation bar, and the user cannot find a way out of the screen.
 
@@ -56,7 +56,7 @@ This kind of mistake does not depend on the framework. In SwiftUI, the care goes
 
 ## What belongs to the system and what belongs to the app
 
-![An Android phone and an iPhone side by side, with the status bar, navigation bar, home indicator, camera cutout, Dynamic Island and app area labelled](/images/posts/anatomia-systemuioverlaystyle/01-anatomia-barras.png)
+![An Android phone and an iPhone side by side, with the status bar, navigation bar, home indicator, camera cutout, Dynamic Island and app area labelled](/images/posts/anatomia-systemuioverlaystyle/01-anatomia-barras-en.png)
 
 <Variant for="all flutter">
 
@@ -86,7 +86,7 @@ The app does not draw what is inside these strips. What it controls is two thing
 
 <Variant for="all flutter compose">
 
-![The same form screen twice: on the left, white icons on a white background and an invisible back button; on the right, dark and readable icons](/images/posts/anatomia-systemuioverlaystyle/02-contraste-errado-certo.png)
+![The same form screen twice: on the left, white icons on a white background and an invisible back button; on the right, dark and readable icons](/images/posts/anatomia-systemuioverlaystyle/02-contraste-errado-certo-en.png)
 
 </Variant>
 
@@ -114,7 +114,7 @@ The belief behind the problem is "the bar belongs to the system, so the system t
 
 ## Edge-to-edge changed the rule on Android
 
-![Two profile screens in edge-to-edge: without insets, the title touches the clock and the button sits under the gesture bar; with insets, the background runs behind and the content stays in the free area](/images/posts/anatomia-systemuioverlaystyle/03-edge-to-edge-insets.png)
+![Two profile screens in edge-to-edge: without insets, the title touches the clock and the button sits under the gesture bar; with insets, the background runs behind and the content stays in the free area](/images/posts/anatomia-systemuioverlaystyle/03-edge-to-edge-insets-en.png)
 
 For a long time, the fix was to paint the status bar with the app color. Starting with Android 15, every app with `targetSdk` 35 draws edge to edge by default: content goes behind the status bar and the navigation bar. `setStatusBarColor` is now ignored, gesture navigation is transparent and 3-button navigation gets a translucent background at 80% opacity. Android 15 still let you opt out of this behavior, but for apps with `targetSdk` 36, on Android 16, that option is gone.
 
@@ -134,7 +134,7 @@ In practice, two responsibilities are left. The first is choosing the icon color
 
 ## How each framework names light and dark
 
-![A table with light background and dark background in the rows and Flutter, Jetpack Compose and SwiftUI in the columns, showing the name each one uses for dark or light icons](/images/posts/anatomia-systemuioverlaystyle/04-nomes-invertidos.png)
+![A table with light background and dark background in the rows and Flutter, Jetpack Compose and SwiftUI in the columns, showing the name each one uses for dark or light icons](/images/posts/anatomia-systemuioverlaystyle/04-nomes-invertidos-en.png)
 
 Before writing any code, answer one question: is the background behind the bar light or dark? A light background calls for dark icons, and a dark background calls for light icons.
 
@@ -150,7 +150,7 @@ One detail about Flutter's presets: `SystemUiOverlayStyle.dark` and `SystemUiOve
 
 ## In Flutter: SystemUiOverlayStyle
 
-![Anatomy in Flutter: an Android phone and an iPhone with arrows linking statusBarColor, statusBarIconBrightness, AppBar, SafeArea, systemNavigationBarColor, systemNavigationBarIconBrightness and statusBarBrightness to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/06-anatomia-flutter.png)
+![Anatomy in Flutter: an Android phone and an iPhone with arrows linking statusBarColor, statusBarIconBrightness, AppBar, SafeArea, systemNavigationBarColor, systemNavigationBarIconBrightness and statusBarBrightness to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/06-anatomia-flutter-en.png)
 
 The starting point is defining a default style in `main`, before `runApp`:
 
@@ -217,7 +217,7 @@ When the user goes back to the previous screen, the player region leaves the tre
 
 ## In Jetpack Compose: enableEdgeToEdge
 
-![Anatomy in Jetpack Compose: an Android phone with arrows linking statusBarStyle, navigationBarStyle, isAppearanceLightStatusBars, isAppearanceLightNavigationBars, isNavigationBarContrastEnforced, WindowInsets and innerPadding to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/07-anatomia-compose.png)
+![Anatomy in Jetpack Compose: an Android phone with arrows linking statusBarStyle, navigationBarStyle, isAppearanceLightStatusBars, isAppearanceLightNavigationBars, isNavigationBarContrastEnforced, WindowInsets and innerPadding to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/07-anatomia-compose-en.png)
 
 In Compose, the configuration lives in the `Activity`. `enableEdgeToEdge` turns on edge-to-edge also on versions before Android 15 and takes the style of each bar:
 
@@ -309,7 +309,7 @@ Passing `innerPadding` as `contentPadding`, and not as `Modifier.padding`, is wh
 
 ## In SwiftUI: color scheme and safe area
 
-![Anatomy in SwiftUI: an iPhone with arrows linking toolbarColorScheme, toolbarBackground, preferredColorScheme, ignoresSafeArea, safe area and persistentSystemOverlays to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/08-anatomia-swiftui.png)
+![Anatomy in SwiftUI: an iPhone with arrows linking toolbarColorScheme, toolbarBackground, preferredColorScheme, ignoresSafeArea, safe area and persistentSystemOverlays to the part of the screen each one controls](/images/posts/anatomia-systemuioverlaystyle/08-anatomia-swiftui-en.png)
 
 SwiftUI has no direct API to choose the color of the status bar icons. With the default style, iOS picks the appearance on its own to keep contrast with the content underneath. When a screen needs a guaranteed result, like a dark player, the way is to declare the *color scheme* of the bar or of the presentation.
 
@@ -340,7 +340,7 @@ Insets work the opposite way from Android. SwiftUI respects the safe area by def
 
 </Variant>
 
-![Two screens: the light home screen with dark icons and the dark player with light icons, with the Flutter, Jetpack Compose and SwiftUI code that declares the style of each](/images/posts/anatomia-systemuioverlaystyle/05-estilo-por-tela.png)
+![Two screens: the light home screen with dark icons and the dark player with light icons, with the Flutter, Jetpack Compose and SwiftUI code that declares the style of each](/images/posts/anatomia-systemuioverlaystyle/05-estilo-por-tela-en.png)
 
 ## Before sending it to the store
 

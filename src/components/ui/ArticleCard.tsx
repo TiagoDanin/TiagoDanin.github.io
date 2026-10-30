@@ -50,7 +50,7 @@ export function ArticleCard({ post, locale = DEFAULT_LOCALE, tagBasePath = '/tag
             alt={post.title}
             width={672}
             height={378}
-            className="w-full h-auto rounded-xl object-cover"
+            className="w-full h-auto aspect-video rounded-xl object-cover"
           />
         </div>
       )}
