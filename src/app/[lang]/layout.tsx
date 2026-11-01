@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { t } from "@lingui/core/macro";
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import NextTopLoader from 'nextjs-toploader';
+import Script from 'next/script';
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { LinguiClientProvider } from "@/components/layout/LinguiClientProvider";
@@ -12,6 +13,25 @@ import { LOCALES, HTML_LANG } from "@/lib/i18n/locales";
 import { getI18nInstance, initI18n, resolveLocale } from "@/lib/i18n/server";
 import { localeAlternates, OG_IMAGE, openGraphDefaults, ORIGIN, pageUrl, twitterDefaults } from "@/lib/i18n/seo";
 import "../globals.css";
+
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+
+/**
+ * The site's key events in GA. Enhanced measurement logs outbound clicks as a
+ * generic `click` and skips `mailto:` entirely, so the three contacts that count
+ * are named here, from one listener, for every page.
+ */
+const KEY_EVENTS_SCRIPT = `document.addEventListener("click", function (event) {
+  var link = event.target instanceof Element && event.target.closest("a[href]");
+  if (!link || typeof window.gtag !== "function") return;
+  var href = link.href;
+  var host = link.protocol === "mailto:" ? "" : link.hostname;
+  var name = link.protocol === "mailto:" ? "contact_email_click"
+    : /(^|\\.)linkedin\\.com$/.test(host) ? "linkedin_click"
+    : host === "play.google.com" ? "play_store_click"
+    : "";
+  if (name) window.gtag("event", name, { link_url: href });
+});`;
 
 /**
  * Root layout for every locale.
@@ -128,7 +148,9 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[la
         />
       </head>
       <body>
-        <GoogleTagManager gtmId="GTM-WT3T53NB" />
+        {/* Dev sessions on localhost were landing in GA and Clarity as real traffic. */}
+        {IS_PRODUCTION && <GoogleTagManager gtmId="GTM-WT3T53NB" />}
+        {IS_PRODUCTION && <Script id="key-events" strategy="afterInteractive">{KEY_EVENTS_SCRIPT}</Script>}
         <NextTopLoader color="#1e56f0" speed={340} />
         <LinguiClientProvider locale={locale} messages={i18n.messages}>
           <div className="min-h-screen flex flex-col bg-background">
@@ -141,7 +163,7 @@ export default async function RootLayout({ children, params }: LayoutProps<'/[la
           <ToasterProvider />
         </LinguiClientProvider>
       </body>
-      <GoogleAnalytics gaId="G-4M6BE19CKV" />
+      {IS_PRODUCTION && <GoogleAnalytics gaId="G-4M6BE19CKV" />}
     </html>
   );
 }

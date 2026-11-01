@@ -58,3 +58,14 @@ export function listBlogPosts(locale: Locale) {
     .filter((post) => blogListsVideos(locale) || !((post.tags as string[]) || []).includes('Video'))
     .sort((a, b) => b.date.localeCompare(a.date));
 }
+
+/** Other posts of the blog list in `locale`, most shared tags first; ties keep the newest first. */
+export function relatedPosts(post: Pick<PostContent, 'slug' | 'tags'>, locale: Locale, limit = 3) {
+  const tags = new Set(post.tags);
+  return listBlogPosts(locale)
+    .filter((other) => other.slug !== post.slug)
+    .map((other) => ({ other, shared: ((other.tags as string[]) || []).filter((tag) => tags.has(tag)).length }))
+    .sort((a, b) => b.shared - a.shared)
+    .slice(0, limit)
+    .map(({ other }) => other);
+}

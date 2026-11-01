@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { DEFAULT_LOCALE, localePath, splitLocale, type Locale } from '@/lib/i18n/locales';
 import { Trans } from "@lingui/react/macro";
 
@@ -65,8 +66,9 @@ export function Projects({ projects, locale = DEFAULT_LOCALE, limit }: ProjectsP
   const [isExpanded, setIsExpanded] = useState(false);
   const isMobile = useIsMobile();
 
+  // Grey on the home, between the white hero and the white blog block.
   return (
-    <section id="projects" className="relative py-20 overflow-x-clip">
+    <section id="projects" className={cn("relative py-20 overflow-x-clip", !isFullProjects && "bg-secondary/30")}>
       <div aria-hidden="true" className="pointer-events-none absolute top-0 left-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2" />
       <div aria-hidden="true" className="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] bg-purple-100 rounded-full blur-3xl opacity-30 translate-x-1/2 -translate-y-1/2" />
       <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-1/2 w-[480px] h-[480px] bg-purple-100 rounded-full blur-3xl opacity-25 -translate-x-1/2 translate-y-1/3" />

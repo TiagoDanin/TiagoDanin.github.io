@@ -1311,6 +1311,18 @@ msgstr "Content Security Policy"
 msgid "Conversion-focused sites that load fast, rank well, and look great on every device, from solo founders to scale-ups."
 msgstr "Conversion-focused sites that load fast, rank well, and look great on every device, from solo founders to scale-ups."
 
+#: src/components/ui/CodeBlock.tsx
+msgid "Copied"
+msgstr "Copied"
+
+#: src/components/ui/CodeBlock.tsx
+msgid "Copy"
+msgstr "Copy"
+
+#: src/components/ui/CodeBlock.tsx
+msgid "Copy code"
+msgstr "Copy code"
+
 #: src/app/[lang]/web-development/page.tsx
 msgid "Core Web Vitals, structured data, sitemaps, and OG tags, built in, not bolted on."
 msgstr "Core Web Vitals, structured data, sitemaps, and OG tags, built in, not bolted on."
@@ -2220,6 +2232,10 @@ msgstr "Job preparation and interview guidance"
 #: src/app/[lang]/mentorship/page.tsx
 msgid "Join personalized mentorship program and accelerate your development skills. Let's discuss your goals and create a custom learning path together."
 msgstr "Join personalized mentorship program and accelerate your development skills. Let's discuss your goals and create a custom learning path together."
+
+#: src/components/sections/RelatedPosts.tsx
+msgid "Keep reading"
+msgstr "Keep reading"
 
 #: src/app/[lang]/chrome-extensions/page.tsx
 msgid "Keyboard shortcuts"

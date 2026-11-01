@@ -105,10 +105,12 @@ const Index = async ({ params }: PageProps<'/[lang]'>) => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
       <Hero about={hero.about} stats={hero.stats} socialLinks={hero.socialLinks} locale={locale} />
-      <Services expertise={expertiseData} />
+      {/* Proof right after the hero: in Clarity, under a quarter of desktop
+          visitors scrolled past the first quarter of this page. */}
       <Projects projects={[...projectsData]} locale={locale} limit={6} />
-      <Testimonials testimonials={recognition.testimonials} tokens={recognition.tokens} />
       <RecentPosts posts={[...posts]} />
+      <Services expertise={expertiseData} />
+      <Testimonials testimonials={recognition.testimonials} tokens={recognition.tokens} />
       <Work work={[...workData]} volunteer={[...volunteerData]} skills={[...skillsData]} about={aboutData} />
       <CallToAction email={contact.email} linkedInUrl={contact.linkedInUrl} />
 

@@ -10,6 +10,8 @@ import { DEFAULT_LOCALE, HTML_LANG } from "@/lib/i18n/locales";
 import { initI18n } from "@/lib/i18n/server";
 import "./globals.css";
 
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+
 export const metadata = {
   robots: { index: false, follow: true },
 };
@@ -31,7 +33,8 @@ export default function RootNotFound() {
   return (
     <html lang={HTML_LANG[DEFAULT_LOCALE]}>
       <body>
-        <GoogleTagManager gtmId="GTM-WT3T53NB" />
+        {/* Dev sessions on localhost were landing in GA and Clarity as real traffic. */}
+        {IS_PRODUCTION && <GoogleTagManager gtmId="GTM-WT3T53NB" />}
         <LinguiClientProvider locale={DEFAULT_LOCALE} messages={i18n.messages}>
           <div className="min-h-screen flex flex-col bg-background">
             <Navbar menu={[...menuData]} locale={DEFAULT_LOCALE} />
@@ -42,7 +45,7 @@ export default function RootNotFound() {
           </div>
         </LinguiClientProvider>
       </body>
-      <GoogleAnalytics gaId="G-4M6BE19CKV" />
+      {IS_PRODUCTION && <GoogleAnalytics gaId="G-4M6BE19CKV" />}
     </html>
   );
 }

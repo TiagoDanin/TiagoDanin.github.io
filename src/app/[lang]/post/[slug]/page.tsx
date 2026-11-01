@@ -10,7 +10,8 @@ import { Button } from '@/components/ui/button';
 import { GiscusComments } from '@/components/ui/GiscusComments';
 import { AdaptivePost, DEFAULT_VARIANT } from '@/components/ui/AdaptivePost';
 import { CallToAction } from '@/components/sections/CallToAction';
-import { getPostBySlug, type PostContent } from '@/lib/mdx';
+import { RelatedPosts } from '@/components/sections/RelatedPosts';
+import { getPostBySlug, relatedPosts, type PostContent } from '@/lib/mdx';
 import { renderMdx } from '@/lib/render-mdx';
 import { toISODate, formatDate } from '@/utils/parse';
 import { getCallToActionData } from '@/lib/sections';
@@ -171,6 +172,8 @@ export default async function Post({ params }: PageProps<'/[lang]/post/[slug]'>)
           ) : (
             <div className="prose prose-zinc max-w-none">{mdxContent}</div>
           )}
+
+          <RelatedPosts posts={relatedPosts(post, locale)} locale={locale} />
 
           {/* Keyed on the content language, not the locale code: renaming the
               URL segment to br must not orphan the existing comment threads. */}

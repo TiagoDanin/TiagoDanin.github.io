@@ -3,10 +3,12 @@ import rehypeShiki from '@shikijs/rehype';
 import { Fragment } from 'react';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { YouTubeEmbed } from '@/components/ui/YouTubeEmbed';
+import { CodeBlock } from '@/components/ui/CodeBlock';
 import { DEFAULT_VARIANT, Variant } from '@/components/ui/AdaptivePost';
 
 const mdxComponents = {
   YouTubeEmbed,
+  pre: CodeBlock,
 };
 
 /**
