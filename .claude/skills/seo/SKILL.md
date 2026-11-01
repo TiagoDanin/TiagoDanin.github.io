@@ -1,13 +1,13 @@
 ---
 name: seo
-description: SEO, conteúdo e copy do tiagodanin.com. Roteia e combina 22 sub-skills especializadas (auditoria técnica de SEO, AI SEO/AEO, schema/JSON-LD, arquitetura de site, SEO programático, estratégia de conteúdo, copywriting, revisão de copy, CRO, analytics, e-mail, social, vídeo, imagem, lançamento, PR, diretórios, páginas de comparação, lead magnets, free tools, ideias de marketing, posicionamento). Use sempre que o pedido envolver ranquear no Google ou em LLMs, meta tags, títulos, description, canonical, hreflang, sitemap, structured data, palavras-chave, tráfego orgânico, indexação, Core Web Vitals, escrever ou revisar texto de página, headline, CTA, bio, release, newsletter, post de LinkedIn/Twitter, divulgar um post ou projeto, converter visitante, tracking/GA4, ou pedidos vagos como "melhora o SEO", "esse texto tá fraco", "como divulgo isso", "ninguém acha meu site". Também antes de criar ou editar qualquer página, post ou copy que o visitante vá ler.
+description: SEO, conteúdo e copy do tiagodanin.com. Roteia e combina 24 sub-skills especializadas (auditoria técnica de SEO, AI SEO/AEO, schema/JSON-LD, arquitetura de site, SEO programático, link building e backlinks, estratégia de conteúdo, copywriting, revisão de copy, CRO, analytics, e-mail, social, vídeo, imagem, lançamento, PR, palestras e eventos, diretórios, páginas de comparação, lead magnets, free tools, ideias de marketing, posicionamento). Use sempre que o pedido envolver ranquear no Google ou em LLMs, meta tags, títulos, description, canonical, hreflang, sitemap, structured data, palavras-chave, tráfego orgânico, indexação, Core Web Vitals, escrever ou revisar texto de página, headline, CTA, bio, release, newsletter, post de LinkedIn/Twitter, divulgar um post ou projeto, backlink, CFP ou palestra, converter visitante, tracking/GA4, ou pedidos vagos como "melhora o SEO", "esse texto tá fraco", "como divulgo isso", "ninguém acha meu site". Também antes de criar ou editar qualquer página, post ou copy que o visitante vá ler.
 ---
 
 # SEO e conteúdo do tiagodanin.com
 
-Roteador de 22 sub-skills da biblioteca [marketingskills](https://github.com/coreyhaines31/marketingskills) (MIT, Corey Haines), cada uma completa com seus `references/`, em subpastas daqui.
+Roteador de 24 sub-skills da biblioteca [marketingskills](https://github.com/coreyhaines31/marketingskills) (MIT, Corey Haines), cada uma completa com seus `references/`, em subpastas daqui.
 
-Estão agrupadas por dois motivos. O primeiro é custo: 22 descrições soltas em `.claude/skills/` ficariam permanentemente no contexto competindo entre si. O segundo é o que importa no dia a dia: **quase toda tarefa real precisa de mais de uma**. Publicar um post não é "copywriting", é ângulo + texto + on-page + schema + capa + distribuição. Agrupadas, dá para encadear numa entrega só em vez de disparar cinco skills que não conversam.
+Estão agrupadas por dois motivos. O primeiro é custo: 24 descrições soltas em `.claude/skills/` ficariam permanentemente no contexto competindo entre si. O segundo é o que importa no dia a dia: **quase toda tarefa real precisa de mais de uma**. Publicar um post não é "copywriting", é ângulo + texto + on-page + schema + capa + distribuição. Agrupadas, dá para encadear numa entrega só em vez de disparar cinco skills que não conversam.
 
 ## Fluxo
 
@@ -29,6 +29,7 @@ Se o pedido é uma coisa só ("adiciona JSON-LD no post"), vá direto na sub-ski
 | `schema/` | JSON-LD, structured data, rich snippets. |
 | `site-architecture/` | Hierarquia, navegação, estrutura de URL, internal linking. |
 | `programmatic-seo/` | Páginas em escala a partir de dados. Aqui: `/project/[type]/[slug]`, `/tags/[tag]`, `/skills/[slug]`, `/timeline/[year]/[slug]`. |
+| `link-building/` | Backlinks e menções externas que pesam em ranking e em citação por IA: link gap por página, unlinked mentions, broken links, resource pages, guest post. |
 | `competitors/` | Página de comparação, "alternativa a X". |
 | `directory-submissions/` | Submeter projeto a diretórios para backlink e descoberta. |
 
@@ -45,6 +46,7 @@ Se o pedido é uma coisa só ("adiciona JSON-LD no post"), vá direto na sub-ski
 | `image/` | Capa de post, og:image, gráfico social, banner. |
 | `public-relations/` | Release, pitch para jornalista, podcast, newsjacking. |
 | `launch/` | Lançar projeto, feature ou post: Product Hunt, anúncio, coordenação. |
+| `events/` | Palestra e evento: escolher onde vale ir, CFP, desenho da talk, o antes e depois, transformar a gravação em conteúdo. |
 
 **Conversão e medição**
 
@@ -73,6 +75,8 @@ Pipelines para as tarefas que aparecem de verdade neste projeto. A primeira sub-
 | Publicar post novo | `content-strategy` (ângulo, tags, cluster) → `copywriting` (texto EN+PT) → `seo-audit` (title, description, headings) → `schema` (Article) → `image` (capa e og) → `social` + `emails` (distribuição) |
 | Melhorar post que já existe | `copy-editing` → `seo-audit` → `ai-seo` (citabilidade) → `schema` |
 | Auditoria de SEO do site | `seo-audit` (diagnóstico) → `site-architecture` (URL, internal link) → `schema` → `ai-seo` → `analytics` (medir o que mudou) |
+| Página boa que não sobe | `seo-audit` (confirmar que o problema é autoridade, não a página) → `link-building` → `directory-submissions` (base) → `public-relations` (menções e podcasts) |
+| Palestra nova | `events` (CFP, desenho, antes e depois) → `contents/talks/*.mdx` nos dois idiomas → `schema` (Event, VideoObject) → `video` (cortes da gravação) → `social` |
 | Nova landing de serviço (`/mobile`, `/cybersecurity`, …) | `product-marketing` (ângulo e público) → `copywriting` → `cro` (estrutura, CTA) → `seo-audit` → `schema` (Service/FAQ) |
 | Página convertendo mal | `cro` (estrutura primeiro) → `copy-editing` (texto depois) → `analytics` |
 | Lançar projeto open source | `launch` → `copywriting` (README e página) → `social` → `public-relations` → `directory-submissions` |
@@ -81,7 +85,7 @@ Pipelines para as tarefas que aparecem de verdade neste projeto. A primeira sub-
 | Captar e-mail | `lead-magnets` ou `free-tools` → `cro` (onde e como pedir) → `emails` (o que vem depois) |
 | Ideias de divulgação | `marketing-ideas` → `content-strategy` (filtrar o que cabe) → a sub-skill do canal escolhido |
 
-**Desempate quando duas parecem servir:** `copywriting` escreve do zero, `copy-editing` mexe no que existe. `cro` muda estrutura e oferta, `copywriting` muda palavras; se a página está mal montada, copy nova não salva, comece por `cro`. `seo-audit` é diagnóstico do que existe, `content-strategy` é decisão do que criar. `schema` implementa JSON-LD, `seo-audit` aponta que falta.
+**Desempate quando duas parecem servir:** `copywriting` escreve do zero, `copy-editing` mexe no que existe. `cro` muda estrutura e oferta, `copywriting` muda palavras; se a página está mal montada, copy nova não salva, comece por `cro`. `seo-audit` é diagnóstico do que existe, `content-strategy` é decisão do que criar. `schema` implementa JSON-LD, `seo-audit` aponta que falta. `link-building` busca links para uma página específica; `directory-submissions` é a camada de base, de uma vez só; `public-relations` busca cobertura e menção, com link ou sem.
 
 ## Mapa: superfície do site → onde o conteúdo mora
 
@@ -100,7 +104,7 @@ Sub-skill nenhuma sabe disso, e é o que separa recomendação abstrata de patch
 | Title, description, canonical, hreflang, OG | `generateMetadata` da própria página em `src/app/**` |
 | Prioridade no sitemap | `next-sitemap.config.cjs`, função `transform` |
 
-Landing pages de serviço vivem em `src/app/<slug>/page.tsx` (`mobile`, `web-development`, `cybersecurity`, `ai-automation`, `game-development`, `github-pages`, `chrome-extensions`, `mentorship`, `apps`) e leem coleções, e a copy delas continua sendo conteúdo, não JSX.
+Landing pages de serviço vivem em `src/app/[lang]/<slug>/page.tsx` (`mobile`, `web-development`, `cybersecurity`, `ai-automation`, `game-development`, `github-pages`, `chrome-extensions`, `mentorship`, `apps`) e leem coleções, e a copy delas continua sendo conteúdo, não JSX.
 
 ## Adaptações ao projeto
 
@@ -112,9 +116,15 @@ As sub-skills foram escritas para SaaS B2B com trial, preço e funil. Este site 
 
 **Copy vai para `contents/`, nunca para o código.** É a regra mais fácil de quebrar seguindo uma sub-skill, porque elas dizem "atualize o hero" e o caminho preguiçoso é editar o JSX. Prosa editável mora em `contents/<collection>/index.json` (ou `.mdx`). Se não existe coleção para a copy nova, crie a coleção e o schema em `studio.config.ts`. Detalhe no `CLAUDE.md`.
 
-**Bilíngue de verdade, EN e PT com peso igual.** Rotas de conteúdo existem em duas versões (`/post/[slug]` e `/post/[slug]/pt`); o idioma de post e talk vem do sufixo do arquivo. Copy nasce nos dois idiomas, não em inglês com "traduzo depois". Português é do Brasil, acentuado, e não é decalque do inglês: headline que só funciona em inglês precisa de outra headline em português, não de tradução.
+**Bilíngue de verdade, EN e PT com peso igual.** Toda rota existe em duas versões (`/post/[slug]` e `/br/post/[slug]`); o idioma de post e talk vem do sufixo do arquivo (`.pt.mdx`). Copy nasce nos dois idiomas, não em inglês com "traduzo depois". Português é do Brasil, acentuado, e não é decalque do inglês: headline que só funciona em inglês precisa de outra headline em português, não de tradução.
 
 **Restrições de escrita valem acima da sub-skill.** Sem em-dash (—) em copy de interface: en-dash só em intervalo de data, vírgula no resto (prosa de blog é livre). Sem copy de template SaaS ("We help X grow", "Let's build something amazing"). Sem hype. O princípio do `PRODUCT.md` é **show, don't tell**: link para o repositório vale mais que adjetivo.
+
+**Em `events/`, o papel é palestrante e participante.** Não há estande, patrocínio nem evento próprio com inscrição. O "pipeline" que a skill mede vira convite para outra palestra, contato, contratação, seguidor e a talk publicada em `contents/talks/` com a gravação. Ignore badge scan, CRM e roteamento de lead.
+
+**Em `link-building/`, nada de link pago, troca de link ou fornecedor de link.** O que este site tem para ser linkado são os projetos open source, os pacotes npm, os posts técnicos, as talks e o press kit. Comece por menções que já existem sem link (imprensa em `contents/press/`, eventos em `contents/talks/`) antes de prospectar site novo.
+
+**Ferramenta marcada com ◆ é parceira do repositório upstream.** As próprias sub-skills pedem para avisar isso e citar uma alternativa. Prefira o que o site já usa (Search Console, GA4, GTM) antes de sugerir assinatura.
 
 **O site é estático.** Export do Next para GitHub Pages: sem servidor, sem A/B test em runtime, sem personalização por visitante, sem redirect dinâmico, sem captura de formulário sem serviço externo. Recomendação que dependa de servidor vira solução de build time ou é descartada com uma frase explicando por quê.
 
@@ -124,8 +134,8 @@ As sub-skills foram escritas para SaaS B2B com trial, preço e funil. Este site 
 
 As sub-skills trazem benchmarks (taxa de abertura, CTR, conversão típica) vindos de SaaS B2B, não verificados para este contexto. Servem para decidir, não para publicar. Número que for parar em página do site precisa de fonte real.
 
-Só 22 das 50 skills do repo foram copiadas; o resto era vendas B2B. Quando um `## Related Skills` mandar ver `ab-testing`, `ad-creative`, `ads`, `aso`, `attribution`, `churn-prevention`, `community-marketing`, `marketing-plan`, `marketing-psychology`, `onboarding`, `popups`, `referrals`, `revops`, `sales-enablement` ou `signup`, a pasta não existe aqui: siga com o que tem e, se aquilo era essencial, diga qual falta em vez de improvisar substituto silencioso.
+Só 24 das 53 skills do repo foram copiadas; o resto é vendas B2B, mídia paga, SaaS com assinatura ou loja de app. Quando um `## Related Skills` mandar ver `ab-testing`, `ad-creative`, `ads`, `aso`, `attribution`, `churn-prevention`, `cold-email`, `co-marketing`, `community-marketing`, `competitor-profiling`, `conversion-tracking`, `marketing-loops`, `marketing-plan`, `marketing-psychology`, `onboarding`, `popups`, `referrals`, `reverse-engineer-marketing`, `revops`, `sales-enablement`, `signup` ou `sms`, a pasta não existe aqui: siga com o que tem e, se aquilo era essencial, diga qual falta em vez de improvisar substituto silencioso.
 
 ---
 
-Sub-skills copiadas sem alteração de [marketingskills](https://github.com/coreyhaines31/marketingskills), MIT (cópia em `LICENSE`). Atualizar significa recopiar do upstream, então não as edite: ajuste específico deste projeto pertence a este arquivo.
+Sub-skills copiadas sem alteração de [marketingskills](https://github.com/coreyhaines31/marketingskills), MIT (cópia em `LICENSE`), no commit `88c79f6` (2026-10-30), sem as pastas `evals/`. As versões de cada uma estão no `VERSIONS.md` do upstream. Atualizar significa recopiar do upstream, então não as edite: ajuste específico deste projeto pertence a este arquivo.
