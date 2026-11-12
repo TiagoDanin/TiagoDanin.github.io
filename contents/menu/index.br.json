@@ -21,7 +21,7 @@
     "hideOnHome": true
   },
   {
-    "title": "Blog",
+    "title": "Artigos",
     "href": "/blog",
     "navbar": true,
     "footer": true,

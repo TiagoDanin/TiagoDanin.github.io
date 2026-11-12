@@ -21,14 +21,14 @@
     "hideOnHome": true
   },
   {
-    "title": "Blog",
+    "title": "Articles",
     "href": "/blog",
     "navbar": true,
     "footer": true,
     "hideOnHome": false
   },
   {
-    "title": "Talks",
+    "title": "Speaking",
     "href": "/talks",
     "navbar": true,
     "footer": true,
