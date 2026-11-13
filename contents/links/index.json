@@ -58,7 +58,7 @@
         "title": "Sua digital não é sua senha: biometria do seu app mobile pode ser hackeada",
         "url": "https://drive.google.com/drive/folders/1h7lqkmxavFdXWhdDCfKPyPaSTjP4nCt9?usp=drive_link",
         "icon": "presentation",
-        "enabled": true,
+        "enabled": false,
         "talk_avaliation": true
     }
 ]

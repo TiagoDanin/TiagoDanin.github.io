@@ -1296,6 +1296,83 @@
 		]
 	},
 	{
+		"name": "SwipeClean",
+		"slug": "swipeclean",
+		"url": "https://play.google.com/store/apps/details?id=com.tiagodanin.swipe_clean",
+		"tagline": "Limpe sua galeria com um deslize.",
+		"description": "Um limpador de fotos e vídeos: deslize para manter ou marcar, compare fotos parecidas lado a lado, ache cópias idênticas por origem e comprima em vez de excluir.",
+		"storeDescription": "O SwipeClean mostra uma foto ou vídeo por vez: deslize para um lado para manter, para o outro para marcar para excluir. Nada é apagado até você revisar a lista Para excluir e confirmar, e no Android 11 ou mais novo o que você exclui vai para a lixeira do sistema. Fotos parecidas aparecem lado a lado e você escolhe a que fica. Cópias idênticas são encontradas pelo conteúdo do arquivo e mostradas por origem (Câmera, WhatsApp, Downloads), com a original da câmera sugerida. Vídeos e fotos podem ser comprimidos em vez de excluídos, no mesmo álbum e com a mesma data. A análise acontece no celular e a galeria não sai dele. Grátis, com anúncios depois de muitas decisões e um Premium vitalício, em português e inglês.",
+		"category": "Ferramentas",
+		"icon": "🧹",
+		"accentColor": "#0B7A4B",
+		"features": [
+			{
+				"icon": "👆",
+				"title": "Deslize para manter ou marcar",
+				"description": "Uma foto ou vídeo por vez, na ordem que você escolher: maiores, mais novos ou mais antigos. O deslize só marca; nada sai antes de você confirmar."
+			},
+			{
+				"icon": "🖼️",
+				"title": "Fotos parecidas lado a lado",
+				"description": "Duas fotos na tela, você escolhe qual fica, e a vencedora enfrenta a próxima do grupo."
+			},
+			{
+				"icon": "🗂️",
+				"title": "Cópias idênticas por origem",
+				"description": "O app confere o conteúdo dos arquivos e mostra onde cada cópia mora. Sugere manter a original da câmera e excluir as cópias."
+			},
+			{
+				"icon": "🗜️",
+				"title": "Comprimir em vez de excluir",
+				"description": "Reduza um vídeo ou uma foto e guarde a versão menor, com a mesma data. O original só vai para a lixeira se a cópia ficar pelo menos 10% menor."
+			}
+		],
+		"buildStory": {
+			"problem": "Limpadores de galeria ou apagam rápido demais ou soterram você em listas. Com milhares de fotos, o medo real é perder justamente a que importava.",
+			"solution": "Um app Flutter que analisa no próprio aparelho (um hash de diferença para fotos parecidas, um hash do conteúdo para as idênticas) e trata a exclusão como etapa separada: os deslizes só marcam, e a lista Para excluir é revisada antes da confirmação do próprio Android. No Android 11 ou mais novo os arquivos vão para a lixeira do sistema.",
+			"learned": "Comparar cópias por tamanho e um hash rápido dá candidatas, não prova. Calcular o hash dos bytes de cada candidata antes de chamar dois arquivos de idênticos, e avisar quando todas as cópias de uma foto estão marcadas, é o que torna seguro apertar o botão de excluir."
+		},
+		"tags": [
+			"flutter",
+			"photos",
+			"cleaner",
+			"android"
+		],
+		"iconImage": "/images/apps/swipeclean/icon.webp",
+		"screenshots": [
+			{
+				"src": "/images/apps/swipeclean/br/screenshot-1.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/swipeclean/br/screenshot-2.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/swipeclean/br/screenshot-3.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/swipeclean/br/screenshot-4.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/swipeclean/br/screenshot-5.webp",
+				"width": 720,
+				"height": 1280
+			},
+			{
+				"src": "/images/apps/swipeclean/br/screenshot-6.webp",
+				"width": 720,
+				"height": 1280
+			}
+		]
+	},
+	{
 		"name": "Emoji Memory Jetpack",
 		"slug": "emoji-memory-jetpack",
 		"tagline": "Treine a memória. Encontre os pares.",
